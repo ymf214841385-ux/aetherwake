@@ -1,0 +1,129 @@
+import { create } from "zustand";
+
+export type Mode =
+  | "title"
+  | "playing"
+  | "paused"
+  | "inventory"
+  | "map"
+  | "dead"
+  | "ending"
+  | "cooking"
+  | "dialogue";
+
+export type InvWeapon = {
+  id: string;
+  name: string;
+  dmg: number;
+  dur: number;
+  max: number;
+  kind: "sword" | "claymore" | "bow";
+};
+
+export type InvMeal = {
+  id: string;
+  name: string;
+  hearts: number;
+  spicy?: boolean;
+};
+
+export type Marker = {
+  id: string;
+  name: string;
+  done: boolean;
+  x: number;
+  z: number;
+  kind: "tower" | "shrine" | "camp" | "citadel" | "wisp";
+};
+
+export type HudState = {
+  mode: Mode;
+  hearts: number;
+  heartsMax: number;
+  hp: number;
+  stamina: number;
+  staminaMax: number;
+  climbing: boolean;
+  gliding: boolean;
+  swimming: boolean;
+  cold: boolean;
+  spicy: number;
+  raining: boolean;
+  timeOfDay: number;
+  weapon: InvWeapon | null;
+  bow: InvWeapon | null;
+  arrows: number;
+  art: number;
+  artNames: string[];
+  artsOn: boolean[];
+  prompt: string;
+  toast: string;
+  objective: string;
+  amber: number;
+  orbs: number;
+  px: number;
+  pz: number;
+  py: number;
+  yaw: number;
+  camYaw: number;
+  markers: Marker[];
+  meals: InvMeal[];
+  materials: { id: string; name: string; n: number }[];
+  weapons: InvWeapon[];
+  dialogue: string;
+  shrineHint: string;
+  hasSave: boolean;
+  temp: number;
+  aiming: boolean;
+};
+
+const ART_NAMES = ["爆鸣", "霜息", "牵引", "凝时"];
+
+export const useHud = create<HudState>(() => ({
+  mode: "title",
+  hearts: 3,
+  heartsMax: 3,
+  hp: 3,
+  stamina: 100,
+  staminaMax: 100,
+  climbing: false,
+  gliding: false,
+  swimming: false,
+  cold: false,
+  spicy: 0,
+  raining: false,
+  timeOfDay: 0.22,
+  weapon: null,
+  bow: null,
+  arrows: 20,
+  art: 0,
+  artNames: ART_NAMES,
+  artsOn: [true, true, true, true],
+  prompt: "",
+  toast: "",
+  objective: "登上晨光塔，眺望这片原野",
+  amber: 0,
+  orbs: 0,
+  px: 16,
+  pz: 100,
+  py: 28,
+  yaw: 0,
+  camYaw: 0,
+  markers: [],
+  meals: [],
+  materials: [],
+  weapons: [],
+  dialogue: "",
+  shrineHint: "",
+  hasSave: false,
+  temp: 1,
+  aiming: false,
+}));
+
+export function hasSaveFile() {
+  try {
+    return Boolean(localStorage.getItem("aetherwake-save-v1"));
+  } catch {
+    return false;
+  }
+}
