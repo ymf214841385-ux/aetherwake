@@ -360,3 +360,12 @@ npm run test:game    # 170 pass / 0 fail
 - 完整 `play-routes.mjs` + `citadelFightStep` 新档；显式 `QA_HEADED=1`
 - melee 为真实 Playwright canvas/mouse.click（非合成 MouseEvent）
 - 停止 A/B；不把 cron 修复等同通关
+
+### D2 全路线实跑（PID 11439 / cr 11494，headed，已结束）
+- Chrome for Testing **无 --headless**；**跨 8 分钟存活**；**未出现在 cleanup log**
+- 新档：dawn+四祠+cook cooked + mere + eat spicy89.8 + **crown seal=true**
+- Boss：swings=172 hits=5 bossHp **20→11**；后段 **位姿冻结** 连续 miss
+- save-reload **restored=true**；bossDead=false
+- 存档 v2 已按节点原样归档（含 hp/spicy/坐标）
+- 证据：`runs/d2-play-routes-20260912-034501/`
+- **不**将 headed/cron 对策等同通关；Boss 击杀未验收

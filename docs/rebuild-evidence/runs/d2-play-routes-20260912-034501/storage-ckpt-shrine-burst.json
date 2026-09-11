@@ -1,0 +1,10 @@
+{
+  "v2": "{\"schemaVersion\":2,\"worldVersion\":2,\"savedAt\":1789156052811,\"player\":{\"x\":117.85521691300022,\"y\":10.759999809265137,\"z\":31.627183861742594,\"yaw\":0.09492324987184819,\"camYaw\":1.8347926535897932,\"hp\":3,\"heartsMax\":3,\"staminaMax\":100,\"arrows\":24,\"amber\":0,\"art\":1,\"spicy\":0},\"inventory\":{\"weapons\":[{\"id\":\"blade\",\"name\":\"旅人短剑\",\"dmg\":18,\"dur\":24,\"max\":24,\"kind\":\"sword\"},{\"id\":\"bow\",\"name\":\"林间长弓\",\"dmg\":12,\"dur\":20,\"max\":20,\"kind\":\"bow\"}],\"meals\":[{\"id\":\"m-46.183333333331994\",\"name\":\"辣炒椒\",\"hearts\":2,\"spicy\":true}],\"mats\":{\"apple\":2,\"pepper\":0},\"equippedId\":\"blade\",\"bowId\":\"bow\"},\"progress\":{\"towers\":[\"dawn\"],\"shrines\":[\"pull\",\"rime\",\"burst\"],\"wisps\":[],\"chests\":[],\"orbs\":3,\"bossDead\":false,\"ruinSolved\":true,\"sealRule\":\"towers-and-shrines\",\"graybox\":false},\"checkpoint\":{\"id\":\"fire-camp-a\",\"x\":41.74298100233743,\"y\":10.270682702293868,\"z\":50.51280232286796}}",
+  "v1": null,
+  "origin": "http://127.0.0.1:8101",
+  "href": "http://127.0.0.1:8101/?t=1789155879388",
+  "label": "shrine-burst",
+  "t": 1789156052993,
+  "hasV2": true,
+  "hasV1": false
+}

@@ -1,0 +1,7 @@
+[play] citadel swing=1 hit=true hp 20->18.2 player=8.42,10.80,0.02 yaw=-5.32 camYaw=0.67 boss=6.09,-2.74 dist=3.44 weapon=blade ammo=24 attack idle->active cd=0.09 seal=true playerHp=2.5 dodgeCd=0.00 bossPhase=hurt prompt=挑战空王
+[play] citadel swing=2 hit=true hp 18.2->16.4 player=6.45,10.80,-1.48 yaw=-0.93 camYaw=-0.92 boss=8.99,-3.56 dist=2.84 weapon=blade ammo=24 attack idle->active cd=0.09 seal=true playerHp=3.5 dodgeCd=0.00 bossPhase=hurt prompt=挑战空王
+[play] citadel swing=3 hit=true hp 16.4->14.599999999999998 player=5.73,10.78,-1.41 yaw=-0.97 camYaw=-0.97 boss=8.69,-3.22 dist=3.08 weapon=blade ammo=24 attack idle->active cd=0.09 seal=true playerHp=3.5 dodgeCd=0.00 bossPhase=hurt prompt=挑战空王
+[play] citadel towers=dawn,mere,crown orbs=4 bossDead=false mode=playing prompt=挑战空王 swings=172 hits=5 attackStarts=172 deaths=0 bossHp=10.999999999999996 seal=true
+[play] save-reload restored=true continued=true afterTowers=dawn,mere,crown afterShrines=pull,rime,burst,still
+[play] citadel swing=30 hit=false hp 10.999999999999996->10.999999999999996 player=7.97,10.85,-1.90 yaw=-1.36 camYaw=-1.36 boss=9.91,-2.55 dist=2.05 weapon=blade ammo=24 attack idle->active cd=0.09 seal=true playerHp=3.5 dodgeCd=0.00 bossPhase=approach prompt=挑战空王
+[play] citadel swing=35 hit=false hp 10.999999999999996->10.999999999999996 player=7.97,10.85,-1.90 yaw=-1.36 camYaw=-1.36 boss=9.91,-2.55 dist=2.05 weapon=blade ammo=24 attack idle->active cd=0.09 seal=true playerHp=3.5 dodgeCd=0.00 bossPhase=approach prompt=挑战空王
