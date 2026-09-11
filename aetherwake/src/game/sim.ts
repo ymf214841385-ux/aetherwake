@@ -393,7 +393,17 @@ export class Sim {
     ].entries()) {
       this.enemies.push(this.makeEnemy(`s-${i}`, "sentinel", p[0]!, p[1]!, 8));
     }
-    this.enemies.push(this.makeEnemy("boss", "boss", CITADEL_POI.x, CITADEL_POI.z + 7.2, 20));
+    if (this.bossDead) {
+      // P0-2: a cleared save must not respawn a fightable boss.
+      const deadBoss = this.makeEnemy("boss", "boss", CITADEL_POI.x, CITADEL_POI.z + 7.2, 20);
+      deadBoss.alive = false;
+      deadBoss.hp = 0;
+      deadBoss.brain.phase = "dead";
+      deadBoss.brain.rewarded = true;
+      this.enemies.push(deadBoss);
+    } else {
+      this.enemies.push(this.makeEnemy("boss", "boss", CITADEL_POI.x, CITADEL_POI.z + 7.2, 20));
+    }
     this.pickups = [];
     for (let i = 0; i < 14; i++) {
       const x = (Math.sin(i * 12.1) * 0.5 + 0.5) * 160 - 40;

@@ -42,3 +42,31 @@ npm run test:game    # 170 pass / 0 fail
 
 ### 说明
 三轮受控 sim 测试**不是** ordinary-input 验收：仅允许设置 `brain.phase=recover` 与玩家朝向，不写 Boss HP/坐标；真实 3 轮必须浏览器事件。
+
+---
+
+## 批次 2 — P0-2 bossDead 通关保存/重载
+
+### 变更前 HEAD
+`d5933ee`（批次 1）
+
+### 根因
+`resetWorldEntities` 无条件 `makeEnemy(boss)` 且 `alive=true`；`applySave` 恢复 `bossDead=true` 后仍被塞进可战斗 Boss。
+
+### 最小修
+`bossDead` 时生成 dead Boss（`alive=false, hp=0, phase=dead, rewarded=true`），不重复发奖。
+
+### 回归（先红后绿）
+`P0-2 bossDead save reload`：
+- applySave 后 boss 不复活
+- 普通攻击击杀 → save → 新 Sim continueSave → bossDead 保持、非 ending、boss 仍死
+
+### 验证
+- `test:game` **172 pass / 0 fail**
+- `typecheck` PASS
+- `build:app` PASS（无 migrate）
+
+### 未做
+- 浏览器刷新/继续 UI 链路
+- 同存档三塔四祠全主线
+- 浏览器普通输入 3 轮反击与最终击杀

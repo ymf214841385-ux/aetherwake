@@ -238,3 +238,62 @@ describe("P0-1 boss attack state machine", () => {
     );
   });
 });
+
+describe("P0-2 bossDead save reload", () => {
+  it("applySave with bossDead does not respawn a live boss", () => {
+    const store = memoryStorage();
+    const s = new Sim(store);
+    s.freshRuntime(false);
+    openSeal(s);
+    const boss = bossOf(s);
+    // Legitimate kill path.
+    boss.hp = 0;
+    s.damageEnemy(boss, 0.1, 0, 0);
+    assert.equal(s.bossDead, true);
+    assert.equal(s.mode, "ending");
+    s.save();
+    const raw = store.getItem("aetherwake-save-v2");
+    assert.ok(raw, "save v2 missing");
+    // Simulate refresh: new Sim, continue from same storage.
+    const s2 = new Sim(store);
+    s2.continueSave();
+    assert.equal(s2.bossDead, true, "bossDead must restore");
+    const boss2 = s2.enemies.find((e) => e.kind === "boss");
+    assert.ok(boss2, "boss entity may exist");
+    assert.equal(boss2.alive, false, `boss must stay dead alive=${boss2.alive} hp=${boss2.hp}`);
+    assert.equal(boss2.brain.phase, "dead");
+    assert.equal(boss2.brain.rewarded, true, "reward must not re-grant");
+  });
+
+  it("reload after ending keeps bossDead and does not re-open a fight", () => {
+    const store = memoryStorage();
+    const s = new Sim(store);
+    s.freshRuntime(false);
+    openSeal(s);
+    const boss = bossOf(s);
+    placePlayer(s, boss.x, boss.z + 2.2);
+    s.player.yaw = Math.atan2(s.player.x - boss.x, s.player.z - boss.z);
+    s.cam.yaw = s.player.yaw;
+    // Ordinary swings until dead (existing unit path).
+    for (let i = 0; i < 2000 && boss.alive; i++) {
+      s.player.yaw = Math.atan2(s.player.x - boss.x, s.player.z - boss.z);
+      s.cam.yaw = s.player.yaw;
+      const dist = Math.hypot(s.player.x - boss.x, s.player.z - boss.z);
+      const dodge = boss.brain.phase === "windup" || boss.brain.phase === "strike";
+      const attack = s.attack.phase === "idle" && dist <= 2.7 && !dodge;
+      s.step(1 / 60, hold({ moveY: dist > 2.55 ? 1 : dist < 1.65 ? -1 : 0, attack, dodge }));
+      if (s.mode === "dead") {
+        s.respawn();
+        placePlayer(s, boss.x, boss.z + 2.2);
+      }
+    }
+    assert.equal(s.bossDead, true);
+    s.save();
+    const s2 = new Sim(store);
+    s2.continueSave();
+    assert.equal(s2.bossDead, true);
+    assert.notEqual(s2.mode, "ending", "continue should leave ending into play/post-game");
+    const boss2 = s2.enemies.find((e) => e.kind === "boss");
+    assert.equal(boss2?.alive, false);
+  });
+});

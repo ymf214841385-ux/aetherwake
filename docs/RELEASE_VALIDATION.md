@@ -2,11 +2,12 @@
 
 ## MiMo continuation (opencode-go @ 265cc80 base)
 - typecheck: PASS
-- test:game: 170 passed, 0 failed (includes boss-lifecycle P0-1)
+- test:game: 172 passed, 0 failed (P0-1 recover SM + P0-2 bossDead reload)
 - Boss recover state machine: distance/LOS/dy/off-arena no longer steal or freeze recover
+- bossDead reload: dead boss entity, no re-fight, no double reward
 - Browser ordinary-input 3-round counter + final kill: **not yet accepted**
-- bossDead save/reload (P0-2): **not yet**
-- build:app: pending this batch's end-to-end (run after commit)
+- Browser refresh/continue UI chain: **not yet**
+- build:app: PASS (no migrate)
 
 ## Prior integrated checkpoint
 - Integrated typecheck: PASS (fixed missing QA/test parameter types; no gameplay behavior change).
