@@ -7,9 +7,24 @@ import {
   citadelOffArena,
   citadelReturnWaypoints,
   insideKeepVolume,
+  CROWN_TO_CITADEL,
 } from "../../scripts/qa/citadel-steer.mjs";
 
 describe("citadel keep-volume classification", () => {
+  it("CROWN_TO_CITADEL matches 95073 play-routes fightBoss legs", () => {
+    // Must stay aligned with play-routes fightBoss: 36,-90 → 24,-40 → gate.
+    assert.deepEqual(
+      CROWN_TO_CITADEL.map((w) => [w.x, w.z]),
+      [
+        [36, -90],
+        [24, -40],
+        [6, 8],
+        [6, -1],
+        [6, -5],
+      ],
+    );
+  });
+
   it("36458 pose is inside-keep, not generic inside", () => {
     const s = { x: 7.0, z: -16.5, y: 10.8 };
     assert.equal(insideKeepVolume(s.x, s.z), true);

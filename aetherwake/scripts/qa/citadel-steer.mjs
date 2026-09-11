@@ -20,6 +20,18 @@ export const CITADEL_DODGE_M = 3.1;
 /** Courtyard floor in 90227 was y≈10.6; outside west face dropped to 7.3–8.6. */
 export const CITADEL_COURTYARD_Y = 10.2;
 
+/**
+ * Shared crown-top → courtyard legs used by play-routes fightBoss (95073).
+ * boss-from-sealed reuses these; do not invent parallel guessed waypoints.
+ */
+export const CROWN_TO_CITADEL = [
+  { x: 36, z: -90, label: "citadel-off-crown" },
+  { x: 24, z: -40, label: "citadel-from-crown" },
+  { x: 6, z: 8, label: "citadel-gate-south" },
+  { x: 6, z: -1, label: "citadel-gate" },
+  { x: 6, z: -5, label: "citadel-standoff" },
+];
+
 /** @param {number} x @param {number} z */
 export function insideCourtyard(x, z) {
   return x > CITADEL_WEST_INNER && x < CITADEL_EAST_INNER && z > CITADEL_KEEP_NORTH && z < CITADEL_GATE_Z + 1.6;

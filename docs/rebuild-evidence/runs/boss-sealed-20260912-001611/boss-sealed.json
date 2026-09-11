@@ -1,0 +1,112 @@
+{
+  "ok": false,
+  "runId": "boss-sealed-20260912-001611",
+  "ckpt": "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/storage-ckpt-after-citadel.json",
+  "restore": {
+    "mode": "playing",
+    "towers": [
+      "dawn",
+      "mere",
+      "crown"
+    ],
+    "shrines": [
+      "pull",
+      "rime",
+      "burst",
+      "still"
+    ],
+    "orbs": 4,
+    "sealOpen": true,
+    "pos": {
+      "x": 44.7,
+      "y": 53.6,
+      "z": -124.5
+    }
+  },
+  "courtyardSave": null,
+  "swings": 0,
+  "hits": 0,
+  "deaths": 0,
+  "failures": [
+    {
+      "label": "courtyard-arrive",
+      "kind": "not-on-courtyard",
+      "s": {
+        "mode": "dead",
+        "x": 47.77008652913383,
+        "y": 36.28499923706055,
+        "z": -123.38346657134299,
+        "camYaw": -8.280807346410212,
+        "state": "dead",
+        "hp": 0,
+        "towers": [
+          "dawn",
+          "mere",
+          "crown"
+        ],
+        "shrines": [
+          "pull",
+          "rime",
+          "burst",
+          "still"
+        ],
+        "orbs": 4,
+        "bossDead": false,
+        "sealOpen": true,
+        "attackPhase": "idle",
+        "dodgeCd": 0,
+        "boss": {
+          "x": 6,
+          "y": 11.06,
+          "z": -4.8,
+          "hp": 20,
+          "alive": true,
+          "phase": "patrol"
+        }
+      }
+    }
+  ],
+  "dodgeTrail": [],
+  "log": [
+    {
+      "t": 1789143372051,
+      "m": "ckpt /Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/storage-ckpt-after-citadel.json label=after-citadel player={\"x\":44.67331689612156,\"y\":53.45999923706055,\"z\":-124.52772806595794,\"yaw\":-0.7639485255336738,\"camYaw\":-7.1192073464102075,\"hp\":1.5,\"heartsMax\":4,\"staminaMax\":116,\"arrows\":24,\"amber\":16,\"art\":4,\"spicy\":0} checkpoint={\"id\":\"tower-crown\",\"x\":44.67331689612156,\"y\":53.45999923706055,\"z\":-124.52772806595794} orbs=4"
+    },
+    {
+      "t": 1789143378563,
+      "m": "restore {\"mode\":\"playing\",\"towers\":[\"dawn\",\"mere\",\"crown\"],\"shrines\":[\"pull\",\"rime\",\"burst\",\"still\"],\"orbs\":4,\"sealOpen\":true,\"pos\":{\"x\":44.7,\"y\":53.6,\"z\":-124.5}}"
+    },
+    {
+      "t": 1789143379425,
+      "m": "descent citadel-off-crown → citadel-from-crown → citadel-gate-south → citadel-gate → citadel-standoff"
+    },
+    {
+      "t": 1789143407640,
+      "m": "wp citadel-off-crown at 47.8,36.3,-123.4 d=35.4 hp=0"
+    },
+    {
+      "t": 1789143409278,
+      "m": "not on courtyard y=36.28499923706055 x=47.77008652913383 — skip save"
+    }
+  ],
+  "shots": [
+    "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/runs/boss-sealed-20260912-001611/boss-sealed-boot.png",
+    "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/runs/boss-sealed-20260912-001611/boss-sealed-courtyard.png"
+  ],
+  "browserInfo": {
+    "chromiumPid": 98469,
+    "connected": true,
+    "via": "descendant-scan"
+  },
+  "lifecycle": {
+    "pageClosed": false,
+    "contextClosed": false,
+    "browserDisconnected": false,
+    "crashed": false,
+    "inspector": false,
+    "intentionalTeardown": false,
+    "events": [],
+    "elapsedMs": 36846,
+    "order": ""
+  }
+}

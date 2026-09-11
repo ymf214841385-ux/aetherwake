@@ -237,3 +237,25 @@ npm run test:game    # 170 pass / 0 fail
 ### 当前
 - typecheck PASS；test:game **181 pass**
 - 未改 HP/进度/冷却；未 push
+
+---
+
+## 批次 9 — 封印档落点核实 + boss-from-sealed
+
+### 主控独立复测
+- boss-lifecycle + citadel-dispatch **23/23** 通过
+
+### 存档落点（真实 v2.player）
+| 档 | player | 备注 |
+|----|--------|------|
+| after-citadel / tower-crown | (44.7, **53.5**, -124.5) hp1.5 spicy0 meals[] | **塔顶**，非庭院；霜冻下山必死 |
+| tower-mere | (-110.9, 44.5, 11.7) hp4 | orbs=4 四祠；**有辣炒椒**；缺 crown |
+
+- after-citadel **不是**庭院档；applySave 修复无法把它变到庭院
+- 96566/96987 首次死亡：`dead en route crown-east`；归档 `runs/boss-desc-fail-*`
+
+### 本批
+- `CROWN_TO_CITADEL` 与 play-routes fightBoss 对齐（回归 10/10）
+- `boss-from-sealed.mjs`：默认 **tower-mere** → 吃辣炒椒 → 补 crown → 同路下山 → `sim.save()` 验 v2.player → citadelFightStep
+- **sim.save() 为程序调用**，非 UI 保存验收
+- durable PID **98787** 启动中
