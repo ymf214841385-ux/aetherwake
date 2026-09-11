@@ -149,3 +149,30 @@ npm run test:game    # 170 pass / 0 fail
 - `play-routes.mjs` 自有预览 **8101**（PID 93217），日志 `/tmp/play-routes-p04.log`
 - 已到 dawn 攀爬 rest y=30.6；**未重启**健康长跑
 - 同 browser storageState / 连续日志由 harness 写出
+
+---
+
+## 批次 6 — p04 第一趟路线结果（PID 93217，已结束）
+
+### 构建边界（勿标 43e78cb 验收）
+- 预览构建时间 **22:50**，早于 `43e78cb`（resolveCheckpoint）提交
+- 本趟 **不是** 43e78cb 浏览器验收
+
+### 通过（正常输入）
+- 晨光塔点亮 + storage-ckpt-tower-dawn
+- 风桥 ruinSolved
+- 牵引祠 orbs=1 + storage-ckpt-shrine-pull
+
+### 首个真实失败：camp-a 烹饪
+- `stuck dist=41 at 8.9,73.2 airborne/climbing` → `nav timeout fire`
+- `after cook spicy=0` — **未达营火，不算烹饪成功**
+- 已修：南侧走廊路点 + climbing 强制脱墙 + meals/spicy 验收日志
+
+### 第二失败：rime 领取时 page.close
+- lastGood：`shrine=0 prompt=领取灵核 ices=2`（已到祭坛）
+- `closeReason=page.close`；orbs 仍为 1，citadel 未尝试
+- **未**把 page.close 记为通关
+
+### 保留
+- `storage-ckpt-tower-dawn.json`、`storage-ckpt-shrine-pull.json`
+- 下一趟须 **新 build:app**（含 43e78cb）再验检查点/刷新继续

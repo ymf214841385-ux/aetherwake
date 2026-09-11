@@ -281,6 +281,7 @@ async function read() {
           worldKind: sim.worldKind,
           spicy: sim.player.spicy,
           cold: sim.player.cold,
+          meals: Array.isArray(sim.meals) ? sim.meals.map((m) => ({ id: m.id, name: m.name })) : [],
           pointerLock: Boolean(document.pointerLockElement),
           cracked: sim.shrine != null ? Boolean(sim.crackedBroken?.[sim.shrine]) : false,
           moveBlock: sim.moveBlock
@@ -570,10 +571,14 @@ async function goTo(tx, tz, ms, { arrive = 2.2, sprint = true, label = "" } = {}
       continue;
     }
     if (s.state === "climbing") {
-      // Near the waypoint, staying on the wall is success (mere west-face grab).
-      // Far walls: dodge-dismount. S only slides down the shaft; Space is jump.
+      // p04 camp-a: KeyC alone left us clinging at 8.9,73.2. Harder dismount.
       await hold(["KeyC"], 180);
-      await wait(200);
+      await wait(120);
+      const s2 = await read();
+      if (s2?.state === "climbing") {
+        await hold(["KeyC", "KeyW"], 220);
+        await hold(["Space"], 140);
+      }
       continue;
     }
 
@@ -1201,24 +1206,46 @@ async function solveShrine(id) {
 
 async function cookPepper() {
   note("cook pepper at camp-a (meal kept for crown frost)");
-  await follow(WAYPOINTS.campA, 40000, 2.2);
-  let s = await goTo(POI.campA.x, POI.campA.z, 12000, { arrive: 1.8, sprint: false, label: "fire" });
-  for (let i = 0; i < 6; i++) {
-    if (s?.prompt?.includes("烹饪") || s?.prompt?.includes("休息")) {
+  const before = await read();
+  const mealsBefore = before?.meals?.length ?? 0;
+  // p04: bee-line 43.6,50.8 from dawn-leave stuck climbing at 8.9,73.2.
+  // Walk the south corridor first, then the fire pad.
+  await follow(
+    [
+      { x: 12, z: 60 },
+      { x: 28, z: 54 },
+      { x: 43.6, z: 50.8 },
+    ],
+    35000,
+    2.5,
+  );
+  let s = await goTo(POI.campA.x, POI.campA.z, 15000, { arrive: 2.0, sprint: false, label: "fire" });
+  let opened = false;
+  for (let i = 0; i < 8; i++) {
+    s = await read();
+    if (s?.prompt?.includes("烹饪") || s?.prompt?.includes("休息") || s?.mode === "cooking") {
+      opened = true;
       await tap("KeyE");
-      await wait(400);
+      await wait(450);
       break;
     }
     await tap("KeyE");
-    await wait(200);
-    s = await read();
+    await wait(250);
   }
   const cookBtn = page.getByRole("button", { name: /烹饪 火棘椒/ });
   if (await cookBtn.count()) await cookBtn.click();
-  await wait(250);
+  await wait(300);
   await resumePlay();
   s = await read();
-  note(`after cook spicy=${s?.spicy} mode=${s?.mode} (eat later at crown)`);
+  const mealsAfter = s?.meals?.length ?? 0;
+  const cooked = mealsAfter > mealsBefore || (s?.spicy ?? 0) > 0;
+  note(
+    `after cook spicy=${s?.spicy} meals=${mealsAfter}/${mealsBefore} opened=${opened} cooked=${cooked} mode=${s?.mode} at ${s?.x?.toFixed?.(1)},${s?.z?.toFixed?.(1)}`,
+  );
+  if (!cooked) {
+    // Do not pretend success — crown frost needs a real meal.
+    note("cook FAILED — will not treat after-cook as spicy ready");
+  }
 }
 
 async function eatPepper() {
