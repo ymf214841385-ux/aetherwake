@@ -341,3 +341,22 @@ npm run test:game    # 170 pass / 0 fail
 | finalJson | ok | ok |
 
 因果由主控判定；本文件不推断 headless 根因。
+
+---
+
+## 批次 14 — D2 外部 cron 真因 + headed 默认
+
+### 真因（主控闭环，项目不改 Hermes/cron）
+- `cleanup-browser.sh` 每 3min：`chrome.*--headless` age>300s → SIGTERM
+- 三条日志 PID 94372/99784/8379 对应本项目失败；D1.3 A exit **143** @ 02:51:00.839
+- 文档：`docs/D2_CRON_HEADLESS_KILL.md`（仅三条 PID，无全量 Hermes 配置）
+
+### 最小修（b8fb471）
+- `DEFAULT_HEADED_NAMES` 含 **boss-sealed / boss-resume**
+- `resolveQaHeaded`：显式 `QA_HEADED=0` 优先
+- 回归 5/5（含 override）
+
+### 授权执行中
+- 完整 `play-routes.mjs` + `citadelFightStep` 新档；显式 `QA_HEADED=1`
+- melee 为真实 Playwright canvas/mouse.click（非合成 MouseEvent）
+- 停止 A/B；不把 cron 修复等同通关
