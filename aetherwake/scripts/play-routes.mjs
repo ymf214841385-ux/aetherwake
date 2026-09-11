@@ -46,6 +46,7 @@ import {
   stillBlockAligned,
 } from "./qa/shrine-steer.mjs";
 import { citadelDodgeAim, citadelOffArena, citadelReturnWaypoints } from "./qa/citadel-steer.mjs";
+import { executeLosReposition } from "./qa/los-reposition.mjs";
 import { bossFightDecision, nextCitadelAction, citadelFightStep } from "./qa/boss-fight-policy.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
@@ -1408,8 +1409,7 @@ async function fightBoss() {
     });
     const decision = step.decision;
     if (step.act === "reposition") {
-      // D3: LOS blocked by citadel wing wall — walk gate interior, do not swing.
-      // One attempt only; still-blocked ends the short trajectory (no 172 spam).
+      // D3.1: shared executor, arrive 0.5 — do not "arrive" 2.6m short.
       if (repositionUsed >= 1) {
         note(
           `citadel reposition already used still-blocked wall=${s.blockerId} — end short trajectory`,
@@ -1419,14 +1419,13 @@ async function fightBoss() {
       note(
         `citadel reposition los-blocked wall=${s.blockerId || "?"} player=${s.x?.toFixed?.(1)},${s.y?.toFixed?.(1)},${s.z?.toFixed?.(1)} boss=${s.boss.x?.toFixed?.(1)},${s.boss.z?.toFixed?.(1)} d=${dist.toFixed?.(1)} t=${Date.now()}`,
       );
-      await goTo(6, -4, 12000, { arrive: 3.2, sprint: true, label: "citadel-los-reposition" });
+      const rp = await executeLosReposition({ goTo, read, note, start: s });
       repositionUsed += 1;
-      s = await read();
-      if (s?.bossMeleeBlocked) {
-        note(`citadel reposition still blocked wall=${s.blockerId} — short trajectory stop`);
+      s = rp.s ?? (await read());
+      if (!rp.ok) {
+        note(`citadel reposition failed — short trajectory stop`);
         break;
       }
-      note(`citadel reposition LOS clear wall=${s?.blockerId || "none"}`);
       missStreak = 0;
       continue;
     }
@@ -1505,10 +1504,14 @@ async function fightBoss() {
           note("citadel reposition already used — end short trajectory");
           break;
         }
-        await goTo(6, -4, 12000, { arrive: 3.2, sprint: true, label: "citadel-miss-reposition" });
+        const rp2 = await executeLosReposition({ goTo, read, note, start: s });
         repositionUsed += 1;
         missStreak = 0;
-        s = await read();
+        s = rp2.s ?? (await read());
+        if (!rp2.ok) {
+          note("citadel miss-streak reposition failed — end short trajectory");
+          break;
+        }
         continue;
       }
     }
