@@ -2,9 +2,9 @@
 
 ## MiMo continuation (opencode-go @ 265cc80 base)
 - typecheck: PASS
-- test:game: 172 passed, 0 failed (P0-1 recover SM + P0-2 bossDead reload)
-- Boss recover state machine: distance/LOS/dy/off-arena no longer steal or freeze recover
-- bossDead reload: dead boss entity, no re-fight, no double reward
+- test:game: 174 passed, 0 failed
+- P0-1 recover SM + P0-2 bossDead reload + freshRuntime live-boss regression
+- strike requires LOS (`!blocked`); chain still ticks through walls
 - Browser ordinary-input 3-round counter + final kill: **not yet accepted**
 - Browser refresh/continue UI chain: **not yet**
 - build:app: PASS (no migrate)

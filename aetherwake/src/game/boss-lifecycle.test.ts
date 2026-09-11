@@ -297,3 +297,53 @@ describe("P0-2 bossDead save reload", () => {
     assert.equal(boss2?.alive, false);
   });
 });
+
+describe("P0-2 freshRuntime after cleared bossDead (b80cf12 regression)", () => {
+  it("freshRuntime(false) after bossDead=true must spawn a live full-HP boss", () => {
+    const s = new Sim(memoryStorage());
+    s.bossDead = true;
+    s.freshRuntime(false);
+    assert.equal(s.bossDead, false, "fresh runtime must clear progress");
+    const boss = s.enemies.find((e) => e.kind === "boss");
+    assert.ok(boss);
+    assert.equal(boss.alive, true, `new game boss must be alive got alive=${boss.alive} hp=${boss.hp}`);
+    assert.equal(boss.hp, boss.max);
+    assert.equal(boss.brain.phase !== "dead", true, `phase=${boss.brain.phase}`);
+    assert.equal(boss.brain.rewarded, false, "new boss must not be pre-rewarded");
+  });
+});
+
+describe("P0-1 strike LOS: no damage through a wall", () => {
+  it("strike does not hurt when a solid wall blocks boss→player", () => {
+    const s = new Sim(memoryStorage());
+    s.freshRuntime(false);
+    openSeal(s);
+    const boss = bossOf(s);
+    const cz = CITADEL_POI.z + 7.2;
+    // Courtyard west wall ~x=-5. Boss on the yard side, player outside, XZ close.
+    boss.x = -4.0;
+    boss.z = cz;
+    boss.y = s.heightFn(boss.x, cz);
+    boss.alive = true;
+    boss.brain.phase = "strike";
+    boss.brain.t = 0.18;
+    placePlayer(s, -6.6, cz);
+    s.player.y = boss.y; // same height so dy is not the reject reason
+    s.player.hp = s.player.heartsMax;
+    s.player.invuln = 0;
+    const dist = Math.hypot(s.player.x - boss.x, s.player.z - boss.z);
+    assert.ok(dist < 3.8, `test setup must be in strike range dist=${dist}`);
+    const hp0 = s.player.hp;
+    s.step(1 / 60, hold({}));
+    const afterPhase: string = boss.brain.phase;
+    assert.ok(
+      afterPhase === "recover" || afterPhase === "approach",
+      `chain must continue through wall block phase=${afterPhase}`,
+    );
+    assert.equal(
+      s.player.hp,
+      hp0,
+      `strike must not damage through wall hp ${hp0}→${s.player.hp} dist=${dist.toFixed(2)} player=${s.player.x.toFixed(2)},${s.player.y.toFixed(2)},${s.player.z.toFixed(2)} boss=${boss.x.toFixed(2)},${boss.y.toFixed(2)}`,
+    );
+  });
+});

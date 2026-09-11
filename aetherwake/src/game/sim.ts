@@ -393,8 +393,10 @@ export class Sim {
     ].entries()) {
       this.enemies.push(this.makeEnemy(`s-${i}`, "sentinel", p[0]!, p[1]!, 8));
     }
-    if (this.bossDead) {
-      // P0-2: a cleared save must not respawn a fightable boss.
+    // P0-2: only a progress-keeping load may place a corpse boss.
+    // freshRuntime(false) clears bossDead AFTER this call — never spawn dead
+    // from a stale flag (b80cf12 regression: new game got a dead boss).
+    if (keepProgress && this.bossDead) {
       const deadBoss = this.makeEnemy("boss", "boss", CITADEL_POI.x, CITADEL_POI.z + 7.2, 20);
       deadBoss.alive = false;
       deadBoss.hp = 0;
@@ -1749,7 +1751,9 @@ export class Sim {
             brain.t = 0.18;
           }
         } else if (brain.phase === "strike") {
-          if (dist < (e.kind === "boss" ? 3.8 : 2.1) && dy < 2.2) {
+          // Chain continues even if LOS breaks; the hit itself still needs a
+          // clear line so a wall cannot deal damage through geometry.
+          if (!blocked && dist < (e.kind === "boss" ? 3.8 : 2.1) && dy < 2.2) {
             this.hurt(e.kind === "boss" ? 1.25 : e.kind === "sentinel" ? 1 : 0.5, e.kind === "boss" ? "空王" : "敌人");
             this.cam.trauma = Math.min(1, this.cam.trauma + 0.4 * this.settings.shake);
           }

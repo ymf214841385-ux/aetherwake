@@ -70,3 +70,28 @@ npm run test:game    # 170 pass / 0 fail
 - 浏览器刷新/继续 UI 链路
 - 同存档三塔四祠全主线
 - 浏览器普通输入 3 轮反击与最终击杀
+
+---
+
+## 批次 3 — 复查回归：freshRuntime dead-boss + strike 隔墙
+
+### 变更前 HEAD
+`b80cf12`
+
+### 失败复现
+1. `s.bossDead=true; s.freshRuntime(false)` → `bossDead=false` 但 `boss.alive=false`（b80cf12 在清 flag 前按旧值造 corpse）
+2. strike 链移出 LOS 门后，无 `!blocked` 可能隔墙扣血（源码风险）
+
+### 最小修
+- dead spawn 仅当 **`keepProgress && this.bossDead`**
+- strike 命中增加 **`!blocked`**；链计时仍继续
+
+### 回归
+- `freshRuntime(false) after bossDead=true must spawn a live full-HP boss`（先红后绿）
+- `strike does not hurt when a solid wall blocks boss→player`（链继续、不掉血）
+- 保留 continueSave 不复活测试
+
+### 验证
+- `typecheck` PASS
+- `test:game` **174 pass / 0 fail**
+- `build:app` PASS（无 migrate）
