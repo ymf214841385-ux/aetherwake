@@ -46,7 +46,7 @@ import {
   stillBlockAligned,
 } from "./qa/shrine-steer.mjs";
 import { citadelDodgeAim, citadelOffArena, citadelReturnWaypoints } from "./qa/citadel-steer.mjs";
-import { bossFightDecision, nextCitadelAction } from "./qa/boss-fight-policy.mjs";
+import { bossFightDecision, nextCitadelAction, citadelFightStep } from "./qa/boss-fight-policy.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const outDir = resolve(root, "docs/rebuild-evidence");
@@ -1380,7 +1380,8 @@ async function fightBoss() {
     const dodgeKeys = keysToward(s, dodgeAim.x, dodgeAim.z, false).filter((k) => k !== "ShiftLeft");
     // Review16: shared decision — low HP in melee+non-telegraph must still swing.
     const faceDot = facingDot(s, s.boss.x, s.boss.z);
-    const decision = bossFightDecision({
+    // Executor uses citadelFightStep (policy+dispatch). Non-swing verbs continue.
+    const step = citadelFightStep({
       hp: s.hp,
       dist,
       bossPhase: s.boss.phase,
@@ -1390,9 +1391,7 @@ async function fightBoss() {
       attackPhase: s.attackPhase,
       faceDot,
     });
-    // 95073: dodge used to fall through into unconditional melee (swings 26–29
-    // at d=7–8.3). Dispatch through nextCitadelAction — no fall-through.
-    const step = nextCitadelAction(decision, { dist, faceDot });
+    const decision = step.decision;
     if (step.act === "back-off") {
       note(
         `citadel low-hp ${s.hp.toFixed?.(2)} state=${s.state} dist=${dist.toFixed(1)} bossHp=${s.boss?.hp?.toFixed?.(1)}; back off`,

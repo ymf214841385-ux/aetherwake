@@ -1,0 +1,10 @@
+{
+  "v2": "{\"schemaVersion\":2,\"worldVersion\":2,\"savedAt\":1789140365163,\"player\":{\"x\":10.342164516283505,\"y\":47.76000038146973,\"z\":63.081269421104274,\"yaw\":3.072101461328457,\"camYaw\":3.1460000000000004,\"hp\":1.5,\"heartsMax\":3,\"staminaMax\":100,\"arrows\":24,\"amber\":0,\"art\":0,\"spicy\":0},\"inventory\":{\"weapons\":[{\"id\":\"blade\",\"name\":\"旅人短剑\",\"dmg\":18,\"dur\":24,\"max\":24,\"kind\":\"sword\"},{\"id\":\"bow\",\"name\":\"林间长弓\",\"dmg\":12,\"dur\":20,\"max\":20,\"kind\":\"bow\"}],\"meals\":[],\"mats\":{\"apple\":2,\"pepper\":1},\"equippedId\":\"blade\",\"bowId\":\"bow\"},\"progress\":{\"towers\":[\"dawn\"],\"shrines\":[],\"wisps\":[],\"chests\":[],\"orbs\":0,\"bossDead\":false,\"ruinSolved\":false,\"sealRule\":\"towers-and-shrines\",\"graybox\":false},\"checkpoint\":{\"id\":\"tower-dawn\",\"x\":10.342164516283505,\"y\":47.76000038146973,\"z\":63.081269421104274}}",
+  "v1": null,
+  "origin": "http://127.0.0.1:8101",
+  "href": "http://127.0.0.1:8101/?t=1789140191082",
+  "label": "tower-dawn",
+  "t": 1789140365457,
+  "hasV2": true,
+  "hasV1": false
+}

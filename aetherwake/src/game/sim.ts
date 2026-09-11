@@ -549,13 +549,21 @@ export class Sim {
     if (this.ruinSolved) this.dockSolvedPlanks();
     this.rebuildSolids();
     this.spawn = this.resolveCheckpoint(d.checkpoint);
-    // Tower checkpoints: player must stand on the authored cap (ignore bad y).
-    if (this.spawn.id.startsWith("tower-")) {
+    // Continue restores the SAVED player pose. Checkpoint is only death-respawn.
+    // 43e78cb regression: tower-* id forced player onto the cap even when the
+    // save already stood in the courtyard / shrine entrance.
+    const onTowerId = this.spawn.id.startsWith("tower-");
+    const nearTowerXZ =
+      onTowerId && Math.hypot(this.player.x - this.spawn.x, this.player.z - this.spawn.z) < 8;
+    const poseBroken =
+      !Number.isFinite(this.player.x) || !Number.isFinite(this.player.z) || !Number.isFinite(this.player.y);
+    if (poseBroken || nearTowerXZ) {
+      // Broken pose, or saved pose is on that tower’s xz → stand on cap.
+      // Far poses (courtyard / shrine door) keep their saved xz.
       this.player.x = this.spawn.x;
       this.player.z = this.spawn.z;
       this.player.y = this.spawn.y;
     } else {
-      // Keep saved xz (e.g. shrine entrance); only resolve legal support y.
       const support = this.surfaceY(this.player.x, this.player.z, this.player.y + 2);
       if (!Number.isFinite(this.player.y) || this.player.y < support - 0.2 || this.player.y > support + 8) {
         this.player.y = support;

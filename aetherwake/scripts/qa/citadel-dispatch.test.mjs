@@ -4,7 +4,7 @@
  */
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { bossFightDecision, nextCitadelAction, BOSS_MELEE_MAX } from "./boss-fight-policy.mjs";
+import { bossFightDecision, nextCitadelAction, citadelFightStep, BOSS_MELEE_MAX } from "./boss-fight-policy.mjs";
 
 describe("citadel dispatch after dodge (95073)", () => {
   it("after dodge to recover d=6.4 must approach, not swing", () => {
@@ -54,5 +54,32 @@ describe("citadel dispatch after dodge (95073)", () => {
     const step = nextCitadelAction(decision, { dist: 7.0, faceDot: 1 });
     assert.ok(BOSS_MELEE_MAX < 7.0);
     assert.notEqual(step.swing, true, JSON.stringify({ decision, step }));
+  });
+
+  it("executor citadelFightStep: dodge then recover d=6.4 is approach not swing", () => {
+    const tele = citadelFightStep({
+      hp: 1.25,
+      dist: 2.9,
+      bossPhase: "windup",
+      bossHp: 12.8,
+      state: "grounded",
+      dodgeCd: 0,
+      attackPhase: "idle",
+      faceDot: 1,
+    });
+    assert.equal(tele.act, "dodge");
+    assert.equal(tele.swing, false);
+    const after = citadelFightStep({
+      hp: 1.25,
+      dist: 6.4,
+      bossPhase: "recover",
+      bossHp: 12.8,
+      state: "grounded",
+      dodgeCd: 0.43,
+      attackPhase: "idle",
+      faceDot: 1,
+    });
+    assert.equal(after.act, "approach");
+    assert.equal(after.swing, false, "play-routes executor must not swing after dodge-out");
   });
 });

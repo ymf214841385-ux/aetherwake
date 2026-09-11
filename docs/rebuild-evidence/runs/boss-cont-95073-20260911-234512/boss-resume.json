@@ -1,0 +1,305 @@
+{
+  "ok": false,
+  "swings": 0,
+  "hits": 0,
+  "decisions": [],
+  "restore": {
+    "mode": "playing",
+    "towers": [
+      "dawn",
+      "mere",
+      "crown"
+    ],
+    "shrines": [
+      "pull",
+      "rime",
+      "burst",
+      "still"
+    ],
+    "orbs": 4,
+    "bossDead": false,
+    "pos": {
+      "x": 44.7,
+      "y": 53.6,
+      "z": -124.5
+    },
+    "sealOpen": true
+  },
+  "segments": [
+    {
+      "label": "crown-east",
+      "target": {
+        "x": 55,
+        "z": -115
+      },
+      "arrived": false,
+      "end": {
+        "x": 44.67,
+        "y": 17.55,
+        "z": -124.53
+      },
+      "dist": 14.05,
+      "hp": 4,
+      "mode": "playing",
+      "start": {
+        "x": 44.67331689612156,
+        "y": 53.45999923706055,
+        "z": -124.52772806595794,
+        "hp": 1.5
+      },
+      "stuckAt": null
+    },
+    {
+      "label": "spawn-south",
+      "target": {
+        "x": 5,
+        "z": 80
+      },
+      "arrived": false,
+      "end": {
+        "x": 44.37,
+        "y": 23.22,
+        "z": -118.97
+      },
+      "dist": 202.83,
+      "hp": 4,
+      "mode": "playing",
+      "start": {
+        "x": 44.67331689612156,
+        "y": 17.551043188288013,
+        "z": -124.52772806595794,
+        "hp": 4
+      },
+      "stuckAt": null
+    },
+    {
+      "label": "spawn-mid",
+      "target": {
+        "x": 5,
+        "z": 15
+      },
+      "arrived": false,
+      "end": {
+        "x": 43.85,
+        "y": 42.08,
+        "z": -110.79
+      },
+      "dist": 131.65,
+      "hp": 4,
+      "mode": "playing",
+      "start": {
+        "x": 44.36838662208838,
+        "y": 23.79944285525982,
+        "z": -118.85116117819359,
+        "hp": 4
+      },
+      "stuckAt": null
+    },
+    {
+      "label": "gate-south",
+      "target": {
+        "x": 6,
+        "z": 8
+      },
+      "arrived": false,
+      "end": {
+        "x": 43.13,
+        "y": 39.29,
+        "z": -102.28
+      },
+      "dist": 116.36,
+      "hp": 3.75,
+      "mode": "playing",
+      "start": {
+        "x": 43.83556480260838,
+        "y": 42.049533079060105,
+        "z": -110.6466513058682,
+        "hp": 4
+      },
+      "stuckAt": null
+    },
+    {
+      "label": "gate",
+      "target": {
+        "x": 6,
+        "z": 0.8
+      },
+      "arrived": false,
+      "end": {
+        "x": 42.13,
+        "y": 35.48,
+        "z": -93.53
+      },
+      "dist": 101.02,
+      "hp": 3.5,
+      "mode": "playing",
+      "start": {
+        "x": 43.116674777637385,
+        "y": 39.24301309655922,
+        "z": -102.11930855866134,
+        "hp": 3.75
+      },
+      "stuckAt": null
+    },
+    {
+      "label": "boss-standoff",
+      "target": {
+        "x": 6,
+        "z": -2.4
+      },
+      "arrived": false,
+      "end": {
+        "x": 40.55,
+        "y": 30.23,
+        "z": -83.51
+      },
+      "dist": 88.16,
+      "hp": 3.5,
+      "mode": "playing",
+      "start": {
+        "x": 42.11060003512363,
+        "y": 35.3727784391734,
+        "z": -93.36467717479017,
+        "hp": 3.5
+      },
+      "stuckAt": null
+    }
+  ],
+  "courtyardSave": null,
+  "failures": [
+    {
+      "label": "crown-east",
+      "kind": "dead",
+      "x": 51.740351143542945,
+      "y": 37.707069092918175,
+      "z": -121.6531740039689,
+      "hp": 0
+    },
+    {
+      "label": "fight-off-arena",
+      "kind": "off-arena",
+      "i": 1,
+      "reason": "east-of-wall",
+      "dist": 85.8014564069589,
+      "far": true,
+      "x": 40.52205875207161,
+      "y": 30.146175642815326,
+      "z": -83.35009472351886
+    }
+  ],
+  "approachDodges": 0,
+  "pageErrors": [],
+  "dodgeTrail": [],
+  "shots": [
+    "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/runs/boss-cont-95073-20260911-234512/boss-resume-boot.png"
+  ],
+  "detail": "error page.evaluate: Target page, context or browser has been closed",
+  "runId": "boss-cont-95073-20260911-234512",
+  "ckpt": "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/storage-ckpt-after-citadel.json",
+  "browserInfo": {
+    "chromiumPid": 96567,
+    "connected": true,
+    "via": "descendant-scan"
+  },
+  "lifecycle": {
+    "pageClosed": true,
+    "contextClosed": true,
+    "browserDisconnected": true,
+    "crashed": false,
+    "inspector": false,
+    "intentionalTeardown": false,
+    "events": [
+      {
+        "t": 1789141860525,
+        "type": "page-close",
+        "intentional": false
+      },
+      {
+        "t": 1789141860529,
+        "type": "context-close",
+        "intentional": false
+      },
+      {
+        "t": 1789141860529,
+        "type": "browser-disconnected",
+        "intentional": false
+      }
+    ],
+    "elapsedMs": 347234,
+    "order": "page-close>context-close>browser-disconnected"
+  },
+  "log": [
+    {
+      "t": 1789141512998,
+      "m": "ckpt /Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/storage-ckpt-after-citadel.json label=after-citadel"
+    },
+    {
+      "t": 1789141519408,
+      "m": "restore {\"mode\":\"playing\",\"towers\":[\"dawn\",\"mere\",\"crown\"],\"shrines\":[\"pull\",\"rime\",\"burst\",\"still\"],\"orbs\":4,\"bossDead\":false,\"pos\":{\"x\":44.7,\"y\":53.6,\"z\":-124.5},\"sealOpen\":true}"
+    },
+    {
+      "t": 1789141520259,
+      "m": "off=on-crown d=125.8 y=53.6"
+    },
+    {
+      "t": 1789141520259,
+      "m": "recover crown-east:55,-115 → crown-south:50,-100 → crown-ridge:40,-95 → crown-ledge:36,-90 → crown-base:24,-40 → gate-south:6,8 → gate:6,0.8 → boss-standoff:6,-2.4"
+    },
+    {
+      "t": 1789141555892,
+      "m": "dead en route crown-east; respawn"
+    },
+    {
+      "t": 1789141558817,
+      "m": "respawned at 44.7,17.6,-124.5"
+    },
+    {
+      "t": 1789141559031,
+      "m": "wp crown-east at 44.7,17.6,-124.5 d=14.1 hp=4 mode=playing"
+    },
+    {
+      "t": 1789141589238,
+      "m": "wp spawn-south at 44.4,23.2,-119.0 d=202.8 hp=4 mode=playing"
+    },
+    {
+      "t": 1789141619344,
+      "m": "wp spawn-mid at 43.8,42.1,-110.8 d=131.7 hp=4 mode=playing"
+    },
+    {
+      "t": 1789141650689,
+      "m": "wp gate-south at 43.1,39.3,-102.3 d=116.4 hp=3.75 mode=playing"
+    },
+    {
+      "t": 1789141680020,
+      "m": "wp gate at 42.1,35.5,-93.5 d=101.0 hp=3.5 mode=playing"
+    },
+    {
+      "t": 1789141710971,
+      "m": "wp boss-standoff at 40.5,30.2,-83.5 d=88.2 hp=3.5 mode=playing"
+    },
+    {
+      "t": 1789141711450,
+      "m": "fight off-arena east-of-wall d=85.8 far=true at 40.5,30.1,-83.4; recover"
+    },
+    {
+      "t": 1789141756623,
+      "m": "fight-recover far-ledge at 35.8,26.5,-76.3 d=13.7"
+    },
+    {
+      "t": 1789141799143,
+      "m": "fight-recover far-base at 28.0,19.6,-66.6 d=26.9"
+    },
+    {
+      "t": 1789141840344,
+      "m": "fight-recover far-gate-south at 19.6,9.7,-51.3 d=60.8"
+    },
+    {
+      "t": 1789141860526,
+      "m": "flushPartial page-close ok=false segments=6"
+    },
+    {
+      "t": 1789141860531,
+      "m": "error page.evaluate: Target page, context or browser has been closed"
+    }
+  ]
+}

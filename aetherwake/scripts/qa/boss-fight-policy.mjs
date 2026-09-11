@@ -108,3 +108,12 @@ export function nextCitadelAction(decision, snap) {
   }
   return { act: "hold-attack", swing: false, reason: `unknown-${act}` };
 }
+
+/**
+ * One citadel fight verb for play-routes. Pure — no keys. Executor must
+ * `continue` after dodge/approach/etc.; only `swing` may click melee.
+ */
+export function citadelFightStep(snap) {
+  const decision = bossFightDecision(snap);
+  return { ...nextCitadelAction(decision, snap), decision };
+}

@@ -202,3 +202,38 @@ npm run test:game    # 170 pass / 0 fail
 ### 证据边界
 - 主控独立复测 14 项；我报告 179 unit + 本两趟浏览器日志
 - 不把 page.close / cook FAILED 记为通过
+
+---
+
+## 批次 8 — 95073 durable 全路线 + Boss 续档专项
+
+### 95073（run-durable, ppid=1, HEAD 2feeef8 build）
+- **三塔四祠 orbs=4 seal=true** 正常输入通过
+- camp-a **cooked=true meals=1/0**；eat spicy=89.8
+- save-reload restored=true（封印进度保持）
+- Boss：swings=30 hits=7 bossHp **20→7.4** 未杀；deaths 汇总 0（观测漏计）
+- 归档：`runs/play-routes-95073-*/`（日志/心跳/exit/storage ckpts）
+
+### Boss 根因（执行器，非策略）
+- dodge 后 **无 continue** 落入无条件 `tryMeleeClick`（swing26–29 d=7–8.3）
+- `nextCitadelAction` / `citadelFightStep`：swing 仅 band+face；dodge 后 approach
+- `citadel-dispatch.test.mjs` **5/5**（含 executor 两 tick 序列）
+- play-routes 已接 `citadelFightStep`
+- deaths：`mode=dead || state=dead || hp<=0` 均累计
+
+### applySave 位姿（43e78cb 回归）
+- **问题**：`tower-*` 无条件把 player 拉回塔顶 → 合法庭院/祠入口 continue 仍回 crown
+- **修**：continue 恢复 **保存位姿**；checkpoint 仅死亡重生
+  - 位姿损坏或 xz 在该塔 8m 内 → 贴 cap
+  - 否则保留 xz，只解析支撑 y
+- 回归：courtyard+tower-crown ckpt；祠入口+tower ckpt；错误塔高仍过
+
+### 续档 Boss 跑（非纯 UI 保存）
+- 使用 `storage-ckpt-after-citadel.json`（orbs=4 seal）
+- **`boss-resume` 内 `sim.save()` 为程序调用**，不称 UI 保存验收
+- 96566/96987：crown 下山死亡 + page.close；未击杀
+- 旧测试 **tower-dawn wrong y** 在位姿修复后仍 181 pass
+
+### 当前
+- typecheck PASS；test:game **181 pass**
+- 未改 HP/进度/冷却；未 push

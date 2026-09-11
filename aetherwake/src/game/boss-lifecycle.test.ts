@@ -471,4 +471,48 @@ describe("P0-3 save location / checkpoint resolve", () => {
       `player on terrain player.y=${s2.player.y.toFixed(2)} ground=${g.toFixed(2)}`,
     );
   });
+
+  it("checkpoint=tower-crown but player courtyard continue keeps courtyard pose", () => {
+    const store = memoryStorage();
+    const s = new Sim(store);
+    s.freshRuntime(false);
+    openSeal(s);
+    const env = s.captureSave();
+    const tw = TOWERS.find((t) => t.id === "crown")!;
+    env.checkpoint = { id: "tower-crown", x: tw.x, y: tw.y + TOWER_HEIGHT - 1.2, z: tw.z };
+    // Legitimate courtyard continue pose (not on the tower).
+    const cx = CITADEL_POI.x;
+    const cz = CITADEL_POI.z + 7.2;
+    const gy = s.heightFn(cx, cz);
+    env.player.x = cx;
+    env.player.z = cz;
+    env.player.y = gy + 0.2;
+    writeSave(store, env);
+    const s2 = new Sim(store);
+    s2.continueSave();
+    assert.ok(
+      Math.hypot(s2.player.x - cx, s2.player.z - cz) < 2,
+      `continue must keep courtyard xz got ${s2.player.x.toFixed(1)},${s2.player.z.toFixed(1)}`,
+    );
+    assert.ok(s2.player.y < tw.y + 5, `player must not teleport to crown y=${s2.player.y.toFixed(1)}`);
+    // Death-respawn checkpoint may still be the tower.
+    assert.equal(s2.spawn.id, "tower-crown");
+  });
+
+  it("shrine-entrance save with tower checkpoint keeps entrance pose", () => {
+    const store = memoryStorage();
+    const s = new Sim(store);
+    s.freshRuntime(false);
+    const door = SHRINES[0]!;
+    placePlayer(s, door.x, door.z + 1.2);
+    s.step(1 / 60, hold({ interact: true }));
+    assert.equal(s.shrine, 0);
+    s.spawn = { id: "tower-crown", x: 48, y: 50, z: -128 };
+    s.save();
+    const s2 = new Sim(store);
+    s2.continueSave();
+    const d = Math.hypot(s2.player.x - door.x, s2.player.z - door.z);
+    assert.ok(d < 12, `entrance pose kept d=${d.toFixed(2)} at ${s2.player.x.toFixed(1)},${s2.player.z.toFixed(1)}`);
+    assert.equal(s2.shrine, null);
+  });
 });
