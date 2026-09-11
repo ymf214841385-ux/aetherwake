@@ -24,6 +24,7 @@ import {
   instrumentClosers,
   sampleAfterUnexpectedClose,
 } from "./close-diag.mjs";
+import { finalizeHarness } from "./finalize-harness.mjs";
 import { lookToward } from "./nav-walk.mjs";
 import { citadelFightStep } from "./boss-fight-policy.mjs";
 import { citadelDodgeAim, citadelOffArena, CROWN_TO_CITADEL } from "./citadel-steer.mjs";
@@ -612,81 +613,66 @@ try {
 } catch (e) {
   result.detail = `error ${e?.message || e}`;
   note(result.detail);
+  result.workError = e;
 } finally {
-  // D1.1: report+cleanup always run; report write failure must not skip cleanup.
-  let reportErr = null;
-  try {
-    if (postCloseDiag) {
-      await Promise.race([
-        postCloseDiag,
-        wait(12000).then(() => ({ reason: { kind: "unknown", observed: true }, samples: [] })),
-      ]);
-    }
-    const life = typeof closeFlags.snapshot === "function" ? closeFlags.snapshot() : { ...closeFlags };
-    const payload = { ...result, browserInfo, lifecycle: life, log };
-    try {
+  // D1.2: one production finalize path. finalCode starts ok?0:1 and only escalates.
+  const fin = await finalizeHarness({
+    ok: Boolean(result.ok),
+    detail: result.detail || null,
+    workError: result.workError || null,
+    snapshot: () => (typeof closeFlags.snapshot === "function" ? closeFlags.snapshot() : { ...closeFlags }),
+    result,
+    log,
+    writeReport: async (payload) => {
       writeFileSync(resolve(runDir, "boss-sealed.json"), JSON.stringify(payload, null, 2));
       writeFileSync(resolve(outDir, "boss-sealed.json"), JSON.stringify(payload, null, 2));
-    } catch (we) {
-      reportErr = String(we?.message || we);
-      appendDiag(runDir, { type: "report-write-error", error: reportErr });
-    }
-    note(`json ok=${result.ok} ${result.detail || ""} closeOrder=${life.order || ""}`);
-    harnessLife?.setCloseReason?.({
-      kind: life.pageClosed ? "page.close" : life.crashed ? "crash" : life.browserDisconnected ? "browser-disconnected" : "exit",
-      detail: life.order || "",
-      intentional: Boolean(life.intentionalTeardown),
-    });
-    harnessLife?.writeExit?.({
-      exitCode: result.ok ? 0 : reportErr ? 2 : 1,
-      error: result.detail || reportErr || null,
-      closeReason: harnessLife?.state?.closeReason,
-      stack: reportErr ? new Error(reportErr).stack : undefined,
-    });
-  } catch (fe) {
-    try {
-      harnessLife?.writeExit?.({
-        exitCode: 1,
-        error: String(fe?.message || fe),
-        stack: fe?.stack,
-      });
-    } catch {
-      /* ignore */
-    }
-  } finally {
-    // Bounded cleanup — never skip even if report/writeExit failed.
-    try {
+    },
+    waitForSamples: async () => {
+      if (!postCloseDiag) return null;
+      return postCloseDiag;
+    },
+    cleanup: async () => {
       closeFlags.intentionalTeardown = true;
-    } catch {
-      /* ignore */
-    }
-    await Promise.race([
-      (async () => {
-        try {
-          if (!unexpectedCloseHandled) {
-            await diagnosticCleanup({
-              context,
-              browser,
-              runDir,
-              flags: closeFlags,
-              closeReason: "finally-cleanup",
-            });
-          } else {
-            // unexpected path already sampled; still ensure closers
-            await context.close().catch(() => {});
-            await browser.close().catch(() => {});
-          }
-        } catch {
-          /* ignore */
-        }
-      })(),
-      wait(5000),
-    ]);
-    try {
-      harnessLife?.dispose?.();
-    } catch {
-      /* ignore */
-    }
-    process.exit(result.ok ? 0 : reportErr ? 2 : 1);
-  }
+      if (!unexpectedCloseHandled) {
+        await diagnosticCleanup({
+          context,
+          browser,
+          runDir,
+          flags: closeFlags,
+          closeReason: "finally-cleanup",
+        });
+      } else {
+        await context.close().catch(() => {});
+        await browser.close().catch(() => {});
+      }
+    },
+    writeExit: (p) => {
+      harnessLife?.setCloseReason?.({
+        kind: closeFlags.pageClosed
+          ? "page.close"
+          : closeFlags.crashed
+            ? "crash"
+            : closeFlags.browserDisconnected
+              ? "browser-disconnected"
+              : "exit",
+        detail: closeFlags.snapshot?.()?.order || "",
+        intentional: Boolean(closeFlags.intentionalTeardown),
+      });
+      harnessLife?.writeExit?.({
+        exitCode: p.exitCode,
+        error: p.error,
+        stack: p.stack,
+        closeReason: harnessLife?.state?.closeReason,
+        reportErr: p.reportErr,
+        sampleErr: p.sampleErr,
+      });
+    },
+    dispose: () => harnessLife?.dispose?.(),
+    cleanupExtraPids: browserInfo?.chromiumPid ? [browserInfo.chromiumPid] : [],
+    appendDiag: (ev) => appendDiag(runDir, ev),
+  });
+  note(
+    `json ok=${result.ok} finalCode=${fin.finalCode} ${result.detail || ""} reportErr=${fin.reportErr || ""}`,
+  );
+  process.exit(fin.finalCode);
 }
