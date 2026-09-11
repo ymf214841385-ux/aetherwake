@@ -1692,7 +1692,21 @@ export class Sim {
             e.z = r.z;
           }
           e.y = this.surfaceY(e.x, e.z, e.y + 1);
-          if (e.brain.phase !== "dead" && e.brain.phase !== "hurt") {
+          // P0-1: off-arena walk-home must not steal an in-flight chain.
+          const offBrain = e.brain.phase;
+          if (offBrain === "windup") {
+            e.brain.t -= dt;
+            if (e.brain.t <= 0) {
+              e.brain.phase = "strike";
+              e.brain.t = 0.18;
+            }
+          } else if (offBrain === "strike") {
+            e.brain.phase = "recover";
+            e.brain.t = e.kind === "boss" ? 1.1 : 0.7;
+          } else if (offBrain === "recover") {
+            e.brain.t -= dt;
+            if (e.brain.t <= 0) e.brain.phase = "approach";
+          } else if (offBrain !== "dead" && offBrain !== "hurt") {
             e.brain.phase = "approach";
           }
           continue;
@@ -1708,7 +1722,33 @@ export class Sim {
       e.timer -= dt;
       const brain = e.brain;
       if (brain.phase === "hurt") {
-        if (e.hurt <= 0) brain.phase = dist < aggro ? "approach" : "lost";
+        // Clear exit rule: hurt ends → approach if still in aggro LOS, else lost.
+        if (e.hurt <= 0) brain.phase = dist < aggro && !blocked ? "approach" : "lost";
+        continue;
+      }
+      const inChain =
+        brain.phase === "windup" || brain.phase === "strike" || brain.phase === "recover";
+      // P0-1 leave-field rule: an in-flight attack chain always finishes its
+      // own timer. Distance, LOS, dy, or off-arena walk-home must not steal
+      // or freeze recover. Strike may miss; recover still ends → approach.
+      if (inChain) {
+        if (brain.phase === "windup") {
+          brain.t -= dt;
+          if (brain.t <= 0) {
+            brain.phase = "strike";
+            brain.t = 0.18;
+          }
+        } else if (brain.phase === "strike") {
+          if (dist < (e.kind === "boss" ? 3.8 : 2.1) && dy < 2.2) {
+            this.hurt(e.kind === "boss" ? 1.25 : e.kind === "sentinel" ? 1 : 0.5, e.kind === "boss" ? "空王" : "敌人");
+            this.cam.trauma = Math.min(1, this.cam.trauma + 0.4 * this.settings.shake);
+          }
+          brain.phase = "recover";
+          brain.t = e.kind === "boss" ? 1.1 : 0.7;
+        } else {
+          brain.t -= dt;
+          if (brain.t <= 0) brain.phase = "approach";
+        }
         continue;
       }
       if (dist < aggro && !blocked && dy < 4.5) {
@@ -1728,8 +1768,6 @@ export class Sim {
           const sp = e.kind === "boss" ? 3.2 : e.kind === "sentinel" ? 2.1 : 4.4;
           let nx = e.x + (dx / dist) * sp * dt;
           let nz = e.z + (dz / dist) * sp * dt;
-          // Review20: clamp proposed step into the courtyard BEFORE apply —
-          // prevent north-gap exit without a post-hoc teleport.
           if (e.kind === "boss") {
             const westBound = CITADEL_POI.x - 10.5;
             const eastBound = CITADEL_POI.x + 11.5;
@@ -1754,28 +1792,9 @@ export class Sim {
             this.projs.push({ x: e.x, y: e.y + 2.2, z: e.z, vx: dx * inv * 14, vy: 0.2, vz: dz * inv * 14, life: 2, kind: "beam", dmg: 1 });
           }
         } else {
-          if (brain.phase !== "windup" && brain.phase !== "strike" && brain.phase !== "recover") {
-            brain.phase = "windup";
-            brain.t = e.kind === "boss" ? 0.7 : 0.45;
-            e.telegraph = brain.t;
-          }
-          if (brain.phase === "windup") {
-            brain.t -= dt;
-            if (brain.t <= 0) {
-              brain.phase = "strike";
-              brain.t = 0.18;
-            }
-          } else if (brain.phase === "strike") {
-            if (dist < meleeR + 0.4 && dy < 2.2) {
-              this.hurt(e.kind === "boss" ? 1.25 : e.kind === "sentinel" ? 1 : 0.5, e.kind === "boss" ? "空王" : "敌人");
-              this.cam.trauma = Math.min(1, this.cam.trauma + 0.4 * this.settings.shake);
-            }
-            brain.phase = "recover";
-            brain.t = e.kind === "boss" ? 1.1 : 0.7;
-          } else if (brain.phase === "recover") {
-            brain.t -= dt;
-            if (brain.t <= 0) brain.phase = "approach";
-          }
+          brain.phase = "windup";
+          brain.t = e.kind === "boss" ? 0.7 : 0.45;
+          e.telegraph = brain.t;
         }
       } else if (e.kind !== "boss") {
         brain.phase = dist > aggro + 4 ? "lost" : "patrol";

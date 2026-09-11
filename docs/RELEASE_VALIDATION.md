@@ -1,5 +1,14 @@
 # Checkpoint validation 2026-09-11
 
+## MiMo continuation (opencode-go @ 265cc80 base)
+- typecheck: PASS
+- test:game: 170 passed, 0 failed (includes boss-lifecycle P0-1)
+- Boss recover state machine: distance/LOS/dy/off-arena no longer steal or freeze recover
+- Browser ordinary-input 3-round counter + final kill: **not yet accepted**
+- bossDead save/reload (P0-2): **not yet**
+- build:app: pending this batch's end-to-end (run after commit)
+
+## Prior integrated checkpoint
 - Integrated typecheck: PASS (fixed missing QA/test parameter types; no gameplay behavior change).
 - Integrated game tests: 163 passed, 0 failed.
 - Production build: PASS via npm run build:app, no database migration.

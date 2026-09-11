@@ -1,6 +1,20 @@
 # Aetherwake Rebuild Status
 
-## 当前工作基线
+## 当前工作基线（MiMo 继续优化 2026-09-11）
+- 工作树：`/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go`
+- 分支：`codex/glm53flash-optimization-20260911`
+- 基线 HEAD：`265cc80716e01c734f76b4ce1e1805ce9a144e6c`（published main）
+- 执行计划：`docs/CONTINUATION_PLAN_2026-09-11.md`
+- 进度：`docs/MIMO_CONTINUATION_PROGRESS.md`
+- 权限：本地修改/测试/小批可回退提交；**不 push**、不 publish、不写旧 repo
+
+## P0-1 本批
+- Boss `windup→strike→recover` 严格状态机；距离/LOS/dy/off-arena 不得抢占或冻结 recover
+- 回归：`aetherwake/src/game/boss-lifecycle.test.ts`
+- `typecheck` PASS；`test:game` **170 pass / 0 fail**
+- **未完成**：浏览器普通输入 3 轮闪避→收招→反击与最终击杀；P0-2 存档重载
+
+## 历史基线（旧 rebuild 分支文档，保留）
 - 仓库：ymf214841385-ux/aetherwake
 - 分支：codex/aetherwake-rebuild-v2
 - 起始 HEAD：ddaea4db03dd63100187b7a649ce5d034ece23ea
