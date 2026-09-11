@@ -388,3 +388,10 @@ npm run test:game    # 170 pass / 0 fail
 ### 验证
 - typecheck PASS；test:game **184 pass**
 - citadel-dispatch **6/6**（含 D3 reposition）
+
+### D3 实跑（PID 14254 / cr 14310，headed，已停）
+- 新档 seal 路径：dawn+四祠 orbs=4 + mere + **crown seal=true**
+- Boss：**swing=1 hit 20→18.2** 后出现 **west wing** `citadel-wall-0-11-w`
+- reposition (6,-4) 后仍 blocked → 初版循环刷日志；已 **一次后 break**（855800b）
+- **未**完成 3 轮反击 / 击杀 / ending
+- 证据：`runs/d3-play-routes-20260912-044659/first-segment.txt`
