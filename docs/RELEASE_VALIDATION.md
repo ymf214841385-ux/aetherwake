@@ -2,11 +2,10 @@
 
 ## MiMo continuation (opencode-go @ 265cc80 base)
 - typecheck: PASS
-- test:game: 174 passed, 0 failed
-- P0-1 recover SM + P0-2 bossDead reload + freshRuntime live-boss regression
-- strike requires LOS (`!blocked`); chain still ticks through walls
-- Browser ordinary-input 3-round counter + final kill: **not yet accepted**
-- Browser refresh/continue UI chain: **not yet**
+- test:game: 177 passed, 0 failed
+- P0-1 recover SM; P0-2 bossDead reload; freshRuntime live boss; strike LOS
+- P0-3: shrine save → entrance; checkpoint Y resolved (tower cap kept)
+- Browser ordinary-input 3-round + kill + refresh: **BLOCKED** seal-not-open on fresh save (no progress injection)
 - build:app: PASS (no migrate)
 
 ## Prior integrated checkpoint

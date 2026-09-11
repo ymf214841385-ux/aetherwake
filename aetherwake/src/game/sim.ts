@@ -542,35 +542,77 @@ export class Sim {
     const ids = resolveWeaponIds(this.weapons, d.inventory.equippedId, d.inventory.bowId);
     this.equippedId = ids.equippedId;
     this.bowId = ids.bowId;
+    // P0-3: never restore a dangling shrine interior — saves are overworld/graybox.
     this.worldKind = d.progress.graybox ? "graybox" : "overworld";
+    this.shrine = null;
     this.resetWorldEntities(true);
     if (this.ruinSolved) this.dockSolvedPlanks();
     this.rebuildSolids();
     const ground = this.surfaceY(this.player.x, this.player.z, d.player.y + 2);
     this.player.y = Number.isFinite(d.player.y) ? Math.max(ground, Math.min(d.player.y, ground + 8)) : ground;
     if (Math.abs(this.player.y - ground) > 12) this.player.y = ground;
-    this.spawn = { id: d.checkpoint.id, x: d.checkpoint.x, y: d.checkpoint.y, z: d.checkpoint.z };
+    this.spawn = this.resolveCheckpoint(d.checkpoint);
     this.setMove("grounded");
     this.clearTransients();
   }
 
+  /**
+   * P0-3: do not blindly reuse checkpoint Y. Resolve a legal support height
+   * from the current world; keep elevated tower caps, snap buried Y to ground.
+   */
+  resolveCheckpoint(cp: { id: string; x: number; y: number; z: number }) {
+    if (cp.id === "graybox") {
+      return { id: "graybox", x: GRAYBOX_RESET.x, y: GRAYBOX_RESET.y, z: GRAYBOX_RESET.z };
+    }
+    if (cp.id === "spawn") {
+      const g = this.heightFn(16, 102);
+      return { id: "spawn", x: 16, y: Number.isFinite(g) ? g : 12, z: 102 };
+    }
+    const g = this.heightFn(cp.x, cp.z);
+    let y = Number.isFinite(cp.y) ? cp.y : g;
+    // Buried or absurdly high: snap to terrain. Tower caps sit ~30–40 above base.
+    if (!Number.isFinite(y) || y < g - 1 || y > g + 48) y = g;
+    // Slightly below ground (soft hole): stand on support.
+    if (y < g) y = g;
+    return { id: cp.id, x: cp.x, y, z: cp.z };
+  }
+
   captureSave(): SaveEnvelope {
+    // P0-3: if autosave fires inside a shrine, store the overworld entrance
+    // pose — shrine-local coords are not a recoverable overworld spawn.
+    const pose =
+      this.shrine !== null && this.overworld
+        ? {
+            x: this.overworld.x,
+            y: this.overworld.y,
+            z: this.overworld.z,
+            yaw: this.overworld.yaw,
+            camYaw: this.overworld.yaw,
+            hp: this.player.hp,
+            heartsMax: this.player.heartsMax,
+            staminaMax: this.player.staminaMax,
+            arrows: this.arrows,
+            amber: this.amber,
+            art: this.art,
+            spicy: this.player.spicy,
+          }
+        : {
+            x: this.player.x,
+            y: this.player.y,
+            z: this.player.z,
+            yaw: this.player.yaw,
+            camYaw: this.cam.yaw,
+            hp: this.player.hp,
+            heartsMax: this.player.heartsMax,
+            staminaMax: this.player.staminaMax,
+            arrows: this.arrows,
+            amber: this.amber,
+            art: this.art,
+            spicy: this.player.spicy,
+          };
     return {
       ...createDefaultSave(),
-      player: {
-        x: this.player.x,
-        y: this.player.y,
-        z: this.player.z,
-        yaw: this.player.yaw,
-        camYaw: this.cam.yaw,
-        hp: this.player.hp,
-        heartsMax: this.player.heartsMax,
-        staminaMax: this.player.staminaMax,
-        arrows: this.arrows,
-        amber: this.amber,
-        art: this.art,
-        spicy: this.player.spicy,
-      },
+      player: pose,
       inventory: {
         weapons: this.weapons,
         meals: this.meals,

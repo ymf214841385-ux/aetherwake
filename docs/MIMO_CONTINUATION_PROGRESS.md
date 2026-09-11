@@ -95,3 +95,32 @@ npm run test:game    # 170 pass / 0 fail
 - `typecheck` PASS
 - `test:game` **174 pass / 0 fail**
 - `build:app` PASS（无 migrate）
+
+---
+
+## 批次 4 — 浏览器阻塞记录 + P0-3 存档定位
+
+### 浏览器普通输入（未验收）
+- 预览 `http://127.0.0.1:8115/`（`index-B297F3u9.js`）
+- `boss-browser.mjs` 实跑：`mode=playing seal=false towers=0` → **`seal-not-open`**
+- 本树无合法封印存档；**不注入** towers/shrines/Boss HP
+- 3 轮闪避→收招→反击与击杀 **未做**（需封印档或完整 play-routes）
+
+### P0-3 最小修
+- 祠内 `captureSave` 写 **overworld 入口** 位姿，不写祠内局部坐标
+- `applySave`：`shrine=null`，`worldKind` 仅 graybox/overworld
+- `resolveCheckpoint`：埋地 Y → 地面；塔顶 Y 保留（≤ ground+48）
+
+### 回归（先红后绿）
+- 祠内保存 → continueSave 回到祠门口 overworld
+- checkpoint y=-50 → spawn/player 站在地面
+- tower-dawn 顶 Y 不被压回塔基
+
+### 验证
+- `typecheck` PASS
+- `test:game` **177 pass / 0 fail**
+- `build:app` PASS
+
+### 未验收
+- 浏览器 3 轮反击 / 击杀 / 刷新继续（等封印档或 P0-4 全路线）
+- 祠内谜题/金属物完整恢复（本批按设计改为入口安全点，非室内恢复）

@@ -5,9 +5,9 @@
  */
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { memoryStorage } from "./persistence.ts";
+import { memoryStorage, writeSave } from "./persistence.ts";
 import { Sim } from "./sim.ts";
-import { CITADEL_POI, SHRINES, TOWERS } from "./world.ts";
+import { CITADEL_POI, SHRINES, TOWERS, TOWER_HEIGHT } from "./world.ts";
 
 type Act = Parameters<Sim["step"]>[1];
 
@@ -344,6 +344,79 @@ describe("P0-1 strike LOS: no damage through a wall", () => {
       s.player.hp,
       hp0,
       `strike must not damage through wall hp ${hp0}→${s.player.hp} dist=${dist.toFixed(2)} player=${s.player.x.toFixed(2)},${s.player.y.toFixed(2)},${s.player.z.toFixed(2)} boss=${boss.x.toFixed(2)},${boss.y.toFixed(2)}`,
+    );
+  });
+});
+
+describe("P0-3 save location / checkpoint resolve", () => {
+  it("saving inside a shrine restores at the overworld entrance, not interior void", () => {
+    const store = memoryStorage();
+    const s = new Sim(store);
+    s.freshRuntime(false);
+    // Enter shrine 0 via the real door interact path.
+    const door = SHRINES[0]!;
+    placePlayer(s, door.x, door.z + 1.2);
+    s.step(1 / 60, hold({ interact: true }));
+    assert.equal(s.shrine, 0, `should be in shrine shrine=${s.shrine}`);
+    assert.equal(s.worldKind, "shrine");
+    const interior = { x: s.player.x, z: s.player.z };
+    s.save();
+    const s2 = new Sim(store);
+    s2.continueSave();
+    assert.equal(s2.shrine, null, "reload must not leave a dangling shrine index");
+    assert.equal(s2.worldKind, "overworld");
+    // Player must be near the shrine hut in the overworld, not shrine-local origin.
+    const dShrine = Math.hypot(s2.player.x - door.x, s2.player.z - door.z);
+    assert.ok(
+      dShrine < 12,
+      `player should restore near shrine entrance d=${dShrine.toFixed(2)} at ${s2.player.x.toFixed(1)},${s2.player.z.toFixed(1)} interiorWas=${interior.x.toFixed(1)},${interior.z.toFixed(1)}`,
+    );
+    assert.ok(
+      s2.player.y > 0.5,
+      `restore y must be on terrain y=${s2.player.y.toFixed(2)}`,
+    );
+  });
+
+  it("checkpoint y far below terrain is resolved to ground, not reused blindly", () => {
+    const store = memoryStorage();
+    const s = new Sim(store);
+    s.freshRuntime(false);
+    const env = s.captureSave();
+    env.checkpoint = { id: "spawn", x: 16, z: 102, y: -50 };
+    env.player.x = 16;
+    env.player.z = 102;
+    env.player.y = -50;
+    writeSave(store, env);
+    const s2 = new Sim(store);
+    s2.continueSave();
+    const g = s2.heightFn(16, 102);
+    assert.ok(
+      s2.spawn.y > g - 2,
+      `spawn y resolved to support spawn.y=${s2.spawn.y.toFixed(2)} ground=${g.toFixed(2)}`,
+    );
+    assert.ok(
+      s2.player.y > g - 2,
+      `player y resolved player.y=${s2.player.y.toFixed(2)} ground=${g.toFixed(2)}`,
+    );
+  });
+
+  it("tower checkpoint keeps elevated y (not flattened into the shaft base)", () => {
+    const store = memoryStorage();
+    const s = new Sim(store);
+    s.freshRuntime(false);
+    const tw = TOWERS.find((t) => t.id === "dawn")!;
+    const env = s.captureSave();
+    const topY = tw.y + TOWER_HEIGHT - 1.5;
+    env.checkpoint = { id: "tower-dawn", x: tw.x, y: topY, z: tw.z + 1 };
+    env.player.x = tw.x;
+    env.player.z = tw.z + 1;
+    env.player.y = topY;
+    writeSave(store, env);
+    const s2 = new Sim(store);
+    s2.continueSave();
+    assert.ok(
+      s2.spawn.y > tw.y + 10,
+      `tower spawn must stay elevated spawn.y=${s2.spawn.y.toFixed(2)} tw.y=${tw.y.toFixed(2)}`,
     );
   });
 });
