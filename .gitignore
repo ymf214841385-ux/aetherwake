@@ -7,3 +7,16 @@ dist
 .env
 .env.local
 .DS_Store
+
+# Local iteration evidence and caches
+.grok/
+.vite*/
+.nitro/
+.terra-nitro-root/
+__pycache__/
+*.webm
+*.blend1
+docs/rebuild-evidence/storage-ckpt-*.json
+docs/rebuild-evidence/browser-save-snapshot.json
+
+docs/rebuild-evidence/unlicensed-hold/

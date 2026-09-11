@@ -1,0 +1,793 @@
+{
+  "ok": true,
+  "fixture": "visual-fixture-only; not normal-input gameplay acceptance",
+  "method": "vite-dev+playwright Scene.tsx closeup (camera forced near hero; no canvas click/pointer lock)",
+  "port": 8790,
+  "asset": {
+    "status": "ready",
+    "source": "/__terra-preview/wanderer-v4.glb",
+    "clips": [
+      {
+        "name": "Idle",
+        "duration": 2.0333333015441895
+      },
+      {
+        "name": "Walk",
+        "duration": 1.100000023841858
+      },
+      {
+        "name": "Run",
+        "duration": 0.8333333134651184
+      },
+      {
+        "name": "Attack",
+        "duration": 1.0333333015441895
+      },
+      {
+        "name": "Climb",
+        "duration": 1.2333333492279053
+      },
+      {
+        "name": "Glide",
+        "duration": 1.6333333253860474
+      }
+    ],
+    "bones": 20,
+    "normalMapScale": 0.45,
+    "tunedNormalMaterials": 1
+  },
+  "candidate": {
+    "path": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v6-rerun1/wanderer-textured-rig-v6.glb",
+    "sha256": "70148c66b078f17bdd42c3d9f24e64e716c386f8b54e48edb8c752583705167d",
+    "bytes": 7795940,
+    "delivery": "Playwright route override of the dev-only preview URL; normal runtime assets are unchanged"
+  },
+  "written": [
+    {
+      "path": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/rebuild-evidence/terra-visual/asset-v6-rerun1-gameplay-r8/scene-front.png",
+      "label": "SCENE FRONT",
+      "observed": {
+        "mode": "playing",
+        "state": "grounded",
+        "gliding": false,
+        "climbing": false,
+        "grounded": true,
+        "spd": 0,
+        "animation": {
+          "state": "idle",
+          "clip": "Idle",
+          "phase": 0.024590164318868988,
+          "oneShot": false,
+          "mixerRootMatches": true,
+          "effectiveWeight": 0.3125000596046448,
+          "effectiveTimeScale": 1,
+          "actionTime": 0.05,
+          "unresolvedTrackTargets": [],
+          "fixturePose": {
+            "upperArm": [
+              15.819763133972392,
+              12.985274592792788,
+              100.06165838932856
+            ],
+            "rightHand": [
+              15.678235938110172,
+              12.495355072095464,
+              100.01757840420197
+            ],
+            "skinVertex": [
+              15.70002696642272,
+              12.854243852758195,
+              100.0059079534497
+            ]
+          },
+          "gliderVisible": false,
+          "fixtureGear": {
+            "sword": {
+              "visibleMeshCount": 5,
+              "boundsSize": [
+                0.1598332416854138,
+                0.8233587167386389,
+                0.1575948735614645
+              ],
+              "distanceToAnchor": 0.14499998148789855
+            },
+            "glider": {
+              "visibleMeshCount": 0,
+              "boundsSize": null,
+              "distanceToAnchor": null
+            }
+          }
+        }
+      },
+      "freeze": {
+        "frames": 6,
+        "simTime": 2.9999999999999942,
+        "clip": "Idle",
+        "phase": 0.07377049295660697,
+        "actionTime": 0.15000000000000002,
+        "rightHand": [
+          15.568353185230999,
+          12.569795535267223,
+          100.02583618219391
+        ],
+        "skinVertex": [
+          15.67171447629612,
+          12.909442011483646,
+          99.96742468608039
+        ]
+      }
+    },
+    {
+      "path": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/rebuild-evidence/terra-visual/asset-v6-rerun1-gameplay-r8/scene-side.png",
+      "label": "SCENE SIDE",
+      "observed": {
+        "mode": "playing",
+        "state": "grounded",
+        "gliding": false,
+        "climbing": false,
+        "grounded": true,
+        "spd": 0,
+        "animation": {
+          "state": "idle",
+          "clip": "Idle",
+          "phase": 0.024590164318868988,
+          "oneShot": false,
+          "mixerRootMatches": true,
+          "effectiveWeight": 0.3125002086162567,
+          "effectiveTimeScale": 1,
+          "actionTime": 0.05,
+          "unresolvedTrackTargets": [],
+          "fixturePose": {
+            "upperArm": [
+              15.819763133972401,
+              12.98495254817039,
+              100.0616583760363
+            ],
+            "rightHand": [
+              15.678386048960961,
+              12.494989949412416,
+              100.01757549204889
+            ],
+            "skinVertex": [
+              15.700068135495332,
+              12.853885335646872,
+              100.00590526944785
+            ]
+          },
+          "gliderVisible": false,
+          "fixtureGear": {
+            "sword": {
+              "visibleMeshCount": 5,
+              "boundsSize": [
+                0.16026781262474366,
+                0.8230761942157176,
+                0.15950219940893362
+              ],
+              "distanceToAnchor": 0.1449999814878819
+            },
+            "glider": {
+              "visibleMeshCount": 0,
+              "boundsSize": null,
+              "distanceToAnchor": null
+            }
+          }
+        }
+      },
+      "freeze": {
+        "frames": 6,
+        "simTime": 3.866666666666658,
+        "clip": "Idle",
+        "phase": 0.07377049295660697,
+        "actionTime": 0.15000000000000002,
+        "rightHand": [
+          15.568365526487685,
+          12.56975931542529,
+          100.02583652353836
+        ],
+        "skinVertex": [
+          15.671717344845128,
+          12.90940864894002,
+          99.96742488023817
+        ]
+      }
+    },
+    {
+      "path": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/rebuild-evidence/terra-visual/asset-v6-rerun1-gameplay-r8/scene-back.png",
+      "label": "SCENE BACK",
+      "observed": {
+        "mode": "playing",
+        "state": "grounded",
+        "gliding": false,
+        "climbing": false,
+        "grounded": true,
+        "spd": 0,
+        "animation": {
+          "state": "idle",
+          "clip": "Idle",
+          "phase": 0.024590164318868988,
+          "oneShot": false,
+          "mixerRootMatches": true,
+          "effectiveWeight": 0.31250011920928955,
+          "effectiveTimeScale": 1,
+          "actionTime": 0.05,
+          "unresolvedTrackTargets": [],
+          "fixturePose": {
+            "upperArm": [
+              15.819763133972396,
+              12.984948965742332,
+              100.06165838401166
+            ],
+            "rightHand": [
+              15.678225411988382,
+              12.495032466973754,
+              100.0175786096761
+            ],
+            "skinVertex": [
+              15.700024079799423,
+              12.853920783008135,
+              100.00590813747075
+            ]
+          },
+          "gliderVisible": false,
+          "fixtureGear": {
+            "sword": {
+              "visibleMeshCount": 5,
+              "boundsSize": [
+                0.1604939184938896,
+                0.8230520251494369,
+                0.15952589210294832
+              ],
+              "distanceToAnchor": 0.14499998148789553
+            },
+            "glider": {
+              "visibleMeshCount": 0,
+              "boundsSize": null,
+              "distanceToAnchor": null
+            }
+          }
+        }
+      },
+      "freeze": {
+        "frames": 6,
+        "simTime": 4.733333333333322,
+        "clip": "Idle",
+        "phase": 0.07377049295660697,
+        "actionTime": 0.15000000000000002,
+        "rightHand": [
+          15.568352378269966,
+          12.569766369956408,
+          100.02583615727329
+        ],
+        "skinVertex": [
+          15.67171428893073,
+          12.90941266356697,
+          99.96742469597604
+        ]
+      }
+    },
+    {
+      "path": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/rebuild-evidence/terra-visual/asset-v6-rerun1-gameplay-r8/scene-face.png",
+      "label": "SCENE FACE",
+      "observed": {
+        "mode": "playing",
+        "state": "grounded",
+        "gliding": false,
+        "climbing": false,
+        "grounded": true,
+        "spd": 0,
+        "animation": {
+          "state": "idle",
+          "clip": "Idle",
+          "phase": 0.024590164318868988,
+          "oneShot": false,
+          "mixerRootMatches": true,
+          "effectiveWeight": 0.3125,
+          "effectiveTimeScale": 1,
+          "actionTime": 0.05,
+          "unresolvedTrackTargets": [],
+          "fixturePose": {
+            "upperArm": [
+              15.819763133972389,
+              12.984948919666774,
+              100.06165839464548
+            ],
+            "rightHand": [
+              15.677924799035285,
+              12.495118843268875,
+              100.01758445648564
+            ],
+            "skinVertex": [
+              15.699941657997535,
+              12.853993824345586,
+              100.00591350554815
+            ]
+          },
+          "gliderVisible": false,
+          "fixtureGear": {
+            "sword": {
+              "visibleMeshCount": 5,
+              "boundsSize": [
+                0.1609038458451444,
+                0.8230128478530769,
+                0.15953081028560234
+              ],
+              "distanceToAnchor": 0.144999981487921
+            },
+            "glider": {
+              "visibleMeshCount": 0,
+              "boundsSize": null,
+              "distanceToAnchor": null
+            }
+          }
+        }
+      },
+      "freeze": {
+        "frames": 6,
+        "simTime": 5.599999999999985,
+        "clip": "Idle",
+        "phase": 0.07377049295660697,
+        "actionTime": 0.15000000000000002,
+        "rightHand": [
+          15.568327475098306,
+          12.569780431261867,
+          100.02583547699133
+        ],
+        "skinVertex": [
+          15.671708500105648,
+          12.909420944304815,
+          99.96742423001761
+        ]
+      }
+    },
+    {
+      "path": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/rebuild-evidence/terra-visual/asset-v6-rerun1-gameplay-r8/scene-hands.png",
+      "label": "SCENE HANDS",
+      "observed": {
+        "mode": "playing",
+        "state": "grounded",
+        "gliding": false,
+        "climbing": false,
+        "grounded": true,
+        "spd": 0,
+        "animation": {
+          "state": "idle",
+          "clip": "Idle",
+          "phase": 0.024590164318868988,
+          "oneShot": false,
+          "mixerRootMatches": true,
+          "effectiveWeight": 0.3125004172325134,
+          "effectiveTimeScale": 1,
+          "actionTime": 0.05,
+          "unresolvedTrackTargets": [],
+          "fixturePose": {
+            "upperArm": [
+              15.819763133972412,
+              12.984948941384175,
+              100.06165835742716
+            ],
+            "rightHand": [
+              15.67780366455454,
+              12.495153741302698,
+              100.01758682429579
+            ],
+            "skinVertex": [
+              15.699908453769385,
+              12.854023309593607,
+              100.00591564193745
+            ]
+          },
+          "gliderVisible": false,
+          "fixtureGear": {
+            "sword": {
+              "visibleMeshCount": 5,
+              "boundsSize": [
+                0.16106900101739718,
+                0.8229969780184305,
+                0.15953278733142895
+              ],
+              "distanceToAnchor": 0.14499998148791052
+            },
+            "glider": {
+              "visibleMeshCount": 0,
+              "boundsSize": null,
+              "distanceToAnchor": null
+            }
+          }
+        }
+      },
+      "freeze": {
+        "frames": 6,
+        "simTime": 6.466666666666649,
+        "clip": "Idle",
+        "phase": 0.07377049295660697,
+        "actionTime": 0.15000000000000002,
+        "rightHand": [
+          15.568317577171888,
+          12.569785984246987,
+          100.02583520070088
+        ],
+        "skinVertex": [
+          15.671706199827184,
+          12.90942420902751,
+          99.96742409607019
+        ]
+      }
+    },
+    {
+      "path": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/rebuild-evidence/terra-visual/asset-v6-rerun1-gameplay-r8/scene-walk.png",
+      "label": "SCENE WALK",
+      "observed": {
+        "mode": "playing",
+        "state": "grounded",
+        "gliding": false,
+        "climbing": false,
+        "grounded": true,
+        "spd": 3.7094364743888613,
+        "animation": {
+          "state": "walk",
+          "clip": "Walk",
+          "phase": 0.2272727223467237,
+          "oneShot": false,
+          "mixerRootMatches": true,
+          "effectiveWeight": 1,
+          "effectiveTimeScale": 1,
+          "actionTime": 0.25,
+          "unresolvedTrackTargets": [],
+          "fixturePose": {
+            "upperArm": [
+              15.41361901232665,
+              13.328342823873491,
+              99.38846326529017
+            ],
+            "rightHand": [
+              15.217941612537338,
+              12.913666360722386,
+              99.61636501935675
+            ],
+            "skinVertex": [
+              15.269357890103805,
+              13.236493708076598,
+              99.4617189138636
+            ]
+          },
+          "gliderVisible": false,
+          "fixtureGear": {
+            "sword": {
+              "visibleMeshCount": 5,
+              "boundsSize": [
+                0.144248369364659,
+                0.7268780030196336,
+                0.4674425602160852
+              ],
+              "distanceToAnchor": 0.1449999900389138
+            },
+            "glider": {
+              "visibleMeshCount": 0,
+              "boundsSize": null,
+              "distanceToAnchor": null
+            }
+          }
+        }
+      },
+      "freeze": {
+        "frames": 6,
+        "simTime": 7.399999999999979,
+        "clip": "Walk",
+        "phase": 0.3181818112854131,
+        "actionTime": 0.35,
+        "rightHand": [
+          14.94635585753452,
+          13.174305432319262,
+          99.17192927277222
+        ],
+        "skinVertex": [
+          14.99652715896526,
+          13.49713278065357,
+          99.01687479430376
+        ]
+      }
+    },
+    {
+      "path": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/rebuild-evidence/terra-visual/asset-v6-rerun1-gameplay-r8/scene-run.png",
+      "label": "SCENE RUN",
+      "observed": {
+        "mode": "playing",
+        "state": "grounded",
+        "gliding": false,
+        "climbing": false,
+        "grounded": true,
+        "spd": 6.828007630472031,
+        "animation": {
+          "state": "run",
+          "clip": "Run",
+          "phase": 0.24000000572204605,
+          "oneShot": false,
+          "mixerRootMatches": true,
+          "effectiveWeight": 1,
+          "effectiveTimeScale": 1,
+          "actionTime": 0.2,
+          "unresolvedTrackTargets": [],
+          "fixturePose": {
+            "upperArm": [
+              14.455044349657875,
+              14.384897063388818,
+              97.8249498888567
+            ],
+            "rightHand": [
+              14.312122648910535,
+              13.936293623772436,
+              98.02648756289858
+            ],
+            "skinVertex": [
+              14.324329051839255,
+              14.271793877489797,
+              97.89376196885613
+            ]
+          },
+          "gliderVisible": false,
+          "fixtureGear": {
+            "sword": {
+              "visibleMeshCount": 5,
+              "boundsSize": [
+                0.10807476577850039,
+                0.7550335211101764,
+                0.42324509214518
+              ],
+              "distanceToAnchor": 0.14499999197079183
+            },
+            "glider": {
+              "visibleMeshCount": 0,
+              "boundsSize": null,
+              "distanceToAnchor": null
+            }
+          }
+        }
+      },
+      "freeze": {
+        "frames": 6,
+        "simTime": 8.600000000000007,
+        "clip": "Run",
+        "phase": 0.360000008583069,
+        "actionTime": 0.3,
+        "rightHand": [
+          13.79033348299457,
+          14.496615877285938,
+          97.24359146183029
+        ],
+        "skinVertex": [
+          13.832530745198241,
+          14.828522077402825,
+          97.10741595327401
+        ]
+      }
+    },
+    {
+      "path": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/rebuild-evidence/terra-visual/asset-v6-rerun1-gameplay-r8/scene-attack.png",
+      "label": "SCENE ATTACK",
+      "observed": {
+        "mode": "playing",
+        "state": "grounded",
+        "gliding": false,
+        "climbing": false,
+        "grounded": true,
+        "spd": 0,
+        "animation": {
+          "state": "attack",
+          "clip": "Attack",
+          "phase": 0.5,
+          "oneShot": true,
+          "mixerRootMatches": true,
+          "effectiveWeight": 1,
+          "effectiveTimeScale": 2.5833332538604736,
+          "actionTime": 0.5166666507720947,
+          "unresolvedTrackTargets": [],
+          "fixturePose": {
+            "upperArm": [
+              15.726960446763021,
+              12.90306285176179,
+              100.13189310218674
+            ],
+            "rightHand": [
+              15.336213930953871,
+              13.131594062145957,
+              100.33488903872245
+            ],
+            "skinVertex": [
+              15.585128967890752,
+              13.021265989232884,
+              100.15482270099106
+            ]
+          },
+          "gliderVisible": false,
+          "fixtureGear": {
+            "sword": {
+              "visibleMeshCount": 5,
+              "boundsSize": [
+                0.5223394965485522,
+                0.4752342113377175,
+                0.5315853247386144
+              ],
+              "distanceToAnchor": 0.14500000906470875
+            },
+            "glider": {
+              "visibleMeshCount": 0,
+              "boundsSize": null,
+              "distanceToAnchor": null
+            }
+          }
+        }
+      },
+      "freeze": {
+        "frames": 6,
+        "simTime": 9.466666666666717,
+        "clip": "Attack",
+        "phase": 0.75,
+        "actionTime": 0.7749999761581421,
+        "rightHand": [
+          15.407698576027137,
+          12.946747209586528,
+          100.47375981411872
+        ],
+        "skinVertex": [
+          15.529660568552336,
+          12.902828925398724,
+          100.1941193135915
+        ]
+      }
+    },
+    {
+      "path": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/rebuild-evidence/terra-visual/asset-v6-rerun1-gameplay-r8/scene-climb.png",
+      "label": "SCENE CLIMB",
+      "observed": {
+        "mode": "playing",
+        "state": "climbing",
+        "gliding": false,
+        "climbing": true,
+        "grounded": false,
+        "spd": 0,
+        "animation": {
+          "state": "climb",
+          "clip": "Climb",
+          "phase": 0.28378378012652294,
+          "oneShot": false,
+          "mixerRootMatches": true,
+          "effectiveWeight": 1,
+          "effectiveTimeScale": 1,
+          "actionTime": 0.35,
+          "unresolvedTrackTargets": [],
+          "fixturePose": {
+            "upperArm": [
+              9.835179109724232,
+              23.53620223183958,
+              73.01299081694229
+            ],
+            "rightHand": [
+              9.823130790270076,
+              23.796023682481692,
+              73.12987345589444
+            ],
+            "skinVertex": [
+              9.76190528640632,
+              23.6959369392997,
+              73.07406196418412
+            ]
+          },
+          "gliderVisible": false,
+          "fixtureGear": {
+            "sword": {
+              "visibleMeshCount": 5,
+              "boundsSize": [
+                0.6849374994386803,
+                0.45606481120165654,
+                0.30787854272141146
+              ],
+              "distanceToAnchor": 0.14500002595604242
+            },
+            "glider": {
+              "visibleMeshCount": 0,
+              "boundsSize": null,
+              "distanceToAnchor": null
+            }
+          }
+        }
+      },
+      "freeze": {
+        "frames": 6,
+        "simTime": 10.400000000000096,
+        "clip": "Climb",
+        "phase": 0.36486486016267233,
+        "actionTime": 0.44999999999999996,
+        "rightHand": [
+          9.823572335131496,
+          24.27786759399929,
+          73.13176750897038
+        ],
+        "skinVertex": [
+          9.772138359348835,
+          24.153156300566682,
+          73.0672801692271
+        ]
+      }
+    },
+    {
+      "path": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/rebuild-evidence/terra-visual/asset-v6-rerun1-gameplay-r8/scene-glide.png",
+      "label": "SCENE GLIDE",
+      "observed": {
+        "mode": "playing",
+        "state": "gliding",
+        "gliding": true,
+        "climbing": false,
+        "grounded": false,
+        "spd": 0.01661583758740085,
+        "animation": {
+          "state": "glide",
+          "clip": "Glide",
+          "phase": 0.12244898018763495,
+          "oneShot": false,
+          "mixerRootMatches": true,
+          "effectiveWeight": 1,
+          "effectiveTimeScale": 1,
+          "actionTime": 0.2,
+          "unresolvedTrackTargets": [],
+          "fixturePose": {
+            "upperArm": [
+              15.82196203732372,
+              19.71660608093299,
+              100.00087943095191
+            ],
+            "rightHand": [
+              15.387518971017954,
+              19.984466877641935,
+              99.96562671049205
+            ],
+            "skinVertex": [
+              15.732788074343125,
+              19.87404908747953,
+              99.95759410231634
+            ]
+          },
+          "gliderVisible": true,
+          "fixtureGear": {
+            "sword": {
+              "visibleMeshCount": 5,
+              "boundsSize": [
+                0.7953312932085943,
+                0.30197084382069406,
+                0.12339704754593583
+              ],
+              "distanceToAnchor": 0.14499997296649006
+            },
+            "glider": {
+              "visibleMeshCount": 7,
+              "boundsSize": [
+                1.5499999523162842,
+                0.9299999660253562,
+                0.2400000357628187
+              ],
+              "distanceToAnchor": 0.39849715315114037
+            }
+          }
+        }
+      },
+      "freeze": {
+        "frames": 6,
+        "simTime": 11.133333333333466,
+        "clip": "Glide",
+        "phase": 0.1836734702814524,
+        "actionTime": 0.3,
+        "rightHand": [
+          15.39013988840048,
+          19.753039164056116,
+          99.96667507744507
+        ],
+        "skinVertex": [
+          15.73540899172565,
+          19.64262137389371,
+          99.95864246926936
+        ]
+      }
+    }
+  ],
+  "logs": [],
+  "summaryPath": null
+}

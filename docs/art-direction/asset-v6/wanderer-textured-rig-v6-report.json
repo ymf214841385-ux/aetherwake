@@ -1,0 +1,6 @@
+{
+  "status": "failed",
+  "error_type": "AttributeError",
+  "error": "'MeshLoop' object has no attribute 'polygon_index'",
+  "diagnostics": {}
+}

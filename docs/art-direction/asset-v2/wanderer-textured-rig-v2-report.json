@@ -1,0 +1,6 @@
+{
+  "status": "failed",
+  "source": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v1/wanderer-textured-rig-v1.blend",
+  "error_type": "RuntimeError",
+  "error": "GLB roundtrip validation failed: {'clip_names_match': True, 'missing_clips': [], 'bone_count_match': True, 'texture_count_match': False, 'tied_hair_attachment_survives': True}"
+}

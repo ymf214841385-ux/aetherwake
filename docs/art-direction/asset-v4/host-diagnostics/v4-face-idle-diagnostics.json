@@ -1,0 +1,553 @@
+{
+  "status": "diagnostic_only_not_an_acceptance_or_asset_edit",
+  "source": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/wanderer-textured-rig-v4.blend",
+  "source_mesh": {
+    "vertices": 25871,
+    "polygons": 36017,
+    "uv_layers": 1,
+    "materials": [
+      "Material_0"
+    ]
+  },
+  "pbr_bindings": [
+    {
+      "material": "Material_0",
+      "images": [
+        "Image_0",
+        "Image_1",
+        "Image_2"
+      ],
+      "normal_input_linked": true,
+      "normal_sources": [
+        "Normal Map"
+      ]
+    }
+  ],
+  "duplicate_diagnostics": {
+    "face": {
+      "same_position_groups": 830,
+      "same_position_vertices": 1734,
+      "divergent_weight_groups": 0,
+      "examples": []
+    },
+    "neck": {
+      "same_position_groups": 411,
+      "same_position_vertices": 882,
+      "divergent_weight_groups": 0,
+      "examples": []
+    },
+    "upper_torso": {
+      "same_position_groups": 1840,
+      "same_position_vertices": 3899,
+      "divergent_weight_groups": 17,
+      "examples": [
+        {
+          "position": [
+            -0.15909,
+            0.07855,
+            0.94845
+          ],
+          "vertex_indices": [
+            5264,
+            5265
+          ],
+          "weights": [
+            [
+              [
+                "pelvis",
+                0.54
+              ],
+              [
+                "spine",
+                0.46
+              ]
+            ],
+            [
+              [
+                "pelvis",
+                0.06231
+              ],
+              [
+                "spine",
+                0.09003
+              ],
+              [
+                "thigh.R",
+                0.847661
+              ]
+            ]
+          ]
+        },
+        {
+          "position": [
+            -0.14322,
+            0.09592,
+            0.95025
+          ],
+          "vertex_indices": [
+            6156,
+            6157
+          ],
+          "weights": [
+            [
+              [
+                "pelvis",
+                0.54
+              ],
+              [
+                "spine",
+                0.46
+              ]
+            ],
+            [
+              [
+                "pelvis",
+                0.06231
+              ],
+              [
+                "spine",
+                0.09003
+              ],
+              [
+                "thigh.R",
+                0.847661
+              ]
+            ]
+          ]
+        },
+        {
+          "position": [
+            -0.13808,
+            0.09973,
+            0.94366
+          ],
+          "vertex_indices": [
+            6628,
+            6630
+          ],
+          "weights": [
+            [
+              [
+                "pelvis",
+                0.075914
+              ],
+              [
+                "spine",
+                0.071414
+              ],
+              [
+                "thigh.R",
+                0.852672
+              ]
+            ],
+            [
+              [
+                "pelvis",
+                0.54
+              ],
+              [
+                "spine",
+                0.46
+              ]
+            ]
+          ]
+        },
+        {
+          "position": [
+            -0.13461,
+            0.10364,
+            0.95172
+          ],
+          "vertex_indices": [
+            6629,
+            6954
+          ],
+          "weights": [
+            [
+              [
+                "pelvis",
+                0.54
+              ],
+              [
+                "spine",
+                0.46
+              ]
+            ],
+            [
+              [
+                "pelvis",
+                0.075914
+              ],
+              [
+                "spine",
+                0.071414
+              ],
+              [
+                "thigh.R",
+                0.852672
+              ]
+            ]
+          ]
+        },
+        {
+          "position": [
+            -0.13106,
+            0.10465,
+            0.94019
+          ],
+          "vertex_indices": [
+            6774,
+            7131,
+            7276
+          ],
+          "weights": [
+            [
+              [
+                "pelvis",
+                0.092535
+              ],
+              [
+                "spine",
+                0.070568
+              ],
+              [
+                "thigh.R",
+                0.836897
+              ]
+            ],
+            [
+              [
+                "pelvis",
+                0.54
+              ],
+              [
+                "spine",
+                0.46
+              ]
+            ],
+            [
+              [
+                "pelvis",
+                0.54
+              ],
+              [
+                "spine",
+                0.46
+              ]
+            ]
+          ]
+        },
+        {
+          "position": [
+            -0.13049,
+            0.10339,
+            0.92686
+          ],
+          "vertex_indices": [
+            6775,
+            7263
+          ],
+          "weights": [
+            [
+              [
+                "pelvis",
+                0.092535
+              ],
+              [
+                "spine",
+                0.070568
+              ],
+              [
+                "thigh.R",
+                0.836897
+              ]
+            ],
+            [
+              [
+                "pelvis",
+                0.54
+              ],
+              [
+                "spine",
+                0.46
+              ]
+            ]
+          ]
+        },
+        {
+          "position": [
+            -0.118,
+            -0.088,
+            0.9442
+          ],
+          "vertex_indices": [
+            7209,
+            7869
+          ],
+          "weights": [
+            [
+              [
+                "pelvis",
+                0.54
+              ],
+              [
+                "spine",
+                0.46
+              ]
+            ],
+            [
+              [
+                "pelvis",
+                0.144718
+              ],
+              [
+                "spine",
+                0.060878
+              ],
+              [
+                "thigh.R",
+                0.794405
+              ]
+            ]
+          ]
+        },
+        {
+          "position": [
+            -0.10826,
+            -0.08841,
+            0.95835
+          ],
+          "vertex_indices": [
+            7653,
+            7655,
+            7871,
+            8301
+          ],
+          "weights": [
+            [
+              [
+                "pelvis",
+                0.54
+              ],
+              [
+                "spine",
+                0.46
+              ]
+            ],
+            [
+              [
+                "pelvis",
+                0.54
+              ],
+              [
+                "spine",
+                0.46
+              ]
+            ],
+            [
+              [
+                "pelvis",
+                0.189235
+              ],
+              [
+                "spine",
+                0.161902
+              ],
+              [
+                "thigh.R",
+                0.648863
+              ]
+            ],
+            [
+              [
+                "pelvis",
+                0.54
+              ],
+              [
+                "spine",
+                0.46
+              ]
+            ]
+          ]
+        },
+        {
+          "position": [
+            -0.10646,
+            -0.09016,
+            0.92557
+          ],
+          "vertex_indices": [
+            7685,
+            7870
+          ],
+          "weights": [
+            [
+              [
+                "pelvis",
+                0.54
+              ],
+              [
+                "spine",
+                0.46
+              ]
+            ],
+            [
+              [
+                "pelvis",
+                0.144718
+              ],
+              [
+                "spine",
+                0.060878
+              ],
+              [
+                "thigh.R",
+                0.794405
+              ]
+            ]
+          ]
+        },
+        {
+          "position": [
+            -0.02768,
+            -0.03147,
+            0.82872
+          ],
+          "vertex_indices": [
+            11754,
+            11782,
+            11869
+          ],
+          "weights": [
+            [
+              [
+                "pelvis",
+                0.237412
+              ],
+              [
+                "thigh.L",
+                0.02774
+              ],
+              [
+                "thigh.R",
+                0.734849
+              ]
+            ],
+            [
+              [
+                "pelvis",
+                0.84
+              ],
+              [
+                "spine",
+                0.16
+              ]
+            ],
+            [
+              [
+                "pelvis",
+                0.237412
+              ],
+              [
+                "thigh.L",
+                0.02774
+              ],
+              [
+                "thigh.R",
+                0.734849
+              ]
+            ]
+          ]
+        },
+        {
+          "position": [
+            -0.02276,
+            -0.02269,
+            0.83759
+          ],
+          "vertex_indices": [
+            11986,
+            12019
+          ],
+          "weights": [
+            [
+              [
+                "pelvis",
+                0.401091
+              ],
+              [
+                "thigh.L",
+                0.062736
+              ],
+              [
+                "thigh.R",
+                0.536173
+              ]
+            ],
+            [
+              [
+                "pelvis",
+                0.84
+              ],
+              [
+                "spine",
+                0.16
+              ]
+            ]
+          ]
+        },
+        {
+          "position": [
+            0.02046,
+            -0.02473,
+            0.83338
+          ],
+          "vertex_indices": [
+            14270,
+            14355
+          ],
+          "weights": [
+            [
+              [
+                "pelvis",
+                0.84
+              ],
+              [
+                "spine",
+                0.16
+              ]
+            ],
+            [
+              [
+                "pelvis",
+                0.480981
+              ],
+              [
+                "thigh.L",
+                0.439777
+              ],
+              [
+                "thigh.R",
+                0.079242
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    "idle_arm_read": {
+      "frame": 31,
+      "hand_minus_shoulder_z": {
+        "L": -0.3515,
+        "R": -0.3515
+      },
+      "interpretation": "positive or near-zero values read as an A-pose rather than arms resting down the torso"
+    }
+  },
+  "renders": {
+    "pbr": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/host-diagnostics/renders/face-idle-pbr.png",
+    "normal_disabled": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/host-diagnostics/renders/face-idle-normal-disabled.png",
+    "flat_geometry": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/host-diagnostics/renders/face-idle-flat-geometry.png"
+  },
+  "review_rule": "Compare PBR vs normal_disabled vs flat_geometry before any source mesh, normal, or weight change. Do not alter UVs or source image files."
+}

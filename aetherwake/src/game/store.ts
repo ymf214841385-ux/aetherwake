@@ -75,9 +75,16 @@ export type HudState = {
   hasSave: boolean;
   temp: number;
   aiming: boolean;
+  saveError: string;
+  portrait: boolean;
+  windCd: number;
+  quality: string;
+  tutorial: string;
+  glLost: boolean;
+  glRestoredAt: number;
 };
 
-const ART_NAMES = ["爆鸣", "霜息", "牵引", "凝时"];
+const ART_NAMES = ["引风", "爆鸣", "霜息", "牵引", "凝时"];
 
 export const useHud = create<HudState>(() => ({
   mode: "title",
@@ -98,7 +105,7 @@ export const useHud = create<HudState>(() => ({
   arrows: 20,
   art: 0,
   artNames: ART_NAMES,
-  artsOn: [true, true, true, true],
+  artsOn: [true, true, true, true, true],
   prompt: "",
   toast: "",
   objective: "登上晨光塔，眺望这片原野",
@@ -118,11 +125,18 @@ export const useHud = create<HudState>(() => ({
   hasSave: false,
   temp: 1,
   aiming: false,
+  saveError: "",
+  portrait: false,
+  windCd: 0,
+  quality: "auto",
+  tutorial: "",
+  glLost: false,
+  glRestoredAt: 0,
 }));
 
 export function hasSaveFile() {
   try {
-    return Boolean(localStorage.getItem("aetherwake-save-v1"));
+    return Boolean(localStorage.getItem("aetherwake-save-v2") || localStorage.getItem("aetherwake-save-v1"));
   } catch {
     return false;
   }

@@ -1,0 +1,1407 @@
+{
+  "status": "diagnostic_only_not_an_acceptance_or_asset_edit",
+  "inputs": {
+    "source_before_decimation": "/Users/ymf/Projects/aetherwake-rebuild-20260909/asset-pipeline/wanderer-lite-textured-source.blend",
+    "v4": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/wanderer-textured-rig-v4.blend"
+  },
+  "output_directory": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/host-diagnostics/r5-bounded",
+  "source_before_decimation": {
+    "mesh": {
+      "vertices": 61182,
+      "polygons": 105936,
+      "uv_layers": 1
+    },
+    "topology": {
+      "vertices": 61182,
+      "polygons": 105936,
+      "uv_layers": 1,
+      "regions": {
+        "head": {
+          "boundary_edges": 2999,
+          "nonmanifold_edges": 0,
+          "coincident_groups": 1441,
+          "coincident_vertices": 3004,
+          "uv_discontinuous_groups": 1441,
+          "split_normal_groups": 0,
+          "max_normal_angle_degrees": 0.1037,
+          "examples": [
+            {
+              "position": [
+                -0.250698,
+                -0.007762,
+                0.499962
+              ],
+              "vertex_indices": [
+                5128,
+                5249
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0188
+            },
+            {
+              "position": [
+                -0.250132,
+                -0.003911,
+                0.51973
+              ],
+              "vertex_indices": [
+                5129,
+                5385
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0
+            },
+            {
+              "position": [
+                -0.241736,
+                0.101714,
+                0.496429
+              ],
+              "vertex_indices": [
+                5383,
+                5561
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0221
+            },
+            {
+              "position": [
+                -0.239866,
+                -0.011596,
+                0.534823
+              ],
+              "vertex_indices": [
+                5406,
+                5407
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0322
+            },
+            {
+              "position": [
+                -0.241084,
+                0.086723,
+                0.540007
+              ],
+              "vertex_indices": [
+                5504,
+                5733
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0
+            },
+            {
+              "position": [
+                -0.236833,
+                0.098121,
+                0.52293
+              ],
+              "vertex_indices": [
+                5583,
+                5989
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.021
+            },
+            {
+              "position": [
+                -0.231588,
+                0.104624,
+                0.514267
+              ],
+              "vertex_indices": [
+                5584,
+                5692,
+                5991
+              ],
+              "uv_count": 3,
+              "max_normal_angle_degrees": 0.0321
+            },
+            {
+              "position": [
+                -0.239692,
+                0.076935,
+                0.558567
+              ],
+              "vertex_indices": [
+                5618,
+                5810
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0099
+            },
+            {
+              "position": [
+                -0.233383,
+                0.073335,
+                0.574318
+              ],
+              "vertex_indices": [
+                5661,
+                6240
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.014
+            },
+            {
+              "position": [
+                -0.233154,
+                0.086551,
+                0.560039
+              ],
+              "vertex_indices": [
+                5732,
+                5734
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0221
+            },
+            {
+              "position": [
+                -0.230741,
+                0.095858,
+                0.54718
+              ],
+              "vertex_indices": [
+                5735,
+                5736
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0171
+            },
+            {
+              "position": [
+                -0.233974,
+                0.07992,
+                0.566868
+              ],
+              "vertex_indices": [
+                5809,
+                5811
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0
+            },
+            {
+              "position": [
+                -0.228052,
+                -0.024913,
+                0.537806
+              ],
+              "vertex_indices": [
+                5875,
+                6245
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0
+            },
+            {
+              "position": [
+                -0.226622,
+                0.111399,
+                0.489922
+              ],
+              "vertex_indices": [
+                5902,
+                6914
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0
+            },
+            {
+              "position": [
+                -0.229183,
+                0.065321,
+                0.587358
+              ],
+              "vertex_indices": [
+                5910,
+                6435
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0
+            },
+            {
+              "position": [
+                -0.223756,
+                0.051718,
+                0.601123
+              ],
+              "vertex_indices": [
+                6407,
+                6702
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0
+            }
+          ]
+        },
+        "neck": {
+          "boundary_edges": 2262,
+          "nonmanifold_edges": 0,
+          "coincident_groups": 1079,
+          "coincident_vertices": 2260,
+          "uv_discontinuous_groups": 1079,
+          "split_normal_groups": 0,
+          "max_normal_angle_degrees": 0.0769,
+          "examples": [
+            {
+              "position": [
+                -0.34807,
+                0.055211,
+                0.284117
+              ],
+              "vertex_indices": [
+                2585,
+                2586
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.014
+            },
+            {
+              "position": [
+                -0.345179,
+                0.053565,
+                0.288794
+              ],
+              "vertex_indices": [
+                2873,
+                2913
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0357
+            },
+            {
+              "position": [
+                -0.343039,
+                0.050996,
+                0.297744
+              ],
+              "vertex_indices": [
+                2917,
+                3020
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0
+            },
+            {
+              "position": [
+                -0.341386,
+                0.057259,
+                0.293738
+              ],
+              "vertex_indices": [
+                2962,
+                2963
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0
+            },
+            {
+              "position": [
+                -0.340188,
+                0.058189,
+                0.302561
+              ],
+              "vertex_indices": [
+                2999,
+                3021
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0221
+            },
+            {
+              "position": [
+                -0.341076,
+                0.062023,
+                0.310271
+              ],
+              "vertex_indices": [
+                3038,
+                3057
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0
+            },
+            {
+              "position": [
+                -0.341067,
+                0.061614,
+                0.308499
+              ],
+              "vertex_indices": [
+                3043,
+                3059
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0769
+            },
+            {
+              "position": [
+                -0.339737,
+                0.06312,
+                0.307142
+              ],
+              "vertex_indices": [
+                3044,
+                3058
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0
+            },
+            {
+              "position": [
+                -0.337019,
+                0.063506,
+                0.317817
+              ],
+              "vertex_indices": [
+                3050,
+                3121
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0
+            },
+            {
+              "position": [
+                -0.334593,
+                0.058695,
+                0.321295
+              ],
+              "vertex_indices": [
+                3054,
+                3220
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0
+            },
+            {
+              "position": [
+                -0.338026,
+                0.066245,
+                0.314363
+              ],
+              "vertex_indices": [
+                3056,
+                3060
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0
+            },
+            {
+              "position": [
+                -0.33557,
+                0.044185,
+                0.324764
+              ],
+              "vertex_indices": [
+                3092,
+                3199
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0
+            },
+            {
+              "position": [
+                -0.335884,
+                0.050103,
+                0.323069
+              ],
+              "vertex_indices": [
+                3104,
+                3182
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0049
+            },
+            {
+              "position": [
+                -0.334413,
+                0.068503,
+                0.317123
+              ],
+              "vertex_indices": [
+                3122,
+                3225
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0
+            },
+            {
+              "position": [
+                -0.335634,
+                0.021987,
+                0.328516
+              ],
+              "vertex_indices": [
+                3133,
+                3193
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0053
+            },
+            {
+              "position": [
+                -0.33461,
+                0.035742,
+                0.328765
+              ],
+              "vertex_indices": [
+                3134,
+                3198
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.024
+            }
+          ]
+        },
+        "other": {
+          "boundary_edges": 10529,
+          "nonmanifold_edges": 0,
+          "coincident_groups": 5038,
+          "coincident_vertices": 10526,
+          "uv_discontinuous_groups": 5038,
+          "split_normal_groups": 0,
+          "max_normal_angle_degrees": 0.3729,
+          "examples": [
+            {
+              "position": [
+                -0.422271,
+                -0.055775,
+                -0.015604
+              ],
+              "vertex_indices": [
+                0,
+                20
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0
+            },
+            {
+              "position": [
+                -0.418951,
+                -0.035738,
+                -0.01273
+              ],
+              "vertex_indices": [
+                7,
+                37
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.021
+            },
+            {
+              "position": [
+                -0.418794,
+                -0.031858,
+                -0.020543
+              ],
+              "vertex_indices": [
+                8,
+                41
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.017
+            },
+            {
+              "position": [
+                -0.419286,
+                -0.042506,
+                -0.025392
+              ],
+              "vertex_indices": [
+                13,
+                32
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0131
+            },
+            {
+              "position": [
+                -0.416813,
+                -0.044837,
+                0.00265
+              ],
+              "vertex_indices": [
+                15,
+                23
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0
+            },
+            {
+              "position": [
+                -0.418296,
+                -0.067904,
+                -0.006484
+              ],
+              "vertex_indices": [
+                17,
+                21
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0
+            },
+            {
+              "position": [
+                -0.417813,
+                -0.045757,
+                -0.032099
+              ],
+              "vertex_indices": [
+                30,
+                56
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0099
+            },
+            {
+              "position": [
+                -0.417073,
+                -0.037258,
+                -0.0283
+              ],
+              "vertex_indices": [
+                31,
+                33
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0
+            },
+            {
+              "position": [
+                -0.416162,
+                -0.041832,
+                -0.031957
+              ],
+              "vertex_indices": [
+                34,
+                35,
+                62
+              ],
+              "uv_count": 3,
+              "max_normal_angle_degrees": 0.0
+            },
+            {
+              "position": [
+                -0.418222,
+                -0.048985,
+                -0.03304
+              ],
+              "vertex_indices": [
+                36,
+                55
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0
+            },
+            {
+              "position": [
+                -0.414842,
+                -0.029198,
+                -0.004822
+              ],
+              "vertex_indices": [
+                39,
+                40
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0099
+            },
+            {
+              "position": [
+                -0.415352,
+                -0.026015,
+                -0.016476
+              ],
+              "vertex_indices": [
+                46,
+                48
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0055
+            },
+            {
+              "position": [
+                -0.417076,
+                -0.052251,
+                -0.036476
+              ],
+              "vertex_indices": [
+                49,
+                58
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0305
+            },
+            {
+              "position": [
+                -0.415307,
+                -0.056944,
+                -0.03746
+              ],
+              "vertex_indices": [
+                50,
+                68
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0178
+            },
+            {
+              "position": [
+                -0.412841,
+                -0.083656,
+                -0.000988
+              ],
+              "vertex_indices": [
+                52,
+                53
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.028
+            },
+            {
+              "position": [
+                -0.415652,
+                -0.067546,
+                -0.042131
+              ],
+              "vertex_indices": [
+                61,
+                95
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.0
+            }
+          ]
+        }
+      }
+    },
+    "render": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/host-diagnostics/r5-bounded/source-before-decimation-rest-pbr.png"
+  },
+  "v4": {
+    "mesh": {
+      "vertices": 25871,
+      "polygons": 36017,
+      "uv_layers": 1
+    },
+    "topology": {
+      "vertices": 25871,
+      "polygons": 36017,
+      "uv_layers": 1,
+      "regions": {
+        "head": {
+          "boundary_edges": 2848,
+          "nonmanifold_edges": 0,
+          "coincident_groups": 794,
+          "coincident_vertices": 1658,
+          "uv_discontinuous_groups": 794,
+          "split_normal_groups": 658,
+          "max_normal_angle_degrees": 75.7289,
+          "examples": [
+            {
+              "position": [
+                -0.241736,
+                0.101714,
+                1.447405
+              ],
+              "vertex_indices": [
+                2315,
+                2385
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 1.6271
+            },
+            {
+              "position": [
+                -0.239866,
+                -0.011596,
+                1.485799
+              ],
+              "vertex_indices": [
+                2326,
+                2327
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 1.2477
+            },
+            {
+              "position": [
+                -0.236833,
+                0.098121,
+                1.473906
+              ],
+              "vertex_indices": [
+                2392,
+                2581
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 1.7699
+            },
+            {
+              "position": [
+                -0.231588,
+                0.104624,
+                1.465243
+              ],
+              "vertex_indices": [
+                2393,
+                2444,
+                2583
+              ],
+              "uv_count": 3,
+              "max_normal_angle_degrees": 1.6012
+            },
+            {
+              "position": [
+                -0.239692,
+                0.076935,
+                1.509543
+              ],
+              "vertex_indices": [
+                2409,
+                2497
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.449
+            },
+            {
+              "position": [
+                -0.233383,
+                0.073335,
+                1.525294
+              ],
+              "vertex_indices": [
+                2428,
+                2697
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 1.2872
+            },
+            {
+              "position": [
+                -0.233154,
+                0.086551,
+                1.511015
+              ],
+              "vertex_indices": [
+                2460,
+                2462
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 1.4147
+            },
+            {
+              "position": [
+                -0.230741,
+                0.095858,
+                1.498156
+              ],
+              "vertex_indices": [
+                2463,
+                2464
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 1.061
+            },
+            {
+              "position": [
+                -0.233974,
+                0.07992,
+                1.517844
+              ],
+              "vertex_indices": [
+                2496,
+                2498
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.2296
+            },
+            {
+              "position": [
+                -0.228052,
+                -0.024913,
+                1.488782
+              ],
+              "vertex_indices": [
+                2529,
+                2702
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 2.4066
+            },
+            {
+              "position": [
+                -0.229183,
+                0.065321,
+                1.538334
+              ],
+              "vertex_indices": [
+                2550,
+                2778
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 3.0102
+            },
+            {
+              "position": [
+                -0.216505,
+                0.114882,
+                1.449484
+              ],
+              "vertex_indices": [
+                2976,
+                2977
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 1.0675
+            },
+            {
+              "position": [
+                -0.215891,
+                0.034232,
+                1.562816
+              ],
+              "vertex_indices": [
+                3042,
+                3335
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.5377
+            },
+            {
+              "position": [
+                -0.219862,
+                0.050084,
+                1.557055
+              ],
+              "vertex_indices": [
+                3043,
+                3074
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 1.5436
+            },
+            {
+              "position": [
+                -0.212935,
+                0.115209,
+                1.441209
+              ],
+              "vertex_indices": [
+                3098,
+                3099
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 1.1225
+            },
+            {
+              "position": [
+                -0.211217,
+                0.045183,
+                1.565442
+              ],
+              "vertex_indices": [
+                3158,
+                3159
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.2235
+            }
+          ]
+        },
+        "neck": {
+          "boundary_edges": 2209,
+          "nonmanifold_edges": 0,
+          "coincident_groups": 618,
+          "coincident_vertices": 1308,
+          "uv_discontinuous_groups": 618,
+          "split_normal_groups": 449,
+          "max_normal_angle_degrees": 55.9035,
+          "examples": [
+            {
+              "position": [
+                -0.34807,
+                0.055211,
+                1.235093
+              ],
+              "vertex_indices": [
+                1149,
+                1150
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 2.4399
+            },
+            {
+              "position": [
+                -0.345179,
+                0.053565,
+                1.23977
+              ],
+              "vertex_indices": [
+                1259,
+                1276
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 1.5835
+            },
+            {
+              "position": [
+                -0.343039,
+                0.050996,
+                1.24872
+              ],
+              "vertex_indices": [
+                1278,
+                1311
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.2619
+            },
+            {
+              "position": [
+                -0.341386,
+                0.057259,
+                1.244714
+              ],
+              "vertex_indices": [
+                1289,
+                1290
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.4484
+            },
+            {
+              "position": [
+                -0.340188,
+                0.058189,
+                1.253537
+              ],
+              "vertex_indices": [
+                1301,
+                1312
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 2.1371
+            },
+            {
+              "position": [
+                -0.339737,
+                0.06312,
+                1.258118
+              ],
+              "vertex_indices": [
+                1321,
+                1329
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 3.6056
+            },
+            {
+              "position": [
+                -0.337019,
+                0.063506,
+                1.268793
+              ],
+              "vertex_indices": [
+                1324,
+                1360
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.4716
+            },
+            {
+              "position": [
+                -0.334593,
+                0.058695,
+                1.272271
+              ],
+              "vertex_indices": [
+                1326,
+                1410
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 1.0432
+            },
+            {
+              "position": [
+                -0.338026,
+                0.066245,
+                1.265339
+              ],
+              "vertex_indices": [
+                1327,
+                1331
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.9964
+            },
+            {
+              "position": [
+                -0.33557,
+                0.044185,
+                1.27574
+              ],
+              "vertex_indices": [
+                1347,
+                1400
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 30.7326
+            },
+            {
+              "position": [
+                -0.334413,
+                0.068503,
+                1.268099
+              ],
+              "vertex_indices": [
+                1361,
+                1413
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 0.3831
+            },
+            {
+              "position": [
+                -0.335634,
+                0.021987,
+                1.279492
+              ],
+              "vertex_indices": [
+                1366,
+                1396
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 20.1213
+            },
+            {
+              "position": [
+                -0.33461,
+                0.035742,
+                1.279741
+              ],
+              "vertex_indices": [
+                1367,
+                1399
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 2.4858
+            },
+            {
+              "position": [
+                -0.330473,
+                0.065694,
+                1.272335
+              ],
+              "vertex_indices": [
+                1374,
+                1375,
+                1412
+              ],
+              "uv_count": 3,
+              "max_normal_angle_degrees": 1.7017
+            },
+            {
+              "position": [
+                -0.332682,
+                0.007016,
+                1.279857
+              ],
+              "vertex_indices": [
+                1393,
+                1427
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 27.33
+            },
+            {
+              "position": [
+                -0.327363,
+                0.073913,
+                1.270142
+              ],
+              "vertex_indices": [
+                1414,
+                1415
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 2.8487
+            }
+          ]
+        },
+        "other": {
+          "boundary_edges": 10026,
+          "nonmanifold_edges": 0,
+          "coincident_groups": 2748,
+          "coincident_vertices": 5770,
+          "uv_discontinuous_groups": 2748,
+          "split_normal_groups": 2128,
+          "max_normal_angle_degrees": 78.1376,
+          "examples": [
+            {
+              "position": [
+                -0.418951,
+                -0.035738,
+                0.938246
+              ],
+              "vertex_indices": [
+                4,
+                24
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 1.7339
+            },
+            {
+              "position": [
+                -0.418794,
+                -0.031858,
+                0.930433
+              ],
+              "vertex_indices": [
+                5,
+                28
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 1.2108
+            },
+            {
+              "position": [
+                -0.419286,
+                -0.042506,
+                0.925584
+              ],
+              "vertex_indices": [
+                8,
+                20
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 1.2408
+            },
+            {
+              "position": [
+                -0.418296,
+                -0.067904,
+                0.944492
+              ],
+              "vertex_indices": [
+                11,
+                13
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 1.3045
+            },
+            {
+              "position": [
+                -0.417813,
+                -0.045757,
+                0.918877
+              ],
+              "vertex_indices": [
+                18,
+                39
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 3.9559
+            },
+            {
+              "position": [
+                -0.417073,
+                -0.037258,
+                0.922676
+              ],
+              "vertex_indices": [
+                19,
+                21
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 1.2605
+            },
+            {
+              "position": [
+                -0.416162,
+                -0.041832,
+                0.919019
+              ],
+              "vertex_indices": [
+                22,
+                23,
+                44
+              ],
+              "uv_count": 3,
+              "max_normal_angle_degrees": 4.541
+            },
+            {
+              "position": [
+                -0.415352,
+                -0.026015,
+                0.9345
+              ],
+              "vertex_indices": [
+                31,
+                33
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 4.1988
+            },
+            {
+              "position": [
+                -0.415307,
+                -0.056944,
+                0.913516
+              ],
+              "vertex_indices": [
+                34,
+                45
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 42.8935
+            },
+            {
+              "position": [
+                -0.412841,
+                -0.083656,
+                0.949988
+              ],
+              "vertex_indices": [
+                36,
+                37
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 2.7081
+            },
+            {
+              "position": [
+                -0.415652,
+                -0.067546,
+                0.908845
+              ],
+              "vertex_indices": [
+                43,
+                56
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 3.2785
+            },
+            {
+              "position": [
+                -0.413688,
+                -0.04133,
+                0.914271
+              ],
+              "vertex_indices": [
+                49,
+                63
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 17.9061
+            },
+            {
+              "position": [
+                -0.413088,
+                -0.065529,
+                0.902862
+              ],
+              "vertex_indices": [
+                55,
+                60
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 4.9251
+            },
+            {
+              "position": [
+                -0.413472,
+                -0.072132,
+                0.894904
+              ],
+              "vertex_indices": [
+                58,
+                59
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 2.5512
+            },
+            {
+              "position": [
+                -0.413004,
+                -0.024012,
+                0.940209
+              ],
+              "vertex_indices": [
+                64,
+                65
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 1.1726
+            },
+            {
+              "position": [
+                -0.411166,
+                -0.027563,
+                0.959244
+              ],
+              "vertex_indices": [
+                77,
+                107
+              ],
+              "uv_count": 2,
+              "max_normal_angle_degrees": 6.1612
+            }
+          ]
+        }
+      }
+    },
+    "arm_orientation": {
+      "rest_bone_orientation": {
+        "L": {
+          "up_dot": -0.92097,
+          "down_dot": 0.92097,
+          "lateral_dot": 0.38964,
+          "forward_dot": 0.0
+        },
+        "R": {
+          "up_dot": -0.92097,
+          "down_dot": 0.92097,
+          "lateral_dot": 0.38964,
+          "forward_dot": 0.0
+        }
+      },
+      "idle_frame_31_orientation": {
+        "L": {
+          "up_dot": -0.65909,
+          "down_dot": 0.65909,
+          "lateral_dot": 0.75147,
+          "forward_dot": 0.02999
+        },
+        "R": {
+          "up_dot": -0.65909,
+          "down_dot": 0.65909,
+          "lateral_dot": 0.75147,
+          "forward_dot": 0.02999
+        }
+      },
+      "review_rule": "Use the measured rest_bone_orientation as arm-down reference and review both left/right renders before altering Idle. Higher positive down_dot means a more downward-hanging arm."
+    },
+    "renders": {
+      "v4_rest_pbr": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/host-diagnostics/r5-bounded/v4-rest-pbr.png",
+      "v4_idle_pbr": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/host-diagnostics/r5-bounded/v4-idle-pbr.png",
+      "v4_rest_plain_smooth": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/host-diagnostics/r5-bounded/v4-rest-plain-smooth.png",
+      "v4_idle_plain_smooth": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/host-diagnostics/r5-bounded/v4-idle-plain-smooth.png",
+      "arms_rest": {
+        "left": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/host-diagnostics/r5-bounded/arms-rest-left.png",
+        "right": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/host-diagnostics/r5-bounded/arms-rest-right.png"
+      },
+      "arms_idle": {
+        "left": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/host-diagnostics/r5-bounded/arms-idle-left.png",
+        "right": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/host-diagnostics/r5-bounded/arms-idle-right.png"
+      }
+    }
+  },
+  "interpretation": [
+    "The plain-smooth renders use exactly one temporary node-free material; no image texture or normal-map node participates.",
+    "Do not attribute a seam to decimation from one render: compare source-before-decimation-rest-pbr, v4-rest-pbr, v4-idle-pbr, plain-smooth rest/Idle, and topology counts.",
+    "If evidence shows new v4 head seam cracks, a separate candidate must preserve UV loop discontinuities while welding only coincident positions before reduction, or protect the head from reduction; validate unchanged materials and skin groups after export.",
+    "Do not weld UVs blindly and do not edit source images."
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "triangles_before": 105936,
+  "triangles_after": 36017,
+  "uv_layers": 1,
+  "bones": 19,
+  "nearest_weight_distance_max": 0.03173141926527023,
+  "nearest_weight_distance_mean": 0.003137637941725767,
+  "unweighted": 0,
+  "clips": [
+    {
+      "name": "Idle",
+      "frames": 61,
+      "seconds": 2.0,
+      "looping": true
+    },
+    {
+      "name": "Walk",
+      "frames": 31,
+      "seconds": 1.0,
+      "looping": true
+    },
+    {
+      "name": "Run",
+      "frames": 23,
+      "seconds": 0.7333333333333333,
+      "looping": true
+    }
+  ],
+  "status": "motion prototype requiring visual review; not accepted for release"
+}

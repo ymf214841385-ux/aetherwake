@@ -1,0 +1,42 @@
+{
+  "url": "http://127.0.0.1:8133",
+  "state": {
+    "asset": {
+      "status": "ready",
+      "source": "/assets/character/wanderer.glb",
+      "clips": [
+        {
+          "name": "Idle",
+          "duration": 2.0333333015441895
+        },
+        {
+          "name": "Walk",
+          "duration": 1.100000023841858
+        },
+        {
+          "name": "Run",
+          "duration": 0.8333333134651184
+        },
+        {
+          "name": "Attack",
+          "duration": 1.0333333015441895
+        },
+        {
+          "name": "Climb",
+          "duration": 1.2333333492279053
+        },
+        {
+          "name": "Glide",
+          "duration": 1.6333333253860474
+        }
+      ],
+      "bones": 20,
+      "normalMapScale": 1,
+      "tunedNormalMaterials": 0
+    },
+    "mode": "playing",
+    "animation": "Attack"
+  },
+  "errors": [],
+  "scope": "normal input start, one second walk and attack; not full gameplay acceptance"
+}

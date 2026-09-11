@@ -59,6 +59,7 @@ function envGain(duration: number, peak: number, when?: number) {
 }
 
 export function sfx(kind: string) {
+  if (typeof window === "undefined") return;
   const c = ensure();
   if (c.state !== "running") return;
   const t = c.currentTime;
@@ -227,6 +228,7 @@ function startWind() {
 }
 
 export function setWind(amount: number) {
+  if (typeof window === "undefined") return;
   if (!windGain || !ctx) return;
   windGain.gain.setTargetAtTime(Math.min(0.18, amount * 0.18), ctx.currentTime, 0.2);
 }

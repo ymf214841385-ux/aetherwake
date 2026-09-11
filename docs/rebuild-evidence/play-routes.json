@@ -1,0 +1,1001 @@
+{
+  "ok": false,
+  "failures": [
+    {
+      "id": "bossDead",
+      "expected": true,
+      "actual": false,
+      "detail": "citadel/boss path ran but boss is not dead / ending not reached"
+    }
+  ],
+  "titleMidRun": false,
+  "attemptedCitadel": true,
+  "sealClosedAttempt": false,
+  "citadelPrompt": "",
+  "closeReason": null,
+  "saveReload": {
+    "attempted": true,
+    "savePresent": true,
+    "continued": true,
+    "restored": true,
+    "detail": "restored",
+    "envelope": {
+      "present": true,
+      "key": "aetherwake-save-v2",
+      "towers": [
+        "dawn",
+        "mere",
+        "crown"
+      ],
+      "shrines": [
+        "pull",
+        "rime",
+        "burst",
+        "still"
+      ],
+      "orbs": 4,
+      "bossDead": false,
+      "ruinSolved": true
+    },
+    "before": {
+      "mode": "playing",
+      "towers": [
+        "dawn",
+        "mere",
+        "crown"
+      ],
+      "shrines": [
+        "pull",
+        "rime",
+        "burst",
+        "still"
+      ],
+      "orbs": 4,
+      "ruinSolved": true,
+      "bossDead": false
+    },
+    "after": {
+      "mode": "playing",
+      "towers": [
+        "dawn",
+        "mere",
+        "crown"
+      ],
+      "shrines": [
+        "pull",
+        "rime",
+        "burst",
+        "still"
+      ],
+      "orbs": 4,
+      "ruinSolved": true,
+      "bossDead": false
+    }
+  },
+  "server": {
+    "owned": false,
+    "pid": null,
+    "port": null,
+    "url": "http://127.0.0.1:8115/",
+    "pidFile": null,
+    "logFile": null
+  },
+  "observed": {
+    "towers": [
+      "dawn",
+      "mere",
+      "crown"
+    ],
+    "shrines": [
+      "pull",
+      "rime",
+      "burst",
+      "still"
+    ],
+    "orbs": 4,
+    "ruinSolved": true,
+    "bossDead": false
+  },
+  "lastGood": {
+    "mode": "playing",
+    "x": 1.5645744921833955,
+    "y": 10.494736626093898,
+    "z": 0.04809205893871262,
+    "yaw": -2.811607346410207,
+    "camYaw": -2.811607346410207,
+    "state": "grounded",
+    "stamina": 108,
+    "staminaMax": 108,
+    "climbing": false,
+    "grounded": true,
+    "towers": [
+      "dawn",
+      "mere",
+      "crown"
+    ],
+    "shrines": [
+      "pull",
+      "rime",
+      "burst",
+      "still"
+    ],
+    "orbs": 4,
+    "ruinSolved": true,
+    "prompt": "",
+    "shrine": null,
+    "shrineHint": "",
+    "interactLock": 0,
+    "hp": 1.25,
+    "art": 4,
+    "bossDead": false,
+    "toast": "",
+    "worldKind": "overworld",
+    "spicy": 0,
+    "cold": false,
+    "pointerLock": false,
+    "cracked": false,
+    "moveBlock": {
+      "x": 0,
+      "z": 0,
+      "frozen": 0,
+      "t": 0
+    },
+    "ices": 0,
+    "metals": [
+      {
+        "id": "metal-field-0",
+        "x": 34,
+        "z": 10,
+        "held": false
+      },
+      {
+        "id": "metal-field-1",
+        "x": 90,
+        "z": 20,
+        "held": false
+      }
+    ],
+    "bomb": null,
+    "attackPhase": "idle",
+    "attackT": 0,
+    "equippedId": "blade",
+    "arrows": 24,
+    "dodgeCd": 0,
+    "invuln": 0,
+    "sealOpen": true,
+    "boss": {
+      "hp": 20,
+      "max": 20,
+      "x": 6,
+      "y": 11.056819524115816,
+      "z": -4.8,
+      "alive": true,
+      "phase": "patrol",
+      "yaw": 0
+    }
+  },
+  "final": {
+    "mode": "playing",
+    "x": 1.5645744921833955,
+    "y": 10.494736626093898,
+    "z": 0.04809205893871262,
+    "yaw": -2.811607346410207,
+    "camYaw": -2.811607346410207,
+    "state": "grounded",
+    "stamina": 108,
+    "staminaMax": 108,
+    "climbing": false,
+    "grounded": true,
+    "towers": [
+      "dawn",
+      "mere",
+      "crown"
+    ],
+    "shrines": [
+      "pull",
+      "rime",
+      "burst",
+      "still"
+    ],
+    "orbs": 4,
+    "ruinSolved": true,
+    "prompt": "",
+    "shrine": null,
+    "shrineHint": "",
+    "interactLock": 0,
+    "hp": 1.25,
+    "art": 4,
+    "bossDead": false,
+    "toast": "",
+    "worldKind": "overworld",
+    "spicy": 0,
+    "cold": false,
+    "pointerLock": false,
+    "cracked": false,
+    "moveBlock": {
+      "x": 0,
+      "z": 0,
+      "frozen": 0,
+      "t": 0
+    },
+    "ices": 0,
+    "metals": [
+      {
+        "id": "metal-field-0",
+        "x": 34,
+        "z": 10,
+        "held": false
+      },
+      {
+        "id": "metal-field-1",
+        "x": 90,
+        "z": 20,
+        "held": false
+      }
+    ],
+    "bomb": null,
+    "attackPhase": "idle",
+    "attackT": 0,
+    "equippedId": "blade",
+    "arrows": 24,
+    "dodgeCd": 0,
+    "invuln": 0,
+    "sealOpen": true,
+    "boss": {
+      "hp": 20,
+      "max": 20,
+      "x": 6,
+      "y": 11.056819524115816,
+      "z": -4.8,
+      "alive": true,
+      "phase": "patrol",
+      "yaw": 0
+    }
+  },
+  "log": [
+    {
+      "t": 1789073063203,
+      "m": "harness pid=41902 ppid=1 chromium=41955 headed=true url=http://127.0.0.1:8115/?t=1789073062674 serverPid=ext serverPort=ext pidFile= log= hb=/Users/ymf/Projects/aetherwake-rebuild-20260909/repo/aetherwake/.grok/heartbeat-41902.json"
+    },
+    {
+      "t": 1789073064755,
+      "m": "start mode=playing at 16.0,102.0"
+    },
+    {
+      "t": 1789073064783,
+      "m": "walk toward dawn tower"
+    },
+    {
+      "t": 1789073071809,
+      "m": "near dawn? 10.1,75.6 dist=7.6"
+    },
+    {
+      "t": 1789073071967,
+      "m": "climb dawn"
+    },
+    {
+      "t": 1789073072188,
+      "m": "dawn approach dist=6.3 y=13.4 state=grounded prompt="
+    },
+    {
+      "t": 1789073072189,
+      "m": "dawn authored baseY=11.1 (player y=13.4)"
+    },
+    {
+      "t": 1789073077462,
+      "m": "dawn rest y=30.6 stam=34 n=1"
+    },
+    {
+      "t": 1789073213927,
+      "m": "dawn regrab missed state=airborne y=13.8 stam=46"
+    },
+    {
+      "t": 1789073214225,
+      "m": "dawn rest y=13.4 stam=52 n=2"
+    },
+    {
+      "t": 1789073214617,
+      "m": "dawn rest y=13.4 stam=62 n=3"
+    },
+    {
+      "t": 1789073215011,
+      "m": "dawn rest y=13.4 stam=74 n=4"
+    },
+    {
+      "t": 1789073220858,
+      "m": "dawn ledge-try y=30.6 stam=32 state=grounded"
+    },
+    {
+      "t": 1789073221250,
+      "m": "dawn rest y=30.6 stam=43 n=7"
+    },
+    {
+      "t": 1789073222828,
+      "m": "dawn rest y=30.6 stam=87 n=11"
+    },
+    {
+      "t": 1789073228564,
+      "m": "dawn pressed 启动 towers=dawn prompt=晨光塔已点亮"
+    },
+    {
+      "t": 1789073228577,
+      "m": "dawn done towers=dawn y=47.8 prompt=晨光塔已点亮 state=grounded"
+    },
+    {
+      "t": 1789073228578,
+      "m": "storage checkpoint tower-dawn -> /Users/ymf/Projects/aetherwake-rebuild-20260909/repo/docs/rebuild-evidence/storage-ckpt-tower-dawn.json v2=true"
+    },
+    {
+      "t": 1789073228678,
+      "m": "dawn leave radially to 12.5,50.2 from y=47.8 grounded"
+    },
+    {
+      "t": 1789073239945,
+      "m": "wind ruin gust"
+    },
+    {
+      "t": 1789073250700,
+      "m": "gust tick ruinSolved=true toast=风桥合拢。回程捷径已开。 art=0"
+    },
+    {
+      "t": 1789073250900,
+      "m": "cook pepper at camp-a (meal kept for crown frost)"
+    },
+    {
+      "t": 1789073262778,
+      "m": "after cook spicy=0 mode=playing (eat later at crown)"
+    },
+    {
+      "t": 1789073262779,
+      "m": "go shrine pull"
+    },
+    {
+      "t": 1789073277279,
+      "m": "at pull face0 dist=4.4 y=9.8 prompt= state=grounded nav=arrived"
+    },
+    {
+      "t": 1789073277280,
+      "m": "refuse E at pull: too-far dist=4.4 prompt="
+    },
+    {
+      "t": 1789073278744,
+      "m": "at pull face1 dist=3.4 y=9.8 prompt=叩响 牵引祠 state=grounded nav=arrived"
+    },
+    {
+      "t": 1789073279443,
+      "m": "pull after look prompt=\"叩响 牵引祠\" x=39.3 z=8.5 y=9.8"
+    },
+    {
+      "t": 1789073279901,
+      "m": "E#0 shrine=2 prompt=\"\" prePrompt=\"叩响 牵引祠\" mode=playing lock=0.41666666666666563"
+    },
+    {
+      "t": 1789073279903,
+      "m": "entered shrine 2 id=pull hint="
+    },
+    {
+      "t": 1789073280806,
+      "m": "pull puzzle enter {\"id\":\"pull\",\"art\":0,\"cracked\":false,\"frozen\":0,\"bx\":316,\"bz\":13,\"ices\":0,\"metals\":[{\"id\":\"metal-field-0\",\"x\":34,\"z\":10,\"held\":false},{\"id\":\"metal-field-1\",\"x\":90,\"z\":20,\"held\":false},{\"id\":\"metal-shrine-2\",\"x\":322.2,\"z\":8,\"held\":false}],\"bomb\":null,\"toast\":\"牵引金属板，铺成桥梁\",\"prompt\":\"\",\"orbs\":0,\"y\":520,\"x\":316,\"z\":4.4,\"dAltar\":18.6} noAbility=false"
+    },
+    {
+      "t": 1789073281210,
+      "m": "pull F physical=false {\"id\":\"pull\",\"art\":0,\"cracked\":false,\"frozen\":0,\"bx\":316,\"bz\":13,\"ices\":0,\"metals\":[{\"id\":\"metal-field-0\",\"x\":34,\"z\":10,\"held\":false},{\"id\":\"metal-field-1\",\"x\":90,\"z\":20,\"held\":false},{\"id\":\"metal-shrine-2\",\"x\":322.2,\"z\":8,\"held\":false}],\"bomb\":null,\"toast\":\"牵引金属板，铺成桥梁\",\"prompt\":\"\",\"orbs\":0,\"y\":520,\"x\":316,\"z\":4.4,\"dAltar\":18.6} -> {\"id\":\"pull\",\"art\":3,\"cracked\":false,\"frozen\":0,\"bx\":316,\"bz\":13,\"ices\":0,\"metals\":[{\"id\":\"metal-field-0\",\"x\":34,\"z\":10,\"held\":false},{\"id\":\"metal-field-1\",\"x\":90,\"z\":20,\"held\":false},{\"id\":\"metal-shrine-2\",\"x\":322.2,\"z\":8,\"held\":false}],\"bomb\":null,\"toast\":\"牵引金属板，铺成桥梁\",\"prompt\":\"\",\"orbs\":0,\"y\":520,\"x\":316,\"z\":4.4,\"dAltar\":18.6}"
+    },
+    {
+      "t": 1789073281210,
+      "m": "pull F had no observed physical effect (spam does not count)"
+    },
+    {
+      "t": 1789073282863,
+      "m": "pull F physical=false {\"id\":\"pull\",\"art\":3,\"cracked\":false,\"frozen\":0,\"bx\":316,\"bz\":13,\"ices\":0,\"metals\":[{\"id\":\"metal-field-0\",\"x\":34,\"z\":10,\"held\":false},{\"id\":\"metal-field-1\",\"x\":90,\"z\":20,\"held\":false},{\"id\":\"metal-shrine-2\",\"x\":322.77984687728224,\"z\":8.431885050995461,\"held\":true}],\"bomb\":null,\"toast\":\"牵引金属板，铺成桥梁\",\"prompt\":\"\",\"orbs\":0,\"y\":520,\"x\":320.78035684928653,\"z\":7.44721894571941,\"dAltar\":16.270857694937597} -> {\"id\":\"pull\",\"art\":3,\"cracked\":false,\"frozen\":0,\"bx\":316,\"bz\":13,\"ices\":0,\"metals\":[{\"id\":\"metal-field-0\",\"x\":34,\"z\":10,\"held\":false},{\"id\":\"metal-field-1\",\"x\":90,\"z\":20,\"held\":false},{\"id\":\"metal-shrine-2\",\"x\":322.77984687728224,\"z\":8.431885050995461,\"held\":true}],\"bomb\":null,\"toast\":\"牵引金属板，铺成桥梁\",\"prompt\":\"\",\"orbs\":0,\"y\":520,\"x\":320.78035684928653,\"z\":7.44721894571941,\"dAltar\":16.270857694937597}"
+    },
+    {
+      "t": 1789073283974,
+      "m": "pull F physical=true {\"id\":\"pull\",\"art\":3,\"cracked\":false,\"frozen\":0,\"bx\":316,\"bz\":13,\"ices\":0,\"metals\":[{\"id\":\"metal-field-0\",\"x\":34,\"z\":10,\"held\":false},{\"id\":\"metal-field-1\",\"x\":90,\"z\":20,\"held\":false},{\"id\":\"metal-shrine-2\",\"x\":328.62781239604135,\"z\":11.31176609592236,\"held\":false}],\"bomb\":null,\"toast\":\"\",\"prompt\":\"\",\"orbs\":0,\"y\":520.2800000000001,\"x\":322.3936535425343,\"z\":7.070979884597051,\"dAltar\":17.16427940400858} -> {\"id\":\"pull\",\"art\":3,\"cracked\":false,\"frozen\":0,\"bx\":316,\"bz\":13,\"ices\":0,\"metals\":[{\"id\":\"metal-field-0\",\"x\":34,\"z\":10,\"held\":false},{\"id\":\"metal-field-1\",\"x\":90,\"z\":20,\"held\":false},{\"id\":\"metal-shrine-2\",\"x\":331.01870687340187,\"z\":12.489182697248618,\"held\":false}],\"bomb\":null,\"toast\":\"\",\"prompt\":\"\",\"orbs\":0,\"y\":520.2800000000001,\"x\":322.511483739098,\"z\":7.03613884626828,\"dAltar\":17.240773863726726}"
+    },
+    {
+      "t": 1789073290007,
+      "m": "left shrine pull shrines=pull orbs=1"
+    },
+    {
+      "t": 1789073290009,
+      "m": "after shrine pull shrines=pull orbs=1 shrine=null"
+    },
+    {
+      "t": 1789073290010,
+      "m": "storage checkpoint shrine-pull -> /Users/ymf/Projects/aetherwake-rebuild-20260909/repo/docs/rebuild-evidence/storage-ckpt-shrine-pull.json v2=true"
+    },
+    {
+      "t": 1789073290202,
+      "m": "go shrine rime"
+    },
+    {
+      "t": 1789073322912,
+      "m": "at rime face0 dist=4.2 y=8.6 prompt= state=grounded nav=arrived"
+    },
+    {
+      "t": 1789073322912,
+      "m": "refuse E at rime: too-far dist=4.2 prompt="
+    },
+    {
+      "t": 1789073324580,
+      "m": "at rime face1 dist=3.4 y=8.6 prompt=叩响 霜息祠 state=grounded nav=arrived"
+    },
+    {
+      "t": 1789073325286,
+      "m": "rime after look prompt=\"叩响 霜息祠\" x=-68.9 z=36.4 y=8.6"
+    },
+    {
+      "t": 1789073325746,
+      "m": "E#0 shrine=0 prompt=\"\" prePrompt=\"叩响 霜息祠\" mode=playing lock=0.41666666666666563"
+    },
+    {
+      "t": 1789073325747,
+      "m": "entered shrine 0 id=rime hint="
+    },
+    {
+      "t": 1789073326650,
+      "m": "rime puzzle enter {\"id\":\"rime\",\"art\":3,\"cracked\":false,\"frozen\":0,\"bx\":220,\"bz\":13,\"ices\":0,\"metals\":[{\"id\":\"metal-field-0\",\"x\":34,\"z\":10,\"held\":false},{\"id\":\"metal-field-1\",\"x\":90,\"z\":20,\"held\":false},{\"id\":\"metal-shrine-0\",\"x\":226.2,\"z\":8,\"held\":false}],\"bomb\":null,\"toast\":\"在水面唤出霜柱，踏过去\",\"prompt\":\"\",\"orbs\":1,\"y\":520,\"x\":220,\"z\":4.4,\"dAltar\":18.6} noAbility=false"
+    },
+    {
+      "t": 1789073326662,
+      "m": "rime F physical=false {\"id\":\"rime\",\"art\":3,\"cracked\":false,\"frozen\":0,\"bx\":220,\"bz\":13,\"ices\":0,\"metals\":[{\"id\":\"metal-field-0\",\"x\":34,\"z\":10,\"held\":false},{\"id\":\"metal-field-1\",\"x\":90,\"z\":20,\"held\":false},{\"id\":\"metal-shrine-0\",\"x\":226.2,\"z\":8,\"held\":false}],\"bomb\":null,\"toast\":\"在水面唤出霜柱，踏过去\",\"prompt\":\"\",\"orbs\":1,\"y\":520,\"x\":220,\"z\":4.4,\"dAltar\":18.6} -> {\"id\":\"rime\",\"art\":3,\"cracked\":false,\"frozen\":0,\"bx\":220,\"bz\":13,\"ices\":0,\"metals\":[{\"id\":\"metal-field-0\",\"x\":34,\"z\":10,\"held\":false},{\"id\":\"metal-field-1\",\"x\":90,\"z\":20,\"held\":false},{\"id\":\"metal-shrine-0\",\"x\":226.2,\"z\":8,\"held\":false}],\"bomb\":null,\"toast\":\"在水面唤出霜柱，踏过去\",\"prompt\":\"\",\"orbs\":1,\"y\":520,\"x\":220,\"z\":4.4,\"dAltar\":18.6}"
+    },
+    {
+      "t": 1789073326662,
+      "m": "rime F had no observed physical effect (spam does not count)"
+    },
+    {
+      "t": 1789073328710,
+      "m": "rime F physical=false {\"id\":\"rime\",\"art\":2,\"cracked\":false,\"frozen\":0,\"bx\":220,\"bz\":13,\"ices\":1,\"metals\":[{\"id\":\"metal-field-0\",\"x\":34,\"z\":10,\"held\":false},{\"id\":\"metal-field-1\",\"x\":90,\"z\":20,\"held\":false},{\"id\":\"metal-shrine-0\",\"x\":226.2,\"z\":8,\"held\":false}],\"bomb\":null,\"toast\":\"在水面唤出霜柱，踏过去\",\"prompt\":\"\",\"orbs\":1,\"y\":520.2800000000001,\"x\":226.76940988855023,\"z\":4.4,\"dAltar\":19.793557291179415} -> {\"id\":\"rime\",\"art\":2,\"cracked\":false,\"frozen\":0,\"bx\":220,\"bz\":13,\"ices\":1,\"metals\":[{\"id\":\"metal-field-0\",\"x\":34,\"z\":10,\"held\":false},{\"id\":\"metal-field-1\",\"x\":90,\"z\":20,\"held\":false},{\"id\":\"metal-shrine-0\",\"x\":226.2,\"z\":8,\"held\":false}],\"bomb\":null,\"toast\":\"在水面唤出霜柱，踏过去\",\"prompt\":\"\",\"orbs\":1,\"y\":520.2800000000001,\"x\":226.87380756978453,\"z\":4.4,\"dAltar\":19.829504040858588}"
+    },
+    {
+      "t": 1789073335145,
+      "m": "left shrine rime shrines=pull,rime orbs=2"
+    },
+    {
+      "t": 1789073335147,
+      "m": "after shrine rime shrines=pull,rime orbs=2 shrine=null"
+    },
+    {
+      "t": 1789073335148,
+      "m": "storage checkpoint shrine-rime -> /Users/ymf/Projects/aetherwake-rebuild-20260909/repo/docs/rebuild-evidence/storage-ckpt-shrine-rime.json v2=true"
+    },
+    {
+      "t": 1789073335333,
+      "m": "go shrine burst"
+    },
+    {
+      "t": 1789073376668,
+      "m": "at burst face0 dist=4.3 y=10.4 prompt= state=grounded nav=arrived"
+    },
+    {
+      "t": 1789073376670,
+      "m": "refuse E at burst: too-far dist=4.3 prompt="
+    },
+    {
+      "t": 1789073380393,
+      "m": "stuck dist=2.9 at 119.9,30.6 grounded"
+    },
+    {
+      "t": 1789073383994,
+      "m": "stuck dist=2.8 at 120.0,30.6 grounded"
+    },
+    {
+      "t": 1789073387593,
+      "m": "stuck dist=2.9 at 119.9,30.6 grounded"
+    },
+    {
+      "t": 1789073391199,
+      "m": "stuck dist=3.0 at 119.7,30.6 grounded"
+    },
+    {
+      "t": 1789073394815,
+      "m": "nav timeout burst-face1 dist=2.8 at 119.9,30.6"
+    },
+    {
+      "t": 1789073394815,
+      "m": "at burst face1 dist=3.2 y=10.4 prompt=叩响 爆鸣祠 state=grounded nav=timeout"
+    },
+    {
+      "t": 1789073394815,
+      "m": "refuse E at burst face1: navigation timeout dist=3.2"
+    },
+    {
+      "t": 1789073402909,
+      "m": "at burst face2 dist=3.1 y=10.4 prompt=叩响 爆鸣祠 state=grounded nav=arrived"
+    },
+    {
+      "t": 1789073403329,
+      "m": "burst after look prompt=\"叩响 爆鸣祠\" x=117.4 z=25.0 y=10.4"
+    },
+    {
+      "t": 1789073403791,
+      "m": "E#0 shrine=1 prompt=\"\" prePrompt=\"叩响 爆鸣祠\" mode=playing lock=0.39999999999999897"
+    },
+    {
+      "t": 1789073403792,
+      "m": "entered shrine 1 id=burst hint="
+    },
+    {
+      "t": 1789073404695,
+      "m": "burst puzzle enter {\"id\":\"burst\",\"art\":2,\"cracked\":false,\"frozen\":0,\"bx\":268,\"bz\":13,\"ices\":0,\"metals\":[{\"id\":\"metal-field-0\",\"x\":34,\"z\":10,\"held\":false},{\"id\":\"metal-field-1\",\"x\":90,\"z\":20,\"held\":false},{\"id\":\"metal-shrine-1\",\"x\":274.2,\"z\":8,\"held\":false}],\"bomb\":null,\"toast\":\"用爆鸣打碎裂纹岩壁\",\"prompt\":\"\",\"orbs\":2,\"y\":520,\"x\":268,\"z\":4.4,\"dAltar\":18.6} noAbility=false"
+    },
+    {
+      "t": 1789073404708,
+      "m": "burst F physical=false {\"id\":\"burst\",\"art\":2,\"cracked\":false,\"frozen\":0,\"bx\":268,\"bz\":13,\"ices\":0,\"metals\":[{\"id\":\"metal-field-0\",\"x\":34,\"z\":10,\"held\":false},{\"id\":\"metal-field-1\",\"x\":90,\"z\":20,\"held\":false},{\"id\":\"metal-shrine-1\",\"x\":274.2,\"z\":8,\"held\":false}],\"bomb\":null,\"toast\":\"用爆鸣打碎裂纹岩壁\",\"prompt\":\"\",\"orbs\":2,\"y\":520,\"x\":268,\"z\":4.4,\"dAltar\":18.6} -> {\"id\":\"burst\",\"art\":1,\"cracked\":false,\"frozen\":0,\"bx\":268,\"bz\":13,\"ices\":0,\"metals\":[{\"id\":\"metal-field-0\",\"x\":34,\"z\":10,\"held\":false},{\"id\":\"metal-field-1\",\"x\":90,\"z\":20,\"held\":false},{\"id\":\"metal-shrine-1\",\"x\":274.2,\"z\":8,\"held\":false}],\"bomb\":null,\"toast\":\"用爆鸣打碎裂纹岩壁\",\"prompt\":\"\",\"orbs\":2,\"y\":520,\"x\":268,\"z\":4.4,\"dAltar\":18.6}"
+    },
+    {
+      "t": 1789073404708,
+      "m": "burst F had no observed physical effect (spam does not count)"
+    },
+    {
+      "t": 1789073406360,
+      "m": "burst F physical=false {\"id\":\"burst\",\"art\":1,\"cracked\":false,\"frozen\":0,\"bx\":268,\"bz\":13,\"ices\":0,\"metals\":[{\"id\":\"metal-field-0\",\"x\":34,\"z\":10,\"held\":false},{\"id\":\"metal-field-1\",\"x\":90,\"z\":20,\"held\":false},{\"id\":\"metal-shrine-1\",\"x\":274.2,\"z\":8,\"held\":false}],\"bomb\":{\"x\":268,\"z\":6.449547446055046},\"toast\":\"爆鸣已放置。再按使用以引爆。\",\"prompt\":\"\",\"orbs\":2,\"y\":520,\"x\":268,\"z\":10.35686780688492,\"dAltar\":12.64313219311508} -> {\"id\":\"burst\",\"art\":1,\"cracked\":false,\"frozen\":0,\"bx\":268,\"bz\":13,\"ices\":0,\"metals\":[{\"id\":\"metal-field-0\",\"x\":34,\"z\":10,\"held\":false},{\"id\":\"metal-field-1\",\"x\":90,\"z\":20,\"held\":false},{\"id\":\"metal-shrine-1\",\"x\":274.2,\"z\":8,\"held\":false}],\"bomb\":{\"x\":268,\"z\":6.449547446055046},\"toast\":\"爆鸣已放置。再按使用以引爆。\",\"prompt\":\"\",\"orbs\":2,\"y\":520,\"x\":268,\"z\":10.374430448580421,\"dAltar\":12.625569551419579}"
+    },
+    {
+      "t": 1789073406560,
+      "m": "burst F physical=false {\"id\":\"burst\",\"art\":1,\"cracked\":false,\"frozen\":0,\"bx\":268,\"bz\":13,\"ices\":0,\"metals\":[{\"id\":\"metal-field-0\",\"x\":34,\"z\":10,\"held\":false},{\"id\":\"metal-field-1\",\"x\":90,\"z\":20,\"held\":false},{\"id\":\"metal-shrine-1\",\"x\":274.2,\"z\":8,\"held\":false}],\"bomb\":null,\"toast\":\"爆鸣已放置。再按使用以引爆。\",\"prompt\":\"\",\"orbs\":2,\"y\":520,\"x\":268,\"z\":10.47584850720092,\"dAltar\":12.52415149279908} -> {\"id\":\"burst\",\"art\":1,\"cracked\":false,\"frozen\":0,\"bx\":268,\"bz\":13,\"ices\":0,\"metals\":[{\"id\":\"metal-field-0\",\"x\":34,\"z\":10,\"held\":false},{\"id\":\"metal-field-1\",\"x\":90,\"z\":20,\"held\":false},{\"id\":\"metal-shrine-1\",\"x\":274.2,\"z\":8,\"held\":false}],\"bomb\":null,\"toast\":\"爆鸣已放置。再按使用以引爆。\",\"prompt\":\"\",\"orbs\":2,\"y\":520,\"x\":268,\"z\":10.480057412485904,\"dAltar\":12.519942587514096}"
+    },
+    {
+      "t": 1789073414274,
+      "m": "left shrine burst shrines=pull,rime,burst orbs=3"
+    },
+    {
+      "t": 1789073414277,
+      "m": "after shrine burst shrines=pull,rime,burst orbs=3 shrine=null"
+    },
+    {
+      "t": 1789073414279,
+      "m": "storage checkpoint shrine-burst -> /Users/ymf/Projects/aetherwake-rebuild-20260909/repo/docs/rebuild-evidence/storage-ckpt-shrine-burst.json v2=true"
+    },
+    {
+      "t": 1789073414466,
+      "m": "go shrine still"
+    },
+    {
+      "t": 1789073454646,
+      "m": "at still face0 dist=4.3 y=16.0 prompt= state=airborne nav=arrived"
+    },
+    {
+      "t": 1789073454646,
+      "m": "refuse E at still: too-far dist=4.3 prompt="
+    },
+    {
+      "t": 1789073458309,
+      "m": "stuck dist=5.8 at 12.9,-80.6 grounded"
+    },
+    {
+      "t": 1789073461994,
+      "m": "stuck dist=5.7 at 13.1,-80.6 grounded"
+    },
+    {
+      "t": 1789073465697,
+      "m": "stuck dist=5.8 at 12.6,-80.6 airborne"
+    },
+    {
+      "t": 1789073469064,
+      "m": "stuck dist=5.8 at 13.0,-80.6 grounded"
+    },
+    {
+      "t": 1789073472773,
+      "m": "nav timeout still-face1 dist=5.7 at 13.0,-80.5"
+    },
+    {
+      "t": 1789073472774,
+      "m": "at still face1 dist=2.7 y=13.6 prompt=叩响 凝时祠 state=grounded nav=timeout"
+    },
+    {
+      "t": 1789073472774,
+      "m": "refuse E at still face1: navigation timeout dist=2.7"
+    },
+    {
+      "t": 1789073474231,
+      "m": "at still face2 dist=3.4 y=14.4 prompt=叩响 凝时祠 state=grounded nav=arrived"
+    },
+    {
+      "t": 1789073474347,
+      "m": "still after look prompt=\"叩响 凝时祠\" x=17.2 z=-79.0 y=14.3"
+    },
+    {
+      "t": 1789073474804,
+      "m": "E#0 shrine=3 prompt=\"\" prePrompt=\"叩响 凝时祠\" mode=playing lock=0.41666666666666563"
+    },
+    {
+      "t": 1789073474807,
+      "m": "entered shrine 3 id=still hint="
+    },
+    {
+      "t": 1789073475710,
+      "m": "still puzzle enter {\"id\":\"still\",\"art\":1,\"cracked\":false,\"frozen\":0,\"bx\":366.20190644652166,\"bz\":13,\"ices\":0,\"metals\":[{\"id\":\"metal-field-0\",\"x\":34,\"z\":10,\"held\":false},{\"id\":\"metal-field-1\",\"x\":90,\"z\":20,\"held\":false},{\"id\":\"metal-shrine-3\",\"x\":370.2,\"z\":8,\"held\":false}],\"bomb\":null,\"toast\":\"冻结移动的石块，借它过桥\",\"prompt\":\"\",\"orbs\":3,\"y\":520,\"x\":364,\"z\":4.4,\"dAltar\":18.6} noAbility=false"
+    },
+    {
+      "t": 1789073475713,
+      "m": "still intended start {\"id\":\"still\",\"art\":1,\"cracked\":false,\"frozen\":0,\"bx\":369.08943953043115,\"bz\":13,\"ices\":0,\"metals\":[{\"id\":\"metal-field-0\",\"x\":34,\"z\":10,\"held\":false},{\"id\":\"metal-field-1\",\"x\":90,\"z\":20,\"held\":false},{\"id\":\"metal-shrine-3\",\"x\":370.2,\"z\":8,\"held\":false}],\"bomb\":null,\"toast\":\"冻结移动的石块，借它过桥\",\"prompt\":\"\",\"orbs\":3,\"y\":520,\"x\":364,\"z\":4.4,\"dAltar\":18.6}"
+    },
+    {
+      "t": 1789073477834,
+      "m": "still F aligned=true frozen 0->4.283333333333334 toast \"冻结移动的石块，借它过桥\"->\"石块时间已凝固\" bx=365.08 pos=364.0,8.6 y=520.0"
+    },
+    {
+      "t": 1789073481578,
+      "m": "still intended claimed=true orbs=4 prompt= dAltar=361.5 frozen=0.9333333333333456"
+    },
+    {
+      "t": 1789073481580,
+      "m": "after shrine still path=freeze-bridge shrines=pull,rime,burst,still orbs=4 shrine=null"
+    },
+    {
+      "t": 1789073481582,
+      "m": "storage checkpoint shrine-still-freeze -> /Users/ymf/Projects/aetherwake-rebuild-20260909/repo/docs/rebuild-evidence/storage-ckpt-shrine-still-freeze.json v2=true"
+    },
+    {
+      "t": 1789073481779,
+      "m": "climb mere"
+    },
+    {
+      "t": 1789073527273,
+      "m": "mere approach dist=5.9 y=3.5 state=swimming prompt="
+    },
+    {
+      "t": 1789073527274,
+      "m": "mere authored baseY=7.8 (player y=3.5)"
+    },
+    {
+      "t": 1789073593177,
+      "m": "mere ledge-try y=10.0 stam=8 state=climbing"
+    },
+    {
+      "t": 1789073593479,
+      "m": "mere rest y=10.1 stam=15 n=1"
+    },
+    {
+      "t": 1789073593875,
+      "m": "mere rest y=10.1 stam=27 n=2"
+    },
+    {
+      "t": 1789073594266,
+      "m": "mere rest y=10.1 stam=37 n=3"
+    },
+    {
+      "t": 1789073594661,
+      "m": "mere rest y=10.1 stam=49 n=4"
+    },
+    {
+      "t": 1789073596236,
+      "m": "mere rest y=10.1 stam=92 n=8"
+    },
+    {
+      "t": 1789073602661,
+      "m": "mere rest y=27.3 stam=66 n=11"
+    },
+    {
+      "t": 1789073609187,
+      "m": "mere pressed 启动 towers=dawn prompt=启动 镜湖塔"
+    },
+    {
+      "t": 1789073609483,
+      "m": "mere pressed 启动 towers=dawn,mere prompt=镜湖塔已点亮"
+    },
+    {
+      "t": 1789073609495,
+      "m": "mere done towers=dawn,mere y=45.9 prompt=镜湖塔已点亮 state=grounded"
+    },
+    {
+      "t": 1789073609496,
+      "m": "storage checkpoint tower-mere -> /Users/ymf/Projects/aetherwake-rebuild-20260909/repo/docs/rebuild-evidence/storage-ckpt-tower-mere.json v2=true"
+    },
+    {
+      "t": 1789073609601,
+      "m": "mere leave radially to -100.4,24.3 from y=45.9 grounded"
+    },
+    {
+      "t": 1789073623245,
+      "m": "eat 辣炒椒 before crown frost"
+    },
+    {
+      "t": 1789073624114,
+      "m": "after eat spicy=89.80000000000001 cold=false"
+    },
+    {
+      "t": 1789073674112,
+      "m": "climb crown"
+    },
+    {
+      "t": 1789073674581,
+      "m": "crown approach dist=6.6 y=34.8 state=airborne prompt="
+    },
+    {
+      "t": 1789073674581,
+      "m": "crown authored baseY=16.8 (player y=34.8)"
+    },
+    {
+      "t": 1789073677028,
+      "m": "crown rest y=19.1 stam=1 n=1"
+    },
+    {
+      "t": 1789073677418,
+      "m": "crown rest y=19.1 stam=12 n=2"
+    },
+    {
+      "t": 1789073677812,
+      "m": "crown rest y=19.1 stam=23 n=3"
+    },
+    {
+      "t": 1789073679384,
+      "m": "crown rest y=19.1 stam=67 n=7"
+    },
+    {
+      "t": 1789073685810,
+      "m": "crown ledge-try y=36.3 stam=42 state=grounded"
+    },
+    {
+      "t": 1789073685812,
+      "m": "crown rest y=36.3 stam=42 n=10"
+    },
+    {
+      "t": 1789073687379,
+      "m": "crown rest y=36.3 stam=86 n=14"
+    },
+    {
+      "t": 1789073692809,
+      "m": "crown ledge-try y=53.5 stam=34 state=grounded"
+    },
+    {
+      "t": 1789073693100,
+      "m": "crown pressed 启动 towers=dawn,mere,crown prompt=雪冠塔已点亮"
+    },
+    {
+      "t": 1789073693114,
+      "m": "crown done towers=dawn,mere,crown y=53.5 prompt=雪冠塔已点亮 state=grounded"
+    },
+    {
+      "t": 1789073693115,
+      "m": "storage checkpoint tower-crown -> /Users/ymf/Projects/aetherwake-rebuild-20260909/repo/docs/rebuild-evidence/storage-ckpt-tower-crown.json v2=true"
+    },
+    {
+      "t": 1789073693193,
+      "m": "crown leave radially to 43.3,-110.6 from y=53.5 grounded"
+    },
+    {
+      "t": 1789073698598,
+      "m": "crown still high y=42.0; walk the ridge down"
+    },
+    {
+      "t": 1789073705948,
+      "m": "citadel"
+    },
+    {
+      "t": 1789073733000,
+      "m": "stuck dist=32.7 at 12.3,-24.1 airborne"
+    },
+    {
+      "t": 1789073736258,
+      "m": "stuck dist=32.6 at 12.3,-24.0 airborne"
+    },
+    {
+      "t": 1789073746043,
+      "m": "nav timeout 6,8 dist=107.6 at 27.9,-97.4"
+    },
+    {
+      "t": 1789073746044,
+      "m": "follow waypoint failed 6,8 status=timeout dist=107.6"
+    },
+    {
+      "t": 1789073769383,
+      "m": "stuck dist=23.4 at 10.3,-24.0 grounded"
+    },
+    {
+      "t": 1789073772912,
+      "m": "stuck dist=23.6 at 10.9,-24.1 airborne"
+    },
+    {
+      "t": 1789073786230,
+      "m": "nav timeout 6,-1 dist=95.8 at 25.2,-94.9"
+    },
+    {
+      "t": 1789073786230,
+      "m": "follow waypoint failed 6,-1 status=timeout dist=95.8"
+    },
+    {
+      "t": 1789073808191,
+      "m": "stuck dist=19.4 at 9.5,-24.0 airborne"
+    },
+    {
+      "t": 1789073811433,
+      "m": "stuck dist=19.4 at 9.5,-24.1 airborne"
+    },
+    {
+      "t": 1789073814694,
+      "m": "stuck dist=19.3 at 9.4,-24.0 airborne"
+    },
+    {
+      "t": 1789073826285,
+      "m": "nav timeout 6,-5 dist=93.0 at 24.7,-96.1"
+    },
+    {
+      "t": 1789073826286,
+      "m": "follow waypoint failed 6,-5 status=timeout dist=93.0"
+    },
+    {
+      "t": 1789073846429,
+      "m": "nav timeout citadel-gate dist=30.8 at 12.2,-27.2"
+    },
+    {
+      "t": 1789073846432,
+      "m": "citadel reapproach live boss d=23.2 from 12.2,-27.2 y=9.6 state=grounded grounded=true off=south-of-keep stall=0 bossY=11.1 phase=patrol prompt="
+    },
+    {
+      "t": 1789073846432,
+      "m": "citadel recover via 6,8→6,1→6,-2 from 12.2,-27.2 reason=south-of-keep"
+    },
+    {
+      "t": 1789073849690,
+      "m": "stuck dist=32.6 at 12.3,-24.0 airborne"
+    },
+    {
+      "t": 1789073852959,
+      "m": "stuck dist=32.6 at 12.2,-24.0 grounded"
+    },
+    {
+      "t": 1789073856500,
+      "m": "stuck dist=32.7 at 12.5,-24.1 airborne"
+    },
+    {
+      "t": 1789073870583,
+      "m": "nav timeout citadel-return dist=92.9 at 24.6,-83.0"
+    },
+    {
+      "t": 1789073891393,
+      "m": "stuck dist=25.3 at 11.0,-24.0 grounded"
+    },
+    {
+      "t": 1789073894729,
+      "m": "nav timeout citadel-return dist=25.3 at 10.6,-24.1"
+    },
+    {
+      "t": 1789073897601,
+      "m": "stuck dist=22.1 at 10.1,-24.1 airborne"
+    },
+    {
+      "t": 1789073918895,
+      "m": "nav timeout citadel-return dist=59.2 at 17.9,-60.4"
+    },
+    {
+      "t": 1789073931417,
+      "m": "stuck dist=19.6 at 9.5,-24.1 airborne"
+    },
+    {
+      "t": 1789073934701,
+      "m": "stuck dist=19.6 at 9.5,-24.1 airborne"
+    },
+    {
+      "t": 1789073935350,
+      "m": "nav timeout citadel-boss dist=19.6 at 9.6,-24.1"
+    },
+    {
+      "t": 1789073935351,
+      "m": "citadel reapproach live boss d=19.6 from 9.6,-24.1 y=8.2 state=grounded grounded=true off=below-courtyard stall=0 bossY=11.1 phase=patrol prompt=挑战空王"
+    },
+    {
+      "t": 1789073935351,
+      "m": "citadel recover via 18,6→6,8→6,1→6,-2 from 9.6,-24.1 reason=below-courtyard"
+    },
+    {
+      "t": 1789073951575,
+      "m": "citadel low-hp 0.25 state=grounded dist=2.2 bossHp=20.0; back off"
+    },
+    {
+      "t": 1789073951865,
+      "m": "citadel low-hp 0.25 state=grounded dist=4.6 bossHp=20.0; back off"
+    },
+    {
+      "t": 1789073952193,
+      "m": "citadel low-hp 0.25 state=grounded dist=5.2 bossHp=20.0; back off"
+    },
+    {
+      "t": 1789073952427,
+      "m": "citadel low-hp 0.25 state=grounded dist=5.1 bossHp=20.0; back off"
+    },
+    {
+      "t": 1789073953011,
+      "m": "citadel low-hp 0.25 state=airborne dist=4.5 bossHp=20.0; back off"
+    },
+    {
+      "t": 1789073953545,
+      "m": "citadel low-hp 0.25 state=grounded dist=3.6 bossHp=20.0; back off"
+    },
+    {
+      "t": 1789073954224,
+      "m": "citadel low-hp 0.25 state=airborne dist=6.4 bossHp=20.0; back off"
+    },
+    {
+      "t": 1789073954558,
+      "m": "citadel low-hp 0.25 state=airborne dist=7.3 bossHp=20.0; back off"
+    },
+    {
+      "t": 1789073954793,
+      "m": "citadel low-hp 0.25 state=airborne dist=7.8 bossHp=20.0; back off"
+    },
+    {
+      "t": 1789073955019,
+      "m": "citadel reapproach live boss d=8.3 from -1.8,-14.0 y=5.7 state=airborne grounded=false off=below-courtyard stall=1 bossY=10.7 phase=approach prompt=挑战空王"
+    },
+    {
+      "t": 1789073955020,
+      "m": "citadel recover via -12,6→6,8→6,1→-0,-3 from -1.8,-14.0 reason=below-courtyard"
+    },
+    {
+      "t": 1789073979054,
+      "m": "nav timeout citadel-return dist=77.9 at 18.7,-65.6"
+    },
+    {
+      "t": 1789073999501,
+      "m": "stuck dist=10.4 at 3.0,-2.0 grounded"
+    },
+    {
+      "t": 1789074007569,
+      "m": "stuck dist=3.5 at 0.5,0.1 airborne"
+    },
+    {
+      "t": 1789074010799,
+      "m": "stuck dist=3.6 at 0.9,0.0 grounded"
+    },
+    {
+      "t": 1789074014500,
+      "m": "stuck dist=3.5 at 0.7,0.0 airborne"
+    },
+    {
+      "t": 1789074017897,
+      "m": "stuck dist=3.6 at 0.6,0.1 airborne"
+    },
+    {
+      "t": 1789074021115,
+      "m": "stuck dist=3.6 at 1.0,0.1 grounded"
+    },
+    {
+      "t": 1789074024792,
+      "m": "stuck dist=3.5 at 0.6,0.0 grounded"
+    },
+    {
+      "t": 1789074027195,
+      "m": "nav timeout citadel-return dist=3.7 at 1.4,0.0"
+    },
+    {
+      "t": 1789074030149,
+      "m": "stuck dist=6.0 at 1.5,0.0 grounded"
+    },
+    {
+      "t": 1789074033846,
+      "m": "stuck dist=6.1 at 1.5,0.1 airborne"
+    },
+    {
+      "t": 1789074037091,
+      "m": "stuck dist=6.1 at 1.8,0.0 airborne"
+    },
+    {
+      "t": 1789074040348,
+      "m": "stuck dist=6.1 at 1.7,0.0 grounded"
+    },
+    {
+      "t": 1789074043408,
+      "m": "nav timeout citadel-boss dist=6.1 at 1.7,0.1"
+    },
+    {
+      "t": 1789074043409,
+      "m": "citadel towers=dawn,mere,crown orbs=4 bossDead=false mode=playing prompt=挑战空王 swings=0 hits=0 attackStarts=0 deaths=0 bossHp=20 seal=true"
+    },
+    {
+      "t": 1789074043513,
+      "m": "storage checkpoint after-citadel -> /Users/ymf/Projects/aetherwake-rebuild-20260909/repo/docs/rebuild-evidence/storage-ckpt-after-citadel.json v2=true"
+    },
+    {
+      "t": 1789074043515,
+      "m": "save envelope present=true towers=dawn,mere,crown shrines=pull,rime,burst,still orbs=4"
+    },
+    {
+      "t": 1789074044896,
+      "m": "save-reload restored=true continued=true afterTowers=dawn,mere,crown afterShrines=pull,rime,burst,still"
+    }
+  ]
+}

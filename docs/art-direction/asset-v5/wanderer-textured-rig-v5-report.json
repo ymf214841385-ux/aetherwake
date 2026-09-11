@@ -1,0 +1,26 @@
+{
+  "status": "failed",
+  "error_type": "RuntimeError",
+  "error": "Head split-normal repair did not eliminate the measured v4 head discontinuities: {'boundary_edges': 2848, 'nonmanifold_edges': 0, 'coincident_groups': 794, 'coincident_vertices': 1658, 'uv_discontinuous_groups': 794, 'split_normal_groups': 178, 'max_normal_angle_degrees': 75.7264, 'examples': [{'position': [-0.241736, 0.101714, 1.447405], 'vertex_indices': [2315, 2385], 'uv_count': 2, 'max_normal_angle_degrees': 1.6271}, {'position': [-0.239866, -0.011596, 1.485799], 'vertex_indices': [2326, 2327], 'uv_count': 2, 'max_normal_angle_degrees': 1.2478}, {'position': [-0.236833, 0.098121, 1.473906], 'vertex_indices': [2392, 2581], 'uv_count': 2, 'max_normal_angle_degrees': 1.7699}, {'position': [-0.231588, 0.104624, 1.465243], 'vertex_indices': [2393, 2444, 2583], 'uv_count': 3, 'max_normal_angle_degrees': 1.6012}, {'position': [-0.239692, 0.076935, 1.509543], 'vertex_indices': [2409, 2497], 'uv_count': 2, 'max_normal_angle_degrees': 0.4485}, {'position': [-0.233383, 0.073335, 1.525294], 'vertex_indices': [2428, 2697], 'uv_count': 2, 'max_normal_angle_degrees': 1.2872}, {'position': [-0.233154, 0.086551, 1.511015], 'vertex_indices': [2460, 2462], 'uv_count': 2, 'max_normal_angle_degrees': 1.4147}, {'position': [-0.230741, 0.095858, 1.498156], 'vertex_indices': [2463, 2464], 'uv_count': 2, 'max_normal_angle_degrees': 1.0611}, {'position': [-0.233974, 0.07992, 1.517844], 'vertex_indices': [2496, 2498], 'uv_count': 2, 'max_normal_angle_degrees': 0.2303}, {'position': [-0.228052, -0.024913, 1.488782], 'vertex_indices': [2529, 2702], 'uv_count': 2, 'max_normal_angle_degrees': 2.4066}, {'position': [-0.229183, 0.065321, 1.538334], 'vertex_indices': [2550, 2778], 'uv_count': 2, 'max_normal_angle_degrees': 3.0102}, {'position': [-0.216505, 0.114882, 1.449484], 'vertex_indices': [2976, 2977], 'uv_count': 2, 'max_normal_angle_degrees': 1.0675}, {'position': [-0.215891, 0.034232, 1.562816], 'vertex_indices': [3042, 3335], 'uv_count': 2, 'max_normal_angle_degrees': 0.5355}, {'position': [-0.219862, 0.050084, 1.557055], 'vertex_indices': [3043, 3074], 'uv_count': 2, 'max_normal_angle_degrees': 1.5436}, {'position': [-0.212935, 0.115209, 1.441209], 'vertex_indices': [3098, 3099], 'uv_count': 2, 'max_normal_angle_degrees': 1.1225}, {'position': [-0.211217, 0.045183, 1.565442], 'vertex_indices': [3158, 3159], 'uv_count': 2, 'max_normal_angle_degrees': 0.2236}]}",
+  "diagnostics": {
+    "normal_repair": {
+      "method": "custom loop normals only; no vertex/UV weld",
+      "head_or_neck_weight_minimum": 0.5,
+      "coincident_groups_considered": 4160,
+      "coincident_groups_skipped_not_all_head_weighted": 3583,
+      "groups_repaired": 480,
+      "loops_repaired": 2410,
+      "max_angle_before_degrees": 47.8257
+    },
+    "idle_arm_adjustments": {
+      "L": {
+        "upper_rest_blend": 0.696942,
+        "upper_target_down_dot": 0.86
+      },
+      "R": {
+        "upper_rest_blend": 0.696942,
+        "upper_target_down_dot": 0.86
+      }
+    }
+  }
+}

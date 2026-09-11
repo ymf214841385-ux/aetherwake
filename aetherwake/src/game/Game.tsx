@@ -20,12 +20,33 @@ export function GameApp() {
     unlockAudio();
     if (cont) sim.continueSave();
     else sim.startNew();
+    if (import.meta.env.DEV && typeof window !== "undefined" && new URLSearchParams(window.location.search).get("graybox") === "1") {
+      sim.enterGraybox();
+    }
   };
 
   return (
     <div className="game-root">
+      {!mounted && (
+        <div className="title-screen">
+          <div className="title-copy">
+            <p className="kicker">载入中</p>
+            <h1>Aetherwake</h1>
+            <p className="lead">正在唤醒原野…</p>
+          </div>
+        </div>
+      )}
       {mounted && (
-        <Suspense fallback={null}>
+        <Suspense
+          fallback={
+            <div className="title-screen">
+              <div className="title-copy">
+                <p className="kicker">载入中</p>
+                <p className="lead">正在载入场景与角色…</p>
+              </div>
+            </div>
+          }
+        >
           <GameClient />
         </Suspense>
       )}

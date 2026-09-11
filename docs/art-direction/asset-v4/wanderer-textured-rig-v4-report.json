@@ -1,0 +1,475 @@
+{
+  "status": "passed_structural_review_required",
+  "execution": "Host Blender execution only; this is not visual or weapon-slash acceptance.",
+  "source": {
+    "path": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v1/wanderer-textured-rig-v1.blend",
+    "sha256": "75b55c94239f3e844becb0e789bf4c6abd3b74c8ef549c7c64542db41c0f358a",
+    "mesh": {
+      "object": "WandererTexturedBody",
+      "vertices": 25871,
+      "polygons": 36017,
+      "uv_layers": 1,
+      "materials": [
+        "Material_0"
+      ],
+      "pbr_bindings": {
+        "Material_0": {
+          "baseColor": [
+            "Image_0"
+          ],
+          "normal": [
+            "Image_2"
+          ],
+          "metallicRoughness": [
+            "Image_1"
+          ]
+        }
+      }
+    },
+    "bones": 19,
+    "pbr_image_count": 3
+  },
+  "v4": {
+    "blend": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/wanderer-textured-rig-v4.blend",
+    "glb": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/wanderer-textured-rig-v4.glb",
+    "mesh_preservation": {
+      "object": "WandererTexturedBody",
+      "vertices": 25871,
+      "polygons": 36017,
+      "uv_layers": 1,
+      "materials": [
+        "Material_0"
+      ],
+      "pbr_bindings": {
+        "Material_0": {
+          "baseColor": [
+            "Image_0"
+          ],
+          "normal": [
+            "Image_2"
+          ],
+          "metallicRoughness": [
+            "Image_1"
+          ]
+        }
+      }
+    },
+    "bones": 20,
+    "weight_repair": {
+      "method": "torso-connected narrow surface with two-ring protected arm shell",
+      "coordinate_envelope": {
+        "z_min": 0.8232301787693223,
+        "z_max": 1.0503312870975652,
+        "radius": 0.23182828836086444
+      },
+      "arm_dominant_vertices": 5071,
+      "protected_arm_surface_vertices": 5290,
+      "arm_dominant_vertices_changed": 0,
+      "garment_components": 76,
+      "garment_surface_vertices": 2487,
+      "vertices_reweighted": 2340,
+      "upper_trouser_vertices_inspected": 284,
+      "upper_trouser_vertices_skipped": 277,
+      "thigh_weighted_vertices_after": 0,
+      "non_normalized_vertices_after": 0
+    },
+    "rear_occiput_anchor": {
+      "vertex": 12138,
+      "head_weight": 1.0,
+      "head_z_range": [
+        1.616478,
+        1.892498
+      ],
+      "occiput_band_z_range": [
+        1.715845,
+        1.78761
+      ],
+      "rear_y": 0.087675,
+      "world": [
+        0.001846,
+        0.084189,
+        1.753119
+      ]
+    },
+    "hair_surface_continuity": {
+      "method": "parallel-transport tangent frames; capped compact center tail with two subtle strands",
+      "strands": 3,
+      "vertices": 106,
+      "polygons": 108,
+      "degenerate_polygons": 0,
+      "paths": [
+        {
+          "max_cross_section_turn_degrees": 0.0,
+          "frame_flip_count": 0
+        },
+        {
+          "max_cross_section_turn_degrees": 4.632,
+          "frame_flip_count": 0
+        },
+        {
+          "max_cross_section_turn_degrees": 4.6321,
+          "frame_flip_count": 0
+        }
+      ],
+      "max_cross_section_turn_degrees": 4.6321,
+      "frame_flip_count": 0
+    },
+    "hair_root_attachment": {
+      "samples": [
+        {
+          "pose": "neutral",
+          "distance": 0.0
+        },
+        {
+          "pose": "idle",
+          "distance": 0.0
+        },
+        {
+          "pose": "climb",
+          "distance": 0.0
+        },
+        {
+          "pose": "glide",
+          "distance": 0.0
+        }
+      ],
+      "max_distance": 0.0,
+      "limit": 0.04,
+      "valid": true
+    },
+    "anatomy_axis_validation": {
+      "anatomy_axes": {
+        "left": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "right": [
+          -1.0,
+          -0.0,
+          -0.0
+        ],
+        "up": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "forward": [
+          0.0,
+          -1.0,
+          0.0
+        ]
+      },
+      "glide": {
+        "L": {
+          "up_dot": 0.5636,
+          "lateral_dot": 0.8239
+        },
+        "R": {
+          "up_dot": 0.5636,
+          "lateral_dot": 0.8239
+        },
+        "valid": true
+      }
+    },
+    "climb_wall_validation": {
+      "wall_forward_rest": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "wall_plane_y": -0.42,
+      "quarter_cycle_samples": [
+        {
+          "frame": 1,
+          "hands": {
+            "L": {
+              "wall_gap": 0.0,
+              "forward_from_torso": 0.25926,
+              "above_shoulder": 0.3375,
+              "elbow_lateral": 0.18808
+            },
+            "R": {
+              "wall_gap": 0.0,
+              "forward_from_torso": 0.25926,
+              "above_shoulder": 0.3375,
+              "elbow_lateral": 0.18808
+            }
+          },
+          "knees": {
+            "L": {
+              "forward_from_hip": 0.28748
+            },
+            "R": {
+              "forward_from_hip": 0.28748
+            }
+          },
+          "torso": {
+            "spine_forward_dot": 0.45915,
+            "chest_forward_dot": 0.57077
+          }
+        },
+        {
+          "frame": 10,
+          "hands": {
+            "L": {
+              "wall_gap": 0.0,
+              "forward_from_torso": 0.23426,
+              "above_shoulder": 0.42,
+              "elbow_lateral": 0.14398
+            },
+            "R": {
+              "wall_gap": 0.0,
+              "forward_from_torso": 0.23426,
+              "above_shoulder": 0.255,
+              "elbow_lateral": 0.22207
+            }
+          },
+          "knees": {
+            "L": {
+              "forward_from_hip": 0.30991
+            },
+            "R": {
+              "forward_from_hip": 0.26366
+            }
+          },
+          "torso": {
+            "spine_forward_dot": 0.45915,
+            "chest_forward_dot": 0.57077
+          }
+        },
+        {
+          "frame": 19,
+          "hands": {
+            "L": {
+              "wall_gap": 0.0,
+              "forward_from_torso": 0.25926,
+              "above_shoulder": 0.3375,
+              "elbow_lateral": 0.18808
+            },
+            "R": {
+              "wall_gap": 0.0,
+              "forward_from_torso": 0.25926,
+              "above_shoulder": 0.3375,
+              "elbow_lateral": 0.18808
+            }
+          },
+          "knees": {
+            "L": {
+              "forward_from_hip": 0.28748
+            },
+            "R": {
+              "forward_from_hip": 0.28748
+            }
+          },
+          "torso": {
+            "spine_forward_dot": 0.45915,
+            "chest_forward_dot": 0.57077
+          }
+        },
+        {
+          "frame": 28,
+          "hands": {
+            "L": {
+              "wall_gap": 0.0,
+              "forward_from_torso": 0.28426,
+              "above_shoulder": 0.255,
+              "elbow_lateral": 0.21312
+            },
+            "R": {
+              "wall_gap": 0.0,
+              "forward_from_torso": 0.28426,
+              "above_shoulder": 0.42,
+              "elbow_lateral": 0.13044
+            }
+          },
+          "knees": {
+            "L": {
+              "forward_from_hip": 0.26366
+            },
+            "R": {
+              "forward_from_hip": 0.30991
+            }
+          },
+          "torso": {
+            "spine_forward_dot": 0.45915,
+            "chest_forward_dot": 0.57077
+          }
+        }
+      ],
+      "alternating_hand_heights": true,
+      "valid": true
+    },
+    "clips": [
+      {
+        "name": "Idle",
+        "frames": 61,
+        "seconds": 2.0,
+        "looping": true
+      },
+      {
+        "name": "Walk",
+        "frames": 33,
+        "seconds": 1.0666666666666667,
+        "looping": true
+      },
+      {
+        "name": "Run",
+        "frames": 25,
+        "seconds": 0.8,
+        "looping": true
+      },
+      {
+        "name": "Attack",
+        "frames": 31,
+        "seconds": 1.0,
+        "looping": false
+      },
+      {
+        "name": "Climb",
+        "frames": 37,
+        "seconds": 1.2,
+        "looping": true
+      },
+      {
+        "name": "Glide",
+        "frames": 49,
+        "seconds": 1.6,
+        "looping": true
+      }
+    ],
+    "renders": {
+      "front_idle": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/front-idle.png",
+      "left_side_walk": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/left-side-walk.png",
+      "right_side_walk": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/right-side-walk.png",
+      "back_run": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/back-run.png",
+      "front_glide": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/front-glide.png",
+      "dynamic_glide": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/dynamic-glide.png",
+      "climb_f01_front": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/climb_f01_front.png",
+      "climb_f01_left": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/climb_f01_left.png",
+      "climb_f01_right": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/climb_f01_right.png",
+      "climb_f01_back": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/climb_f01_back.png",
+      "climb_f10_front": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/climb_f10_front.png",
+      "climb_f10_left": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/climb_f10_left.png",
+      "climb_f10_right": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/climb_f10_right.png",
+      "climb_f10_back": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/climb_f10_back.png",
+      "climb_f19_front": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/climb_f19_front.png",
+      "climb_f19_left": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/climb_f19_left.png",
+      "climb_f19_right": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/climb_f19_right.png",
+      "climb_f19_back": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/climb_f19_back.png",
+      "climb_f28_front": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/climb_f28_front.png",
+      "climb_f28_left": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/climb_f28_left.png",
+      "climb_f28_right": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/climb_f28_right.png",
+      "climb_f28_back": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/climb_f28_back.png",
+      "attack_f08_front": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/attack_f08_front.png",
+      "attack_f08_left": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/attack_f08_left.png",
+      "attack_f08_right": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/attack_f08_right.png",
+      "attack_f08_back": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/attack_f08_back.png",
+      "attack_f12_front": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/attack_f12_front.png",
+      "attack_f12_left": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/attack_f12_left.png",
+      "attack_f12_right": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/attack_f12_right.png",
+      "attack_f12_back": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/attack_f12_back.png",
+      "attack_f19_front": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/attack_f19_front.png",
+      "attack_f19_left": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/attack_f19_left.png",
+      "attack_f19_right": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/attack_f19_right.png",
+      "attack_f19_back": "/Users/ymf/Projects/aetherwake-rebuild-20260909/terra-visual/docs/art-direction/asset-v4/renders/attack_f19_back.png"
+    }
+  },
+  "roundtrip": {
+    "bytes": 7791732,
+    "bones": 20,
+    "actions": [
+      "Attack",
+      "Climb",
+      "Glide",
+      "Idle",
+      "Run",
+      "Walk"
+    ],
+    "tied_hair_attachment_count": 1,
+    "pbr": {
+      "source_referenced_pbr_images": [
+        "Image_0",
+        "Image_1",
+        "Image_2"
+      ],
+      "expected_source_referenced_pbr_image_count": 3,
+      "actual_glb_referenced_pbr_image_count": 3,
+      "difference": 0,
+      "source_binding_semantics": [
+        "baseColor",
+        "metallicRoughness",
+        "normal"
+      ],
+      "glb_binding_semantics": [
+        "baseColor",
+        "metallicRoughness",
+        "normal"
+      ],
+      "missing_glb_binding_semantics": [],
+      "source_bindings": {
+        "Material_0": {
+          "baseColor": [
+            "Image_0"
+          ],
+          "normal": [
+            "Image_2"
+          ],
+          "metallicRoughness": [
+            "Image_1"
+          ]
+        }
+      },
+      "glb_bindings": {
+        "image_count_referenced_by_pbr": 3,
+        "referenced_image_indices": [
+          0,
+          1,
+          2
+        ],
+        "materials": [
+          {
+            "name": "Material_0",
+            "bindings": {
+              "baseColor": {
+                "texture": 1,
+                "image": 1
+              },
+              "metallicRoughness": {
+                "texture": 2,
+                "image": 2
+              },
+              "normal": {
+                "texture": 0,
+                "image": 0
+              }
+            }
+          },
+          {
+            "name": "V4_TiedHair_PBR",
+            "bindings": {}
+          }
+        ],
+        "images_declared": 3
+      }
+    }
+  },
+  "validation": {
+    "clip_names_match": true,
+    "missing_clips": [],
+    "bone_count_match": true,
+    "texture_count_match": true,
+    "tied_hair_attachment_survives": true,
+    "glide_axes_valid": true,
+    "climb_wall_valid": true,
+    "hair_root_attachment_valid": true,
+    "hair_surface_continuity_valid": true,
+    "arm_dominant_weights_unchanged": true
+  },
+  "outstanding_visual_review": [
+    "Review the full four-view, four-phase climb grid: both hands must read on the -Y wall plane, elbows bent, knees forward, and torso pitched into the wall.",
+    "Review low occiput hair in both walk sides and climb/back frames: it must read as a small downward bundle without bow, fins, or visible root lift.",
+    "Review the three-stage, four-view attack grid for a readable hand/visible-weapon slash. This script makes no weapon acceptance claim and adds no gameplay object.",
+    "Retain v1 runtime and do not integrate v4 until this review explicitly accepts it."
+  ]
+}

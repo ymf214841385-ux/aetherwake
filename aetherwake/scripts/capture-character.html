@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Aetherwake character capture</title>
+    <style>
+      html, body { margin: 0; background: #1b1d1c; overflow: hidden; }
+      canvas { display: block; width: 100vw; height: 100vh; }
+      #label {
+        position: absolute;
+        left: 28px;
+        bottom: 28px;
+        color: #f4f1ea;
+        font: 600 22px/1.2 ui-sans-serif, system-ui, sans-serif;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        text-shadow: 0 1px 2px #111;
+        pointer-events: none;
+      }
+      #sub {
+        position: absolute;
+        left: 28px;
+        bottom: 8px;
+        color: #d5d0c6;
+        font: 12px/1 ui-sans-serif, system-ui, sans-serif;
+        letter-spacing: 0.08em;
+        pointer-events: none;
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="label">FRONT</div>
+    <div id="sub">isolated character module — not Scene.tsx gameplay</div>
+    <script type="module" src="./capture-character-entry.ts"></script>
+  </body>
+</html>

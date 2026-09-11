@@ -1,0 +1,32 @@
+{
+  "bytes": 7738848,
+  "bones": 19,
+  "actions": [
+    "Idle",
+    "Run",
+    "Walk"
+  ],
+  "images": [
+    {
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    }
+  ]
+}

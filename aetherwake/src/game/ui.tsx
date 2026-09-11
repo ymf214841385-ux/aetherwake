@@ -1,9 +1,10 @@
 import type { ReactNode } from "react";
 import { Compass, Map, Pause, Volume2, VolumeX } from "lucide-react";
 import { useHud } from "./store";
+import { saveSettings } from "./settings";
 import { sim } from "./sim";
 
-const ARTS = ["爆鸣", "霜息", "牵引", "凝时"];
+const ARTS = ["引风", "爆鸣", "霜息", "牵引", "凝时"];
 
 export function Overlay({
   onStart,
@@ -41,6 +42,7 @@ export function Overlay({
                 </button>
               )}
             </div>
+            {hud.saveError && <p className="warn">{hud.saveError}</p>}
             <ul className="controls-legend">
               <li>
                 <span>WASD</span> 移动
@@ -49,7 +51,7 @@ export function Overlay({
                 <span>鼠标</span> 视角
               </li>
               <li>
-                <span>空格</span> 跳 / 攀 / 滑翔
+                <span>空格</span> 跳 / 空中再跳滑翔
               </li>
               <li>
                 <span>Shift</span> 冲刺
@@ -64,10 +66,13 @@ export function Overlay({
                 <span>F</span> 石板
               </li>
               <li>
-                <span>E</span> 互动
+                <span>E</span> 互动 / 攀爬
               </li>
               <li>
-                <span>1-4</span> 切换能力
+                <span>1-5</span> 切换能力
+              </li>
+              <li>
+                <span>Ctrl</span> 闪避
               </li>
               <li>
                 <span>M</span> 地图
@@ -113,9 +118,29 @@ export function Overlay({
               />
             </div>
           )}
-          {hud.toast && <p className="toast">{hud.toast}</p>}
+          {hud.toast && (
+            <p
+              className="toast"
+              data-gl-lost={hud.glLost ? "" : undefined}
+              data-gl-restored={!hud.glLost && hud.toast.includes("已恢复") ? "" : undefined}
+            >
+              {hud.toast}
+            </p>
+          )}
+          {hud.glLost && !hud.toast && (
+            <p className="toast warn" data-gl-lost>
+              画面设备丢失，正在尝试恢复。进度仍在。
+            </p>
+          )}
           {hud.prompt && <p className="prompt">{hud.prompt}</p>}
           {hud.shrineHint && <p className="hint">{hud.shrineHint}</p>}
+          {hud.tutorial && <p className="hint">{hud.tutorial}</p>}
+          {hud.saveError && <p className="toast warn">{hud.saveError}</p>}
+          {hud.portrait && (
+            <div className="portrait-hint" data-ui>
+              <p>请横持设备继续探索。进度已保留，无需重开。</p>
+            </div>
+          )}
           <div className="hud-bl">
             <div className="weapon-chip">
               <span className="chip-label">武器</span>
@@ -152,6 +177,46 @@ export function Overlay({
           <button type="button" className="btn-primary" onClick={() => sim.closeOverlay()}>
             继续
           </button>
+          <label className="muted">
+            视角灵敏度
+            <input
+              type="range"
+              min={0.4}
+              max={2}
+              step={0.1}
+              value={sim.settings.lookSens}
+              onChange={(e) => {
+                sim.settings.lookSens = Number(e.target.value);
+                saveSettings(sim.settings);
+              }}
+            />
+          </label>
+          <label className="muted">
+            <input
+              type="checkbox"
+              checked={sim.settings.invertY}
+              onChange={(e) => {
+                sim.settings.invertY = e.target.checked;
+                saveSettings(sim.settings);
+              }}
+            />
+            反转垂直视角
+          </label>
+          <label className="muted">
+            画面
+            <select
+              value={sim.settings.quality}
+              onChange={(e) => {
+                sim.settings.quality = e.target.value as typeof sim.settings.quality;
+                saveSettings(sim.settings);
+              }}
+            >
+              <option value="auto">自动</option>
+              <option value="low">低</option>
+              <option value="mid">中</option>
+              <option value="high">高</option>
+            </select>
+          </label>
           <button type="button" className="btn-ghost" onClick={() => (sim.mode = "title")}>
             返回标题
           </button>
