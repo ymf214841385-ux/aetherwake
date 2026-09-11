@@ -117,6 +117,67 @@ describe("lifecycle close classification", () => {
   });
 });
 
+describe("D1 unexpected close event order", () => {
+  it("browser disconnect >1s after page-close is kept in the same event list", () => {
+    const listeners = { page: {}, browser: {} };
+    const flags = bindCloseTracking(
+      { on: (ev, fn) => (listeners.page[ev] = fn) },
+      null,
+      { on: (ev, fn) => (listeners.browser[ev] = fn) },
+    );
+    listeners.page.close();
+    // late disconnect (simulates 1s+ later)
+    listeners.browser.disconnected();
+    const snap = flags.snapshot();
+    assert.deepEqual(snap.events.map((e) => e.type), ["page-close", "browser-disconnected"]);
+    assert.equal(snap.intentionalTeardown, false);
+  });
+
+  it("active cleanup cannot rewrite the initial unexpected page-close", () => {
+    const listeners = { page: {}, context: {}, browser: {} };
+    const flags = bindCloseTracking(
+      { on: (ev, fn) => (listeners.page[ev] = fn) },
+      { on: (ev, fn) => (listeners.context[ev] = fn) },
+      { on: (ev, fn) => (listeners.browser[ev] = fn) },
+    );
+    listeners.page.close(); // unexpected first
+    const mid = flags.snapshot();
+    assert.equal(mid.intentionalTeardown, false);
+    assert.equal(mid.events[0].intentional, false);
+    flags.intentionalTeardown = true;
+    listeners.context.close();
+    listeners.browser.disconnected();
+    const snap = flags.snapshot();
+    // first event must remain unintentional
+    assert.equal(snap.events[0].type, "page-close");
+    assert.equal(snap.events[0].intentional, false);
+    assert.equal(snap.events[1].intentional, true);
+    assert.equal(snap.intentionalTeardown, true);
+  });
+
+  it("page-close with browser still connected classifies tab-only (observed)", async () => {
+    const { classifyUnexpectedClose } = await import("./close-diag.mjs");
+    const flags = { pageClosed: true, crashed: false, browserDisconnected: false };
+    const samples = [
+      { browserConnected: true, chromiumPidAlive: true, contextPageCount: 0 },
+      { browserConnected: true, chromiumPidAlive: true, contextPageCount: 0 },
+      { browserConnected: true, chromiumPidAlive: true, contextPageCount: 0 },
+      { browserConnected: true, chromiumPidAlive: true, contextPageCount: 0 },
+    ];
+    const r = classifyUnexpectedClose(flags, samples);
+    assert.equal(r.kind, "tab-only");
+    assert.equal(r.observed, true);
+  });
+
+  it("classify never invents oom/hmr; unknown when evidence is thin", async () => {
+    const { classifyUnexpectedClose } = await import("./close-diag.mjs");
+    const r = classifyUnexpectedClose({ pageClosed: true }, null);
+    assert.equal(r.kind, "unknown");
+    assert.equal(r.observed, true);
+    assert.ok(!/oom|hmr|ppid-dead/i.test(r.kind));
+  });
+});
+
 describe("owned server lifecycle", { concurrency: 1 }, () => {
   it("refuses to steal shared ports unless explicitly requested", async () => {
     const p = await pickFreePort();

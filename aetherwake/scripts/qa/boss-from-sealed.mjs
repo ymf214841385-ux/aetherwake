@@ -16,6 +16,14 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
 import { bindCloseTracking, browserProcessInfo, qaChromiumLaunchOptions } from "./lifecycle.mjs";
+import { installHarnessLifetime } from "./durable-session.mjs";
+import {
+  appendDiag,
+  classifyUnexpectedClose,
+  diagnosticCleanup,
+  instrumentClosers,
+  sampleAfterUnexpectedClose,
+} from "./close-diag.mjs";
 import { lookToward } from "./nav-walk.mjs";
 import { citadelFightStep } from "./boss-fight-policy.mjs";
 import { citadelDodgeAim, citadelOffArena, CROWN_TO_CITADEL } from "./citadel-steer.mjs";
@@ -37,9 +45,19 @@ const ckptPath =
   process.env.QA_SAVE_CKPT || resolve(outDir, "storage-ckpt-tower-mere.json");
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 const log = [];
+const harnessLife = installHarnessLifetime({
+  name: "boss-sealed",
+  lastNote: "boot",
+  evidenceLog: resolve(outDir, "boss-sealed-run.log"),
+});
 const note = (m) => {
   log.push({ t: Date.now(), m });
   console.log(`[boss-sealed] ${m}`);
+  try {
+    harnessLife?.setLastNote?.(m.slice(0, 120));
+  } catch {
+    /* ignore */
+  }
 };
 
 const ckpt = JSON.parse(readFileSync(ckptPath, "utf8"));
@@ -49,12 +67,31 @@ note(
   `ckpt ${ckptPath} label=${ckpt.label} player=${JSON.stringify(env0.player)} checkpoint=${JSON.stringify(env0.checkpoint)} orbs=${env0.progress?.orbs}`,
 );
 
-if (!process.env.DEBUG) process.env.DEBUG = "pw:browser";
+// D1: DEBUG=pw:browser must be set by the command environment BEFORE node starts.
+// Do not assign it here after playwright is already imported.
+if (!process.env.DEBUG) {
+  note("WARN DEBUG unset — expected DEBUG=pw:browser in launch env");
+}
+const headed = process.env.QA_HEADED === "1";
+note(`launchMode headed=${headed} QA_HEADED=${process.env.QA_HEADED ?? "unset"} DEBUG=${process.env.DEBUG ?? "unset"}`);
+
 const browser = await chromium.launch({ ...qaChromiumLaunchOptions(), env: { ...process.env } });
 const browserInfo = browserProcessInfo(browser, { rootPid: process.pid });
+if (browserInfo?.chromiumPid) harnessLife.setChromiumPid(browserInfo.chromiumPid);
 const context = await browser.newContext({ viewport: { width: 1280, height: 800 } });
 const page = await context.newPage();
 const closeFlags = bindCloseTracking(page, context, browser);
+instrumentClosers(page, context, browser, runDir, () => closeFlags);
+appendDiag(runDir, {
+  type: "launch",
+  headed,
+  chromiumPid: browserInfo?.chromiumPid ?? null,
+  runId,
+  ckptPath,
+  url,
+});
+note(`chromiumPid=${browserInfo?.chromiumPid ?? "?"} headed=${headed}`);
+
 const result = {
   ok: false,
   runId,
@@ -67,22 +104,61 @@ const result = {
   failures: [],
   dodgeTrail: [],
   log,
+  closeDiagnosis: null,
+  closeSamples: null,
+  headed,
+  launchMode: headed ? "headed" : "headless",
 };
-let flushed = false;
+
+let unexpectedCloseHandled = false;
+let inputStopped = false;
+/** D1.1: finally awaits this (bounded) so cleanup cannot race the 10s samples. */
+let postCloseDiag = null;
+
 function flushPartial(tag) {
-  if (flushed) return;
-  flushed = true;
+  // Append-only: never discard later events after first flush.
   const life = typeof closeFlags.snapshot === "function" ? closeFlags.snapshot() : { ...closeFlags };
   try {
-    const payload = { ...result, browserInfo, lifecycle: life, partialTag: tag };
+    const payload = { ...result, browserInfo, lifecycle: life, partialTag: tag, log };
     writeFileSync(resolve(runDir, "boss-sealed.json"), JSON.stringify(payload, null, 2));
     writeFileSync(resolve(outDir, "boss-sealed.json"), JSON.stringify(payload, null, 2));
   } catch {
     /* ignore */
   }
+  appendDiag(runDir, { type: "flush-partial", tag, order: life.order || "", intentional: life.intentionalTeardown });
 }
+
 page.on("close", () => {
-  if (!closeFlags.intentionalTeardown) flushPartial("page-close");
+  appendDiag(runDir, {
+    type: "page-close-event",
+    intentional: Boolean(closeFlags.intentionalTeardown),
+  });
+  if (closeFlags.intentionalTeardown) return;
+  if (unexpectedCloseHandled) return;
+  unexpectedCloseHandled = true;
+  inputStopped = true;
+  flushPartial("page-close");
+  // D1: sample 0/1/5/10s then diagnostic-cleanup. Outer finally awaits this.
+  postCloseDiag = (async () => {
+    try {
+      const samples = await sampleAfterUnexpectedClose({
+        browser,
+        context,
+        page,
+        chromiumPid: browserInfo?.chromiumPid,
+        runDir,
+      });
+      const reason = classifyUnexpectedClose(closeFlags, samples);
+      appendDiag(runDir, { type: "unexpected-close-classified", reason, samples });
+      result.closeDiagnosis = reason;
+      result.closeSamples = samples;
+      flushPartial("post-close-samples");
+      return { reason, samples };
+    } catch (err) {
+      appendDiag(runDir, { type: "post-close-diag-error", error: String(err?.message || err) });
+      return { reason: { kind: "unknown", observed: true }, samples: [] };
+    }
+  })();
 });
 
 async function shot(name) {
@@ -126,9 +202,11 @@ async function read() {
   });
 }
 async function hold(keys, ms) {
+  if (inputStopped) return;
   const downs = [];
   try {
     for (const k of keys) {
+      if (inputStopped) break;
       await page.keyboard.down(k);
       downs.push(k);
     }
@@ -165,6 +243,7 @@ function facingDot(s, tx, tz) {
 async function goTo(tx, tz, ms, arrive = 3.2) {
   const end = Date.now() + ms;
   while (Date.now() < end) {
+    if (inputStopped) return read().catch(() => null);
     const s = await read();
     if (!s || s.mode !== "playing") return s;
     const dist = Math.hypot(tx - s.x, tz - s.z);
@@ -324,6 +403,26 @@ try {
       }
       s = await read();
       note(`after crown climb towers=${s?.towers} y=${s?.y} seal=${s?.sealOpen}`);
+      // Game already auto-saved on tower activate (sim.ts this.save()).
+      // Archive raw v2 + real pose — do not relabel a tower-top file as courtyard.
+      try {
+        const rawV2 = await page.evaluate(() => localStorage.getItem("aetherwake-save-v2"));
+        if (rawV2) {
+          writeFileSync(resolve(runDir, "storage-v2-after-crown.json"), rawV2);
+          const env = JSON.parse(rawV2);
+          note(
+            `auto-save v2.player=${JSON.stringify(env.player)} checkpoint=${JSON.stringify(env.checkpoint)}`,
+          );
+          result.afterCrownSave = {
+            programmaticGameAutoSave: true,
+            player: env.player,
+            checkpoint: env.checkpoint,
+            towers: env.progress?.towers,
+          };
+        }
+      } catch (e) {
+        note(`archive v2 after crown failed ${e?.message || e}`);
+      }
       // 95073 leaveTower: radial off the shaft before descent (anti fall-damage).
       if (s && s.towers?.includes("crown") && s.y > 40) {
         const tw = { x: 48, z: -128 };
@@ -514,14 +613,80 @@ try {
   result.detail = `error ${e?.message || e}`;
   note(result.detail);
 } finally {
-  const life = typeof closeFlags.snapshot === "function" ? closeFlags.snapshot() : { ...closeFlags };
-  const payload = { ...result, browserInfo, lifecycle: life, log };
-  writeFileSync(resolve(runDir, "boss-sealed.json"), JSON.stringify(payload, null, 2));
-  writeFileSync(resolve(outDir, "boss-sealed.json"), JSON.stringify(payload, null, 2));
-  flushed = true;
-  note(`json ok=${result.ok} ${result.detail || ""}`);
-  closeFlags.intentionalTeardown = true;
-  await context.close().catch(() => {});
-  await browser.close().catch(() => {});
-  process.exit(result.ok ? 0 : 1);
+  // D1.1: report+cleanup always run; report write failure must not skip cleanup.
+  let reportErr = null;
+  try {
+    if (postCloseDiag) {
+      await Promise.race([
+        postCloseDiag,
+        wait(12000).then(() => ({ reason: { kind: "unknown", observed: true }, samples: [] })),
+      ]);
+    }
+    const life = typeof closeFlags.snapshot === "function" ? closeFlags.snapshot() : { ...closeFlags };
+    const payload = { ...result, browserInfo, lifecycle: life, log };
+    try {
+      writeFileSync(resolve(runDir, "boss-sealed.json"), JSON.stringify(payload, null, 2));
+      writeFileSync(resolve(outDir, "boss-sealed.json"), JSON.stringify(payload, null, 2));
+    } catch (we) {
+      reportErr = String(we?.message || we);
+      appendDiag(runDir, { type: "report-write-error", error: reportErr });
+    }
+    note(`json ok=${result.ok} ${result.detail || ""} closeOrder=${life.order || ""}`);
+    harnessLife?.setCloseReason?.({
+      kind: life.pageClosed ? "page.close" : life.crashed ? "crash" : life.browserDisconnected ? "browser-disconnected" : "exit",
+      detail: life.order || "",
+      intentional: Boolean(life.intentionalTeardown),
+    });
+    harnessLife?.writeExit?.({
+      exitCode: result.ok ? 0 : reportErr ? 2 : 1,
+      error: result.detail || reportErr || null,
+      closeReason: harnessLife?.state?.closeReason,
+      stack: reportErr ? new Error(reportErr).stack : undefined,
+    });
+  } catch (fe) {
+    try {
+      harnessLife?.writeExit?.({
+        exitCode: 1,
+        error: String(fe?.message || fe),
+        stack: fe?.stack,
+      });
+    } catch {
+      /* ignore */
+    }
+  } finally {
+    // Bounded cleanup — never skip even if report/writeExit failed.
+    try {
+      closeFlags.intentionalTeardown = true;
+    } catch {
+      /* ignore */
+    }
+    await Promise.race([
+      (async () => {
+        try {
+          if (!unexpectedCloseHandled) {
+            await diagnosticCleanup({
+              context,
+              browser,
+              runDir,
+              flags: closeFlags,
+              closeReason: "finally-cleanup",
+            });
+          } else {
+            // unexpected path already sampled; still ensure closers
+            await context.close().catch(() => {});
+            await browser.close().catch(() => {});
+          }
+        } catch {
+          /* ignore */
+        }
+      })(),
+      wait(5000),
+    ]);
+    try {
+      harnessLife?.dispose?.();
+    } catch {
+      /* ignore */
+    }
+    process.exit(result.ok ? 0 : reportErr ? 2 : 1);
+  }
 }

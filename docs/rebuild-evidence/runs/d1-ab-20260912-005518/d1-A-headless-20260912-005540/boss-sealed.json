@@ -1,0 +1,85 @@
+{
+  "ok": false,
+  "runId": "d1-A-headless-20260912-005540",
+  "ckpt": "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/storage-ckpt-tower-mere.json",
+  "restore": {
+    "mode": "playing",
+    "towers": [
+      "dawn",
+      "mere"
+    ],
+    "shrines": [
+      "pull",
+      "rime",
+      "burst",
+      "still"
+    ],
+    "orbs": 4,
+    "sealOpen": false,
+    "pos": {
+      "x": -110.9,
+      "y": 44.6,
+      "z": 11.7
+    }
+  },
+  "courtyardSave": null,
+  "swings": 0,
+  "hits": 0,
+  "deaths": 0,
+  "failures": [],
+  "dodgeTrail": [],
+  "log": [
+    {
+      "t": 1789145741125,
+      "m": "ckpt /Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/storage-ckpt-tower-mere.json label=tower-mere player={\"x\":-110.91909248624212,\"y\":44.46000019073487,\"z\":11.651151644488674,\"yaw\":-0.6744285357420282,\"camYaw\":-0.6820073464102069,\"hp\":4,\"heartsMax\":4,\"staminaMax\":116,\"arrows\":24,\"amber\":16,\"art\":4,\"spicy\":0} checkpoint={\"id\":\"tower-mere\",\"x\":-110.91909248624212,\"y\":44.46000019073487,\"z\":11.651151644488674} orbs=4"
+    },
+    {
+      "t": 1789145741136,
+      "m": "launchMode headed=false QA_HEADED=0 DEBUG=pw:browser"
+    },
+    {
+      "t": 1789145741491,
+      "m": "chromiumPid=1603 headed=false"
+    },
+    {
+      "t": 1789145747550,
+      "m": "restore {\"mode\":\"playing\",\"towers\":[\"dawn\",\"mere\"],\"shrines\":[\"pull\",\"rime\",\"burst\",\"still\"],\"orbs\":4,\"sealOpen\":false,\"pos\":{\"x\":-110.9,\"y\":44.6,\"z\":11.7}}"
+    },
+    {
+      "t": 1789145748430,
+      "m": "pre-eat meals=1 spicy=0 mode=playing"
+    },
+    {
+      "t": 1789145750664,
+      "m": "bag mode=inventory meals=1"
+    },
+    {
+      "t": 1789145755919,
+      "m": "error locator.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: /辣炒椒/ }).first()\n    - locator resolved to <button type=\"button\">…</button>\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - performing click action\n"
+    }
+  ],
+  "closeDiagnosis": null,
+  "closeSamples": null,
+  "headed": false,
+  "launchMode": "headless",
+  "shots": [
+    "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/runs/d1-A-headless-20260912-005540/boss-sealed-boot.png"
+  ],
+  "detail": "error locator.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: /辣炒椒/ }).first()\n    - locator resolved to <button type=\"button\">…</button>\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - performing click action\n",
+  "browserInfo": {
+    "chromiumPid": 1603,
+    "connected": true,
+    "via": "descendant-scan"
+  },
+  "lifecycle": {
+    "pageClosed": false,
+    "contextClosed": false,
+    "browserDisconnected": false,
+    "crashed": false,
+    "inspector": false,
+    "intentionalTeardown": false,
+    "events": [],
+    "elapsedMs": 14428,
+    "order": ""
+  }
+}

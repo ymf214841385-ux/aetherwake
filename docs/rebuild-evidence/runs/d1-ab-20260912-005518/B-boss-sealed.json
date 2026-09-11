@@ -1,0 +1,165 @@
+{
+  "ok": false,
+  "runId": "d1-B-headed-20260912-010124",
+  "ckpt": "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/storage-ckpt-tower-mere.json",
+  "restore": {
+    "mode": "playing",
+    "towers": [
+      "dawn",
+      "mere"
+    ],
+    "shrines": [
+      "pull",
+      "rime",
+      "burst",
+      "still"
+    ],
+    "orbs": 4,
+    "sealOpen": false,
+    "pos": {
+      "x": -110.9,
+      "y": 44.5,
+      "z": 11.7
+    }
+  },
+  "courtyardSave": null,
+  "swings": 0,
+  "hits": 0,
+  "deaths": 0,
+  "failures": [
+    {
+      "label": "seal",
+      "kind": "closed",
+      "towers": [
+        "dawn",
+        "mere"
+      ],
+      "orbs": 4
+    }
+  ],
+  "dodgeTrail": [],
+  "log": [
+    {
+      "t": 1789146084342,
+      "m": "ckpt /Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/storage-ckpt-tower-mere.json label=tower-mere player={\"x\":-110.91909248624212,\"y\":44.46000019073487,\"z\":11.651151644488674,\"yaw\":-0.6744285357420282,\"camYaw\":-0.6820073464102069,\"hp\":4,\"heartsMax\":4,\"staminaMax\":116,\"arrows\":24,\"amber\":16,\"art\":4,\"spicy\":0} checkpoint={\"id\":\"tower-mere\",\"x\":-110.91909248624212,\"y\":44.46000019073487,\"z\":11.651151644488674} orbs=4"
+    },
+    {
+      "t": 1789146084354,
+      "m": "launchMode headed=true QA_HEADED=1 DEBUG=pw:browser"
+    },
+    {
+      "t": 1789146085123,
+      "m": "chromiumPid=2018 headed=true"
+    },
+    {
+      "t": 1789146088737,
+      "m": "restore {\"mode\":\"playing\",\"towers\":[\"dawn\",\"mere\"],\"shrines\":[\"pull\",\"rime\",\"burst\",\"still\"],\"orbs\":4,\"sealOpen\":false,\"pos\":{\"x\":-110.9,\"y\":44.5,\"z\":11.7}}"
+    },
+    {
+      "t": 1789146088798,
+      "m": "pre-eat meals=1 spicy=0 mode=playing"
+    },
+    {
+      "t": 1789146089304,
+      "m": "bag mode=inventory meals=1"
+    },
+    {
+      "t": 1789146089338,
+      "m": "Playwright click 辣炒椒"
+    },
+    {
+      "t": 1789146089944,
+      "m": "after eat meals=0/1 spicy=89.71666666666668/0 mode=playing hp=4 ate=true"
+    },
+    {
+      "t": 1789146089945,
+      "m": "walk crown legs then climb (mere save has 4 orbs + meal)"
+    },
+    {
+      "t": 1789146101026,
+      "m": "crown-leg -80,0 at -83.5,2.9,0.2 hp=2.5"
+    },
+    {
+      "t": 1789146112246,
+      "m": "crown-leg -40,-20 at -41.3,5.5,-17.6 hp=2.5"
+    },
+    {
+      "t": 1789146125502,
+      "m": "crown-leg 24,-40 at 21.9,10.6,-41.3 hp=2.5"
+    },
+    {
+      "t": 1789146134295,
+      "m": "crown-leg 36,-90 at 37.2,32.9,-88.2 hp=2.5"
+    },
+    {
+      "t": 1789146142046,
+      "m": "crown-leg 48,-122 at 45.5,25.2,-119.9 hp=1.75"
+    },
+    {
+      "t": 1789146142664,
+      "m": "crown approach at 46.4,23.3,-121.2 state=airborne"
+    },
+    {
+      "t": 1789146382855,
+      "m": "after crown climb towers=dawn,mere y=30.58500038146973 seal=false"
+    },
+    {
+      "t": 1789146382859,
+      "m": "auto-save v2.player={\"x\":-110.91909248624212,\"y\":44.46000019073487,\"z\":11.651151644488674,\"yaw\":-0.6744285357420282,\"camYaw\":-0.6820073464102069,\"hp\":4,\"heartsMax\":4,\"staminaMax\":116,\"arrows\":24,\"amber\":16,\"art\":4,\"spicy\":0} checkpoint={\"id\":\"tower-mere\",\"x\":-110.91909248624212,\"y\":44.46000019073487,\"z\":11.651151644488674}"
+    },
+    {
+      "t": 1789146382859,
+      "m": "seal still closed towers=dawn,mere orbs=4 — cannot fight boss"
+    }
+  ],
+  "closeDiagnosis": null,
+  "closeSamples": null,
+  "headed": true,
+  "launchMode": "headed",
+  "shots": [
+    "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/runs/d1-B-headed-20260912-010124/boss-sealed-boot.png"
+  ],
+  "afterCrownSave": {
+    "programmaticGameAutoSave": true,
+    "player": {
+      "x": -110.91909248624212,
+      "y": 44.46000019073487,
+      "z": 11.651151644488674,
+      "yaw": -0.6744285357420282,
+      "camYaw": -0.6820073464102069,
+      "hp": 4,
+      "heartsMax": 4,
+      "staminaMax": 116,
+      "arrows": 24,
+      "amber": 16,
+      "art": 4,
+      "spicy": 0
+    },
+    "checkpoint": {
+      "id": "tower-mere",
+      "x": -110.91909248624212,
+      "y": 44.46000019073487,
+      "z": 11.651151644488674
+    },
+    "towers": [
+      "dawn",
+      "mere"
+    ]
+  },
+  "browserInfo": {
+    "chromiumPid": 2018,
+    "connected": true,
+    "via": "descendant-scan"
+  },
+  "lifecycle": {
+    "pageClosed": false,
+    "contextClosed": false,
+    "browserDisconnected": false,
+    "crashed": false,
+    "inspector": false,
+    "intentionalTeardown": false,
+    "events": [],
+    "elapsedMs": 297737,
+    "order": ""
+  }
+}
