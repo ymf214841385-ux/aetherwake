@@ -46,7 +46,7 @@ import {
   stillBlockAligned,
 } from "./qa/shrine-steer.mjs";
 import { citadelDodgeAim, citadelOffArena, citadelReturnWaypoints } from "./qa/citadel-steer.mjs";
-import { bossFightDecision } from "./qa/boss-fight-policy.mjs";
+import { bossFightDecision, nextCitadelAction } from "./qa/boss-fight-policy.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const outDir = resolve(root, "docs/rebuild-evidence");
@@ -1317,9 +1317,10 @@ async function fightBoss() {
       sealClosedAttempt = true;
       break;
     }
-    if (s.mode === "dead") {
+    if (s.mode === "dead" || s.state === "dead" || (Number.isFinite(s.hp) && s.hp <= 0)) {
+      // 95073: swing=30 playerHp=0 state=dead while mode still playing — count it.
       deaths += 1;
-      note(`citadel player dead n=${deaths} hp=${s.hp}; ordinary respawn`);
+      note(`citadel player dead n=${deaths} hp=${s.hp} state=${s.state} mode=${s.mode}; ordinary respawn`);
       continue;
     }
     const boss = s.boss;
@@ -1389,7 +1390,10 @@ async function fightBoss() {
       attackPhase: s.attackPhase,
       faceDot,
     });
-    if (decision.action === "back-off") {
+    // 95073: dodge used to fall through into unconditional melee (swings 26–29
+    // at d=7–8.3). Dispatch through nextCitadelAction — no fall-through.
+    const step = nextCitadelAction(decision, { dist, faceDot });
+    if (step.act === "back-off") {
       note(
         `citadel low-hp ${s.hp.toFixed?.(2)} state=${s.state} dist=${dist.toFixed(1)} bossHp=${s.boss?.hp?.toFixed?.(1)}; back off`,
       );
@@ -1400,7 +1404,7 @@ async function fightBoss() {
       }
       continue;
     }
-    if (decision.action === "dodge") {
+    if (step.act === "dodge") {
       const before = { x: s.x, y: s.y, z: s.z, dist, state: s.state, grounded: s.grounded, phase: s.boss.phase };
       await hold(["KeyC", ...dodgeKeys], 280);
       s = await read();
@@ -1409,25 +1413,27 @@ async function fightBoss() {
       note(
         `citadel dodge ${before.x.toFixed(1)},${before.z.toFixed(1)} y=${before.y.toFixed(1)} d=${before.dist.toFixed(1)} ${before.state} phase=${before.phase} → ${s.x.toFixed(1)},${s.z.toFixed(1)} y=${s.y.toFixed(1)} d=${dist.toFixed(1)} ${s.state} grounded=${s.grounded} dy=${(s.y - before.y).toFixed(2)} aim=${dodgeAim.reason} ${dodgeAim.x.toFixed(1)},${dodgeAim.z.toFixed(1)} dodgeCd=${s.dodgeCd?.toFixed?.(2)} bossPhase=${s.boss.phase}`,
       );
+      continue;
     }
-    if (decision.action === "back-off-too-close") {
+    if (step.act === "back-off-too-close") {
       await hold(["KeyS", "KeyA"], 180);
       s = await read();
       continue;
     }
-    if (decision.action === "approach") {
+    if (step.act === "approach") {
       await hold(keysToward(s, s.boss.x, s.boss.z, dist > 6), 160);
       continue;
     }
-    if (decision.action === "hold-attack") {
+    if (step.act === "hold-attack") {
       await wait(90);
       continue;
     }
-    if (decision.action === "wait-facing") {
+    if (step.act === "wait-facing") {
       note(`citadel wait-facing dot=${faceDot.toFixed(2)} camYaw=${s.camYaw?.toFixed?.(2)}`);
+      await lookToward(s.boss.x, s.boss.z);
       continue;
     }
-    // swing
+    // swing — only when nextCitadelAction authorized it
     const hpBefore = s?.boss?.hp;
     const phaseBefore = s?.attackPhase;
     const yaw = s?.yaw;

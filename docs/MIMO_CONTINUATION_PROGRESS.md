@@ -192,9 +192,11 @@ npm run test:game    # 170 pass / 0 fail
 ### 真实失败
 1. **camp-a cook**：仍卡 dawn 西壁 ~(8,73) climbing；`cooked=false`（已加强恢复，本趟未吃到）
 2. **page.close**（第二次）：`go shrine burst` 后 browser 关闭；closeReason=page.close
-   - **根因**：exit-94302 `lastNote=ppid-dead` — 短命工具 shell 父进程结束带走会话
+   - exit-94302 `lastNote=ppid-dead` 仅表示 heartbeat 在父进程不在时改写 lastNote（lifecycle.mjs:951），**不能**单独证明父退出关闭了浏览器（signals=[]）
+   - play-routes 仅在 finally 设 `intentionalTeardown` 再 `context.close`/`browser.close`；中途 page.close **不是** harness 主动 teardown
+   - 关联**待验证**：需复现或日志中的 close 调用链才写根因
    - 非谜题逻辑失败；orbs=2 未达封印
-   - 下一趟必须用 `scripts/qa/run-durable.mjs` 脱离短命父进程
+   - 下一趟用 `run-durable.mjs`（ppid=1）排除短命父进程假说
 3. 整线 **未** 开印、未到 citadel/Boss
 
 ### 证据边界

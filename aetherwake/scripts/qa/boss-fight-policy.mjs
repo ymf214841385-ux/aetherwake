@@ -78,3 +78,33 @@ export function bossFightDecision(s) {
   }
   return { action: "swing", reason: `melee d=${s.dist.toFixed(2)} bossHp=${s.bossHp}` };
 }
+
+/**
+ * Play-routes citadel dispatcher. A dodge/approach/etc. must not fall through
+ * into swing. Swing only when decision is swing AND pose is in melee with face.
+ * Recorded 95073: after dodge to d≈6.4 recover, harness still clicked melee
+ * (swings 26–29 at dist 7.0–8.28).
+ */
+export function nextCitadelAction(decision, snap) {
+  const dist = snap?.dist;
+  const faceDot = snap?.faceDot ?? 1;
+  const act = decision?.action;
+  if (act === "dodge") return { act: "dodge", swing: false, reason: "after-dodge-no-swing" };
+  if (act === "approach") return { act: "approach", swing: false, reason: "approach" };
+  if (act === "back-off") return { act: "back-off", swing: false, reason: "back-off" };
+  if (act === "back-off-too-close") {
+    return { act: "back-off-too-close", swing: false, reason: "too-close" };
+  }
+  if (act === "hold-attack") return { act: "hold-attack", swing: false, reason: "hold" };
+  if (act === "wait-facing") return { act: "wait-facing", swing: false, reason: "face" };
+  if (act === "swing") {
+    if (!Number.isFinite(dist) || dist > BOSS_MELEE_MAX || dist < BOSS_MELEE_MIN) {
+      return { act: "approach", swing: false, reason: `swing-out-of-band d=${dist}` };
+    }
+    if (faceDot < 0.75) {
+      return { act: "wait-facing", swing: false, reason: `swing-face=${faceDot}` };
+    }
+    return { act: "swing", swing: true, reason: decision.reason };
+  }
+  return { act: "hold-attack", swing: false, reason: `unknown-${act}` };
+}

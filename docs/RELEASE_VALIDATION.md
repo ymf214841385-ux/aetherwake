@@ -3,10 +3,11 @@
 ## MiMo continuation (opencode-go @ 265cc80 base)
 - typecheck: PASS
 - test:game: 179 passed, 0 failed
-- resolveCheckpoint: tower-* → authored cap; other ids → terrain (not 48m window)
-- P0-4 play-routes: running owned preview :8101 (dawn climb in progress) — **not accepted until seal + boss**
-- Browser 3-round + kill + refresh: **pending same-session route**
-- build:app: PASS (previous batch; route uses that build)
+- resolveCheckpoint: tower-* → authored cap; other ids → terrain
+- p04/p04b browser: dawn+pull+rime orbs=2; camp-a cook FAILED; page.close=ppid-dead
+- Next route: durable PID **95073** (setsid, ppid=1) on post-43e78cb build
+- Browser 3-round + kill + refresh: **not accepted**
+- build:app: PASS (no migrate)
 
 ## Prior integrated checkpoint
 - Integrated typecheck: PASS (fixed missing QA/test parameter types; no gameplay behavior change).

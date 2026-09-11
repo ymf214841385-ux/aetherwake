@@ -277,15 +277,29 @@ try {
           await wait(800);
           const r = await read();
           note(`respawned at ${r?.x?.toFixed?.(1)},${r?.y?.toFixed?.(1)},${r?.z?.toFixed?.(1)}`);
-          const spawnWps = [
-            { x: 5, z: 80, label: "spawn-south" },
-            { x: 5, z: 15, label: "spawn-mid" },
-            // Review19 52211: west-corridor/-keep pulled the fight into the low
-            // west ground under the wall. Approach only via the +Z gate.
-            { x: 6, z: 8, label: "gate-south" },
-            { x: 6, z: 0.8, label: "gate" },
-            { x: boss.x, z: boss.z + 2.4, label: "boss-standoff" },
-          ];
+          // After-citadel save sits on the crown; world-spawn legs are 200m away.
+          // If respawn is still on the crown massif, re-enter the descent path.
+          let spawnWps;
+          if (r && r.z < -80 && r.y > 12) {
+            spawnWps = [
+              { x: 55, z: -115, label: "crown-east" },
+              { x: 50, z: -100, label: "crown-south" },
+              { x: 40, z: -95, label: "crown-ridge" },
+              { x: 36, z: -90, label: "crown-ledge" },
+              { x: 24, z: -40, label: "crown-base" },
+              { x: 6, z: 8, label: "gate-south" },
+              { x: 6, z: 0.8, label: "gate" },
+              { x: boss.x, z: boss.z + 2.4, label: "boss-standoff" },
+            ];
+          } else {
+            spawnWps = [
+              { x: 5, z: 80, label: "spawn-south" },
+              { x: 5, z: 15, label: "spawn-mid" },
+              { x: 6, z: 8, label: "gate-south" },
+              { x: 6, z: 0.8, label: "gate" },
+              { x: boss.x, z: boss.z + 2.4, label: "boss-standoff" },
+            ];
+          }
           wps.length = 0;
           wps.push(...spawnWps);
           wi = -1;
