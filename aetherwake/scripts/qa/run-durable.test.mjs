@@ -5,7 +5,7 @@ import { dirname, join } from "node:path";
 import { describe, it } from "node:test";
 import { fileURLToPath } from "node:url";
 import { compiledDistReady, heartbeatPath, isAlive, projectRoot } from "./lifecycle.mjs";
-import { startDurable, stopDurable } from "./run-durable.mjs";
+import { startDurable, stopDurable, resolveQaHeaded, DEFAULT_HEADED_NAMES } from "./run-durable.mjs";
 
 const QA_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = projectRoot();
@@ -45,6 +45,17 @@ async function waitAliveHeartbeat(pid, timeoutMs = 8000) {
 }
 
 describe("run-durable launcher", { concurrency: 1 }, () => {
+  it("D2: long QA defaults headed; explicit QA_HEADED=0 overrides", () => {
+    assert.ok(DEFAULT_HEADED_NAMES.includes("boss-sealed"));
+    assert.ok(DEFAULT_HEADED_NAMES.includes("boss-resume"));
+    assert.equal(resolveQaHeaded("boss-sealed", {}), "1");
+    assert.equal(resolveQaHeaded("boss-resume", {}), "1");
+    assert.equal(resolveQaHeaded("play-routes", {}), "1");
+    assert.equal(resolveQaHeaded("boss-sealed", { QA_HEADED: "0" }), "0");
+    assert.equal(resolveQaHeaded("play-routes", { QA_HEADED: "0" }), "0");
+    assert.equal(resolveQaHeaded("other-tool", {}), null);
+  });
+
   it("refuses stability/play-routes start when dist/ is missing", async () => {
     const dist = compiledDistReady(ROOT);
     if (dist.ok) {

@@ -69,6 +69,16 @@ function needsCompiledDist(cmd) {
   return cmd.some((c) => /(?:^|\/)(stability|play-routes)\.mjs$/.test(String(c)));
 }
 
+/** D2: long-QA names that default QA_HEADED=1 (cron kills headless chromium >300s). */
+export const DEFAULT_HEADED_NAMES = ["play-routes", "stability", "boss-sealed", "boss-resume"];
+
+/** Explicit env always wins; otherwise long QA defaults headed. */
+export function resolveQaHeaded(name, env = process.env) {
+  if (env.QA_HEADED != null && env.QA_HEADED !== "") return String(env.QA_HEADED);
+  if (DEFAULT_HEADED_NAMES.includes(name)) return "1";
+  return null;
+}
+
 function resolveHarness(cmd, cwd) {
   if (!cmd.length) return { error: "missing command after --" };
   let command = cmd[0];
@@ -109,11 +119,11 @@ export async function startDurable({ name, cmd, cwd = ROOT } = {}) {
     QA_EVIDENCE_LOG: evidenceLog,
     BROWSER: "none",
   };
-  // Mainline play-routes/stability default to headed. Explicit QA_HEADED=0 keeps headless.
-  // This does not claim to fix page.close; it records the renderer the 607s pass used.
-  if ((name === "play-routes" || name === "stability") && process.env.QA_HEADED == null) {
-    env.QA_HEADED = "1";
-  }
+  // D2: long QA default headed so external cleanup-browser cron (kills
+  // chrome.*--headless age>300s) cannot SIGTERM our Chromium mid-route.
+  // Explicit QA_HEADED=0 still forces headless for short diagnostics.
+  const headedDefault = resolveQaHeaded(name, process.env);
+  if (headedDefault != null) env.QA_HEADED = headedDefault;
 
   const child = spawn(resolved.command, resolved.args, {
     cwd,
