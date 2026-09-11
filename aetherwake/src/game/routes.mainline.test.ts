@@ -1196,4 +1196,43 @@ describe("citadel gate after seal", () => {
       `LOS still blocked after reposition ${JSON.stringify(vis)} player=${s.player.x.toFixed(1)},${s.player.z.toFixed(1)}`,
     );
   });
+
+  it("D3.2 gate center (6,2)/(6,3) clear LOS to east and west wing bosses", () => {
+    const s = fresh();
+    openSeal(s);
+    const cases = [
+      { px: 6, pz: 2, bx: 10.63, bz: 0.5, label: "east-boss@6,2" },
+      { px: 6, pz: 3, bx: 10.63, bz: 0.5, label: "east-boss@6,3" },
+      { px: 6, pz: 2, bx: 3.3, bz: 1.5, label: "west-boss@6,2" },
+      { px: 6, pz: 3, bx: 3.3, bz: 1.5, label: "west-boss@6,3" },
+    ];
+    for (const c of cases) {
+      placeAt(s, c.px, c.bz === undefined ? c.pz : c.pz);
+      s.player.y = s.heightFn(c.px, c.pz) + 0.2;
+      s.setMove("grounded");
+      const vis = s.targetVisibility(c.bx, c.bz);
+      assert.equal(
+        vis.blocked,
+        false,
+        `${c.label} expected clear got ${JSON.stringify(vis)} player=${s.player.x.toFixed(1)},${s.player.z.toFixed(1)}`,
+      );
+    }
+  });
+
+  it("D3.2 path (6.05,-4.36)→(6,2) has no wall samples (production queryWall)", () => {
+    const s = fresh();
+    openSeal(s);
+    const x0 = 6.05;
+    const z0 = -4.36;
+    const x1 = 6;
+    const z1 = 2;
+    const y = s.heightFn(x0, z0) + 0.8;
+    for (let i = 0; i <= 100; i++) {
+      const t = i / 100;
+      const x = x0 + (x1 - x0) * t;
+      const z = z0 + (z1 - z0) * t;
+      const hit = queryWall(x, z, y, s.solids);
+      assert.equal(hit, null, `sample ${i} t=${t.toFixed(2)} blocked by ${hit?.id}`);
+    }
+  });
 });
