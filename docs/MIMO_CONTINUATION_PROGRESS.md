@@ -176,3 +176,27 @@ npm run test:game    # 170 pass / 0 fail
 ### 保留
 - `storage-ckpt-tower-dawn.json`、`storage-ckpt-shrine-pull.json`
 - 下一趟须 **新 build:app**（含 43e78cb）再验检查点/刷新继续
+
+---
+
+## 批次 7 — p04b（新 build，含 43e78cb）PID 94302
+
+### 构建
+- `build:app` 含 `43e78cb` resolveCheckpoint
+- 可作检查点修复的浏览器基线（**非**整线通关验收）
+
+### 通过
+- dawn 点亮；pull **orbs=1**；rime **orbs=2**（p04 在 rime 领取时 page.close，本趟完成）
+- storage-ckpt-tower-dawn / shrine-pull / shrine-rime
+
+### 真实失败
+1. **camp-a cook**：仍卡 dawn 西壁 ~(8,73) climbing；`cooked=false`（已加强恢复，本趟未吃到）
+2. **page.close**（第二次）：`go shrine burst` 后 browser 关闭；closeReason=page.close
+   - **根因**：exit-94302 `lastNote=ppid-dead` — 短命工具 shell 父进程结束带走会话
+   - 非谜题逻辑失败；orbs=2 未达封印
+   - 下一趟必须用 `scripts/qa/run-durable.mjs` 脱离短命父进程
+3. 整线 **未** 开印、未到 citadel/Boss
+
+### 证据边界
+- 主控独立复测 14 项；我报告 179 unit + 本两趟浏览器日志
+- 不把 page.close / cook FAILED 记为通过
