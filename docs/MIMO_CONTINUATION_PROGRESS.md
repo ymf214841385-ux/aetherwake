@@ -279,3 +279,22 @@ npm run test:game    # 170 pass / 0 fail
 ### 下一步
 - 99242 结束后 **只启动一次** 修正后的 normal-input 专项
 - Boss 击杀仍未验收
+
+---
+
+## 批次 11 — normal-input 专项 99783（唯一一次）
+
+### 口径
+- 无 `sim.closeOverlay` / DOM click
+- 吃：Playwright `getByRole(/辣炒椒/)`；关袋 **Tab**
+- **已验证**：`meals 1→0`，`spicy 0→89.8`，`mode=playing`，`ate=true`
+
+### 结果（PID 99783，已结束）
+- crown legs 走通；**crown lit towers=dawn,mere,crown seal=true**
+- `crown leave radially` 后 **page.close**（evaluate 失败）
+- **未**到庭院 sim.save / Boss 击杀 / ending
+- 归档：`runs/boss-ni-99783-*/`、`diag-99242-*`
+
+### 未验收
+- Boss 击杀、ending、刷新继续
+- 庭院 v2.player 落点验证（未到达保存步）

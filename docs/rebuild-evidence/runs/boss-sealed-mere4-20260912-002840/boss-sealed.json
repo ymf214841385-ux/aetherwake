@@ -1,0 +1,111 @@
+{
+  "ok": false,
+  "runId": "boss-sealed-mere4-20260912-002840",
+  "ckpt": "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/storage-ckpt-tower-mere.json",
+  "restore": {
+    "mode": "playing",
+    "towers": [
+      "dawn",
+      "mere"
+    ],
+    "shrines": [
+      "pull",
+      "rime",
+      "burst",
+      "still"
+    ],
+    "orbs": 4,
+    "sealOpen": false,
+    "pos": {
+      "x": -110.9,
+      "y": 44.6,
+      "z": 11.7
+    }
+  },
+  "courtyardSave": null,
+  "swings": 0,
+  "hits": 0,
+  "deaths": 0,
+  "failures": [],
+  "dodgeTrail": [],
+  "log": [
+    {
+      "t": 1789144120558,
+      "m": "ckpt /Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/storage-ckpt-tower-mere.json label=tower-mere player={\"x\":-110.91909248624212,\"y\":44.46000019073487,\"z\":11.651151644488674,\"yaw\":-0.6744285357420282,\"camYaw\":-0.6820073464102069,\"hp\":4,\"heartsMax\":4,\"staminaMax\":116,\"arrows\":24,\"amber\":16,\"art\":4,\"spicy\":0} checkpoint={\"id\":\"tower-mere\",\"x\":-110.91909248624212,\"y\":44.46000019073487,\"z\":11.651151644488674} orbs=4"
+    },
+    {
+      "t": 1789144129784,
+      "m": "restore {\"mode\":\"playing\",\"towers\":[\"dawn\",\"mere\"],\"shrines\":[\"pull\",\"rime\",\"burst\",\"still\"],\"orbs\":4,\"sealOpen\":false,\"pos\":{\"x\":-110.9,\"y\":44.6,\"z\":11.7}}"
+    },
+    {
+      "t": 1789144133178,
+      "m": "bag mode=inventory"
+    },
+    {
+      "t": 1789144135442,
+      "m": "clicked 辣炒椒 in inventory modal"
+    },
+    {
+      "t": 1789144137593,
+      "m": "after eat hp=4 mode=playing towers=dawn,mere y=44.46000019073487"
+    },
+    {
+      "t": 1789144137593,
+      "m": "walk crown legs then climb (mere save has 4 orbs + meal)"
+    },
+    {
+      "t": 1789144188336,
+      "m": "crown-leg -80,0 at -89.4,2.8,1.4 hp=2.5"
+    },
+    {
+      "t": 1789144240072,
+      "m": "crown-leg -40,-20 at -52.6,5.1,-16.6 hp=2.5"
+    },
+    {
+      "t": 1789144291806,
+      "m": "crown-leg 24,-40 at -27.3,5.4,-28.9 hp=2.5"
+    },
+    {
+      "t": 1789144342398,
+      "m": "crown-leg 36,-90 at -1.2,9.4,-45.2 hp=2.5"
+    },
+    {
+      "t": 1789144394097,
+      "m": "crown-leg 48,-122 at 25.3,18.6,-72.7 hp=2.5"
+    },
+    {
+      "t": 1789144425773,
+      "m": "crown approach at 38.5,34.5,-90.9 state=grounded"
+    },
+    {
+      "t": 1789144560342,
+      "m": "error keyboard.down: Target page, context or browser has been closed"
+    }
+  ],
+  "shots": [
+    "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/runs/boss-sealed-mere4-20260912-002840/boss-sealed-boot.png"
+  ],
+  "detail": "error keyboard.down: Target page, context or browser has been closed",
+  "browserInfo": {
+    "chromiumPid": 99243,
+    "connected": true,
+    "via": "descendant-scan"
+  },
+  "lifecycle": {
+    "pageClosed": true,
+    "contextClosed": false,
+    "browserDisconnected": false,
+    "crashed": false,
+    "inspector": false,
+    "intentionalTeardown": false,
+    "events": [
+      {
+        "t": 1789144560341,
+        "type": "page-close",
+        "intentional": false
+      }
+    ],
+    "elapsedMs": 439660,
+    "order": "page-close"
+  }
+}

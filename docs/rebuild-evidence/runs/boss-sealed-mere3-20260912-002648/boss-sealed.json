@@ -1,0 +1,94 @@
+{
+  "ok": false,
+  "runId": "boss-sealed-mere3-20260912-002648",
+  "ckpt": "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/storage-ckpt-tower-mere.json",
+  "restore": {
+    "mode": "playing",
+    "towers": [
+      "dawn",
+      "mere"
+    ],
+    "shrines": [
+      "pull",
+      "rime",
+      "burst",
+      "still"
+    ],
+    "orbs": 4,
+    "sealOpen": false,
+    "pos": {
+      "x": -110.9,
+      "y": 44.6,
+      "z": 11.7
+    }
+  },
+  "courtyardSave": null,
+  "swings": 0,
+  "hits": 0,
+  "deaths": 0,
+  "failures": [
+    {
+      "label": "seal",
+      "kind": "closed",
+      "towers": [
+        "dawn",
+        "mere"
+      ],
+      "orbs": 4
+    }
+  ],
+  "dodgeTrail": [],
+  "log": [
+    {
+      "t": 1789144009074,
+      "m": "ckpt /Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/storage-ckpt-tower-mere.json label=tower-mere player={\"x\":-110.91909248624212,\"y\":44.46000019073487,\"z\":11.651151644488674,\"yaw\":-0.6744285357420282,\"camYaw\":-0.6820073464102069,\"hp\":4,\"heartsMax\":4,\"staminaMax\":116,\"arrows\":24,\"amber\":16,\"art\":4,\"spicy\":0} checkpoint={\"id\":\"tower-mere\",\"x\":-110.91909248624212,\"y\":44.46000019073487,\"z\":11.651151644488674} orbs=4"
+    },
+    {
+      "t": 1789144015181,
+      "m": "restore {\"mode\":\"playing\",\"towers\":[\"dawn\",\"mere\"],\"shrines\":[\"pull\",\"rime\",\"burst\",\"still\"],\"orbs\":4,\"sealOpen\":false,\"pos\":{\"x\":-110.9,\"y\":44.6,\"z\":11.7}}"
+    },
+    {
+      "t": 1789144018262,
+      "m": "bag mode=inventory"
+    },
+    {
+      "t": 1789144018494,
+      "m": "clicked 辣炒椒 in inventory modal"
+    },
+    {
+      "t": 1789144021291,
+      "m": "after eat hp=4 towers=dawn,mere y=44.46000019073487"
+    },
+    {
+      "t": 1789144021291,
+      "m": "walk crown legs then climb (mere save has 4 orbs + meal)"
+    },
+    {
+      "t": 1789144021588,
+      "m": "crown-leg -80,0 at -110.9,44.5,11.7 hp=4"
+    },
+    {
+      "t": 1789144021589,
+      "m": "seal still closed towers=dawn,mere orbs=4 — cannot fight boss"
+    }
+  ],
+  "shots": [
+    "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/runs/boss-sealed-mere3-20260912-002648/boss-sealed-boot.png"
+  ],
+  "browserInfo": {
+    "chromiumPid": 99091,
+    "connected": true,
+    "via": "descendant-scan"
+  },
+  "lifecycle": {
+    "pageClosed": false,
+    "contextClosed": false,
+    "browserDisconnected": false,
+    "crashed": false,
+    "inspector": false,
+    "intentionalTeardown": false,
+    "events": [],
+    "elapsedMs": 12403,
+    "order": ""
+  }
+}

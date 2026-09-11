@@ -1,0 +1,65 @@
+{
+  "ok": false,
+  "runId": "boss-sealed-mere-20260912-002234",
+  "ckpt": "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/storage-ckpt-tower-mere.json",
+  "restore": {
+    "mode": "playing",
+    "towers": [
+      "dawn",
+      "mere"
+    ],
+    "shrines": [
+      "pull",
+      "rime",
+      "burst",
+      "still"
+    ],
+    "orbs": 4,
+    "sealOpen": false,
+    "pos": {
+      "x": -110.9,
+      "y": 44.6,
+      "z": 11.7
+    }
+  },
+  "courtyardSave": null,
+  "swings": 0,
+  "hits": 0,
+  "deaths": 0,
+  "failures": [],
+  "dodgeTrail": [],
+  "log": [
+    {
+      "t": 1789143755109,
+      "m": "ckpt /Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/storage-ckpt-tower-mere.json label=tower-mere player={\"x\":-110.91909248624212,\"y\":44.46000019073487,\"z\":11.651151644488674,\"yaw\":-0.6744285357420282,\"camYaw\":-0.6820073464102069,\"hp\":4,\"heartsMax\":4,\"staminaMax\":116,\"arrows\":24,\"amber\":16,\"art\":4,\"spicy\":0} checkpoint={\"id\":\"tower-mere\",\"x\":-110.91909248624212,\"y\":44.46000019073487,\"z\":11.651151644488674} orbs=4"
+    },
+    {
+      "t": 1789143764382,
+      "m": "restore {\"mode\":\"playing\",\"towers\":[\"dawn\",\"mere\"],\"shrines\":[\"pull\",\"rime\",\"burst\",\"still\"],\"orbs\":4,\"sealOpen\":false,\"pos\":{\"x\":-110.9,\"y\":44.6,\"z\":11.7}}"
+    },
+    {
+      "t": 1789143796420,
+      "m": "error locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('button').first()\n    - locator resolved to <button class=\"tbtn\" type=\"button\" data-touch-btn=\"true\">互动</button>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n      - waiting 100ms\n    14 × waiting for element to be visible, enabled and stable\n       - element is not visible\n     - retrying click action\n       - waiting 500ms\n"
+    }
+  ],
+  "shots": [
+    "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/runs/boss-sealed-mere-20260912-002234/boss-sealed-boot.png"
+  ],
+  "detail": "error locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('button').first()\n    - locator resolved to <button class=\"tbtn\" type=\"button\" data-touch-btn=\"true\">互动</button>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n      - waiting 100ms\n    14 × waiting for element to be visible, enabled and stable\n       - element is not visible\n     - retrying click action\n       - waiting 500ms\n",
+  "browserInfo": {
+    "chromiumPid": 98788,
+    "connected": true,
+    "via": "descendant-scan"
+  },
+  "lifecycle": {
+    "pageClosed": false,
+    "contextClosed": false,
+    "browserDisconnected": false,
+    "crashed": false,
+    "inspector": false,
+    "intentionalTeardown": false,
+    "events": [],
+    "elapsedMs": 41190,
+    "order": ""
+  }
+}

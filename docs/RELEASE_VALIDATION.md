@@ -3,12 +3,12 @@
 ## MiMo continuation (opencode-go @ 265cc80 base)
 - typecheck: PASS
 - test:game: 181 passed, 0 failed
-- 95073 durable: 3 towers + 4 shrines orbs=4 seal=true; cook cooked=true; save-reload restored
-- Boss: 30 swings / 7 hits, bossHp 20→7.4, not killed; dodge fall-through fixed (`citadelFightStep`)
-- applySave: continue keeps saved pose; tower checkpoint only for death-respawn / on-tower xz
-- Boss-cont from after-citadel: crown descent/page.close; **not** killed; sim.save() is programmatic
-- Browser UI save+refresh chain after ending: **not accepted**
-- build:app: run after this batch (do not swap dist under live preview)
+- 95073: 3 towers + 4 shrines seal; cook cooked; save-reload restored; boss 20→7.4 not killed
+- 99783 normal-input (only corrected launch): eat verified meals1→0 spicy0→89.8 Tab close; **crown lit seal=true**; page.close on crown-leave; **no boss kill**
+- 99242: diagnostic only (sim.closeOverlay / DOM click) — not acceptance
+- after-citadel save is crown-top spicy=0 (not courtyard)
+- Boss kill / ending / UI save+refresh: **not accepted**
+- build:app: index-CHvVuW7R.js (after b4d25ad)
 
 ## Prior integrated checkpoint
 - Integrated typecheck: PASS (fixed missing QA/test parameter types; no gameplay behavior change).
