@@ -1131,4 +1131,69 @@ describe("citadel gate after seal", () => {
       `face-away should not end closer away.d=${away.dist.toFixed(2)} into.d=${into.dist.toFixed(2)}`,
     );
   });
+
+  it("D3 production targetVisibility reports citadel-wall-0-11-e at logged pose", () => {
+    const s = fresh();
+    openSeal(s);
+    // Supervisor-reproduced coordinates from durable-play-routes-11439.
+    s.player.x = 7.97;
+    s.player.y = 10.85;
+    s.player.z = -1.9;
+    s.player.yaw = -1.36;
+    s.cam.yaw = -1.36;
+    s.setMove("grounded");
+    const vis = s.targetVisibility(9.91, -2.55);
+    assert.equal(vis.blocked, true, `expected LOS block got ${JSON.stringify(vis)}`);
+    assert.equal(vis.blockerId, "citadel-wall-0-11-e", `blocker=${vis.blockerId}`);
+  });
+
+  it("D3 controlled: blocked LOS must not authorize damaging melee", () => {
+    const s = fresh();
+    openSeal(s);
+    s.player.x = 7.97;
+    s.player.y = 10.85;
+    s.player.z = -1.9;
+    s.setMove("grounded");
+    const boss = s.enemies.find((e) => e.kind === "boss")!;
+    boss.x = 9.91;
+    boss.y = 10.903;
+    boss.z = -2.55;
+    boss.hp = 11;
+    faceToward(s, boss.x, boss.z);
+    const vis = s.targetVisibility(boss.x, boss.z);
+    assert.equal(vis.blocked, true);
+    const hp0 = boss.hp;
+    s.step(1 / 60, hold({ attack: true }));
+    for (let i = 0; i < 20; i++) s.step(1 / 60, hold({}));
+    assert.equal(boss.hp, hp0, `blocked swing must not damage boss ${hp0}->${boss.hp}`);
+  });
+
+  it("D3 reposition (6,-4) clears LOS to courtyard boss in production sim", () => {
+    const s = fresh();
+    openSeal(s);
+    s.player.x = 7.97;
+    s.player.y = 10.85;
+    s.player.z = -1.9;
+    s.setMove("grounded");
+    const boss = s.enemies.find((e) => e.kind === "boss")!;
+    boss.x = 9.91;
+    boss.y = 10.903;
+    boss.z = -2.55;
+    assert.equal(s.targetVisibility(boss.x, boss.z).blocked, true);
+    for (let i = 0; i < 400; i++) {
+      const d = Math.hypot(6 - s.player.x, -4 - s.player.z);
+      if (d < 2.8) break;
+      faceToward(s, 6, -4);
+      s.step(1 / 60, hold({ moveY: 1, sprint: true }));
+    }
+    const dEnd = Math.hypot(6 - s.player.x, -4 - s.player.z);
+    assert.ok(dEnd < 3.5, `did not reach (6,-4) d=${dEnd.toFixed(2)} at ${s.player.x.toFixed(1)},${s.player.z.toFixed(1)}`);
+    assert.ok(s.player.y > 8, `player y=${s.player.y.toFixed(2)} after reposition`);
+    const vis = s.targetVisibility(boss.x, boss.z);
+    assert.equal(
+      vis.blocked,
+      false,
+      `LOS still blocked after reposition ${JSON.stringify(vis)} player=${s.player.x.toFixed(1)},${s.player.z.toFixed(1)}`,
+    );
+  });
 });

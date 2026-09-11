@@ -112,8 +112,17 @@ export function nextCitadelAction(decision, snap) {
 /**
  * One citadel fight verb for play-routes. Pure — no keys. Executor must
  * `continue` after dodge/approach/etc.; only `swing` may click melee.
+ * D3: bossMeleeBlocked (production LOS) forces reposition, never a blind swing.
  */
 export function citadelFightStep(snap) {
+  if (snap?.bossMeleeBlocked) {
+    return {
+      act: "reposition",
+      swing: false,
+      reason: `los-blocked ${snap.blockerId || "?"}`,
+      decision: { action: "reposition", reason: `los-blocked ${snap.blockerId || "?"}` },
+    };
+  }
   const decision = bossFightDecision(snap);
   return { ...nextCitadelAction(decision, snap), decision };
 }

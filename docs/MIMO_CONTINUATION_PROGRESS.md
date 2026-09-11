@@ -369,3 +369,22 @@ npm run test:game    # 170 pass / 0 fail
 - 存档 v2 已按节点原样归档（含 hp/spicy/坐标）
 - 证据：`runs/d2-play-routes-20260912-034501/`
 - **不**将 headed/cron 对策等同通关；Boss 击杀未验收
+
+---
+
+## 批次 15 — D3 LOS 阻挡（主控复现）
+
+### 事实更正
+- 11439 后段 **非 sim 冻结**：attack idle→active；`meleeHit=true` 但 **`losBlocked=true`**
+- solid：`citadel-wall-0-11-e`；日志位姿 player(7.97,10.85,-1.90) boss(9.91,10.903,-2.55)
+
+### 最小方案（已实现）
+1. 受控回归：blocked 不授权伤害 melee；`targetVisibility` 报同 id
+2. `Sim.targetVisibility` 只读；快照 `bossMeleeBlocked`/`blockerId`
+3. `citadelFightStep` blocked→**reposition**；play-routes 走 (6,-4)
+4. 连续 3 次同 pose miss → 记轨迹、reposition 一次，再失败即停（不再 172 挥空）
+5. 未删 LOS/未降墙/未改伤害 HP 冷却
+
+### 验证
+- typecheck PASS；test:game **184 pass**
+- citadel-dispatch **6/6**（含 D3 reposition）

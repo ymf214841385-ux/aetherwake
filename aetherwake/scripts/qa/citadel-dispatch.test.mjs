@@ -82,4 +82,22 @@ describe("citadel dispatch after dodge (95073)", () => {
     assert.equal(after.act, "approach");
     assert.equal(after.swing, false, "play-routes executor must not swing after dodge-out");
   });
+
+  it("D3: bossMeleeBlocked forces reposition even in melee band", () => {
+    const step = citadelFightStep({
+      hp: 3.5,
+      dist: 2.05,
+      bossPhase: "approach",
+      bossHp: 11,
+      state: "grounded",
+      dodgeCd: 0,
+      attackPhase: "idle",
+      faceDot: 0.95,
+      bossMeleeBlocked: true,
+      blockerId: "citadel-wall-0-11-e",
+    });
+    assert.equal(step.act, "reposition");
+    assert.equal(step.swing, false);
+    assert.match(step.reason, /los-blocked/);
+  });
 });

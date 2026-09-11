@@ -606,6 +606,29 @@ export class Sim {
     return { id: cp.id, x: cp.x, y: Number.isFinite(g) ? g : 12, z: cp.z };
   }
 
+  /**
+   * Read-only player→target LOS using the same queryWall path as enemy AI.
+   * D3: QA snapshot only — never mutates player/enemy state.
+   */
+  targetVisibility(tx: number, tz: number) {
+    const p = this.player;
+    const sample = (x: number, z: number) => Boolean(queryWall(x, z, p.y + 0.8, this.solids));
+    const blocked = losBlocked(p.x, p.z, tx, tz, sample);
+    let blockerId: string | null = null;
+    if (blocked) {
+      const steps = 6;
+      for (let i = 1; i < steps; i++) {
+        const t = i / steps;
+        const hit = queryWall(p.x + (tx - p.x) * t, p.z + (tz - p.z) * t, p.y + 0.8, this.solids);
+        if (hit) {
+          blockerId = hit.id;
+          break;
+        }
+      }
+    }
+    return { blocked, blockerId };
+  }
+
   captureSave(): SaveEnvelope {
     // P0-3: if autosave fires inside a shrine, store the overworld entrance
     // pose — shrine-local coords are not a recoverable overworld spawn.

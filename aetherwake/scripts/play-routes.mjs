@@ -319,6 +319,15 @@ async function read() {
                 }
               : null;
           })(),
+          // D3: production LOS to live boss (read-only targetVisibility).
+          ...(() => {
+            const e = sim.enemies?.find?.((x) => x.kind === "boss");
+            if (!e || typeof sim.targetVisibility !== "function") {
+              return { bossMeleeBlocked: false, blockerId: null };
+            }
+            const vis = sim.targetVisibility(e.x, e.z);
+            return { bossMeleeBlocked: Boolean(vis.blocked), blockerId: vis.blockerId ?? null };
+          })(),
         };
       });
       if (s) return remember(s);
@@ -1309,6 +1318,10 @@ async function fightBoss() {
   let deaths = 0;
   let lastApproach = null;
   let stallCount = 0;
+  // D3: stop blind swings after 3 identical misses (frozen pose/hp).
+  let missStreak = 0;
+  let lastMissKey = null;
+  let repositionUsed = 0;
   while (Date.now() < end) {
     s = await resumePlay();
     if (!s) break;
@@ -1390,8 +1403,26 @@ async function fightBoss() {
       dodgeCd: s.dodgeCd,
       attackPhase: s.attackPhase,
       faceDot,
+      bossMeleeBlocked: Boolean(s.bossMeleeBlocked),
+      blockerId: s.blockerId ?? null,
     });
     const decision = step.decision;
+    if (step.act === "reposition") {
+      // D3: LOS blocked by citadel wing wall — walk gate interior, do not swing.
+      note(
+        `citadel reposition los-blocked wall=${s.blockerId || "?"} player=${s.x?.toFixed?.(1)},${s.y?.toFixed?.(1)},${s.z?.toFixed?.(1)} boss=${s.boss.x?.toFixed?.(1)},${s.boss.z?.toFixed?.(1)} d=${dist.toFixed?.(1)} t=${Date.now()}`,
+      );
+      await goTo(6, -4, 12000, { arrive: 3.2, sprint: true, label: "citadel-los-reposition" });
+      repositionUsed += 1;
+      s = await read();
+      if (s?.bossMeleeBlocked) {
+        note(`citadel reposition still blocked wall=${s.blockerId} — short trajectory stop`);
+      } else {
+        note(`citadel reposition LOS clear wall=${s?.blockerId || "none"}`);
+      }
+      missStreak = 0;
+      continue;
+    }
     if (step.act === "back-off") {
       note(
         `citadel low-hp ${s.hp.toFixed?.(2)} state=${s.state} dist=${dist.toFixed(1)} bossHp=${s.boss?.hp?.toFixed?.(1)}; back off`,
@@ -1447,7 +1478,33 @@ async function fightBoss() {
     if (phaseAfter && phaseAfter !== "idle") attackStarts += 1;
     const hpAfter = s?.boss?.hp;
     const landed = Number.isFinite(hpAfter) && Number.isFinite(hpBefore) && hpAfter < hpBefore - 0.01;
-    if (landed) hits += 1;
+    if (landed) {
+      hits += 1;
+      missStreak = 0;
+      lastMissKey = null;
+    } else {
+      // D3: 3 identical miss swings (frozen pose/hp) → one reposition, then stop spam.
+      const mk = `${px?.toFixed?.(2)}|${pz?.toFixed?.(2)}|${hpBefore}|${yaw?.toFixed?.(2)}`;
+      if (mk === lastMissKey) missStreak += 1;
+      else {
+        missStreak = 1;
+        lastMissKey = mk;
+      }
+      if (missStreak >= 3) {
+        note(
+          `citadel miss-streak=${missStreak} t=${Date.now()} player=${px?.toFixed?.(2)},${s?.y?.toFixed?.(2)},${pz?.toFixed?.(2)} boss=${s?.boss?.x?.toFixed?.(2)},${s?.boss?.z?.toFixed?.(2)} phase=${s?.boss?.phase} blocked=${s?.bossMeleeBlocked} wall=${s?.blockerId || "?"} — stop swing, reposition once`,
+        );
+        if (repositionUsed >= 1) {
+          note("citadel reposition already used — end short trajectory");
+          break;
+        }
+        await goTo(6, -4, 12000, { arrive: 3.2, sprint: true, label: "citadel-miss-reposition" });
+        repositionUsed += 1;
+        missStreak = 0;
+        s = await read();
+        continue;
+      }
+    }
     if (swings <= 4 || swings % 5 === 0 || landed || s?.hp < 1.5) {
       const d = s?.boss ? Math.hypot(s.x - s.boss.x, s.z - s.boss.z) : -1;
       note(
