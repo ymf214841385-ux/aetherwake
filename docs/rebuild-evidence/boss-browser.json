@@ -1,0 +1,49 @@
+{
+  "ok": false,
+  "runId": "boss-seal-check-20260911-224749",
+  "stages": [
+    {
+      "n": "boot",
+      "d": "mode=playing seal=false towers=[] shrines=[] orbs=0",
+      "t": 1789138077211
+    },
+    {
+      "n": "seal",
+      "d": "closed — towers=0 shrines=0 orbs=0; cannot fight boss without seal",
+      "t": 1789138081826
+    }
+  ],
+  "hpTrail": [],
+  "phases": [],
+  "shots": [
+    "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/runs/boss-seal-check-20260911-224749/boss-start.png"
+  ],
+  "detail": "seal-not-open (need 3 towers + 4 shrines on this save; no progress injection)",
+  "url": "http://127.0.0.1:8115/",
+  "browserInfo": {
+    "chromiumPid": 92310,
+    "connected": true,
+    "via": "descendant-scan"
+  },
+  "lifecycle": {
+    "pageClosed": false,
+    "contextClosed": false,
+    "browserDisconnected": false,
+    "crashed": false,
+    "inspector": false,
+    "intentionalTeardown": false,
+    "events": [],
+    "elapsedMs": 11740,
+    "order": ""
+  },
+  "log": [
+    {
+      "t": 1789138077211,
+      "m": "stage boot: mode=playing seal=false towers=[] shrines=[] orbs=0"
+    },
+    {
+      "t": 1789138081826,
+      "m": "stage seal: closed — towers=0 shrines=0 orbs=0; cannot fight boss without seal"
+    }
+  ]
+}
