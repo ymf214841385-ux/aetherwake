@@ -1,0 +1,33 @@
+[
+  {
+    "round": "A-headless-8272",
+    "headed": "headless",
+    "elapsedMs": 457896,
+    "exitCode": 1,
+    "error": "error page.evaluate: Target page, context or browser has been closed",
+    "closeDiagnosis": {
+      "kind": "browser-lost",
+      "observed": true
+    },
+    "lifeOrder": "page-close>context-close>browser-disconnected",
+    "lifeIntent": false,
+    "ate": "meals1\u21920 spicy0\u219289.8",
+    "crown": "not lit",
+    "finalJson": true,
+    "samples10s": true
+  },
+  {
+    "round": "B-headed-8994",
+    "headed": "headed",
+    "elapsedMs": 299540,
+    "exitCode": 1,
+    "error": "",
+    "closeDiagnosis": null,
+    "lifeOrder": "",
+    "lifeIntent": false,
+    "ate": "meals1\u21920 spicy0\u219289.8",
+    "crown": "not lit",
+    "finalJson": true,
+    "samples10s": false
+  }
+]

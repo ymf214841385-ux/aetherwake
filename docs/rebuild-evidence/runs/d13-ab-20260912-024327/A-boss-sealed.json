@@ -1,0 +1,180 @@
+{
+  "ok": false,
+  "runId": "d13-A-headless-20260912-024332",
+  "ckpt": "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/storage-ckpt-tower-mere.json",
+  "restore": {
+    "mode": "playing",
+    "towers": [
+      "dawn",
+      "mere"
+    ],
+    "shrines": [
+      "pull",
+      "rime",
+      "burst",
+      "still"
+    ],
+    "orbs": 4,
+    "sealOpen": false,
+    "pos": {
+      "x": -110.9,
+      "y": 44.6,
+      "z": 11.7
+    }
+  },
+  "courtyardSave": null,
+  "swings": 0,
+  "hits": 0,
+  "deaths": 0,
+  "failures": [],
+  "dodgeTrail": [],
+  "log": [
+    {
+      "t": 1789152212962,
+      "m": "ckpt /Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/storage-ckpt-tower-mere.json label=tower-mere player={\"x\":-110.91909248624212,\"y\":44.46000019073487,\"z\":11.651151644488674,\"yaw\":-0.6744285357420282,\"camYaw\":-0.6820073464102069,\"hp\":4,\"heartsMax\":4,\"staminaMax\":116,\"arrows\":24,\"amber\":16,\"art\":4,\"spicy\":0} checkpoint={\"id\":\"tower-mere\",\"x\":-110.91909248624212,\"y\":44.46000019073487,\"z\":11.651151644488674} orbs=4"
+    },
+    {
+      "t": 1789152212973,
+      "m": "launchMode headed=false QA_HEADED=0 DEBUG=pw:browser"
+    },
+    {
+      "t": 1789152213099,
+      "m": "chromiumPid=8379 headed=false"
+    },
+    {
+      "t": 1789152219193,
+      "m": "restore {\"mode\":\"playing\",\"towers\":[\"dawn\",\"mere\"],\"shrines\":[\"pull\",\"rime\",\"burst\",\"still\"],\"orbs\":4,\"sealOpen\":false,\"pos\":{\"x\":-110.9,\"y\":44.6,\"z\":11.7}}"
+    },
+    {
+      "t": 1789152220073,
+      "m": "pre-eat meals=1 spicy=0 mode=playing"
+    },
+    {
+      "t": 1789152222627,
+      "m": "bag mode=inventory meals=1"
+    },
+    {
+      "t": 1789152228150,
+      "m": "Playwright click 辣炒椒"
+    },
+    {
+      "t": 1789152229604,
+      "m": "after eat meals=0/1 spicy=89.81666666666668/0 mode=playing hp=4 ate=true"
+    },
+    {
+      "t": 1789152229604,
+      "m": "walk crown legs then climb (mere save has 4 orbs + meal)"
+    },
+    {
+      "t": 1789152279932,
+      "m": "crown-leg -80,0 at -89.4,2.8,1.4 hp=2.5"
+    },
+    {
+      "t": 1789152331959,
+      "m": "crown-leg -40,-20 at -51.7,5.3,-17.0 hp=2.5"
+    },
+    {
+      "t": 1789152382491,
+      "m": "crown-leg 24,-40 at -23.7,5.3,-30.7 hp=2.5"
+    },
+    {
+      "t": 1789152432975,
+      "m": "crown-leg 36,-90 at 4.8,9.7,-50.2 hp=2.5"
+    },
+    {
+      "t": 1789152484531,
+      "m": "crown-leg 48,-122 at 30.7,25.4,-79.0 hp=2.5"
+    },
+    {
+      "t": 1789152515764,
+      "m": "crown approach at 41.7,36.7,-95.9 state=grounded"
+    },
+    {
+      "t": 1789152660958,
+      "m": "error page.evaluate: Target page, context or browser has been closed"
+    }
+  ],
+  "closeDiagnosis": {
+    "kind": "browser-lost",
+    "observed": true
+  },
+  "closeSamples": [
+    {
+      "type": "post-close-sample",
+      "offsetMs": 0,
+      "elapsedMs": 0,
+      "browserConnected": true,
+      "contextPageCount": 0,
+      "chromiumPid": 8379,
+      "chromiumPidAlive": true,
+      "pageClosed": true
+    },
+    {
+      "type": "post-close-sample",
+      "offsetMs": 1000,
+      "elapsedMs": 1003,
+      "browserConnected": false,
+      "contextPageCount": 0,
+      "chromiumPid": 8379,
+      "chromiumPidAlive": false,
+      "pageClosed": true
+    },
+    {
+      "type": "post-close-sample",
+      "offsetMs": 5000,
+      "elapsedMs": 5003,
+      "browserConnected": false,
+      "contextPageCount": 0,
+      "chromiumPid": 8379,
+      "chromiumPidAlive": false,
+      "pageClosed": true
+    },
+    {
+      "type": "post-close-sample",
+      "offsetMs": 10000,
+      "elapsedMs": 10002,
+      "browserConnected": false,
+      "contextPageCount": 0,
+      "chromiumPid": 8379,
+      "chromiumPidAlive": false,
+      "pageClosed": true
+    }
+  ],
+  "headed": false,
+  "launchMode": "headless",
+  "shots": [
+    "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/runs/d13-A-headless-20260912-024332/boss-sealed-boot.png"
+  ],
+  "detail": "error page.evaluate: Target page, context or browser has been closed",
+  "workError": {
+    "log": []
+  },
+  "lifecycle": {
+    "pageClosed": true,
+    "contextClosed": true,
+    "browserDisconnected": true,
+    "crashed": false,
+    "inspector": false,
+    "intentionalTeardown": false,
+    "events": [
+      {
+        "t": 1789152660808,
+        "type": "page-close",
+        "intentional": false
+      },
+      {
+        "t": 1789152660813,
+        "type": "context-close",
+        "intentional": false
+      },
+      {
+        "t": 1789152660813,
+        "type": "browser-disconnected",
+        "intentional": false
+      }
+    ],
+    "elapsedMs": 457714,
+    "order": "page-close>context-close>browser-disconnected"
+  },
+  "stack": "page.evaluate: Target page, context or browser has been closed\n    at read (/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/scripts/qa/boss-from-sealed.mjs:171:15)\n    at /Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/scripts/qa/boss-from-sealed.mjs:361:19"
+}

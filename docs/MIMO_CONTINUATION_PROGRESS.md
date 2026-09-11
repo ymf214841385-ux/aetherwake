@@ -317,3 +317,27 @@ npm run test:game    # 170 pass / 0 fail
 - 测试 `finalize-harness.test.mjs` **import 生产函数** + 真实 Playwright + setInterval 心跳
 - case：ok / throw / ok+report EISDIR；父进程验证退出码与浏览器 PID 已死
 - 进度文件批 1–11 自 **eb39ade** 原样恢复，禁止重写历史
+
+---
+
+## 批次 13 — D1.3 修复 + 顺序 A/B（原始证据，不判因果）
+
+### D1.3 修复（6ce49a5）
+- `isHarnessOwnedBrowserPid`：descendant+chromium；无关 sleep 拒绝 kill
+- `writeExit` **cleanup/dispose 之后**；pre-cleanup 仅 diag
+- 回归 8/8：含 cleanup throw/timeout、unrelated sleeper
+
+### A/B（同 HEAD 6ce49a5 / 同 bundle / 同 mere 存档）
+证据：`runs/d13-ab-20260912-024327/`
+
+| | A headless 8272 | B headed 8994 |
+|--|-----------------|---------------|
+| elapsed | 457896ms | 299540ms |
+| exitCode | 1 | 1 |
+| eat | meals1→0 spicy0→89.8 | 同 |
+| 首异常 | Target closed @ crown approach | **无** page-close；climb 未开印 seal=false |
+| 10s 采样 | 是（0ms browser 活，1s 内 chromium 死） | 不适用 |
+| classify | browser-lost observed | null（导航失败如实记录） |
+| finalJson | ok | ok |
+
+因果由主控判定；本文件不推断 headless 根因。

@@ -1,0 +1,68 @@
+{
+  "pid": 8994,
+  "ppid": 1,
+  "pgid": 8994,
+  "sid": 0,
+  "psSess": 0,
+  "newProcessGroup": true,
+  "chromiumPid": 9101,
+  "chromiumAlive": false,
+  "serverPid": null,
+  "t": 1789153038888,
+  "elapsedMs": 299540,
+  "lastNote": "seal still closed towers=dawn,mere orbs=4 — cannot fight boss",
+  "ppidAlive": true,
+  "parentCmdline": "",
+  "argv": [
+    "/opt/homebrew/Cellar/node/25.9.0_3/bin/node",
+    "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/scripts/qa/boss-from-sealed.mjs"
+  ],
+  "closeReason": {
+    "kind": "page.close",
+    "detail": "page-close>context-close>browser-disconnected",
+    "intentional": true
+  },
+  "signals": [],
+  "ignoreHangup": false,
+  "ignoreSIGHUP": true,
+  "headed": true,
+  "qaDurable": true,
+  "exitCode": 1,
+  "signal": null,
+  "waitpid": {
+    "signaled": false,
+    "signal": null,
+    "code": 1,
+    "waitpid": 256
+  },
+  "lastHeartbeat": {
+    "pid": 8994,
+    "ppid": 1,
+    "pgid": 8994,
+    "sid": 0,
+    "psSess": 0,
+    "newProcessGroup": true,
+    "chromiumPid": 9101,
+    "chromiumAlive": true,
+    "serverPid": null,
+    "t": 1789153038547,
+    "elapsedMs": 299199,
+    "lastNote": "seal still closed towers=dawn,mere orbs=4 — cannot fight boss",
+    "ppidAlive": true,
+    "parentCmdline": "",
+    "argv": [
+      "/opt/homebrew/Cellar/node/25.9.0_3/bin/node",
+      "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/scripts/qa/boss-from-sealed.mjs"
+    ],
+    "closeReason": null,
+    "signals": [],
+    "ignoreHangup": false,
+    "ignoreSIGHUP": true,
+    "headed": true,
+    "qaDurable": true
+  },
+  "stack": null,
+  "error": null,
+  "reportErr": null,
+  "sampleErr": null
+}
