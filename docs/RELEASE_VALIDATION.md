@@ -2,11 +2,11 @@
 
 ## MiMo continuation (opencode-go @ 265cc80 base)
 - typecheck: PASS
-- test:game: 177 passed, 0 failed
-- P0-1 recover SM; P0-2 bossDead reload; freshRuntime live boss; strike LOS
-- P0-3: shrine save → entrance; checkpoint Y resolved (tower cap kept)
-- Browser ordinary-input 3-round + kill + refresh: **BLOCKED** seal-not-open on fresh save (no progress injection)
-- build:app: PASS (no migrate)
+- test:game: 179 passed, 0 failed
+- resolveCheckpoint: tower-* → authored cap; other ids → terrain (not 48m window)
+- P0-4 play-routes: running owned preview :8101 (dawn climb in progress) — **not accepted until seal + boss**
+- Browser 3-round + kill + refresh: **pending same-session route**
+- build:app: PASS (previous batch; route uses that build)
 
 ## Prior integrated checkpoint
 - Integrated typecheck: PASS (fixed missing QA/test parameter types; no gameplay behavior change).

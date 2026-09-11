@@ -124,3 +124,28 @@ npm run test:game    # 170 pass / 0 fail
 ### 未验收
 - 浏览器 3 轮反击 / 击杀 / 刷新继续（等封印档或 P0-4 全路线）
 - 祠内谜题/金属物完整恢复（本批按设计改为入口安全点，非室内恢复）
+
+---
+
+## 批次 5 — resolveCheckpoint 按 ID 解析 + P0-4 路线启动
+
+### 审查缺口
+旧 `resolveCheckpoint` 用 `terrain..terrain+48` 窗，未按 ID 解析；塔测试只喂正确 y。
+
+### 最小修
+- `tower-*` → 解析 TOWERS 得 **authored cap** `tw.y+TOWER_HEIGHT-1.2`
+- 其它/未知 ID → **heightFn(xz)** 地面
+- applySave：塔 ID 玩家贴 cap；其它保留 xz、只解析支撑 y
+
+### 失败回归（先红后绿）
+- `tower-dawn with wrong saved y (ground+10) resolves to authored cap`
+- `unknown checkpoint id stands on terrain at xz`
+
+### 验证
+- typecheck PASS
+- test:game **179 pass / 0 fail**
+
+### P0-4
+- `play-routes.mjs` 自有预览 **8101**（PID 93217），日志 `/tmp/play-routes-p04.log`
+- 已到 dawn 攀爬 rest y=30.6；**未重启**健康长跑
+- 同 browser storageState / 连续日志由 harness 写出

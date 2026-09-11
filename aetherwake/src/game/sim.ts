@@ -548,17 +548,27 @@ export class Sim {
     this.resetWorldEntities(true);
     if (this.ruinSolved) this.dockSolvedPlanks();
     this.rebuildSolids();
-    const ground = this.surfaceY(this.player.x, this.player.z, d.player.y + 2);
-    this.player.y = Number.isFinite(d.player.y) ? Math.max(ground, Math.min(d.player.y, ground + 8)) : ground;
-    if (Math.abs(this.player.y - ground) > 12) this.player.y = ground;
     this.spawn = this.resolveCheckpoint(d.checkpoint);
+    // Tower checkpoints: player must stand on the authored cap (ignore bad y).
+    if (this.spawn.id.startsWith("tower-")) {
+      this.player.x = this.spawn.x;
+      this.player.z = this.spawn.z;
+      this.player.y = this.spawn.y;
+    } else {
+      // Keep saved xz (e.g. shrine entrance); only resolve legal support y.
+      const support = this.surfaceY(this.player.x, this.player.z, this.player.y + 2);
+      if (!Number.isFinite(this.player.y) || this.player.y < support - 0.2 || this.player.y > support + 8) {
+        this.player.y = support;
+      }
+    }
     this.setMove("grounded");
     this.clearTransients();
   }
 
   /**
-   * P0-3: do not blindly reuse checkpoint Y. Resolve a legal support height
-   * from the current world; keep elevated tower caps, snap buried Y to ground.
+   * P0-3 review: resolve by checkpoint ID against real support, not a
+   * terrain..terrain+48 window. Tower caps use authored TOWER_HEIGHT; other
+   * ids stand on terrain at xz. applySave aligns the player to this spawn.
    */
   resolveCheckpoint(cp: { id: string; x: number; y: number; z: number }) {
     if (cp.id === "graybox") {
@@ -568,13 +578,24 @@ export class Sim {
       const g = this.heightFn(16, 102);
       return { id: "spawn", x: 16, y: Number.isFinite(g) ? g : 12, z: 102 };
     }
+    const towerMatch = /^tower-(.+)$/.exec(cp.id);
+    if (towerMatch) {
+      const tw = TOWERS.find((t) => t.id === towerMatch[1]);
+      if (tw) {
+        // Authored cap: base + TOWER_HEIGHT, stand slightly inside the lip.
+        const capY = tw.y + TOWER_HEIGHT - 1.2;
+        const near = Math.hypot(cp.x - tw.x, cp.z - tw.z) < 8;
+        return {
+          id: cp.id,
+          x: near ? cp.x : tw.x,
+          y: capY,
+          z: near ? cp.z : tw.z,
+        };
+      }
+    }
+    // Camp/fire/unknown: legal support is the terrain at the saved xz.
     const g = this.heightFn(cp.x, cp.z);
-    let y = Number.isFinite(cp.y) ? cp.y : g;
-    // Buried or absurdly high: snap to terrain. Tower caps sit ~30–40 above base.
-    if (!Number.isFinite(y) || y < g - 1 || y > g + 48) y = g;
-    // Slightly below ground (soft hole): stand on support.
-    if (y < g) y = g;
-    return { id: cp.id, x: cp.x, y, z: cp.z };
+    return { id: cp.id, x: cp.x, y: Number.isFinite(g) ? g : 12, z: cp.z };
   }
 
   captureSave(): SaveEnvelope {

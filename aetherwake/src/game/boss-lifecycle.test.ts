@@ -419,4 +419,56 @@ describe("P0-3 save location / checkpoint resolve", () => {
       `tower spawn must stay elevated spawn.y=${s2.spawn.y.toFixed(2)} tw.y=${tw.y.toFixed(2)}`,
     );
   });
+
+  it("tower-dawn with wrong saved y (ground+10) resolves to authored cap", () => {
+    const store = memoryStorage();
+    const s = new Sim(store);
+    s.freshRuntime(false);
+    const tw = TOWERS.find((t) => t.id === "dawn")!;
+    const env = s.captureSave();
+    const ground = s.heightFn(tw.x, tw.z);
+    env.checkpoint = { id: "tower-dawn", x: tw.x, y: ground + 10, z: tw.z };
+    env.player.x = tw.x;
+    env.player.z = tw.z;
+    env.player.y = ground + 10;
+    writeSave(store, env);
+    const s2 = new Sim(store);
+    s2.continueSave();
+    const capY = tw.y + TOWER_HEIGHT - 1.2;
+    assert.ok(
+      Math.abs(s2.spawn.y - capY) < 0.5,
+      `spawn must be authored cap capY=${capY.toFixed(2)} got=${s2.spawn.y.toFixed(2)}`,
+    );
+    assert.ok(
+      Math.abs(s2.player.y - s2.spawn.y) < 0.5,
+      `player must stand on resolved spawn player.y=${s2.player.y.toFixed(2)} spawn.y=${s2.spawn.y.toFixed(2)}`,
+    );
+    assert.ok(
+      s2.player.y > ground + 20,
+      `player not buried/float mid-shaft y=${s2.player.y.toFixed(2)} ground=${ground.toFixed(2)}`,
+    );
+  });
+
+  it("unknown checkpoint id stands on terrain at xz (not a 48m window)", () => {
+    const store = memoryStorage();
+    const s = new Sim(store);
+    s.freshRuntime(false);
+    const env = s.captureSave();
+    env.checkpoint = { id: "legacy-camp-9", x: 40, y: 999, z: 50 };
+    env.player.x = 40;
+    env.player.z = 50;
+    env.player.y = 999;
+    writeSave(store, env);
+    const s2 = new Sim(store);
+    s2.continueSave();
+    const g = s2.heightFn(40, 50);
+    assert.ok(
+      Math.abs(s2.spawn.y - g) < 0.5,
+      `unknown id must use terrain spawn.y=${s2.spawn.y.toFixed(2)} ground=${g.toFixed(2)}`,
+    );
+    assert.ok(
+      Math.abs(s2.player.y - g) < 1.5,
+      `player on terrain player.y=${s2.player.y.toFixed(2)} ground=${g.toFixed(2)}`,
+    );
+  });
 });
