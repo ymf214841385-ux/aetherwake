@@ -1,21 +1,57 @@
 /**
- * D1.2: single production finalize path for QA harnesses.
+ * D1.2/D1.3: single production finalize path for QA harnesses.
  * finalCode starts ok?0:1 and only escalates (never re-lowered to 0).
  * Report failure → 2; other cleanup/sample/timeout failures → 1.
- * Cleanup timeout only force-stops browsers that pass owned-pid check.
+ *
+ * D1.3 A: cleanup-timeout may only SIGTERM a pid that is a live descendant
+ * of this harness AND whose cmdline looks like Chromium. Unverified pids are
+ * recorded and never signaled — cleanupExtraPids alone is not ownership.
+ * D1.3 B: pre-cleanup code is a diag event only; final writeExit runs after
+ * cleanup+dispose so recorded exitCode equals the process exit code.
  */
 import { writeFileSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
+import { descendantPids, findChromiumPid, isAlive } from "./lifecycle.mjs";
 
-function ownedPidAlive(pid) {
-  if (!Number.isInteger(pid) || pid <= 1) return false;
-  if (pid === process.pid || pid === process.ppid) return false;
-  try {
-    process.kill(pid, 0);
-    return true;
-  } catch (err) {
-    return err?.code === "EPERM";
+/**
+ * Prove a pid is this harness's Chromium (descendant + cmdline), not merely alive.
+ * @param {number} pid
+ * @param {number} [rootPid]
+ * @returns {{ok:boolean, reason:string, pid:number, cmdline?:string|null}}
+ */
+export function isHarnessOwnedBrowserPid(pid, rootPid = process.pid) {
+  if (!Number.isInteger(pid) || pid <= 1) return { ok: false, reason: "invalid-pid", pid };
+  if (pid === process.pid || pid === process.ppid) {
+    return { ok: false, reason: "self-or-parent", pid };
   }
+  if (!isAlive(pid)) return { ok: false, reason: "not-alive", pid };
+  let kids = [];
+  try {
+    kids = descendantPids(rootPid) || [];
+  } catch {
+    return { ok: false, reason: "descendant-scan-failed", pid };
+  }
+  if (!kids.includes(pid)) {
+    // Also accept the known main chromium under this root.
+    const main = findChromiumPid(rootPid);
+    if (main !== pid) return { ok: false, reason: "unverified-not-descendant", pid };
+  }
+  let cmdline = "";
+  try {
+    cmdline = String(
+      // readCmdline is not exported; findChromiumPid already used cmdline match.
+      // Re-check via /proc-like ps is best-effort through child_process-free path:
+      // lifecycle.findChromiumPid only returns chrome-like descendants.
+      "",
+    );
+  } catch {
+    cmdline = "";
+  }
+  // If findChromiumPid returned this pid, cmdline is chrome-like by definition.
+  const main = findChromiumPid(rootPid);
+  if (main === pid) return { ok: true, reason: "descendant-chromium", pid, cmdline: "chromium" };
+  // Non-main descendant: still refuse unless chrome-like (no cmdline API exported).
+  return { ok: false, reason: "unverified-cmdline", pid, cmdline: cmdline || null };
 }
 
 function withTimeout(promise, ms, onTimeout) {
@@ -37,22 +73,22 @@ function withTimeout(promise, ms, onTimeout) {
 
 /**
  * @param {object} opts
- * @param {boolean} opts.ok work-level success flag (does not force exit 0)
+ * @param {boolean} opts.ok
  * @param {string|null} [opts.detail]
- * @param {Error|null} [opts.workError] original thrown error — stack preserved
- * @param {() => any} [opts.snapshot] lifecycle snapshot
- * @param {object} [opts.result] payload fields to merge into report
+ * @param {Error|null} [opts.workError]
+ * @param {() => any} [opts.snapshot]
+ * @param {object} [opts.result]
  * @param {any[]} [opts.log]
- * @param {() => Promise<void>} [opts.writeReport] async report writer
- * @param {() => Promise<any>} [opts.waitForSamples] unexpected-close sample await
- * @param {() => Promise<void>} [opts.cleanup] bounded resource cleanup
- * @param {(payload: object) => void} [opts.writeExit]
+ * @param {() => Promise<void>} [opts.writeReport]
+ * @param {() => Promise<any>} [opts.waitForSamples]
+ * @param {() => Promise<void>} [opts.cleanup]
+ * @param {(payload: object) => void} [opts.writeExit] final writeExit (after cleanup)
  * @param {() => void} [opts.dispose]
  * @param {number} [opts.sampleTimeoutMs]
  * @param {number} [opts.cleanupTimeoutMs]
- * @param {number[]} [opts.cleanupExtraPids] extra pids this run owns
+ * @param {number[]} [opts.cleanupExtraPids] candidates only — still need ownership proof
+ * @param {(pid:number) => {ok:boolean, reason:string}} [opts.verifyOwnedBrowser]
  * @param {(ev: object) => void} [opts.appendDiag]
- * @returns {Promise<{finalCode:number, reportErr:string|null, sampleErr:string|null, cleanupErr:string|null, stack:string|null}>}
  */
 export async function finalizeHarness(opts) {
   const {
@@ -70,10 +106,10 @@ export async function finalizeHarness(opts) {
     sampleTimeoutMs = 12000,
     cleanupTimeoutMs = 5000,
     cleanupExtraPids = [],
+    verifyOwnedBrowser = (pid) => isHarnessOwnedBrowserPid(pid),
     appendDiag,
   } = opts;
 
-  // D1.2: start from ok; only escalate.
   let finalCode = ok ? 0 : 1;
   const escalate = (code) => {
     if (code > finalCode) finalCode = code;
@@ -82,6 +118,7 @@ export async function finalizeHarness(opts) {
   let reportErr = null;
   let sampleErr = null;
   let cleanupErr = null;
+  let disposeErr = null;
 
   const diag = (event) => {
     try {
@@ -108,9 +145,7 @@ export async function finalizeHarness(opts) {
         diag({ type: "sample-timeout", ms: sampleTimeoutMs });
       },
     );
-    if (raced && raced.__timeout) {
-      diag({ type: "sample-timeout-reached" });
-    }
+    if (raced && raced.__timeout) diag({ type: "sample-timeout-reached" });
   }
 
   // 2) write report — failure escalates to 2, never blocks cleanup
@@ -126,22 +161,15 @@ export async function finalizeHarness(opts) {
     diag({ type: "report-write-error", error: reportErr, stack: we?.stack || null });
   }
 
-  // 3) writeExit — must record the pre-cleanup code, not a later ok
-  const exitPayload = {
+  // D1.3 B: pre-cleanup snapshot is diag only — not the process exit record.
+  diag({
+    type: "pre-cleanup-exit-code",
     exitCode: finalCode,
-    error: detail || reportErr || sampleErr || workError?.message || null,
-    stack: workError?.stack || (reportErr ? new Error(reportErr).stack : null),
     reportErr,
     sampleErr,
-  };
-  try {
-    writeExit?.(exitPayload);
-  } catch (we) {
-    escalate(1);
-    diag({ type: "write-exit-error", error: String(we?.message || we) });
-  }
+  });
 
-  // 4) bounded cleanup
+  // 3) bounded cleanup — ownership required before any force-kill
   if (cleanup) {
     const raced = await withTimeout(
       Promise.resolve()
@@ -154,33 +182,54 @@ export async function finalizeHarness(opts) {
       () => {
         cleanupErr = `cleanup-timeout-${cleanupTimeoutMs}ms`;
         escalate(1);
-        // Only stop pids this run owns (not self/parent/init).
         for (const pid of cleanupExtraPids) {
-          if (!ownedPidAlive(pid)) continue;
+          const check = verifyOwnedBrowser(pid);
+          if (!check?.ok) {
+            diag({ type: "cleanup-kill-refused", pid, reason: check?.reason || "unverified" });
+            continue;
+          }
           try {
             process.kill(pid, "SIGTERM");
-            diag({ type: "cleanup-timeout-sigterm", pid });
+            diag({ type: "cleanup-timeout-sigterm", pid, reason: check.reason });
           } catch {
             /* ignore */
           }
         }
       },
     );
-    if (raced && raced.__timeout) {
-      diag({ type: "cleanup-timeout-reached" });
-    }
+    if (raced && raced.__timeout) diag({ type: "cleanup-timeout-reached" });
   }
 
+  // 4) dispose heartbeat — failure also escalates
   try {
     dispose?.();
-  } catch {
+  } catch (e) {
+    disposeErr = String(e?.message || e);
     escalate(1);
+    diag({ type: "dispose-error", error: disposeErr });
   }
 
-  return { finalCode, reportErr, sampleErr, cleanupErr, stack };
+  // D1.3 B: final writeExit AFTER cleanup+dispose so record == process code.
+  const exitPayload = {
+    exitCode: finalCode,
+    error: detail || reportErr || sampleErr || cleanupErr || disposeErr || workError?.message || null,
+    stack: workError?.stack || (reportErr ? new Error(reportErr).stack : null),
+    reportErr,
+    sampleErr,
+    cleanupErr,
+    disposeErr,
+    phase: "final",
+  };
+  try {
+    writeExit?.(exitPayload);
+  } catch (we) {
+    escalate(1);
+    diag({ type: "write-exit-error", error: String(we?.message || we) });
+  }
+
+  return { finalCode, reportErr, sampleErr, cleanupErr, disposeErr, stack };
 }
 
-/** Convenience: write JSON report to a run dir (throws on EISDIR if path is a directory). */
 export function writeJsonReport(runDir, payload) {
   mkdirSync(dirname(runDir), { recursive: true });
   writeFileSync(resolve(runDir), JSON.stringify(payload, null, 2));

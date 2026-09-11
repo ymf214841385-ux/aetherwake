@@ -39,7 +39,9 @@ let cleanupRan = false;
 
 const workError =
   caseName === "throw" ? new Error("work-throw-d12") : null;
-const ok = caseName === "ok-report-fail" ? true : caseName !== "throw";
+const ok = caseName === "ok-report-fail" || caseName === "cleanup-throw" || caseName === "cleanup-timeout"
+  ? true
+  : caseName !== "throw";
 
 const fin = await finalizeHarness({
   ok,
@@ -49,7 +51,6 @@ const fin = await finalizeHarness({
   log: [{ t: Date.now(), m: "case " + caseName }],
   writeReport: async (payload) => {
     if (caseName === "ok-report-fail") {
-      // Path is a directory → EISDIR. Must escalate to 2, not exit 0.
       writeFileSync(runDir, JSON.stringify(payload));
       return;
     }
@@ -61,6 +62,13 @@ const fin = await finalizeHarness({
   },
   cleanup: async () => {
     cleanupRan = true;
+    if (caseName === "cleanup-throw") {
+      // Leave browser open; finalize must still record non-zero after dispose.
+      throw new Error("cleanup-refused-d13");
+    }
+    if (caseName === "cleanup-timeout") {
+      await new Promise((r) => setTimeout(r, 8000));
+    }
     await context.close();
     await browser.close();
   },
@@ -69,7 +77,7 @@ const fin = await finalizeHarness({
   },
   dispose: () => clearInterval(hb),
   sampleTimeoutMs: 3000,
-  cleanupTimeoutMs: 4000,
+  cleanupTimeoutMs: 2000,
   cleanupExtraPids: browserPid ? [browserPid] : [],
 });
 
@@ -188,6 +196,57 @@ describe("finalizeHarness real browser contract (D1.2)", () => {
     assert.equal(report.caseName, "ok");
     assert.ok(r.done.samplesAwaited);
     rmSync(r.runDir, { recursive: true, force: true });
+  });
+
+  it("cleanup throw: process code and final writeExit both non-zero (D1.3 B)", async () => {
+    const r = await runCase("cleanup-throw");
+    assert.equal(r.timedOut, false, r.stderr);
+    assert.ok(r.done, r.stdout);
+    assert.notEqual(r.code, 0, "cleanup throw must not exit 0");
+    const exitRaw = JSON.parse(
+      await import("node:fs").then((fs) => fs.readFileSync(join(r.runDir, "write-exit.json"), "utf8")),
+    );
+    assert.equal(exitRaw.phase, "final");
+    assert.equal(exitRaw.exitCode, r.code, "recorded exitCode must match process code");
+    assert.match(String(exitRaw.cleanupErr || exitRaw.error || ""), /cleanup-refused-d13/);
+    rmSync(r.runDir, { recursive: true, force: true });
+  });
+
+  it("cleanup timeout: escalates; writeExit final equals process code", async () => {
+    const r = await runCase("cleanup-timeout");
+    assert.equal(r.timedOut, false, r.stderr);
+    assert.ok(r.done, r.stdout);
+    assert.notEqual(r.code, 0);
+    const exitRaw = JSON.parse(
+      await import("node:fs").then((fs) => fs.readFileSync(join(r.runDir, "write-exit.json"), "utf8")),
+    );
+    assert.equal(exitRaw.exitCode, r.code);
+    assert.match(String(exitRaw.cleanupErr || ""), /cleanup-timeout/);
+    await new Promise((res) => setTimeout(res, 500));
+    // Owned chromium should have been SIGTERM'd after unverified-check.
+    if (r.done.browserPid) {
+      assert.equal(isAlive(r.done.browserPid), false, `chromium ${r.done.browserPid} still alive after timeout kill`);
+    }
+    rmSync(r.runDir, { recursive: true, force: true });
+  });
+
+  it("unrelated live child is not treated as owned browser (no signal)", async () => {
+    const { spawn } = await import("node:child_process");
+    const { isHarnessOwnedBrowserPid } = await import("./finalize-harness.mjs");
+    const sleeper = spawn("sleep", ["30"], { stdio: "ignore" });
+    try {
+      assert.ok(sleeper.pid);
+      const check = isHarnessOwnedBrowserPid(sleeper.pid, process.pid);
+      assert.equal(check.ok, false);
+      assert.match(String(check.reason), /unverified|invalid|self-or-parent/);
+      assert.ok(isAlive(sleeper.pid), "refusal must not kill the sleeper");
+    } finally {
+      try {
+        sleeper.kill("SIGTERM");
+      } catch {
+        /* ignore */
+      }
+    }
   });
 
   it("boss-from-sealed calls finalizeHarness and exits fin.finalCode; no flushed=", async () => {
