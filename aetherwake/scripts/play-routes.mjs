@@ -1208,15 +1208,19 @@ async function cookPepper() {
   note("cook pepper at camp-a (meal kept for crown frost)");
   const before = await read();
   const mealsBefore = before?.meals?.length ?? 0;
-  // p04: bee-line 43.6,50.8 from dawn-leave stuck climbing at 8.9,73.2.
-  // Walk the south corridor first, then the fire pad.
+  // p04/p04b: from dawn-leave, bee-line south sticks on the west face at
+  // ~(8,73) climbing/airborne. First step onto open ground NE of dawn.
+  if (before && Math.hypot(before.x - 9, before.z - 73) < 18) {
+    note("camp-a: recover from dawn west face via (16,80)");
+    await goTo(16, 80, 14000, { arrive: 3.2, sprint: true, label: "dawn-open" });
+  }
   await follow(
     [
-      { x: 12, z: 60 },
-      { x: 28, z: 54 },
+      { x: 16, z: 70 },
+      { x: 28, z: 56 },
       { x: 43.6, z: 50.8 },
     ],
-    35000,
+    40000,
     2.5,
   );
   let s = await goTo(POI.campA.x, POI.campA.z, 15000, { arrive: 2.0, sprint: false, label: "fire" });
@@ -1243,7 +1247,6 @@ async function cookPepper() {
     `after cook spicy=${s?.spicy} meals=${mealsAfter}/${mealsBefore} opened=${opened} cooked=${cooked} mode=${s?.mode} at ${s?.x?.toFixed?.(1)},${s?.z?.toFixed?.(1)}`,
   );
   if (!cooked) {
-    // Do not pretend success — crown frost needs a real meal.
     note("cook FAILED — will not treat after-cook as spicy ready");
   }
 }
