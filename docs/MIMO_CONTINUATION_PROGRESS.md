@@ -395,3 +395,24 @@ npm run test:game    # 170 pass / 0 fail
 - reposition (6,-4) 后仍 blocked → 初版循环刷日志；已 **一次后 break**（855800b）
 - **未**完成 3 轮反击 / 击杀 / ending
 - 证据：`runs/d3-play-routes-20260912-044659/first-segment.txt`
+
+---
+
+## 批次 16 — D3.1 reposition arrive 0.5
+
+### 修复（9e059d6）
+- 共用 `executeLosReposition`：目标(6,-4) **arrive:0.5 sprint:false**
+- 用生产 `navigationOutcome` 回归：旧 arrive 3.2 在 2.61m 误判 arrived
+- 记录起止/位移/耗时/nav/blocker；一次预算；失败即停
+
+### 实跑（PID 18701，headed，已结束）
+- seal 路径完整：dawn+四祠+crown
+- **swing#1–2 hit 20→16.4**
+- reposition：**真实走到** (6.05,-4.36) targetDist1=0.36 displacement=3.62 arrived=true
+- **blockerAfter 仍为 citadel-wall-0-11-e** → ok=false 短轨迹停止
+- 证据：`runs/d31-play-routes-20260912-064544/first-segment.txt`
+- **未**完成 3 轮反击 / 击杀 / ending
+
+### 事实（不自行扩方案）
+- arrive 0.5 已修「假到达」
+- 当前几何下 **(6,-4) 并未解除** 对 boss(10.6,0.5) 的东翼墙 LOS

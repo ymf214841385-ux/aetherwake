@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "pid": 18701,
+  "name": "play-routes",
+  "logFile": "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/.grok/durable-play-routes-18701.log",
+  "pidFile": "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/.grok/durable-play-routes-18701.pid",
+  "evidenceLog": "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/play-routes-run.log",
+  "heartbeatFile": "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/.grok/heartbeat-18701.json",
+  "exitFile": "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/.grok/exit-18701.json",
+  "argv": [
+    "/opt/homebrew/Cellar/node/25.9.0_3/bin/node",
+    "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/scripts/play-routes.mjs"
+  ],
+  "qaServer": "preview",
+  "headed": true
+}
