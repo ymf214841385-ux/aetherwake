@@ -259,3 +259,23 @@ npm run test:game    # 170 pass / 0 fail
 - `boss-from-sealed.mjs`：默认 **tower-mere** → 吃辣炒椒 → 补 crown → 同路下山 → `sim.save()` 验 v2.player → citadelFightStep
 - **sim.save() 为程序调用**，非 UI 保存验收
 - durable PID **98787** 启动中
+
+---
+
+## 批次 10 — 99242 诊断口径 + 正常输入约束还原
+
+### 99242（诊断，非 normal-input 验收）
+- 使用过 `sim.closeOverlay()` 与 DOM `.click()` 关袋/吃料理 — **违反正常输入**
+- **不杀**健康诊断 run；结果 **不得** 记 Boss 击杀/通过
+- 已到 crown approach (38.5,34.5,-90.9)
+
+### 约束还原（boss-from-sealed）
+- 禁用 `sim.closeOverlay` / DOM button.click
+- 吃料理：`getByRole('button', {name:/辣炒椒/})` **Playwright click**
+- 关袋：再按 **Tab**（`a.bag && inventory → playing`；Escape 会进 paused）
+- 验收：meals 数、spicy、mode=playing 打印（不只 clicked）
+- crown 点亮后 **leaveTower 径向离塔**（95073 防摔）
+
+### 下一步
+- 99242 结束后 **只启动一次** 修正后的 normal-input 专项
+- Boss 击杀仍未验收

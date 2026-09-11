@@ -110,6 +110,8 @@ async function read() {
       sealOpen: typeof sim.sealIsOpen === "function" ? sim.sealIsOpen() : false,
       attackPhase: sim.attack?.phase,
       dodgeCd: sim.player.dodgeCd,
+      spicy: sim.player.spicy,
+      meals: Array.isArray(sim.meals) ? sim.meals.map((m) => ({ id: m.id, name: m.name })) : [],
       boss: boss
         ? {
             x: +boss.x.toFixed(2),
@@ -212,84 +214,133 @@ try {
   note(`restore ${JSON.stringify(result.restore)}`);
   result.shots = [await shot("boss-sealed-boot.png")];
 
-  // Eat stored spicy meal (95073: eat before crown frost).
-  await page.keyboard.press("Tab");
-  await wait(300);
-  const mealBtn = page.locator("button", { name: /辣炒椒/ });
-  if ((await mealBtn.count()) > 0) {
-    await mealBtn.first().click();
-    note("ate 辣炒椒 from bag");
-  } else {
-    note("no 辣炒椒 button in bag");
-  }
-  await wait(200);
+  // Normal-input eat: Tab opens bag (a.bag). Meal onClick is sim.eat only —
+  // bag stays inventory until Tab again (sim.ts: a.bag && inventory → playing).
+  // No sim.closeOverlay / no DOM .click() fallback (those are not pointer input).
+  const mealsBefore = s?.meals?.length ?? 0;
+  const spicyBefore = s?.spicy ?? 0;
+  note(`pre-eat meals=${mealsBefore} spicy=${spicyBefore} mode=${s?.mode}`);
   try {
-    await page.keyboard.press("Tab");
+    await page.locator("canvas").focus({ timeout: 2000 });
   } catch {
     /* ignore */
   }
-  await wait(200);
+  await page.keyboard.press("Tab");
+  await wait(500);
   s = await read();
-  note(`after eat spicy-hp=${s?.hp} towers=${s?.towers}`);
+  note(`bag mode=${s?.mode} meals=${s?.meals?.length}`);
+  if (s?.mode === "inventory") {
+    // Accessible name is "辣炒椒+2 心"; regex substring works with Playwright.
+    const meal = page.getByRole("button", { name: /辣炒椒/ });
+    if ((await meal.count()) > 0) {
+      await meal.first().click({ timeout: 5000 });
+      note("Playwright click 辣炒椒");
+    } else {
+      note("NO 辣炒椒 button in inventory DOM");
+    }
+    await wait(300);
+    // Close bag with real Tab (a.bag), not Escape (Escape → paused) or sim API.
+    await page.keyboard.press("Tab");
+    await wait(300);
+  }
+  s = await read();
+  const mealsAfter = s?.meals?.length ?? 0;
+  const spicyAfter = s?.spicy ?? 0;
+  const ate = mealsAfter < mealsBefore || spicyAfter > spicyBefore;
+  note(
+    `after eat meals=${mealsAfter}/${mealsBefore} spicy=${spicyAfter}/${spicyBefore} mode=${s?.mode} hp=${s?.hp} ate=${ate}`,
+  );
+  if (!ate) note("eat NOT verified — meals/spicy unchanged");
+  if (s?.mode !== "playing") {
+    note(`mode=${s?.mode} after Tab — bag did not return to playing`);
+  }
 
-  // tower-mere save: climb crown first (same policy as play-routes).
+  // tower-mere save: walk 95073 crown legs, then climb.
   if (s && !s.towers?.includes("crown")) {
     const crown = { x: 48, z: -128, y: 16.8 };
-    note("climb crown (mere save has 4 orbs + meal; need 3rd tower)");
-    const approach = towerApproachPoint(crown, "crown");
-    s = await goTo(approach.x, approach.z, 80000, 2.2);
-    note(`crown approach at ${s?.x?.toFixed?.(1)},${s?.y?.toFixed?.(1)},${s?.z?.toFixed?.(1)} state=${s?.state}`);
-    const baseY = authoredBaseY("crown", crown.y);
-    let burstUntil = Date.now() + 1200;
-    const deadline = Date.now() + 240000;
-    while (Date.now() < deadline) {
-      s = await read();
-      if (!s || s.mode !== "playing") break;
-      if (s.towers?.includes("crown")) {
-        note(`crown lit towers=${s.towers}`);
-        break;
-      }
-      if (s.mode === "dead" || s.state === "dead") {
-        result.deaths += 1;
-        note("dead climbing crown");
-        break;
-      }
-      const action = climbTickPolicy(s, {
-        id: "crown",
-        tw: crown,
-        baseY,
-        burstUntil,
-        now: Date.now(),
-      });
-      if (action.type === "activate") {
-        await page.keyboard.press("KeyE");
-        await wait(300);
-        continue;
-      }
-      if (action.type === "rest") {
-        await wait(380);
-        continue;
-      }
-      if (action.type === "regrab") {
-        const grabKeys = keysForAction(action);
-        for (const k of grabKeys) await page.keyboard.down(k);
-        await wait(900);
-        for (const k of [...grabKeys].reverse()) await page.keyboard.up(k).catch(() => {});
-        burstUntil = Date.now() + 1200;
-        continue;
-      }
-      if (action.type === "reapproach") {
-        for (const wp of reapproachWaypoints(s, crown, "crown")) {
-          await goTo(wp.x, wp.z, 12000, 2.4);
-        }
-        burstUntil = Date.now() + 1200;
-        continue;
-      }
-      // climb
-      await hold(["KeyW"], 200);
+    note("walk crown legs then climb (mere save has 4 orbs + meal)");
+    for (const wp of [
+      { x: -80, z: 0 },
+      { x: -40, z: -20 },
+      { x: 24, z: -40 },
+      { x: 36, z: -90 },
+      { x: 48, z: -122 },
+    ]) {
+      s = await goTo(wp.x, wp.z, 50000, 4);
+      note(`crown-leg ${wp.x},${wp.z} at ${s?.x?.toFixed?.(1)},${s?.y?.toFixed?.(1)},${s?.z?.toFixed?.(1)} hp=${s?.hp}`);
+      if (!s || s.mode !== "playing" || s.mode === "dead" || s.state === "dead") break;
     }
-    s = await read();
-    note(`after crown climb towers=${s?.towers} y=${s?.y} seal=${s?.sealOpen}`);
+    if (s && s.mode === "playing" && s.state !== "dead") {
+      const approach = towerApproachPoint(crown, "crown");
+      s = await goTo(approach.x, approach.z, 30000, 2.2);
+      note(`crown approach at ${s?.x?.toFixed?.(1)},${s?.y?.toFixed?.(1)},${s?.z?.toFixed?.(1)} state=${s?.state}`);
+      const baseY = authoredBaseY("crown", crown.y);
+      let burstUntil = Date.now() + 1200;
+      const deadline = Date.now() + 240000;
+      while (Date.now() < deadline) {
+        s = await read();
+        if (!s || s.mode !== "playing") break;
+        if (s.towers?.includes("crown")) {
+          note(`crown lit towers=${s.towers}`);
+          break;
+        }
+        if (s.mode === "dead" || s.state === "dead") {
+          result.deaths += 1;
+          note("dead climbing crown");
+          break;
+        }
+        const action = climbTickPolicy(s, {
+          id: "crown",
+          tw: crown,
+          baseY,
+          burstUntil,
+          now: Date.now(),
+        });
+        if (action.type === "activate") {
+          await page.keyboard.press("KeyE");
+          await wait(300);
+          continue;
+        }
+        if (action.type === "rest") {
+          await wait(380);
+          continue;
+        }
+        if (action.type === "regrab") {
+          const grabKeys = keysForAction(action);
+          for (const k of grabKeys) await page.keyboard.down(k);
+          await wait(900);
+          for (const k of [...grabKeys].reverse()) await page.keyboard.up(k).catch(() => {});
+          burstUntil = Date.now() + 1200;
+          continue;
+        }
+        if (action.type === "reapproach") {
+          for (const wp of reapproachWaypoints(s, crown, "crown")) {
+            await goTo(wp.x, wp.z, 12000, 2.4);
+          }
+          burstUntil = Date.now() + 1200;
+          continue;
+        }
+        await hold(["KeyW"], 200);
+      }
+      s = await read();
+      note(`after crown climb towers=${s?.towers} y=${s?.y} seal=${s?.sealOpen}`);
+      // 95073 leaveTower: radial off the shaft before descent (anti fall-damage).
+      if (s && s.towers?.includes("crown") && s.y > 40) {
+        const tw = { x: 48, z: -128 };
+        const dx = s.x - tw.x;
+        const dz = s.z - tw.z;
+        const len = Math.hypot(dx, dz) || 1;
+        const out = { x: tw.x + (dx / len) * 18, z: tw.z + (dz / len) * 18 };
+        note(`crown leave radially to ${out.x.toFixed(1)},${out.z.toFixed(1)} from y=${s.y.toFixed(1)} ${s.state}`);
+        if (s.state === "climbing") {
+          await hold(["KeyC"], 200);
+          await wait(250);
+        }
+        await lookToward({ read, hold }, out.x, out.z, { tol: 0.3, maxPulses: 6, minPulseMs: 40, maxPulseMs: 200 });
+        s = await goTo(out.x, out.z, 20000, 2.6);
+        note(`crown left at ${s?.x?.toFixed?.(1)},${s?.y?.toFixed?.(1)},${s?.z?.toFixed?.(1)} hp=${s?.hp}`);
+      }
+    }
   }
 
   if (!s?.sealOpen) {
