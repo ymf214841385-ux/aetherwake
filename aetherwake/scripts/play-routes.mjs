@@ -1409,6 +1409,13 @@ async function fightBoss() {
     const decision = step.decision;
     if (step.act === "reposition") {
       // D3: LOS blocked by citadel wing wall — walk gate interior, do not swing.
+      // One attempt only; still-blocked ends the short trajectory (no 172 spam).
+      if (repositionUsed >= 1) {
+        note(
+          `citadel reposition already used still-blocked wall=${s.blockerId} — end short trajectory`,
+        );
+        break;
+      }
       note(
         `citadel reposition los-blocked wall=${s.blockerId || "?"} player=${s.x?.toFixed?.(1)},${s.y?.toFixed?.(1)},${s.z?.toFixed?.(1)} boss=${s.boss.x?.toFixed?.(1)},${s.boss.z?.toFixed?.(1)} d=${dist.toFixed?.(1)} t=${Date.now()}`,
       );
@@ -1417,9 +1424,9 @@ async function fightBoss() {
       s = await read();
       if (s?.bossMeleeBlocked) {
         note(`citadel reposition still blocked wall=${s.blockerId} — short trajectory stop`);
-      } else {
-        note(`citadel reposition LOS clear wall=${s?.blockerId || "none"}`);
+        break;
       }
+      note(`citadel reposition LOS clear wall=${s?.blockerId || "none"}`);
       missStreak = 0;
       continue;
     }
