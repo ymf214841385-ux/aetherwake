@@ -629,6 +629,18 @@ export class Sim {
     return { blocked, blockerId };
   }
 
+  /**
+   * Readonly mirror of handleLocomotion dodge acceptance (sim.ts ~926).
+   * QA must use this — do not relax grounded/cd/stamina gates.
+   */
+  canAcceptDodge(p: { state?: string | null; dodgeCd?: number | null; stamina?: number | null }) {
+    return Boolean(
+      (p?.dodgeCd ?? 1) <= 0 &&
+        p?.state === "grounded" &&
+        (p?.stamina ?? 0) > DODGE_STAMINA,
+    );
+  }
+
   captureSave(): SaveEnvelope {
     // P0-3: if autosave fires inside a shrine, store the overworld entrance
     // pose — shrine-local coords are not a recoverable overworld spawn.

@@ -303,6 +303,18 @@ async function read() {
           equippedId: sim.equippedId ?? null,
           arrows: sim.arrows,
           dodgeCd: sim.player.dodgeCd,
+          stamina: sim.player.stamina,
+          dodgeT: sim.player.dodgeT ?? 0,
+          canDodge:
+            typeof sim.canAcceptDodge === "function"
+              ? sim.canAcceptDodge({
+                  state: sim.player.state,
+                  dodgeCd: sim.player.dodgeCd,
+                  stamina: sim.player.stamina,
+                })
+              : sim.player.dodgeCd <= 0 &&
+                sim.player.state === "grounded" &&
+                sim.player.stamina > 18,
           invuln: sim.player.invuln,
           sealOpen: typeof sim.sealIsOpen === "function" ? sim.sealIsOpen() : false,
           boss: (() => {
@@ -1323,7 +1335,41 @@ async function fightBoss() {
   let missStreak = 0;
   let lastMissKey = null;
   let repositionUsed = 0;
+  /** D4: first death stops the fight — no auto-revive resumePlay. */
+  let fightStoppedOnDeath = false;
+  /** D4: 10s @100ms ring of live fight state. */
+  const fightDiag = [];
+  const fightDiagT0 = Date.now();
+  let lastBossHpForStall = null;
+  let lastBossHpDropAt = Date.now();
   while (Date.now() < end) {
+    // D4: detect death on raw read BEFORE resumePlay (resumePlay auto-revives).
+    let raw = await read();
+    if (
+      raw &&
+      (raw.mode === "dead" || raw.state === "dead" || (Number.isFinite(raw.hp) && raw.hp <= 0))
+    ) {
+      deaths += 1;
+      fightStoppedOnDeath = true;
+      note(
+        `citadel FIRST-DEATH stop n=${deaths} t=${Date.now()} hp=${raw.hp} state=${raw.state} mode=${raw.mode} player=${raw.x?.toFixed?.(2)},${raw.y?.toFixed?.(2)},${raw.z?.toFixed?.(2)} boss=${raw.boss ? `${raw.boss.x?.toFixed?.(2)},${raw.boss.z?.toFixed?.(2)} phase=${raw.boss.phase}` : "none"} stamina=${raw.stamina} dodgeCd=${raw.dodgeCd} dodgeT=${raw.dodgeT} — no resumePlay`,
+      );
+      const deathRunId = process.env.QA_RUN_ID || String(Date.now());
+      writeFileSync(
+        resolve(outDir, `citadel-first-death-${deathRunId}.json`),
+        JSON.stringify(
+          {
+            t: Date.now(),
+            deaths,
+            snap: raw,
+            diag: fightDiag.slice(-100),
+          },
+          null,
+          2,
+        ),
+      );
+      break;
+    }
     s = await resumePlay();
     if (!s) break;
     if (s.bossDead || s.mode === "ending") break;
@@ -1331,11 +1377,51 @@ async function fightBoss() {
       sealClosedAttempt = true;
       break;
     }
+    // Re-check death after resume overlay handling.
     if (s.mode === "dead" || s.state === "dead" || (Number.isFinite(s.hp) && s.hp <= 0)) {
-      // 95073: swing=30 playerHp=0 state=dead while mode still playing — count it.
       deaths += 1;
-      note(`citadel player dead n=${deaths} hp=${s.hp} state=${s.state} mode=${s.mode}; ordinary respawn`);
-      continue;
+      fightStoppedOnDeath = true;
+      note(`citadel post-resume dead n=${deaths} hp=${s.hp} — stop`);
+      break;
+    }
+    // D4 ring diagnostic: 10s window @100ms
+    if (Date.now() - fightDiagT0 < 10000 || fightDiag.length < 100) {
+      const bossNow = s.boss;
+      const distNow = bossNow
+        ? +Math.hypot(s.x - bossNow.x, s.z - bossNow.z).toFixed(2)
+        : null;
+      fightDiag.push({
+        t: Date.now(),
+        hp: s.hp,
+        state: s.state,
+        stamina: s.stamina,
+        dodgeCd: s.dodgeCd,
+        dodgeT: s.dodgeT,
+        bossPhase: bossNow?.phase ?? null,
+        phaseT: bossNow?.phaseT ?? null,
+        dist: distNow,
+        bossHp: bossNow?.hp ?? null,
+        canDodge: s.canDodge,
+        bossMeleeBlocked: s.bossMeleeBlocked,
+        blockerId: s.blockerId ?? null,
+      });
+      if (bossNow && Number.isFinite(bossNow.hp)) {
+        if (lastBossHpForStall == null) lastBossHpForStall = bossNow.hp;
+        if (bossNow.hp < lastBossHpForStall - 0.01) {
+          lastBossHpDropAt = Date.now();
+          lastBossHpForStall = bossNow.hp;
+        }
+      }
+      if (Date.now() - lastBossHpDropAt > 15000) {
+        note(
+          `citadel no-boss-hp-drop 15s — short trajectory stop bossHp=${s.boss?.hp}`,
+        );
+        writeFileSync(
+          resolve(outDir, `citadel-no-hp-drop-${process.env.QA_RUN_ID || String(Date.now())}.json`),
+          JSON.stringify({ t: Date.now(), snap: s, diag: fightDiag }, null, 2),
+        );
+        break;
+      }
     }
     const boss = s.boss;
     if (!boss || boss.alive === false) {
@@ -1402,6 +1488,8 @@ async function fightBoss() {
       bossHp: s.boss.hp,
       state: s.state,
       dodgeCd: s.dodgeCd,
+      stamina: s.stamina,
+      canDodge: s.canDodge,
       attackPhase: s.attackPhase,
       faceDot,
       bossMeleeBlocked: Boolean(s.bossMeleeBlocked),
@@ -1441,14 +1529,35 @@ async function fightBoss() {
       continue;
     }
     if (step.act === "dodge") {
-      const before = { x: s.x, y: s.y, z: s.z, dist, state: s.state, grounded: s.grounded, phase: s.boss.phase };
+      const before = {
+        x: s.x,
+        y: s.y,
+        z: s.z,
+        dist,
+        state: s.state,
+        grounded: s.grounded,
+        phase: s.boss.phase,
+        dodgeCd: s.dodgeCd,
+        stamina: s.stamina,
+        dodgeT: s.dodgeT,
+      };
       await hold(["KeyC", ...dodgeKeys], 280);
       s = await read();
       if (!s?.boss) break;
       dist = Math.hypot(s.x - s.boss.x, s.z - s.boss.z);
+      const dodgeStarted = Number(s.dodgeT ?? 0) > 0 || Number(s.dodgeCd ?? 0) > 0.05;
       note(
-        `citadel dodge ${before.x.toFixed(1)},${before.z.toFixed(1)} y=${before.y.toFixed(1)} d=${before.dist.toFixed(1)} ${before.state} phase=${before.phase} → ${s.x.toFixed(1)},${s.z.toFixed(1)} y=${s.y.toFixed(1)} d=${dist.toFixed(1)} ${s.state} grounded=${s.grounded} dy=${(s.y - before.y).toFixed(2)} aim=${dodgeAim.reason} ${dodgeAim.x.toFixed(1)},${dodgeAim.z.toFixed(1)} dodgeCd=${s.dodgeCd?.toFixed?.(2)} bossPhase=${s.boss.phase}`,
+        `citadel dodge ${before.x.toFixed(1)},${before.z.toFixed(1)} y=${before.y.toFixed(1)} d=${before.dist.toFixed(1)} ${before.state} phase=${before.phase} → ${s.x.toFixed(1)},${s.z.toFixed(1)} y=${s.y.toFixed(1)} d=${dist.toFixed(1)} ${s.state} grounded=${s.grounded} dy=${(s.y - before.y).toFixed(2)} aim=${dodgeAim.reason} ${dodgeAim.x.toFixed(1)},${dodgeAim.z.toFixed(1)} dodgeCd=${before.dodgeCd?.toFixed?.(2)}→${s.dodgeCd?.toFixed?.(2)} stamina=${before.stamina?.toFixed?.(1)}→${s.stamina?.toFixed?.(1)} dodgeT=${before.dodgeT ?? 0}→${s.dodgeT ?? 0} started=${dodgeStarted} bossPhase=${s.boss.phase}`,
       );
+      if (!dodgeStarted) {
+        note(`citadel dodge NOT started (sim gate rejected) — do not treat as i-frame`);
+      }
+      if (s.mode === "dead" || s.state === "dead" || (Number.isFinite(s.hp) && s.hp <= 0)) {
+        deaths += 1;
+        fightStoppedOnDeath = true;
+        note(`citadel dead after dodge n=${deaths} hp=${s.hp} — stop`);
+        break;
+      }
       continue;
     }
     if (step.act === "back-off-too-close") {
@@ -1479,6 +1588,14 @@ async function fightBoss() {
     await tryMeleeClick();
     await wait(180);
     s = await read();
+    if (s && (s.mode === "dead" || s.state === "dead" || (Number.isFinite(s.hp) && s.hp <= 0))) {
+      deaths += 1;
+      fightStoppedOnDeath = true;
+      note(
+        `citadel dead after swing n=${deaths} hp=${s.hp} player=${s.x?.toFixed?.(2)},${s.y?.toFixed?.(2)},${s.z?.toFixed?.(2)} — stop no resumePlay`,
+      );
+      break;
+    }
     swings += 1;
     const phaseAfter = s?.attackPhase;
     if (phaseAfter && phaseAfter !== "idle") attackStarts += 1;

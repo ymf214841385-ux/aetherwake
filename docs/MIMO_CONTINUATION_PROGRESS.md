@@ -430,5 +430,5 @@ npm run test:game    # 170 pass / 0 fail
 - seal 全路径：dawn+四祠+crown
 - **reposition ok**：`citadel-wall-0-11-w` → (5.85,-3.88) arrived clear displacement=5.63
 - **swing#1–2 hit 20→16.4**（reposition 后继续命中）
-- 随后 fight 窗口结束，bossHp=16.4 **未击杀**
+- **文档更正（D4）**：该轮并非仅 fight 窗口不足；日志为 **airborne dodge 未发动 → dead → 自动复活赶路耗尽**；`deaths=0` 为漏计假统计
 - 证据：`runs/d32-play-routes-20260912-074802/first-segment.txt`

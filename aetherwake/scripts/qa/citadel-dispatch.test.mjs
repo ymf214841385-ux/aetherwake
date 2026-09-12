@@ -4,7 +4,13 @@
  */
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { bossFightDecision, nextCitadelAction, citadelFightStep, BOSS_MELEE_MAX } from "./boss-fight-policy.mjs";
+import {
+  bossFightDecision,
+  nextCitadelAction,
+  citadelFightStep,
+  canAcceptDodge,
+  BOSS_MELEE_MAX,
+} from "./boss-fight-policy.mjs";
 
 describe("citadel dispatch after dodge (95073)", () => {
   it("after dodge to recover d=6.4 must approach, not swing", () => {
@@ -64,6 +70,7 @@ describe("citadel dispatch after dodge (95073)", () => {
       bossHp: 12.8,
       state: "grounded",
       dodgeCd: 0,
+      stamina: 50,
       attackPhase: "idle",
       faceDot: 1,
     });
@@ -99,5 +106,68 @@ describe("citadel dispatch after dodge (95073)", () => {
     assert.equal(step.act, "reposition");
     assert.equal(step.swing, false);
     assert.match(step.reason, /los-blocked/);
+  });
+
+  it("D4: airborne telegraph does not request dodge (sim would reject)", () => {
+    assert.equal(
+      canAcceptDodge({ state: "airborne", dodgeCd: 0, stamina: 100 }),
+      false,
+    );
+    const step = citadelFightStep({
+      hp: 1.25,
+      dist: 3.0,
+      bossPhase: "windup",
+      bossHp: 18.2,
+      state: "airborne",
+      dodgeCd: 0,
+      stamina: 100,
+      attackPhase: "idle",
+      faceDot: 1,
+    });
+    assert.notEqual(step.act, "dodge", JSON.stringify(step));
+  });
+
+  it("D4: stamina 18 or cd 0.02 does not request dodge", () => {
+    assert.equal(canAcceptDodge({ state: "grounded", dodgeCd: 0, stamina: 18 }), false);
+    assert.equal(canAcceptDodge({ state: "grounded", dodgeCd: 0.02, stamina: 100 }), false);
+    const a = citadelFightStep({
+      hp: 1,
+      dist: 3.0,
+      bossPhase: "windup",
+      bossHp: 18,
+      state: "grounded",
+      dodgeCd: 0,
+      stamina: 18,
+      attackPhase: "idle",
+      faceDot: 1,
+    });
+    assert.notEqual(a.act, "dodge");
+    const b = citadelFightStep({
+      hp: 1,
+      dist: 3.0,
+      bossPhase: "windup",
+      bossHp: 18,
+      state: "grounded",
+      dodgeCd: 0.02,
+      stamina: 100,
+      attackPhase: "idle",
+      faceDot: 1,
+    });
+    assert.notEqual(b.act, "dodge");
+  });
+
+  it("D4: grounded cd0 stamina>18 telegraph still dodges", () => {
+    const step = citadelFightStep({
+      hp: 1,
+      dist: 3.0,
+      bossPhase: "windup",
+      bossHp: 18,
+      state: "grounded",
+      dodgeCd: 0,
+      stamina: 50,
+      attackPhase: "idle",
+      faceDot: 1,
+    });
+    assert.equal(step.act, "dodge");
   });
 });

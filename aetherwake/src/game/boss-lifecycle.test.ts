@@ -516,3 +516,32 @@ describe("P0-3 save location / checkpoint resolve", () => {
     assert.equal(s2.shrine, null);
   });
 });
+
+describe("D4 dodge gate matches production handleLocomotion", () => {
+  it("airborne / cd0.02 / stamina18 reject; grounded cd0 stamina>18 accept", () => {
+    const s = new Sim(memoryStorage());
+    s.freshRuntime(false);
+    assert.equal(s.canAcceptDodge({ state: "grounded", dodgeCd: 0, stamina: 20 }), true);
+    assert.equal(s.canAcceptDodge({ state: "airborne", dodgeCd: 0, stamina: 100 }), false);
+    assert.equal(s.canAcceptDodge({ state: "grounded", dodgeCd: 0.02, stamina: 100 }), false);
+    assert.equal(s.canAcceptDodge({ state: "grounded", dodgeCd: 0, stamina: 18 }), false);
+  });
+
+  it("controlled: airborne KeyC does not start dodge; grounded KeyC does", () => {
+    const s = new Sim(memoryStorage());
+    s.freshRuntime(false);
+    openSeal(s);
+    placePlayer(s, CITADEL_POI.x, CITADEL_POI.z + 7.2);
+    s.player.stamina = 100;
+    s.player.dodgeCd = 0;
+    s.setMove("airborne");
+    s.step(1 / 60, hold({ dodge: true }));
+    assert.equal(s.player.dodgeT, 0, `airborne dodgeT=${s.player.dodgeT}`);
+    s.setMove("grounded");
+    s.player.dodgeCd = 0;
+    s.player.stamina = 100;
+    s.step(1 / 60, hold({ dodge: true }));
+    assert.ok(s.player.dodgeT > 0, `grounded dodgeT=${s.player.dodgeT}`);
+    assert.ok(s.player.dodgeCd > 0);
+  });
+});

@@ -12,6 +12,22 @@ export const BOSS_TELEGRAPH = new Set(["windup", "strike"]);
 /** Low player HP threshold that used to force back-off even in melee. */
 export const LOW_HP = 0.85;
 
+/** DODGE_STAMINA mirror of src/game/params.ts — do not change game limits. */
+export const DODGE_STAMINA = 18;
+
+/**
+ * Shared readonly dodge gate matching sim handleLocomotion.
+ * grounded && cd<=0 && stamina > DODGE_STAMINA.
+ */
+export function canAcceptDodge(s) {
+  return Boolean(
+    s &&
+      (s.dodgeCd ?? 1) <= 0 &&
+      s.state === "grounded" &&
+      (s.stamina ?? 0) > DODGE_STAMINA,
+  );
+}
+
 /**
  * @param {object} s snapshot
  * @param {number} s.hp player hp
@@ -20,29 +36,27 @@ export const LOW_HP = 0.85;
  * @param {number} s.bossHp
  * @param {string} s.state grounded|airborne|...
  * @param {number} s.dodgeCd
+ * @param {number} [s.stamina] real stamina from sim (D4)
+ * @param {boolean} [s.canDodge] optional precomputed gate
  * @param {number} s.attackPhase
  * @param {number} s.faceDot facing alignment 0..1
- * @returns {{action:"back-off"|"dodge"|"swing"|"hold-attack"|"wait-facing"|"approach"|"back-off-too-close", reason:string}}
  */
 export function bossFightDecision(s) {
   const telegraph = BOSS_TELEGRAPH.has(s.bossPhase);
   const inMelee = s.dist >= BOSS_MELEE_MIN && s.dist <= BOSS_MELEE_MAX;
   const lowHp = s.hp < LOW_HP;
+  // D4: only issue dodge when production gate would accept the input.
+  // Airborne / cd 0.02 / stamina<=18 must NOT request dodge (sim ignores it).
+  const dodgeOk = s.canDodge != null ? Boolean(s.canDodge) : canAcceptDodge(s);
 
-  // Telegraph: dodge whenever cooldown is ready — including after our own
-  // dodge left us airborne (kill4 dec#10: windup cd=0 → hold-attack → dead).
-  // I-frames cover the dash; holding into the strike is what killed us.
-  if (telegraph && (s.dodgeCd ?? 0) <= 0.04) {
+  if (telegraph && dodgeOk) {
     return { action: "dodge", reason: "telegraph" };
   }
-  // Telegraph but dodge on cooldown: never swing into the strike (run #64 died).
-  // If already inside boss melee threat and grounded, retreating is safer.
-  // Airborne retreat walked off the west ledge (run 50116: y=3.5 then dead).
+  // Telegraph but cannot dodge (cd / airborne / stamina): normal movement only.
   if (telegraph) {
     if (s.state === "grounded" && s.dist < BOSS_MELEE_MAX + 1.0) {
       return { action: "back-off", reason: `telegraph-cd=${s.dodgeCd} retreat` };
     }
-    // kill4 dec#20: hold at d=0.65 into the hit. Even airborne, leave the body.
     if (s.dist < BOSS_MELEE_MIN) {
       return { action: "back-off-too-close", reason: `telegraph-inside d=${s.dist.toFixed(2)}` };
     }
