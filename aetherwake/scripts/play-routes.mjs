@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { createRouteNavigation, checkFightScope, FightStopError } from "./qa/route-navigation.mjs";
 /**
  * Real-input playthrough. Observes window.__sim but never writes player coords,
  * rewards, or completion flags. Success is the route contract, not "no throw".
@@ -37,7 +38,6 @@ import {
   STILL_SAFE_WAYPOINTS,
   canEnterIntendedShrine,
   enteredShrineMatches,
-  navigationOutcome,
   shrineAltar,
   shrineApproachCandidates,
   shrineApproachPoint,
@@ -49,12 +49,8 @@ import { citadelDodgeAim, citadelOffArena, citadelReturnWaypoints } from "./qa/c
 import { executeLosReposition } from "./qa/los-reposition.mjs";
 import { citadelResumePlan, CITADEL_RESUME_FOCUS, v2MatchesSource } from "./qa/citadel-resume.mjs";
 import {
-  createAbortLatch,
-  createCombatProgressMonitor,
   createFightOrchestrator,
   runCitadelFocusGate,
-  wrapGoToForAbort,
-  wrapHoldForAbort,
 } from "./qa/combat-progress-monitor.mjs";
 import { bossFightDecision, nextCitadelAction, citadelFightStep } from "./qa/boss-fight-policy.mjs";
 
@@ -371,22 +367,18 @@ async function releaseAll() {
   }
 }
 
-async function hold(keys, ms) {
-  ensureOpen();
-  const real = keys.filter((k) => MOVE_CODES.includes(k));
-  for (const k of real) await page.keyboard.down(k);
-  await wait(ms);
-  for (const k of [...real].reverse()) await page.keyboard.up(k);
-}
 
-async function tap(code) {
-  ensureOpen();
-  if (!MOVE_CODES.includes(code)) {
-    note(`refusing non-real key ${code}`);
-    return;
-  }
-  await page.keyboard.press(code);
-}
+
+const { hold, tap, resumePlay, keysToward, lookToward, goTo, follow, leaveShrine, checkedRead } = createRouteNavigation({
+  page, read, wait, ensureOpen, MOVE_CODES, releaseAll, note, clickNamed, clickCanvas,
+  focusPlaySurface, shrineWorldOrigin,
+  state: {
+    get sawPlaying() { return sawPlaying; }, set sawPlaying(value) { sawPlaying = value; },
+    get titleMidRun() { return titleMidRun; }, set titleMidRun(value) { titleMidRun = value; },
+    get lastTitleRecoverAt() { return lastTitleRecoverAt; }, set lastTitleRecoverAt(value) { lastTitleRecoverAt = value; },
+    get last() { return last; }, set last(value) { last = value; },
+  },
+});
 
 async function shot(name) {
   if (page.isClosed()) return null;
@@ -418,14 +410,17 @@ async function clickCanvas() {
   }
 }
 
-async function clickNamed(name) {
+async function clickNamed(name, scope) {
+  checkFightScope(scope);
   const btn = page.getByRole("button", { name });
   try {
     if (await btn.count()) {
+      checkFightScope(scope);
       await btn.first().click({ timeout: 2500 });
       return true;
     }
-  } catch {
+  } catch (err) {
+    if (err instanceof FightStopError) throw err;
     /* overlay may be mid-transition */
   }
   return false;
@@ -445,79 +440,7 @@ async function startGame() {
   return read();
 }
 
-async function resumePlay() {
-  let s = await read();
-  if (!s) return s;
-  if (s.mode === "title") {
-    if (sawPlaying) titleMidRun = true;
-    const now = Date.now();
-    if (now - lastTitleRecoverAt > 2000) {
-      lastTitleRecoverAt = now;
-      if (sawPlaying) {
-        note("title mid-run; continue only (will not start a new file)");
-        await clickNamed("继续旅途");
-      } else {
-        await clickNamed("开始探索");
-      }
-      await wait(350);
-    }
-    await clickCanvas();
-    s = await read();
-    if (s?.mode === "playing") sawPlaying = true;
-    return s;
-  }
-  if (s.mode === "dead") {
-    const btn = page.getByRole("button", { name: "在篝火旁醒来" });
-    if (await btn.count()) await btn.click();
-    await wait(400);
-    return read();
-  }
-  if (s.mode === "dialogue") {
-    const btn = page.getByRole("button", { name: "明白了" });
-    if (await btn.count()) await btn.click();
-    else await tap("Escape");
-    await wait(200);
-    return read();
-  }
-  if (s.mode === "cooking" || s.mode === "inventory" || s.mode === "map" || s.mode === "paused") {
-    const cont = page.getByRole("button", { name: "继续" });
-    if (s.mode === "paused" && (await cont.count())) await cont.click();
-    else {
-      await tap("Escape");
-      await wait(120);
-      const again = await read();
-      if (again?.mode === "paused") {
-        const c2 = page.getByRole("button", { name: "继续" });
-        if (await c2.count()) await c2.click();
-      } else if (again && again.mode !== "playing") {
-        await tap("Escape");
-      }
-    }
-    await wait(160);
-    await clickCanvas();
-    return read();
-  }
-  return s;
-}
 
-function keysToward(s, tx, tz, sprint) {
-  const dx = tx - s.x;
-  const dz = tz - s.z;
-  const fx = -Math.sin(s.camYaw);
-  const fz = -Math.cos(s.camYaw);
-  const rx = Math.cos(s.camYaw);
-  const rz = -Math.sin(s.camYaw);
-  const f = dx * fx + dz * fz;
-  const r = dx * rx + dz * rz;
-  const keys = [];
-  if (f > 0.35) keys.push("KeyW");
-  if (f < -0.35) keys.push("KeyS");
-  if (r > 0.35) keys.push("KeyD");
-  if (r < -0.35) keys.push("KeyA");
-  if (sprint && s.stamina > 8 && s.state !== "climbing") keys.push("ShiftLeft");
-  if (keys.length === 0) keys.push("KeyW");
-  return keys;
-}
 
 function facingDot(s, tx, tz) {
   const dx = tx - s.x;
@@ -528,143 +451,10 @@ function facingDot(s, tx, tz) {
   return (dx * fx + dz * fz) / dist;
 }
 
-async function lookToward(tx, tz) {
-  // Arrow look only. A canvas left-click here starts a melee with stale facing.
-  await focusPlaySurface();
-  for (let i = 0; i < 14; i++) {
-    const s = await read();
-    if (!s) return s;
-    const dx = tx - s.x;
-    const dz = tz - s.z;
-    const want = Math.atan2(-dx, -dz);
-    let err = want - s.camYaw;
-    while (err > Math.PI) err -= Math.PI * 2;
-    while (err < -Math.PI) err += Math.PI * 2;
-    if (Math.abs(err) < 0.14) return s;
-    const key = err > 0 ? "ArrowLeft" : "ArrowRight";
-    await hold([key], 90);
-  }
-  return read();
-}
 
-function attachNav(s, nav) {
-  if (!s) return { nav };
-  s.nav = nav;
-  return s;
-}
 
-async function goTo(tx, tz, ms, { arrive = 2.2, sprint = true, label = "" } = {}) {
-  const end = Date.now() + ms;
-  let lastPos = null;
-  let stuckSince = Date.now();
-  while (Date.now() < end) {
-    let s = await resumePlay();
-    last = s;
-    if (!s) break;
-    if (s.mode === "playing") sawPlaying = true;
-    if (s.shrine != null && Math.hypot(tx - s.x, tz - s.z) > 40) {
-      note(`in shrine while going ${label || `${tx},${tz}`}; trying to leave`);
-      await leaveShrine();
-      s = await read();
-    }
-    if (!s) break;
-    const dist = Math.hypot(tx - s.x, tz - s.z);
-    const here = navigationOutcome({ dist, arrive, timedOut: false, climbing: s.state === "climbing" });
-    if (here.arrived) {
-      await releaseAll();
-      return attachNav(s, { ...here, label, tx, tz });
-    }
-    if (lastPos && Math.hypot(s.x - lastPos.x, s.z - lastPos.z) > 1.2) {
-      stuckSince = Date.now();
-      lastPos = { x: s.x, z: s.z };
-    } else if (!lastPos) lastPos = { x: s.x, z: s.z };
 
-    if (Date.now() - stuckSince > 2800) {
-      note(`stuck dist=${dist.toFixed(1)} at ${s.x.toFixed(1)},${s.z.toFixed(1)} ${s.state}`);
-      await releaseAll();
-      if (s.state === "airborne" || s.state === "gliding") {
-        await wait(400);
-      } else if (s.state === "climbing") {
-        await hold(["KeyC"], 180);
-      } else {
-        await hold(["KeyA"], 280);
-        await hold(["KeyD", "KeyW"], 400);
-      }
-      stuckSince = Date.now();
-    }
 
-    if (s.state === "airborne" || s.state === "gliding") {
-      await hold(keysToward(s, tx, tz, false), 220);
-      continue;
-    }
-    if (s.state === "swimming") {
-      await hold(keysToward(s, tx, tz, false), 280);
-      continue;
-    }
-    if (s.state === "climbing") {
-      // p04 camp-a: KeyC alone left us clinging at 8.9,73.2. Harder dismount.
-      await hold(["KeyC"], 180);
-      await wait(120);
-      const s2 = await read();
-      if (s2?.state === "climbing") {
-        await hold(["KeyC", "KeyW"], 220);
-        await hold(["Space"], 140);
-      }
-      continue;
-    }
-
-    const keys = keysToward(s, tx, tz, sprint && dist > 3);
-    await hold(keys, 200);
-  }
-  await releaseAll();
-  const endS = await read();
-  const endDist = endS ? Math.hypot(tx - endS.x, tz - endS.z) : Infinity;
-  const outcome = navigationOutcome({
-    dist: endDist,
-    arrive,
-    timedOut: true,
-    climbing: endS?.state === "climbing",
-  });
-  if (!outcome.arrived) {
-    note(
-      `nav ${outcome.status} ${label || `${tx},${tz}`} dist=${Number.isFinite(endDist) ? endDist.toFixed(1) : "?"} at ${endS?.x?.toFixed?.(1)},${endS?.z?.toFixed?.(1)}`,
-    );
-  }
-  return attachNav(endS, { ...outcome, label, tx, tz });
-}
-
-async function follow(points, msEach = 50000, arrive = 2.4) {
-  let s = await read();
-  for (const p of points) {
-    s = await goTo(p.x, p.z, msEach, { arrive, sprint: true, label: `${p.x},${p.z}` });
-    if (s?.nav && !s.nav.arrived) {
-      note(`follow waypoint failed ${p.x},${p.z} status=${s.nav.status} dist=${Number(s.nav.dist).toFixed?.(1) ?? s.nav.dist}`);
-    }
-  }
-  return s;
-}
-
-async function leaveShrine() {
-  for (let i = 0; i < 12; i++) {
-    const s = await resumePlay();
-    if (!s || s.shrine == null) return s;
-    if (s.prompt?.includes("离开")) {
-      await tap("KeyE");
-      await wait(500);
-      continue;
-    }
-    if (s.prompt?.includes("领取")) {
-      await tap("KeyE");
-      await wait(400);
-      continue;
-    }
-    const o = shrineWorldOrigin(s.shrine);
-    await goTo(o.x, o.z + 2.2, 8000, { arrive: 1.5, sprint: false, label: "leave-door" });
-    await tap("KeyE");
-    await wait(400);
-  }
-  return read();
-}
 
 async function interactIf(substr) {
   const s = await read();
@@ -1296,13 +1086,19 @@ async function eatPepper() {
   return s;
 }
 
-async function tryMeleeClick() {
+async function tryMeleeClick(scope) {
+  checkFightScope(scope);
   try {
     await page.locator("canvas").click({ position: { x: 640, y: 360 }, timeout: 800 });
-  } catch {
+    scope?.markInput("melee-click");
+  } catch (err) {
+    if (err instanceof FightStopError) throw err;
     try {
+      checkFightScope(scope);
       await page.mouse.click(640, 360);
-    } catch {
+      scope?.markInput("melee-click-fallback");
+    } catch (err) {
+    if (err instanceof FightStopError) throw err;
       /* overlay */
     }
   }
@@ -1324,9 +1120,9 @@ async function fightBoss() {
     wait,
     note,
   });
+  const fightRead = () => checkedRead(orch.scope);
   const fightAbort = orch.abort;
   const fightMonitor = orch.monitor;
-  const markInput = orch.markInput;
   // Scoped helpers replace globals for this fight only.
   const fightHold = orch.hold;
   const fightGoTo = orch.goTo;
@@ -1334,23 +1130,22 @@ async function fightBoss() {
   const fightResume = orch.resumePlay;
   const fightClick = orch.tryMeleeClick;
   // Start serial sample loop before any navigation.
-  const samplePromise = orch.startSampling();
-  let lastInputRef = orch.lastInput;
+  orch.startSampling();
   try {
-    let s0 = await read();
+    let s0 = await fightRead();
     if (s0 && s0.y > 40) {
       note(`citadel dismount high y=${s0.y.toFixed(1)} at ${s0.x.toFixed(1)},${s0.z.toFixed(1)}`);
-      markInput("goTo-off-crown");
+
       await fightGoTo(36, -90, 22000, { arrive: 4, sprint: false, label: "citadel-off-crown" });
-      markInput("goTo-from-crown");
+
       await fightGoTo(24, -40, 20000, { arrive: 5, sprint: true, label: "citadel-from-crown" });
     }
-    markInput("follow-citadel");
+
     await fightFollow(WAYPOINTS.citadel, 40000, 4);
     // Courtyard is +Z of the keep. Static POI.citadel is the spawn, not a live lock.
-    markInput("goTo-gate");
+
     let s = await fightGoTo(POI.citadel.x, POI.citadel.z + 8, 20000, { arrive: 3.2, sprint: true, label: "citadel-gate" });
-    s = await read();
+    s = await fightRead();
     citadelPrompt = s?.prompt || "";
     if (s?.sealOpen === false || s?.prompt?.includes("封印未开")) {
       sealClosedAttempt = true;
@@ -1360,7 +1155,7 @@ async function fightBoss() {
     }
     // Prompt 挑战空王 is proximity-only. E is not a combat start; melee is click.
     if (s?.prompt?.includes("挑战空王")) {
-      await tap("KeyE");
+      await tap("KeyE", orch.scope);
       await wait(200);
     }
     const end = Date.now() + 180000;
@@ -1434,16 +1229,14 @@ async function fightBoss() {
           `citadel reapproach live boss d=${dist.toFixed(1)} from ${s.x.toFixed(1)},${s.z.toFixed(1)} y=${s.y.toFixed(1)} state=${s.state} grounded=${s.grounded} off=${off.reason} stall=${stallCount} bossY=${boss.y?.toFixed?.(1)} phase=${boss.phase} prompt=${s.prompt}`,
         );
         if (s.y > 40) {
-          markInput("goTo-off-crown");
           await fightGoTo(36, -90, 22000, { arrive: 4, sprint: false, label: "citadel-off-crown" });
-          markInput("goTo-from-crown");
+
           await fightGoTo(24, -40, 18000, { arrive: 5, sprint: true, label: "citadel-from-crown" });
         } else if (s.z < -50 && dist > 18) {
-          markInput("goTo-avoid-still");
           await fightGoTo(-12, -28, 18000, { arrive: 5, sprint: true, label: "citadel-avoid-still" });
-          markInput("follow-gate");
+
           await fightFollow([{ x: 6, z: 18 }, { x: 6, z: 8 }], 14000, 4);
-          markInput("goTo-gate");
+
           await fightGoTo(POI.citadel.x, POI.citadel.z + 8, 12000, { arrive: 3.4, sprint: true, label: "citadel-gate" });
         } else if (off.off || stallCount >= 2) {
           const wps = citadelReturnWaypoints(s, boss);
@@ -1451,12 +1244,11 @@ async function fightBoss() {
             `citadel recover via ${wps.map((p) => `${p.x.toFixed(0)},${p.z.toFixed(0)}`).join("→")} from ${s.x.toFixed(1)},${s.z.toFixed(1)} reason=${off.reason}`,
           );
           for (const wp of wps) {
-            markInput("goTo-return");
             await fightGoTo(wp.x, wp.z, 24000, { arrive: 3.0, sprint: true, label: "citadel-return" });
           }
           stallCount = 0;
         }
-        markInput("goTo-boss");
+
         s = await fightGoTo(boss.x, boss.z, 16000, {
           arrive: 4.2,
           sprint: dist > 14 && s.y < 30,
@@ -1466,8 +1258,8 @@ async function fightBoss() {
       }
       lastApproach = { x: s.x, z: s.z, dist };
       stallCount = 0;
-      await lookToward(boss.x, boss.z);
-      s = await read();
+      await lookToward(boss.x, boss.z, orch.scope);
+      s = await fightRead();
       if (!s?.boss) break;
       dist = Math.hypot(s.x - s.boss.x, s.z - s.boss.z);
       const faceDot = facingDot(s, s.boss.x, s.boss.z);
@@ -1495,9 +1287,9 @@ async function fightBoss() {
         note(
           `citadel reposition los-blocked wall=${s.blockerId || "?"} player=${s.x?.toFixed?.(1)},${s.y?.toFixed?.(1)},${s.z?.toFixed?.(1)} boss=${s.boss.x?.toFixed?.(1)},${s.boss.z?.toFixed?.(1)} d=${dist.toFixed?.(1)} t=${Date.now()}`,
         );
-        const rp = await executeLosReposition({ goTo: fightGoTo, read, note, start: s });
+        const rp = await executeLosReposition({ goTo: fightGoTo, read: fightRead, note, start: s });
         repositionUsed += 1;
-        s = rp.s ?? (await read());
+        s = rp.s ?? (await fightRead());
         if (!rp.ok) {
           note(`citadel reposition failed — short trajectory stop`);
           break;
@@ -1510,10 +1302,8 @@ async function fightBoss() {
           `citadel low-hp ${s.hp.toFixed?.(2)} state=${s.state} dist=${dist.toFixed(1)} bossHp=${s.boss?.hp?.toFixed?.(1)}; back off`,
         );
         if (s.state === "grounded" && (s.dodgeCd ?? 0) <= 0.04) {
-          markInput("dodge-backoff");
           await fightHold(["KeyC", ...dodgeKeys], 280);
         } else {
-          markInput("back-off");
           await fightHold(["KeyS", "KeyA"], 220);
         }
         continue;
@@ -1531,9 +1321,9 @@ async function fightBoss() {
           stamina: s.stamina,
           dodgeT: s.dodgeT,
         };
-        markInput("dodge");
+
         await fightHold(["KeyC", ...dodgeKeys], 280);
-        s = await read();
+        s = await fightRead();
         if (!s?.boss) break;
         dist = Math.hypot(s.x - s.boss.x, s.z - s.boss.z);
         const dodgeStarted = Number(s.dodgeT ?? 0) > 0 || Number(s.dodgeCd ?? 0) > 0.05;
@@ -1552,13 +1342,11 @@ async function fightBoss() {
         continue;
       }
       if (step.act === "back-off-too-close") {
-        markInput("back-off-too-close");
         await fightHold(["KeyS", "KeyA"], 180);
-        s = await read();
+        s = await fightRead();
         continue;
       }
       if (step.act === "approach") {
-        markInput("approach");
         await fightHold(keysToward(s, s.boss.x, s.boss.z, dist > 6), 160);
         continue;
       }
@@ -1568,7 +1356,7 @@ async function fightBoss() {
       }
       if (step.act === "wait-facing") {
         note(`citadel wait-facing dot=${faceDot.toFixed(2)} camYaw=${s.camYaw?.toFixed?.(2)}`);
-        await lookToward(s.boss.x, s.boss.z);
+        await lookToward(s.boss.x, s.boss.z, orch.scope);
         continue;
       }
       const hpBefore = s?.boss?.hp;
@@ -1577,10 +1365,10 @@ async function fightBoss() {
       const camYaw = s?.camYaw;
       const px = s?.x;
       const pz = s?.z;
-      markInput("swing");
+
       await fightClick();
       await wait(180);
-      s = await read();
+      s = await fightRead();
       if (s && (s.mode === "dead" || s.state === "dead" || (Number.isFinite(s.hp) && s.hp <= 0))) {
         deaths += 1;
         fightAbort.abort("death-after-swing");
@@ -1613,10 +1401,10 @@ async function fightBoss() {
             note("citadel reposition already used — end short trajectory");
             break;
           }
-          const rp2 = await executeLosReposition({ goTo: fightGoTo, read, note, start: s });
+          const rp2 = await executeLosReposition({ goTo: fightGoTo, read: fightRead, note, start: s });
           repositionUsed += 1;
           missStreak = 0;
-          s = rp2.s ?? (await read());
+          s = rp2.s ?? (await fightRead());
           if (!rp2.ok) {
             note("citadel miss-streak reposition failed — end short trajectory");
             break;
@@ -1631,16 +1419,28 @@ async function fightBoss() {
         );
       }
     }
-    s = await read();
+    s = await fightRead();
     note(
       `citadel towers=${s?.towers} orbs=${s?.orbs} bossDead=${s?.bossDead} mode=${s?.mode} prompt=${s?.prompt} swings=${swings} hits=${hits} attackStarts=${attackStarts} deaths=${deaths} bossHp=${s?.boss?.hp} seal=${s?.sealOpen} combatMs=${fightMonitor.combatMs} navMs=${fightMonitor.navMs} noDamageMs=${fightMonitor.noDamageMs} abort=${fightAbort.reason || "none"}`,
     );
     await shot("route-citadel.png");
     await saveStorageCheckpoint("after-citadel");
     return s;
+  } catch (err) {
+    if (!(err instanceof FightStopError)) throw err;
+    note(`citadel stopped reason=${err.reason} combatMs=${fightMonitor.combatMs} navMs=${fightMonitor.navMs}`);
+    const snap = fightMonitor.latched?.snap ?? orch.scope.lastSnapshot ?? last;
+    writeFileSync(
+      resolve(outDir, `citadel-stop-${process.env.QA_RUN_ID || Date.now()}.json`),
+      JSON.stringify({ reason: err.reason, deaths: err.reason === "death" ? 1 : 0,
+        snap, combatMs: fightMonitor.combatMs, navMs: fightMonitor.navMs,
+        noDamageMs: fightMonitor.noDamageMs, ring: fightMonitor.ring }, null, 2),
+    );
+    return snap;
   } finally {
     // E1.1: stop and await sample loop BEFORE browser cleanup.
     await orch.stopSampling(fightAbort.reason || "fight-end");
+    await releaseAll();
   }
 }
 async function readSaveEnvelope() {

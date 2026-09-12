@@ -523,3 +523,22 @@ npm run test:game    # 170 pass / 0 fail
 ### 未解决（保留）
 - 18,-13 导航卡墙
 - Boss 击杀 / ending / 刷新继续
+
+## Codex Astra batch — E1.2 production navigation scope (2026-09-12)
+
+Ownership transferred from stopped MiMo to Codex CLI gpt-6-astra reasoning low. Read PRECISE_QA_GATE_E1 and latest ROOT_DIAGNOSIS; no applicable AGENTS.md found in the ancestor chain or implementation subdirectories. Only opencode-go implementation files touched; existing evidence and separate Sol trees preserved. No agents, browser, install, build, migration, game/balance/coordinate/save-field changes, or push.
+
+Implemented the real hold/tap/resumePlay/lookToward/goTo/follow/leaveShrine bodies in `scripts/qa/route-navigation.mjs`, instantiated by play-routes with its existing page, state, geometry helpers, and clock. Optional scope is threaded through each read, navigation iteration, recovery branch, waypoint, and input. Unscoped resume retains revival. Scoped reads recognize death before revival, first cause wins, and throw FightStopError; no aborted x/z snapshots are synthesized. Holds keep keys down across <=100ms wait slices, check before each key-down, and release in finally. Follow returns the first failed waypoint. Fight look/tap/melee and LOS reads use the same scope. Input timestamps now describe executed key/mouse calls instead of planned navigation labels. The sampler only observes/latches; stop waits for in-flight reads and discards results after shutdown. Fight sampling still begins before descent and is awaited in finally before release/outer cleanup. Dedicated stop catch records reason, actual snapshot and ring for the controller.
+
+Failing baseline: after mechanically extracting the unchanged production bodies, `node --test aetherwake/scripts/qa/route-navigation.test.mjs` failed 2/2: missing death rejection on the second read within an ongoing goTo, and follow returned target 40 instead of first failed target 20. Log: `/tmp/e12-baseline.log`. The death test allows an initial follow read, one live goTo iteration with input, then death on that goTo's second read; this is not a cooperative fake navigator.
+
+Passing validation:
+- `node --test aetherwake/scripts/qa/combat-progress-monitor.test.mjs aetherwake/scripts/qa/route-navigation.test.mjs aetherwake/scripts/qa/los-reposition.test.mjs aetherwake/scripts/qa/citadel-dispatch.test.mjs`: 36/36 (`/tmp/e12-pass.log`). All existing monitor/classification/timer/ring/focus tests retained. Replaced the old fake-navigation orchestration case with real factory/orchestrator regressions: second-read death/no revive/no further input or waypoint, failure stops follow, sampler abort during active keys, <=100ms wait abort with finally release, shutdown drains/discards pending read, first-cause retention and unscoped revival.
+- `cd aetherwake && npm run typecheck`: pass.
+- `node --check aetherwake/scripts/play-routes.mjs` and `git diff --check`: pass.
+
+Additional focused run including `boss-fight-tick.test.mjs` was 43/47 (`/tmp/e12-focused.log`). Its four failures also reproduce against unchanged HEAD files exported with git archive to `/tmp/e12-head-baseline`: `node --test /tmp/e12-head-baseline/aetherwake/scripts/qa/boss-fight-tick.test.mjs` is 7/11 (`/tmp/e12-tick-head-baseline.log`), with the same dodge-versus-back-off expectations. These files were not changed; diagnosis belongs to the controller.
+
+Residual limits: injected browser IO verifies the actual navigation loops but is not browser or full-route proof. Existing geometry/navigation reliability, boss completion, ending and refresh remain unverified here. Cooperative stops cannot cancel an already submitted browser operation or finish an indefinitely hung read; cleanup awaits it. Stop input latency is bounded by the next <=100ms wait check plus IO/event-loop latency, not a hard real-time guarantee. Controller review required before any new browser run.
+
+Local commit blocked by workspace permissions: explicit `git add` of only the six implementation/progress files failed with `Unable to create .../repo/.git/worktrees/opencode-go/index.lock: Operation not permitted` (exit 128). No files were staged and no commit was created. Patch is left for controller review; no permission escalation attempted.

@@ -178,6 +178,7 @@ export async function runCombatSampleLoop(deps) {
       }
       break;
     }
+    if (shouldStop() || monitor.stopped) break;
     monitor.observe(s, { input: inputRef?.current ?? null });
     samples += 1;
     if (monitor.stopped) break;
@@ -372,11 +373,12 @@ export function createFightOrchestrator(deps) {
     },
   });
   const lastInput = { current: null };
-  const scopedHold = wrapHoldForAbort(hold, () => abort, releaseAll, { wait });
-  const scopedGoTo = wrapGoToForAbort(goTo, () => abort);
-  const scopedFollow = wrapFollowForAbort(follow, () => abort);
-  const scopedResume = wrapResumePlayForAbort(resumePlay, read, () => abort, (r) => abort.abort(r));
-  const scopedClick = wrapClickForAbort(tryMeleeClick, () => abort);
+  const scope = { abort, markInput(action) { lastInput.current = { action, t: now() }; } };
+  const scopedHold = (keys, ms) => hold(keys, ms, scope);
+  const scopedGoTo = (x, z, ms, opts) => goTo(x, z, ms, opts, scope);
+  const scopedFollow = (points, ms, arrive) => follow(points, ms, arrive, scope);
+  const scopedResume = () => resumePlay(scope);
+  const scopedClick = () => tryMeleeClick(scope);
 
   let samplePromise = null;
   function startSampling() {
@@ -405,6 +407,7 @@ export function createFightOrchestrator(deps) {
 
   return {
     abort,
+    scope,
     monitor,
     lastInput,
     hold: scopedHold,
