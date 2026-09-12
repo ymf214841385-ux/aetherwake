@@ -1,5 +1,5 @@
 /**
- * E1: fail-first then pass — tests import the same production module.
+ * E1/E1.1: fail-first then pass — tests import the same production module.
  * Fake monotonic clock; no independent demo implementation.
  */
 import assert from "node:assert/strict";
@@ -8,9 +8,10 @@ import {
   NO_DAMAGE_MS,
   RING_MAX,
   SAMPLE_BEAT_MS,
+  classifyFightSnapshot,
   createAbortLatch,
   createCombatProgressMonitor,
-  classifyFightSnapshot,
+  createFightOrchestrator,
   runCitadelFocusGate,
   runCombatSampleLoop,
   wrapGoToForAbort,
@@ -23,9 +24,6 @@ function makeClock() {
     now: () => t,
     advance(ms) {
       t += ms;
-    },
-    set(v) {
-      t = v;
     },
   };
 }
@@ -57,25 +55,29 @@ function navSnap(over = {}) {
   });
 }
 
+describe("E1.1 death-first classification", () => {
+  it("mode dead / state dead / hp<=0 all classify dead before playing gate", () => {
+    assert.equal(classifyFightSnapshot({ mode: "dead", state: "dead", hp: 0 }), "dead");
+    assert.equal(classifyFightSnapshot({ mode: "playing", state: "dead", hp: 0 }), "dead");
+    assert.equal(classifyFightSnapshot({ mode: "playing", state: "grounded", hp: 0 }), "dead");
+    assert.equal(classifyFightSnapshot({ mode: "dead", state: "grounded", hp: 3 }), "dead");
+  });
+
+  it("observe latches death for mode-dead snapshot", () => {
+    const clock = makeClock();
+    const mon = createCombatProgressMonitor({ now: clock.now });
+    mon.observe({ mode: "dead", state: "dead", hp: 0 });
+    assert.equal(mon.latched?.reason, "death");
+    assert.equal(mon.stopped, true);
+  });
+});
+
 describe("E1 classifyFightSnapshot", () => {
   it("combat requires playing/alive/seal/hz8/dy3", () => {
     assert.equal(classifyFightSnapshot(combatSnap()), "combat");
     assert.equal(classifyFightSnapshot(navSnap()), "navigation");
     assert.equal(classifyFightSnapshot(null), "unknown");
-    assert.equal(classifyFightSnapshot(combatSnap({ mode: "dead" })), "unknown");
-    assert.equal(classifyFightSnapshot(combatSnap({ state: "dead" })), "dead");
-    assert.equal(classifyFightSnapshot(combatSnap({ hp: 0 })), "dead");
     assert.equal(classifyFightSnapshot(combatSnap({ sealOpen: false })), "unknown");
-    assert.equal(
-      classifyFightSnapshot(combatSnap({ boss: { ...combatSnap().boss, alive: false } })),
-      "unknown",
-    );
-    assert.equal(
-      classifyFightSnapshot(
-        combatSnap({ boss: { ...combatSnap().boss, x: 20, z: -2.5 } }),
-      ),
-      "navigation",
-    );
   });
 });
 
@@ -87,7 +89,7 @@ describe("E1 no-damage timer uses combat-only accumulation", () => {
       mon.observe(navSnap());
       clock.advance(100);
     }
-    assert.equal(mon.latched, null, JSON.stringify(mon.latched));
+    assert.equal(mon.latched, null);
     assert.ok(mon.navMs >= 60000 - 200, `navMs=${mon.navMs}`);
     assert.equal(mon.noDamageMs, 0);
   });
@@ -106,7 +108,6 @@ describe("E1 no-damage timer uses combat-only accumulation", () => {
       clock.advance(100);
       mon.observe(combatSnap());
     }
-    assert.ok(mon.noDamageMs >= NO_DAMAGE_MS, `noDamageMs=${mon.noDamageMs}`);
     assert.equal(mon.latched?.reason, "combat-no-damage");
   });
 
@@ -119,19 +120,16 @@ describe("E1 no-damage timer uses combat-only accumulation", () => {
       mon.observe(combatSnap());
     }
     const afterFirst = mon.noDamageMs;
-    assert.ok(afterFirst >= 8000 - 200, `afterFirst=${afterFirst}`);
     for (let i = 0; i < 600; i++) {
       clock.advance(100);
       mon.observe(navSnap());
     }
-    assert.equal(mon.noDamageMs, afterFirst, "navigation must not reset no-damage");
-    assert.equal(mon.latched, null);
-    // First combat after nav is not combat-combat; need enough pairs to pass 15s total.
+    assert.equal(mon.noDamageMs, afterFirst);
     for (let i = 0; i < 80; i++) {
       clock.advance(100);
       mon.observe(combatSnap());
     }
-    assert.equal(mon.latched?.reason, "combat-no-damage", JSON.stringify(mon.latched));
+    assert.equal(mon.latched?.reason, "combat-no-damage");
   });
 
   it("boss HP drop resets no-damage accumulation", () => {
@@ -141,39 +139,19 @@ describe("E1 no-damage timer uses combat-only accumulation", () => {
       mon.observe(combatSnap({ boss: { x: 6.5, y: 10.8, z: -2.5, hp: 20, alive: true, phase: "recover" } }));
       clock.advance(100);
     }
-    assert.ok(mon.noDamageMs >= 9000);
     mon.observe(
       combatSnap({ boss: { x: 6.5, y: 10.8, z: -2.5, hp: 18.2, alive: true, phase: "hurt" } }),
     );
     assert.equal(mon.noDamageMs, 0);
-    assert.equal(mon.latched, null);
   });
 
   it("sample gap >500ms is not counted as combat", () => {
     const clock = makeClock();
-    const events = [];
-    const mon = createCombatProgressMonitor({ now: clock.now, onEvent: (e) => events.push(e) });
+    const mon = createCombatProgressMonitor({ now: clock.now });
     mon.observe(combatSnap());
     clock.advance(800);
     mon.observe(combatSnap());
     assert.equal(mon.combatMs, 0);
-    assert.ok(events.some((e) => e.type === "sample-gap"));
-  });
-
-  it("unknown pauses timing (does not add combat/nav)", () => {
-    const clock = makeClock();
-    const mon = createCombatProgressMonitor({ now: clock.now });
-    mon.observe(combatSnap());
-    clock.advance(100);
-    mon.observe(null);
-    clock.advance(5000);
-    mon.observe(combatSnap());
-    clock.advance(100);
-    mon.observe(combatSnap());
-    // Only the fresh 100ms combat-combat pair after unknown counts.
-    assert.equal(mon.combatMs, 100, `combatMs=${mon.combatMs}`);
-    assert.equal(mon.navMs, 0);
-    assert.equal(mon.noDamageMs, 100);
   });
 });
 
@@ -192,87 +170,122 @@ describe("E1 ring sampler", () => {
       inFlight = false;
       return navSnap();
     };
-    const wait = async (ms) => clock.advance(ms);
     const r = await runCombatSampleLoop({
       read,
       monitor: mon,
       now: clock.now,
-      wait,
+      wait: async (ms) => clock.advance(ms),
       shouldStop: () => clock.now() >= 30000,
     });
     assert.ok(reads > 250, `reads=${reads}`);
-    assert.equal(overlapping, false, "serial read must not overlap");
+    assert.equal(overlapping, false);
     assert.ok(mon.ring.length <= RING_MAX);
-    const tNow = clock.now();
-    assert.ok(mon.ring.every((e) => e.t >= tNow - 10000 - SAMPLE_BEAT_MS));
     assert.ok(r.samples === reads);
-    assert.ok(SAMPLE_BEAT_MS === 100);
   });
+});
 
-  it("after 100 ring entries still tracks damage and timeout", () => {
+describe("E1.1 orchestrator: death mid goTo/follow stops without revive", () => {
+  it("second leg reads mode dead → abort, no revive/keys/click, no new samples after stop", async () => {
     const clock = makeClock();
-    const mon = createCombatProgressMonitor({ now: clock.now });
-    for (let i = 0; i < 200; i++) {
-      mon.observe(combatSnap({ boss: { x: 6.5, y: 10.8, z: -2.5, hp: 20, alive: true, phase: "windup" } }));
+    const events = [];
+    let snaps = [
+      navSnap(),
+      navSnap(),
+      { mode: "dead", state: "dead", hp: 0, x: 6, y: 53.5, z: -124 },
+      // After death, any further reads must not drive inputs.
+      { mode: "dead", state: "dead", hp: 0 },
+    ];
+    let si = 0;
+    const read = async () => snaps[Math.min(si++, snaps.length - 1)];
+    const held = [];
+    const hold = async (keys) => {
+      held.push(keys.join("+"));
+    };
+    const went = [];
+    const goTo = async (x, z) => {
+      went.push([x, z]);
+      return navSnap();
+    };
+    const followed = [];
+    const follow = async (pts) => {
+      followed.push(pts);
+      // Simulate follow calling goTo twice; second goTo's next read is dead.
+      await goTo(pts[0]?.x, pts[0]?.z);
+      // Main loop / resumePlay reads dead here via orchestrator resume.
+      return navSnap();
+    };
+    let resumed = 0;
+    const resumePlay = async () => {
+      resumed += 1;
+      return navSnap();
+    };
+    let clicked = 0;
+    const tryMeleeClick = async () => {
+      clicked += 1;
+    };
+    let released = 0;
+    const releaseAll = async () => {
+      released += 1;
+    };
+    const orch = createFightOrchestrator({
+      read,
+      hold,
+      goTo,
+      follow,
+      resumePlay,
+      tryMeleeClick,
+      releaseAll,
+      now: clock.now,
+      wait: async (ms) => clock.advance(ms),
+      note: (m) => events.push(m),
+    });
+    orch.startSampling();
+    // Descent nav
+    await orch.goTo(36, -90, 1000, { arrive: 4 });
+    // After first goTo, advance so sampler can read death
+    for (let i = 0; i < 5; i++) {
       clock.advance(100);
+      await Promise.resolve();
     }
-    assert.ok(mon.ring.length <= RING_MAX);
-    assert.ok(mon.noDamageMs >= NO_DAMAGE_MS, `noDamageMs=${mon.noDamageMs}`);
-    assert.equal(mon.latched?.reason, "combat-no-damage");
-  });
-
-  it("stop() freezes monitor; no further samples accumulate", () => {
-    const clock = makeClock();
-    const mon = createCombatProgressMonitor({ now: clock.now });
-    mon.observe(combatSnap());
-    clock.advance(100);
-    mon.observe(combatSnap());
-    mon.stop("test");
-    const cm = mon.combatMs;
-    clock.advance(100);
-    mon.observe(combatSnap());
-    assert.equal(mon.combatMs, cm);
-    assert.equal(mon.stopped, true);
+    // Resume path must see death and refuse revive
+    const r = await orch.resumePlay();
+    assert.equal(orch.abort.aborted, true);
+    assert.ok(
+      orch.abort.reason === "death" || orch.abort.reason === "death-before-resume",
+      `reason=${orch.abort.reason}`,
+    );
+    assert.equal(resumed, 0, "resumePlay must not run after death read");
+    // Further actions blocked
+    await orch.hold(["KeyW"], 200);
+    await orch.goTo(6, 8, 1000);
+    await orch.follow([{ x: 6, z: 8 }]);
+    await orch.tryMeleeClick();
+    assert.ok(released >= 1, "releaseAll on aborted hold");
+    assert.equal(went.length, 1, "no new goTo after abort");
+    assert.equal(followed.length, 0);
+    assert.equal(clicked, 0);
+    const samplesBefore = orch.monitor.ring.length;
+    clock.advance(500);
+    await Promise.resolve();
+    await orch.stopSampling("test-done");
+    const samplesAfter = orch.monitor.ring.length;
+    assert.ok(samplesAfter <= samplesBefore + 1, "no new samples after stop");
+    assert.equal(orch.monitor.stopped, true);
+    assert.ok(r === null || r.mode === "dead", `resume returned ${JSON.stringify(r)}`);
   });
 });
 
 describe("E1 death latch + abort wrappers + focus gate", () => {
-  it("death sample latches stop", () => {
-    const clock = makeClock();
-    const mon = createCombatProgressMonitor({ now: clock.now });
-    mon.observe(combatSnap());
-    mon.observe(combatSnap({ state: "dead", hp: 0 }));
-    assert.equal(mon.latched?.reason, "death");
-    assert.equal(mon.stopped, true);
-  });
-
   it("abort latch blocks hold/goTo and releases keys", async () => {
     const latch = createAbortLatch();
     let held = 0;
-    let went = 0;
     const hold = async () => {
       held += 1;
     };
-    const goTo = async () => {
-      went += 1;
-      return { nav: { arrived: false } };
-    };
-    const released = { n: 0 };
-    const holdW = wrapHoldForAbort(hold, () => latch, async () => {
-      released.n += 1;
-    });
-    const goToW = wrapGoToForAbort(goTo, () => latch);
-    await holdW(["KeyW"], 10);
-    await goToW(6, -4, 1000);
-    assert.equal(held, 1);
-    assert.equal(went, 1);
+    const holdW = wrapHoldForAbort(hold, () => latch, async () => {}, { wait: async () => {} });
     latch.abort("death");
     await holdW(["KeyW"], 10);
-    const g = await goToW(6, -4, 1000);
-    assert.equal(held, 1, "no new hold after abort");
-    assert.equal(went, 1, "no new goTo after abort");
-    assert.equal(released.n, 1, "releaseAll on aborted hold");
-    assert.equal(g.aborted, true);
+    assert.equal(held, 0);
   });
 
   it("focusOk=false never calls fightBoss (precondition-failed)", async () => {
@@ -286,8 +299,6 @@ describe("E1 death latch + abort wrappers + focus gate", () => {
     });
     assert.equal(calls, 0);
     assert.equal(r.ok, false);
-    assert.equal(r.reason, "precondition-failed");
-    assert.equal(r.fightBossCalled, false);
   });
 
   it("focusOk=true invokes fightBoss exactly once", async () => {

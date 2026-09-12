@@ -51,6 +51,7 @@ import { citadelResumePlan, CITADEL_RESUME_FOCUS, v2MatchesSource } from "./qa/c
 import {
   createAbortLatch,
   createCombatProgressMonitor,
+  createFightOrchestrator,
   runCitadelFocusGate,
   wrapGoToForAbort,
   wrapHoldForAbort,
@@ -1310,356 +1311,338 @@ async function tryMeleeClick() {
 async function fightBoss() {
   attemptedCitadel = true;
   note("citadel");
-  let s0 = await read();
-  if (s0 && s0.y > 40) {
-    note(`citadel dismount high y=${s0.y.toFixed(1)} at ${s0.x.toFixed(1)},${s0.z.toFixed(1)}`);
-    await goTo(36, -90, 22000, { arrive: 4, sprint: false, label: "citadel-off-crown" });
-    await goTo(24, -40, 20000, { arrive: 5, sprint: true, label: "citadel-from-crown" });
-  }
-  await follow(WAYPOINTS.citadel, 40000, 4);
-  // Courtyard is +Z of the keep. Static POI.citadel is the spawn, not a live lock.
-  let s = await goTo(POI.citadel.x, POI.citadel.z + 8, 20000, { arrive: 3.2, sprint: true, label: "citadel-gate" });
-  s = await read();
-  citadelPrompt = s?.prompt || "";
-  if (s?.sealOpen === false || s?.prompt?.includes("封印未开")) {
-    sealClosedAttempt = true;
-    note(`seal closed prompt=${s?.prompt} sealOpen=${s?.sealOpen}`);
-    await shot("route-citadel.png");
-    return s;
-  }
-  // Prompt 挑战空王 is proximity-only. E is not a combat start; melee is click.
-  if (s?.prompt?.includes("挑战空王")) {
-    await tap("KeyE");
-    await wait(200);
-  }
-  const end = Date.now() + 180000;
-  let swings = 0;
-  let hits = 0;
-  let attackStarts = 0;
-  let deaths = 0;
-  let lastApproach = null;
-  let stallCount = 0;
-  // D3: stop blind swings after 3 identical misses (frozen pose/hp).
-  let missStreak = 0;
-  let lastMissKey = null;
-  let repositionUsed = 0;
-  /** D4/E1: first death latches abort — helpers must not auto-revive. */
-  const fightAbort = createAbortLatch();
-  /** E1: production monitor (combat-only no-damage; navigation excluded). */
-  const fightMonitor = createCombatProgressMonitor({
+  // E1.1: shared orchestrator — monitor starts BEFORE descent navigation.
+  const orch = createFightOrchestrator({
+    read,
+    hold,
+    goTo,
+    follow,
+    resumePlay,
+    tryMeleeClick,
+    releaseAll,
     now: () => performance.now(),
-    onEvent: (ev) => note(`citadel-mon ${JSON.stringify(ev)}`),
+    wait,
+    note,
   });
-  const fightHold = wrapHoldForAbort(hold, () => fightAbort, releaseAll);
-  const fightGoTo = wrapGoToForAbort(goTo, () => fightAbort);
-  /** Last executed input for ring samples. */
-  const lastInputRef = { current: null };
-  let sampleLoop = null;
-  const markInput = (action) => {
-    lastInputRef.current = { action, t: Date.now() };
-  };
-  while (Date.now() < end) {
-    if (fightAbort.aborted) break;
-    // E1: raw read → production monitor (death latches abort; combat-only no-damage).
-    let raw = await read();
-    const monStat = fightMonitor.observe(raw, { input: lastInputRef.current });
-    if (monStat.latched?.reason === "death") {
-      deaths += 1;
-      note(
-        `citadel FIRST-DEATH stop n=${deaths} t=${Date.now()} hp=${raw?.hp} state=${raw?.state} mode=${raw?.mode} player=${raw?.x?.toFixed?.(2)},${raw?.y?.toFixed?.(2)},${raw?.z?.toFixed?.(2)} — abort latch`,
-      );
-      fightAbort.abort("death");
-      const deathRunId = process.env.QA_RUN_ID || String(Date.now());
-      writeFileSync(
-        resolve(outDir, `citadel-first-death-${deathRunId}.json`),
-        JSON.stringify(
-          {
-            t: Date.now(),
-            deaths,
-            snap: raw,
-            monitor: {
-              combatMs: fightMonitor.combatMs,
-              navMs: fightMonitor.navMs,
-              noDamageMs: fightMonitor.noDamageMs,
-              ring: fightMonitor.ring.slice(-100),
-            },
-          },
-          null,
-          2,
-        ),
-      );
-      break;
+  const fightAbort = orch.abort;
+  const fightMonitor = orch.monitor;
+  const markInput = orch.markInput;
+  // Scoped helpers replace globals for this fight only.
+  const fightHold = orch.hold;
+  const fightGoTo = orch.goTo;
+  const fightFollow = orch.follow;
+  const fightResume = orch.resumePlay;
+  const fightClick = orch.tryMeleeClick;
+  // Start serial sample loop before any navigation.
+  const samplePromise = orch.startSampling();
+  let lastInputRef = orch.lastInput;
+  try {
+    let s0 = await read();
+    if (s0 && s0.y > 40) {
+      note(`citadel dismount high y=${s0.y.toFixed(1)} at ${s0.x.toFixed(1)},${s0.z.toFixed(1)}`);
+      markInput("goTo-off-crown");
+      await fightGoTo(36, -90, 22000, { arrive: 4, sprint: false, label: "citadel-off-crown" });
+      markInput("goTo-from-crown");
+      await fightGoTo(24, -40, 20000, { arrive: 5, sprint: true, label: "citadel-from-crown" });
     }
-    if (monStat.latched?.reason === "combat-no-damage") {
-      note(
-        `citadel combat-no-damage ${monStat.noDamageMs}ms combatMs=${monStat.combatMs} navMs=${monStat.navMs} — stop (navigation excluded)`,
-      );
-      writeFileSync(
-        resolve(outDir, `citadel-combat-no-damage-${process.env.QA_RUN_ID || String(Date.now())}.json`),
-        JSON.stringify(
-          {
-            t: Date.now(),
-            combatMs: fightMonitor.combatMs,
-            navMs: fightMonitor.navMs,
-            noDamageMs: fightMonitor.noDamageMs,
-            snap: raw,
-            ring: fightMonitor.ring.slice(-101),
-          },
-          null,
-          2,
-        ),
-      );
-      break;
-    }
-    s = await resumePlay();
-    if (fightAbort.aborted) break;
-    if (!s) break;
-    if (s.bossDead || s.mode === "ending") break;
-    if (s.sealOpen === false || s.prompt?.includes("封印未开")) {
-      sealClosedAttempt = true;
-      break;
-    }
-    if (s.mode === "dead" || s.state === "dead" || (Number.isFinite(s.hp) && s.hp <= 0)) {
-      deaths += 1;
-      fightAbort.abort("death-post-resume");
-      note(`citadel post-resume dead n=${deaths} hp=${s.hp} — abort`);
-      break;
-    }
-    const boss = s.boss;
-    if (!boss || boss.alive === false) {
-      note(`citadel no live boss snapshot=${JSON.stringify(boss)} bossDead=${s.bossDead}`);
-      break;
-    }
-    let dist = Math.hypot(s.x - boss.x, s.z - boss.z);
-    // 87296: five real hits 20→11 at hp 0.25, then respawned near crown
-    // (44.9,-124) and bee-lined into 凝时祠 (12.6,-80) until the 120s window died.
-    // 90227: 11/11 hits 20→0.2 at hp=2, then dodge dropped to x≈-11 y≈7.4 and
-    // goTo(boss) sat at d=8.9–10.2 against the west wall until the window died.
-    if (dist > 8) {
-      const off = citadelOffArena(s, boss);
-      const stalled =
-        lastApproach && Math.abs(dist - lastApproach.dist) < 1.4 && Math.hypot(s.x - lastApproach.x, s.z - lastApproach.z) < 2.8;
-      stallCount = stalled ? stallCount + 1 : 0;
-      lastApproach = { x: s.x, z: s.z, dist };
-      note(
-        `citadel reapproach live boss d=${dist.toFixed(1)} from ${s.x.toFixed(1)},${s.z.toFixed(1)} y=${s.y.toFixed(1)} state=${s.state} grounded=${s.grounded} off=${off.reason} stall=${stallCount} bossY=${boss.y?.toFixed?.(1)} phase=${boss.phase} prompt=${s.prompt}`,
-      );
-      if (s.y > 40) {
-        markInput("goTo-off-crown");
-        await fightGoTo(36, -90, 22000, { arrive: 4, sprint: false, label: "citadel-off-crown" });
-        await fightGoTo(24, -40, 18000, { arrive: 5, sprint: true, label: "citadel-from-crown" });
-      } else if (s.z < -50 && dist > 18) {
-        markInput("goTo-avoid-still");
-        await fightGoTo(-12, -28, 18000, { arrive: 5, sprint: true, label: "citadel-avoid-still" });
-        await follow(
-          [
-            { x: 6, z: 18 },
-            { x: 6, z: 8 },
-          ],
-          14000,
-          4,
-        );
-        await fightGoTo(POI.citadel.x, POI.citadel.z + 8, 12000, { arrive: 3.4, sprint: true, label: "citadel-gate" });
-      } else if (off.off || stallCount >= 2) {
-        const wps = citadelReturnWaypoints(s, boss);
-        note(`citadel recover via ${wps.map((p) => `${p.x.toFixed(0)},${p.z.toFixed(0)}`).join("→")} from ${s.x.toFixed(1)},${s.z.toFixed(1)} reason=${off.reason}`);
-        for (const wp of wps) {
-          markInput("goTo-return");
-          await fightGoTo(wp.x, wp.z, 24000, { arrive: 3.0, sprint: true, label: "citadel-return" });
-        }
-        stallCount = 0;
-      }
-      markInput("goTo-boss");
-      s = await fightGoTo(boss.x, boss.z, 16000, { arrive: 4.2, sprint: dist > 14 && s.y < 30, label: "citadel-boss" });
-      continue;
-    }
-    lastApproach = { x: s.x, z: s.z, dist };
-    stallCount = 0;
-    await lookToward(boss.x, boss.z);
+    markInput("follow-citadel");
+    await fightFollow(WAYPOINTS.citadel, 40000, 4);
+    // Courtyard is +Z of the keep. Static POI.citadel is the spawn, not a live lock.
+    markInput("goTo-gate");
+    let s = await fightGoTo(POI.citadel.x, POI.citadel.z + 8, 20000, { arrive: 3.2, sprint: true, label: "citadel-gate" });
     s = await read();
-    if (!s?.boss) break;
-    dist = Math.hypot(s.x - s.boss.x, s.z - s.boss.z);
-    const telegraph = s.boss.phase === "windup" || s.boss.phase === "strike";
-    const dodgeAim = citadelDodgeAim(s, s.boss);
-    const dodgeKeys = keysToward(s, dodgeAim.x, dodgeAim.z, false).filter((k) => k !== "ShiftLeft");
-    // Review16: shared decision — low HP in melee+non-telegraph must still swing.
-    const faceDot = facingDot(s, s.boss.x, s.boss.z);
-    // Executor uses citadelFightStep (policy+dispatch). Non-swing verbs continue.
-    const step = citadelFightStep({
-      hp: s.hp,
-      dist,
-      bossPhase: s.boss.phase,
-      bossHp: s.boss.hp,
-      state: s.state,
-      dodgeCd: s.dodgeCd,
-      stamina: s.stamina,
-      canDodge: s.canDodge,
-      attackPhase: s.attackPhase,
-      faceDot,
-      bossMeleeBlocked: Boolean(s.bossMeleeBlocked),
-      blockerId: s.blockerId ?? null,
-    });
-    const decision = step.decision;
-    if (step.act === "reposition") {
-      // D3.1: shared executor, arrive 0.5 — do not "arrive" 2.6m short.
-      if (repositionUsed >= 1) {
+    citadelPrompt = s?.prompt || "";
+    if (s?.sealOpen === false || s?.prompt?.includes("封印未开")) {
+      sealClosedAttempt = true;
+      note(`seal closed prompt=${s?.prompt} sealOpen=${s?.sealOpen}`);
+      await shot("route-citadel.png");
+      return s;
+    }
+    // Prompt 挑战空王 is proximity-only. E is not a combat start; melee is click.
+    if (s?.prompt?.includes("挑战空王")) {
+      await tap("KeyE");
+      await wait(200);
+    }
+    const end = Date.now() + 180000;
+    let swings = 0;
+    let hits = 0;
+    let attackStarts = 0;
+    let deaths = 0;
+    let lastApproach = null;
+    let stallCount = 0;
+    let missStreak = 0;
+    let lastMissKey = null;
+    let repositionUsed = 0;
+    while (Date.now() < end) {
+      if (fightAbort.aborted) break;
+      // Sample loop is the sole observe path — main loop does not re-observe.
+      // Still need a snapshot for control flow; use resumePlay (scoped).
+      s = await fightResume();
+      if (fightAbort.aborted) break;
+      if (!s) break;
+      if (s.bossDead || s.mode === "ending") break;
+      if (s.sealOpen === false || s.prompt?.includes("封印未开")) {
+        sealClosedAttempt = true;
+        break;
+      }
+      if (
+        s.mode === "dead" ||
+        s.state === "dead" ||
+        (Number.isFinite(s.hp) && s.hp <= 0)
+      ) {
+        deaths += 1;
+        fightAbort.abort("death-in-loop");
         note(
-          `citadel reposition already used still-blocked wall=${s.blockerId} — end short trajectory`,
+          `citadel FIRST-DEATH stop n=${deaths} t=${Date.now()} hp=${s.hp} state=${s.state} mode=${s.mode} — abort latch`,
+        );
+        const deathRunId = process.env.QA_RUN_ID || String(Date.now());
+        writeFileSync(
+          resolve(outDir, `citadel-first-death-${deathRunId}.json`),
+          JSON.stringify(
+            {
+              t: Date.now(),
+              deaths,
+              snap: s,
+              monitor: {
+                combatMs: fightMonitor.combatMs,
+                navMs: fightMonitor.navMs,
+                noDamageMs: fightMonitor.noDamageMs,
+                ring: fightMonitor.ring.slice(-100),
+              },
+            },
+            null,
+            2,
+          ),
         );
         break;
       }
-      note(
-        `citadel reposition los-blocked wall=${s.blockerId || "?"} player=${s.x?.toFixed?.(1)},${s.y?.toFixed?.(1)},${s.z?.toFixed?.(1)} boss=${s.boss.x?.toFixed?.(1)},${s.boss.z?.toFixed?.(1)} d=${dist.toFixed?.(1)} t=${Date.now()}`,
-      );
-      const rp = await executeLosReposition({ goTo: fightGoTo, read, note, start: s });
-      repositionUsed += 1;
-      s = rp.s ?? (await read());
-      if (!rp.ok) {
-        note(`citadel reposition failed — short trajectory stop`);
+      const boss = s.boss;
+      if (!boss || boss.alive === false) {
+        note(`citadel no live boss snapshot=${JSON.stringify(boss)} bossDead=${s.bossDead}`);
         break;
       }
-      missStreak = 0;
-      continue;
-    }
-    if (step.act === "back-off") {
-      note(
-        `citadel low-hp ${s.hp.toFixed?.(2)} state=${s.state} dist=${dist.toFixed(1)} bossHp=${s.boss?.hp?.toFixed?.(1)}; back off`,
-      );
-      if (s.state === "grounded" && (s.dodgeCd ?? 0) <= 0.04) {
-        markInput("dodge-backoff");
-        await fightHold(["KeyC", ...dodgeKeys], 280);
-      } else {
-        markInput("back-off");
-        await fightHold(["KeyS", "KeyA"], 220);
+      let dist = Math.hypot(s.x - boss.x, s.z - boss.z);
+      if (dist > 8) {
+        const off = citadelOffArena(s, boss);
+        const stalled =
+          lastApproach &&
+          Math.abs(dist - lastApproach.dist) < 1.4 &&
+          Math.hypot(s.x - lastApproach.x, s.z - lastApproach.z) < 2.8;
+        stallCount = stalled ? stallCount + 1 : 0;
+        lastApproach = { x: s.x, z: s.z, dist };
+        note(
+          `citadel reapproach live boss d=${dist.toFixed(1)} from ${s.x.toFixed(1)},${s.z.toFixed(1)} y=${s.y.toFixed(1)} state=${s.state} grounded=${s.grounded} off=${off.reason} stall=${stallCount} bossY=${boss.y?.toFixed?.(1)} phase=${boss.phase} prompt=${s.prompt}`,
+        );
+        if (s.y > 40) {
+          markInput("goTo-off-crown");
+          await fightGoTo(36, -90, 22000, { arrive: 4, sprint: false, label: "citadel-off-crown" });
+          markInput("goTo-from-crown");
+          await fightGoTo(24, -40, 18000, { arrive: 5, sprint: true, label: "citadel-from-crown" });
+        } else if (s.z < -50 && dist > 18) {
+          markInput("goTo-avoid-still");
+          await fightGoTo(-12, -28, 18000, { arrive: 5, sprint: true, label: "citadel-avoid-still" });
+          markInput("follow-gate");
+          await fightFollow([{ x: 6, z: 18 }, { x: 6, z: 8 }], 14000, 4);
+          markInput("goTo-gate");
+          await fightGoTo(POI.citadel.x, POI.citadel.z + 8, 12000, { arrive: 3.4, sprint: true, label: "citadel-gate" });
+        } else if (off.off || stallCount >= 2) {
+          const wps = citadelReturnWaypoints(s, boss);
+          note(
+            `citadel recover via ${wps.map((p) => `${p.x.toFixed(0)},${p.z.toFixed(0)}`).join("→")} from ${s.x.toFixed(1)},${s.z.toFixed(1)} reason=${off.reason}`,
+          );
+          for (const wp of wps) {
+            markInput("goTo-return");
+            await fightGoTo(wp.x, wp.z, 24000, { arrive: 3.0, sprint: true, label: "citadel-return" });
+          }
+          stallCount = 0;
+        }
+        markInput("goTo-boss");
+        s = await fightGoTo(boss.x, boss.z, 16000, {
+          arrive: 4.2,
+          sprint: dist > 14 && s.y < 30,
+          label: "citadel-boss",
+        });
+        continue;
       }
-      continue;
-    }
-    if (step.act === "dodge") {
-      const before = {
-        x: s.x,
-        y: s.y,
-        z: s.z,
-        dist,
-        state: s.state,
-        grounded: s.grounded,
-        phase: s.boss.phase,
-        dodgeCd: s.dodgeCd,
-        stamina: s.stamina,
-        dodgeT: s.dodgeT,
-      };
-      markInput("dodge");
-      await fightHold(["KeyC", ...dodgeKeys], 280);
+      lastApproach = { x: s.x, z: s.z, dist };
+      stallCount = 0;
+      await lookToward(boss.x, boss.z);
       s = await read();
       if (!s?.boss) break;
       dist = Math.hypot(s.x - s.boss.x, s.z - s.boss.z);
-      const dodgeStarted = Number(s.dodgeT ?? 0) > 0 || Number(s.dodgeCd ?? 0) > 0.05;
-      note(
-        `citadel dodge ${before.x.toFixed(1)},${before.z.toFixed(1)} y=${before.y.toFixed(1)} d=${before.dist.toFixed(1)} ${before.state} phase=${before.phase} → ${s.x.toFixed(1)},${s.z.toFixed(1)} y=${s.y.toFixed(1)} d=${dist.toFixed(1)} ${s.state} grounded=${s.grounded} dy=${(s.y - before.y).toFixed(2)} aim=${dodgeAim.reason} ${dodgeAim.x.toFixed(1)},${dodgeAim.z.toFixed(1)} dodgeCd=${before.dodgeCd?.toFixed?.(2)}→${s.dodgeCd?.toFixed?.(2)} stamina=${before.stamina?.toFixed?.(1)}→${s.stamina?.toFixed?.(1)} dodgeT=${before.dodgeT ?? 0}→${s.dodgeT ?? 0} started=${dodgeStarted} bossPhase=${s.boss.phase}`,
-      );
-      if (!dodgeStarted) {
-        note(`citadel dodge NOT started (sim gate rejected) — do not treat as i-frame`);
-      }
-      if (s.mode === "dead" || s.state === "dead" || (Number.isFinite(s.hp) && s.hp <= 0)) {
-        deaths += 1;
-        fightAbort.abort("death-after-dodge");
-        note(`citadel dead after dodge n=${deaths} hp=${s.hp} — abort`);
-        break;
-      }
-      continue;
-    }
-    if (step.act === "back-off-too-close") {
-      markInput("back-off-too-close");
-      await fightHold(["KeyS", "KeyA"], 180);
-      s = await read();
-      continue;
-    }
-    if (step.act === "approach") {
-      markInput("approach");
-      await fightHold(keysToward(s, s.boss.x, s.boss.z, dist > 6), 160);
-      continue;
-    }
-    if (step.act === "hold-attack") {
-      await wait(90);
-      continue;
-    }
-    if (step.act === "wait-facing") {
-      note(`citadel wait-facing dot=${faceDot.toFixed(2)} camYaw=${s.camYaw?.toFixed?.(2)}`);
-      await lookToward(s.boss.x, s.boss.z);
-      continue;
-    }
-    // swing — only when nextCitadelAction authorized it
-    const hpBefore = s?.boss?.hp;
-    const phaseBefore = s?.attackPhase;
-    const yaw = s?.yaw;
-    const camYaw = s?.camYaw;
-    const px = s?.x;
-    const pz = s?.z;
-    markInput("swing");
-    await tryMeleeClick();
-    await wait(180);
-    s = await read();
-    if (s && (s.mode === "dead" || s.state === "dead" || (Number.isFinite(s.hp) && s.hp <= 0))) {
-      deaths += 1;
-      fightAbort.abort("death-after-swing");
-      note(
-        `citadel dead after swing n=${deaths} hp=${s.hp} player=${s.x?.toFixed?.(2)},${s.y?.toFixed?.(2)},${s.z?.toFixed?.(2)} — abort no resumePlay`,
-      );
-      break;
-    }
-    swings += 1;
-    const phaseAfter = s?.attackPhase;
-    if (phaseAfter && phaseAfter !== "idle") attackStarts += 1;
-    const hpAfter = s?.boss?.hp;
-    const landed = Number.isFinite(hpAfter) && Number.isFinite(hpBefore) && hpAfter < hpBefore - 0.01;
-    if (landed) {
-      hits += 1;
-      missStreak = 0;
-      lastMissKey = null;
-    } else {
-      // D3: 3 identical miss swings (frozen pose/hp) → one reposition, then stop spam.
-      const mk = `${px?.toFixed?.(2)}|${pz?.toFixed?.(2)}|${hpBefore}|${yaw?.toFixed?.(2)}`;
-      if (mk === lastMissKey) missStreak += 1;
-      else {
-        missStreak = 1;
-        lastMissKey = mk;
-      }
-      if (missStreak >= 3) {
-        note(
-          `citadel miss-streak=${missStreak} t=${Date.now()} player=${px?.toFixed?.(2)},${s?.y?.toFixed?.(2)},${pz?.toFixed?.(2)} boss=${s?.boss?.x?.toFixed?.(2)},${s?.boss?.z?.toFixed?.(2)} phase=${s?.boss?.phase} blocked=${s?.bossMeleeBlocked} wall=${s?.blockerId || "?"} — stop swing, reposition once`,
-        );
+      const faceDot = facingDot(s, s.boss.x, s.boss.z);
+      const dodgeAim = citadelDodgeAim(s, s.boss);
+      const dodgeKeys = keysToward(s, dodgeAim.x, dodgeAim.z, false).filter((k) => k !== "ShiftLeft");
+      const step = citadelFightStep({
+        hp: s.hp,
+        dist,
+        bossPhase: s.boss.phase,
+        bossHp: s.boss.hp,
+        state: s.state,
+        dodgeCd: s.dodgeCd,
+        stamina: s.stamina,
+        canDodge: s.canDodge,
+        attackPhase: s.attackPhase,
+        faceDot,
+        bossMeleeBlocked: Boolean(s.bossMeleeBlocked),
+        blockerId: s.blockerId ?? null,
+      });
+      if (step.act === "reposition") {
         if (repositionUsed >= 1) {
-          note("citadel reposition already used — end short trajectory");
+          note(`citadel reposition already used still-blocked wall=${s.blockerId} — end short trajectory`);
           break;
         }
-        const rp2 = await executeLosReposition({ goTo: fightGoTo, read, note, start: s });
+        note(
+          `citadel reposition los-blocked wall=${s.blockerId || "?"} player=${s.x?.toFixed?.(1)},${s.y?.toFixed?.(1)},${s.z?.toFixed?.(1)} boss=${s.boss.x?.toFixed?.(1)},${s.boss.z?.toFixed?.(1)} d=${dist.toFixed?.(1)} t=${Date.now()}`,
+        );
+        const rp = await executeLosReposition({ goTo: fightGoTo, read, note, start: s });
         repositionUsed += 1;
+        s = rp.s ?? (await read());
+        if (!rp.ok) {
+          note(`citadel reposition failed — short trajectory stop`);
+          break;
+        }
         missStreak = 0;
-        s = rp2.s ?? (await read());
-        if (!rp2.ok) {
-          note("citadel miss-streak reposition failed — end short trajectory");
+        continue;
+      }
+      if (step.act === "back-off") {
+        note(
+          `citadel low-hp ${s.hp.toFixed?.(2)} state=${s.state} dist=${dist.toFixed(1)} bossHp=${s.boss?.hp?.toFixed?.(1)}; back off`,
+        );
+        if (s.state === "grounded" && (s.dodgeCd ?? 0) <= 0.04) {
+          markInput("dodge-backoff");
+          await fightHold(["KeyC", ...dodgeKeys], 280);
+        } else {
+          markInput("back-off");
+          await fightHold(["KeyS", "KeyA"], 220);
+        }
+        continue;
+      }
+      if (step.act === "dodge") {
+        const before = {
+          x: s.x,
+          y: s.y,
+          z: s.z,
+          dist,
+          state: s.state,
+          grounded: s.grounded,
+          phase: s.boss.phase,
+          dodgeCd: s.dodgeCd,
+          stamina: s.stamina,
+          dodgeT: s.dodgeT,
+        };
+        markInput("dodge");
+        await fightHold(["KeyC", ...dodgeKeys], 280);
+        s = await read();
+        if (!s?.boss) break;
+        dist = Math.hypot(s.x - s.boss.x, s.z - s.boss.z);
+        const dodgeStarted = Number(s.dodgeT ?? 0) > 0 || Number(s.dodgeCd ?? 0) > 0.05;
+        note(
+          `citadel dodge ${before.x.toFixed(1)},${before.z.toFixed(1)} y=${before.y.toFixed(1)} d=${before.dist.toFixed(1)} ${before.state} phase=${before.phase} → ${s.x.toFixed(1)},${s.z.toFixed(1)} y=${s.y.toFixed(1)} d=${dist.toFixed(1)} ${s.state} grounded=${s.grounded} dy=${(s.y - before.y).toFixed(2)} aim=${dodgeAim.reason} ${dodgeAim.x.toFixed(1)},${dodgeAim.z.toFixed(1)} dodgeCd=${before.dodgeCd?.toFixed?.(2)}→${s.dodgeCd?.toFixed?.(2)} stamina=${before.stamina?.toFixed?.(1)}→${s.stamina?.toFixed?.(1)} dodgeT=${before.dodgeT ?? 0}→${s.dodgeT ?? 0} started=${dodgeStarted} bossPhase=${s.boss.phase}`,
+        );
+        if (!dodgeStarted) {
+          note(`citadel dodge NOT started (sim gate rejected) — do not treat as i-frame`);
+        }
+        if (s.mode === "dead" || s.state === "dead" || (Number.isFinite(s.hp) && s.hp <= 0)) {
+          deaths += 1;
+          fightAbort.abort("death-after-dodge");
+          note(`citadel dead after dodge n=${deaths} hp=${s.hp} — abort`);
           break;
         }
         continue;
       }
+      if (step.act === "back-off-too-close") {
+        markInput("back-off-too-close");
+        await fightHold(["KeyS", "KeyA"], 180);
+        s = await read();
+        continue;
+      }
+      if (step.act === "approach") {
+        markInput("approach");
+        await fightHold(keysToward(s, s.boss.x, s.boss.z, dist > 6), 160);
+        continue;
+      }
+      if (step.act === "hold-attack") {
+        await wait(90);
+        continue;
+      }
+      if (step.act === "wait-facing") {
+        note(`citadel wait-facing dot=${faceDot.toFixed(2)} camYaw=${s.camYaw?.toFixed?.(2)}`);
+        await lookToward(s.boss.x, s.boss.z);
+        continue;
+      }
+      const hpBefore = s?.boss?.hp;
+      const phaseBefore = s?.attackPhase;
+      const yaw = s?.yaw;
+      const camYaw = s?.camYaw;
+      const px = s?.x;
+      const pz = s?.z;
+      markInput("swing");
+      await fightClick();
+      await wait(180);
+      s = await read();
+      if (s && (s.mode === "dead" || s.state === "dead" || (Number.isFinite(s.hp) && s.hp <= 0))) {
+        deaths += 1;
+        fightAbort.abort("death-after-swing");
+        note(
+          `citadel dead after swing n=${deaths} hp=${s.hp} player=${s.x?.toFixed?.(2)},${s.y?.toFixed?.(2)},${s.z?.toFixed?.(2)} — abort no resumePlay`,
+        );
+        break;
+      }
+      swings += 1;
+      const phaseAfter = s?.attackPhase;
+      if (phaseAfter && phaseAfter !== "idle") attackStarts += 1;
+      const hpAfter = s?.boss?.hp;
+      const landed = Number.isFinite(hpAfter) && Number.isFinite(hpBefore) && hpAfter < hpBefore - 0.01;
+      if (landed) {
+        hits += 1;
+        missStreak = 0;
+        lastMissKey = null;
+      } else {
+        const mk = `${px?.toFixed?.(2)}|${pz?.toFixed?.(2)}|${hpBefore}|${yaw?.toFixed?.(2)}`;
+        if (mk === lastMissKey) missStreak += 1;
+        else {
+          missStreak = 1;
+          lastMissKey = mk;
+        }
+        if (missStreak >= 3) {
+          note(
+            `citadel miss-streak=${missStreak} t=${Date.now()} player=${px?.toFixed?.(2)},${s?.y?.toFixed?.(2)},${pz?.toFixed?.(2)} boss=${s?.boss?.x?.toFixed?.(2)},${s?.boss?.z?.toFixed?.(2)} phase=${s?.boss?.phase} blocked=${s?.bossMeleeBlocked} wall=${s?.blockerId || "?"} — stop swing, reposition once`,
+          );
+          if (repositionUsed >= 1) {
+            note("citadel reposition already used — end short trajectory");
+            break;
+          }
+          const rp2 = await executeLosReposition({ goTo: fightGoTo, read, note, start: s });
+          repositionUsed += 1;
+          missStreak = 0;
+          s = rp2.s ?? (await read());
+          if (!rp2.ok) {
+            note("citadel miss-streak reposition failed — end short trajectory");
+            break;
+          }
+          continue;
+        }
+      }
+      if (swings <= 4 || swings % 5 === 0 || landed || s?.hp < 1.5) {
+        const d = s?.boss ? Math.hypot(s.x - s.boss.x, s.z - s.boss.z) : -1;
+        note(
+          `citadel swing=${swings} hit=${landed} hp ${hpBefore}->${hpAfter} player=${px?.toFixed?.(2)},${s?.y?.toFixed?.(2)},${pz?.toFixed?.(2)} yaw=${yaw?.toFixed?.(2)} camYaw=${camYaw?.toFixed?.(2)} boss=${s?.boss?.x?.toFixed?.(2)},${s?.boss?.z?.toFixed?.(2)} dist=${d.toFixed?.(2)} weapon=${s?.equippedId} ammo=${s?.arrows} attack ${phaseBefore}->${phaseAfter} cd=${s?.attackT?.toFixed?.(2)} seal=${s?.sealOpen} playerHp=${s?.hp} dodgeCd=${s?.dodgeCd?.toFixed?.(2)} bossPhase=${s?.boss?.phase} prompt=${s?.prompt}`,
+        );
+      }
     }
-    if (swings <= 4 || swings % 5 === 0 || landed || s?.hp < 1.5) {
-      const d = s?.boss ? Math.hypot(s.x - s.boss.x, s.z - s.boss.z) : -1;
-      note(
-        `citadel swing=${swings} hit=${landed} hp ${hpBefore}->${hpAfter} player=${px?.toFixed?.(2)},${s?.y?.toFixed?.(2)},${pz?.toFixed?.(2)} yaw=${yaw?.toFixed?.(2)} camYaw=${camYaw?.toFixed?.(2)} boss=${s?.boss?.x?.toFixed?.(2)},${s?.boss?.z?.toFixed?.(2)} dist=${d.toFixed?.(2)} weapon=${s?.equippedId} ammo=${s?.arrows} attack ${phaseBefore}->${phaseAfter} cd=${s?.attackT?.toFixed?.(2)} seal=${s?.sealOpen} playerHp=${s?.hp} dodgeCd=${s?.dodgeCd?.toFixed?.(2)} bossPhase=${s?.boss?.phase} prompt=${s?.prompt}`,
-      );
-    }
+    s = await read();
+    note(
+      `citadel towers=${s?.towers} orbs=${s?.orbs} bossDead=${s?.bossDead} mode=${s?.mode} prompt=${s?.prompt} swings=${swings} hits=${hits} attackStarts=${attackStarts} deaths=${deaths} bossHp=${s?.boss?.hp} seal=${s?.sealOpen} combatMs=${fightMonitor.combatMs} navMs=${fightMonitor.navMs} noDamageMs=${fightMonitor.noDamageMs} abort=${fightAbort.reason || "none"}`,
+    );
+    await shot("route-citadel.png");
+    await saveStorageCheckpoint("after-citadel");
+    return s;
+  } finally {
+    // E1.1: stop and await sample loop BEFORE browser cleanup.
+    await orch.stopSampling(fightAbort.reason || "fight-end");
   }
-  // E1: stop monitor on fight exit; record combat vs navigation totals.
-  fightMonitor.stop(fightAbort.reason || "fight-end");
-  s = await read();
-  note(
-    `citadel towers=${s?.towers} orbs=${s?.orbs} bossDead=${s?.bossDead} mode=${s?.mode} prompt=${s?.prompt} swings=${swings} hits=${hits} attackStarts=${attackStarts} deaths=${deaths} bossHp=${s?.boss?.hp} seal=${s?.sealOpen} combatMs=${fightMonitor.combatMs} navMs=${fightMonitor.navMs} noDamageMs=${fightMonitor.noDamageMs} abort=${fightAbort.reason || "none"}`,
-  );
-  await shot("route-citadel.png");
-  await saveStorageCheckpoint("after-citadel");
-  return s;
 }
-
 async function readSaveEnvelope() {
   ensureOpen();
   return page.evaluate(() => {

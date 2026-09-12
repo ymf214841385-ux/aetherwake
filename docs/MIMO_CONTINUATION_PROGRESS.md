@@ -498,3 +498,28 @@ npm run test:game    # 170 pass / 0 fail
 ### 未解决（保留）
 - 18,-13 导航卡墙
 - Boss 击杀 / ending / 刷新继续
+
+---
+
+## 批次 21 — E1.1 精准补修（主控不通过后）
+
+### 主控已证缺陷
+1. `classifyFightSnapshot({mode:dead,...})` 曾返回 unknown，未 latch
+2. `runCombatSampleLoop` 未在 play-routes 真实调用（sampleLoop=null）
+3. wrapGoTo 只入口检查；resumePlay/follow/tryMeleeClick 未共用 abort
+
+### 修复
+- **死亡优先**：mode dead / state dead / hp≤0 任一 → `dead`，在 playing 门之前
+- **`createFightOrchestrator`**：play-routes fightBoss 真实调用；采样在**下塔导航前** startSampling；finally `await stopSampling` 再关浏览器
+- scoped resumePlay：读到 dead 先 abort，**不点复活**；hold 分片 100ms；goTo/follow/click 共用 abort
+- onEvent：death / no-damage / read-error → 共享 abort（首因）
+
+### 验证
+- **13/13**（含 orchestrator 死亡中途 goTo 测试：无复活/无新键/停止后无样本）
+- typecheck PASS；test:game **188**
+- 文档撤回「已实现串行采样接入」的旧表述（本批起真实接线）
+- **未**开新浏览器
+
+### 未解决（保留）
+- 18,-13 导航卡墙
+- Boss 击杀 / ending / 刷新继续

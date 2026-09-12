@@ -1,5 +1,5 @@
 /**
- * E1: production combat-progress monitor + abort latch.
+ * E1/E1.1: production combat-progress monitor + shared abort orchestrator.
  * Pure/serial — no key/mouse, no resumePlay, no sim writes.
  * now() is injected: runtime performance.now, tests fake clock.
  */
@@ -11,14 +11,20 @@ export const SAMPLE_GAP_MS = 500;
 export const RING_MS = 10000;
 export const RING_MAX = 101;
 export const SAMPLE_BEAT_MS = 100;
+export const HOLD_SLICE_MS = 100;
 
-/** classify one read() snapshot. */
+/** classify one read() snapshot. Death wins before mode gate. */
 export function classifyFightSnapshot(s) {
   if (!s) return "unknown";
+  // E1.1: mode dead / state dead / hp<=0 — any one is death, before playing gate.
+  if (
+    s.mode === "dead" ||
+    s.state === "dead" ||
+    (Number.isFinite(s.hp) && s.hp <= 0)
+  ) {
+    return "dead";
+  }
   if (s.mode !== "playing") return "unknown";
-  const playerAlive =
-    s.state !== "dead" && !(Number.isFinite(s.hp) && s.hp <= 0);
-  if (!playerAlive) return "dead";
   const boss = s.boss;
   if (!boss || boss.alive === false) return "unknown";
   if (s.sealOpen !== true) return "unknown";
@@ -41,7 +47,7 @@ export function createCombatProgressMonitor({ now, onEvent }) {
   let noDamageMs = 0;
   let lastBossHp = null;
   let stopped = false;
-  let latched = null; // {reason, t, snap}
+  let latched = null;
   const emit = (e) => {
     try {
       onEvent?.(e);
@@ -77,10 +83,6 @@ export function createCombatProgressMonitor({ now, onEvent }) {
     get stopped() {
       return stopped;
     },
-    /**
-     * @param {object|null} s snapshot from read()
-     * @param {object} [meta] { input: {action, t} }
-     */
     observe(s, meta = {}) {
       if (stopped) return { stopped: true, latched };
       const t = now();
@@ -111,16 +113,14 @@ export function createCombatProgressMonitor({ now, onEvent }) {
         latched = { reason: "death", t, snap: s };
         stopped = true;
         emit({ type: "latch-death", t, snap: s });
-        return { stopped: true, latched };
+        return { stopped: true, latched, phase };
       }
 
       if (phase === "unknown") {
-        // Pause timing — do not accumulate combat/nav/no-damage.
         lastValid = null;
         return { phase, noDamageMs, combatMs, navMs, stopped: false };
       }
 
-      // Valid combat or navigation
       const dt =
         lastValid && lastValid.phase !== "unknown" ? t - lastValid.t : 0;
       if (dt > 0 && dt <= SAMPLE_GAP_MS) {
@@ -129,13 +129,11 @@ export function createCombatProgressMonitor({ now, onEvent }) {
           noDamageMs += dt;
         } else if (phase === "navigation") {
           navMs += dt;
-          // navigation never feeds combat-no-damage
         }
       } else if (dt > SAMPLE_GAP_MS) {
         emit({ type: "sample-gap", t, gapMs: dt, from: lastValid.phase, to: phase });
       }
 
-      // Boss HP real drop resets no-damage accumulation (not combatMs).
       const bossHp = s?.boss?.hp;
       if (Number.isFinite(bossHp)) {
         if (lastBossHp != null && bossHp < lastBossHp - 0.01) {
@@ -163,7 +161,6 @@ export function createCombatProgressMonitor({ now, onEvent }) {
 
 /**
  * Serial readonly sampler: read → observe → top-up to beat. No overlapping reads.
- * @param {{read:()=>Promise<any>, monitor:object, now:()=>number, wait:(ms:number)=>Promise<void>, shouldStop:()=>boolean, inputRef?:{current:object|null}}} deps
  */
 export async function runCombatSampleLoop(deps) {
   const { read, monitor, now, wait, shouldStop, inputRef } = deps;
@@ -174,8 +171,11 @@ export async function runCombatSampleLoop(deps) {
     try {
       s = await read();
     } catch (err) {
-      monitor.observe(null);
-      emitFail(err);
+      try {
+        monitor.stop(`read-error:${err?.message || err}`);
+      } catch {
+        /* ignore */
+      }
       break;
     }
     monitor.observe(s, { input: inputRef?.current ?? null });
@@ -185,19 +185,16 @@ export async function runCombatSampleLoop(deps) {
     const rest = SAMPLE_BEAT_MS - elapsed;
     if (rest > 0) await wait(rest);
   }
-  return { samples, latched: monitor.latched, combatMs: monitor.combatMs, navMs: monitor.navMs, noDamageMs: monitor.noDamageMs };
-  function emitFail(err) {
-    try {
-      monitor.stop?.(`read-error:${err?.message || err}`);
-    } catch {
-      /* ignore */
-    }
-  }
+  return {
+    samples,
+    latched: monitor.latched,
+    combatMs: monitor.combatMs,
+    navMs: monitor.navMs,
+    noDamageMs: monitor.noDamageMs,
+  };
 }
 
-/**
- * Shared abort latch for hold/goTo/follow/resumePlay in one citadel-resume run.
- */
+/** Shared abort latch — first reason wins. */
 export function createAbortLatch() {
   let reason = null;
   let at = null;
@@ -222,12 +219,10 @@ export function createAbortLatch() {
 }
 
 /**
- * Wrap hold so aborted runs release keys and send nothing new.
- * @param {Function} hold original hold(keys, ms)
- * @param {() => {aborted:boolean, reason:string|null}} getAbort
- * @param {() => Promise<void>} [releaseAll]
+ * hold sliced to HOLD_SLICE_MS so abort can release keys mid-input.
+ * Does not let the sampler send keys — only the action executor calls this.
  */
-export function wrapHoldForAbort(hold, getAbort, releaseAll) {
+export function wrapHoldForAbort(hold, getAbort, releaseAll, { sliceMs = HOLD_SLICE_MS, wait } = {}) {
   return async function holdChecked(keys, ms) {
     const a = typeof getAbort === "function" ? getAbort() : getAbort;
     if (a?.aborted) {
@@ -236,22 +231,192 @@ export function wrapHoldForAbort(hold, getAbort, releaseAll) {
       } catch {
         /* ignore */
       }
-      return;
+      return { aborted: true, reason: a.reason };
     }
-    return hold(keys, ms);
+    // Slice long holds so abort can fire between segments.
+    let remaining = ms;
+    while (remaining > 0) {
+      const cur = typeof getAbort === "function" ? getAbort() : getAbort;
+      if (cur?.aborted) {
+        try {
+          await releaseAll?.();
+        } catch {
+          /* ignore */
+        }
+        return { aborted: true, reason: cur.reason };
+      }
+      const slice = Math.min(sliceMs, remaining);
+      await hold(keys, slice);
+      remaining -= slice;
+      if (remaining > 0 && wait) await wait(0);
+    }
+    return { aborted: false };
   };
 }
 
 /**
- * Wrap goTo: abort → return current without walking; nav timeout is not combat failure.
+ * Wrap goTo: abort → dedicated stop (no fake x/z); nav timeout ≠ combat failure.
+ * Internal goTo still uses original implementation; callers must also use
+ * scoped resumePlay/goTo that check abort each read.
  */
 export function wrapGoToForAbort(goTo, getAbort) {
   return async function goToChecked(tx, tz, ms, opts = {}) {
     const a = typeof getAbort === "function" ? getAbort() : getAbort;
     if (a?.aborted) {
-      return { aborted: true, reason: a.reason, x: opts.__x, z: opts.__z, nav: { arrived: false, status: "aborted" } };
+      // E1.1: no fabricated coordinates — dedicated stop reason only.
+      return {
+        aborted: true,
+        reason: a.reason,
+        nav: { arrived: false, status: "aborted", stopReason: a.reason },
+      };
     }
     return goTo(tx, tz, ms, opts);
+  };
+}
+
+/**
+ * resumePlay wrapper: death before resume latches abort and refuses revive.
+ * @param {Function} resumePlay original
+ * @param {Function} read
+ * @param {{aborted:boolean, reason:string|null}|Function} getAbort
+ * @param {(reason:string)=>void} abort
+ */
+export function wrapResumePlayForAbort(resumePlay, read, getAbort, abort) {
+  return async function resumePlayChecked() {
+    const a = typeof getAbort === "function" ? getAbort() : getAbort;
+    if (a?.aborted) return null;
+    // Read raw state BEFORE resumePlay (which auto-revives).
+    let raw = null;
+    try {
+      raw = await read();
+    } catch {
+      /* fall through — resumePlay may still handle overlay */
+    }
+    if (
+      raw &&
+      (raw.mode === "dead" || raw.state === "dead" || (Number.isFinite(raw.hp) && raw.hp <= 0))
+    ) {
+      abort?.("death-before-resume");
+      return raw;
+    }
+    return resumePlay();
+  };
+}
+
+/**
+ * tryMeleeClick wrapper: abort → no click.
+ */
+export function wrapClickForAbort(tryClick, getAbort) {
+  return async function clickChecked() {
+    const a = typeof getAbort === "function" ? getAbort() : getAbort;
+    if (a?.aborted) return { aborted: true, reason: a.reason };
+    return tryClick();
+  };
+}
+
+/**
+ * follow wrapper: each leg checks abort; nav timeout is not combat failure.
+ */
+export function wrapFollowForAbort(follow, getAbort) {
+  return async function followChecked(points, msEach, arrive) {
+    const a0 = typeof getAbort === "function" ? getAbort() : getAbort;
+    if (a0?.aborted) {
+      return { aborted: true, reason: a0.reason, nav: { arrived: false, status: "aborted" } };
+    }
+    return follow(points, msEach, arrive);
+  };
+}
+
+/**
+ * Production orchestrator: shared abort + monitor + scoped helpers.
+ * @param {object} deps
+ * @param {()=>Promise<any>} deps.read
+ * @param {(keys:string[],ms:number)=>Promise<any>} deps.hold
+ * @param {(x:number,z:number,ms:number,opts?:object)=>Promise<any>} deps.goTo
+ * @param {(pts:any[],ms?:number,arrive?:number)=>Promise<any>} deps.follow
+ * @param {()=>Promise<any>} deps.resumePlay
+ * @param {()=>Promise<any>} deps.tryMeleeClick
+ * @param {()=>Promise<void>} deps.releaseAll
+ * @param {()=>number} deps.now
+ * @param {(ms:number)=>Promise<void>} deps.wait
+ * @param {(m:string)=>void} [deps.note]
+ */
+export function createFightOrchestrator(deps) {
+  const {
+    read,
+    hold,
+    goTo,
+    follow,
+    resumePlay,
+    tryMeleeClick,
+    releaseAll,
+    now,
+    wait,
+    note,
+  } = deps;
+  const abort = createAbortLatch();
+  const monitor = createCombatProgressMonitor({
+    now,
+    onEvent: (ev) => {
+      // E1.1: death / no-damage / read-error all drive shared stop (first reason).
+      if (ev.type === "latch-death") abort.abort("death");
+      else if (ev.type === "latch-combat-no-damage") abort.abort("combat-no-damage");
+      else if (ev.type === "monitor-stop" && String(ev.reason || "").startsWith("read-error:")) {
+        abort.abort(ev.reason);
+      }
+      try {
+        note?.(`citadel-mon ${JSON.stringify(ev)}`);
+      } catch {
+        /* ignore */
+      }
+    },
+  });
+  const lastInput = { current: null };
+  const scopedHold = wrapHoldForAbort(hold, () => abort, releaseAll, { wait });
+  const scopedGoTo = wrapGoToForAbort(goTo, () => abort);
+  const scopedFollow = wrapFollowForAbort(follow, () => abort);
+  const scopedResume = wrapResumePlayForAbort(resumePlay, read, () => abort, (r) => abort.abort(r));
+  const scopedClick = wrapClickForAbort(tryMeleeClick, () => abort);
+
+  let samplePromise = null;
+  function startSampling() {
+    if (samplePromise) return samplePromise;
+    samplePromise = runCombatSampleLoop({
+      read,
+      monitor,
+      now,
+      wait,
+      shouldStop: () => abort.aborted || monitor.stopped,
+      inputRef: lastInput,
+    });
+    return samplePromise;
+  }
+  async function stopSampling(reason = "stopped") {
+    monitor.stop(reason);
+    if (samplePromise) {
+      try {
+        await samplePromise;
+      } catch {
+        /* ignore */
+      }
+    }
+    return monitor;
+  }
+
+  return {
+    abort,
+    monitor,
+    lastInput,
+    hold: scopedHold,
+    goTo: scopedGoTo,
+    follow: scopedFollow,
+    resumePlay: scopedResume,
+    tryMeleeClick: scopedClick,
+    startSampling,
+    stopSampling,
+    markInput(action) {
+      lastInput.current = { action, t: Date.now() };
+    },
   };
 }
 
