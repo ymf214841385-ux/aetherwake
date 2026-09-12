@@ -1,0 +1,62 @@
+{
+  "pid": 21702,
+  "ppid": 1,
+  "pgid": 21702,
+  "sid": 0,
+  "psSess": 0,
+  "newProcessGroup": true,
+  "chromiumPid": 21758,
+  "chromiumAlive": false,
+  "serverPid": 21756,
+  "t": 1789171500899,
+  "elapsedMs": 1018417,
+  "lastNote": "boot",
+  "ppidAlive": true,
+  "parentCmdline": "",
+  "argv": [
+    "/opt/homebrew/Cellar/node/25.9.0_3/bin/node",
+    "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/scripts/play-routes.mjs"
+  ],
+  "closeReason": null,
+  "signals": [],
+  "ignoreHangup": false,
+  "ignoreSIGHUP": true,
+  "headed": true,
+  "qaDurable": true,
+  "exitCode": 1,
+  "signal": null,
+  "waitpid": {
+    "signaled": false,
+    "signal": null,
+    "code": 1,
+    "waitpid": 256
+  },
+  "lastHeartbeat": {
+    "pid": 21702,
+    "ppid": 1,
+    "pgid": 21702,
+    "sid": 0,
+    "psSess": 0,
+    "newProcessGroup": true,
+    "chromiumPid": 21758,
+    "chromiumAlive": true,
+    "serverPid": 21756,
+    "t": 1789171497841,
+    "elapsedMs": 1015359,
+    "lastNote": "boot",
+    "ppidAlive": true,
+    "parentCmdline": "",
+    "argv": [
+      "/opt/homebrew/Cellar/node/25.9.0_3/bin/node",
+      "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/scripts/play-routes.mjs"
+    ],
+    "closeReason": null,
+    "signals": [],
+    "ignoreHangup": false,
+    "ignoreSIGHUP": true,
+    "headed": true,
+    "qaDurable": true
+  },
+  "stack": "Error: harness-exit\n    at Object.writeExit (file:///Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/scripts/qa/lifecycle.mjs:934:49)\n    at file:///Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/scripts/play-routes.mjs:1897:27",
+  "error": null
+}

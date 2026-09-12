@@ -416,3 +416,19 @@ npm run test:game    # 170 pass / 0 fail
 ### 事实（不自行扩方案）
 - arrive 0.5 已修「假到达」
 - 当前几何下 **(6,-4) 并未解除** 对 boss(10.6,0.5) 的东翼墙 LOS
+
+---
+
+## 批次 17 — D3.2 两段 reposition
+
+### 修复（c97773b）
+- seg1 (6,-4) arrive0.5；wing-blocked 且 boss.z>-0.3 → 同预算 seg2 (6,2)
+- 严格：`nav.arrived===true`；`boss` 存在；`bossMeleeBlocked===false`（undefined≠clear）
+- 回归 8/8 + Sim 几何（门中心东西 Boss clear；路径 101 点无墙）
+
+### 实跑（PID 21702，headed，已结束）
+- seal 全路径：dawn+四祠+crown
+- **reposition ok**：`citadel-wall-0-11-w` → (5.85,-3.88) arrived clear displacement=5.63
+- **swing#1–2 hit 20→16.4**（reposition 后继续命中）
+- 随后 fight 窗口结束，bossHp=16.4 **未击杀**
+- 证据：`runs/d32-play-routes-20260912-074802/first-segment.txt`

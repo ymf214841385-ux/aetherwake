@@ -1,0 +1,11 @@
+=== first-segment D3.2 ===
+[play] dawn done towers=dawn y=47.8 prompt=晨光塔已点亮 state=grounded
+[play] still intended claimed=true orbs=4 prompt= dAltar=361.5 frozen=0.9500000000000123
+[play] mere done towers=dawn,mere y=44.5 prompt=镜湖塔已点亮 state=grounded
+[play] crown done towers=dawn,mere,crown y=53.5 prompt=雪冠塔已点亮 state=grounded
+[play] citadel swing=1 hit=true hp 20->18.2 player=5.73,10.76,-1.80 yaw=-6.12 camYaw=3.77 boss=7.71,0.64 dist=3.30 weapon=blade ammo=24 attack idle->active cd=0.09 seal=true playerHp=1.5 dodgeCd=0.00 bossPhase=hurt prompt=挑战空王
+[play] citadel reposition los-blocked wall=citadel-wall-0-11-w player=0.3,10.6,-3.0 boss=7.4,0.2 d=7.8 t=1789171397826
+[play] citadel reposition ok {"ok":true,"reason":"clear-at-gate-interior","elapsedMs":1713,"segments":[{"ok":true,"label":"citadel-los-reposition","elapsedMs":0,"start":{"x":0.28,"y":10.64,"z":-3.03},"end":{"x":5.85,"y":10.86,"z":-3.88},"target":{"x":6,"z":-4},"targetDist0":5.8,"targetDist1":0.2,"displacement":5.63,"navStatus":"arrived","arrived":true,"clear":true,"blocked":false,"blocker":null,"bossZ":-0.6935035889733533}],"start":{"x":0.28,"y":10.64,"z":-3.03},"end":{"x":5.85,"y":10.86,"z":-3.88},"blockerAfter":null,"blockedAfter":false}
+[play] citadel swing=2 hit=true hp 18.2->16.4 player=6.45,10.80,-2.92 yaw=3.19 camYaw=3.19 boss=6.34,0.41 dist=2.88 weapon=blade ammo=24 attack idle->active cd=0.09 seal=true playerHp=0.25 dodgeCd=0.00 bossPhase=hurt prompt=挑战空王
+[play] citadel towers=dawn,mere,crown orbs=4 bossDead=false mode=playing prompt= swings=2 hits=2 attackStarts=2 deaths=0 bossHp=16.4 seal=true
+[play] save-reload restored=true continued=true afterTowers=dawn,mere,crown afterShrines=pull,rime,burst,still
