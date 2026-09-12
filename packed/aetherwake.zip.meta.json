@@ -1,8 +1,8 @@
 {
-  "sourceCommit": "1d9dbf129eeb9973c73858b54dbc06ad24726c70",
+  "sourceCommit": "f3d1ed53875dc9384c351036634325d98e188e10",
   "zip": "packed/aetherwake.zip",
   "deterministic": true,
-  "files": 338,
-  "bytes": 90614006,
-  "sha256": "74a3ec08358d97fdfbab8939e8b107a56e1e0fe8e7a475a30a5e5b6c38824166"
+  "files": 495,
+  "bytes": 94351192,
+  "sha256": "e50424cd4449826500ef168ba4dd8d3b98e28f04b8ed27a3abbe570cb730e8ca"
 }
