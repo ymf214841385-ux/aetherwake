@@ -6,7 +6,7 @@
  * Owns its preview server unless E2E_URL is set. Never kills a pid it did not
  * spawn. Unexpected page.close is a failure (classifyClose).
  */
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
@@ -47,6 +47,7 @@ import {
 } from "./qa/shrine-steer.mjs";
 import { citadelDodgeAim, citadelOffArena, citadelReturnWaypoints } from "./qa/citadel-steer.mjs";
 import { executeLosReposition } from "./qa/los-reposition.mjs";
+import { citadelResumePlan, CITADEL_RESUME_FOCUS, v2MatchesSource } from "./qa/citadel-resume.mjs";
 import { bossFightDecision, nextCitadelAction, citadelFightStep } from "./qa/boss-fight-policy.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
@@ -1845,13 +1846,136 @@ try {
     }
   }
   if (gotoErr) throw gotoErr;
-  last = await startGame();
+  // D4.1: citadel-resume injects the designated sealed save once, then 继续旅途.
+  const resumePlan = citadelResumePlan({
+    focus: process.env.QA_FOCUS || null,
+    ckptPath: process.env.QA_STORAGE_CHECKPOINT || null,
+  });
+  if (resumePlan.mode === "citadel-resume" && !resumePlan.ok) {
+    throw new Error(resumePlan.reason || "citadel-resume plan invalid");
+  }
+  let resumeInject = null;
+  if (resumePlan.mode === "citadel-resume") {
+    note(`citadel-resume restore ${resumePlan.ckptPath}`);
+    const rawCkpt = readFileSync(resolve(root, resumePlan.ckptPath), "utf8");
+    const ckptJson = JSON.parse(rawCkpt);
+    const v2 = typeof ckptJson.v2 === "string" ? ckptJson.v2 : JSON.stringify(ckptJson.v2);
+    const sourceSha = await import("node:crypto").then((c) =>
+      c.createHash("sha256").update(rawCkpt).digest("hex"),
+    );
+    await page.evaluate((saveV2) => {
+      // Formal save key only; no progress writes beyond the legal file bytes.
+      localStorage.setItem("aetherwake-save-v2", saveV2);
+    }, v2);
+    await page.reload({ waitUntil: "domcontentloaded", timeout: 60000 });
+    await wait(800);
+    // Must continue — never start a new file.
+    const cont = page.locator("button", { hasText: "继续旅途" });
+    if ((await cont.count()) > 0) {
+      await cont.first().focus();
+      await page.keyboard.press("Enter");
+      await wait(800);
+    } else {
+      note("citadel-resume: no 继续旅途 button — refuse new game");
+      throw new Error("citadel-resume missing continue button");
+    }
+    last = await read();
+    const v2After = await page.evaluate(() => localStorage.getItem("aetherwake-save-v2"));
+    resumeInject = {
+      scope: "citadel-resume",
+      ckptPath: resumePlan.ckptPath,
+      sourceSha256: sourceSha,
+      v2Len: v2.length,
+      v2MatchesSource: v2MatchesSource(v2, v2After),
+      restore: {
+        mode: last?.mode,
+        towers: last?.towers,
+        shrines: last?.shrines,
+        orbs: last?.orbs,
+        sealOpen: last?.sealOpen,
+        hp: last?.hp,
+        pos: last
+          ? { x: +last.x.toFixed(3), y: +last.y.toFixed(3), z: +last.z.toFixed(3) }
+          : null,
+        bossDead: last?.bossDead,
+      },
+    };
+    note(
+      `citadel-resume restore ok towers=${last?.towers} orbs=${last?.orbs} hp=${last?.hp} pos=${resumeInject.restore.pos && JSON.stringify(resumeInject.restore.pos)} v2Match=${resumeInject.v2MatchesSource} sha=${sourceSha}`,
+    );
+    if (!resumeInject.v2MatchesSource) {
+      throw new Error("citadel-resume v2 string rewritten after inject");
+    }
+  } else {
+    last = await startGame();
+  }
   await wait(400);
   await clickCanvas();
   last = await read();
   if (last?.mode === "playing") sawPlaying = true;
   note(`start mode=${last?.mode} at ${last?.x?.toFixed?.(1)},${last?.z?.toFixed?.(1)}`);
   await shot("route-start.png");
+
+  if (resumePlan.mode === "citadel-resume") {
+    note("QA_FOCUS=citadel: resume sealed save + original fightBoss (no coord jump)");
+    // Focus gate: legal progress on this restore.
+    const focusOk =
+      Boolean(last?.sealOpen) &&
+      ["dawn", "mere", "crown"].every((t) => last.towers?.includes(t)) &&
+      ["pull", "rime", "burst", "still"].every((t) => last.shrines?.includes(t)) &&
+      (last?.orbs ?? 0) >= 4 &&
+      last?.bossDead === false;
+    if (!focusOk) {
+      note(
+        `citadel-resume focus verify FAIL towers=${last?.towers} shrines=${last?.shrines} orbs=${last?.orbs} bossDead=${last?.bossDead} seal=${last?.sealOpen}`,
+      );
+    }
+    last = await fightBoss();
+    const citadelOk =
+      focusOk && Boolean(last?.bossDead || last?.mode === "ending") && !closeReason;
+    const json = checkedOutputPath(resolve(outDir, "citadel-resume.json"), [outDir]);
+    writeFileSync(
+      json,
+      JSON.stringify(
+        {
+          ok: citadelOk,
+          scope: "citadel-resume",
+          focus: "citadel",
+          resumeInject,
+          focusVerify: focusOk,
+          towers: last?.towers || [],
+          shrines: last?.shrines || [],
+          orbs: last?.orbs ?? 0,
+          bossDead: last?.bossDead,
+          mode: last?.mode,
+          bossHp: last?.boss?.hp,
+          final: last,
+          closeReason,
+          log,
+        },
+        null,
+        2,
+      ),
+    );
+    await teardownBrowser();
+    await teardownServer();
+    harnessLife?.writeExit?.({ exitCode: citadelOk ? 0 : 1, closeReason });
+    console.log(
+      JSON.stringify(
+        {
+          json,
+          ok: citadelOk,
+          scope: "citadel-resume",
+          bossDead: last?.bossDead,
+          towers: last?.towers,
+          closeReason,
+        },
+        null,
+        2,
+      ),
+    );
+    process.exit(citadelOk ? 0 : 1);
+  }
 
   if (process.env.QA_FOCUS === "mere") {
     note("QA_FOCUS=mere: lake approach + shaft climb only (real keys, no progress writes)");
