@@ -473,3 +473,28 @@ npm run test:game    # 170 pass / 0 fail
 - recover 后 **15s 无 Boss 掉血** 短轨迹停；swings=0 bossHp=20
 - **scope=citadel-resume**（继承进度，非本轮新档全通）
 - 证据：`runs/d41-citadel-resume-20260912-110220/`
+
+---
+
+## 批次 20 — E1 QA 计时/采样/focus 误判（仅 QA，未开新浏览器）
+
+### 30445 分类（主控）
+- QA 缺陷：导航混入 15s 无伤害、伪 100ms 环、focus 失败仍 fightBoss
+- 导航 18,-13 卡墙另列未解决
+
+### 实现（生产模块 combat-progress-monitor.mjs）
+- `classifyFightSnapshot`：playing/活/seal/hz≤8/dy≤3 → combat；其它有效→navigation；缺→unknown 停表
+- 仅相邻 combat-combat 累计 dt；gap>500ms 记 sample-gap；nav 不计入 no-damage
+- Boss 真实掉血重置 noDamageMs；≥15000 → combat-no-damage
+- 串行采样 read→补足 100ms；环 ≤101 且 now-10000 前剔除
+- death 锁存 abort；hold/goTo 包装检查 abort 并 releaseAll
+- focusOk=false → precondition-failed，**不调用 fightBoss**
+
+### 验证（假时钟，import 生产模块）
+- **14/14** E1 监测测试
+- typecheck PASS
+- **未启动**新浏览器全图/Boss
+
+### 未解决（保留）
+- 18,-13 导航卡墙
+- Boss 击杀 / ending / 刷新继续
