@@ -1,0 +1,10 @@
+{
+  "pid": 64925,
+  "headed": true,
+  "focus": "mere",
+  "newGame": true,
+  "accepted": false,
+  "reason": "original 240000ms climb window expired without tower activation; root stopped before automatic retries",
+  "sourceIncludesRegrabDirectionFix": true,
+  "noFurtherRepairThisRound": true
+}

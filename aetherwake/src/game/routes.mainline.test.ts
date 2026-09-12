@@ -21,6 +21,7 @@ import {
   towerSolids,
 } from "./world.ts";
 import { queryWall, resolveHorizontal } from "./physics.ts";
+import { assertLegacyTowerStartBlocked, placeClearLowLedge, placeClearTowerGround } from "./mantle-fixtures.ts";
 
 type Act = Parameters<Sim["step"]>[1];
 
@@ -364,7 +365,8 @@ describe("QF1 dawn: rest-ledge climb, W+E re-grab, activate", () => {
   it("after S-to-ledge rest, W+E re-grabs instead of walking into the shaft", () => {
     const s = fresh();
     const tw = tower("dawn");
-    placeAt(s, tw.x, tw.z + 4.8);
+    assertLegacyTowerStartBlocked(s, { x: tw.x, z: tw.z + 4.8, y: s.heightFn(tw.x, tw.z + 4.8) + 0.2 });
+    placeClearLowLedge(s, tw, 1);
     faceToward(s, tw.x, tw.z);
     for (let i = 0; i < 2500 && s.player.stamina > 22; i++) {
       s.step(1 / 60, hold({ moveY: 1, interact: s.player.state !== "climbing", climb: s.player.state !== "climbing" }));
@@ -540,7 +542,9 @@ describe("QF4 mere / crown reachability", () => {
   it("mere climb from the dry inner ring activates 镜湖塔", () => {
     const s = fresh();
     const tw = tower("mere");
-    placeAt(s, tw.x + 4.35, tw.z, Math.max(tw.y, heightAt(tw.x + 4.35, tw.z), WATER_LEVEL) + 0.15);
+    assertLegacyTowerStartBlocked(s, { x: tw.x + 4.35, z: tw.z,
+      y: Math.max(tw.y, heightAt(tw.x + 4.35, tw.z), WATER_LEVEL) + 0.15 });
+    placeClearTowerGround(s, tw);
     faceToward(s, tw.x, tw.z);
     climbWithLedgeRest(s, tw, 80);
     assert.ok(

@@ -1,0 +1,37 @@
+[play] harness pid=63653 ppid=1 chromium=63672 headed=true url=http://127.0.0.1:8102/?t=1789207228242 serverPid=63670 serverPort=8102 pidFile=/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/.grok/play-routes-63670.pid log=/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/.grok/play-routes-63670.log hb=/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/.grok/heartbeat-63653.json
+[play] start mode=playing at 16.0,102.0
+[play] QA_FOCUS=mere: lake approach + shaft climb only (real keys, no progress writes)
+[play] climb mere
+[play] mere approach dist=5.3 y=3.5 state=swimming prompt=
+[play] mere authored baseY=7.8 (player y=3.5)
+[play] mere rest y=10.1 stam=14 n=1
+[play] mere rest y=10.1 stam=24 n=2
+[play] mere rest y=10.1 stam=36 n=3
+[play] mere rest y=10.1 stam=69 n=6
+[play] mere ledge-try y=27.3 stam=19 state=climbing
+[play] mere rest y=27.3 stam=20 n=8
+[play] mere rest y=27.3 stam=65 n=12
+[play] mere ledge-try y=44.5 stam=27 state=grounded
+[play] mere pressed 启动 towers=mere prompt=镜湖塔已点亮
+[play] mere done towers=mere y=44.5 prompt=镜湖塔已点亮 state=climbing
+[play] storage checkpoint tower-mere -> /Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/storage-ckpt-tower-mere.json v2=true
+[play] mere leave radially to -109.5,25.9 from y=44.5 climbing
+[play] stuck dist=13.5 at -108.4,12.5 airborne
+[play] stuck dist=14.3 at -108.3,11.7 climbing
+[play] stuck dist=13.5 at -108.4,12.5 airborne
+[play] stuck dist=14.4 at -108.3,11.5 climbing
+[play] stuck dist=13.5 at -108.4,12.5 airborne
+[play] nav timeout mere-leave dist=14.4 at -108.3,11.5
+[play] stuck dist=14.3 at -108.3,11.7 climbing
+[play] stuck dist=13.5 at -108.4,12.5 airborne
+[play] nav timeout mere-leave2 dist=13.5 at -108.4,12.5
+[play] saved browser-save-snapshot v2=true v1=false
+{
+  "json": "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/mere-focus.json",
+  "ok": true,
+  "focus": "mere",
+  "towers": [
+    "mere"
+  ],
+  "closeReason": null
+}

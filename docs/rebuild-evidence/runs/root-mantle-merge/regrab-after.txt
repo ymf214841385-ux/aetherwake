@@ -1,0 +1,20 @@
+(node:64866) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ normal W away the actual wall from a clear original upper ledge obeys re-grab intent (4.139416ms)
+ℹ {"direction":"away","support":{"y":44.46000019073487,"id":"mere-ledge-9","climbable":false,"normalY":1},"outward":{"x":-0.08317488059722966,"z":0.9965349663898585},"wishDotOutward":0.9999999999999999,"before":{"x":-108.37595046029948,"y":44.46000019073487,"z":12.504338048082161,"state":"grounded"},"after":{"x":-108.37648987000978,"y":44.46000019073487,"z":12.510800824267333,"state":"grounded"}}
+✔ normal W toward the actual wall from a clear original upper ledge obeys re-grab intent (1.349959ms)
+ℹ {"direction":"toward","support":{"y":44.46000019073487,"id":"mere-ledge-9","climbable":false,"normalY":1},"outward":{"x":-0.08317488059722966,"z":0.9965349663898585},"wishDotOutward":-0.9999999999999999,"before":{"x":-108.37595046029948,"y":44.46000019073487,"z":12.504338048082161,"state":"grounded"},"after":{"x":-108.37595046029948,"y":44.46000019073487,"z":12.504338048082161,"state":"climbing"}}
+✔ normal W tangent the actual wall from a clear original upper ledge obeys re-grab intent (0.514125ms)
+ℹ {"direction":"tangent","support":{"y":44.46000019073487,"id":"mere-ledge-9","climbable":false,"normalY":1},"outward":{"x":-0.08317488059722966,"z":0.9965349663898585},"wishDotOutward":0,"before":{"x":-108.37595046029948,"y":44.46000019073487,"z":12.504338048082161,"state":"grounded"},"after":{"x":-108.38241323648465,"y":44.46000019073487,"z":12.503798638371856,"state":"grounded"}}
+✔ explicit E retains its original grab contract despite an outward camera (1.205917ms)
+ℹ {"state":"climbing"}
+✔ tower C is already outward with an outward camera; it is not camera-reversed (0.598458ms)
+ℹ {"radiusBefore":4.5200000000000005,"radiusAfter":4.870000000000001,"displacementOutward":0.3500000000000002,"beforeYaw":0,"bodyYaw":-0.08327108186562325,"camYaw":3.05832157172417,"state":"airborne","bodyClear":true}
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 148.076209

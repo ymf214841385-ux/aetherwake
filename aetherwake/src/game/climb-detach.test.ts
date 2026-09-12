@@ -7,6 +7,7 @@ import { describe, it } from "node:test";
 import { memoryStorage } from "../../src/game/persistence.ts";
 import { Sim } from "../../src/game/sim.ts";
 import { TOWERS, TOWER_HEIGHT } from "../../src/game/world.ts";
+import { assertLegacyTowerStartBlocked, placeClearLowLedge } from "./mantle-fixtures.ts";
 
 function hold(partial = {}) {
   return {
@@ -74,20 +75,23 @@ describe("climb detach via dodge (production)", () => {
     );
   });
 
-  it("tower mantle still works without dodge (summit path)", () => {
+  it("tower mantle still works without dodge (summit path)", t => {
     const s = freshSim();
     const tw = TOWERS.find((t) => t.id === "dawn")!;
-    s.player.x = tw.x + 4.25;
-    s.player.z = tw.z;
-    s.player.y = tw.y + 2.2;
+    assertLegacyTowerStartBlocked(s, { x: tw.x + 4.25, z: tw.z, y: tw.y + 2.2 });
+    placeClearLowLedge(s, tw, 0);
     engageClimbing(s);
     const y0 = s.player.y;
+    let maxY = y0;
     // Climb up — no dodge
     for (let i = 0; i < 600; i++) {
       s.step(1 / 60, hold({ climb: true, moveY: 1 }));
+      maxY = Math.max(maxY, s.player.y);
       if (s.player.state !== "climbing" && s.player.y > tw.y + 30) break;
       if (s.towersOn.has(tw.id)) break;
     }
+    t.diagnostic(JSON.stringify({ initialY: y0, maxY, final: { x: s.player.x, y: s.player.y, z: s.player.z,
+      state: s.player.state, stamina: s.player.stamina, hp: s.player.hp } }));
     assert.ok(
       s.player.y > y0 + 5,
       `climbing without dodge must gain height y0=${y0.toFixed(1)} y=${s.player.y.toFixed(1)} state=${s.player.state}`,

@@ -1,0 +1,7 @@
+[play] harness pid=64925 ppid=1 chromium=64944 headed=true url=http://127.0.0.1:8102/?t=1789207620880 serverPid=64942 serverPort=8102 pidFile=/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/.grok/play-routes-64942.pid log=/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/.grok/play-routes-64942.log hb=/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/.grok/heartbeat-64925.json
+[play] start mode=playing at 16.0,102.0
+[play] QA_FOCUS=mere: lake approach + shaft climb only (real keys, no progress writes)
+[play] climb mere
+[play] mere approach dist=5.7 y=3.5 state=swimming prompt=
+[play] mere authored baseY=7.8 (player y=3.5)
+[play] mere not lit after climb window; retrying from the ring

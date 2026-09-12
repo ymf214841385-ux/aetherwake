@@ -7,6 +7,7 @@ import { memoryStorage } from "./persistence.ts";
 import { Sim } from "./sim.ts";
 import { WATER_LEVEL } from "./height.ts";
 import { CITADEL_POI, isTowerRest, SHRINES, TOWER_HEIGHT, TOWERS, shrineWorldOrigin } from "./world.ts";
+import { assertLegacyTowerStartBlocked, placeClearLowLedge, placeClearTowerGround } from "./mantle-fixtures.ts";
 
 function hold(partial: Partial<ReturnType<typeof takeSimActions>>) {
   return {
@@ -125,9 +126,8 @@ function nearestRest(s: Sim, tw: (typeof TOWERS)[number], yWindow: number) {
 }
 
 function climbTowardCap(s: Sim, tw: (typeof TOWERS)[number], seconds: number) {
-  s.player.x = tw.x + 4.7;
-  s.player.z = tw.z;
-  s.player.y = tw.y + 0.2;
+  assertLegacyTowerStartBlocked(s, { x: tw.x + 4.7, z: tw.z, y: tw.y + 0.2 });
+  placeClearTowerGround(s, tw);
   faceToward(s, tw.x, tw.z);
   s.setMove("grounded");
   const steps = Math.floor(seconds * 60);
@@ -306,13 +306,12 @@ describe("mainline reachability", () => {
     assert.ok(s.player.stamina < 40, `hang regenerated stamina to ${s.player.stamina}`);
   });
 
-  it("after a ledge rest, holding forward re-grabs the shaft instead of walking off", () => {
+  it("after a ledge rest, holding forward re-grabs the shaft instead of walking off", t => {
     const s = new Sim(memoryStorage());
     s.freshRuntime(false);
     const tw = TOWERS.find((t) => t.id === "dawn")!;
-    s.player.x = tw.x + 4.7;
-    s.player.z = tw.z;
-    s.player.y = tw.y + 0.2;
+    assertLegacyTowerStartBlocked(s, { x: tw.x + 4.7, z: tw.z, y: tw.y + 0.2 });
+    placeClearLowLedge(s, tw, 0);
     faceToward(s, tw.x, tw.z);
     s.setMove("grounded");
     for (let i = 0; i < 90; i++) {
@@ -320,6 +319,8 @@ describe("mainline reachability", () => {
       s.step(1 / 60, hold({ moveY: 1, interact: s.player.state !== "climbing", climb: s.player.state !== "climbing" }));
     }
     assert.ok(s.player.state === "climbing", `state=${s.player.state} y=${s.player.y}`);
+    t.diagnostic(JSON.stringify({ beforeRest: { x: s.player.x, y: s.player.y, z: s.player.z, state: s.player.state },
+      nearestRestWithinOriginalWindow: nearestRest(s, tw, 2.2) }));
     s.player.stamina = 4;
     for (let i = 0; i < 90 && s.player.state === "climbing"; i++) s.step(1 / 60, hold({ moveY: -1 }));
     assert.equal(s.player.state, "grounded", `S did not land a rest state=${s.player.state} y=${s.player.y}`);

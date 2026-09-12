@@ -1,0 +1,44 @@
+[play] harness pid=64074 ppid=1 chromium=64093 headed=true url=http://127.0.0.1:8102/?t=1789207355502 serverPid=64091 serverPort=8102 pidFile=/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/.grok/play-routes-64091.pid log=/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/.grok/play-routes-64091.log hb=/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/.grok/heartbeat-64074.json
+[play] start mode=playing at 16.0,102.0
+[play] QA_FOCUS=crown: frost tower climb only (real keys, no progress writes)
+[play] climb crown
+[play] crown approach dist=6.6 y=28.4 state=grounded prompt=
+[play] crown authored baseY=16.8 (player y=28.4)
+[play] crown rest y=19.4 stam=-0 n=1
+[play] crown rest y=19.1 stam=11 n=2
+[play] crown rest y=19.1 stam=22 n=3
+[play] crown rest y=19.1 stam=33 n=4
+[play] crown rest y=19.1 stam=78 n=8
+[play] crown ledge-try y=36.3 stam=20 state=climbing
+[play] crown rest y=36.3 stam=20 n=9
+[play] crown rest y=36.3 stam=65 n=13
+[play] crown ledge-try y=53.5 stam=26 state=climbing
+[play] crown pressed 启动 towers=crown prompt=雪冠塔已点亮
+[play] crown done towers=crown y=53.5 prompt=雪冠塔已点亮 state=grounded
+[play] storage checkpoint tower-crown -> /Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/storage-ckpt-tower-crown.json v2=true
+[play] crown leave radially to 44.1,-110.4 from y=53.5 grounded
+[play] stuck dist=14.3 at 47.2,-124.4 climbing
+[play] stuck dist=13.4 at 47.0,-123.5 airborne
+[play] stuck dist=14.4 at 47.2,-124.4 climbing
+[play] stuck dist=13.4 at 47.0,-123.5 airborne
+[play] stuck dist=14.2 at 47.2,-124.3 climbing
+[play] stuck dist=13.4 at 47.0,-123.5 airborne
+[play] nav timeout crown-leave dist=13.5 at 47.0,-123.6
+[play] crown still high y=54.0; walk the ridge down
+[play] stuck dist=36.2 at 47.2,-124.4 climbing
+[play] stuck dist=35.3 at 47.0,-123.5 airborne
+[play] stuck dist=36.2 at 47.2,-124.4 climbing
+[play] stuck dist=35.3 at 47.0,-123.5 airborne
+[play] stuck dist=36.1 at 47.2,-124.3 climbing
+[play] stuck dist=35.3 at 47.0,-123.5 airborne
+[play] nav timeout crown-dismount dist=35.3 at 47.0,-123.5
+[play] saved browser-save-snapshot v2=true v1=false
+{
+  "json": "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/crown-focus.json",
+  "ok": true,
+  "focus": "crown",
+  "towers": [
+    "crown"
+  ],
+  "closeReason": null
+}

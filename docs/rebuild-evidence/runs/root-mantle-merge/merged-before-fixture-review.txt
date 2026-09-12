@@ -1,0 +1,640 @@
+
+> test:game
+> node --experimental-strip-types --test 'src/game/**/*.test.ts'
+
+(node:63889) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+▶ P0-1 boss attack state machine
+  ✔ recover is not rewritten to approach when player leaves meleeR (37.689167ms)
+  ✔ recover completes to approach only after its own timer (11.388917ms)
+  ✔ windup is not cancelled when player steps outside meleeR mid-telegraph (2.085334ms)
+  ✔ hurt ends into approach (not mid-chain recover) while player in aggro (5.818208ms)
+  ✔ controlled sim: each recover window allows one landed counter (77.697667ms)
+  ✔ recover still ticks when player is blocked / tall dy / beyond aggro (3.531708ms)
+  ✔ off-arena walk-home does not steal recover (9.507208ms)
+✔ P0-1 boss attack state machine (148.618041ms)
+▶ P0-2 bossDead save reload
+  ✔ applySave with bossDead does not respawn a live boss (1.106542ms)
+  ✔ reload after ending keeps bossDead and does not re-open a fight (243.98225ms)
+✔ P0-2 bossDead save reload (245.251334ms)
+▶ P0-2 freshRuntime after cleared bossDead (b80cf12 regression)
+  ✔ freshRuntime(false) after bossDead=true must spawn a live full-HP boss (0.437542ms)
+✔ P0-2 freshRuntime after cleared bossDead (b80cf12 regression) (0.528209ms)
+▶ P0-1 strike LOS: no damage through a wall
+  ✔ strike does not hurt when a solid wall blocks boss→player (0.818666ms)
+✔ P0-1 strike LOS: no damage through a wall (0.891333ms)
+▶ P0-3 save location / checkpoint resolve
+  ✔ saving inside a shrine restores at the overworld entrance, not interior void (1.512ms)
+  ✔ checkpoint y far below terrain is resolved to ground, not reused blindly (0.4195ms)
+  ✔ tower checkpoint keeps elevated y (not flattened into the shaft base) (0.298666ms)
+  ✔ tower-dawn with wrong saved y (ground+10) resolves to authored cap (0.278541ms)
+  ✔ unknown checkpoint id stands on terrain at xz (not a 48m window) (0.228167ms)
+  ✔ checkpoint=tower-crown but player courtyard continue keeps courtyard pose (0.2455ms)
+  ✔ shrine-entrance save with tower checkpoint keeps entrance pose (0.345666ms)
+✔ P0-3 save location / checkpoint resolve (3.46825ms)
+▶ D4 dodge gate matches production handleLocomotion
+  ✔ airborne / cd0.02 / stamina18 reject; grounded cd0 stamina>18 accept (0.680417ms)
+  ✔ controlled: airborne KeyC does not start dodge; grounded KeyC does (1.222125ms)
+✔ D4 dodge gate matches production handleLocomotion (1.96175ms)
+✔ wanderer is adult-proportioned PBR humanoid with fingers (96.232375ms)
+✔ all anim states run without throwing (56.832833ms)
+✔ authored candidate clips crossfade and keep Attack one-shot (28.420792ms)
+✔ v4 hand.R sword socket seats the grip along the measured palm axis (1.42275ms)
+✔ v4 runtime resolves GLTFLoader identities, visibly deforms Attack, and attaches the rendered sword to handR (31.403042ms)
+✔ lod variant is lighter and still returns LimbSet (17.1015ms)
+✔ lathe helpers wind outward (radial normals) (1.325125ms)
+✔ solid body meshes are FrontSide (closed vest is FrontSide, not DoubleSide hiding) (30.592583ms)
+✔ torso/pelvis/skirt/neck overlap so the abdomen and neck are closed (58.015333ms)
+✔ front hair stays behind the face so +Z sees skin first (34.517ms)
+✔ body parts are true skinned meshes with valid weights on the shared skeleton (29.258833ms)
+✔ sleeve overlaps the elbow with upper-arm and forearm weights (10.999083ms)
+✔ bending the elbow does not funnel the upper sleeve (11.541417ms)
+✔ ears sit against the cranium and do not dominate the front silhouette (38.598ms)
+✔ linen belly stays inside the vest so waist/side spikes cannot form (24.264541ms)
+✔ vest has no separate armhole rim fragments (10.329917ms)
+✔ bending the forearm moves the skinned arm continuously, not as a doll joint (23.719584ms)
+✔ skinIndex addresses skeleton bone array, not SKIN_DRIVER_BONES compact order (15.242ms)
+✔ every skinned mesh is bound to the shared skeleton with in-range indices (16.157291ms)
+✔ bending the knee deforms the shin continuously, not as a doll joint (52.850917ms)
+✔ front face uses a continuous sculpted cranium, not attached nose/lips (96.000583ms)
+✔ vest covers the ribcage sides (no armhole/hem hole) (36.113709ms)
+✔ vest front has cloth thickness, not a penetrating chest gap (27.405125ms)
+✔ spine bend deforms the torso smoothly (no rigid chest slab) (57.998042ms)
+(node:63891) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+▶ citadel keep interior approach (36458 pose)
+  ✔ keep interior (7,-16) bee-line must NOT reach melee (36458) (168.998667ms)
+  ✔ south door (6,0.8) reaches courtyard boss without keep interior (34.126917ms)
+✔ citadel keep interior approach (36458 pose) (203.708084ms)
+pose0 {"x":7,"y":11.04,"z":-16.5} insideKeep true
+off0 inside-keep wps [{"x":18,"z":-12},{"x":6,"z":8},{"x":6,"z":0.8},{"x":6,"z":-2.4}]
+leg0 {"i":0,"target":{"x":18,"z":-12},"start":{"x":7,"y":11.04451315925794,"z":-16.5},"end":{"x":15.96,"y":10.97,"z":-13.39},"minD":2.47,"arrived":true,"state":"grounded"}
+leg1 {"i":1,"target":{"x":6,"z":8},"start":{"x":15.96208312535729,"y":10.973125316977445,"z":-13.389410616541287},"end":{"x":1.79,"y":8.01,"z":11.36},"minD":2.4,"arrived":false,"state":"grounded"}
+leg2 {"i":2,"target":{"x":6,"z":0.8},"start":{"x":1.7871163768943379,"y":8.01127516082121,"z":11.359967729663516},"end":{"x":5.16,"y":10.46,"z":2.73},"minD":2.11,"arrived":true,"state":"grounded"}
+leg3 {"i":3,"target":{"x":6,"z":-2.4},"start":{"x":5.155106641814481,"y":10.461140347015291,"z":2.730062831304975},"end":{"x":5.8,"y":10.72,"z":0.11},"minD":2.51,"arrived":true,"state":"grounded"}
+end {"bossD":1.51,"offEnd":{"off":false,"reason":"inside"},"legs":[{"i":0,"target":{"x":18,"z":-12},"start":{"x":7,"y":11.04451315925794,"z":-16.5},"end":{"x":15.96,"y":10.97,"z":-13.39},"minD":2.47,"arrived":true,"state":"grounded"},{"i":1,"target":{"x":6,"z":8},"start":{"x":15.96208312535729,"y":10.973125316977445,"z":-13.389410616541287},"end":{"x":1.79,"y":8.01,"z":11.36},"minD":2.4,"arrived":false,"state":"grounded"},{"i":2,"target":{"x":6,"z":0.8},"start":{"x":1.7871163768943379,"y":8.01127516082121,"z":11.359967729663516},"end":{"x":5.16,"y":10.46,"z":2.73},"minD":2.11,"arrived":true,"state":"grounded"},{"i":3,"target":{"x":6,"z":-2.4},"start":{"x":5.155106641814481,"y":10.461140347015291,"z":2.730062831304975},"end":{"x":5.8,"y":10.72,"z":0.11},"minD":2.51,"arrived":true,"state":"grounded"}]}
+exit-probes [{"name":"north","minD":12.05,"arrived":false,"end":{"x":5.95,"y":11.2,"z":-16.16}},{"name":"south","minD":1.49,"arrived":true,"end":{"x":6.96,"y":11.36,"z":-17.33}},{"name":"west","minD":8.06,"arrived":false,"end":{"x":-3.98,"y":5.29,"z":-12.79}},{"name":"east","minD":2.99,"arrived":true,"end":{"x":15.7,"y":10.97,"z":-13.92}},{"name":"on-top-then-north","minD":12.19,"arrived":false,"end":{"x":7.72,"y":11.39,"z":-16.07}}]
+(node:63892) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+▶ citadelReturnWaypoints simulated walk from 36458 pose
+  ✔ full keep-escape path reaches melee range of live boss (233.568584ms)
+  ✔ probe keep exits: north/south/west/east from (7,-16) (381.133916ms)
+✔ citadelReturnWaypoints simulated walk from 36458 pose (615.366083ms)
+(node:63893) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+▶ climb detach via dodge (production)
+  ✔ dodge while climbing leaves climbing (near ledge/mantle height) (13.531792ms)
+  ✖ tower mantle still works without dodge (summit path) (177.3455ms)
+✖ climb detach via dodge (production) (191.898834ms)
+▶ tower activation (production)
+  ✔ reachable top + interact lights the tower (13.638208ms)
+✔ tower activation (production) (13.72275ms)
+▶ tickClock
+  ✔ leaves commands queued when dt is below one step (4.800125ms)
+  ✔ does not run steps while hidden (0.187334ms)
+✔ tickClock (5.794916ms)
+▶ B08 melee windows
+  ✔ does not hit during windup, hits once in the active window (0.528ms)
+  ✔ rejects behind, over a wall, and extreme height (0.077542ms)
+  ✔ cannot start a new swing until idle (0.044334ms)
+✔ B08 melee windows (2.047208ms)
+(node:63896) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ production boundary +X: exact zero, no early/repeated damping (4.259792ms)
+ℹ {"direction":"+X","remaining":0.016666666666666666,"predamp":{"vx":11,"vz":0},"terminal":{"vx":3.3,"vz":0,"dodgeT":0}}
+✔ production boundary +X: cross below zero, no early/repeated damping (0.619583ms)
+ℹ {"direction":"+X","remaining":0.008333333333333333,"predamp":{"vx":11,"vz":0},"terminal":{"vx":3.3,"vz":0,"dodgeT":-0.008333333333333331}}
+✔ production boundary -X: exact zero, no early/repeated damping (7.021459ms)
+ℹ {"direction":"-X","remaining":0.016666666666666666,"predamp":{"vx":-11,"vz":0},"terminal":{"vx":-3.3,"vz":0,"dodgeT":0}}
+✔ production boundary -X: cross below zero, no early/repeated damping (0.689583ms)
+ℹ {"direction":"-X","remaining":0.008333333333333333,"predamp":{"vx":-11,"vz":0},"terminal":{"vx":-3.3,"vz":0,"dodgeT":-0.008333333333333331}}
+✔ production boundary +Z: exact zero, no early/repeated damping (0.32075ms)
+ℹ {"direction":"+Z","remaining":0.016666666666666666,"predamp":{"vx":0,"vz":11},"terminal":{"vx":0,"vz":3.3,"dodgeT":0}}
+✔ production boundary +Z: cross below zero, no early/repeated damping (0.254083ms)
+ℹ {"direction":"+Z","remaining":0.008333333333333333,"predamp":{"vx":0,"vz":11},"terminal":{"vx":0,"vz":3.3,"dodgeT":-0.008333333333333331}}
+✔ production boundary -Z: exact zero, no early/repeated damping (0.204875ms)
+ℹ {"direction":"-Z","remaining":0.016666666666666666,"predamp":{"vx":0,"vz":-11},"terminal":{"vx":0,"vz":-3.3,"dodgeT":0}}
+✔ production boundary -Z: cross below zero, no early/repeated damping (0.229375ms)
+ℹ {"direction":"-Z","remaining":0.008333333333333333,"predamp":{"vx":0,"vz":-11},"terminal":{"vx":0,"vz":-3.3,"dodgeT":-0.008333333333333331}}
+✔ production boundary +X+Z: exact zero, no early/repeated damping (0.238375ms)
+ℹ {"direction":"+X+Z","remaining":0.016666666666666666,"predamp":{"vx":7.778174593052023,"vz":7.778174593052023},"terminal":{"vx":2.333452377915607,"vz":2.333452377915607,"dodgeT":0}}
+✔ production boundary +X+Z: cross below zero, no early/repeated damping (0.238208ms)
+ℹ {"direction":"+X+Z","remaining":0.008333333333333333,"predamp":{"vx":7.778174593052023,"vz":7.778174593052023},"terminal":{"vx":2.333452377915607,"vz":2.333452377915607,"dodgeT":-0.008333333333333331}}
+✔ production boundary +X-Z: exact zero, no early/repeated damping (0.310166ms)
+ℹ {"direction":"+X-Z","remaining":0.016666666666666666,"predamp":{"vx":7.778174593052023,"vz":-7.778174593052023},"terminal":{"vx":2.333452377915607,"vz":-2.333452377915607,"dodgeT":0}}
+✔ production boundary +X-Z: cross below zero, no early/repeated damping (0.204666ms)
+ℹ {"direction":"+X-Z","remaining":0.008333333333333333,"predamp":{"vx":7.778174593052023,"vz":-7.778174593052023},"terminal":{"vx":2.333452377915607,"vz":-2.333452377915607,"dodgeT":-0.008333333333333331}}
+✔ production boundary -X+Z: exact zero, no early/repeated damping (0.348917ms)
+ℹ {"direction":"-X+Z","remaining":0.016666666666666666,"predamp":{"vx":-7.778174593052023,"vz":7.778174593052023},"terminal":{"vx":-2.333452377915607,"vz":2.333452377915607,"dodgeT":0}}
+✔ production boundary -X+Z: cross below zero, no early/repeated damping (0.156416ms)
+ℹ {"direction":"-X+Z","remaining":0.008333333333333333,"predamp":{"vx":-7.778174593052023,"vz":7.778174593052023},"terminal":{"vx":-2.333452377915607,"vz":2.333452377915607,"dodgeT":-0.008333333333333331}}
+✔ production boundary -X-Z: exact zero, no early/repeated damping (0.154417ms)
+ℹ {"direction":"-X-Z","remaining":0.016666666666666666,"predamp":{"vx":-7.778174593052023,"vz":-7.778174593052023},"terminal":{"vx":-2.333452377915607,"vz":-2.333452377915607,"dodgeT":0}}
+✔ production boundary -X-Z: cross below zero, no early/repeated damping (0.150916ms)
+ℹ {"direction":"-X-Z","remaining":0.008333333333333333,"predamp":{"vx":-7.778174593052023,"vz":-7.778174593052023},"terminal":{"vx":-2.333452377915607,"vz":-2.333452377915607,"dodgeT":-0.008333333333333331}}
+✔ input queue -> real Sim.step: accepted +X dodge expires naturally (5.660542ms)
+ℹ {"direction":"+X","activeFrames":17,"predamp":{"vx":11,"vz":0},"terminal":{"x":19.11666666666667,"z":96,"vx":3.3,"vz":0},"afterOneSecond":{"x":19.551368273486087,"z":96,"vx":0.002608618066295882,"vz":0},"residualDistance":0.4347016068194165}
+✔ input queue -> real Sim.step: accepted -X dodge expires naturally (3.166958ms)
+ℹ {"direction":"-X","activeFrames":17,"predamp":{"vx":-11,"vz":0},"terminal":{"x":12.88333333333333,"z":96,"vx":-3.3,"vz":0},"afterOneSecond":{"x":12.448631726513923,"z":96,"vx":-0.002608618066295882,"vz":0},"residualDistance":0.43470160681940584}
+✔ input queue -> real Sim.step: accepted +Z dodge expires naturally (3.257167ms)
+ℹ {"direction":"+Z","activeFrames":17,"predamp":{"vx":0,"vz":11},"terminal":{"x":16,"z":99.11666666666673,"vx":0,"vz":3.3},"afterOneSecond":{"x":16,"z":99.55136827348618,"vx":0,"vz":0.002608618066295882},"residualDistance":0.4347016068194449}
+✔ input queue -> real Sim.step: accepted -Z dodge expires naturally (29.837625ms)
+ℹ {"direction":"-Z","activeFrames":17,"predamp":{"vx":0,"vz":-11},"terminal":{"x":16,"z":92.88333333333327,"vx":0,"vz":-3.3},"afterOneSecond":{"x":16,"z":92.44863172651382,"vx":0,"vz":-0.002608618066295882},"residualDistance":0.4347016068194449}
+✔ input queue -> real Sim.step: accepted +X+Z dodge expires naturally (2.079917ms)
+ℹ {"direction":"+X+Z","activeFrames":17,"predamp":{"vx":7.778174593052022,"vz":7.778174593052022},"terminal":{"x":18.20381613469806,"z":98.20381613469806,"vx":2.3334523779156062,"vz":2.3334523779156062},"afterOneSecond":{"x":18.51119658867274,"z":98.51119658867272,"vx":0.0018445715242035566,"vz":0.0018445715242035566},"residualDistance":0.43470160681937675}
+✔ input queue -> real Sim.step: accepted +X-Z dodge expires naturally (10.244458ms)
+ℹ {"direction":"+X-Z","activeFrames":17,"predamp":{"vx":7.778174593052022,"vz":-7.778174593052022},"terminal":{"x":18.20381613469806,"z":93.79618386530194,"vx":2.3334523779156062,"vz":-2.3334523779156062},"afterOneSecond":{"x":18.51119658867274,"z":93.48880341132728,"vx":0.0018445715242035566,"vz":-0.0018445715242035566},"residualDistance":0.43470160681937675}
+✔ input queue -> real Sim.step: accepted -X+Z dodge expires naturally (2.935875ms)
+ℹ {"direction":"-X+Z","activeFrames":17,"predamp":{"vx":-7.778174593052022,"vz":7.778174593052022},"terminal":{"x":13.796183865301941,"z":98.20381613469806,"vx":-2.3334523779156062,"vz":2.3334523779156062},"afterOneSecond":{"x":13.48880341132724,"z":98.51119658867272,"vx":-0.0018445715242035566,"vz":0.0018445715242035566},"residualDistance":0.4347016068193918}
+✔ input queue -> real Sim.step: accepted -X-Z dodge expires naturally (3.284625ms)
+ℹ {"direction":"-X-Z","activeFrames":17,"predamp":{"vx":-7.778174593052022,"vz":-7.778174593052022},"terminal":{"x":13.796183865301941,"z":93.79618386530194,"vx":-2.3334523779156062,"vz":-2.3334523779156062},"afterOneSecond":{"x":13.48880341132724,"z":93.48880341132728,"vx":-0.0018445715242035566,"vz":-0.0018445715242035566},"residualDistance":0.4347016068193918}
+✔ natural input trajectories retain rotational symmetry through expiry and ground braking (15.305208ms)
+✔ airborne terminal snap keeps vertical velocity; next frame does not redamp either horizontal axis (0.217167ms)
+▶ environment lighting + quality
+  ✔ exposes the daytime lighting keys Scene needs (0.448625ms)
+  ✔ quality tiers scale grass, shadows, anisotropy (0.073833ms)
+  ✔ sunDirFromTimeOfDay matches Scene's day-cycle formula (0.06275ms)
+✔ environment lighting + quality (1.129083ms)
+▶ environment materials
+  ✔ terrain materials have distinct roughness and color (0.542417ms)
+  ✔ water material carries ripple uniforms and matches WATER_LEVEL (0.126417ms)
+✔ environment materials (0.735625ms)
+▶ environment rocks
+  ✔ builds several unique non-spherical boulders (29.128667ms)
+✔ environment rocks (29.258042ms)
+▶ environment vegetation
+  ✔ builds pine vs broadleaf with LOD and grass clumps (79.75225ms)
+  ✔ scatters grass above water around spawn (75.8005ms)
+✔ environment vegetation (155.705833ms)
+▶ environment lod + world constants
+  ✔ buckets instances by camera distance (0.152041ms)
+  ✔ matches the live terrain size (0.067416ms)
+✔ environment lod + world constants (0.274959ms)
+▶ prop materials
+  ✔ shares standard materials suitable for instancing (0.227375ms)
+✔ prop materials (0.253708ms)
+▶ splat shader vs Three.js MeshStandardMaterial
+  ✔ MeshStandardMaterial uses ShaderLib.physical whose includes match our needles (0.091958ms)
+  ✔ color_pars_fragment declares vec4 vColor (the old vec3 assign was a compile error) (0.080042ms)
+  ✔ applySplatShaderPatch rewrites needles and uses vColor.rgb (0.105459ms)
+  ✔ createSplatTerrainMaterial is opaque FrontSide with a patching onBeforeCompile (0.1135ms)
+  ✔ throws if a needle is missing rather than silently compiling a broken program (0.169917ms)
+✔ splat shader vs Three.js MeshStandardMaterial (0.613584ms)
+▶ terrain geometry winding after rotateX + height displace
+  ✔ index winding averages +Y so FrontSide shows the ground (73.102875ms)
+  ✔ FrontSide raycast hits spawn and a mountain sample from +Y (99.862833ms)
+✔ terrain geometry winding after rotateX + height displace (173.055875ms)
+(node:63898) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ recorded downhill release follows the 0.96 cm lower ground on frame one and stays grounded for one second (50.219083ms)
+ℹ {"first":{"t":0.016666666666666666,"x":25.45284599401773,"y":11.635162310794522,"z":-43.84140599707443,"ground":11.635162310794522,"gap":0,"vx":-1.3821813164125225,"vy":0,"vz":1.3884044710342105,"hp":2,"stamina":108,"state":"grounded","grounded":true,"canDodge":true},"last":{"t":1.0000000000000013,"x":25.270792555803258,"y":11.557056896489597,"z":-43.658532878632805,"ground":11.557056896489597,"gap":0,"vx":-0.0012307314537440169,"vy":0,"vz":0.0012362727181522944,"hp":2,"stamina":108,"state":"grounded","grounded":true,"canDodge":true},"airborneFrames":0}
+✔ normal W movement down the same real slope stays grounded for 60 frames (18.911667ms)
+ℹ {"first":{"t":0.016666666666666666,"x":25.44764267117389,"y":11.632999875059252,"z":-43.83619989371815,"ground":11.632999875059252,"gap":0,"vx":-1.6943806870428797,"vy":0,"vz":1.7007706724107694,"hp":2,"stamina":108,"state":"grounded","grounded":true,"canDodge":true},"last":{"t":1.0000000000000013,"x":22.630609840489694,"y":10.58168404538284,"z":-41.01807394951314,"ground":10.58168404538284,"gap":0,"vx":-3.1052608510427593,"vy":0,"vz":3.1052879507871167,"hp":2,"stamina":108,"state":"grounded","grounded":true,"canDodge":true},"airborneFrames":0}
+✔ a real Space command leaves the ground and follows the original upward jump (23.649666ms)
+✔ already airborne 0.3 m above real terrain falls naturally instead of snapping early (5.127084ms)
+✔ positive vy is not ground-snapped even when initially grounded (0.750041ms)
+✔ positive vy is not ground-snapped even when initially airborne (1.754375ms)
+✔ a grounded fixture 0.63 m above actual support exceeds FOOT_SNAP and becomes airborne (1.315541ms)
+✔ walking off the real crown cap into a 35 m drop does not stick to the ground (1.08725ms)
+ℹ {"t":0.016666666666666666,"x":51.31333333333333,"y":54.84999923706055,"z":-128,"ground":19.26985076887486,"gap":35.58014846818569,"vx":4.4,"vy":0,"vz":0,"hp":2,"stamina":108,"state":"airborne","grounded":false,"canDodge":false}
+✔ real fall from vy=-20 retains its 0.75 landing damage (8.186875ms)
+ℹ {"first":{"t":0.016666666666666666,"x":25.475882349291272,"y":12.305324323613943,"z":-43.86454607159167,"ground":11.644768768058388,"gap":0.6605555555555558,"vx":0,"vy":-20.366666666666667,"vz":0,"hp":2,"stamina":108,"state":"airborne","grounded":false,"canDodge":false},"landed":{"t":0.05,"x":25.475882349291272,"y":11.644768768058388,"z":-43.86454607159167,"ground":11.644768768058388,"gap":0,"vx":0,"vy":0,"vz":0,"hp":1.25,"stamina":108,"state":"grounded","grounded":true,"canDodge":true},"last":{"t":0.49999999999999994,"x":25.475882349291272,"y":11.644768768058388,"z":-43.86454607159167,"ground":11.644768768058388,"gap":0,"vx":0,"vy":0,"vz":0,"hp":1.25,"stamina":108,"state":"grounded","grounded":true,"canDodge":true}}
+✔ real fall from vy=-25 retains its 1.5 landing damage (9.042125ms)
+ℹ {"first":{"t":0.016666666666666666,"x":25.475882349291272,"y":12.22199099028061,"z":-43.86454607159167,"ground":11.644768768058388,"gap":0.5772222222222219,"vx":0,"vy":-25.366666666666667,"vz":0,"hp":2,"stamina":108,"state":"airborne","grounded":false,"canDodge":false},"landed":{"t":0.05,"x":25.475882349291272,"y":11.644768768058388,"z":-43.86454607159167,"ground":11.644768768058388,"gap":0,"vx":0,"vy":0,"vz":0,"hp":0.5,"stamina":108,"state":"grounded","grounded":true,"canDodge":true},"last":{"t":0.49999999999999994,"x":25.475882349291272,"y":11.644768768058388,"z":-43.86454607159167,"ground":11.644768768058388,"gap":0,"vx":0,"vy":0,"vz":0,"hp":0.5,"stamina":108,"state":"grounded","grounded":true,"canDodge":true}}
+▶ B01 keyboard / touch sprint isolation
+  ✔ W alone walks, Shift+W sprints (0.925834ms)
+  ✔ touch outer-ring sprint does not force keyboard W to sprint (0.113667ms)
+  ✔ diagonal keyboard input is normalized (0.142625ms)
+✔ B01 keyboard / touch sprint isolation (2.182917ms)
+▶ B02 one-shot commands stay queued until a sim step
+  ✔ does not drop or duplicate 100 short presses across mixed rates (5.168042ms)
+  ✔ random frame jitter still consumes each event once (0.250959ms)
+  ✔ sampleActions leftover path still works (0.054291ms)
+✔ B02 one-shot commands stay queued until a sim step (5.609541ms)
+▶ clock + look
+  ✔ look is applied once per render catch-up (0.154042ms)
+  ✔ arrow keys look without pointer lock (0.086834ms)
+  ✔ pause clears accumulator (0.064875ms)
+✔ clock + look (0.3955ms)
+▶ resetInput
+  ✔ clears held keys, queue, look and touch (0.081625ms)
+✔ resetInput (0.111417ms)
+▶ P1-1 real bindInput listener lifecycle
+  ✔ unrelated touch cancellation preserves held keyboard and queued dodge (6.763291ms)
+  ✔ bind-dispose removes document/window/canvas listeners and permits one clean rebind (0.437583ms)
+  ✔ real repeat/keyup and right-mouse listeners retain keyboard and mouse semantics (4.918125ms)
+✔ P1-1 real bindInput listener lifecycle (12.229542ms)
+✔ outside path uses the positive outward ray exit for rotated boxes and cylinders (2.537875ms)
+✔ full-body sweep detects a thin overhang despite clear start/end poses (0.482542ms)
+✔ a low ceiling rejects the whole plan before entering it (0.270334ms)
+✔ narrow top and target outside unchanged vertical/horizontal reach are rejected (0.087166ms)
+✔ rotated corner target fits both full-foot extents (0.066667ms)
+✔ too-high terrain is collision, not an automatically reachable standing target (0.069291ms)
+✔ removed or shifted target cancels at exactly the last checked pose (0.711625ms)
+✔ a newly occupied next segment is blocked without an endpoint push (0.114417ms)
+✔ a nonstandable retaining wall leads to actual supported terrain without changing the wall (0.834833ms)
+✔ terrain mantle rejects an unsupported foot edge, steep slope, excessive reach, and ceiling (0.213208ms)
+✔ terrain support is rechecked each fixed step and cannot move beneath an active mantle (0.092666ms)
+(node:63901) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ C cancels an overhang preparation before another outside step (20.185875ms)
+✔ overhang preparation naturally exhausts low initial stamina and cancels (29.657792ms)
+✔ C cancels an active mantle before any further automatic movement (16.191458ms)
+✔ ordinary Escape pauses mantle progress and resumes from the same fixed-step pose (36.279791ms)
+✔ production death lifecycle clears a transient mantle (2.1625ms)
+✔ production reset lifecycle clears a transient mantle (0.514417ms)
+✔ production continue lifecycle clears a transient mantle (4.078541ms)
+✔ dawn: a clear terrain start enters climbing normally and reaches the cap without body overlap (370.548709ms)
+ℹ {"initial":{"x":12.16842498939959,"y":12.656381900426537,"z":72.05683781600243,"vx":0,"vy":0,"vz":0,"yaw":0.49087385212340584,"stamina":100,"staminaMax":100,"hp":3,"heartsMax":3,"state":"grounded","climbing":false,"gliding":false,"swimming":false,"grounded":true,"attackT":0,"aiming":false,"invuln":0,"spicy":0,"cold":false,"coyote":0,"jumpBuf":0,"dodgeT":0,"dodgeCd":0},"frames":1035,"final":{"x":11.72349010577739,"y":49.15000038146973,"z":70.30238091012053,"vx":0,"vy":0,"vz":0,"yaw":0.6425843974512572,"stamina":88.08000000000041,"staminaMax":100,"hp":3,"heartsMax":3,"state":"grounded","climbing":false,"gliding":false,"swimming":false,"grounded":true,"attackT":0,"aiming":false,"invuln":0,"spicy":0,"cold":false,"coyote":0.1,"jumpBuf":0,"dodgeT":0,"dodgeCd":0}}
+✔ dawn: normal W cannot climb through the underside of an authored thin ledge (22.614708ms)
+ℹ {"count":126,"landed":{"x":14.589791253204496,"y":30.58500038146973,"z":68.36155093411251,"vx":0,"vy":0,"vz":0,"yaw":1.492185806443043,"stamina":94.48999999999944,"staminaMax":100,"hp":3,"heartsMax":3,"state":"grounded","climbing":false,"gliding":false,"swimming":false,"grounded":true,"attackT":0,"aiming":false,"invuln":0,"spicy":0,"cold":false,"coyote":0,"jumpBuf":0,"dodgeT":0,"dodgeCd":0}}
+✔ dawn: legacy overlapping top grip recovers without the old top teleport (19.090333ms)
+ℹ {"initial":{"x":14.7,"y":46.930000381469725,"z":68,"vx":0,"vy":0,"vz":0,"yaw":1.5707963267948966,"stamina":100,"staminaMax":100,"hp":3,"heartsMax":3,"state":"climbing","climbing":true,"gliding":false,"swimming":false,"grounded":false,"attackT":0,"aiming":false,"invuln":0,"spicy":0,"cold":false,"coyote":0,"jumpBuf":0,"dodgeT":0,"dodgeCd":0},"first":{"x":14.7,"y":46.930000381469725,"z":68,"vx":0,"vy":0,"vz":0,"yaw":1.5707963267948966,"stamina":99.75,"staminaMax":100,"hp":3,"heartsMax":3,"state":"climbing","climbing":true,"gliding":false,"swimming":false,"grounded":false,"attackT":0,"aiming":false,"invuln":0,"spicy":0,"cold":false,"coyote":0,"jumpBuf":0,"dodgeT":0,"dodgeCd":0,"t":0.016666666666666666},"final":{"x":14.7,"y":46.930000381469725,"z":68,"vx":0,"vy":0,"vz":0,"yaw":1.5707963267948966,"stamina":75,"staminaMax":100,"hp":3,"heartsMax":3,"state":"climbing","climbing":true,"gliding":false,"swimming":false,"grounded":false,"attackT":0,"aiming":false,"invuln":0,"spicy":0,"cold":false,"coyote":0,"jumpBuf":0,"dodgeT":0,"dodgeCd":0,"t":1.6666666666666656}}
+✔ dawn: clear legal grip reaches the real cap with a clear continuous body path (5.275833ms)
+✔ dawn: a thin low ceiling blocks the mantle without head penetration (15.167834ms)
+✔ dawn: C dismount has priority for rest-back (0.852625ms)
+✔ dawn: C dismount has priority for rest-exhaust (0.34175ms)
+✔ dawn: C dismount has priority for rest-control (0.3365ms)
+✔ mere: a clear terrain start enters climbing normally and reaches the cap without body overlap (247.607041ms)
+ℹ {"initial":{"x":-103.42215025730789,"y":4.439998276680885,"z":8.450878845515978,"vx":0,"vy":0,"vz":0,"yaw":1.4726215563702156,"stamina":100,"staminaMax":100,"hp":3,"heartsMax":3,"state":"grounded","climbing":false,"gliding":false,"swimming":false,"grounded":true,"attackT":0,"aiming":false,"invuln":0,"spicy":0,"cold":false,"coyote":0,"jumpBuf":0,"dodgeT":0,"dodgeCd":0},"frames":1349,"final":{"x":-105.13784872609077,"y":45.85000019073487,"z":8.281897295587816,"vx":0,"vy":0,"vz":0,"yaw":1.4726215563702154,"stamina":88.02999999999982,"staminaMax":100,"hp":3,"heartsMax":3,"state":"grounded","climbing":false,"gliding":false,"swimming":false,"grounded":true,"attackT":0,"aiming":false,"invuln":0,"spicy":0,"cold":false,"coyote":0.1,"jumpBuf":0,"dodgeT":0,"dodgeCd":0}}
+✔ mere: normal W cannot climb through the underside of an authored thin ledge (22.155875ms)
+ℹ {"count":126,"landed":{"x":-103.4102087467955,"y":27.285000190734866,"z":8.361550934112515,"vx":0,"vy":0,"vz":0,"yaw":1.492185806443043,"stamina":94.48999999999944,"staminaMax":100,"hp":3,"heartsMax":3,"state":"grounded","climbing":false,"gliding":false,"swimming":false,"grounded":true,"attackT":0,"aiming":false,"invuln":0,"spicy":0,"cold":false,"coyote":0,"jumpBuf":0,"dodgeT":0,"dodgeCd":0}}
+✔ mere: legacy overlapping top grip recovers without the old top teleport (21.269834ms)
+ℹ {"initial":{"x":-103.3,"y":43.63000019073486,"z":8,"vx":0,"vy":0,"vz":0,"yaw":1.5707963267948966,"stamina":100,"staminaMax":100,"hp":3,"heartsMax":3,"state":"climbing","climbing":true,"gliding":false,"swimming":false,"grounded":false,"attackT":0,"aiming":false,"invuln":0,"spicy":0,"cold":false,"coyote":0,"jumpBuf":0,"dodgeT":0,"dodgeCd":0},"first":{"x":-103.3,"y":43.63000019073486,"z":8,"vx":0,"vy":0,"vz":0,"yaw":1.5707963267948966,"stamina":99.75,"staminaMax":100,"hp":3,"heartsMax":3,"state":"climbing","climbing":true,"gliding":false,"swimming":false,"grounded":false,"attackT":0,"aiming":false,"invuln":0,"spicy":0,"cold":false,"coyote":0,"jumpBuf":0,"dodgeT":0,"dodgeCd":0,"t":0.016666666666666666},"final":{"x":-103.3,"y":43.63000019073486,"z":8,"vx":0,"vy":0,"vz":0,"yaw":1.5707963267948966,"stamina":75,"staminaMax":100,"hp":3,"heartsMax":3,"state":"climbing","climbing":true,"gliding":false,"swimming":false,"grounded":false,"attackT":0,"aiming":false,"invuln":0,"spicy":0,"cold":false,"coyote":0,"jumpBuf":0,"dodgeT":0,"dodgeCd":0,"t":1.6666666666666656}}
+✔ mere: clear legal grip reaches the real cap with a clear continuous body path (4.49325ms)
+✔ mere: a thin low ceiling blocks the mantle without head penetration (13.751584ms)
+✔ mere: C dismount has priority for rest-back (0.3385ms)
+✔ mere: C dismount has priority for rest-exhaust (0.279833ms)
+✔ mere: C dismount has priority for rest-control (0.256125ms)
+✔ crown: a clear terrain start enters climbing normally and reaches the cap without body overlap (165.894875ms)
+ℹ {"initial":{"x":52.6,"y":23.694846287084175,"z":-128,"vx":0,"vy":0,"vz":0,"yaw":1.5707963267948966,"stamina":100,"staminaMax":100,"hp":3,"heartsMax":3,"state":"grounded","climbing":false,"gliding":false,"swimming":false,"grounded":true,"attackT":0,"aiming":false,"invuln":0,"spicy":0,"cold":false,"coyote":0,"jumpBuf":0,"dodgeT":0,"dodgeCd":0},"frames":972,"final":{"x":50.866104572996996,"y":54.84999923706055,"z":-127.76162932930889,"vx":0,"vy":0,"vz":0,"yaw":1.4878184289851788,"stamina":88.24666666666704,"staminaMax":100,"hp":3,"heartsMax":3,"state":"grounded","climbing":false,"gliding":false,"swimming":false,"grounded":true,"attackT":0,"aiming":false,"invuln":0,"spicy":0,"cold":false,"coyote":0.1,"jumpBuf":0,"dodgeT":0,"dodgeCd":0}}
+✔ crown: normal W cannot climb through the underside of an authored thin ledge (21.536ms)
+ℹ {"count":126,"landed":{"x":52.589791253204496,"y":36.28499923706055,"z":-127.63844906588749,"vx":0,"vy":0,"vz":0,"yaw":1.492185806443043,"stamina":94.48999999999944,"staminaMax":100,"hp":3,"heartsMax":3,"state":"grounded","climbing":false,"gliding":false,"swimming":false,"grounded":true,"attackT":0,"aiming":false,"invuln":0,"spicy":0,"cold":false,"coyote":0,"jumpBuf":0,"dodgeT":0,"dodgeCd":0}}
+✔ crown: legacy overlapping top grip recovers without the old top teleport (17.425958ms)
+ℹ {"initial":{"x":52.7,"y":52.629999237060545,"z":-128,"vx":0,"vy":0,"vz":0,"yaw":1.5707963267948966,"stamina":100,"staminaMax":100,"hp":3,"heartsMax":3,"state":"climbing","climbing":true,"gliding":false,"swimming":false,"grounded":false,"attackT":0,"aiming":false,"invuln":0,"spicy":0,"cold":false,"coyote":0,"jumpBuf":0,"dodgeT":0,"dodgeCd":0},"first":{"x":52.7,"y":52.629999237060545,"z":-128,"vx":0,"vy":0,"vz":0,"yaw":1.5707963267948966,"stamina":99.75,"staminaMax":100,"hp":3,"heartsMax":3,"state":"climbing","climbing":true,"gliding":false,"swimming":false,"grounded":false,"attackT":0,"aiming":false,"invuln":0,"spicy":0,"cold":false,"coyote":0,"jumpBuf":0,"dodgeT":0,"dodgeCd":0,"t":0.016666666666666666},"final":{"x":52.7,"y":52.629999237060545,"z":-128,"vx":0,"vy":0,"vz":0,"yaw":1.5707963267948966,"stamina":75,"staminaMax":100,"hp":3,"heartsMax":3,"state":"climbing","climbing":true,"gliding":false,"swimming":false,"grounded":false,"attackT":0,"aiming":false,"invuln":0,"spicy":0,"cold":false,"coyote":0,"jumpBuf":0,"dodgeT":0,"dodgeCd":0,"t":1.6666666666666656}}
+✔ crown: clear legal grip reaches the real cap with a clear continuous body path (4.161125ms)
+✔ crown: a thin low ceiling blocks the mantle without head penetration (13.174875ms)
+✔ crown: C dismount has priority for rest-back (0.354125ms)
+✔ crown: C dismount has priority for rest-exhaust (0.302959ms)
+✔ crown: C dismount has priority for rest-control (0.385792ms)
+✔ rime pit normal E then W completes onto the actual pad without collecting the shrine (3.429333ms)
+ℹ {"n":70,"final":{"x":220,"y":520.1,"z":21.174,"vx":0,"vy":0,"vz":0,"yaw":3.141592653589793,"stamina":88.5,"staminaMax":100,"hp":3,"heartsMax":3,"state":"grounded","climbing":false,"gliding":false,"swimming":false,"grounded":true,"attackT":0,"aiming":false,"invuln":0,"spicy":0,"cold":false,"coyote":0,"jumpBuf":0,"dodgeT":0,"dodgeCd":0}}
+▶ B10 save protection
+  ✔ keeps legal zeros for position and arrows (0.605084ms)
+  ✔ does not overwrite v1 when continue reads a missing v2 (0.156375ms)
+  ✔ corrupt save keeps original bytes and does not write a new game (0.060583ms)
+  ✔ ruinSolved persists across writeSave/loadSave (not a designed reset) (0.72675ms)
+  ✔ writeSave only touches v2 (0.077042ms)
+✔ B10 save protection (2.176416ms)
+▶ B11 weapon ids
+  ✔ removing a broken sword keeps a valid melee and bow (0.086417ms)
+✔ B11 weapon ids (0.123333ms)
+▶ seal rules
+  ✔ new games need three towers and four shrines (0.083958ms)
+  ✔ legacy orbs rule is kept for old clears (0.050666ms)
+✔ seal rules (0.207167ms)
+▶ B03 self-support exclusion
+  ✔ a metal plate does not use its own top as the next ground (1.062334ms)
+  ✔ does not creep upward over 60s of self queries (3.942792ms)
+✔ B03 self-support exclusion (11.16475ms)
+▶ B04 jump into a tall cylinder does not snap to the roof
+  ✔ feet near ground do not select the 38m cap (0.25475ms)
+  ✔ horizontal move while rising is blocked by the shaft (0.3055ms)
+  ✔ standing on the cap is allowed when already near the top (0.106417ms)
+✔ B04 jump into a tall cylinder does not snap to the roof (0.844875ms)
+▶ wall query
+  ✔ reports a climbable wall ahead of the capsule (0.206125ms)
+✔ wall query (0.310625ms)
+▶ box center / axis / rotated / overlap
+  ✔ center of a box yields a non-zero escape normal (0.223ms)
+  ✔ axis-aligned inside-face uses the shallow axis (0.113541ms)
+  ✔ rotated box still ejects with a unit normal (0.127208ms)
+  ✔ overlapping boxes resolve without NaN (0.160958ms)
+  ✔ closestPointOnSolidXZ is the edge, not the center (0.198917ms)
+  ✔ standing on a standable box is not pushed sideways (0.09575ms)
+✔ box center / axis / rotated / overlap (1.143708ms)
+(node:63904) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+▶ M8 content systems
+  ✔ collecting a wisp once raises stamina and does not repeat (12.710833ms)
+  ✔ shrine enter/exit does not leak shrine metals into the field (0.7185ms)
+  ✔ claiming four shrines and three towers opens the seal; boss is then damageable (0.986542ms)
+  ✔ graybox reset returns to the marked point (1.417041ms)
+✔ M8 content systems (16.580959ms)
+(node:63905) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+▶ QF geometry: towers, stamina, climate, shrine pits
+  ✔ dawn base is heightAt(10,68); cap is base+38; no-rest climb is 22.67m (0.947417ms)
+  ✔ dawn rest ledges are 0.42m thick, 3.45x2.45; inner lip sits outside the shaft (2.251541ms)
+  ✔ mere POI is above water but the ring at r>=4.7 is a swim; docks must exist for a lake approach (0.095583ms)
+  ✔ mere shaft collision exists at the waterline so swim-grab is not a hollow under the pad (0.239916ms)
+  ✔ crown (48,-128) is frost at climb y>36; spicy lasts 90s; no-rest climb dies in frost if unsheltered (1.27025ms)
+  ✔ shrine interiors: altar cylinder r=2.2 at origin z+23; rime pit is wider than pull; sidewalk is a floor (38.782875ms)
+  ✔ overworld shrine hut is a blocker with a dry apron; 叩响 works from the door face (1.8875ms)
+✔ QF geometry: towers, stamina, climate, shrine pits (46.846458ms)
+▶ QF1 dawn: rest-ledge climb, W+E re-grab, activate
+  ✔ S-to-ledge rest then W+E activates dawn without teleporting towersOn (342.494417ms)
+  ✖ after S-to-ledge rest, W+E re-grabs instead of walking into the shaft (60.720125ms)
+  ✔ after rest, W without E does not dump the player into the wind-valley shaft (58.724625ms)
+✖ QF1 dawn: rest-ledge climb, W+E re-grab, activate (462.1155ms)
+▶ QF1 mantle: local step, no 12m snap
+  ✔ S or exhaustion mantle never teleports xz > 2m in one 1/60 step (0.961375ms)
+  ✔ opposite-face ledge (~11m) is not reached in one rest action (2.525334ms)
+  ✔ W on a rest ledge does not immediately fall into the shaft cylinder (4.303333ms)
+✔ QF1 mantle: local step, no 12m snap (7.870209ms)
+▶ QF4 mere / crown reachability
+  ✔ mere W+E from the south dock waterline starts a climb and does not swim through the shaft (0.87975ms)
+  ✔ swimming away from mere with W-only does not re-grab the shaft (19.151334ms)
+  ✔ mere climb from lake water (W+E while swimming) then rest-ledges activates 镜湖塔 (200.966834ms)
+  ✖ mere climb from the dry inner ring activates 镜湖塔 (667.134709ms)
+  ✔ crown climb finishes without death when tower shelter or spicy exists (169.979083ms)
+  ✔ unsheltered frost at crown coords drains HP; spicy cook/eat blocks it (36.580167ms)
+✖ QF4 mere / crown reachability (1094.843875ms)
+▶ QF3 shrines: pull/rime side path; still freeze-bridge; altar r=2.2
+  ✔ pull: 叩响, walk the side floor, 领取灵核 at dAltar<2.2 (no Digit2/3/4/5) (9.78625ms)
+  ✔ rime: 叩响, walk the side floor, 领取灵核 at dAltar<2.2 (no Digit2/3/4/5) (9.3025ms)
+  ✔ still: 叩响 + freeze bridge claims; side rim without 凝时 does not (17.952542ms)
+  ✔ burst: sidewalk cannot pass the wall until 爆鸣; then altar claim works (17.941ms)
+  ✔ rime side clearance from entrance hugging +X wall actually reaches dAltar<2.2 (7.914708ms)
+  ✔ still side rim cannot claim without freeze; slab remains the intended bridge (7.650417ms)
+  ✔ rime center is a pit you can fall into; sidewalk is the legal floor around it (5.485375ms)
+  ✔ rime pit is not a softlock: E/W climb or walk reaches lz>20.4 without shrine flags (5.019334ms)
+✔ QF3 shrines: pull/rime side path; still freeze-bridge; altar r=2.2 (81.240125ms)
+▶ citadel gate after seal
+  ✔ the +Z visual gate is a collision opening, not a closed 22 m bar (0.18ms)
+  ✔ west wall collides at courtyard y, not only on the keep pad (90227 walked under it) (0.1055ms)
+  ✔ seal-open walk from +Z reaches the courtyard boss without climbing the keep (13.653875ms)
+  ✔ dodge into the west wall stays in the courtyard (90227 clipped to x≈-11 y≈7.4) (4.546667ms)
+  ✔ 90227 west-of-wall pose cannot bee-line the boss; gate path can (93.819916ms)
+  ✔ boss AI does not wander west of the courtyard wall (Review19 production bounds) (59.379ms)
+  ✔ harness west-corridor approach does not walk the boss off the fight floor (101.571625ms)
+  ✔ west wall collision reaches low ground so boss cannot walk under (51264) (25.531208ms)
+  ✔ boss soft arena bound walks home — no spawn teleport (Review20) (279.842083ms)
+  ✔ courtyard chase to north end keeps boss on walkable floor, continuous steps (67.348291ms)
+  ✔ kill4 first-death: dodge into the boss face still eats the strike; away clears (15.321416ms)
+  ✔ D3 production targetVisibility reports citadel-wall-0-11-e at logged pose (0.245333ms)
+  ✔ D3 controlled: blocked LOS must not authorize damaging melee (4.53975ms)
+  ✔ D3 reposition (6,-4) clears LOS to courtyard boss in production sim (0.859125ms)
+  ✔ D3.2 gate center (6,2)/(6,3) clear LOS to east and west wing bosses (0.196083ms)
+  ✔ D3.2 path (6.05,-4.36)→(6,2) has no wall samples (production queryWall) (0.252708ms)
+✔ citadel gate after seal (667.730416ms)
+(node:63906) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+▶ shrine puzzle evidence: no-ability control vs intended still bridge
+  ✔ still no-ability CENTER +Z falls into the pit and does not claim (52.484875ms)
+  ✔ still no-ability SIDEWALK/rim cannot claim (full-width pit, no walkway) (18.58775ms)
+  ✔ still intended: freeze when aligned, walk the center slab, claim; log physical freeze (37.852291ms)
+  ✔ still freeze while the slab is off-lane does not let center +Z skip the pit (25.734833ms)
+  ✔ rime no-ability sidewalk (same harness path) claims without arts (14.983416ms)
+  ✔ pull no-ability sidewalk (same harness path) claims without arts (12.181375ms)
+  ✔ burst no-ability sidewalk cannot claim; bomb is the physical gate (24.498916ms)
+✔ shrine puzzle evidence: no-ability control vs intended still bridge (187.467167ms)
+(node:63907) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+▶ shrine room shared metrics (visual/physics contract)
+  ✔ still has no sidewalk solid and a full-width pit in heightFn (14.574708ms)
+  ✔ burst crack solid is the full interior span (matches BURST_WALL) (5.942375ms)
+  ✔ rime/pull pit half-widths stay as designed (sidewalk remains) (0.762209ms)
+✔ shrine room shared metrics (visual/physics contract) (21.91225ms)
+(node:63908) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+▶ M1 locomotion and save
+  ✔ W walk does not drain sprint stamina and matches walk speed (27.498916ms)
+  ✔ continueSave does not write a new game over v1 (0.773666ms)
+  ✔ metal support excludes self so plates do not levitate (571.359875ms)
+  ✔ jumping into a tower shaft does not snap to the cap (20.998459ms)
+✔ M1 locomotion and save (621.345709ms)
+▶ combat and seal
+  ✔ melee hits only in the active window and once per swing (0.215541ms)
+  ✔ new save needs three towers and four shrines (0.389125ms)
+✔ combat and seal (0.763708ms)
+▶ mainline reachability
+  ✖ rest ledges let a full-stamina climb activate dawn tower (666.889625ms)
+  ✔ gust near the ruin docks wind planks and solves the bridge (15.750375ms)
+  ✔ rime/pull orbs via side walkway; still requires the freeze bridge (32.088709ms)
+  ✔ S or empty stamina does not teleport 12m onto a far ledge (4.038042ms)
+  ✔ idle hang on a wall drains stamina instead of regenerating a full bar (19.435916ms)
+  ✖ after a ledge rest, holding forward re-grabs the shaft instead of walking off (16.8515ms)
+  ✔ swimming up to mere starts a climb on the shaft or dock (15.713792ms)
+  ✖ mere can be climbed from the waterline dock and activated (766.602833ms)
+  ✔ crown climb is sheltered from frost on the tower (177.327625ms)
+✖ mainline reachability (1715.044875ms)
+▶ dodge faces the camera, not a stale body yaw
+  ✔ C with no WASD dashes along cam.yaw (2.02775ms)
+✔ dodge faces the camera, not a stale body yaw (2.069083ms)
+▶ melee faces the camera, not a stale body yaw
+  ✔ look-then-click hits the enemy in front of the camera (3.679666ms)
+✔ melee faces the camera, not a stale body yaw (3.711291ms)
+▶ ruinSolved save schema
+  ✔ true before reload stays true after continueSave (missing persist was the 78945 drop) (0.2935ms)
+✔ ruinSolved save schema (0.31625ms)
+▶ boss live target vs static citadel POI
+  ✔ swinging at the static spawn point misses a boss that has walked off it (17.04375ms)
+  ✔ ordinary melee + dodge can kill the live boss (no invuln cheat) (135.598ms)
+✔ boss live target vs static citadel POI (152.716042ms)
+▶ input queue with sim
+  ✔ queued jump is consumed on the next step only (1.334791ms)
+✔ input queue with sim (1.373666ms)
+▶ B12 visual triangle vs collision height
+  ✔ vertex layout matches Three.js PlaneGeometry after rotateX (15.725666ms)
+  ✔ diagonal midpoints match Three raycast, including the reported coastal cell (101.395625ms)
+  ✔ FrontSide (not DoubleSide) still raycasts from +Y after Scene-style displace (44.085542ms)
+  ✔ dense grid of cell diagonal midpoints stays under 2cm (794.128375ms)
+✔ B12 visual triangle vs collision height (956.301459ms)
+(node:63910) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+▶ P1-1 production touch DOM listeners
+  ✔ pointerup on look preserves another finger's movement and queued attack (4.420541ms)
+  ✔ pointercancel on look preserves another finger's movement and queued attack (0.23725ms)
+  ✔ lostpointercapture on look preserves another finger's movement and queued attack (0.170167ms)
+  ✔ first stick pointer remains owner when a second pointer lands and releases (0.183583ms)
+  ✔ repeat pointerdown cannot change the original anchor (0.143459ms)
+  ✔ a pointer owned by stick cannot also own look or release stick through look (0.122417ms)
+  ✔ unknown pointer cancellation does not erase keyboard, stick or queued commands (0.174541ms)
+  ✔ jump owns held state; another finger's release neither releases jump nor drops its command (0.144875ms)
+  ✔ second jump pointer cannot release or repeat the owner's accepted press (0.143042ms)
+  ✔ a short jump released before a sim step is still consumed exactly once (0.139208ms)
+  ✔ cancel→lost→up is idempotent and cannot release a replacement owner (0.098208ms)
+  ✔ bow is a click toggle that survives pointer release, look and attack (0.162917ms)
+  ✔ a canceled bow gesture without click does not change the latch (0.083292ms)
+  ✔ blur invalidates owners so old moves cannot resurrect input (0.127625ms)
+  ✔ hidden invalidates owners so old moves cannot resurrect input (0.094083ms)
+  ✔ world-reset invalidates owners so old moves cannot resurrect input (0.077209ms)
+  ✔ visible document events do not reset an ongoing gesture (0.059709ms)
+  ✔ all button actions use the existing one-shot queue once per accepted pointer (0.107958ms)
+  ✔ disposing releases only owned touch state and every listener; remount has one writer (0.258375ms)
+  ✔ pause actual Sim entry invalidates pointer ownership (1.27775ms)
+  ✔ enter-shrine actual Sim entry invalidates pointer ownership (1.07225ms)
+  ✔ exit-shrine actual Sim entry invalidates pointer ownership (1.0405ms)
+  ✔ actual resize listener clears owners on portrait pause and does not revive them on landscape (0.180625ms)
+  ✔ landscape resize leaves active touch input bound and uninterrupted (0.491375ms)
+✔ P1-1 production touch DOM listeners (11.866042ms)
+▶ P1-1 bow activation provenance through production listeners
+  ✔ normal pointerup→lostcapture→click consumes one valid release, not repeated clicks (0.188208ms)
+  ✔ reset after bow held rejects that old gesture's click (0.385958ms)
+  ✔ pause after bow held rejects that old gesture's click (0.325916ms)
+  ✔ hidden after bow held rejects that old gesture's click (0.250875ms)
+  ✔ blur after bow held rejects that old gesture's click (0.236541ms)
+  ✔ reset after bow released rejects that old gesture's click (0.238125ms)
+  ✔ pause after bow released rejects that old gesture's click (0.2555ms)
+  ✔ hidden after bow released rejects that old gesture's click (0.20675ms)
+  ✔ blur after bow released rejects that old gesture's click (0.921417ms)
+  ✔ cancel before pointerup invalidates the delayed click (0.132958ms)
+  ✔ cancel after pointerup invalidates the delayed click (0.07475ms)
+  ✔ lost capture before pointerup cancels the gesture (0.073ms)
+  ✔ first bow pointer owns the button; wrong identity cannot use or consume its token (0.077791ms)
+  ✔ a stick pointer cannot acquire bow ownership (0.0735ms)
+  ✔ dispose/remount invalidates released and held old gestures (0.140459ms)
+  ✔ Space activation supports non-pointer PointerEvent click without gameplay jump (0.178333ms)
+  ✔ Enter activation supports non-pointer PointerEvent click without gameplay jump (0.062709ms)
+  ✔ Space activation supports legacy MouseEvent click without gameplay jump (0.064ms)
+  ✔ Enter activation supports legacy MouseEvent click without gameplay jump (0.05925ms)
+  ✔ detail zero alone cannot revive a reset pointer gesture or bypass keyboard provenance (0.077625ms)
+  ✔ reset cancels held Space and ready Enter keyboard activation tokens (0.064542ms)
+  ✔ Space requires matching keyup; keyboard repeat and button blur do not activate (0.093875ms)
+  ✔ reset cancels the native default of a known held Space release while retaining direct AT activation (0.090708ms)
+  ✔ repeated reset cancels the native default of a known held Space release while retaining direct AT activation (0.054292ms)
+  ✔ pause cancels the native default of a known held Space release while retaining direct AT activation (0.16125ms)
+  ✔ hidden cancels the native default of a known held Space release while retaining direct AT activation (0.056583ms)
+  ✔ button blur cancels the native default of a known held Space release while retaining direct AT activation (0.049333ms)
+  ✔ explicit standard non-pointer activation remains accessible without physical key events (0.07025ms)
+✔ P1-1 bow activation provenance through production listeners (4.896917ms)
+▶ unified wind field
+  ✔ world wind, local updraft and gust share the same sample (0.532834ms)
+  ✔ occlusion helper reports a blocked path (0.076417ms)
+✔ unified wind field (1.304167ms)
+ℹ tests 322
+ℹ suites 53
+ℹ pass 316
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3642.578041
+
+✖ failing tests:
+
+test at src/game/climb-detach.test.ts:77:3
+✖ tower mantle still works without dodge (summit path) (177.3455ms)
+  AssertionError [ERR_ASSERTION]: climbing without dodge must gain height y0=13.3 y=13.4 state=grounded
+      at TestContext.<anonymous> (file:///Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/src/game/climb-detach.test.ts:91:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1619:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at src/game/routes.mainline.test.ts:364:3
+✖ after S-to-ledge rest, W+E re-grabs instead of walking into the shaft (60.720125ms)
+  AssertionError [ERR_ASSERTION]: S did not land a rest ledge state=climbing y=12.996656829755763
+  + actual - expected
+  
+  + 'climbing'
+  - 'grounded'
+  
+      at TestContext.<anonymous> (file:///Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/src/game/routes.mainline.test.ts:373:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1619:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'climbing',
+    expected: 'grounded',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at src/game/routes.mainline.test.ts:540:3
+✖ mere climb from the dry inner ring activates 镜湖塔 (667.134709ms)
+  AssertionError [ERR_ASSERTION]: dry-ring mere towers= y=3.55 state=grounded prompt=
+      at TestContext.<anonymous> (file:///Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/src/game/routes.mainline.test.ts:546:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at src/game/sim.test.ts:169:3
+✖ rest ledges let a full-stamina climb activate dawn tower (666.889625ms)
+  AssertionError [ERR_ASSERTION]: towers= y=12.90 cap=49.10 state=climbing stam=0.5 xz=14.6,68.0
+      at TestContext.<anonymous> (file:///Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/src/game/sim.test.ts:175:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at node:internal/test_runner/test:1617:71
+      at node:internal/per_context/primordials:466:82
+      at new Promise (<anonymous>)
+      at new SafePromise (node:internal/per_context/primordials:435:3)
+      at node:internal/per_context/primordials:466:9
+      at Array.map (<anonymous>) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at src/game/sim.test.ts:309:3
+✖ after a ledge rest, holding forward re-grabs the shaft instead of walking off (16.8515ms)
+  AssertionError [ERR_ASSERTION]: S did not land a rest state=airborne y=11.300000381469726
+  + actual - expected
+  
+  + 'airborne'
+  - 'grounded'
+  
+      at TestContext.<anonymous> (file:///Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/src/game/sim.test.ts:325:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'airborne',
+    expected: 'grounded',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at src/game/sim.test.ts:365:3
+✖ mere can be climbed from the waterline dock and activated (766.602833ms)
+  AssertionError [ERR_ASSERTION]: towers= y=5.14 cap=45.80 state=climbing stam=1.2 xz=-103.5,8.0
+      at TestContext.<anonymous> (file:///Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/src/game/sim.test.ts:371:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

@@ -1,0 +1,56 @@
+(node:64753) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+✖ normal W away the actual wall from a clear original upper ledge obeys re-grab intent (4.242917ms)
+ℹ {"direction":"away","support":{"y":44.46000019073487,"id":"mere-ledge-9","climbable":false,"normalY":1},"outward":{"x":-0.08317488059722966,"z":0.9965349663898585},"wishDotOutward":0.9999999999999999,"before":{"x":-108.37595046029948,"y":44.46000019073487,"z":12.504338048082161,"state":"grounded"},"after":{"x":-108.37595046029948,"y":44.46000019073487,"z":12.504338048082161,"state":"climbing"}}
+✔ normal W toward the actual wall from a clear original upper ledge obeys re-grab intent (1.450166ms)
+ℹ {"direction":"toward","support":{"y":44.46000019073487,"id":"mere-ledge-9","climbable":false,"normalY":1},"outward":{"x":-0.08317488059722966,"z":0.9965349663898585},"wishDotOutward":-0.9999999999999999,"before":{"x":-108.37595046029948,"y":44.46000019073487,"z":12.504338048082161,"state":"grounded"},"after":{"x":-108.37595046029948,"y":44.46000019073487,"z":12.504338048082161,"state":"climbing"}}
+✖ normal W tangent the actual wall from a clear original upper ledge obeys re-grab intent (0.502791ms)
+ℹ {"direction":"tangent","support":{"y":44.46000019073487,"id":"mere-ledge-9","climbable":false,"normalY":1},"outward":{"x":-0.08317488059722966,"z":0.9965349663898585},"wishDotOutward":0,"before":{"x":-108.37595046029948,"y":44.46000019073487,"z":12.504338048082161,"state":"grounded"},"after":{"x":-108.37595046029948,"y":44.46000019073487,"z":12.504338048082161,"state":"climbing"}}
+✔ explicit E retains its original grab contract despite an outward camera (1.188667ms)
+ℹ {"state":"climbing"}
+✔ tower C is already outward with an outward camera; it is not camera-reversed (0.577333ms)
+ℹ {"radiusBefore":4.5200000000000005,"radiusAfter":4.870000000000001,"displacementOutward":0.3500000000000002,"beforeYaw":0,"bodyYaw":-0.08327108186562325,"camYaw":3.05832157172417,"state":"airborne","bodyClear":true}
+ℹ tests 5
+ℹ suites 0
+ℹ pass 3
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 165.041417
+
+✖ failing tests:
+
+test at docs/rebuild-evidence/runs/root-mantle-merge/independent-regrab-probe.test.mjs:31:3
+✖ normal W away the actual wall from a clear original upper ledge obeys re-grab intent (4.242917ms)
+  AssertionError [ERR_ASSERTION]: resting W must not override outward/tangent movement intent
+      at TestContext.<anonymous> (file:///Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/runs/root-mantle-merge/independent-regrab-probe.test.mjs:45:17)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'climbing',
+    expected: 'climbing',
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at docs/rebuild-evidence/runs/root-mantle-merge/independent-regrab-probe.test.mjs:31:3
+✖ normal W tangent the actual wall from a clear original upper ledge obeys re-grab intent (0.502791ms)
+  AssertionError [ERR_ASSERTION]: resting W must not override outward/tangent movement intent
+      at TestContext.<anonymous> (file:///Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/runs/root-mantle-merge/independent-regrab-probe.test.mjs:45:17)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'climbing',
+    expected: 'climbing',
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }

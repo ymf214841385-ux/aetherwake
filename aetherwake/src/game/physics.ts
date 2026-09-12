@@ -266,4 +266,110 @@ export function canStandAt(x: number, z: number, y: number, solids: Solid[], hei
   return Math.abs(s.y - y) < STEP_UP + 0.15;
 }
 
+export type BodyPosition = { x: number; y: number; z: number };
+export const BODY_SKIN = 0.002;
+
+// Full upright player volume for mantle validation. Unlike queryWall this must
+// include thin platforms and the head, and must not resolve by pushing a pose.
+export function playerBodyClear(p: BodyPosition, solids: Solid[], heightFn: (x: number, z: number) => number) {
+  return sweepPlayerBody(p, p, solids, heightFn);
+}
+
+/** Conservative swept player cylinder; false means no movement may be committed. */
+export function sweepPlayerBody(from: BodyPosition, to: BodyPosition, solids: Solid[], heightFn?: (x: number, z: number) => number) {
+  if (![from.x, from.y, from.z, to.x, to.y, to.z].every(Number.isFinite)) return false;
+  const vx = to.x - from.x, vy = to.y - from.y, vz = to.z - from.z;
+  const slab = (start: number, delta: number, lo: number, hi: number): [number, number] | null => {
+    if (Math.abs(delta) < 1e-12) return start > lo && start < hi ? [0, 1] : null;
+    const a = (lo - start) / delta, b = (hi - start) / delta;
+    const enter = Math.max(0, Math.min(a, b)), leave = Math.min(1, Math.max(a, b));
+    return leave > enter + 1e-12 ? [enter, leave] : null;
+  };
+  for (const s of solids) {
+    const vertical = slab(from.y, vy, s.y - PLAYER_HEIGHT + BODY_SKIN, solidTop(s) - BODY_SKIN);
+    if (!vertical) continue;
+    let horizontal: [number, number] | null = null;
+    if (s.kind === "box") {
+      const c = Math.cos(s.yaw ?? 0), sn = Math.sin(s.yaw ?? 0);
+      const ox = from.x - s.x, oz = from.z - s.z;
+      const hx = (s.w ?? 1) / 2 + PLAYER_RADIUS - BODY_SKIN;
+      const hz = (s.d ?? 1) / 2 + PLAYER_RADIUS - BODY_SKIN;
+      const x = slab(ox * c + oz * sn, vx * c + vz * sn, -hx, hx);
+      const z = slab(-ox * sn + oz * c, -vx * sn + vz * c, -hz, hz);
+      if (x && z) horizontal = [Math.max(x[0], z[0]), Math.min(x[1], z[1])];
+    } else {
+      const ox = from.x - s.x, oz = from.z - s.z;
+      const r = (s.r ?? 1) + PLAYER_RADIUS - BODY_SKIN;
+      const a = vx * vx + vz * vz, b = 2 * (ox * vx + oz * vz), c = ox * ox + oz * oz - r * r;
+      if (a < 1e-12) { if (c < 0) horizontal = [0, 1]; }
+      else {
+        const disc = b * b - 4 * a * c;
+        if (disc > 0) horizontal = [Math.max(0, (-b - Math.sqrt(disc)) / (2 * a)), Math.min(1, (-b + Math.sqrt(disc)) / (2 * a))];
+      }
+    }
+    if (horizontal && Math.min(vertical[1], horizontal[1]) > Math.max(vertical[0], horizontal[0]) + 1e-12) return false;
+  }
+  // Terrain is a height field, not an authored thin obstacle. Sample the path
+  // at sub-radius spacing; do not treat high terrain as a
+  // legal support just because supportY's geometric fallback returns its Y.
+  const steps = Math.max(1, Math.ceil(Math.hypot(vx, vy, vz) / (PLAYER_RADIUS / 4)));
+  for (let i = 0; i <= steps; i++) {
+    const t = i / steps, x = from.x + vx * t, y = from.y + vy * t, z = from.z + vz * t;
+    if (heightFn && heightFn(x, z) > y + BODY_SKIN) return false;
+  }
+  return true;
+}
+
+/** Exit the expanded authored footprint along an actual wall's outward normal. */
+export function outsideTopPoint(s: Solid, p: BodyPosition, normal: { x: number; z: number }): BodyPosition | null {
+  const length = Math.hypot(normal.x, normal.z);
+  if (!Number.isFinite(length) || length < 1e-8) return null;
+  const dx = normal.x / length, dz = normal.z / length;
+  let exit: number;
+  if (s.kind === "cyl") {
+    const ox = p.x - s.x, oz = p.z - s.z, r = (s.r ?? 1) + PLAYER_RADIUS + BODY_SKIN * 2;
+    const b = ox * dx + oz * dz, c = ox * ox + oz * oz - r * r;
+    const disc = b * b - c;
+    if (disc < 0) return null;
+    exit = -b + Math.sqrt(disc);
+  } else {
+    const c = Math.cos(s.yaw ?? 0), sn = Math.sin(s.yaw ?? 0);
+    const ox = p.x - s.x, oz = p.z - s.z;
+    const axes = [
+      { p: ox * c + oz * sn, d: dx * c + dz * sn, h: (s.w ?? 1) / 2 + PLAYER_RADIUS + BODY_SKIN * 2 },
+      { p: -ox * sn + oz * c, d: -dx * sn + dz * c, h: (s.d ?? 1) / 2 + PLAYER_RADIUS + BODY_SKIN * 2 },
+    ];
+    let enter = -Infinity;
+    exit = Infinity;
+    for (const a of axes) {
+      if (Math.abs(a.d) < 1e-10) { if (Math.abs(a.p) >= a.h) return null; continue; }
+      const t1 = (-a.h - a.p) / a.d, t2 = (a.h - a.p) / a.d;
+      enter = Math.max(enter, Math.min(t1, t2));
+      exit = Math.min(exit, Math.max(t1, t2));
+    }
+    if (exit < Math.max(0, enter)) return null;
+  }
+  if (!Number.isFinite(exit) || exit < 0) return null;
+  return { x: p.x + dx * (exit + BODY_SKIN), y: p.y, z: p.z + dz * (exit + BODY_SKIN) };
+}
+
+/** Fit the entire foot radius onto an authored top, preserving rotated boxes. */
+export function fittedTopPoint(s: Solid, p: BodyPosition): BodyPosition | null {
+  const inset = PLAYER_RADIUS + BODY_SKIN * 2;
+  if (!s.standable) return null;
+  if (s.kind === "cyl") {
+    const r = (s.r ?? 1) - inset;
+    if (r <= 0) return null;
+    const dx = p.x - s.x, dz = p.z - s.z, d = Math.hypot(dx, dz);
+    const scale = d > r ? r / d : 1;
+    return { x: s.x + dx * scale, y: solidTop(s), z: s.z + dz * scale };
+  }
+  const hx = (s.w ?? 1) / 2 - inset, hz = (s.d ?? 1) / 2 - inset;
+  if (hx <= 0 || hz <= 0) return null;
+  const c = Math.cos(s.yaw ?? 0), sn = Math.sin(s.yaw ?? 0);
+  const dx = p.x - s.x, dz = p.z - s.z;
+  const x = clamp(dx * c + dz * sn, -hx, hx), z = clamp(-dx * sn + dz * c, -hz, hz);
+  return { x: s.x + x * c - z * sn, y: solidTop(s), z: s.z + x * sn + z * c };
+}
+
 export { PLAYER_HEIGHT, PLAYER_RADIUS };

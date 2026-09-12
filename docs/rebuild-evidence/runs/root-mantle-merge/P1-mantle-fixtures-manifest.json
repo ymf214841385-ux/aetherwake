@@ -1,0 +1,42 @@
+{
+  "status": "fixture-corrections-complete-two-original-behavior-failures-preserved",
+  "frozenAt": "2026-09-12T10:07:41.672723+00:00",
+  "patch": "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/runs/root-p1-mantle-diagnosis/P1-mantle-fixtures.patch",
+  "patchSha256": "811a919cd6d44aebd8668bdab44950a50194144887a5a669aef670e2b10873ef",
+  "files": [
+    {
+      "path": "aetherwake/src/game/climb-detach.test.ts",
+      "beforeSha256": "b9d91a0f0f131b5771629d3faabd7ecafac85bb3d89b908f25db9743a879de9c",
+      "afterSha256": "fd4a52d7c3c4f3f014d77be776858dbe99cec2f68cbe35345711774fff9d723f"
+    },
+    {
+      "path": "aetherwake/src/game/routes.mainline.test.ts",
+      "beforeSha256": "ab2f99c7684a0cdb6620e1c82b15c694b456bf0cc94442dee95a74a76bda5927",
+      "afterSha256": "3e152ffc51e911c26c69a26061c00a7f83a56385edce27f85f61f03af7f7cccf"
+    },
+    {
+      "path": "aetherwake/src/game/sim.test.ts",
+      "beforeSha256": "7e255c6dd8f65e37eb7bf8834ad7abc53e92a67605f1a36ad266d7923f800408",
+      "afterSha256": "c1147f95b798fb8f998fe47ed40393f2d9bfcfc482ef3b288efd3336160d0256"
+    },
+    {
+      "path": "aetherwake/src/game/mantle-fixtures.ts",
+      "beforeSha256": null,
+      "afterSha256": "8127c1e882589e39f259139048066879d2900bd0f24cab59062807c73683ce35"
+    }
+  ],
+  "results": {
+    "fullGame": "265/267 passed; 2 preserved failures",
+    "typecheck": "passed",
+    "diffCheck": "passed",
+    "originalInputResourceAndLoopLines": "byte-text line comparison equal for all 3 old tests",
+    "productionAndPriorCandidateFiles": "all five previous frozen candidate SHA256 hashes unchanged",
+    "patchApplyCheck": "passed against separate exact old test preimages"
+  },
+  "previousRuntimePatchUnchanged": "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/runs/root-p1-mantle-diagnosis/P1-mantle-candidate.patch",
+  "remainingFailures": [
+    "src/game/climb-detach.test.ts:78 tower mantle still works without dodge (summit path)",
+    "src/game/sim.test.ts:309 after a ledge rest, holding forward re-grabs the shaft instead of walking off"
+  ],
+  "noCommitPushBuildBrowser": true
+}

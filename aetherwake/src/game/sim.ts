@@ -4,6 +4,7 @@ import type { AttackState, EnemyBrain } from "./combat.ts";
 import { GRAYBOX_GROUND, GRAYBOX_RESET, GRAYBOX_WATER, grayboxSolids } from "./graybox.ts";
 import { WATER_LEVEL, WIND_RUIN, WORLD_SIZE, climateAt, heightAt } from "./height.ts";
 import { resetInput, setKeys } from "./input.ts";
+import { advanceMantle, planAroundOverhang, planMantle, planTerrainMantle, type Mantle } from "./mantle.ts";
 import type { Actions } from "./input.ts";
 import {
   ACCEL_TIME,
@@ -23,7 +24,6 @@ import {
   CLIMB_SHIMMY,
   MANTLE_REACH_XZ,
   MANTLE_REACH_Y,
-  MANTLE_STEP_XZ,
   MANTLE_STEP_Y,
   COYOTE_TIME,
   DAY_SECONDS,
@@ -33,6 +33,7 @@ import {
   DODGE_STAMINA,
   DODGE_TIME,
   EYE_HEIGHT,
+  FIXED_DT,
   FOOT_SNAP,
   GLIDE_MAX_XZ,
   GLIDE_SINK,
@@ -67,6 +68,7 @@ import {
   type SaveStorage,
 } from "./persistence.ts";
 import {
+  BODY_SKIN,
   clamp,
   closestPointOnSolidXZ,
   lerp,
@@ -75,6 +77,7 @@ import {
   resolveHorizontal,
   solidTop,
   sphereCast,
+  sweepPlayerBody,
   supportY,
   type Solid,
 } from "./physics.ts";
@@ -174,6 +177,7 @@ export class Sim {
     dodgeT: 0,
     dodgeCd: 0,
   };
+  mantle: Mantle | null = null;
   cam = { yaw: 0, pitch: 0.38, dist: CAM_DIST, x: 16, y: 18, z: 110, lx: 16, ly: 13, lz: 102, trauma: 0 };
   enemies: Enemy[] = [];
   pickups: Pickup[] = [];
@@ -712,6 +716,7 @@ export class Sim {
   }
 
   clearTransients() {
+    this.mantle = null;
     this.player.invuln = 0;
     this.player.dodgeT = 0;
     this.player.aiming = false;
@@ -727,6 +732,7 @@ export class Sim {
   }
 
   setMove(state: MoveState) {
+    if (state !== "climbing") this.mantle = null;
     this.player.state = state;
     this.player.grounded = state === "grounded";
     this.player.climbing = state === "climbing";
@@ -977,159 +983,167 @@ export class Sim {
     }
 
     if (p.state === "climbing") {
-      const rest = supportY(p.x, p.z, p.y + 0.5, this.solids, this.heightFn, this.extraSupports(), null);
-      const wantRest = a.moveY < -0.2 || p.stamina <= 2;
-      const nearestRestAtHeight = () => {
-        let best: { x: number; y: number; z: number; edge: number } | null = null;
-        for (const s of this.solids) {
-          if (!s.standable || !isTowerRest(s.id) || s.id.includes("-cap")) continue;
-          const top = solidTop(s);
-          if (Math.abs(top - p.y) > MANTLE_REACH_Y) continue;
-          const c = closestPointOnSolidXZ(s, p.x, p.z);
-          const ix = s.x - c.x;
-          const iz = s.z - c.z;
-          const il = Math.hypot(ix, iz) || 1;
-          const inset = Math.min(0.45, il);
-          const sx = c.x + (ix / il) * inset;
-          const sz = c.z + (iz / il) * inset;
-          if (!best || c.dist < best.edge) best = { x: sx, y: top, z: sz, edge: c.dist };
+      if (!nearTw) {
+        // A long probe can pass completely through a thin retaining wall as
+        // the player closes the grip. Prefer the body's nearby face then
+        // derive its outward normal from the real footprint and player pose.
+        const close = queryWall(p.x + fwd.x * (PLAYER_RADIUS + BODY_SKIN * 2),
+          p.z + fwd.z * (PLAYER_RADIUS + BODY_SKIN * 2), p.y, this.solids);
+        if (close?.climbable) wall = close;
+        const solid = this.solids.find(s => s.id === wall?.id);
+        if (wall && solid) {
+          const edge = closestPointOnSolidXZ(solid, p.x, p.z);
+          const length = Math.hypot(p.x - edge.x, p.z - edge.z);
+          if (length > BODY_SKIN) wall = { ...wall, nx: (p.x - edge.x) / length, nz: (p.z - edge.z) / length };
         }
-        return best;
+      }
+      // Explicit dismount wins over resting, exhaustion rescue and active mantle.
+      if (a.dodge) {
+        const next = { x: p.x - fwd.x * 0.35, y: p.y, z: p.z - fwd.z * 0.35 };
+        if (sweepPlayerBody(p, next, this.solids, this.heightFn)) {
+          p.x = next.x;
+          p.z = next.z;
+        }
+        this.setMove("airborne");
+        p.vy = 0.6;
+        return;
+      }
+      const tickMantle = () => {
+        if (!this.mantle) return false;
+        if (this.mantle.phase < this.mantle.reachPhase && p.stamina <= 0) {
+          this.setMove("airborne");
+          p.vy = 0.2;
+          return true;
+        }
+        const result = advanceMantle(this.mantle, p, dt, this.solids, this.heightFn);
+        if (result.status === "blocked") {
+          this.mantle = null;
+          p.stamina -= CLIMB_STAMINA * 0.22 * dt;
+          if (!wall || p.stamina <= 0) {
+            this.setMove("airborne");
+            p.vy = 0.2;
+          }
+          return true;
+        }
+        p.x = result.position.x;
+        p.y = result.position.y;
+        p.z = result.position.z;
+        p.stamina -= result.staminaCost ?? 0;
+        p.vx = p.vy = p.vz = 0;
+        if (result.status === "done") this.setMove("grounded");
+        return true;
       };
-      const tryMantle = () => {
-        const best = nearestRestAtHeight();
-        if (!best || best.edge > MANTLE_REACH_XZ) return false;
-        const ox = p.x;
-        const oy = p.y;
-        const oz = p.z;
-        const dx = best.x - p.x;
-        const dz = best.z - p.z;
-        const len = Math.hypot(dx, dz) || 1;
-        if (best.edge > 0.008) {
-          const step = Math.min(MANTLE_STEP_XZ, len);
-          p.x += (dx / len) * step;
-          p.z += (dz / len) * step;
-        }
-        p.y += clamp(best.y - p.y, -MANTLE_STEP_Y, MANTLE_STEP_Y);
-        const resolved = resolveHorizontal(p.x, p.z, p.y, this.solids);
-        p.x = resolved.x;
-        p.z = resolved.z;
-        const moved = Math.hypot(p.x - ox, p.z - oz, p.y - oy);
-        if (moved > MANTLE_STEP_XZ + MANTLE_STEP_Y + 0.05) {
-          p.x = ox;
-          p.y = oy;
-          p.z = oz;
-          return false;
-        }
-        const landed = supportY(p.x, p.z, p.y + 0.5, this.solids, this.heightFn, this.extraSupports(), null);
-        if (isTowerRest(landed.id) && Math.abs(landed.y - p.y) < 0.55) {
-          p.y = landed.y;
-          p.vy = 0;
-          this.setMove("grounded");
-          return true;
-        }
-        if (best.edge <= 0.16 && Math.abs(best.y - p.y) < 0.28) {
-          p.x = best.x;
-          p.z = best.z;
-          p.y = best.y;
-          p.vy = 0;
-          this.setMove("grounded");
-          return true;
-        }
-        return moved > 0.012;
+      if (tickMantle()) return;
+      const rests = this.solids.filter(s => s.standable && isTowerRest(s.id) && !s.id.endsWith("-cap") &&
+        nearTw && s.id.startsWith(`${nearTw.tw.id}-`));
+      const shaft = nearTw ? this.solids.find(s => s.id === `${nearTw.tw.id}-shaft`) : null;
+      const surface = shaft ? closestPointOnSolidXZ(shaft, p.x, p.z) : null;
+      const radius = shaft ? Math.hypot(p.x - shaft.x, p.z - shaft.z) : 0;
+      const restAnchor = shaft && surface && radius > 0 ? {
+        x: surface.x + (p.x - shaft.x) / radius * (PLAYER_RADIUS + BODY_SKIN * 2),
+        z: surface.z + (p.z - shaft.z) / radius * (PLAYER_RADIUS + BODY_SKIN * 2), y: p.y,
+      } : p;
+      const tryMantle = (candidates = rests, landingHint = restAnchor) => {
+        this.mantle = planMantle(p, candidates, this.solids, this.heightFn, landingHint);
+        return tickMantle();
       };
       const tryShimmy = () => {
-        const best = nearestRestAtHeight();
-        if (!best || !wall) return false;
-        if (best.edge <= MANTLE_REACH_XZ) return tryMantle();
-        const ox = p.x;
-        const oy = p.y;
-        const oz = p.z;
-        const tx = best.x - p.x;
-        const tz = best.z - p.z;
-        const tangent = -wall.nz * tx + wall.nx * tz;
-        const dir = tangent >= 0 ? 1 : -1;
-        const step = CLIMB_SHIMMY * dt;
-        p.x += -wall.nz * dir * step;
-        p.z += wall.nx * dir * step;
-        p.y += clamp(best.y - p.y, -MANTLE_STEP_Y, MANTLE_STEP_Y);
-        const resolved = resolveHorizontal(p.x, p.z, p.y, this.solids);
-        p.x = resolved.x;
-        p.z = resolved.z;
-        const moved = Math.hypot(p.x - ox, p.z - oz, p.y - oy);
-        if (moved > step + MANTLE_STEP_Y + 0.08) {
-          p.x = ox;
-          p.y = oy;
-          p.z = oz;
-          return false;
-        }
-        return moved > 0.008;
+        if (!wall) return false;
+        const best = rests.filter(s => Math.abs(solidTop(s) - p.y) <= MANTLE_REACH_Y)
+          .map(s => ({ s, point: closestPointOnSolidXZ(s, p.x, p.z) }))
+          .sort((a, b) => a.point.dist - b.point.dist)[0];
+        if (!best || best.point.dist <= MANTLE_REACH_XZ) return false;
+        const tangent = -wall.nz * (best.s.x - p.x) + wall.nx * (best.s.z - p.z);
+        const direction = tangent >= 0 ? 1 : -1;
+        const next = { x: p.x - wall.nz * direction * CLIMB_SHIMMY * dt,
+          z: p.z + wall.nx * direction * CLIMB_SHIMMY * dt,
+          y: p.y + clamp(solidTop(best.s) - p.y, -MANTLE_STEP_Y * dt / FIXED_DT, MANTLE_STEP_Y * dt / FIXED_DT) };
+        if (!sweepPlayerBody(p, next, this.solids, this.heightFn)) return false;
+        p.x = next.x; p.y = next.y; p.z = next.z;
+        return true;
       };
-      if (wantRest && isTowerRest(rest.id) && Math.abs(rest.y - p.y) < 0.85) {
-        p.y = rest.y;
-        p.vy = 0;
-        this.setMove("grounded");
-        return;
-      }
+      const wantRest = a.moveY < -0.2 || p.stamina <= 2;
       if (wantRest && (tryMantle() || tryShimmy())) return;
-      // Dodge is an explicit dismount — do not prefer mantle/shimmy while
-      // dodging (play-routes KeyC on east wall / tower stuck in climbing).
-      if (a.dodge) {
-        this.setMove("airborne");
-        p.vy = 0.6;
-        p.x -= fwd.x * 0.35;
-        p.z -= fwd.z * 0.35;
-        return;
-      }
+      // A real cap, not the nonstandable shaft top, is the destination.
+      const cap = nearTw ? this.solids.find(s => s.id === `${nearTw.tw.id}-cap`) : null;
+      const topCandidates = cap ? [cap] : this.solids.filter(s => {
+        if (!s.standable || !wall) return false;
+        if (s.id === wall.id) return true;
+        // A nonstandable retaining wall may have a real platform behind it.
+        // Keep that platform's collision/support, rather than treating it as
+        // bare terrain or promoting the wall itself to a standing surface.
+        const edge = closestPointOnSolidXZ(s, p.x, p.z);
+        return (edge.x - p.x) * wall.nx + (edge.z - p.z) * wall.nz < 0;
+      });
       if (!wall) {
-        if (tryMantle() || tryShimmy()) return;
+        if (tryMantle(topCandidates, p) || tryMantle() || tryShimmy()) return;
         this.setMove("airborne");
         p.vy = 0.6;
-        p.x -= fwd.x * 0.35;
-        p.z -= fwd.z * 0.35;
         return;
       }
       if (p.stamina <= 0) {
-        if (tryMantle() || tryShimmy()) return;
-        if (isTowerRest(rest.id) && Math.abs(rest.y - p.y) < 0.85) {
-          p.y = rest.y;
-          this.setMove("grounded");
-          return;
-        }
         this.setMove("airborne");
         p.vy = 0.2;
-        p.x -= fwd.x * 0.3;
-        p.z -= fwd.z * 0.3;
         return;
       }
       const up = a.moveY > 0.05 ? 1 : a.moveY < -0.15 ? -0.75 : 0;
-      p.y += CLIMB_SPEED * up * dt;
+      // Start only inside the unchanged actual-target reach; no 2.35m snap.
+      if (up > 0 && tryMantle(topCandidates, p)) return;
+      if (up > 0 && !nearTw) {
+        const solid = this.solids.find(s => s.id === wall?.id);
+        this.mantle = solid ? planTerrainMantle(p, solid, { x: wall.nx, z: wall.nz }, this.solids, this.heightFn) : null;
+        if (tickMantle()) return;
+      }
       const side = a.moveX;
-      p.x += -wall.nz * side * 2.2 * dt;
-      p.z += wall.nx * side * 2.2 * dt;
-      const resolved = resolveHorizontal(p.x, p.z, p.y, this.solids);
-      p.x = resolved.x;
-      p.z = resolved.z;
+      const next = { x: p.x - wall.nz * side * CLIMB_SHIMMY * dt,
+        z: p.z + wall.nx * side * CLIMB_SHIMMY * dt, y: p.y + CLIMB_SPEED * up * dt };
+      if (up > 0 && !nearTw) {
+        const solid = this.solids.find(s => s.id === wall?.id);
+        if (solid) {
+          // The wall probe can grab before the body is against the surface.
+          // Close that actual gap continuously instead of compensating with
+          // an expanded mantle reach or the removed top teleport.
+          const edge = closestPointOnSolidXZ(solid, p.x, p.z);
+          const dx = edge.x + wall.nx * (PLAYER_RADIUS + BODY_SKIN * 2) - p.x;
+          const dz = edge.z + wall.nz * (PLAYER_RADIUS + BODY_SKIN * 2) - p.z;
+          const distance = Math.hypot(dx, dz);
+          const ratio = distance > 0 ? Math.min(1, CLIMB_SHIMMY * dt / distance) : 0;
+          next.x += dx * ratio;
+          next.z += dz * ratio;
+        }
+      }
+      const horizontalStep = Math.hypot(next.x - p.x, next.z - p.z);
+      if (horizontalStep > CLIMB_SHIMMY * dt) {
+        const ratio = CLIMB_SHIMMY * dt / horizontalStep;
+        next.x = p.x + (next.x - p.x) * ratio;
+        next.z = p.z + (next.z - p.z) * ratio;
+      }
+      const resolved = resolveHorizontal(next.x, next.z, next.y, this.solids);
+      next.x = resolved.x;
+      next.z = resolved.z;
+      if (sweepPlayerBody(p, next, this.solids, this.heightFn)) {
+        p.x = next.x; p.y = next.y; p.z = next.z;
+      } else if (up > 0) {
+        this.mantle = planAroundOverhang(p, next, { x: wall.nx, z: wall.nz }, this.solids, this.heightFn, restAnchor);
+        if (tickMantle()) return;
+      }
       if (up > 0.2) p.stamina -= CLIMB_STAMINA * dt;
       else if (up < -0.2) p.stamina -= CLIMB_STAMINA * 0.45 * dt;
       else p.stamina -= CLIMB_STAMINA * 0.22 * dt;
-      if (p.y > wall.top - 1.7) {
-        p.x -= wall.nx * 2.35;
-        p.z -= wall.nz * 2.35;
-        p.y = wall.top + 0.18;
-        p.vy = 0;
-        this.setMove("grounded");
-      }
+      if (up > 0) this.mantle = planMantle(p, topCandidates, this.solids, this.heightFn);
       if (wishLen > 0.15) p.yaw = lerpAng(p.yaw, Math.atan2(-wishX, -wishZ), 1 - Math.exp(-8 * dt));
       return;
     }
 
-    const onCap = TOWERS.some((tw) => Math.hypot(p.x - tw.x, p.z - tw.z) < 5.2 && p.y > tw.y + TOWER_HEIGHT - 2.2);
+    // The activation band includes the upper rest ledge. Only real cap support
+    // ends climbing; W must still re-grab from that lower ledge.
+    const onCap = TOWERS.some((tw) => support.id === `${tw.id}-cap` && Math.abs(p.y - support.y) <= BODY_SKIN);
     const resting = isTowerRest(support.id);
     const wantClimb =
       a.climb ||
       a.interact ||
-      (resting && a.moveY > 0.12) ||
+      // Auto-grab follows movement toward the wall, not just the W key.
+      (resting && a.moveY > 0.12 && wall && wishX * wall.nx + wishZ * wall.nz < -1e-8) ||
       // Lake grab is E/climb. W-only auto-grab trapped the headed route on mere
       // when goTo tried to swim toward crown.
       ((p.state === "swimming" || inWater) && (a.climb || a.interact));

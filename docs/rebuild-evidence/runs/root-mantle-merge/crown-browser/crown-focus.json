@@ -1,0 +1,235 @@
+{
+  "ok": true,
+  "focus": "crown",
+  "towers": [
+    "crown"
+  ],
+  "final": {
+    "mode": "playing",
+    "x": 46.9939170583128,
+    "y": 53.98699923706055,
+    "z": -123.5113702408813,
+    "yaw": -0.22049604265632555,
+    "camYaw": -3.2428000000000003,
+    "state": "airborne",
+    "stamina": 100,
+    "staminaMax": 100,
+    "climbing": false,
+    "grounded": false,
+    "vy": -5.999999999999997,
+    "coldAcc": 0,
+    "nearbyEnemies": [],
+    "nearbyProjectiles": [],
+    "towers": [
+      "crown"
+    ],
+    "shrines": [],
+    "orbs": 0,
+    "ruinSolved": false,
+    "prompt": "雪冠塔已点亮",
+    "shrine": null,
+    "shrineHint": "",
+    "interactLock": 0,
+    "hp": 2,
+    "amber": 0,
+    "art": 0,
+    "bossDead": false,
+    "toast": "",
+    "worldKind": "overworld",
+    "spicy": 0,
+    "cold": false,
+    "meals": [],
+    "pointerLock": false,
+    "cracked": false,
+    "moveBlock": {
+      "x": 0,
+      "z": 0,
+      "frozen": 0,
+      "t": 0
+    },
+    "ices": 0,
+    "metals": [
+      {
+        "id": "metal-field-0",
+        "x": 34,
+        "z": 10,
+        "held": false
+      },
+      {
+        "id": "metal-field-1",
+        "x": 90,
+        "z": 20,
+        "held": false
+      }
+    ],
+    "bomb": null,
+    "attackPhase": "idle",
+    "attackT": 0,
+    "equippedId": "blade",
+    "arrows": 24,
+    "dodgeCd": 0,
+    "dodgeT": 0,
+    "canDodge": false,
+    "invuln": 0,
+    "sealOpen": false,
+    "boss": {
+      "hp": 20,
+      "max": 20,
+      "x": 6,
+      "y": 11.056819524115816,
+      "z": -4.8,
+      "alive": true,
+      "phase": "patrol",
+      "yaw": 0
+    },
+    "bossMeleeBlocked": false,
+    "blockerId": null,
+    "nav": {
+      "arrived": false,
+      "status": "timeout",
+      "dist": 35.26865673238047,
+      "label": "crown-dismount",
+      "tx": 36,
+      "tz": -90
+    }
+  },
+  "closeReason": null,
+  "log": [
+    {
+      "t": 1789207355955,
+      "m": "harness pid=64074 ppid=1 chromium=64093 headed=true url=http://127.0.0.1:8102/?t=1789207355502 serverPid=64091 serverPort=8102 pidFile=/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/.grok/play-routes-64091.pid log=/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/.grok/play-routes-64091.log hb=/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/.grok/heartbeat-64074.json"
+    },
+    {
+      "t": 1789207357540,
+      "m": "start mode=playing at 16.0,102.0"
+    },
+    {
+      "t": 1789207357664,
+      "m": "QA_FOCUS=crown: frost tower climb only (real keys, no progress writes)"
+    },
+    {
+      "t": 1789207422677,
+      "m": "climb crown"
+    },
+    {
+      "t": 1789207422908,
+      "m": "crown approach dist=6.6 y=28.4 state=grounded prompt="
+    },
+    {
+      "t": 1789207422908,
+      "m": "crown authored baseY=16.8 (player y=28.4)"
+    },
+    {
+      "t": 1789207425905,
+      "m": "crown rest y=19.4 stam=-0 n=1"
+    },
+    {
+      "t": 1789207426303,
+      "m": "crown rest y=19.1 stam=11 n=2"
+    },
+    {
+      "t": 1789207426701,
+      "m": "crown rest y=19.1 stam=22 n=3"
+    },
+    {
+      "t": 1789207427100,
+      "m": "crown rest y=19.1 stam=33 n=4"
+    },
+    {
+      "t": 1789207428690,
+      "m": "crown rest y=19.1 stam=78 n=8"
+    },
+    {
+      "t": 1789207435744,
+      "m": "crown ledge-try y=36.3 stam=20 state=climbing"
+    },
+    {
+      "t": 1789207436048,
+      "m": "crown rest y=36.3 stam=20 n=9"
+    },
+    {
+      "t": 1789207437635,
+      "m": "crown rest y=36.3 stam=65 n=13"
+    },
+    {
+      "t": 1789207445375,
+      "m": "crown ledge-try y=53.5 stam=26 state=climbing"
+    },
+    {
+      "t": 1789207445976,
+      "m": "crown pressed 启动 towers=crown prompt=雪冠塔已点亮"
+    },
+    {
+      "t": 1789207445988,
+      "m": "crown done towers=crown y=53.5 prompt=雪冠塔已点亮 state=grounded"
+    },
+    {
+      "t": 1789207445990,
+      "m": "storage checkpoint tower-crown -> /Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/storage-ckpt-tower-crown.json v2=true"
+    },
+    {
+      "t": 1789207446079,
+      "m": "crown leave radially to 44.1,-110.4 from y=53.5 grounded"
+    },
+    {
+      "t": 1789207450055,
+      "m": "stuck dist=14.3 at 47.2,-124.4 climbing"
+    },
+    {
+      "t": 1789207453223,
+      "m": "stuck dist=13.4 at 47.0,-123.5 airborne"
+    },
+    {
+      "t": 1789207456557,
+      "m": "stuck dist=14.4 at 47.2,-124.4 climbing"
+    },
+    {
+      "t": 1789207459728,
+      "m": "stuck dist=13.4 at 47.0,-123.5 airborne"
+    },
+    {
+      "t": 1789207463068,
+      "m": "stuck dist=14.2 at 47.2,-124.3 climbing"
+    },
+    {
+      "t": 1789207466246,
+      "m": "stuck dist=13.4 at 47.0,-123.5 airborne"
+    },
+    {
+      "t": 1789207467203,
+      "m": "nav timeout crown-leave dist=13.5 at 47.0,-123.6"
+    },
+    {
+      "t": 1789207467203,
+      "m": "crown still high y=54.0; walk the ridge down"
+    },
+    {
+      "t": 1789207470128,
+      "m": "stuck dist=36.2 at 47.2,-124.4 climbing"
+    },
+    {
+      "t": 1789207473308,
+      "m": "stuck dist=35.3 at 47.0,-123.5 airborne"
+    },
+    {
+      "t": 1789207476644,
+      "m": "stuck dist=36.2 at 47.2,-124.4 climbing"
+    },
+    {
+      "t": 1789207479819,
+      "m": "stuck dist=35.3 at 47.0,-123.5 airborne"
+    },
+    {
+      "t": 1789207483154,
+      "m": "stuck dist=36.1 at 47.2,-124.3 climbing"
+    },
+    {
+      "t": 1789207486335,
+      "m": "stuck dist=35.3 at 47.0,-123.5 airborne"
+    },
+    {
+      "t": 1789207489453,
+      "m": "nav timeout crown-dismount dist=35.3 at 47.0,-123.5"
+    }
+  ]
+}

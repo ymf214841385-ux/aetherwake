@@ -1,0 +1,207 @@
+{
+  "ok": true,
+  "focus": "mere",
+  "towers": [
+    "mere"
+  ],
+  "final": {
+    "mode": "playing",
+    "x": -108.37595046029948,
+    "y": 44.98700019073487,
+    "z": 12.504338048082161,
+    "yaw": -0.08327108186562325,
+    "camYaw": -3.2912000000000003,
+    "state": "airborne",
+    "stamina": 83.93833333333392,
+    "staminaMax": 100,
+    "climbing": false,
+    "grounded": false,
+    "vy": -5.999999999999997,
+    "coldAcc": 0,
+    "nearbyEnemies": [],
+    "nearbyProjectiles": [],
+    "towers": [
+      "mere"
+    ],
+    "shrines": [],
+    "orbs": 0,
+    "ruinSolved": false,
+    "prompt": "镜湖塔已点亮",
+    "shrine": null,
+    "shrineHint": "",
+    "interactLock": 0,
+    "hp": 3,
+    "amber": 0,
+    "art": 0,
+    "bossDead": false,
+    "toast": "",
+    "worldKind": "overworld",
+    "spicy": 0,
+    "cold": false,
+    "meals": [],
+    "pointerLock": false,
+    "cracked": false,
+    "moveBlock": {
+      "x": 0,
+      "z": 0,
+      "frozen": 0,
+      "t": 0
+    },
+    "ices": 0,
+    "metals": [
+      {
+        "id": "metal-field-0",
+        "x": 34,
+        "z": 10,
+        "held": false
+      },
+      {
+        "id": "metal-field-1",
+        "x": 90,
+        "z": 20,
+        "held": false
+      }
+    ],
+    "bomb": null,
+    "attackPhase": "idle",
+    "attackT": 0,
+    "equippedId": "blade",
+    "arrows": 24,
+    "dodgeCd": 0,
+    "dodgeT": 0,
+    "canDodge": false,
+    "invuln": 0,
+    "sealOpen": false,
+    "boss": {
+      "hp": 20,
+      "max": 20,
+      "x": 6,
+      "y": 11.056819524115816,
+      "z": -4.8,
+      "alive": true,
+      "phase": "patrol",
+      "yaw": 0
+    },
+    "bossMeleeBlocked": false,
+    "blockerId": null,
+    "nav": {
+      "arrived": false,
+      "status": "timeout",
+      "dist": 13.48,
+      "label": "mere-leave2",
+      "tx": -109.49714785075034,
+      "tz": 25.93762939501744
+    }
+  },
+  "closeReason": null,
+  "log": [
+    {
+      "t": 1789207229118,
+      "m": "harness pid=63653 ppid=1 chromium=63672 headed=true url=http://127.0.0.1:8102/?t=1789207228242 serverPid=63670 serverPort=8102 pidFile=/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/.grok/play-routes-63670.pid log=/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/.grok/play-routes-63670.log hb=/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/.grok/heartbeat-63653.json"
+    },
+    {
+      "t": 1789207230774,
+      "m": "start mode=playing at 16.0,102.0"
+    },
+    {
+      "t": 1789207230816,
+      "m": "QA_FOCUS=mere: lake approach + shaft climb only (real keys, no progress writes)"
+    },
+    {
+      "t": 1789207268578,
+      "m": "climb mere"
+    },
+    {
+      "t": 1789207268802,
+      "m": "mere approach dist=5.3 y=3.5 state=swimming prompt="
+    },
+    {
+      "t": 1789207268803,
+      "m": "mere authored baseY=7.8 (player y=3.5)"
+    },
+    {
+      "t": 1789207291308,
+      "m": "mere rest y=10.1 stam=14 n=1"
+    },
+    {
+      "t": 1789207291700,
+      "m": "mere rest y=10.1 stam=24 n=2"
+    },
+    {
+      "t": 1789207292094,
+      "m": "mere rest y=10.1 stam=36 n=3"
+    },
+    {
+      "t": 1789207293276,
+      "m": "mere rest y=10.1 stam=69 n=6"
+    },
+    {
+      "t": 1789207300447,
+      "m": "mere ledge-try y=27.3 stam=19 state=climbing"
+    },
+    {
+      "t": 1789207300752,
+      "m": "mere rest y=27.3 stam=20 n=8"
+    },
+    {
+      "t": 1789207302335,
+      "m": "mere rest y=27.3 stam=65 n=12"
+    },
+    {
+      "t": 1789207310215,
+      "m": "mere ledge-try y=44.5 stam=27 state=grounded"
+    },
+    {
+      "t": 1789207310512,
+      "m": "mere pressed 启动 towers=mere prompt=镜湖塔已点亮"
+    },
+    {
+      "t": 1789207310526,
+      "m": "mere done towers=mere y=44.5 prompt=镜湖塔已点亮 state=climbing"
+    },
+    {
+      "t": 1789207310527,
+      "m": "storage checkpoint tower-mere -> /Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/storage-ckpt-tower-mere.json v2=true"
+    },
+    {
+      "t": 1789207310647,
+      "m": "mere leave radially to -109.5,25.9 from y=44.5 climbing"
+    },
+    {
+      "t": 1789207316570,
+      "m": "stuck dist=13.5 at -108.4,12.5 airborne"
+    },
+    {
+      "t": 1789207319921,
+      "m": "stuck dist=14.3 at -108.3,11.7 climbing"
+    },
+    {
+      "t": 1789207323126,
+      "m": "stuck dist=13.5 at -108.4,12.5 airborne"
+    },
+    {
+      "t": 1789207326476,
+      "m": "stuck dist=14.4 at -108.3,11.5 climbing"
+    },
+    {
+      "t": 1789207329675,
+      "m": "stuck dist=13.5 at -108.4,12.5 airborne"
+    },
+    {
+      "t": 1789207332499,
+      "m": "nav timeout mere-leave dist=14.4 at -108.3,11.5"
+    },
+    {
+      "t": 1789207336032,
+      "m": "stuck dist=14.3 at -108.3,11.7 climbing"
+    },
+    {
+      "t": 1789207339193,
+      "m": "stuck dist=13.5 at -108.4,12.5 airborne"
+    },
+    {
+      "t": 1789207341238,
+      "m": "nav timeout mere-leave2 dist=13.5 at -108.4,12.5"
+    }
+  ]
+}
