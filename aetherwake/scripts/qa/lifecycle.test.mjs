@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
-import { existsSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { describe, it } from "node:test";
 import { fileURLToPath } from "node:url";
@@ -190,6 +190,7 @@ describe("owned server lifecycle", { concurrency: 1 }, () => {
     assert.equal(assertOwnedPid({ pid: process.pid, pidFile: "/tmp/nope" }).ok, false);
     assert.equal(assertOwnedPid({ pid: 999999, pidFile: undefined }).ok, false);
     const parentFile = join(stateDir(), `qa-life-parent-${process.ppid}.pid`);
+    mkdirSync(dirname(parentFile), { recursive: true });
     writeFileSync(parentFile, `${process.ppid}\n`);
     try {
       const r = assertOwnedPid({ pid: process.ppid, pidFile: parentFile, kind: "fixture" });
