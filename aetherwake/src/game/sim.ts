@@ -931,7 +931,10 @@ export class Sim {
       p.x = resolved.x;
       p.z = resolved.z;
       this.snapVertical(dt);
-      if (p.dodgeT <= 0) p.vx *= 0.3;
+      if (p.dodgeT <= 0) {
+        p.vx *= 0.3;
+        p.vz *= 0.3;
+      }
       return;
     }
 
@@ -1294,7 +1297,10 @@ export class Sim {
     const p = this.player;
     p.y += p.vy * dt;
     const g = this.surfaceY(p.x, p.z, p.y + FOOT_SNAP);
-    if (p.y <= g) {
+    // Follow shallow descending support while already grounded. Otherwise a
+    // centimeter of downhill motion toggles airborne and disables ground input.
+    const followsGround = p.state === "grounded" && p.grounded && p.vy <= 0 && p.y - g <= FOOT_SNAP;
+    if (p.y <= g || followsGround) {
       if (!p.grounded && p.vy < -15) this.hurt(p.vy < -22 ? 1.5 : 0.75, "坠落");
       if (!p.grounded && p.vy < -4) this.burst(p.x, g + 0.1, p.z, 6, 0.45, 0.4, 0.32, 0.8);
       p.y = g;

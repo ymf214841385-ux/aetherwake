@@ -44,6 +44,13 @@ let cmdSeq = 1;
 const commandQueue: Command[] = [];
 let prevTouchJump = false;
 let prevJump = false;
+const inputResetListeners = new Set<() => void>();
+
+/** Touch bindings invalidate pointer ownership on the same global reset. */
+export function subscribeInputReset(listener: () => void) {
+  inputResetListeners.add(listener);
+  return () => { inputResetListeners.delete(listener); };
+}
 
 export const touch = {
   stickX: 0,
@@ -163,10 +170,6 @@ function onMouseUp(e: MouseEvent) {
   if (e.button === 2) hardware.delete("MouseRight");
 }
 
-function onLostPointer() {
-  resetHeld();
-}
-
 export function resetInput() {
   hardware.clear();
   commandQueue.length = 0;
@@ -189,44 +192,35 @@ export function resetInput() {
   touch.pause = false;
   touch.map = false;
   touch.bag = false;
+  for (const listener of [...inputResetListeners]) listener();
 }
 
-function resetHeld() {
-  hardware.clear();
-  touch.stickX = 0;
-  touch.stickY = 0;
-  touch.jump = false;
-  touch.sprint = false;
-  touch.bow = false;
-  lookX = 0;
-  lookY = 0;
-  touch.lookX = 0;
-  touch.lookY = 0;
-  commandQueue.length = 0;
+function onVisibilityChange() {
+  if (document.hidden) resetInput();
+}
+
+function onContextMenu(e: Event) {
+  e.preventDefault();
 }
 
 export function bindInput(el: HTMLElement) {
   window.addEventListener("keydown", onKeyDown);
   window.addEventListener("keyup", onKeyUp);
   window.addEventListener("blur", resetInput);
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) resetInput();
-  });
+  document.addEventListener("visibilitychange", onVisibilityChange);
   window.addEventListener("mousemove", onMouseMove);
   el.addEventListener("mousedown", onMouseDown);
   window.addEventListener("mouseup", onMouseUp);
-  el.addEventListener("contextmenu", (e) => e.preventDefault());
-  window.addEventListener("pointercancel", onLostPointer);
-  window.addEventListener("lostpointercapture", onLostPointer);
+  el.addEventListener("contextmenu", onContextMenu);
   return () => {
     window.removeEventListener("keydown", onKeyDown);
     window.removeEventListener("keyup", onKeyUp);
     window.removeEventListener("blur", resetInput);
+    document.removeEventListener("visibilitychange", onVisibilityChange);
     window.removeEventListener("mousemove", onMouseMove);
     el.removeEventListener("mousedown", onMouseDown);
     window.removeEventListener("mouseup", onMouseUp);
-    window.removeEventListener("pointercancel", onLostPointer);
-    window.removeEventListener("lostpointercapture", onLostPointer);
+    el.removeEventListener("contextmenu", onContextMenu);
   };
 }
 

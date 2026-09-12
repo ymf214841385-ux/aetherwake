@@ -225,3 +225,57 @@ describe("E1 death latch + abort wrappers + focus gate", () => {
     assert.equal(r.fightBossCalled, true);
   });
 });
+
+
+describe("E23 first player HP decrease", () => {
+  it("finite initial/equal HP and invalid values do not trigger or replace baseline", () => {
+    const clock = makeClock();
+    const events = [];
+    const mon = createCombatProgressMonitor({ now: clock.now, stopFirstHpDrop: true,
+      onEvent: (e) => events.push(e) });
+    for (const hp of [undefined, null, NaN, Infinity, "2.5", 2.5, 2.5, NaN, null, -Infinity]) {
+      mon.observe(navSnap({ hp }));
+      clock.advance(100);
+      assert.equal(mon.latched, null);
+    }
+    const post = navSnap({ hp: 2.25, vy: -18, grounded: false, cold: true,
+      spicy: 0, coldAcc: 1, invuln: 0.9,
+      nearbyEnemies: [{ id: "e", brain: { phase: "attack" } }],
+      nearbyProjectiles: [{ kind: "beam", x: 2 }] });
+    mon.observe(post);
+    assert.equal(mon.latched.reason, "player-hp-drop");
+    assert.equal(mon.latched.pre.snap.hp, 2.5);
+    assert.equal(mon.latched.source, "unknown");
+    assert.equal(mon.latched.ring.at(-1).vy, -18);
+    assert.equal(mon.latched.ring.at(-1).cold, true);
+    post.nearbyEnemies[0].id = "mutated";
+    clock.advance(30000);
+    mon.observe(navSnap({ hp: 0 }));
+    assert.equal(mon.latched.post.snap.nearbyEnemies[0].id, "e");
+    assert.equal(events.filter((e) => e.type === "player-hp-drop").length, 1);
+    assert.equal(mon.latched.to, 2.25);
+  });
+
+  it("actual serial sample loop latches a navigation drop including lethal drops", async () => {
+    for (const hp of [2.25, 0]) {
+      const clock = makeClock();
+      const mon = createCombatProgressMonitor({ now: clock.now, stopFirstHpDrop: true });
+      const snaps = [navSnap(), navSnap(), navSnap({ hp })];
+      const result = await runCombatSampleLoop({ read: async () => snaps.shift(), monitor: mon,
+        now: clock.now, wait: async (ms) => clock.advance(ms), shouldStop: () => false });
+      assert.equal(result.samples, 3);
+      assert.equal(result.latched.reason, "player-hp-drop");
+      assert.equal(result.latched.ring[0].phase, "navigation");
+      assert.equal(result.combatMs, 0);
+    }
+  });
+
+  it("opt-out preserves death precedence and ignores nonlethal player drops", () => {
+    const mon = createCombatProgressMonitor({ now: () => 0 });
+    mon.observe(navSnap());
+    mon.observe(navSnap({ hp: 2.25 }));
+    assert.equal(mon.latched, null);
+    mon.observe(navSnap({ hp: 0 }));
+    assert.equal(mon.latched.reason, "death");
+  });
+});

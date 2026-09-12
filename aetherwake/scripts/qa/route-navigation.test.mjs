@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { createRouteNavigation } from "./route-navigation.mjs";
 import { createAbortLatch } from "./combat-progress-monitor.mjs";
 
-function fixture({ dieAt = Infinity, onWait } = {}) {
+function fixture({ dieAt = Infinity, onWait, hpAt = () => 5 } = {}) {
   let t = 0,
     reads = 0,
     revives = 0;
@@ -15,7 +15,7 @@ function fixture({ dieAt = Infinity, onWait } = {}) {
     reads++;
     return {
       mode: reads >= dieAt ? "dead" : "playing",
-      hp: reads >= dieAt ? 0 : 5,
+      hp: reads >= dieAt ? 0 : hpAt(reads),
       state: "grounded",
       x: 0,
       y: 0,
@@ -269,4 +269,52 @@ test('orchestrator guard checks returned failure from real unscoped factory navi
     assert.equal(orch.scope.navigationFailure.nav.tx, 20);
     assert.equal(orch.scope.navigationFailure.snap.x, 0);
   }
+});
+
+
+test("E23 actual navigation detects HP decrease before later input and preserves first evidence", async () => {
+  const f = fixture({ hpAt: (n) => n < 3 ? 2.5 : 2.25 });
+  const saved = [];
+  const orch = createFightOrchestrator({
+    ...f.nav, read: f.read, now: () => f.reads * 100,
+    wait: async () => {}, stopFirstHpDrop: true,
+    onFirstHpDrop: (event) => saved.push(structuredClone(event)),
+  });
+  try {
+    await assert.rejects(orch.follow([{ x: 20, z: 0 }, { x: 40, z: 0 }], 600, 1),
+      (e) => e.reason === "player-hp-drop");
+    assert.equal(f.reads, 3);
+    assert.equal(f.events.filter((e) => e[0] === "down").length, 2);
+    assert.equal(f.pressed.size, 0);
+    assert.equal(f.revives, 0);
+    assert.equal(saved.length, 1);
+    assert.equal(saved[0].pre.snap.hp, 2.5);
+    assert.equal(saved[0].post.snap.hp, 2.25);
+    assert.equal(saved[0].source, "unknown");
+    assert.equal(saved[0].ring.length, 3);
+    await assert.rejects(orch.goTo(40, 0, 600), (e) => e.reason === "player-hp-drop");
+    await assert.rejects(orch.resumePlay(), (e) => e.reason === "player-hp-drop");
+    assert.equal(f.reads, 3);
+  } finally {
+    await orch.stopSampling();
+  }
+});
+
+test("E23 opt-out navigation keeps previous failure and input behavior despite HP decrease", async () => {
+  const f = fixture({ hpAt: (n) => n < 3 ? 2.5 : 2.25 });
+  const orch = createFightOrchestrator({ ...f.nav, read: f.read, now: () => 0 });
+  await assert.rejects(orch.follow([{ x: 20, z: 0 }], 600, 1),
+    (e) => e.reason === "navigation-failed");
+  assert.ok(f.events.filter((e) => e[0] === "down").length > 2);
+  assert.equal(orch.monitor.latched, null);
+  assert.equal(orch.scope.observeSnapshot, undefined);
+});
+
+
+test("E23 entry enables only explicit citadel opt-in and persists at the latch callback", () => {
+  const source = readFileSync(new URL("../play-routes.mjs", import.meta.url), "utf8");
+  assert.match(source, /const stopFirstHpDrop = process.env.QA_FOCUS === CITADEL_RESUME_FOCUS &&\s*process.env.QA_STOP_FIRST_HP_DROP === "1"/);
+  assert.match(source, /createFightOrchestrator\(\{\s*stopFirstHpDrop,\s*onFirstHpDrop:/);
+  assert.match(source, /mkdtempSync\(resolve\(runs, "e23-first-hp-drop-"\)\)/);
+  assert.match(source, /flag: "wx"/);
 });

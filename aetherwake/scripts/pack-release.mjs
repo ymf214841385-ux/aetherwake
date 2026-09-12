@@ -4,7 +4,8 @@ import { execFileSync } from "node:child_process";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { resolve } from "node:path";
-const root = fileURLToPath(new URL("../../", import.meta.url));
+const scriptDirectory = fileURLToPath(new URL(".", import.meta.url));
+const root = execFileSync("git", ["rev-parse", "--show-toplevel"], { cwd: scriptDirectory, encoding: "utf8" }).trim();
 mkdirSync(resolve(root, "packed"), { recursive: true });
 const head = execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" }).trim();
 const report = execFileSync("python3", ["-c", `

@@ -1,0 +1,6941 @@
+{
+  "reason": "death",
+  "deaths": 1,
+  "snap": {
+    "mode": "dead",
+    "x": 6.181709339715319,
+    "y": 10.77314565521991,
+    "z": -1.253945902473506,
+    "yaw": -12.605294895083716,
+    "camYaw": -0.827207346410207,
+    "state": "dead",
+    "stamina": 89.33333333333326,
+    "staminaMax": 108,
+    "climbing": false,
+    "grounded": false,
+    "vy": 0,
+    "coldAcc": 0,
+    "nearbyEnemies": [
+      {
+        "id": "b-2-2",
+        "kind": "bramble",
+        "x": -16.923185813895763,
+        "y": 4.9892218817994,
+        "z": 12.10825050562944,
+        "yaw": 0,
+        "hp": 3,
+        "alive": true,
+        "frozen": 0,
+        "timer": -51.61666666666502,
+        "hurt": 0,
+        "telegraph": 0,
+        "brain": {
+          "phase": "lost",
+          "t": 1.2
+        }
+      },
+      {
+        "id": "boss",
+        "kind": "boss",
+        "x": 7.243058782174415,
+        "y": 10.787008131174428,
+        "z": -0.18405374806094635,
+        "yaw": -3.0083049622638076,
+        "hp": 20,
+        "alive": true,
+        "frozen": 0,
+        "timer": -51.61666666666502,
+        "hurt": 0,
+        "telegraph": 0,
+        "brain": {
+          "phase": "recover",
+          "t": 1.1
+        }
+      }
+    ],
+    "nearbyProjectiles": [],
+    "towers": [
+      "dawn",
+      "mere",
+      "crown"
+    ],
+    "shrines": [
+      "pull",
+      "rime",
+      "burst",
+      "still"
+    ],
+    "orbs": 4,
+    "ruinSolved": true,
+    "prompt": "挑战空王",
+    "shrine": null,
+    "shrineHint": "",
+    "interactLock": 0,
+    "hp": 0,
+    "art": 4,
+    "bossDead": false,
+    "toast": "你倒下了",
+    "worldKind": "overworld",
+    "spicy": 0,
+    "cold": false,
+    "meals": [],
+    "pointerLock": false,
+    "cracked": false,
+    "moveBlock": {
+      "x": 0,
+      "z": 0,
+      "frozen": 0,
+      "t": 0
+    },
+    "ices": 0,
+    "metals": [
+      {
+        "id": "metal-field-0",
+        "x": 34,
+        "z": 10,
+        "held": false
+      },
+      {
+        "id": "metal-field-1",
+        "x": 90,
+        "z": 20,
+        "held": false
+      }
+    ],
+    "bomb": null,
+    "attackPhase": "idle",
+    "attackT": 0,
+    "equippedId": "blade",
+    "arrows": 24,
+    "dodgeCd": 0,
+    "dodgeT": 0,
+    "canDodge": false,
+    "invuln": 0.9,
+    "sealOpen": true,
+    "boss": {
+      "hp": 20,
+      "max": 20,
+      "x": 7.243058782174415,
+      "y": 10.787008131174428,
+      "z": -0.18405374806094635,
+      "alive": true,
+      "phase": "recover",
+      "yaw": -3.0083049622638076
+    },
+    "bossMeleeBlocked": false,
+    "blockerId": null
+  },
+  "firstHpDropPath": null,
+  "firstHpDropWriteError": null,
+  "firstHpDrop": null,
+  "navigationFailure": null,
+  "combatMs": 1117.573749999996,
+  "navMs": 50704.893875,
+  "noDamageMs": 1117.573749999996,
+  "ring": [
+    {
+      "t": 46014.654625,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 18.090946289102618,
+      "y": 11.052593750863835,
+      "z": -13.385488785138847,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 23.147833905214068,
+          "y": 10.005171302810492,
+          "z": -31.487607775990305,
+          "yaw": 2.8691836877416304,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.41666666666667,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -41.64999999999892,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 78.59999999999988,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 45947.45125
+      }
+    },
+    {
+      "t": 46117.33975,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 18.088061303844455,
+      "y": 11.048110954536593,
+      "z": -13.088364053859955,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 23.091521866020784,
+          "y": 10.023231660736313,
+          "z": -31.28529914929575,
+          "yaw": 2.873262032174446,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.31666666666667004,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -41.74999999999891,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 80.46666666666655,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 45947.45125
+      }
+    },
+    {
+      "t": 46218.457917,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.025467617933753,
+      "y": 11.04397547044211,
+      "z": -12.809973476956266,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 23.03598743607441,
+          "y": 10.041146859891354,
+          "z": -31.082775507168638,
+          "yaw": 2.8739643676046236,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.21666666666667006,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -41.84999999999891,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 82.33333333333323,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 46179.148625
+      }
+    },
+    {
+      "t": 46322.455375,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 18.05980110440033,
+      "y": 11.038570142309116,
+      "z": -12.547192232078267,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.98121897199138,
+          "y": 10.058962877664845,
+          "z": -30.88004328619792,
+          "yaw": 2.8793278960763464,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.11666666666667008,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -41.9499999999989,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 83.73333333333323,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 46179.148625
+      }
+    },
+    {
+      "t": 46420.801,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.022146790175263,
+      "y": 11.035411056321589,
+      "z": -12.291803579813976,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.927155235488478,
+          "y": 10.076883704283073,
+          "z": -30.677121949704308,
+          "yaw": 2.8808756605498327,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.0166666666666701,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -42.049999999998896,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 85.59999999999991,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 46413.768667
+      }
+    },
+    {
+      "t": 46522.047292,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 18.07227250331257,
+      "y": 11.030892450462769,
+      "z": -12.043583834406842,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.909348978382614,
+          "y": 10.08658118507169,
+          "z": -30.609424603996562,
+          "yaw": 2.885550855809353,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 2.3333333333333335,
+          "hurt": 0,
+          "telegraph": 0.33333333333333337,
+          "brain": {
+            "phase": "recover",
+            "t": 0.6666666666666665
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -42.14999999999889,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 86.99999999999991,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 46413.768667
+      }
+    },
+    {
+      "t": 46622.407917,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.04516221001595,
+      "y": 11.02816803689473,
+      "z": -11.79791395880049,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.909348978382614,
+          "y": 10.08658118507169,
+          "z": -30.609424603996562,
+          "yaw": 2.885550855809353,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 2.233333333333334,
+          "hurt": 0,
+          "telegraph": 0.2333333333333334,
+          "brain": {
+            "phase": "recover",
+            "t": 0.5666666666666662
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -42.249999999998884,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 88.86666666666659,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 46413.768667
+      }
+    },
+    {
+      "t": 46724.08875,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 18.06089209903266,
+      "y": 11.022125239154958,
+      "z": -11.518072260453863,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.909348978382614,
+          "y": 10.08658118507169,
+          "z": -30.609424603996562,
+          "yaw": 2.885550855809353,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 2.1166666666666676,
+          "hurt": 0,
+          "telegraph": 0.11666666666666675,
+          "brain": {
+            "phase": "recover",
+            "t": 0.4499999999999994
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -42.366666666665544,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 90.2666666666666,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 46646.055709
+      }
+    },
+    {
+      "t": 46829.138125,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.03887219764825,
+      "y": 11.019587757441904,
+      "z": -11.277091371582129,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.909348978382614,
+          "y": 10.08658118507169,
+          "z": -30.609424603996562,
+          "yaw": 2.885550855809353,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 2.016666666666668,
+          "hurt": 0,
+          "telegraph": 0.01666666666666677,
+          "brain": {
+            "phase": "recover",
+            "t": 0.3499999999999994
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -42.46666666666554,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 92.13333333333327,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 46646.055709
+      }
+    },
+    {
+      "t": 46928.481709,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 18.09018495969609,
+      "y": 11.015217032775892,
+      "z": -11.029979934580089,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.909348978382614,
+          "y": 10.08658118507169,
+          "z": -30.609424603996562,
+          "yaw": 2.885550855809353,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 1.9166666666666683,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "recover",
+            "t": 0.24999999999999944
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -42.56666666666553,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 92.13333333333327,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 46880.797209
+      }
+    },
+    {
+      "t": 47028.299792,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.0856158694329,
+      "y": 11.010721749546128,
+      "z": -10.731475156098917,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.909348978382614,
+          "y": 10.08658118507169,
+          "z": -30.609424603996562,
+          "yaw": 2.885550855809353,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 1.8166666666666687,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "recover",
+            "t": 0.14999999999999947
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -42.66666666666553,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 91.19999999999993,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 46880.797209
+      }
+    },
+    {
+      "t": 47128.893459,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.089940344203434,
+      "y": 11.005019244035775,
+      "z": -10.44115017347368,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.909348978382614,
+          "y": 10.08658118507169,
+          "z": -30.609424603996562,
+          "yaw": 2.885550855809353,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 1.716666666666669,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "recover",
+            "t": 0.04999999999999949
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -42.76666666666552,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 91.19999999999993,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 47093.308917
+      }
+    },
+    {
+      "t": 47230.551625,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.096876321742133,
+      "y": 10.999802657416055,
+      "z": -10.153227227545507,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.885124611721455,
+          "y": 10.092715601100945,
+          "z": -30.50725730594262,
+          "yaw": 2.910545525891733,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 1.6166666666666694,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -42.866666666665516,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 90.49999999999993,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 47093.308917
+      }
+    },
+    {
+      "t": 47332.040292,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.089385313496088,
+      "y": 10.993863215114821,
+      "z": -9.852036034573736,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.83713641825689,
+          "y": 10.111011971089622,
+          "z": -30.302814102265597,
+          "yaw": 2.9134784698842324,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 1.5166666666666697,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -42.96666666666551,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 90.49999999999993,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 47301.834792
+      }
+    },
+    {
+      "t": 47435.1935,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.026280002967905,
+      "y": 10.988681641054436,
+      "z": -9.573272264982903,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.78970360331063,
+          "y": 10.131798991761137,
+          "z": -30.098241239592564,
+          "yaw": 2.9135501868559612,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 1.41666666666667,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -43.066666666665505,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 91.89999999999993,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 47301.834792
+      }
+    },
+    {
+      "t": 47534.883625,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.06538826613407,
+      "y": 10.982808181569549,
+      "z": -9.314938197886361,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.742889551166545,
+          "y": 10.15680459569952,
+          "z": -29.893525830154598,
+          "yaw": 2.91809065927115,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 1.3166666666666704,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -43.1666666666655,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 93.29999999999994,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-up:KeyS",
+        "t": 47531.783709
+      }
+    },
+    {
+      "t": 47636.514875,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.037241643194182,
+      "y": 10.97907354517053,
+      "z": -9.068325742480567,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.696556594343058,
+          "y": 10.178283433145399,
+          "z": -29.688701124574624,
+          "yaw": 2.919367659830096,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 1.2166666666666708,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -43.26666666666549,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 94.69999999999995,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 47535.153375
+      }
+    },
+    {
+      "t": 47737.47325,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.096407572948625,
+      "y": 10.974030271118446,
+      "z": -8.828438601878897,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.650768032826754,
+          "y": 10.19966619525481,
+          "z": -29.483754049307617,
+          "yaw": 2.9245717879910074,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 1.1166666666666711,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -43.36666666666549,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 96.09999999999995,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 47535.153375
+      }
+    },
+    {
+      "t": 47838.2685,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.079769104825772,
+      "y": 10.96916065274803,
+      "z": -8.592410133651624,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.605557345518825,
+          "y": 10.2208849451618,
+          "z": -29.278678608346354,
+          "yaw": 2.926204182389278,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 1.0166666666666715,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -43.46666666666548,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 97.49999999999996,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 47759.805375
+      }
+    },
+    {
+      "t": 47939.832,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 18.063579798384843,
+      "y": 10.966094714049493,
+      "z": -8.356794761108812,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.560685474130644,
+          "y": 10.242024222059666,
+          "z": -29.073528765896498,
+          "yaw": 2.9278330689971463,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.9166666666666713,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -43.566666666665476,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 98.89999999999996,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 47759.805375
+      }
+    },
+    {
+      "t": 48044.779584,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.0792727702187,
+      "y": 10.962433343936338,
+      "z": -8.076925886403076,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.509195743519196,
+          "y": 10.266497573582619,
+          "z": -28.834000592699983,
+          "yaw": 2.9313295662412546,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.8000000000000043,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -43.683333333332136,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 100.76666666666664,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 47989.770917
+      }
+    },
+    {
+      "t": 48145.758667,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.06112158522905,
+      "y": 10.95877894442153,
+      "z": -7.839506193603342,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.465355557138007,
+          "y": 10.287393705318053,
+          "z": -28.628627801549584,
+          "yaw": 2.9328265635063406,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.700000000000004,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -43.78333333333213,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 102.16666666666664,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 47989.770917
+      }
+    },
+    {
+      "t": 48246.695875,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.04602243169921,
+      "y": 10.95434093738606,
+      "z": -7.604893431992926,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.42221111544505,
+          "y": 10.308127032907237,
+          "z": -28.4231076787733,
+          "yaw": 2.9343997118459626,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.6000000000000036,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -43.883333333332125,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 103.56666666666665,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 48222.435792
+      }
+    },
+    {
+      "t": 48348.349625,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.03267439165964,
+      "y": 10.950712082539201,
+      "z": -7.3718911567541525,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.379396019751987,
+          "y": 10.32878333467678,
+          "z": -28.217518692822267,
+          "yaw": 2.936018765787941,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.5000000000000033,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -43.98333333333212,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 104.96666666666665,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 48222.435792
+      }
+    },
+    {
+      "t": 48450.490834,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.020331058975206,
+      "y": 10.94708857104884,
+      "z": -7.139812903580163,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.336916247478175,
+          "y": 10.349360954960567,
+          "z": -28.0118601591507,
+          "yaw": 2.937655969894914,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.40000000000000335,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -44.083333333332114,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 106.36666666666666,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 48222.435792
+      }
+    },
+    {
+      "t": 48551.440875,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.08856418057262,
+      "y": 10.943468125327545,
+      "z": -6.908264811226679,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.2951500635661,
+          "y": 10.369800264326816,
+          "z": -27.806055569065187,
+          "yaw": 2.942953817448108,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.3000000000000034,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -44.18333333333211,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 107.76666666666667,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 48452.88925
+      }
+    },
+    {
+      "t": 48653.383875,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.077128044786154,
+      "y": 10.939849438601742,
+      "z": -6.677020900457501,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.2537166637805,
+          "y": 10.392382341341488,
+          "z": -27.60018372305783,
+          "yaw": 2.944566786152124,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.2000000000000034,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -44.2833333333321,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 48452.88925
+      }
+    },
+    {
+      "t": 48753.742834,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.065881673707064,
+      "y": 10.936231761105617,
+      "z": -6.445951514912844,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.212614167007786,
+          "y": 10.415968300081621,
+          "z": -27.394245556076697,
+          "yaw": 2.9461682099065,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.10000000000000342,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -44.3833333333321,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 48681.050584
+      }
+    },
+    {
+      "t": 48857.330084,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 18.093456766413656,
+      "y": 10.930609206422092,
+      "z": -6.177010541375638,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.165296268642898,
+          "y": 10.443352315278805,
+          "z": -27.15385874637989,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 2.4,
+          "hurt": 0,
+          "telegraph": 0.4,
+          "brain": {
+            "phase": "windup",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -44.49999999999876,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 48681.050584
+      }
+    },
+    {
+      "t": 48960.647834,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.080241137075916,
+      "y": 10.930184376540558,
+      "z": -5.944130043974698,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.165296268642898,
+          "y": 10.44723910620053,
+          "z": -27.15385874637989,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 2.3000000000000003,
+          "hurt": 0,
+          "telegraph": 0.30000000000000004,
+          "brain": {
+            "phase": "recover",
+            "t": 0.6333333333333331
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -44.59999999999875,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 48910.815167
+      }
+    },
+    {
+      "t": 49062.234709,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.064705682378126,
+      "y": 10.92336365325613,
+      "z": -5.7091160207622424,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.165296268642898,
+          "y": 10.44723910620053,
+          "z": -27.15385874637989,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 2.2000000000000006,
+          "hurt": 0,
+          "telegraph": 0.20000000000000007,
+          "brain": {
+            "phase": "recover",
+            "t": 0.5333333333333328
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -44.699999999998745,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 48910.815167
+      }
+    },
+    {
+      "t": 49162.059209,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 18.055040271198887,
+      "y": 10.911101969601567,
+      "z": -5.479500632141548,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.165296268642898,
+          "y": 10.44723910620053,
+          "z": -27.15385874637989,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 2.100000000000001,
+          "hurt": 0,
+          "telegraph": 0.10000000000000009,
+          "brain": {
+            "phase": "recover",
+            "t": 0.43333333333333274
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -44.79999999999874,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 49145.986792
+      }
+    },
+    {
+      "t": 49264.816209,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 18.046293036275436,
+      "y": 10.903010584359624,
+      "z": -5.250729683275791,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.165296268642898,
+          "y": 10.44723910620053,
+          "z": -27.15385874637989,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 2.0000000000000013,
+          "hurt": 0,
+          "telegraph": 1.0408340855860843e-16,
+          "brain": {
+            "phase": "recover",
+            "t": 0.33333333333333276
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -44.899999999998734,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 49145.986792
+      }
+    },
+    {
+      "t": 49366.472375,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 18.03658943126452,
+      "y": 10.894955314986785,
+      "z": -5.021079168082575,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.165296268642898,
+          "y": 10.44723910620053,
+          "z": -27.15385874637989,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 1.9000000000000017,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "recover",
+            "t": 0.23333333333333278
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -44.99999999999873,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 49145.986792
+      }
+    },
+    {
+      "t": 49466.767084,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 18.05405919880303,
+      "y": 10.885873884322542,
+      "z": -4.816419797912904,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.165296268642898,
+          "y": 10.44723910620053,
+          "z": -27.15385874637989,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 1.800000000000002,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "recover",
+            "t": 0.1333333333333328
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -45.09999999999872,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 49378.338917
+      }
+    },
+    {
+      "t": 49569.515084,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 18.059397688636153,
+      "y": 10.877250573001973,
+      "z": -4.600603383475947,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.165296268642898,
+          "y": 10.44723910620053,
+          "z": -27.15385874637989,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 1.7000000000000024,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "recover",
+            "t": 0.033333333333332826
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -45.19999999999872,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 49378.338917
+      }
+    },
+    {
+      "t": 49670.758584,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.062471429434567,
+      "y": 10.872907628484263,
+      "z": -4.382704096497025,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.163303476056022,
+          "y": 10.442366566858603,
+          "z": -27.26050679631745,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 1.6000000000000028,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -45.29999999999871,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 107.53333333333333,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 49609.139417
+      }
+    },
+    {
+      "t": 49772.040042,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 18.033091717120175,
+      "y": 10.861400555544034,
+      "z": -4.134957614373705,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.16031428717571,
+          "y": 10.432621488174744,
+          "z": -27.420478871223793,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 1.500000000000003,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -45.399999999998705,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 107.06666666666666,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 49609.139417
+      }
+    },
+    {
+      "t": 49873.583292,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.059862744881528,
+      "y": 10.853037380054873,
+      "z": -3.8652771484448594,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.157325098295395,
+          "y": 10.422876409490886,
+          "z": -27.580450946130135,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 1.4000000000000035,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -45.4999999999987,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 106.36666666666666,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 49818.981292
+      }
+    },
+    {
+      "t": 49976.401375,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 18.027975043527718,
+      "y": 10.838244976837311,
+      "z": -3.5416486934146114,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.153837711268363,
+          "y": 10.411507151026385,
+          "z": -27.767085033520868,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 1.2833333333333372,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -45.61666666666536,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 105.89999999999999,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 49818.981292
+      }
+    },
+    {
+      "t": 50078.822542,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 18.04543663329965,
+      "y": 10.80709148069997,
+      "z": -3.2634064078424974,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.15084852238805,
+          "y": 10.403814350987114,
+          "z": -27.92705710842721,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 1.1833333333333376,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -45.716666666665354,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 105.43333333333332,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 50032.133375
+      }
+    },
+    {
+      "t": 50179.755459,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 18.06594140957197,
+      "y": 10.775604587887816,
+      "z": -2.987962917856893,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.147859333507736,
+          "y": 10.396658227297891,
+          "z": -28.087029183333552,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 1.083333333333338,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -45.81666666666535,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 104.96666666666665,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 50032.133375
+      }
+    },
+    {
+      "t": 50281.19175,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.02282517114523,
+      "y": 10.7550915605463,
+      "z": -2.727583056658295,
+      "vy": -0.36666666666666664,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.144870144627422,
+          "y": 10.389502103608667,
+          "z": -28.247001258239894,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.9833333333333382,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -45.91666666666534,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 104.96666666666665,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 50243.149042
+      }
+    },
+    {
+      "t": 50382.364792,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.060371754827827,
+      "y": 10.7304400548784,
+      "z": -2.467812787935888,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.14188095574711,
+          "y": 10.382345979919442,
+          "z": -28.406973333146237,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.8833333333333379,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -46.01666666666534,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 104.26666666666665,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 50243.149042
+      }
+    },
+    {
+      "t": 50482.995834,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.083937042682408,
+      "y": 10.698965117544994,
+      "z": -2.195184027283435,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.138891766866795,
+          "y": 10.375189856230218,
+          "z": -28.56694540805258,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.7833333333333375,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -46.11666666666533,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 104.49999999999999,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 50453.218667
+      }
+    },
+    {
+      "t": 50585.786875,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 18.04947352417025,
+      "y": 10.668233845928501,
+      "z": -1.9427620070863731,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.13590257798648,
+          "y": 10.368033732540994,
+          "z": -28.72691748295892,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.6833333333333372,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -46.216666666665326,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 105.43333333333332,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 50453.218667
+      }
+    },
+    {
+      "t": 50684.743334,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.028427096564013,
+      "y": 10.647153344988528,
+      "z": -1.7026795838237248,
+      "vy": -0.36666666666666664,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.132913389106168,
+          "y": 10.360877608851771,
+          "z": -28.886889557865263,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.5833333333333369,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -46.31666666666532,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 106.83333333333333,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 50682.884334
+      }
+    },
+    {
+      "t": 50788.609459,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.09334981205369,
+      "y": 10.621784593859665,
+      "z": -1.4680869362780244,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.129924200225847,
+          "y": 10.353721485162549,
+          "z": -29.046861632771606,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.48333333333333667,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -46.416666666665314,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-11-0",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 50682.884334
+      }
+    },
+    {
+      "t": 50894.786959,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 18.043596099794392,
+      "y": 10.59102174310894,
+      "z": -1.201602640643485,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.1264368131988,
+          "y": 10.34537267419179,
+          "z": -29.233495720162338,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.36666666666667,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -46.533333333331974,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 50682.884334
+      }
+    },
+    {
+      "t": 50995.088209,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 18.038337096119395,
+      "y": 10.558095853889867,
+      "z": -0.9760397916544339,
+      "vy": -0.36666666666666664,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.123447624318477,
+          "y": 10.338216550502569,
+          "z": -29.39346779506868,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.26666666666667005,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -46.63333333333197,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 50915.3195
+      }
+    },
+    {
+      "t": 51096.124959,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 18.047929478716213,
+      "y": 10.506030749516414,
+      "z": -0.7641356501897248,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.120458435438152,
+          "y": 10.32497878034107,
+          "z": -29.553439869975023,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.16666666666667007,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -46.73333333333196,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 50915.3195
+      }
+    },
+    {
+      "t": 51195.913375,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 17.88721221480952,
+      "y": 10.489614181540988,
+      "z": -0.54274980488313,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.117469246557828,
+          "y": 10.311649213630625,
+          "z": -29.713411944881365,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": 0.0666666666666701,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -46.83333333333196,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 107.53333333333333,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 51148.305917
+      }
+    },
+    {
+      "t": 51295.532875,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 17.60145671947948,
+      "y": 10.485188788913788,
+      "z": -0.2799426390906124,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "x": 22.114480057677504,
+          "y": 10.29831964692018,
+          "z": -29.873384019787707,
+          "yaw": 2.9498658372818793,
+          "hp": 8,
+          "alive": true,
+          "frozen": 0,
+          "timer": -0.0333333333333299,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": -5.065392549852277e-16
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -46.93333333333195,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 106.83333333333333,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 51148.305917
+      }
+    },
+    {
+      "t": 51396.112959,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 17.391340346205116,
+      "y": 10.48053063190908,
+      "z": -0.013124806865979936,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -47.033333333331946,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 106.83333333333333,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 51360.74575
+      }
+    },
+    {
+      "t": 51499.752084,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 17.105795959286667,
+      "y": 10.461935731281892,
+      "z": 0.24948820411855185,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -47.13333333333194,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 106.36666666666666,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 51360.74575
+      }
+    },
+    {
+      "t": 51600.748542,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 16.79105680106563,
+      "y": 10.456945803751843,
+      "z": 0.5389514252561078,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -47.233333333331935,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 105.66666666666666,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 51568.692167
+      }
+    },
+    {
+      "t": 51704.238834,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 16.459567042942087,
+      "y": 10.451690309394738,
+      "z": 0.8438200463164803,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -47.33333333333193,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 104.96666666666665,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 51568.692167
+      }
+    },
+    {
+      "t": 51806.331542,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 16.118466570825078,
+      "y": 10.44628244516218,
+      "z": 1.1575275682803972,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -47.43333333333192,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 104.26666666666665,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 51777.010334
+      }
+    },
+    {
+      "t": 51911.414542,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 15.752854255993185,
+      "y": 10.43088771225288,
+      "z": 1.4937784464265338,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -47.54999999999858,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 106.13333333333333,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 51777.010334
+      }
+    },
+    {
+      "t": 52010.121625,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 15.470569887222004,
+      "y": 10.40343164343822,
+      "z": 1.753393243400429,
+      "vy": -0.36666666666666664,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -47.64999999999858,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 107.06666666666666,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-up:KeyS",
+        "t": 52005.100459
+      }
+    },
+    {
+      "t": 52110.640875,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 15.206366879660004,
+      "y": 10.372371099197794,
+      "z": 1.9963787493520526,
+      "vy": -0.36666666666666664,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -47.74999999999857,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 52010.380917
+      }
+    },
+    {
+      "t": 52213.529042,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 14.958148765267069,
+      "y": 10.34333652619437,
+      "z": 2.2246630700669576,
+      "vy": -0.36666666666666664,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -47.849999999998566,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 52010.380917
+      }
+    },
+    {
+      "t": 52313.40625,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 14.700566317293834,
+      "y": 10.314613047732902,
+      "z": 2.4615596974845957,
+      "vy": -0.36666666666666664,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -47.94999999999856,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 107.53333333333333,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 52239.728292
+      }
+    },
+    {
+      "t": 52415.955334,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 14.426864730692415,
+      "y": 10.283659817095401,
+      "z": 2.713280974671428,
+      "vy": -0.36666666666666664,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -48.049999999998555,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 107.06666666666666,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 52239.728292
+      }
+    },
+    {
+      "t": 52518.43775,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 14.149721369323649,
+      "y": 10.251427258519506,
+      "z": 2.968167626056428,
+      "vy": -0.36666666666666664,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -48.14999999999855,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 107.3,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 52451.070792
+      }
+    },
+    {
+      "t": 52619.598959,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 13.892166746764909,
+      "y": 10.221101171131881,
+      "z": 3.205038662651002,
+      "vy": -0.36666666666666664,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -48.24999999999854,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 52451.070792
+      }
+    },
+    {
+      "t": 52720.72025,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 13.64195652985005,
+      "y": 10.192594260609443,
+      "z": 3.4351551049744495,
+      "vy": -0.36666666666666664,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -48.34999999999854,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 107.76666666666667,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 52682.427709
+      }
+    },
+    {
+      "t": 52823.485334,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 13.374396721940457,
+      "y": 10.16249061906716,
+      "z": 3.6812278347936807,
+      "vy": -0.36666666666666664,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -48.44999999999853,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 107.3,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 52682.427709
+      }
+    },
+    {
+      "t": 52924.490834,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 13.108463947060343,
+      "y": 10.103348046689957,
+      "z": 3.925804194652873,
+      "vy": -1.0999999999999999,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -48.549999999998526,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 107.06666666666666,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 52896.926709
+      }
+    },
+    {
+      "t": 53029.196167,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 12.822156776014378,
+      "y": 10.052605605007805,
+      "z": 4.189118732424958,
+      "vy": -0.36666666666666664,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -48.666666666665186,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 52896.926709
+      }
+    },
+    {
+      "t": 53128.531959,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 12.592042829441755,
+      "y": 9.992886940137412,
+      "z": 4.400752787049989,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -48.76666666666518,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-up:KeyS",
+        "t": 53127.174209
+      }
+    },
+    {
+      "t": 53228.559834,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 12.346347756863763,
+      "y": 9.95274630445289,
+      "z": 4.626716685307942,
+      "vy": -0.36666666666666664,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -48.866666666665175,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 107.53333333333333,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 53130.493
+      }
+    },
+    {
+      "t": 53330.460834,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 12.096223896394845,
+      "y": 9.887839891407296,
+      "z": 4.856753706261804,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.585239347380618,
+          "y": 5.064055812162295,
+          "z": 11.451077359017159,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -48.96666666666517,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": 0,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -48.96666666666517,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "patrol",
+            "t": 1.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 107.3,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "patrol",
+      "bossMeleeBlocked": true,
+      "blockerId": "citadel-wall-0-11-e",
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 53130.493
+      }
+    },
+    {
+      "t": 53431.968042,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 11.835038709551345,
+      "y": 9.845316139547844,
+      "z": 5.096963745344516,
+      "vy": -0.36666666666666664,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.540740608118924,
+          "y": 5.070431494038851,
+          "z": 11.46194005270411,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.066666666665164,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": -2.6088711381400413,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.066666666665164,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "detect",
+            "t": 0.3
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 106.83333333333333,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "detect",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 53334.481625
+      }
+    },
+    {
+      "t": 53533.127292,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 11.579955312455105,
+      "y": 9.787738019320836,
+      "z": 5.331562014589212,
+      "vy": -0.7333333333333333,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.524014023750112,
+          "y": 5.071773508102671,
+          "z": 11.496349888629986,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.16666666666516,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": -2.638173996122036,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.16666666666516,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "detect",
+            "t": 0.2
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 106.6,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "detect",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 53334.481625
+      }
+    },
+    {
+      "t": 53636.872125,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 11.319844385590342,
+      "y": 9.723200033201168,
+      "z": 5.57078406490198,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.26103340534359,
+          "y": 5.081934632602333,
+          "z": 18.566229495232527,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.26666666666515,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.486788724892808,
+          "y": 5.076654625303255,
+          "z": 11.518947890458882,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.26666666666515,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": -2.6676272936274703,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.26666666666515,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "detect",
+            "t": 0.10000000000000003
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 106.36666666666666,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "detect",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 53542.331459
+      }
+    },
+    {
+      "t": 53740.037959,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 11.061236764452167,
+      "y": 9.677708315714469,
+      "z": 5.808623536318517,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.284858182601097,
+          "y": 5.084915825746473,
+          "z": 18.61515337653945,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.36666666666515,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.480496449696656,
+          "y": 5.076236613954447,
+          "z": 11.559015070640385,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.36666666666515,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "y": 11.056819524115816,
+          "z": -4.8,
+          "yaw": -2.696442860545336,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.36666666666515,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "detect",
+            "t": 4.85722573273506e-17
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 105.89999999999999,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6,
+      "bossY": 11.056819524115816,
+      "bossZ": -4.8,
+      "bossHp": 20,
+      "bossPhase": "detect",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 53542.331459
+      }
+    },
+    {
+      "t": 53841.980667,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 10.811235934105564,
+      "y": 9.622940627251838,
+      "z": 6.038547407400263,
+      "vy": -0.7333333333333333,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.311901400172054,
+          "y": 5.087934757828302,
+          "z": 18.665034720466394,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.46666666666514,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.452249613793168,
+          "y": 5.079378496656254,
+          "z": 11.592577508230253,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.46666666666514,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6.110340730341424,
+          "y": 11.015226083384654,
+          "z": -4.557238620494365,
+          "yaw": -2.7240260285262594,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.46666666666514,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -0.016666666666666618
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 106.36666666666666,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6.110340730341424,
+      "bossY": 11.015226083384654,
+      "bossZ": -4.557238620494365,
+      "bossHp": 20,
+      "bossPhase": "approach",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 53747.939084
+      }
+    },
+    {
+      "t": 53944.724834,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 10.543281917481371,
+      "y": 9.543163217005448,
+      "z": 6.284982687990024,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.347153212437972,
+          "y": 5.091409902935778,
+          "z": 18.72295445082902,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.5833333333318,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.42613268714967,
+          "y": 5.079568714141845,
+          "z": 11.637625625446566,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.5833333333318,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6.255840167930829,
+          "y": 10.936054518495665,
+          "z": -4.21343990898453,
+          "yaw": -2.7538752468490295,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.5833333333318,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -0.016666666666666618
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 106.83333333333333,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6.255840167930829,
+      "bossY": 10.936054518495665,
+      "bossZ": -4.21343990898453,
+      "bossHp": 20,
+      "bossPhase": "approach",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 53747.939084
+      }
+    },
+    {
+      "t": 54046.847334,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 10.322238362651179,
+      "y": 9.49433630231082,
+      "z": 6.488274771995373,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.380244400244859,
+          "y": 5.094267064098864,
+          "z": 18.77110266128309,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.683333333331795,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.40971755476783,
+          "y": 5.076368488409594,
+          "z": 11.68060493131209,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.683333333331795,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6.372484303632219,
+          "y": 10.86785780625156,
+          "z": -3.91546488979057,
+          "yaw": -2.778753675674205,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.683333333331795,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -0.016666666666666618
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 107.76666666666667,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6.372484303632219,
+      "bossY": 10.86785780625156,
+      "bossZ": -3.91546488979057,
+      "bossHp": 20,
+      "bossPhase": "approach",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 53979.395292
+      }
+    },
+    {
+      "t": 54148.6455,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 10.107178345551727,
+      "y": 9.440496342841046,
+      "z": 6.686063841647094,
+      "vy": -0.36666666666666664,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.41573145192144,
+          "y": 5.0969411154057775,
+          "z": 18.816778597038702,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.78333333333179,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.426237629237537,
+          "y": 5.070494226423072,
+          "z": 11.723860348915379,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.78333333333179,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6.481786582615989,
+          "y": 10.829779755749017,
+          "z": -3.6147189719597153,
+          "yaw": -2.803178998262347,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.78333333333179,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -0.016666666666666618
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6.481786582615989,
+      "bossY": 10.829779755749017,
+      "bossZ": -3.6147189719597153,
+      "bossHp": 20,
+      "bossPhase": "approach",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:KeyS",
+        "t": 53979.395292
+      }
+    },
+    {
+      "t": 54250.466959,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "airborne",
+      "x": 9.908330039311684,
+      "y": 9.38123641271934,
+      "z": 6.858966190299436,
+      "vy": -0.7333333333333333,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.453384842715085,
+          "y": 5.0993723215891045,
+          "z": 18.859070959328744,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.883333333331784,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.41932416546786,
+          "y": 5.065915874875181,
+          "z": 11.772308383045432,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.883333333331784,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6.583938979872653,
+          "y": 10.823041751630875,
+          "z": -3.3114684980323785,
+          "yaw": -2.825672015630443,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.883333333331784,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -0.016666666666666618
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6.583938979872653,
+      "bossY": 10.823041751630875,
+      "bossZ": -3.3114684980323785,
+      "bossHp": 20,
+      "bossPhase": "approach",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:KeyA",
+        "t": 54212.569917
+      }
+    },
+    {
+      "t": 54351.87675,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 9.684320301913596,
+      "y": 9.354413458704009,
+      "z": 6.956855820473716,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.492989110768658,
+          "y": 5.101510633680179,
+          "z": 18.897220283265362,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.98333333333178,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.41762250139329,
+          "y": 5.060765380066322,
+          "z": 11.822027123050566,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.98333333333178,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6.679355072404834,
+          "y": 10.820889162287134,
+          "z": -3.006032313879257,
+          "yaw": -2.848654064400819,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -49.98333333333178,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -0.016666666666666618
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6.679355072404834,
+      "bossY": 10.820889162287134,
+      "bossZ": -3.006032313879257,
+      "bossHp": 20,
+      "bossPhase": "approach",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:KeyA",
+        "t": 54212.569917
+      }
+    },
+    {
+      "t": 54449.396042,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 9.413522573135324,
+      "y": 9.34788313652738,
+      "z": 7.009592987841519,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.534342073167895,
+          "y": 5.103317085254583,
+          "z": 18.93063705059002,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.08333333333177,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.420896570675964,
+          "y": 5.055179253526413,
+          "z": 11.871912358759927,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.08333333333177,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6.767034022820382,
+          "y": 10.818444489137441,
+          "z": -2.698288395708629,
+          "yaw": -2.8754475556089085,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.08333333333177,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -0.016666666666666618
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6.767034022820382,
+      "bossY": 10.818444489137441,
+      "bossZ": -2.698288395708629,
+      "bossHp": 20,
+      "bossPhase": "approach",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-up:KeyS",
+        "t": 54442.630375
+      }
+    },
+    {
+      "t": 54552.805292,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 9.080590591928091,
+      "y": 9.396063377075413,
+      "z": 6.905641531175329,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.577253867992248,
+          "y": 5.10476416766233,
+          "z": 18.958904762189963,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.18333333333177,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.42887434722249,
+          "y": 5.049299261087624,
+          "z": 11.920849252821363,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.18333333333177,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6.845863485236028,
+          "y": 10.815668218465266,
+          "z": -2.3881623231685594,
+          "yaw": -2.9056189727594246,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.18333333333177,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -0.016666666666666618
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 106.6,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6.845863485236028,
+      "bossY": 10.815668218465266,
+      "bossZ": -2.3881623231685594,
+      "bossHp": 20,
+      "bossPhase": "approach",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 54454.264334
+      }
+    },
+    {
+      "t": 54656.091667,
+      "phase": "navigation",
+      "hp": 1,
+      "state": "grounded",
+      "x": 8.681820378351858,
+      "y": 9.507394580129024,
+      "z": 6.620108997370228,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.607147583516447,
+          "y": 5.104050890407969,
+          "z": 18.952772330916773,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.28333333333176,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.463214386965515,
+          "y": 5.043456690799621,
+          "z": 11.949814115678901,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.28333333333176,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6.914375698095441,
+          "y": 10.812513801652477,
+          "z": -2.075599749236293,
+          "yaw": -2.9410694309748164,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.28333333333176,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -0.016666666666666618
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 105.19999999999999,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6.914375698095441,
+      "bossY": 10.812513801652477,
+      "bossZ": -2.075599749236293,
+      "bossHp": 20,
+      "bossPhase": "approach",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 54454.264334
+      }
+    },
+    {
+      "t": 54762.251917,
+      "phase": "combat",
+      "hp": 1,
+      "state": "grounded",
+      "x": 8.323710009438008,
+      "y": 9.68710114916716,
+      "z": 6.1244329472399075,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.644085506057543,
+          "y": 5.1032616431602245,
+          "z": 18.946583223133278,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.39999999999842,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.481656860986728,
+          "y": 5.036438927724797,
+          "z": 12.001213896599628,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.39999999999842,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6.981420086887411,
+          "y": 10.809071935018903,
+          "z": -1.7083485409525843,
+          "yaw": -2.9718729961199597,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.39999999999842,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -0.016666666666666618
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 104.26666666666665,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 6.981420086887411,
+      "bossY": 10.809071935018903,
+      "bossZ": -1.7083485409525843,
+      "bossHp": 20,
+      "bossPhase": "approach",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 54661.555917
+      }
+    },
+    {
+      "t": 54861.502584,
+      "phase": "combat",
+      "hp": 1,
+      "state": "grounded",
+      "x": 8.170021831888922,
+      "y": 9.8470973799465,
+      "z": 5.565648244156405,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.67301044066372,
+          "y": 5.102132724514726,
+          "z": 18.93407007756248,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.499999999998415,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.518266449833188,
+          "y": 5.031765458097022,
+          "z": 12.017432942085836,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.499999999998415,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 7.033676432543345,
+          "y": 10.8059755964529,
+          "z": -1.392644744084523,
+          "yaw": -2.979713568924788,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.499999999998415,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -0.016666666666666618
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 102.86666666666665,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 7.033676432543345,
+      "bossY": 10.8059755964529,
+      "bossZ": -1.392644744084523,
+      "bossHp": 20,
+      "bossPhase": "approach",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 54661.555917
+      }
+    },
+    {
+      "t": 54963.624375,
+      "phase": "combat",
+      "hp": 1,
+      "state": "grounded",
+      "x": 8.094670111759354,
+      "y": 10.020394343187588,
+      "z": 4.938414262809305,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.70085246832888,
+          "y": 5.100843349242099,
+          "z": 18.91897951169047,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.59999999999841,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.54105364827014,
+          "y": 5.026010361389843,
+          "z": 12.053668253222655,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.59999999999841,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 7.0857621657169005,
+          "y": 10.802325411450923,
+          "z": -1.0769125238749393,
+          "yaw": -2.975416483355571,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.59999999999841,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -0.016666666666666618
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 101.46666666666664,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 7.0857621657169005,
+      "bossY": 10.802325411450923,
+      "bossZ": -1.0769125238749393,
+      "bossHp": 20,
+      "bossPhase": "approach",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 54867.120917
+      }
+    },
+    {
+      "t": 55063.273,
+      "phase": "combat",
+      "hp": 1,
+      "state": "grounded",
+      "x": 8.064264202042692,
+      "y": 10.203223013715624,
+      "z": 4.271907273911456,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.727482113099969,
+          "y": 5.099471812590058,
+          "z": 18.90150271654572,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.699999999998404,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.567145742242744,
+          "y": 5.020513598411257,
+          "z": 12.084976389755202,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.699999999998404,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 7.141202037863858,
+          "y": 10.797190558309847,
+          "z": -0.7617550135473349,
+          "yaw": -2.9602298111762035,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.699999999998404,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -0.016666666666666618
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 100.06666666666663,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 7.141202037863858,
+      "bossY": 10.797190558309847,
+      "bossZ": -0.7617550135473349,
+      "bossHp": 20,
+      "bossPhase": "approach",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 54867.120917
+      }
+    },
+    {
+      "t": 55164.851042,
+      "phase": "combat",
+      "hp": 1,
+      "state": "grounded",
+      "x": 7.956056033627169,
+      "y": 10.354996045946985,
+      "z": 3.684189796891756,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.752768188697713,
+          "y": 5.097981419265326,
+          "z": 18.88184746656295,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.7999999999984,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.59626352314094,
+          "y": 5.015337852409983,
+          "z": 12.111010900567111,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.7999999999984,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 7.20000883115334,
+          "y": 10.792220503137273,
+          "z": -0.4472055470657341,
+          "yaw": -2.9605949578572885,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.7999999999984,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "approach",
+            "t": -0.016666666666666618
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 99.36666666666663,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 7.20000883115334,
+      "bossY": 10.792220503137273,
+      "bossZ": -0.4472055470657341,
+      "bossHp": 20,
+      "bossPhase": "approach",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 55075.681542
+      }
+    },
+    {
+      "t": 55268.058084,
+      "phase": "combat",
+      "hp": 1,
+      "state": "grounded",
+      "x": 7.68622187636134,
+      "y": 10.453826204325544,
+      "z": 3.121094854072295,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.776579557783753,
+          "y": 5.096371207860875,
+          "z": 18.860230830530053,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.89999999999839,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.635922034595623,
+          "y": 5.0127390872910045,
+          "z": 12.10555368165729,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.89999999999839,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 7.243058782174415,
+          "y": 10.787008131174428,
+          "z": -0.18405374806094635,
+          "yaw": -3.0083049622638076,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.89999999999839,
+          "hurt": 0,
+          "telegraph": 0.7,
+          "brain": {
+            "phase": "windup",
+            "t": 0.7
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 97.96666666666663,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 7.243058782174415,
+      "bossY": 10.787008131174428,
+      "bossZ": -0.18405374806094635,
+      "bossHp": 20,
+      "bossPhase": "windup",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 55075.681542
+      }
+    },
+    {
+      "t": 55370.711834,
+      "phase": "combat",
+      "hp": 1,
+      "state": "grounded",
+      "x": 7.323654255112578,
+      "y": 10.54539192138834,
+      "z": 2.572127174477445,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.798785721144437,
+          "y": 5.094656824902727,
+          "z": 18.83687218942687,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.99999999999839,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.670029979006,
+          "y": 5.008213801011646,
+          "z": 12.121819578821308,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.99999999999839,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 7.243058782174415,
+          "y": 10.787008131174428,
+          "z": -0.18405374806094635,
+          "yaw": -3.0083049622638076,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -50.99999999999839,
+          "hurt": 0,
+          "telegraph": 0.5999999999999996,
+          "brain": {
+            "phase": "windup",
+            "t": 0.5999999999999996
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 96.56666666666662,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 7.243058782174415,
+      "bossY": 10.787008131174428,
+      "bossZ": -0.18405374806094635,
+      "bossHp": 20,
+      "bossPhase": "windup",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 55284.477042
+      }
+    },
+    {
+      "t": 55472.572792,
+      "phase": "combat",
+      "hp": 1,
+      "state": "grounded",
+      "x": 6.907880491686776,
+      "y": 10.61775155507995,
+      "z": 2.031265060483374,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.81925612521163,
+          "y": 5.092853691810519,
+          "z": 18.811987079470168,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -51.09999999999838,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.7064373904042,
+          "y": 5.004096198193899,
+          "z": 12.13260665373682,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -51.09999999999838,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 7.243058782174415,
+          "y": 10.787008131174428,
+          "z": -0.18405374806094635,
+          "yaw": -3.0083049622638076,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -51.09999999999838,
+          "hurt": 0,
+          "telegraph": 0.4999999999999994,
+          "brain": {
+            "phase": "windup",
+            "t": 0.4999999999999994
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 95.16666666666661,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 7.243058782174415,
+      "bossY": 10.787008131174428,
+      "bossZ": -0.18405374806094635,
+      "bossHp": 20,
+      "bossPhase": "windup",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 55284.477042
+      }
+    },
+    {
+      "t": 55574.598292,
+      "phase": "combat",
+      "hp": 1,
+      "state": "grounded",
+      "x": 6.500487270696251,
+      "y": 10.699705912646568,
+      "z": 1.383367715635687,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.814866675933976,
+          "y": 5.090739884844582,
+          "z": 18.772273172090706,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -51.21666666666504,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.751521380819526,
+          "y": 4.999814316282765,
+          "z": 12.138443599837663,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -51.21666666666504,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 7.243058782174415,
+          "y": 10.787008131174428,
+          "z": -0.18405374806094635,
+          "yaw": -3.0083049622638076,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -51.21666666666504,
+          "hurt": 0,
+          "telegraph": 0.38333333333333275,
+          "brain": {
+            "phase": "windup",
+            "t": 0.38333333333333275
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 94.23333333333328,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 7.243058782174415,
+      "bossY": 10.787008131174428,
+      "bossZ": -0.18405374806094635,
+      "bossHp": 20,
+      "bossPhase": "windup",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 55504.7275
+      }
+    },
+    {
+      "t": 55679.261792,
+      "phase": "combat",
+      "hp": 1,
+      "state": "grounded",
+      "x": 6.321287104044977,
+      "y": 10.733331595420681,
+      "z": 0.7564271514249993,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.830573232305417,
+          "y": 5.08874038564072,
+          "z": 18.74646093621568,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -51.316666666665036,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.79216206195103,
+          "y": 4.996586763394861,
+          "z": 12.137895320665983,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -51.316666666665036,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 7.243058782174415,
+          "y": 10.787008131174428,
+          "z": -0.18405374806094635,
+          "yaw": -3.0083049622638076,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -51.316666666665036,
+          "hurt": 0,
+          "telegraph": 0.28333333333333277,
+          "brain": {
+            "phase": "windup",
+            "t": 0.28333333333333277
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 92.83333333333327,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 7.243058782174415,
+      "bossY": 10.787008131174428,
+      "bossZ": -0.18405374806094635,
+      "bossHp": 20,
+      "bossPhase": "windup",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 55504.7275
+      }
+    },
+    {
+      "t": 55777.729417,
+      "phase": "combat",
+      "hp": 1,
+      "state": "grounded",
+      "x": 6.231297792898215,
+      "y": 10.745084787475635,
+      "z": 0.09008851161287086,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.844223716823326,
+          "y": 5.086697995955582,
+          "z": 18.719766947883787,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -51.41666666666503,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.83444006212016,
+          "y": 4.993756287038926,
+          "z": 12.132489107318614,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -51.41666666666503,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 7.243058782174415,
+          "y": 10.787008131174428,
+          "z": -0.18405374806094635,
+          "yaw": -3.0083049622638076,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -51.41666666666503,
+          "hurt": 0,
+          "telegraph": 0.1833333333333328,
+          "brain": {
+            "phase": "windup",
+            "t": 0.1833333333333328
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 91.43333333333327,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 7.243058782174415,
+      "bossY": 10.787008131174428,
+      "bossZ": -0.18405374806094635,
+      "bossHp": 20,
+      "bossPhase": "windup",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 55714.353
+      }
+    },
+    {
+      "t": 55879.825667,
+      "phase": "combat",
+      "hp": 1,
+      "state": "grounded",
+      "x": 6.19249351526408,
+      "y": 10.759154692016024,
+      "z": -0.5988549088460562,
+      "vy": 0,
+      "grounded": true,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.855610420576397,
+          "y": 5.084646373290402,
+          "z": 18.69189773792399,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -51.516666666665024,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.87817217396105,
+          "y": 4.991307402098991,
+          "z": 12.122508003146205,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -51.516666666665024,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 7.243058782174415,
+          "y": 10.787008131174428,
+          "z": -0.18405374806094635,
+          "yaw": -3.0083049622638076,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -51.516666666665024,
+          "hurt": 0,
+          "telegraph": 0.08333333333333282,
+          "brain": {
+            "phase": "windup",
+            "t": 0.08333333333333282
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 90.03333333333326,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 7.243058782174415,
+      "bossY": 10.787008131174428,
+      "bossZ": -0.18405374806094635,
+      "bossHp": 20,
+      "bossPhase": "windup",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 55714.353
+      }
+    },
+    {
+      "t": 55981.566709,
+      "phase": "dead",
+      "hp": 0,
+      "state": "dead",
+      "x": 6.181709339715319,
+      "y": 10.77314565521991,
+      "z": -1.253945902473506,
+      "vy": 0,
+      "grounded": false,
+      "cold": false,
+      "spicy": 0,
+      "coldAcc": 0,
+      "invuln": 0.9,
+      "nearbyEnemies": [
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.923185813895763,
+          "y": 4.9892218817994,
+          "z": 12.10825050562944,
+          "yaw": 0,
+          "hp": 3,
+          "alive": true,
+          "frozen": 0,
+          "timer": -51.61666666666502,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "lost",
+            "t": 1.2
+          }
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 7.243058782174415,
+          "y": 10.787008131174428,
+          "z": -0.18405374806094635,
+          "yaw": -3.0083049622638076,
+          "hp": 20,
+          "alive": true,
+          "frozen": 0,
+          "timer": -51.61666666666502,
+          "hurt": 0,
+          "telegraph": 0,
+          "brain": {
+            "phase": "recover",
+            "t": 1.1
+          }
+        }
+      ],
+      "nearbyProjectiles": [],
+      "stamina": 89.33333333333326,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossX": 7.243058782174415,
+      "bossY": 10.787008131174428,
+      "bossZ": -0.18405374806094635,
+      "bossHp": 20,
+      "bossPhase": "recover",
+      "bossMeleeBlocked": false,
+      "blockerId": null,
+      "lastInput": {
+        "action": "key-down:ShiftLeft",
+        "t": 55925.771792
+      }
+    }
+  ]
+}

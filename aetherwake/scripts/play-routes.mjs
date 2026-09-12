@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+import { executeCitadelDefense } from "./qa/citadel-defense.mjs";
+import { runCitadelInitialApproach, runCitadelLosReposition, prepareCitadelCombatDecision } from "./qa/citadel-handoff.mjs";
+import { verifyCitadelCompletion } from "./qa/citadel-completion.mjs";
 import { createRouteNavigation, checkFightScope, FightStopError } from "./qa/route-navigation.mjs";
 /**
  * Real-input playthrough. Observes window.__sim but never writes player coords,
@@ -7,7 +10,7 @@ import { createRouteNavigation, checkFightScope, FightStopError } from "./qa/rou
  * Owns its preview server unless E2E_URL is set. Never kills a pid it did not
  * spawn. Unexpected page.close is a failure (classifyClose).
  */
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
@@ -45,14 +48,13 @@ import {
   shrineWorldOrigin,
   stillBlockAligned,
 } from "./qa/shrine-steer.mjs";
-import { citadelDodgeAim, citadelOffArena, citadelReturnWaypoints } from "./qa/citadel-steer.mjs";
-import { executeLosReposition } from "./qa/los-reposition.mjs";
+import { citadelOffArena, citadelReturnWaypoints } from "./qa/citadel-steer.mjs";
 import { citadelResumePlan, CITADEL_RESUME_FOCUS, v2MatchesSource } from "./qa/citadel-resume.mjs";
 import {
   createFightOrchestrator,
   runCitadelFocusGate,
 } from "./qa/combat-progress-monitor.mjs";
-import { bossFightDecision, nextCitadelAction, citadelFightStep } from "./qa/boss-fight-policy.mjs";
+import { bossFightDecision, nextCitadelAction } from "./qa/boss-fight-policy.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const outDir = resolve(root, "docs/rebuild-evidence");
@@ -200,6 +202,7 @@ let sawPlaying = false;
 let attemptedCitadel = false;
 let sealClosedAttempt = false;
 let citadelPrompt = null;
+let citadelNavigationEvidence = null;
 let last = null;
 let lastGood = null;
 let lastTitleRecoverAt = 0;
@@ -272,6 +275,18 @@ async function read() {
           staminaMax: sim.player.staminaMax,
           climbing: sim.player.climbing,
           grounded: sim.player.grounded,
+          vy: sim.player.vy,
+          coldAcc: sim.coldAcc,
+          // Read-only neighborhood; radius is evidence coverage, not a hit test.
+          nearbyEnemies: (sim.enemies ?? [])
+            .filter((e) => Math.hypot(e.x - sim.player.x, e.y - sim.player.y, e.z - sim.player.z) <= 30)
+            .map((e) => ({ id: e.id, kind: e.kind, x: e.x, y: e.y, z: e.z,
+              yaw: e.yaw, hp: e.hp, alive: e.alive, frozen: e.frozen,
+              timer: e.timer, hurt: e.hurt, telegraph: e.telegraph,
+              brain: { phase: e.brain?.phase, t: e.brain?.t } })),
+          nearbyProjectiles: (sim.projs ?? [])
+            .map((q, index) => ({ index, ...q }))
+            .filter((q) => Math.hypot(q.x - sim.player.x, q.y - sim.player.y, q.z - sim.player.z) <= 30),
           towers: [...sim.towersOn],
           shrines: [...sim.shrinesOn],
           orbs: sim.orbs,
@@ -281,6 +296,7 @@ async function read() {
           shrineHint: sim.shrineHint,
           interactLock: sim.interactLock ?? 0,
           hp: sim.player.hp,
+          amber: sim.amber,
           art: sim.art,
           bossDead: sim.bossDead,
           toast: sim.toast,
@@ -442,14 +458,7 @@ async function startGame() {
 
 
 
-function facingDot(s, tx, tz) {
-  const dx = tx - s.x;
-  const dz = tz - s.z;
-  const dist = Math.hypot(dx, dz) || 1;
-  const fx = -Math.sin(s.camYaw);
-  const fz = -Math.cos(s.camYaw);
-  return (dx * fx + dz * fz) / dist;
-}
+
 
 
 
@@ -1108,7 +1117,30 @@ async function fightBoss() {
   attemptedCitadel = true;
   note("citadel");
   // E1.1: shared orchestrator — monitor starts BEFORE descent navigation.
+  const stopFirstHpDrop = process.env.QA_FOCUS === CITADEL_RESUME_FOCUS &&
+    process.env.QA_STOP_FIRST_HP_DROP === "1";
+  let firstHpDropPath = null;
+  let firstHpDropWriteError = null;
   const orch = createFightOrchestrator({
+    stopFirstHpDrop,
+    onFirstHpDrop: (event) => {
+      // Persist synchronously at detection, before any await or ring eviction.
+      try {
+        const runs = resolve(outDir, "runs");
+        mkdirSync(runs, { recursive: true });
+        const dir = mkdtempSync(resolve(runs, "e23-first-hp-drop-"));
+        firstHpDropPath = resolve(dir, "player-hp-drop.json");
+        writeFileSync(firstHpDropPath, JSON.stringify({
+          ...event, runId: process.env.QA_RUN_ID ?? null,
+          scope: "citadel-resume", capturedAt: new Date().toISOString(),
+          neighborhoodRadius: 30,
+        }, null, 2), { flag: "wx" });
+        note(`first HP drop evidence ${firstHpDropPath}`);
+      } catch (err) {
+        firstHpDropWriteError = String(err?.message || err);
+        note(`first HP drop evidence write failed: ${firstHpDropWriteError}`);
+      }
+    },
     read,
     hold,
     goTo,
@@ -1132,31 +1164,17 @@ async function fightBoss() {
   // Start serial sample loop before any navigation.
   orch.startSampling();
   try {
-    let s0 = await fightRead();
-    if (s0 && s0.y > 40) {
-      note(`citadel dismount high y=${s0.y.toFixed(1)} at ${s0.x.toFixed(1)},${s0.z.toFixed(1)}`);
-
-      await fightGoTo(36, -90, 22000, { arrive: 4, sprint: false, label: "citadel-off-crown" });
-
-      await fightGoTo(24, -40, 20000, { arrive: 5, sprint: true, label: "citadel-from-crown" });
-    }
-
-    await fightFollow(WAYPOINTS.citadel, 40000, 4);
-    // Courtyard is +Z of the keep. Static POI.citadel is the spawn, not a live lock.
-
-    let s = await fightGoTo(POI.citadel.x, POI.citadel.z + 8, 20000, { arrive: 3.2, sprint: true, label: "citadel-gate" });
-    s = await fightRead();
+    const entry = await runCitadelInitialApproach({
+      scope: orch.scope, fightRead, fightGoTo, fightFollow, tap, wait, note, WAYPOINTS, POI,
+    });
+    let s = entry.snapshot;
+    let pendingCombatSnapshot = entry.combatReady ? s : null;
     citadelPrompt = s?.prompt || "";
     if (s?.sealOpen === false || s?.prompt?.includes("封印未开")) {
       sealClosedAttempt = true;
       note(`seal closed prompt=${s?.prompt} sealOpen=${s?.sealOpen}`);
       await shot("route-citadel.png");
       return s;
-    }
-    // Prompt 挑战空王 is proximity-only. E is not a combat start; melee is click.
-    if (s?.prompt?.includes("挑战空王")) {
-      await tap("KeyE", orch.scope);
-      await wait(200);
     }
     const end = Date.now() + 180000;
     let swings = 0;
@@ -1171,8 +1189,11 @@ async function fightBoss() {
     while (Date.now() < end) {
       if (fightAbort.aborted) break;
       // Sample loop is the sole observe path — main loop does not re-observe.
-      // Still need a snapshot for control flow; use resumePlay (scoped).
-      s = await fightResume();
+      // Consume the actual entry observation once; later turns resume as before.
+      const handoffSnapshot = pendingCombatSnapshot;
+      pendingCombatSnapshot = null;
+      s = handoffSnapshot ?? await fightResume();
+      checkFightScope(orch.scope, s);
       if (fightAbort.aborted) break;
       if (!s) break;
       if (s.bossDead || s.mode === "ending") break;
@@ -1229,9 +1250,9 @@ async function fightBoss() {
           `citadel reapproach live boss d=${dist.toFixed(1)} from ${s.x.toFixed(1)},${s.z.toFixed(1)} y=${s.y.toFixed(1)} state=${s.state} grounded=${s.grounded} off=${off.reason} stall=${stallCount} bossY=${boss.y?.toFixed?.(1)} phase=${boss.phase} prompt=${s.prompt}`,
         );
         if (s.y > 40) {
-          await fightGoTo(36, -90, 22000, { arrive: 4, sprint: false, label: "citadel-off-crown" });
+          await fightGoTo(36, -90, 22000, { arrive: 4, sprint: false, label: "citadel-off-crown", safeDescent: true });
 
-          await fightGoTo(24, -40, 18000, { arrive: 5, sprint: true, label: "citadel-from-crown" });
+          await fightGoTo(24, -40, 18000, { arrive: 5, sprint: true, label: "citadel-from-crown", safeDescent: true });
         } else if (s.z < -50 && dist > 18) {
           await fightGoTo(-12, -28, 18000, { arrive: 5, sprint: true, label: "citadel-avoid-still" });
 
@@ -1258,27 +1279,15 @@ async function fightBoss() {
       }
       lastApproach = { x: s.x, z: s.z, dist };
       stallCount = 0;
-      await lookToward(boss.x, boss.z, orch.scope);
-      s = await fightRead();
-      if (!s?.boss) break;
-      dist = Math.hypot(s.x - s.boss.x, s.z - s.boss.z);
-      const faceDot = facingDot(s, s.boss.x, s.boss.z);
-      const dodgeAim = citadelDodgeAim(s, s.boss);
-      const dodgeKeys = keysToward(s, dodgeAim.x, dodgeAim.z, false).filter((k) => k !== "ShiftLeft");
-      const step = citadelFightStep({
-        hp: s.hp,
-        dist,
-        bossPhase: s.boss.phase,
-        bossHp: s.boss.hp,
-        state: s.state,
-        dodgeCd: s.dodgeCd,
-        stamina: s.stamina,
-        canDodge: s.canDodge,
-        attackPhase: s.attackPhase,
-        faceDot,
-        bossMeleeBlocked: Boolean(s.bossMeleeBlocked),
-        blockerId: s.blockerId ?? null,
+      const prepared = await prepareCitadelCombatDecision({
+        snapshot: s, preserveSnapshot: handoffSnapshot !== null,
+        scope: orch.scope, lookToward, fightRead,
       });
+      if (!prepared) break;
+      s = prepared.snapshot;
+      dist = prepared.dist;
+      const faceDot = prepared.faceDot;
+      const step = prepared.step;
       if (step.act === "reposition") {
         if (repositionUsed >= 1) {
           note(`citadel reposition already used still-blocked wall=${s.blockerId} — end short trajectory`);
@@ -1287,9 +1296,10 @@ async function fightBoss() {
         note(
           `citadel reposition los-blocked wall=${s.blockerId || "?"} player=${s.x?.toFixed?.(1)},${s.y?.toFixed?.(1)},${s.z?.toFixed?.(1)} boss=${s.boss.x?.toFixed?.(1)},${s.boss.z?.toFixed?.(1)} d=${dist.toFixed?.(1)} t=${Date.now()}`,
         );
-        const rp = await executeLosReposition({ goTo: fightGoTo, read: fightRead, note, start: s });
+        const rp = await runCitadelLosReposition({ scope: orch.scope, goTo: fightGoTo, read: fightRead, note, start: s });
         repositionUsed += 1;
         s = rp.s ?? (await fightRead());
+        pendingCombatSnapshot = rp.combatReady ? s : null;
         if (!rp.ok) {
           note(`citadel reposition failed — short trajectory stop`);
           break;
@@ -1297,53 +1307,12 @@ async function fightBoss() {
         missStreak = 0;
         continue;
       }
-      if (step.act === "back-off") {
-        note(
-          `citadel low-hp ${s.hp.toFixed?.(2)} state=${s.state} dist=${dist.toFixed(1)} bossHp=${s.boss?.hp?.toFixed?.(1)}; back off`,
-        );
-        if (s.state === "grounded" && (s.dodgeCd ?? 0) <= 0.04) {
-          await fightHold(["KeyC", ...dodgeKeys], 280);
-        } else {
-          await fightHold(["KeyS", "KeyA"], 220);
-        }
-        continue;
-      }
-      if (step.act === "dodge") {
-        const before = {
-          x: s.x,
-          y: s.y,
-          z: s.z,
-          dist,
-          state: s.state,
-          grounded: s.grounded,
-          phase: s.boss.phase,
-          dodgeCd: s.dodgeCd,
-          stamina: s.stamina,
-          dodgeT: s.dodgeT,
-        };
-
-        await fightHold(["KeyC", ...dodgeKeys], 280);
-        s = await fightRead();
+      const defense = await executeCitadelDefense({
+        snapshot: s, step, scope: orch.scope, fightHold, fightRead, releaseAll, note,
+      });
+      if (defense.handled) {
+        s = defense.snapshot;
         if (!s?.boss) break;
-        dist = Math.hypot(s.x - s.boss.x, s.z - s.boss.z);
-        const dodgeStarted = Number(s.dodgeT ?? 0) > 0 || Number(s.dodgeCd ?? 0) > 0.05;
-        note(
-          `citadel dodge ${before.x.toFixed(1)},${before.z.toFixed(1)} y=${before.y.toFixed(1)} d=${before.dist.toFixed(1)} ${before.state} phase=${before.phase} → ${s.x.toFixed(1)},${s.z.toFixed(1)} y=${s.y.toFixed(1)} d=${dist.toFixed(1)} ${s.state} grounded=${s.grounded} dy=${(s.y - before.y).toFixed(2)} aim=${dodgeAim.reason} ${dodgeAim.x.toFixed(1)},${dodgeAim.z.toFixed(1)} dodgeCd=${before.dodgeCd?.toFixed?.(2)}→${s.dodgeCd?.toFixed?.(2)} stamina=${before.stamina?.toFixed?.(1)}→${s.stamina?.toFixed?.(1)} dodgeT=${before.dodgeT ?? 0}→${s.dodgeT ?? 0} started=${dodgeStarted} bossPhase=${s.boss.phase}`,
-        );
-        if (!dodgeStarted) {
-          note(`citadel dodge NOT started (sim gate rejected) — do not treat as i-frame`);
-        }
-        if (s.mode === "dead" || s.state === "dead" || (Number.isFinite(s.hp) && s.hp <= 0)) {
-          deaths += 1;
-          fightAbort.abort("death-after-dodge");
-          note(`citadel dead after dodge n=${deaths} hp=${s.hp} — abort`);
-          break;
-        }
-        continue;
-      }
-      if (step.act === "back-off-too-close") {
-        await fightHold(["KeyS", "KeyA"], 180);
-        s = await fightRead();
         continue;
       }
       if (step.act === "approach") {
@@ -1401,10 +1370,11 @@ async function fightBoss() {
             note("citadel reposition already used — end short trajectory");
             break;
           }
-          const rp2 = await executeLosReposition({ goTo: fightGoTo, read: fightRead, note, start: s });
+          const rp2 = await runCitadelLosReposition({ scope: orch.scope, goTo: fightGoTo, read: fightRead, note, start: s });
           repositionUsed += 1;
           missStreak = 0;
           s = rp2.s ?? (await fightRead());
+          pendingCombatSnapshot = rp2.combatReady ? s : null;
           if (!rp2.ok) {
             note("citadel miss-streak reposition failed — end short trajectory");
             break;
@@ -1432,13 +1402,20 @@ async function fightBoss() {
     const snap = fightMonitor.latched?.snap ?? orch.scope.lastSnapshot ?? last;
     writeFileSync(
       resolve(outDir, `citadel-stop-${process.env.QA_RUN_ID || Date.now()}.json`),
-      JSON.stringify({ reason: err.reason, deaths: err.reason === "death" ? 1 : 0,
-        snap, navigationFailure: orch.scope.navigationFailure ?? null,
+      JSON.stringify({ reason: err.reason, deaths: err.reason === "death" ||
+        (err.reason === "player-hp-drop" && (snap?.mode === "dead" || snap?.state === "dead" || snap?.hp <= 0)) ? 1 : 0,
+        snap, firstHpDropPath, firstHpDropWriteError,
+        firstHpDrop: fightMonitor.latched?.reason === "player-hp-drop" ? fightMonitor.latched : null,
+        navigationFailure: orch.scope.navigationFailure ?? null,
+        defensiveFailure: orch.scope.defensiveFailure ?? null,
+        navigationEvidence: orch.getNavigationEvidence(),
         combatMs: fightMonitor.combatMs, navMs: fightMonitor.navMs,
         noDamageMs: fightMonitor.noDamageMs, ring: fightMonitor.ring }, null, 2),
     );
     return snap;
   } finally {
+    citadelNavigationEvidence = orch.getNavigationEvidence();
+    citadelNavigationEvidence.ring = structuredClone(fightMonitor.ring);
     // E1.1: stop and await sample loop BEFORE browser cleanup.
     await orch.stopSampling(fightAbort.reason || "fight-end");
     await releaseAll();
@@ -1575,6 +1552,7 @@ function writeReport(extra = {}) {
     observed,
     lastGood,
     final: last,
+    navigationEvidence: citadelNavigationEvidence,
     log,
     ...extra,
   };
@@ -1734,8 +1712,29 @@ try {
     if (!focusOk) {
       note(`citadel-resume focus verify FAIL — precondition-failed (no fightBoss)`);
     }
-    const citadelOk =
+    const battleOk =
       focusOk && Boolean(last?.bossDead || last?.mode === "ending") && !closeReason;
+    let completion = null;
+    if (battleOk) {
+      try {
+        completion = await verifyCitadelCompletion({
+          finish: last,
+          saveCheckpoint: async () => {
+            await shot("route-citadel-victory.png");
+            return saveStorageCheckpoint("citadel-victory");
+          },
+          observeReload: observeSaveReload,
+          read,
+        });
+        saveReload = completion.reload ?? null;
+        last = completion.after ?? last;
+        note(`citadel completion verified=${completion.ok} failures=${JSON.stringify(completion.failures)}`);
+      } catch (err) {
+        completion = { ok: false, failures: ["completion-observation-error"], error: String(err?.message || err) };
+        note(`citadel completion failed: ${completion.error}`);
+      }
+    }
+    const citadelOk = battleOk && completion?.ok === true && !closeReason;
     const json = checkedOutputPath(resolve(outDir, "citadel-resume.json"), [outDir]);
     writeFileSync(
       json,
@@ -1746,6 +1745,7 @@ try {
           focus: "citadel",
           resumeInject,
           focusVerify: focusOk,
+          completion,
           towers: last?.towers || [],
           shrines: last?.shrines || [],
           orbs: last?.orbs ?? 0,
@@ -1753,6 +1753,7 @@ try {
           mode: last?.mode,
           bossHp: last?.boss?.hp,
           final: last,
+          navigationEvidence: citadelNavigationEvidence,
           closeReason,
           log,
         },

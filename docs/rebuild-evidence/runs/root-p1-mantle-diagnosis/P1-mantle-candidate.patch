@@ -1,0 +1,1068 @@
+diff --git a/aetherwake/src/game/sim.ts b/aetherwake/src/game/sim.ts
+--- a/aetherwake/src/game/sim.ts
++++ b/aetherwake/src/game/sim.ts
+@@ -4,6 +4,7 @@
+ import { GRAYBOX_GROUND, GRAYBOX_RESET, GRAYBOX_WATER, grayboxSolids } from "./graybox.ts";
+ import { WATER_LEVEL, WIND_RUIN, WORLD_SIZE, climateAt, heightAt } from "./height.ts";
+ import { resetInput, setKeys } from "./input.ts";
++import { advanceMantle, planAroundOverhang, planMantle, planTerrainMantle, type Mantle } from "./mantle.ts";
+ import type { Actions } from "./input.ts";
+ import {
+   ACCEL_TIME,
+@@ -23,7 +24,6 @@
+   CLIMB_SHIMMY,
+   MANTLE_REACH_XZ,
+   MANTLE_REACH_Y,
+-  MANTLE_STEP_XZ,
+   MANTLE_STEP_Y,
+   COYOTE_TIME,
+   DAY_SECONDS,
+@@ -33,6 +33,7 @@
+   DODGE_STAMINA,
+   DODGE_TIME,
+   EYE_HEIGHT,
++  FIXED_DT,
+   FOOT_SNAP,
+   GLIDE_MAX_XZ,
+   GLIDE_SINK,
+@@ -67,6 +68,7 @@
+   type SaveStorage,
+ } from "./persistence.ts";
+ import {
++  BODY_SKIN,
+   clamp,
+   closestPointOnSolidXZ,
+   lerp,
+@@ -75,6 +77,7 @@
+   resolveHorizontal,
+   solidTop,
+   sphereCast,
++  sweepPlayerBody,
+   supportY,
+   type Solid,
+ } from "./physics.ts";
+@@ -174,6 +177,7 @@
+     dodgeT: 0,
+     dodgeCd: 0,
+   };
++  mantle: Mantle | null = null;
+   cam = { yaw: 0, pitch: 0.38, dist: CAM_DIST, x: 16, y: 18, z: 110, lx: 16, ly: 13, lz: 102, trauma: 0 };
+   enemies: Enemy[] = [];
+   pickups: Pickup[] = [];
+@@ -712,6 +716,7 @@
+   }
+ 
+   clearTransients() {
++    this.mantle = null;
+     this.player.invuln = 0;
+     this.player.dodgeT = 0;
+     this.player.aiming = false;
+@@ -727,6 +732,7 @@
+   }
+ 
+   setMove(state: MoveState) {
++    if (state !== "climbing") this.mantle = null;
+     this.player.state = state;
+     this.player.grounded = state === "grounded";
+     this.player.climbing = state === "climbing";
+@@ -977,154 +983,161 @@
+     }
+ 
+     if (p.state === "climbing") {
+-      const rest = supportY(p.x, p.z, p.y + 0.5, this.solids, this.heightFn, this.extraSupports(), null);
+-      const wantRest = a.moveY < -0.2 || p.stamina <= 2;
+-      const nearestRestAtHeight = () => {
+-        let best: { x: number; y: number; z: number; edge: number } | null = null;
+-        for (const s of this.solids) {
+-          if (!s.standable || !isTowerRest(s.id) || s.id.includes("-cap")) continue;
+-          const top = solidTop(s);
+-          if (Math.abs(top - p.y) > MANTLE_REACH_Y) continue;
+-          const c = closestPointOnSolidXZ(s, p.x, p.z);
+-          const ix = s.x - c.x;
+-          const iz = s.z - c.z;
+-          const il = Math.hypot(ix, iz) || 1;
+-          const inset = Math.min(0.45, il);
+-          const sx = c.x + (ix / il) * inset;
+-          const sz = c.z + (iz / il) * inset;
+-          if (!best || c.dist < best.edge) best = { x: sx, y: top, z: sz, edge: c.dist };
+-        }
+-        return best;
++      if (!nearTw) {
++        // A long probe can pass completely through a thin retaining wall as
++        // the player closes the grip. Prefer the body's nearby face then
++        // derive its outward normal from the real footprint and player pose.
++        const close = queryWall(p.x + fwd.x * (PLAYER_RADIUS + BODY_SKIN * 2),
++          p.z + fwd.z * (PLAYER_RADIUS + BODY_SKIN * 2), p.y, this.solids);
++        if (close?.climbable) wall = close;
++        const solid = this.solids.find(s => s.id === wall?.id);
++        if (wall && solid) {
++          const edge = closestPointOnSolidXZ(solid, p.x, p.z);
++          const length = Math.hypot(p.x - edge.x, p.z - edge.z);
++          if (length > BODY_SKIN) wall = { ...wall, nx: (p.x - edge.x) / length, nz: (p.z - edge.z) / length };
++        }
++      }
++      // Explicit dismount wins over resting, exhaustion rescue and active mantle.
++      if (a.dodge) {
++        const next = { x: p.x - fwd.x * 0.35, y: p.y, z: p.z - fwd.z * 0.35 };
++        if (sweepPlayerBody(p, next, this.solids, this.heightFn)) {
++          p.x = next.x;
++          p.z = next.z;
++        }
++        this.setMove("airborne");
++        p.vy = 0.6;
++        return;
++      }
++      const tickMantle = () => {
++        if (!this.mantle) return false;
++        if (this.mantle.phase < this.mantle.reachPhase && p.stamina <= 0) {
++          this.setMove("airborne");
++          p.vy = 0.2;
++          return true;
++        }
++        const result = advanceMantle(this.mantle, p, dt, this.solids, this.heightFn);
++        if (result.status === "blocked") {
++          this.mantle = null;
++          p.stamina -= CLIMB_STAMINA * 0.22 * dt;
++          if (!wall || p.stamina <= 0) {
++            this.setMove("airborne");
++            p.vy = 0.2;
++          }
++          return true;
++        }
++        p.x = result.position.x;
++        p.y = result.position.y;
++        p.z = result.position.z;
++        p.stamina -= result.staminaCost ?? 0;
++        p.vx = p.vy = p.vz = 0;
++        if (result.status === "done") this.setMove("grounded");
++        return true;
+       };
+-      const tryMantle = () => {
+-        const best = nearestRestAtHeight();
+-        if (!best || best.edge > MANTLE_REACH_XZ) return false;
+-        const ox = p.x;
+-        const oy = p.y;
+-        const oz = p.z;
+-        const dx = best.x - p.x;
+-        const dz = best.z - p.z;
+-        const len = Math.hypot(dx, dz) || 1;
+-        if (best.edge > 0.008) {
+-          const step = Math.min(MANTLE_STEP_XZ, len);
+-          p.x += (dx / len) * step;
+-          p.z += (dz / len) * step;
+-        }
+-        p.y += clamp(best.y - p.y, -MANTLE_STEP_Y, MANTLE_STEP_Y);
+-        const resolved = resolveHorizontal(p.x, p.z, p.y, this.solids);
+-        p.x = resolved.x;
+-        p.z = resolved.z;
+-        const moved = Math.hypot(p.x - ox, p.z - oz, p.y - oy);
+-        if (moved > MANTLE_STEP_XZ + MANTLE_STEP_Y + 0.05) {
+-          p.x = ox;
+-          p.y = oy;
+-          p.z = oz;
+-          return false;
+-        }
+-        const landed = supportY(p.x, p.z, p.y + 0.5, this.solids, this.heightFn, this.extraSupports(), null);
+-        if (isTowerRest(landed.id) && Math.abs(landed.y - p.y) < 0.55) {
+-          p.y = landed.y;
+-          p.vy = 0;
+-          this.setMove("grounded");
+-          return true;
+-        }
+-        if (best.edge <= 0.16 && Math.abs(best.y - p.y) < 0.28) {
+-          p.x = best.x;
+-          p.z = best.z;
+-          p.y = best.y;
+-          p.vy = 0;
+-          this.setMove("grounded");
+-          return true;
+-        }
+-        return moved > 0.012;
++      if (tickMantle()) return;
++      const rests = this.solids.filter(s => s.standable && isTowerRest(s.id) && !s.id.endsWith("-cap") &&
++        nearTw && s.id.startsWith(`${nearTw.tw.id}-`));
++      const shaft = nearTw ? this.solids.find(s => s.id === `${nearTw.tw.id}-shaft`) : null;
++      const surface = shaft ? closestPointOnSolidXZ(shaft, p.x, p.z) : null;
++      const radius = shaft ? Math.hypot(p.x - shaft.x, p.z - shaft.z) : 0;
++      const restAnchor = shaft && surface && radius > 0 ? {
++        x: surface.x + (p.x - shaft.x) / radius * (PLAYER_RADIUS + BODY_SKIN * 2),
++        z: surface.z + (p.z - shaft.z) / radius * (PLAYER_RADIUS + BODY_SKIN * 2), y: p.y,
++      } : p;
++      const tryMantle = (candidates = rests, landingHint = restAnchor) => {
++        this.mantle = planMantle(p, candidates, this.solids, this.heightFn, landingHint);
++        return tickMantle();
+       };
+       const tryShimmy = () => {
+-        const best = nearestRestAtHeight();
+-        if (!best || !wall) return false;
+-        if (best.edge <= MANTLE_REACH_XZ) return tryMantle();
+-        const ox = p.x;
+-        const oy = p.y;
+-        const oz = p.z;
+-        const tx = best.x - p.x;
+-        const tz = best.z - p.z;
+-        const tangent = -wall.nz * tx + wall.nx * tz;
+-        const dir = tangent >= 0 ? 1 : -1;
+-        const step = CLIMB_SHIMMY * dt;
+-        p.x += -wall.nz * dir * step;
+-        p.z += wall.nx * dir * step;
+-        p.y += clamp(best.y - p.y, -MANTLE_STEP_Y, MANTLE_STEP_Y);
+-        const resolved = resolveHorizontal(p.x, p.z, p.y, this.solids);
+-        p.x = resolved.x;
+-        p.z = resolved.z;
+-        const moved = Math.hypot(p.x - ox, p.z - oz, p.y - oy);
+-        if (moved > step + MANTLE_STEP_Y + 0.08) {
+-          p.x = ox;
+-          p.y = oy;
+-          p.z = oz;
+-          return false;
+-        }
+-        return moved > 0.008;
++        if (!wall) return false;
++        const best = rests.filter(s => Math.abs(solidTop(s) - p.y) <= MANTLE_REACH_Y)
++          .map(s => ({ s, point: closestPointOnSolidXZ(s, p.x, p.z) }))
++          .sort((a, b) => a.point.dist - b.point.dist)[0];
++        if (!best || best.point.dist <= MANTLE_REACH_XZ) return false;
++        const tangent = -wall.nz * (best.s.x - p.x) + wall.nx * (best.s.z - p.z);
++        const direction = tangent >= 0 ? 1 : -1;
++        const next = { x: p.x - wall.nz * direction * CLIMB_SHIMMY * dt,
++          z: p.z + wall.nx * direction * CLIMB_SHIMMY * dt,
++          y: p.y + clamp(solidTop(best.s) - p.y, -MANTLE_STEP_Y * dt / FIXED_DT, MANTLE_STEP_Y * dt / FIXED_DT) };
++        if (!sweepPlayerBody(p, next, this.solids, this.heightFn)) return false;
++        p.x = next.x; p.y = next.y; p.z = next.z;
++        return true;
+       };
+-      if (wantRest && isTowerRest(rest.id) && Math.abs(rest.y - p.y) < 0.85) {
+-        p.y = rest.y;
+-        p.vy = 0;
+-        this.setMove("grounded");
+-        return;
+-      }
++      const wantRest = a.moveY < -0.2 || p.stamina <= 2;
+       if (wantRest && (tryMantle() || tryShimmy())) return;
+-      // Dodge is an explicit dismount — do not prefer mantle/shimmy while
+-      // dodging (play-routes KeyC on east wall / tower stuck in climbing).
+-      if (a.dodge) {
++      // A real cap, not the nonstandable shaft top, is the destination.
++      const cap = nearTw ? this.solids.find(s => s.id === `${nearTw.tw.id}-cap`) : null;
++      const topCandidates = cap ? [cap] : this.solids.filter(s => {
++        if (!s.standable || !wall) return false;
++        if (s.id === wall.id) return true;
++        // A nonstandable retaining wall may have a real platform behind it.
++        // Keep that platform's collision/support, rather than treating it as
++        // bare terrain or promoting the wall itself to a standing surface.
++        const edge = closestPointOnSolidXZ(s, p.x, p.z);
++        return (edge.x - p.x) * wall.nx + (edge.z - p.z) * wall.nz < 0;
++      });
++      if (!wall) {
++        if (tryMantle(topCandidates, p) || tryMantle() || tryShimmy()) return;
+         this.setMove("airborne");
+         p.vy = 0.6;
+-        p.x -= fwd.x * 0.35;
+-        p.z -= fwd.z * 0.35;
+         return;
+       }
+-      if (!wall) {
+-        if (tryMantle() || tryShimmy()) return;
+-        this.setMove("airborne");
+-        p.vy = 0.6;
+-        p.x -= fwd.x * 0.35;
+-        p.z -= fwd.z * 0.35;
+-        return;
+-      }
+       if (p.stamina <= 0) {
+-        if (tryMantle() || tryShimmy()) return;
+-        if (isTowerRest(rest.id) && Math.abs(rest.y - p.y) < 0.85) {
+-          p.y = rest.y;
+-          this.setMove("grounded");
+-          return;
+-        }
+         this.setMove("airborne");
+         p.vy = 0.2;
+-        p.x -= fwd.x * 0.3;
+-        p.z -= fwd.z * 0.3;
+         return;
+       }
+       const up = a.moveY > 0.05 ? 1 : a.moveY < -0.15 ? -0.75 : 0;
+-      p.y += CLIMB_SPEED * up * dt;
++      // Start only inside the unchanged actual-target reach; no 2.35m snap.
++      if (up > 0 && tryMantle(topCandidates, p)) return;
++      if (up > 0 && !nearTw) {
++        const solid = this.solids.find(s => s.id === wall?.id);
++        this.mantle = solid ? planTerrainMantle(p, solid, { x: wall.nx, z: wall.nz }, this.solids, this.heightFn) : null;
++        if (tickMantle()) return;
++      }
+       const side = a.moveX;
+-      p.x += -wall.nz * side * 2.2 * dt;
+-      p.z += wall.nx * side * 2.2 * dt;
+-      const resolved = resolveHorizontal(p.x, p.z, p.y, this.solids);
+-      p.x = resolved.x;
+-      p.z = resolved.z;
++      const next = { x: p.x - wall.nz * side * CLIMB_SHIMMY * dt,
++        z: p.z + wall.nx * side * CLIMB_SHIMMY * dt, y: p.y + CLIMB_SPEED * up * dt };
++      if (up > 0 && !nearTw) {
++        const solid = this.solids.find(s => s.id === wall?.id);
++        if (solid) {
++          // The wall probe can grab before the body is against the surface.
++          // Close that actual gap continuously instead of compensating with
++          // an expanded mantle reach or the removed top teleport.
++          const edge = closestPointOnSolidXZ(solid, p.x, p.z);
++          const dx = edge.x + wall.nx * (PLAYER_RADIUS + BODY_SKIN * 2) - p.x;
++          const dz = edge.z + wall.nz * (PLAYER_RADIUS + BODY_SKIN * 2) - p.z;
++          const distance = Math.hypot(dx, dz);
++          const ratio = distance > 0 ? Math.min(1, CLIMB_SHIMMY * dt / distance) : 0;
++          next.x += dx * ratio;
++          next.z += dz * ratio;
++        }
++      }
++      const horizontalStep = Math.hypot(next.x - p.x, next.z - p.z);
++      if (horizontalStep > CLIMB_SHIMMY * dt) {
++        const ratio = CLIMB_SHIMMY * dt / horizontalStep;
++        next.x = p.x + (next.x - p.x) * ratio;
++        next.z = p.z + (next.z - p.z) * ratio;
++      }
++      const resolved = resolveHorizontal(next.x, next.z, next.y, this.solids);
++      next.x = resolved.x;
++      next.z = resolved.z;
++      if (sweepPlayerBody(p, next, this.solids, this.heightFn)) {
++        p.x = next.x; p.y = next.y; p.z = next.z;
++      } else if (up > 0) {
++        this.mantle = planAroundOverhang(p, next, { x: wall.nx, z: wall.nz }, this.solids, this.heightFn, restAnchor);
++        if (tickMantle()) return;
++      }
+       if (up > 0.2) p.stamina -= CLIMB_STAMINA * dt;
+       else if (up < -0.2) p.stamina -= CLIMB_STAMINA * 0.45 * dt;
+       else p.stamina -= CLIMB_STAMINA * 0.22 * dt;
+-      if (p.y > wall.top - 1.7) {
+-        p.x -= wall.nx * 2.35;
+-        p.z -= wall.nz * 2.35;
+-        p.y = wall.top + 0.18;
+-        p.vy = 0;
+-        this.setMove("grounded");
+-      }
++      if (up > 0) this.mantle = planMantle(p, topCandidates, this.solids, this.heightFn);
+       if (wishLen > 0.15) p.yaw = lerpAng(p.yaw, Math.atan2(-wishX, -wishZ), 1 - Math.exp(-8 * dt));
+       return;
+     }
+ 
+-    const onCap = TOWERS.some((tw) => Math.hypot(p.x - tw.x, p.z - tw.z) < 5.2 && p.y > tw.y + TOWER_HEIGHT - 2.2);
++    // The activation band includes the upper rest ledge. Only real cap support
++    // ends climbing; W must still re-grab from that lower ledge.
++    const onCap = TOWERS.some((tw) => support.id === `${tw.id}-cap` && Math.abs(p.y - support.y) <= BODY_SKIN);
+     const resting = isTowerRest(support.id);
+     const wantClimb =
+       a.climb ||
+diff --git a/aetherwake/src/game/physics.ts b/aetherwake/src/game/physics.ts
+--- a/aetherwake/src/game/physics.ts
++++ b/aetherwake/src/game/physics.ts
+@@ -266,4 +266,110 @@
+   return Math.abs(s.y - y) < STEP_UP + 0.15;
+ }
+ 
++export type BodyPosition = { x: number; y: number; z: number };
++export const BODY_SKIN = 0.002;
++
++// Full upright player volume for mantle validation. Unlike queryWall this must
++// include thin platforms and the head, and must not resolve by pushing a pose.
++export function playerBodyClear(p: BodyPosition, solids: Solid[], heightFn: (x: number, z: number) => number) {
++  return sweepPlayerBody(p, p, solids, heightFn);
++}
++
++/** Conservative swept player cylinder; false means no movement may be committed. */
++export function sweepPlayerBody(from: BodyPosition, to: BodyPosition, solids: Solid[], heightFn?: (x: number, z: number) => number) {
++  if (![from.x, from.y, from.z, to.x, to.y, to.z].every(Number.isFinite)) return false;
++  const vx = to.x - from.x, vy = to.y - from.y, vz = to.z - from.z;
++  const slab = (start: number, delta: number, lo: number, hi: number): [number, number] | null => {
++    if (Math.abs(delta) < 1e-12) return start > lo && start < hi ? [0, 1] : null;
++    const a = (lo - start) / delta, b = (hi - start) / delta;
++    const enter = Math.max(0, Math.min(a, b)), leave = Math.min(1, Math.max(a, b));
++    return leave > enter + 1e-12 ? [enter, leave] : null;
++  };
++  for (const s of solids) {
++    const vertical = slab(from.y, vy, s.y - PLAYER_HEIGHT + BODY_SKIN, solidTop(s) - BODY_SKIN);
++    if (!vertical) continue;
++    let horizontal: [number, number] | null = null;
++    if (s.kind === "box") {
++      const c = Math.cos(s.yaw ?? 0), sn = Math.sin(s.yaw ?? 0);
++      const ox = from.x - s.x, oz = from.z - s.z;
++      const hx = (s.w ?? 1) / 2 + PLAYER_RADIUS - BODY_SKIN;
++      const hz = (s.d ?? 1) / 2 + PLAYER_RADIUS - BODY_SKIN;
++      const x = slab(ox * c + oz * sn, vx * c + vz * sn, -hx, hx);
++      const z = slab(-ox * sn + oz * c, -vx * sn + vz * c, -hz, hz);
++      if (x && z) horizontal = [Math.max(x[0], z[0]), Math.min(x[1], z[1])];
++    } else {
++      const ox = from.x - s.x, oz = from.z - s.z;
++      const r = (s.r ?? 1) + PLAYER_RADIUS - BODY_SKIN;
++      const a = vx * vx + vz * vz, b = 2 * (ox * vx + oz * vz), c = ox * ox + oz * oz - r * r;
++      if (a < 1e-12) { if (c < 0) horizontal = [0, 1]; }
++      else {
++        const disc = b * b - 4 * a * c;
++        if (disc > 0) horizontal = [Math.max(0, (-b - Math.sqrt(disc)) / (2 * a)), Math.min(1, (-b + Math.sqrt(disc)) / (2 * a))];
++      }
++    }
++    if (horizontal && Math.min(vertical[1], horizontal[1]) > Math.max(vertical[0], horizontal[0]) + 1e-12) return false;
++  }
++  // Terrain is a height field, not an authored thin obstacle. Sample the path
++  // at sub-radius spacing; do not treat high terrain as a
++  // legal support just because supportY's geometric fallback returns its Y.
++  const steps = Math.max(1, Math.ceil(Math.hypot(vx, vy, vz) / (PLAYER_RADIUS / 4)));
++  for (let i = 0; i <= steps; i++) {
++    const t = i / steps, x = from.x + vx * t, y = from.y + vy * t, z = from.z + vz * t;
++    if (heightFn && heightFn(x, z) > y + BODY_SKIN) return false;
++  }
++  return true;
++}
++
++/** Exit the expanded authored footprint along an actual wall's outward normal. */
++export function outsideTopPoint(s: Solid, p: BodyPosition, normal: { x: number; z: number }): BodyPosition | null {
++  const length = Math.hypot(normal.x, normal.z);
++  if (!Number.isFinite(length) || length < 1e-8) return null;
++  const dx = normal.x / length, dz = normal.z / length;
++  let exit: number;
++  if (s.kind === "cyl") {
++    const ox = p.x - s.x, oz = p.z - s.z, r = (s.r ?? 1) + PLAYER_RADIUS + BODY_SKIN * 2;
++    const b = ox * dx + oz * dz, c = ox * ox + oz * oz - r * r;
++    const disc = b * b - c;
++    if (disc < 0) return null;
++    exit = -b + Math.sqrt(disc);
++  } else {
++    const c = Math.cos(s.yaw ?? 0), sn = Math.sin(s.yaw ?? 0);
++    const ox = p.x - s.x, oz = p.z - s.z;
++    const axes = [
++      { p: ox * c + oz * sn, d: dx * c + dz * sn, h: (s.w ?? 1) / 2 + PLAYER_RADIUS + BODY_SKIN * 2 },
++      { p: -ox * sn + oz * c, d: -dx * sn + dz * c, h: (s.d ?? 1) / 2 + PLAYER_RADIUS + BODY_SKIN * 2 },
++    ];
++    let enter = -Infinity;
++    exit = Infinity;
++    for (const a of axes) {
++      if (Math.abs(a.d) < 1e-10) { if (Math.abs(a.p) >= a.h) return null; continue; }
++      const t1 = (-a.h - a.p) / a.d, t2 = (a.h - a.p) / a.d;
++      enter = Math.max(enter, Math.min(t1, t2));
++      exit = Math.min(exit, Math.max(t1, t2));
++    }
++    if (exit < Math.max(0, enter)) return null;
++  }
++  if (!Number.isFinite(exit) || exit < 0) return null;
++  return { x: p.x + dx * (exit + BODY_SKIN), y: p.y, z: p.z + dz * (exit + BODY_SKIN) };
++}
++
++/** Fit the entire foot radius onto an authored top, preserving rotated boxes. */
++export function fittedTopPoint(s: Solid, p: BodyPosition): BodyPosition | null {
++  const inset = PLAYER_RADIUS + BODY_SKIN * 2;
++  if (!s.standable) return null;
++  if (s.kind === "cyl") {
++    const r = (s.r ?? 1) - inset;
++    if (r <= 0) return null;
++    const dx = p.x - s.x, dz = p.z - s.z, d = Math.hypot(dx, dz);
++    const scale = d > r ? r / d : 1;
++    return { x: s.x + dx * scale, y: solidTop(s), z: s.z + dz * scale };
++  }
++  const hx = (s.w ?? 1) / 2 - inset, hz = (s.d ?? 1) / 2 - inset;
++  if (hx <= 0 || hz <= 0) return null;
++  const c = Math.cos(s.yaw ?? 0), sn = Math.sin(s.yaw ?? 0);
++  const dx = p.x - s.x, dz = p.z - s.z;
++  const x = clamp(dx * c + dz * sn, -hx, hx), z = clamp(-dx * sn + dz * c, -hz, hz);
++  return { x: s.x + x * c - z * sn, y: solidTop(s), z: s.z + x * sn + z * c };
++}
++
+ export { PLAYER_HEIGHT, PLAYER_RADIUS };
+diff --git a/aetherwake/src/game/mantle.ts b/aetherwake/src/game/mantle.ts
+new file mode 100644
+--- /dev/null
++++ b/aetherwake/src/game/mantle.ts
+@@ -0,0 +1,124 @@
++import { CLIMB_SHIMMY, CLIMB_SPEED, CLIMB_STAMINA, FIXED_DT, MANTLE_REACH_XZ, MANTLE_REACH_Y, MANTLE_STEP_XZ, MANTLE_STEP_Y, PLAYER_RADIUS } from "./params.ts";
++import { BODY_SKIN, closestPointOnSolidXZ, fittedTopPoint, outsideTopPoint, playerBodyClear, sweepPlayerBody } from "./physics.ts";
++import type { BodyPosition, Solid } from "./physics.ts";
++
++export type Mantle = {
++  target: Solid;
++  points: BodyPosition[];
++  phase: number;
++  elapsed: number;
++  maxTime: number;
++  reachPhase: number;
++  // A nonstandable wall may lead to actual terrain beyond its far edge. The
++  // wall remains collision geometry; no standable solid is synthesized.
++  terrain?: BodyPosition;
++};
++
++function makePlan(p: BodyPosition, target: Solid, points: BodyPosition[], reachPhase: number, solids: Solid[], heightFn: (x: number, z: number) => number): Mantle | null {
++  let from = p, maxTime = 0;
++  if (!points.every((next, phase) => {
++    const clear = sweepPlayerBody(from, next, solids, heightFn);
++    const ySpeed = phase < reachPhase ? CLIMB_SPEED : MANTLE_STEP_Y / FIXED_DT;
++    const xzSpeed = phase < reachPhase ? CLIMB_SHIMMY : MANTLE_STEP_XZ / FIXED_DT;
++    maxTime += Math.max(Math.hypot(next.x - from.x, next.z - from.z) / xzSpeed,
++      Math.abs(next.y - from.y) / ySpeed) + FIXED_DT;
++    from = next;
++    return clear;
++  })) return null;
++  return { target: { ...target }, points, phase: 0, elapsed: 0, maxTime: maxTime + FIXED_DT, reachPhase };
++}
++
++export function planMantle(p: BodyPosition, candidates: Solid[], solids: Solid[], heightFn: (x: number, z: number) => number, landingHint = p): Mantle | null {
++  if (!playerBodyClear(p, solids, heightFn)) return null;
++  const sorted = candidates.map(s => ({ s, edge: closestPointOnSolidXZ(s, p.x, p.z).dist }))
++    .sort((a, b) => a.edge - b.edge);
++  for (const { s, edge } of sorted) {
++    const to = fittedTopPoint(s, landingHint);
++    if (!to || edge > MANTLE_REACH_XZ || Math.abs(to.y - p.y) > MANTLE_REACH_Y) continue;
++    const liftY = Math.max(p.y, to.y) + BODY_SKIN;
++    const points = [{ x: p.x, y: liftY, z: p.z }, { x: to.x, y: liftY, z: to.z }, to];
++    const plan = makePlan(p, s, points, 0, solids, heightFn);
++    if (plan) return plan;
++  }
++  return null;
++}
++
++/** A blocking overhang is rounded before attempting the unchanged mantle reach. */
++export function planAroundOverhang(p: BodyPosition, proposedClimb: BodyPosition, wallNormal: { x: number; z: number }, solids: Solid[], heightFn: (x: number, z: number) => number, landingHint = p): Mantle | null {
++  if (!playerBodyClear(p, solids, heightFn)) return null;
++  for (const target of solids) {
++    if (!target.standable || sweepPlayerBody(p, proposedClimb, [target])) continue;
++    if (closestPointOnSolidXZ(target, p.x, p.z).dist > MANTLE_REACH_XZ) continue;
++    const to = fittedTopPoint(target, landingHint), outside = outsideTopPoint(target, p, wallNormal);
++    if (!to || !outside) continue;
++    // The head meets a thick ledge before its top enters foot-relative reach.
++    // First round the real edge at current height, then climb vertically at
++    // the unchanged ordinary climb speed. Only then enter mantle reach.
++    const grip = { ...outside, y: Math.max(p.y, to.y - MANTLE_REACH_Y) };
++    if (closestPointOnSolidXZ(target, grip.x, grip.z).dist > MANTLE_REACH_XZ) continue;
++    const lift = { ...grip, y: Math.max(grip.y, to.y) + BODY_SKIN };
++    const plan = makePlan(p, target, [outside, grip, lift, { x: to.x, y: lift.y, z: to.z }, to], 2, solids, heightFn);
++    if (plan) return plan;
++  }
++  return null;
++}
++
++/** Conservatively accept a nearly level, fully supported foot disk only. */
++function terrainFootY(p: BodyPosition, heightFn: (x: number, z: number) => number) {
++  const center = heightFn(p.x, p.z), heights = [center];
++  for (const radius of [PLAYER_RADIUS / 2, PLAYER_RADIUS]) {
++    for (let i = 0; i < 8; i++) {
++      const a = i * Math.PI / 4;
++      heights.push(heightFn(p.x + Math.cos(a) * radius, p.z + Math.sin(a) * radius));
++    }
++  }
++  if (!heights.every(Number.isFinite) || Math.max(...heights) - Math.min(...heights) > BODY_SKIN) return null;
++  return center;
++}
++
++function terrainEdgeDistance(p: BodyPosition, to: BodyPosition) {
++  return Math.max(0, Math.hypot(to.x - p.x, to.z - p.z) - PLAYER_RADIUS);
++}
++
++export function planTerrainMantle(p: BodyPosition, wall: Solid, outward: { x: number; z: number }, solids: Solid[], heightFn: (x: number, z: number) => number): Mantle | null {
++  if (wall.standable || !wall.climbable || !playerBodyClear(p, solids, heightFn)) return null;
++  const to = outsideTopPoint(wall, p, { x: -outward.x, z: -outward.z });
++  if (!to || terrainEdgeDistance(p, to) > MANTLE_REACH_XZ) return null;
++  const y = terrainFootY(to, heightFn);
++  if (y === null || Math.abs(y - p.y) > MANTLE_REACH_Y) return null;
++  to.y = y;
++  const liftY = Math.max(p.y, y) + BODY_SKIN;
++  const plan = makePlan(p, wall, [{ x: p.x, y: liftY, z: p.z }, { x: to.x, y: liftY, z: to.z }, to], 0, solids, heightFn);
++  if (plan) plan.terrain = to;
++  return plan;
++}
++
++export function advanceMantle(m: Mantle, p: BodyPosition, dt: number, solids: Solid[], heightFn: (x: number, z: number) => number) {
++  const target = solids.find(s => s.id === m.target.id);
++  const unchanged = target && (["kind", "x", "y", "z", "r", "h", "w", "d", "yaw", "standable"] as const)
++    .every(k => target[k] === m.target[k]);
++  if (!unchanged || m.elapsed + dt > m.maxTime || !playerBodyClear(p, solids, heightFn)) return { status: "blocked" as const, position: p };
++  if (m.terrain) {
++    const y = terrainFootY(m.terrain, heightFn);
++    if (y === null || Math.abs(y - m.terrain.y) > BODY_SKIN) return { status: "blocked" as const, position: p };
++  }
++  const goal = m.points[m.phase];
++  if (!goal) return { status: "done" as const, position: p };
++  const dx = goal.x - p.x, dy = goal.y - p.y, dz = goal.z - p.z;
++  const horizontal = Math.hypot(dx, dz);
++  const targetY = m.terrain?.y ?? m.target.y + m.target.h;
++  const targetDistance = m.terrain ? terrainEdgeDistance(p, m.terrain) : closestPointOnSolidXZ(m.target, p.x, p.z).dist;
++  if (m.phase === m.reachPhase && (Math.abs(targetY - p.y) > MANTLE_REACH_Y + 1e-8 ||
++      targetDistance > MANTLE_REACH_XZ + 1e-8)) return { status: "blocked" as const, position: p };
++  const preparing = m.phase < m.reachPhase;
++  const yStep = preparing ? CLIMB_SPEED * dt : MANTLE_STEP_Y * dt / FIXED_DT;
++  const xzStep = preparing ? CLIMB_SHIMMY * dt : MANTLE_STEP_XZ * dt / FIXED_DT;
++  const ratio = Math.min(1, horizontal > 0 ? xzStep / horizontal : 1,
++    Math.abs(dy) > 0 ? yStep / Math.abs(dy) : 1);
++  const next = { x: p.x + dx * ratio, y: p.y + dy * ratio, z: p.z + dz * ratio };
++  if (!sweepPlayerBody(p, next, solids, heightFn)) return { status: "blocked" as const, position: p };
++  m.elapsed += dt;
++  if (ratio === 1) m.phase++;
++  return { status: m.phase === m.points.length ? "done" as const : "moving" as const, position: next,
++    staminaCost: preparing ? CLIMB_STAMINA * (Math.abs(dy) > 0 ? 1 : 0.22) * dt : 0 };
++}
+diff --git a/aetherwake/src/game/mantle.test.ts b/aetherwake/src/game/mantle.test.ts
+new file mode 100644
+--- /dev/null
++++ b/aetherwake/src/game/mantle.test.ts
+@@ -0,0 +1,323 @@
++import assert from "node:assert/strict";
++import { afterEach, test } from "node:test";
++import { Sim } from "./sim.ts";
++import { memoryStorage } from "./persistence.ts";
++import { enqueueCommand, pressKeyForTest, releaseKeyForTest, resetInput, takeSimActions } from "./input.ts";
++import { CLIMB_SHIMMY, CLIMB_SPEED, FIXED_DT, MANTLE_REACH_Y, MANTLE_STEP_XZ, MANTLE_STEP_Y, PLAYER_HEIGHT, PLAYER_RADIUS } from "./params.ts";
++import { SHRINES, TOWERS, TOWER_RADIUS, shrineWorldOrigin } from "./world.ts";
++import { playerBodyClear, sweepPlayerBody } from "./physics.ts";
++
++afterEach(resetInput);
++const consume = () => takeSimActions({ consumeCommands: true, consumeLook: true });
++function fixture(id: string, kind: string) {
++  resetInput();
++  const sim = new Sim(memoryStorage());
++  sim.freshRuntime(false);
++  const tw = TOWERS.find(t => t.id === id)!;
++  const shaft = sim.solids.find(s => s.id === `${id}-shaft`)!;
++  const top = shaft.y + shaft.h;
++  // A controlled initial grip on the original tower, not a browser/full-route
++  // replay. After this setup only production keyboard commands and steps run.
++  Object.assign(sim.player, { x: tw.x + TOWER_RADIUS + 0.5, z: tw.z, y: top - 1.72,
++    vx: 0, vy: 0, vz: 0, stamina: 100, hp: 3, invuln: 0, dodgeCd: 0, dodgeT: 0 });
++  sim.setMove("climbing");
++  sim.cam.yaw = sim.player.yaw = Math.PI / 2;
++  const roof = { id: "controlled-mantle-roof", kind: "box" as const,
++    x: tw.x, z: tw.z, y: top + 0.8, h: 0.2, w: 8, d: 8, standable: true };
++  if (kind === "roof") sim.solids.push(roof);
++  if (kind === "legal-top") {
++    const ledge = sim.solids.find(s => s.id === `${id}-ledge-8`)!;
++    sim.player.y = ledge.y + ledge.h + 0.02;
++  }
++  if (kind === "under-ledge") {
++    const ledge = sim.solids.find(s => s.id === `${id}-ledge-4`)!;
++    sim.player.y = ledge.y - PLAYER_HEIGHT - 0.1;
++  }
++  if (kind.startsWith("rest")) {
++    const ledge = sim.solids.find(s => s.id === `${id}-ledge-4`)!;
++    Object.assign(sim.player, { x: ledge.x, z: ledge.z, y: ledge.y + ledge.h,
++      stamina: kind === "rest-exhaust" ? 1 : 100 });
++  }
++  return { sim, tw, roof };
++}
++
++function activeFixture() {
++  const { sim } = fixture("dawn", "legal-top");
++  pressKeyForTest("KeyW");
++  advance(sim, 1);
++  releaseKeyForTest("KeyW");
++  assert.ok(sim.mantle, "ordinary W starts the validated process");
++  return sim;
++}
++
++test("C cancels an overhang preparation before another outside step", () => {
++  const { sim } = fixture("dawn", "under-ledge");
++  pressKeyForTest("KeyW");
++  advance(sim, 2);
++  assert.ok(sim.mantle && sim.mantle.phase < sim.mantle.reachPhase);
++  const before = { ...sim.player };
++  pressKeyForTest("KeyC");
++  enqueueCommand("dodge");
++  advance(sim, 1);
++  assert.equal(sim.mantle, null);
++  assert.equal(sim.player.state, "airborne");
++  assert.equal(sim.player.y, before.y);
++  assert.equal(sim.player.stamina, before.stamina);
++  assert.ok(playerBodyClear(sim.player, sim.solids, sim.heightFn));
++});
++
++test("overhang preparation naturally exhausts low initial stamina and cancels", () => {
++  const { sim } = fixture("dawn", "under-ledge");
++  // Low-resource controlled initial grip; never refill resources after stepping.
++  sim.player.stamina = 3;
++  pressKeyForTest("KeyW");
++  let sawPreparation = false;
++  for (let n = 0; n < 60 && sim.player.state === "climbing"; n++) {
++    advance(sim, 1);
++    sawPreparation ||= !!sim.mantle;
++    assert.ok(playerBodyClear(sim.player, sim.solids, sim.heightFn));
++  }
++  assert.ok(sawPreparation);
++  assert.equal(sim.mantle, null);
++  assert.equal(sim.player.state, "airborne");
++  assert.ok(sim.player.stamina <= 0);
++  assert.equal(sim.player.hp, 3);
++});
++
++test("C cancels an active mantle before any further automatic movement", () => {
++  const sim = activeFixture(), before = { ...sim.player };
++  pressKeyForTest("KeyS");
++  pressKeyForTest("KeyC");
++  enqueueCommand("dodge");
++  advance(sim, 1);
++  assert.equal(sim.mantle, null);
++  assert.equal(sim.player.state, "airborne");
++  assert.equal(sim.player.y, before.y);
++  assert.equal(sim.player.vy, 0.6);
++  assert.equal(sim.player.hp, before.hp);
++  assert.equal(sim.player.stamina, before.stamina);
++});
++
++test("ordinary Escape pauses mantle progress and resumes from the same fixed-step pose", () => {
++  const sim = activeFixture(), before = { ...sim.player }, elapsed = sim.mantle!.elapsed;
++  pressKeyForTest("Escape");
++  advance(sim, 1);
++  releaseKeyForTest("Escape");
++  assert.equal(sim.mode, "paused");
++  advance(sim, 60);
++  assert.deepEqual(sim.player, before);
++  assert.equal(sim.mantle!.elapsed, elapsed);
++  pressKeyForTest("Escape");
++  advance(sim, 1);
++  releaseKeyForTest("Escape");
++  assert.equal(sim.mode, "playing");
++  advance(sim, 60);
++  assert.equal(sim.mantle, null);
++  assert.equal(sim.player.state, "grounded");
++});
++
++for (const cancel of ["death", "reset", "continue"] as const) {
++  test(`production ${cancel} lifecycle clears a transient mantle`, () => {
++    const sim = activeFixture();
++    // Lifecycle-unit coverage calls real production entry points. This does
++    // not claim a browser death, nor replenish resources during a climb test.
++    if (cancel === "death") sim.die("test lifecycle");
++    else if (cancel === "reset") sim.freshRuntime(false);
++    else sim.applySave(sim.captureSave());
++    assert.equal(sim.mantle, null);
++  });
++}
++function advance(sim: Sim, count: number) {
++  const frames = [];
++  for (let i = 0; i < count; i++) {
++    sim.step(FIXED_DT, consume());
++    frames.push({ ...sim.player, t: sim.t });
++  }
++  return frames;
++}
++for (const id of ["dawn", "mere", "crown"]) {
++  test(`${id}: a clear terrain start enters climbing normally and reaches the cap without body overlap`, t => {
++    resetInput();
++    const sim = new Sim(memoryStorage());
++    sim.freshRuntime(false);
++    const tw = TOWERS.find(q => q.id === id)!;
++    // Real terrain gaps between the authored low ledges. Legacy route fixtures
++    // at x+4.7/y=base+.2 start inside a ledge (and sometimes below terrain).
++    const angle = id === "dawn" ? 11 * Math.PI / 32 : id === "mere" ? Math.PI / 32 : 0;
++    sim.player.x = tw.x + Math.cos(angle) * 4.6;
++    sim.player.z = tw.z + Math.sin(angle) * 4.6;
++    sim.player.y = sim.heightFn(sim.player.x, sim.player.z);
++    sim.player.yaw = sim.cam.yaw = Math.atan2(sim.player.x - tw.x, sim.player.z - tw.z);
++    sim.setMove("grounded");
++    assert.ok(playerBodyClear(sim.player, sim.solids, sim.heightFn));
++    const initial = { ...sim.player }, cap = sim.solids.find(q => q.id === `${id}-cap`)!;
++    pressKeyForTest("KeyE");
++    let climbed = false, n = 0;
++    for (; n < 4800; n++) {
++      if (sim.player.grounded && Math.abs(sim.player.y - cap.y - cap.h) < 1e-6) break;
++      const resting = sim.player.grounded && sim.player.y > initial.y + 0.5 && sim.player.stamina < 88;
++      // Match the pre-existing route's rest decision, now through normal keys.
++      const rest = sim.solids.filter(q => q.id.startsWith(`${id}-`) && (q.id.includes("-ledge-") || q.id.includes("-spiral-")) &&
++        Math.abs(q.y + q.h - sim.player.y) < 2.2)
++        .sort((a, b) => Math.hypot(sim.player.x - a.x, sim.player.z - a.z) - Math.hypot(sim.player.x - b.x, sim.player.z - b.z))[0];
++      const ontoRest = sim.player.state === "climbing" && sim.player.stamina < 28 && rest && rest.y + rest.h <= sim.player.y + 0.85;
++      if (resting || ontoRest) releaseKeyForTest("KeyW"); else pressKeyForTest("KeyW");
++      if (ontoRest) pressKeyForTest("KeyS"); else releaseKeyForTest("KeyS");
++      const before = { ...sim.player }, mantleBefore = sim.mantle ? structuredClone(sim.mantle) : null;
++      advance(sim, 1);
++      releaseKeyForTest("KeyE");
++      climbed ||= sim.player.state === "climbing";
++      const clear = playerBodyClear(sim.player, sim.solids, sim.heightFn);
++      if (!clear || sim.player.hp !== 3) t.diagnostic(JSON.stringify({ frame: n + 1, input: resting ? [] : ontoRest ? ["KeyS"] : ["KeyW"], before, after: sim.player,
++        mantleBefore, mantleAfter: sim.mantle, overlap: sim.solids.filter(q => !sweepPlayerBody(sim.player, sim.player, [q])).map(q => q.id) }));
++      assert.ok(clear, `body clear at frame ${n + 1}`);
++      assert.equal(sim.player.hp, 3);
++    }
++    t.diagnostic(JSON.stringify({ initial, frames: n, final: sim.player }));
++    assert.ok(climbed, "normal E/W entered climbing");
++    assert.ok(n < 4800, "the unchanged stamina budget reaches the real cap");
++    assert.ok(Math.hypot(sim.player.x - cap.x, sim.player.z - cap.z) < cap.r! - PLAYER_RADIUS);
++    releaseKeyForTest("KeyW");
++    pressKeyForTest("KeyE");
++    advance(sim, 1);
++    assert.ok(sim.towersOn.has(id));
++  });
++  test(`${id}: normal W cannot climb through the underside of an authored thin ledge`, t => {
++    const { sim } = fixture(id, "under-ledge");
++    const ledge = sim.solids.find(s => s.id === `${id}-ledge-4`)!;
++    assert.ok(playerBodyClear(sim.player, sim.solids, sim.heightFn), "initial real grip is clear");
++    pressKeyForTest("KeyW");
++    let sawPreparation = false, sawReach = false, count = 0;
++    for (; count < 200 && sim.player.state !== "grounded"; count++) {
++      const before = { ...sim.player };
++      const phase = sim.mantle?.phase, reachPhase = sim.mantle?.reachPhase;
++      if (phase !== undefined && reachPhase !== undefined && phase < reachPhase) sawPreparation = true;
++      if (phase === reachPhase && sim.mantle) {
++        sawReach = true;
++        assert.ok(ledge.y + ledge.h - before.y <= MANTLE_REACH_Y + 1e-8);
++      }
++      advance(sim, 1);
++      const clear = playerBodyClear(sim.player, sim.solids, sim.heightFn);
++      if (!clear) t.diagnostic(JSON.stringify({ before, after: sim.player, t: sim.t }));
++      assert.ok(clear, "climb movement must validate the whole body before committing");
++      assert.equal(sim.player.hp, 3);
++      const preparing = phase !== undefined && reachPhase !== undefined && phase < reachPhase;
++      assert.ok(Math.hypot(sim.player.x - before.x, sim.player.z - before.z) <=
++        (preparing ? CLIMB_SHIMMY * FIXED_DT : MANTLE_STEP_XZ) + 1e-8);
++      assert.ok(Math.abs(sim.player.y - before.y) <=
++        (preparing ? CLIMB_SPEED * FIXED_DT : MANTLE_STEP_Y) + 1e-8);
++    }
++    assert.ok(sawPreparation && sawReach, "round the edge before entering unchanged mantle reach");
++    assert.ok(count < 200, "bounded normal-input route lands on the real ledge");
++    assert.equal(sim.player.state, "grounded");
++    assert.ok(Math.abs(sim.player.y - ledge.y - ledge.h) < 1e-8);
++    assert.ok(sim.player.stamina < 100 && sim.player.stamina > 0, "preparation spends ordinary climbing stamina");
++    t.diagnostic(JSON.stringify({ count, landed: sim.player }));
++  });
++  test(`${id}: legacy overlapping top grip recovers without the old top teleport`, t => {
++    const { sim } = fixture(id, "top"), initial = { ...sim.player };
++    assert.equal(playerBodyClear(initial, sim.solids, sim.heightFn), false,
++      "legacy initial body overlaps its authored thin top ledge; not a clean route fixture");
++    pressKeyForTest("KeyW");
++    const frames = advance(sim, 100);
++    releaseKeyForTest("KeyW");
++    t.diagnostic(JSON.stringify({ initial, first: frames[0], final: frames.at(-1) }));
++    let before = initial;
++    for (const p of frames) {
++      assert.ok(Math.hypot(p.x - before.x, p.z - before.z) <= MANTLE_STEP_XZ + 1e-6,
++        `horizontal jump at t=${p.t}`);
++      assert.ok(Math.abs(p.y - before.y) <= MANTLE_STEP_Y + 1e-6, `vertical jump at t=${p.t}`);
++      before = p;
++    }
++    assert.equal(sim.player.y, initial.y, "an already overlapping fixture must not climb deeper");
++    assert.equal(sim.mantle, null, "invalid starting geometry cannot start a mantle");
++    assert.ok(frames.every(p => p.hp === 3 && p.stamina <= 100));
++    pressKeyForTest("KeyC");
++    enqueueCommand("dodge");
++    advance(sim, 1);
++    assert.equal(sim.player.state, "airborne", "explicit cancel remains available");
++    assert.equal(sim.player.y, initial.y);
++  });
++  test(`${id}: clear legal grip reaches the real cap with a clear continuous body path`, () => {
++    const { sim } = fixture(id, "legal-top");
++    assert.equal(playerBodyClear(sim.player, sim.solids, sim.heightFn), true);
++    pressKeyForTest("KeyW");
++    let before = { ...sim.player }, frames = 0;
++    while (sim.player.state !== "grounded" && frames++ < 100) {
++      advance(sim, 1);
++      assert.ok(Math.hypot(sim.player.x - before.x, sim.player.z - before.z) <= MANTLE_STEP_XZ + 1e-6);
++      assert.ok(Math.abs(sim.player.y - before.y) <= MANTLE_STEP_Y + 1e-6);
++      assert.equal(playerBodyClear(sim.player, sim.solids, sim.heightFn), true, `clear body at frame ${frames}`);
++      assert.equal(sim.player.hp, 3);
++      before = { ...sim.player };
++    }
++    releaseKeyForTest("KeyW");
++    assert.ok(frames > 2 && frames < 100, "a bounded multi-step transition completed");
++    const cap = sim.solids.find(s => s.id === `${id}-cap`)!;
++    assert.equal(sim.player.state, "grounded");
++    assert.ok(Math.abs(sim.player.y - cap.y - cap.h) < 1e-6);
++    assert.ok(Math.hypot(sim.player.x - cap.x, sim.player.z - cap.z) < cap.r! - PLAYER_RADIUS);
++    pressKeyForTest("KeyE");
++    advance(sim, 1);
++    assert.ok(sim.towersOn.has(id));
++  });
++  test(`${id}: a thin low ceiling blocks the mantle without head penetration`, () => {
++    const { sim, roof } = fixture(id, "roof");
++    const intersects = (p: typeof sim.player) => Math.abs(p.x - roof.x) < roof.w / 2 + PLAYER_RADIUS &&
++      Math.abs(p.z - roof.z) < roof.d / 2 + PLAYER_RADIUS && p.y < roof.y + roof.h && p.y + PLAYER_HEIGHT > roof.y;
++    assert.equal(intersects(sim.player), false, "initial body is clear");
++    pressKeyForTest("KeyW");
++    const frames = advance(sim, 80);
++    assert.ok(frames.every(p => !intersects(p)), "no frame intersects the thin ceiling");
++    assert.ok(frames.every(p => p.hp === 3));
++    assert.ok(!sim.towersOn.has(id));
++  });
++  for (const kind of ["rest-back", "rest-exhaust", "rest-control"]) {
++    test(`${id}: C dismount has priority for ${kind}`, () => {
++      const { sim } = fixture(id, kind), start = { ...sim.player };
++      if (kind === "rest-back") pressKeyForTest("KeyS");
++      pressKeyForTest("KeyC");
++      // Test transport mirrors production nonrepeat C; helper only holds C.
++      enqueueCommand("dodge");
++      const a = consume();
++      assert.equal(a.dodge, true);
++      sim.step(FIXED_DT, a);
++      assert.equal(sim.player.state, "airborne");
++      assert.equal(sim.player.vy, 0.6);
++      assert.ok(Math.hypot(sim.player.x - start.x, sim.player.z - start.z) <= 0.35 + 1e-6);
++      assert.equal(sim.player.hp, start.hp);
++      assert.equal(sim.player.stamina, start.stamina);
++    });
++  }
++}
++
++test("rime pit normal E then W completes onto the actual pad without collecting the shrine", t => {
++  resetInput();
++  const sim = new Sim(memoryStorage());
++  sim.freshRuntime(false);
++  // Controlled room-start fixture; original room solids and terrain remain.
++  sim.shrine = SHRINES.findIndex(q => q.id === "rime");
++  sim.rebuildSolids();
++  const o = shrineWorldOrigin(sim.shrine);
++  Object.assign(sim.player, { x: o.x, z: o.z + 18.870817271970786, y: sim.heightFn(o.x, o.z + 12), vx: 0, vy: 0, vz: 0 });
++  sim.player.yaw = sim.cam.yaw = Math.PI;
++  sim.setMove("grounded");
++  assert.ok(playerBodyClear(sim.player, sim.solids, sim.heightFn));
++  pressKeyForTest("KeyW");
++  pressKeyForTest("KeyE");
++  let n = 0, sawMantle = false;
++  for (; n < 480; n++) {
++    advance(sim, 1);
++    releaseKeyForTest("KeyE");
++    sawMantle ||= !!sim.mantle;
++    assert.ok(playerBodyClear(sim.player, sim.solids, sim.heightFn), `clear body at frame ${n}`);
++    assert.equal(sim.player.hp, 3);
++    if (sim.player.grounded && sim.player.z - o.z > 20.4 && sim.player.y > o.y - 1) break;
++  }
++  t.diagnostic(JSON.stringify({ n, final: sim.player }));
++  assert.ok(sawMantle && n < 480);
++  assert.equal(sim.mantle, null);
++  assert.equal(sim.orbs, 0);
++  assert.equal(sim.shrinesOn.size, 0);
++  assert.equal(sim.solids.find(q => q.id === "pit-n")!.standable, false);
++});
+diff --git a/aetherwake/src/game/mantle-path.test.ts b/aetherwake/src/game/mantle-path.test.ts
+new file mode 100644
+--- /dev/null
++++ b/aetherwake/src/game/mantle-path.test.ts
+@@ -0,0 +1,138 @@
++import assert from "node:assert/strict";
++import { test } from "node:test";
++import { advanceMantle, planMantle, planTerrainMantle } from "./mantle.ts";
++import { fittedTopPoint, outsideTopPoint, playerBodyClear, sweepPlayerBody } from "./physics.ts";
++import type { Solid } from "./physics.ts";
++import { FIXED_DT, MANTLE_REACH_XZ, MANTLE_REACH_Y, PLAYER_RADIUS } from "./params.ts";
++
++// Geometry unit fixtures deliberately use controlled solids/flat terrain;
++// original-world Sim/input and three real caps are covered in mantle.test.ts.
++const ground = () => 0;
++const top: Solid = { id: "top", kind: "box", x: 0, z: 0, y: 0, h: 2,
++  w: 3, d: 3, standable: true, climbable: true };
++const start = { x: 2, y: 1, z: 0 };
++
++test("outside path uses the positive outward ray exit for rotated boxes and cylinders", () => {
++  for (const solid of [
++    { ...top, yaw: 0.6 },
++    { id: "round", kind: "cyl" as const, x: 0, z: 0, y: 0, h: 2, r: 2, standable: true },
++  ]) {
++    for (const direction of [-1, 1]) {
++      const p = { x: direction * 0.8, y: 0, z: 0 };
++      const outside = outsideTopPoint(solid, p, { x: direction, z: 0 })!;
++      assert.ok(outside);
++      assert.ok((outside.x - p.x) * direction > 0, "never take the back/negative intersection");
++      assert.ok(playerBodyClear(outside, [solid], ground));
++      assert.equal(outside.y, p.y);
++    }
++  }
++});
++
++test("full-body sweep detects a thin overhang despite clear start/end poses", () => {
++  const roof: Solid = { id: "thin", kind: "box", x: 0, z: 0, y: 2.8,
++    h: 0.1, w: 3, d: 3, standable: true };
++  const from = { x: -3, y: 2, z: 0 }, to = { x: 3, y: 2, z: 0 };
++  assert.ok(playerBodyClear(from, [roof], ground));
++  assert.ok(playerBodyClear(to, [roof], ground));
++  assert.equal(sweepPlayerBody(from, to, [roof], ground), false);
++});
++
++test("a low ceiling rejects the whole plan before entering it", () => {
++  const roof: Solid = { id: "roof", kind: "box", x: 0, z: 0, y: 3,
++    h: 0.1, w: 3, d: 3, standable: true };
++  assert.ok(playerBodyClear(start, [top, roof], ground));
++  assert.equal(planMantle(start, [top], [top, roof], ground), null);
++});
++
++test("narrow top and target outside unchanged vertical/horizontal reach are rejected", () => {
++  assert.equal(fittedTopPoint({ ...top, w: PLAYER_RADIUS * 2 }, start), null);
++  assert.equal(planMantle(start, [{ ...top, h: start.y + MANTLE_REACH_Y + 0.01 }], [top], ground), null);
++  assert.equal(planMantle({ ...start, x: 1.5 + MANTLE_REACH_XZ + 0.01 }, [top], [top], ground), null);
++});
++
++test("rotated corner target fits both full-foot extents", () => {
++  const box = { ...top, yaw: Math.PI / 4 };
++  const target = fittedTopPoint(box, { x: 5, y: 2, z: 0 })!;
++  const c = Math.cos(box.yaw), sn = Math.sin(box.yaw);
++  const lx = target.x * c + target.z * sn, lz = -target.x * sn + target.z * c;
++  assert.ok(Math.abs(lx) + PLAYER_RADIUS < 1.5);
++  assert.ok(Math.abs(lz) + PLAYER_RADIUS < 1.5);
++  assert.equal(playerBodyClear(target, [box], ground), true);
++});
++
++test("too-high terrain is collision, not an automatically reachable standing target", () => {
++  const high = () => 8;
++  assert.equal(playerBodyClear(start, [], high), false);
++  assert.equal(planMantle(start, [top], [top], high), null);
++  assert.equal(planMantle(start, [top], [top], (x) => x < 1.7 ? 5 : 0), null);
++});
++
++test("removed or shifted target cancels at exactly the last checked pose", () => {
++  for (const shifted of [false, true]) {
++    const plan = planMantle(start, [top], [top], ground)!;
++    assert.ok(plan);
++    const first = advanceMantle(plan, start, FIXED_DT, [top], ground);
++    assert.equal(first.status, "moving");
++    const before = { ...first.position };
++    // Deliberate changing-geometry unit input; no Sim/world state is injected.
++    const result = advanceMantle(plan, before, FIXED_DT, shifted ? [{ ...top, x: 0.1 }] : [], ground);
++    assert.equal(result.status, "blocked");
++    assert.deepEqual(result.position, before);
++  }
++});
++
++test("a newly occupied next segment is blocked without an endpoint push", () => {
++  const plan = planMantle(start, [top], [top], ground)!;
++  assert.ok(plan);
++  const obstruction: Solid = { id: "new-overhang", kind: "box", x: 2, z: 0,
++    y: 2.85, h: 0.1, w: 0.8, d: 0.8, standable: true };
++  assert.ok(playerBodyClear(start, [top, obstruction], ground));
++  const result = advanceMantle(plan, start, FIXED_DT, [top, obstruction], ground);
++  assert.equal(result.status, "blocked");
++  assert.deepEqual(result.position, start);
++});
++
++const retaining: Solid = { id: "retaining", kind: "box", x: 0, z: 0, y: 0, h: 2,
++  w: 4, d: 0.4, standable: false, climbable: true };
++const terrainStart = { x: 0, y: 0.6, z: -1 };
++const terrace = (_x: number, z: number) => z >= 0.2 ? 2 : 0;
++
++test("a nonstandable retaining wall leads to actual supported terrain without changing the wall", () => {
++  const before = { ...retaining };
++  const plan = planTerrainMantle(terrainStart, retaining, { x: 0, z: -1 }, [retaining], terrace)!;
++  assert.ok(plan?.terrain);
++  assert.equal(plan.target.standable, false);
++  let p = terrainStart, done = false;
++  for (let n = 0; n < 80; n++) {
++    const result = advanceMantle(plan, p, FIXED_DT, [retaining], terrace);
++    assert.notEqual(result.status, "blocked");
++    assert.ok(playerBodyClear(result.position, [retaining], terrace));
++    p = result.position;
++    if (result.status === "done") { done = true; break; }
++  }
++  assert.ok(done);
++  assert.equal(p.y, terrace(p.x, p.z));
++  assert.ok(p.z - PLAYER_RADIUS > 0.2, "the whole foot is beyond the actual far wall edge");
++  assert.deepEqual(retaining, before);
++});
++
++test("terrain mantle rejects an unsupported foot edge, steep slope, excessive reach, and ceiling", () => {
++  const normal = { x: 0, z: -1 };
++  assert.equal(planTerrainMantle(terrainStart, retaining, normal, [retaining], (_x, z) => z >= 0.3 ? 2 : 0), null);
++  assert.equal(planTerrainMantle(terrainStart, retaining, normal, [retaining], (x, z) => z >= 0.2 ? 2 + x : 0), null);
++  assert.equal(planTerrainMantle(terrainStart, retaining, normal, [retaining], (_x, z) => z >= 0.2 ? 4 : 0), null);
++  assert.equal(planTerrainMantle({ ...terrainStart, z: -3 }, retaining, normal, [retaining], terrace), null);
++  const roof: Solid = { id: "roof", kind: "box", x: 0, z: 0, y: 2.4, h: 0.1, w: 4, d: 4 };
++  assert.ok(playerBodyClear(terrainStart, [retaining, roof], terrace));
++  assert.equal(planTerrainMantle(terrainStart, retaining, normal, [retaining, roof], terrace), null);
++});
++
++test("terrain support is rechecked each fixed step and cannot move beneath an active mantle", () => {
++  const plan = planTerrainMantle(terrainStart, retaining, { x: 0, z: -1 }, [retaining], terrace)!;
++  assert.ok(plan);
++  const first = advanceMantle(plan, terrainStart, FIXED_DT, [retaining], terrace);
++  const changed = (_x: number, z: number) => z >= 0.2 ? 2.1 : 0;
++  const result = advanceMantle(plan, first.position, FIXED_DT, [retaining], changed);
++  assert.equal(result.status, "blocked");
++  assert.deepEqual(result.position, first.position);
++});

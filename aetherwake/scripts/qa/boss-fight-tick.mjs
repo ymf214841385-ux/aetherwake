@@ -83,6 +83,8 @@ export function planFightTick(s, opts = {}) {
     bossHp: s.boss.hp,
     state: s.state,
     dodgeCd: s.dodgeCd,
+    stamina: s.stamina,
+    canDodge: s.canDodge,
     attackPhase: s.attackPhase,
     faceDot,
   });

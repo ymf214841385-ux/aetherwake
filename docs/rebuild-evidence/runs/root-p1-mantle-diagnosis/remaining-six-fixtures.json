@@ -1,0 +1,155 @@
+{
+  "scope": "Exact unchanged legacy test initializations; read-only geometry audit. Does not replace original red tests or full browser acceptance.",
+  "rows": [
+    {
+      "source": "climb-detach.test.ts:77",
+      "test": "tower mantle still works without dodge (summit path)",
+      "initial": {
+        "x": 14.25,
+        "y": 13.300000381469726,
+        "z": 68,
+        "state": "grounded",
+        "stamina": 100,
+        "hp": 3
+      },
+      "bodyClear": false,
+      "terrain": 12.552865176637745,
+      "feetBelowTerrain": 0,
+      "overlap": [
+        {
+          "id": "dawn-shaft",
+          "bottom": 11.100000381469727,
+          "top": 48.650000381469724,
+          "verticalOverlap": 1.7599999999999998
+        },
+        {
+          "id": "dawn-ledge-0",
+          "bottom": 12.990000381469725,
+          "top": 13.410000381469725,
+          "verticalOverlap": 0.10999999999999943
+        }
+      ]
+    },
+    {
+      "source": "routes.mainline.test.ts:364",
+      "test": "after S-to-ledge rest, W+E re-grabs instead of walking into the shaft",
+      "initial": {
+        "x": 10,
+        "y": 12.996656829755763,
+        "z": 72.8,
+        "state": "grounded",
+        "stamina": 100,
+        "hp": 3
+      },
+      "bodyClear": false,
+      "terrain": 12.796656829755763,
+      "feetBelowTerrain": 0,
+      "overlap": [
+        {
+          "id": "dawn-ledge-1",
+          "bottom": 12.990000381469725,
+          "top": 13.410000381469725,
+          "verticalOverlap": 0.41334355171396275
+        }
+      ]
+    },
+    {
+      "source": "routes.mainline.test.ts:540",
+      "test": "mere climb from the dry inner ring activates 镜湖塔",
+      "initial": {
+        "x": -103.65,
+        "y": 7.9500001907348645,
+        "z": 8,
+        "state": "grounded",
+        "stamina": 100,
+        "hp": 3
+      },
+      "bodyClear": false,
+      "terrain": 3.8089228034463756,
+      "feetBelowTerrain": 0,
+      "overlap": [
+        {
+          "id": "mere-shaft",
+          "bottom": 2.75,
+          "top": 45.35000019073486,
+          "verticalOverlap": 1.7600000000000007
+        },
+        {
+          "id": "mere-ledge-0",
+          "bottom": 9.690000190734864,
+          "top": 10.110000190734864,
+          "verticalOverlap": 0.02000000000000135
+        }
+      ]
+    },
+    {
+      "source": "sim.test.ts:169",
+      "test": "rest ledges let a full-stamina climb activate dawn tower",
+      "initial": {
+        "x": 14.7,
+        "y": 11.300000381469726,
+        "z": 68,
+        "state": "grounded",
+        "stamina": 100,
+        "hp": 3
+      },
+      "bodyClear": false,
+      "terrain": 13.050427735623058,
+      "feetBelowTerrain": 1.7504273541533326,
+      "overlap": [
+        {
+          "id": "dawn-ledge-0",
+          "bottom": 12.990000381469725,
+          "top": 13.410000381469725,
+          "verticalOverlap": 0.07000000000000028
+        }
+      ]
+    },
+    {
+      "source": "sim.test.ts:309",
+      "test": "after a ledge rest, holding forward re-grabs the shaft instead of walking off",
+      "initial": {
+        "x": 14.7,
+        "y": 11.300000381469726,
+        "z": 68,
+        "state": "grounded",
+        "stamina": 100,
+        "hp": 3
+      },
+      "bodyClear": false,
+      "terrain": 13.050427735623058,
+      "feetBelowTerrain": 1.7504273541533326,
+      "overlap": [
+        {
+          "id": "dawn-ledge-0",
+          "bottom": 12.990000381469725,
+          "top": 13.410000381469725,
+          "verticalOverlap": 0.07000000000000028
+        }
+      ]
+    },
+    {
+      "source": "sim.test.ts:365",
+      "test": "mere can be climbed from the waterline dock and activated",
+      "initial": {
+        "x": -103.3,
+        "y": 8.000000190734864,
+        "z": 8,
+        "state": "grounded",
+        "stamina": 100,
+        "hp": 3
+      },
+      "bodyClear": false,
+      "terrain": 3.1074156756454667,
+      "feetBelowTerrain": 0,
+      "overlap": [
+        {
+          "id": "mere-ledge-0",
+          "bottom": 9.690000190734864,
+          "top": 10.110000190734864,
+          "verticalOverlap": 0.07000000000000028
+        }
+      ]
+    }
+  ]
+}

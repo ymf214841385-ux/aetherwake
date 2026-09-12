@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-09-12T08:00:41.879427+00:00",
+  "runId": "root-e31-ground-follow",
+  "pid": 52589,
+  "exitCode": 0,
+  "sourceSaveSha256": "6591658e25bef67b972ceea66451e3422461732dac7439c31b3ac5bc712278e3",
+  "scope": "original-crown-save-to-ending-and-same-browser-reload",
+  "headed": true,
+  "elapsedMs": 68235,
+  "hpFinish": 2,
+  "bossHpFinish": -1.6000000000000039,
+  "modeFinish": "ending",
+  "reloadRestored": true,
+  "modeAfter": "playing",
+  "bossAliveAfter": false,
+  "amberFinish": 88,
+  "amberAfter": 88,
+  "defenseActions": 59,
+  "dodgeActions": 12,
+  "files": {
+    "exit-52589.json": "8c0e477ba74a4c57c1be6108c0c53d9d21eab08bc710da6923693020b2f67341",
+    "durable-play-routes-52589.log": "2f3b782624ae99800c59c4c56cbc6217725aa1372774fdea675d93042de65693",
+    "route-citadel-victory.png": "af823d55b274a02e64a3852aa2574d440736f39f84b488210ba9376ed29a644c",
+    "storage-ckpt-citadel-victory.json": "182f218c6c4a8462aa2362ea673aa8c973afc91ecb4e5e8a077429d4006cee22",
+    "browser-save-snapshot.json": "c0864923e543ff845ffd7f025f6be75ab8c82145b7271196251630a110bd6dc7",
+    "citadel-resume.json": "b02373b0d7910a62a8307646f643c7515c8d61d2a00a2c25a9260b1c79775bfe"
+  },
+  "limits": [
+    "Not a same-new-save full three-tower/four-shrine run",
+    "P1/P2 and current-build stability/device acceptance remain",
+    "No final GitHub publication yet"
+  ]
+}

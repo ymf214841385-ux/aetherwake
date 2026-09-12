@@ -1,0 +1,62 @@
+{
+  "status": "review-candidate-not-full-acceptance",
+  "frozenAt": "2026-09-12T08:47:42.729312+00:00",
+  "worktree": "/Users/ymf/Projects/aetherwake-rebuild-20260909/root-p1-mantle",
+  "baselineHead": "7decaa06068e1e3dc4ed3c9e833d0386f810b745",
+  "baselineManifest": "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/runs/root-p1-mantle-diagnosis/implementation-baseline-manifest.json",
+  "patch": "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/runs/root-p1-mantle-diagnosis/P1-mantle-candidate.patch",
+  "patchSha256": "c9cb9147c1739d5480f2e2d61b22fa3c1595cc085055ae4902f29cab3a7fd8d6",
+  "files": [
+    {
+      "path": "aetherwake/src/game/sim.ts",
+      "baselineSha256": "23a2339f48143e00e70389665f62967f57e8b7631702ce6d3f893daa5a97dd9a",
+      "candidateSha256": "12f1251b46eb462ca32bbc600a4a8506827f30ca745124c5938abd7c30141b59",
+      "bytes": 81961
+    },
+    {
+      "path": "aetherwake/src/game/physics.ts",
+      "baselineSha256": "9e5f5c6a78fade6d228c491d90dbf31b583f730c880847787282ddde9bbdd4fe",
+      "candidateSha256": "e079790a9044a8e00a20e732169b74f158797d8fe2f30523b0d8e6de3b0cf698",
+      "bytes": 12924
+    },
+    {
+      "path": "aetherwake/src/game/mantle.ts",
+      "baselineSha256": null,
+      "candidateSha256": "cd297173a00eaa3baa08724e11ba7099bd77f941ad315396f9de66f68525bebb",
+      "bytes": 6987
+    },
+    {
+      "path": "aetherwake/src/game/mantle.test.ts",
+      "baselineSha256": null,
+      "candidateSha256": "9b5391a4e59aff73cd5c5a18cfb515f788422e683a823f47f0b6ed761997a0d0",
+      "bytes": 15880
+    },
+    {
+      "path": "aetherwake/src/game/mantle-path.test.ts",
+      "baselineSha256": null,
+      "candidateSha256": "6804bc2a8e1b732be0833d65183b8cf505a581869c7f190507aa7655728d2da8",
+      "bytes": 6984
+    }
+  ],
+  "verification": {
+    "focused": "43 passed / 0 failed; final full game includes all 43",
+    "fullGame": "261 passed / 267 total; six original invalid-initialization fixtures remain failing",
+    "typecheck": "passed",
+    "diffCheck": "passed",
+    "browser": "not run",
+    "build": "not run",
+    "patchApplyCheck": "passed against separately copied exact overlay preimages",
+    "paramsAndExistingTests": "all unchanged versus overlay baseline"
+  },
+  "remaining": "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/runs/root-p1-mantle-diagnosis/remaining-six-fixtures.json",
+  "unchangedOverlayTests": {
+    "dodge-residual-velocity.test.ts": "3f4767709275134e23c40b5ff3deeb3b67bf27374fd27b2a1e698aa28c758620",
+    "ground-follow.test.ts": "c6a79dbc5a417e9772432da917ef96306ba3e26abf32b7b1abfb336823c560f9"
+  },
+  "noCommitOrPush": true,
+  "mainSourceUnmodifiedByThisAgent": true,
+  "baselineTrackedChanges": [
+    "aetherwake/src/game/physics.ts",
+    "aetherwake/src/game/sim.ts"
+  ]
+}

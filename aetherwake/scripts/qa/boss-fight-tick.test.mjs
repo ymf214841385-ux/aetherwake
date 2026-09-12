@@ -6,6 +6,7 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { planFightTick, applyFightAction } from "./boss-fight-tick.mjs";
 import { citadelOffArena } from "./citadel-steer.mjs";
+import { canAcceptDodge } from "./boss-fight-policy.mjs";
 
 function snap(over = {}) {
   return {
@@ -16,6 +17,9 @@ function snap(over = {}) {
     hp: 1,
     state: "grounded",
     dodgeCd: 0,
+    // Controlled eligibility fixture; old recorded cases omitted stamina.
+    // This is not a claim about their historical stamina measurement.
+    stamina: 108,
     attackPhase: "idle",
     camYaw: 0,
     bossDead: false,
@@ -32,6 +36,44 @@ function snap(over = {}) {
     },
   };
 }
+
+describe("planFightTick preserves readonly dodge eligibility", () => {
+  it("forwards a grounded caller's actual stamina so a legal dodge is available", () => {
+    const tick = planFightTick(snap({
+      state: "grounded", dodgeCd: 0, stamina: 108,
+      dist: 2.6, boss: { phase: "windup" },
+    }));
+    assert.equal(tick.kind, "fight");
+    assert.equal(tick.action, "dodge", JSON.stringify(tick));
+  });
+
+  it("keeps the strict stamina threshold: exactly 18 cannot dodge", () => {
+    const tick = planFightTick(snap({
+      state: "grounded", dodgeCd: 0, stamina: 18,
+      dist: 2.6, boss: { phase: "windup" },
+    }));
+    assert.equal(tick.kind, "fight");
+    assert.equal(tick.action, "back-off", JSON.stringify(tick));
+  });
+
+  it("does not turn an airborne caller with full stamina into a legal dodge", () => {
+    const tick = planFightTick(snap({
+      state: "airborne", dodgeCd: 0, stamina: 108,
+      dist: 2.6, boss: { phase: "windup" },
+    }));
+    assert.equal(tick.kind, "fight");
+    assert.notEqual(tick.action, "dodge", JSON.stringify(tick));
+  });
+
+  it("forwards an explicit canDodge false veto even when the basic gate is legal", () => {
+    const tick = planFightTick(snap({
+      state: "grounded", dodgeCd: 0, stamina: 108, canDodge: false,
+      dist: 2.6, boss: { phase: "windup" },
+    }));
+    assert.equal(tick.kind, "fight");
+    assert.equal(tick.action, "back-off", JSON.stringify(tick));
+  });
+});
 
 describe("planFightTick outer branches (Review19)", () => {
   it("054532 i=43: windup d=3.31 cd=0 must dodge (old run hold-attack stood still)", () => {
@@ -71,7 +113,7 @@ describe("planFightTick outer branches (Review19)", () => {
     assert.equal(tick.action, "approach", JSON.stringify(tick));
   });
 
-  it("hurt after a landed hit does not low-hp dodge away from finish", () => {
+  it("hurt at 2.56 m after a landed hit keeps swinging within the verified band", () => {
     const tick = planFightTick(
       snap({
         hp: 0.75,
@@ -80,7 +122,7 @@ describe("planFightTick outer branches (Review19)", () => {
       }),
     );
     assert.equal(tick.kind, "fight");
-    assert.equal(tick.action, "approach", JSON.stringify(tick));
+    assert.equal(tick.action, "swing", JSON.stringify(tick));
   });
 
   it("walk/approach phase does not stop the fight loop", () => {
@@ -154,7 +196,7 @@ describe("continuous trajectory via planFightTick + applyFightAction", () => {
     const swings = trail.filter((t) => t.action === "swing");
     assert.ok(swings.length >= 1, `must swing: ${JSON.stringify(trail)}`);
     assert.ok(
-      swings[0].dist <= 2.55 && swings[0].dist >= 1.85,
+      swings[0].dist <= 3.2 && swings[0].dist >= 1.85,
       `swing in melee: ${JSON.stringify(swings[0])}`,
     );
     const tele = trail.find((t) => t.phase === "windup");
@@ -195,25 +237,34 @@ describe("continuous trajectory via planFightTick + applyFightAction", () => {
     assert.ok(trail.some((t) => t.action === "dodge"), "telegraph must dodge");
   });
 
-  it("kill4 first-death timeline: no hold-attack into windup when cd ready", () => {
-    // Replay the real decision inputs from kill4 log (PID 55164).
+  it("kill4 recorded decisions preserve dodge eligibility; airborne C stays illegal", () => {
+    // Keep the recorded scalars from kill4 (PID 55164), with controlled stamina108.
+    // Correct the impossible airborne-C expectation, not the late state's survival.
+    // These scalar gate checks make no claim that holding or movement avoids a hit.
     const seq = [
       { label: "dec4", hp: 3.5, dist: 2.36, phase: "windup", cd: 0, state: "grounded", want: "dodge" },
       { label: "dec5", hp: 3.5, dist: 1.03, phase: "windup", cd: 0.42, state: "grounded", want: "back-off" },
-      { label: "dec10", hp: 2.25, dist: 2.6, phase: "windup", cd: 0, state: "airborne", want: "dodge" },
+      { label: "dec10", hp: 2.25, dist: 2.6, phase: "windup", cd: 0, state: "airborne" },
       { label: "dec20", hp: 1.0, dist: 0.65, phase: "windup", cd: 0.43, state: "airborne", want: "back-off-too-close" },
     ];
     for (const step of seq) {
-      const tick = planFightTick(
-        snap({
-          hp: step.hp,
-          dist: step.dist,
-          state: step.state,
-          dodgeCd: step.cd,
-          boss: { phase: step.phase, hp: 18.2, z: -4.8 },
-        }),
-      );
+      const s = snap({
+        hp: step.hp,
+        dist: step.dist,
+        state: step.state,
+        dodgeCd: step.cd,
+        boss: { phase: step.phase, hp: 18.2, z: -4.8 },
+      });
+      const tick = planFightTick(s);
       assert.equal(tick.kind, "fight", step.label);
+      if (step.label === "dec10") {
+        assert.equal(canAcceptDodge(s), false);
+        assert.notEqual(tick.action, "dodge", JSON.stringify(tick));
+        const grounded = { ...s, state: "grounded" };
+        assert.equal(canAcceptDodge(grounded), true);
+        assert.equal(planFightTick(grounded).action, "dodge");
+        continue;
+      }
       assert.equal(
         tick.action,
         step.want,

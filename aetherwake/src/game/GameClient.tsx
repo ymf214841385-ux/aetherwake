@@ -1,9 +1,9 @@
 import { Canvas } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
-import type { PointerEvent as PE } from "react";
 import * as THREE from "three";
 import { resumeAudio } from "./audio";
-import { bindInput, enqueueCommand, resetInput, touch } from "./input";
+import { bindInput } from "./input";
+import { bindTouchInput, bindTouchOrientation } from "./touch-input";
 import { CAM_FOV } from "./params";
 import { GameWorld } from "./Scene";
 import { sim } from "./sim";
@@ -19,16 +19,11 @@ export default function GameClient() {
     const unbind = bindInput(el);
     const vis = () => resumeAudio();
     document.addEventListener("visibilitychange", vis);
-    const orient = () => {
-      sim.portrait = window.innerHeight > window.innerWidth + 40;
-      sim.syncHud();
-    };
-    orient();
-    window.addEventListener("resize", orient);
+    const unbindOrientation = bindTouchOrientation(window, sim);
     return () => {
       unbind();
       document.removeEventListener("visibilitychange", vis);
-      window.removeEventListener("resize", orient);
+      unbindOrientation();
     };
   }, []);
 
@@ -82,126 +77,29 @@ export default function GameClient() {
 function TouchPad() {
   const stick = useRef<HTMLDivElement>(null);
   const look = useRef<HTMLDivElement>(null);
+  const buttons = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const fine = window.matchMedia("(pointer: fine)").matches && window.innerWidth > 800;
-    if (fine) return;
     const st = stick.current;
     const lk = look.current;
-    if (!st || !lk) return;
-
-    const pointers = new Map<number, { kind: "stick" | "look"; x: number; y: number }>();
-    const down = (kind: "stick" | "look") => (e: PointerEvent) => {
-      const t = e.target as HTMLElement;
-      if (t.closest("[data-touch-btn]")) return;
-      pointers.set(e.pointerId, { kind, x: e.clientX, y: e.clientY });
-      (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
-    };
-    const move = (e: PointerEvent) => {
-      const p = pointers.get(e.pointerId);
-      if (!p) return;
-      const dx = e.clientX - p.x;
-      const dy = e.clientY - p.y;
-      if (p.kind === "stick") {
-        const r = 54;
-        let x = dx / r;
-        let y = -dy / r;
-        const m = Math.hypot(x, y);
-        if (m > 1) {
-          x /= m;
-          y /= m;
-        }
-        touch.stickX = x;
-        touch.stickY = y;
-      } else {
-        touch.lookX += dx * 0.9;
-        touch.lookY += dy * 0.9;
-        p.x = e.clientX;
-        p.y = e.clientY;
-      }
-    };
-    const up = (e: PointerEvent) => {
-      const p = pointers.get(e.pointerId);
-      pointers.delete(e.pointerId);
-      if (p?.kind === "stick") {
-        touch.stickX = 0;
-        touch.stickY = 0;
-      }
-      try {
-        (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
-      } catch {
-        /* already released */
-      }
-    };
-    const lost = () => resetInput();
-    st.addEventListener("pointerdown", down("stick"));
-    lk.addEventListener("pointerdown", down("look"));
-    for (const el of [st, lk]) {
-      el.addEventListener("pointermove", move);
-      el.addEventListener("pointerup", up);
-      el.addEventListener("pointercancel", up);
-      el.addEventListener("lostpointercapture", lost);
-    }
-    return () => {
-      for (const el of [st, lk]) {
-        el.removeEventListener("pointermove", move);
-        el.removeEventListener("pointerup", up);
-        el.removeEventListener("pointercancel", up);
-        el.removeEventListener("lostpointercapture", lost);
-      }
-    };
+    const btns = buttons.current;
+    if (!st || !lk || !btns) return;
+    return bindTouchInput({ stick: st, look: lk, buttons: btns.querySelectorAll<HTMLElement>("[data-touch-action]") });
   }, []);
-
-  const press = (fn: () => void) => (e: PE) => {
-    e.stopPropagation();
-    fn();
-  };
 
   return (
     <>
       <div ref={stick} className="touch-zone touch-left" data-touch-kind="stick" aria-hidden />
       <div ref={look} className="touch-zone touch-right" data-touch-kind="look" aria-hidden />
-      <div className="touch-btns">
-        <button type="button" data-touch-btn className="tbtn" onPointerDown={press(() => enqueueCommand("interact"))}>
-          互动
-        </button>
-        <button type="button" data-touch-btn className="tbtn" onPointerDown={press(() => enqueueCommand("art"))}>
-          能力
-        </button>
-        <button type="button" data-touch-btn className="tbtn" onPointerDown={press(() => enqueueCommand("climb"))}>
-          攀爬
-        </button>
-        <button
-          type="button"
-          data-touch-btn
-          className="tbtn tbtn-main"
-          onPointerDown={press(() => {
-            touch.jump = true;
-            enqueueCommand("jump");
-          })}
-          onPointerUp={press(() => (touch.jump = false))}
-          onPointerCancel={press(() => (touch.jump = false))}
-        >
-          跳 / 翔
-        </button>
-        <button type="button" data-touch-btn className="tbtn tbtn-atk" onPointerDown={press(() => enqueueCommand("attack"))}>
-          攻击
-        </button>
-        <button
-          type="button"
-          data-touch-btn
-          className="tbtn"
-          onPointerDown={press(() => (touch.bow = true))}
-          onPointerUp={press(() => (touch.bow = false))}
-        >
-          弓
-        </button>
-        <button type="button" data-touch-btn className="tbtn" onPointerDown={press(() => enqueueCommand("dodge"))}>
-          闪避
-        </button>
-        <button type="button" data-touch-btn className="tbtn" onPointerDown={press(() => enqueueCommand("pause"))}>
-          暂停
-        </button>
+      <div ref={buttons} className="touch-btns">
+        <button type="button" data-touch-btn data-touch-action="interact" className="tbtn">互动</button>
+        <button type="button" data-touch-btn data-touch-action="art" className="tbtn">能力</button>
+        <button type="button" data-touch-btn data-touch-action="climb" className="tbtn">攀爬</button>
+        <button type="button" data-touch-btn data-touch-action="jump" className="tbtn tbtn-main">跳 / 翔</button>
+        <button type="button" data-touch-btn data-touch-action="attack" className="tbtn tbtn-atk">攻击</button>
+        <button type="button" data-touch-btn data-touch-action="bow" className="tbtn">弓</button>
+        <button type="button" data-touch-btn data-touch-action="dodge" className="tbtn">闪避</button>
+        <button type="button" data-touch-btn data-touch-action="pause" className="tbtn">暂停</button>
       </div>
     </>
   );

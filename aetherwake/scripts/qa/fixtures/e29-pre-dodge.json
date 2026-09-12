@@ -1,0 +1,1280 @@
+[
+  {
+    "mode": "playing",
+    "x": 7.527289408620424,
+    "y": 10.421074798303918,
+    "z": 3.317266968990401,
+    "yaw": -12.569478366568136,
+    "camYaw": -0.004407346410207,
+    "state": "grounded",
+    "stamina": 108,
+    "staminaMax": 108,
+    "climbing": false,
+    "grounded": true,
+    "vy": 0,
+    "coldAcc": 0,
+    "nearbyEnemies": [
+      {
+        "id": "b-2-0",
+        "kind": "bramble",
+        "x": -15.851687880787887,
+        "y": 5.086267603959935,
+        "z": 18.716013225641575,
+        "yaw": 0,
+        "hp": 3,
+        "alive": true,
+        "frozen": 0,
+        "timer": -51.433333333331696,
+        "hurt": 0,
+        "telegraph": 0,
+        "brain": {
+          "phase": "lost",
+          "t": 1.2
+        }
+      },
+      {
+        "id": "b-2-2",
+        "kind": "bramble",
+        "x": -16.84163255379412,
+        "y": 4.993322105990699,
+        "z": 12.131135358043386,
+        "yaw": 0,
+        "hp": 3,
+        "alive": true,
+        "frozen": 0,
+        "timer": -51.433333333331696,
+        "hurt": 0,
+        "telegraph": 0,
+        "brain": {
+          "phase": "lost",
+          "t": 1.2
+        }
+      },
+      {
+        "id": "boss",
+        "kind": "boss",
+        "x": 7.248406934557751,
+        "y": 10.766474182065167,
+        "z": 0.5031173575796344,
+        "yaw": -3.0561800768986505,
+        "hp": 20,
+        "alive": true,
+        "frozen": 0,
+        "timer": -51.433333333331696,
+        "hurt": 0,
+        "telegraph": 0.5666666666666662,
+        "brain": {
+          "phase": "windup",
+          "t": 0.5666666666666662
+        }
+      }
+    ],
+    "nearbyProjectiles": [],
+    "towers": [
+      "dawn",
+      "mere",
+      "crown"
+    ],
+    "shrines": [
+      "pull",
+      "rime",
+      "burst",
+      "still"
+    ],
+    "orbs": 4,
+    "ruinSolved": true,
+    "prompt": "",
+    "shrine": null,
+    "shrineHint": "",
+    "interactLock": 0,
+    "hp": 1,
+    "art": 4,
+    "bossDead": false,
+    "toast": "",
+    "worldKind": "overworld",
+    "spicy": 0,
+    "cold": false,
+    "meals": [],
+    "pointerLock": false,
+    "cracked": false,
+    "moveBlock": {
+      "x": 0,
+      "z": 0,
+      "frozen": 0,
+      "t": 0
+    },
+    "ices": 0,
+    "metals": [
+      {
+        "id": "metal-field-0",
+        "x": 34,
+        "z": 10,
+        "held": false
+      },
+      {
+        "id": "metal-field-1",
+        "x": 90,
+        "z": 20,
+        "held": false
+      }
+    ],
+    "bomb": null,
+    "attackPhase": "idle",
+    "attackT": 0,
+    "equippedId": "blade",
+    "arrows": 24,
+    "dodgeCd": 0,
+    "dodgeT": 0,
+    "canDodge": true,
+    "invuln": 0,
+    "sealOpen": true,
+    "boss": {
+      "hp": 20,
+      "max": 20,
+      "x": 7.248406934557751,
+      "y": 10.766474182065167,
+      "z": 0.5031173575796344,
+      "alive": true,
+      "phase": "windup",
+      "yaw": -3.0561800768986505
+    },
+    "bossMeleeBlocked": false,
+    "blockerId": null
+  },
+  {
+    "mode": "playing",
+    "x": 7.530254247290991,
+    "y": 10.533326010311466,
+    "z": 2.644567526387609,
+    "yaw": -12.570777959688732,
+    "camYaw": -0.004407346410207,
+    "state": "grounded",
+    "stamina": 104.23333333333339,
+    "staminaMax": 108,
+    "climbing": false,
+    "grounded": true,
+    "vy": 0,
+    "coldAcc": 0,
+    "nearbyEnemies": [
+      {
+        "id": "b-2-0",
+        "kind": "bramble",
+        "x": -15.597724813753638,
+        "y": 5.054433089785451,
+        "z": 18.200175209560374,
+        "yaw": 0,
+        "hp": 3,
+        "alive": true,
+        "frozen": 0,
+        "timer": -53.24999999999826,
+        "hurt": 0,
+        "telegraph": 0,
+        "brain": {
+          "phase": "lost",
+          "t": 1.2
+        }
+      },
+      {
+        "id": "b-2-2",
+        "kind": "bramble",
+        "x": -17.16703733932383,
+        "y": 4.973068682389974,
+        "z": 11.59373165281242,
+        "yaw": 0,
+        "hp": 3,
+        "alive": true,
+        "frozen": 0,
+        "timer": -53.24999999999826,
+        "hurt": 0,
+        "telegraph": 0,
+        "brain": {
+          "phase": "lost",
+          "t": 1.2
+        }
+      },
+      {
+        "id": "boss",
+        "kind": "boss",
+        "x": 7.248406934557751,
+        "y": 10.766474182065167,
+        "z": 0.5031173575796344,
+        "yaw": -3.0354394458344602,
+        "hp": 20,
+        "alive": true,
+        "frozen": 0,
+        "timer": -53.24999999999826,
+        "hurt": 0,
+        "telegraph": 0.5833333333333329,
+        "brain": {
+          "phase": "windup",
+          "t": 0.5833333333333329
+        }
+      }
+    ],
+    "nearbyProjectiles": [],
+    "towers": [
+      "dawn",
+      "mere",
+      "crown"
+    ],
+    "shrines": [
+      "pull",
+      "rime",
+      "burst",
+      "still"
+    ],
+    "orbs": 4,
+    "ruinSolved": true,
+    "prompt": "",
+    "shrine": null,
+    "shrineHint": "",
+    "interactLock": 0,
+    "hp": 1,
+    "art": 4,
+    "bossDead": false,
+    "toast": "",
+    "worldKind": "overworld",
+    "spicy": 0,
+    "cold": false,
+    "meals": [],
+    "pointerLock": false,
+    "cracked": false,
+    "moveBlock": {
+      "x": 0,
+      "z": 0,
+      "frozen": 0,
+      "t": 0
+    },
+    "ices": 0,
+    "metals": [
+      {
+        "id": "metal-field-0",
+        "x": 34,
+        "z": 10,
+        "held": false
+      },
+      {
+        "id": "metal-field-1",
+        "x": 90,
+        "z": 20,
+        "held": false
+      }
+    ],
+    "bomb": null,
+    "attackPhase": "idle",
+    "attackT": 0,
+    "equippedId": "blade",
+    "arrows": 24,
+    "dodgeCd": 0,
+    "dodgeT": -0.003333333333333254,
+    "canDodge": true,
+    "invuln": 0,
+    "sealOpen": true,
+    "boss": {
+      "hp": 20,
+      "max": 20,
+      "x": 7.248406934557751,
+      "y": 10.766474182065167,
+      "z": 0.5031173575796344,
+      "alive": true,
+      "phase": "windup",
+      "yaw": -3.0354394458344602
+    },
+    "bossMeleeBlocked": false,
+    "blockerId": null
+  },
+  {
+    "mode": "playing",
+    "x": 7.527216923609281,
+    "y": 10.418330456618856,
+    "z": 3.3337132691134514,
+    "yaw": -12.570777960769371,
+    "camYaw": -0.004407346410207,
+    "state": "grounded",
+    "stamina": 103.03333333333346,
+    "staminaMax": 108,
+    "climbing": false,
+    "grounded": true,
+    "vy": 0,
+    "coldAcc": 0,
+    "nearbyEnemies": [
+      {
+        "id": "b-2-0",
+        "kind": "bramble",
+        "x": -15.199112679334787,
+        "y": 5.068388914902924,
+        "z": 18.349595557586074,
+        "yaw": 0,
+        "hp": 3,
+        "alive": true,
+        "frozen": 0,
+        "timer": -54.983333333331494,
+        "hurt": 0,
+        "telegraph": 0,
+        "brain": {
+          "phase": "lost",
+          "t": 1.2
+        }
+      },
+      {
+        "id": "b-2-2",
+        "kind": "bramble",
+        "x": -16.6732682137236,
+        "y": 5.052416083302393,
+        "z": 11.404527117625834,
+        "yaw": 0,
+        "hp": 3,
+        "alive": true,
+        "frozen": 0,
+        "timer": -54.983333333331494,
+        "hurt": 0,
+        "telegraph": 0,
+        "brain": {
+          "phase": "lost",
+          "t": 1.2
+        }
+      },
+      {
+        "id": "boss",
+        "kind": "boss",
+        "x": 7.248406934557751,
+        "y": 10.766474182065167,
+        "z": 0.5031173575796344,
+        "yaw": -3.0458230147403,
+        "hp": 20,
+        "alive": true,
+        "frozen": 0,
+        "timer": -54.983333333331494,
+        "hurt": 0,
+        "telegraph": 0.6833333333333332,
+        "brain": {
+          "phase": "windup",
+          "t": 0.6833333333333332
+        }
+      }
+    ],
+    "nearbyProjectiles": [],
+    "towers": [
+      "dawn",
+      "mere",
+      "crown"
+    ],
+    "shrines": [
+      "pull",
+      "rime",
+      "burst",
+      "still"
+    ],
+    "orbs": 4,
+    "ruinSolved": true,
+    "prompt": "",
+    "shrine": null,
+    "shrineHint": "",
+    "interactLock": 0,
+    "hp": 1,
+    "art": 4,
+    "bossDead": false,
+    "toast": "",
+    "worldKind": "overworld",
+    "spicy": 0,
+    "cold": false,
+    "meals": [],
+    "pointerLock": false,
+    "cracked": false,
+    "moveBlock": {
+      "x": 0,
+      "z": 0,
+      "frozen": 0,
+      "t": 0
+    },
+    "ices": 0,
+    "metals": [
+      {
+        "id": "metal-field-0",
+        "x": 34,
+        "z": 10,
+        "held": false
+      },
+      {
+        "id": "metal-field-1",
+        "x": 90,
+        "z": 20,
+        "held": false
+      }
+    ],
+    "bomb": null,
+    "attackPhase": "idle",
+    "attackT": 0,
+    "equippedId": "blade",
+    "arrows": 24,
+    "dodgeCd": 0,
+    "dodgeT": -0.003333333333333254,
+    "canDodge": true,
+    "invuln": 0,
+    "sealOpen": true,
+    "boss": {
+      "hp": 20,
+      "max": 20,
+      "x": 7.248406934557751,
+      "y": 10.766474182065167,
+      "z": 0.5031173575796344,
+      "alive": true,
+      "phase": "windup",
+      "yaw": -3.0458230147403
+    },
+    "bossMeleeBlocked": false,
+    "blockerId": null
+  },
+  {
+    "mode": "playing",
+    "x": 7.529414550894867,
+    "y": 10.50153441938319,
+    "z": 2.835088279922711,
+    "yaw": -12.570777960769377,
+    "camYaw": -0.004407346410207,
+    "state": "grounded",
+    "stamina": 99.50000000000018,
+    "staminaMax": 108,
+    "climbing": false,
+    "grounded": true,
+    "vy": 0,
+    "coldAcc": 0,
+    "nearbyEnemies": [
+      {
+        "id": "b-2-0",
+        "kind": "bramble",
+        "x": -15.707298125994745,
+        "y": 5.100776362231224,
+        "z": 18.918924641103683,
+        "yaw": 0,
+        "hp": 3,
+        "alive": true,
+        "frozen": 0,
+        "timer": -56.89999999999805,
+        "hurt": 0,
+        "telegraph": 0,
+        "brain": {
+          "phase": "lost",
+          "t": 1.2
+        }
+      },
+      {
+        "id": "b-2-2",
+        "kind": "bramble",
+        "x": -16.545255408706737,
+        "y": 5.0250632895213645,
+        "z": 12.059286661996708,
+        "yaw": 0,
+        "hp": 3,
+        "alive": true,
+        "frozen": 0,
+        "timer": -56.89999999999805,
+        "hurt": 0,
+        "telegraph": 0,
+        "brain": {
+          "phase": "lost",
+          "t": 1.2
+        }
+      },
+      {
+        "id": "boss",
+        "kind": "boss",
+        "x": 7.248406934557751,
+        "y": 10.766474182065167,
+        "z": 0.5031173575796344,
+        "yaw": -3.0410170004935457,
+        "hp": 20,
+        "alive": true,
+        "frozen": 0,
+        "timer": -56.89999999999805,
+        "hurt": 0,
+        "telegraph": 0.5999999999999996,
+        "brain": {
+          "phase": "windup",
+          "t": 0.5999999999999996
+        }
+      }
+    ],
+    "nearbyProjectiles": [],
+    "towers": [
+      "dawn",
+      "mere",
+      "crown"
+    ],
+    "shrines": [
+      "pull",
+      "rime",
+      "burst",
+      "still"
+    ],
+    "orbs": 4,
+    "ruinSolved": true,
+    "prompt": "",
+    "shrine": null,
+    "shrineHint": "",
+    "interactLock": 0,
+    "hp": 1,
+    "art": 4,
+    "bossDead": false,
+    "toast": "",
+    "worldKind": "overworld",
+    "spicy": 0,
+    "cold": false,
+    "meals": [],
+    "pointerLock": false,
+    "cracked": false,
+    "moveBlock": {
+      "x": 0,
+      "z": 0,
+      "frozen": 0,
+      "t": 0
+    },
+    "ices": 0,
+    "metals": [
+      {
+        "id": "metal-field-0",
+        "x": 34,
+        "z": 10,
+        "held": false
+      },
+      {
+        "id": "metal-field-1",
+        "x": 90,
+        "z": 20,
+        "held": false
+      }
+    ],
+    "bomb": null,
+    "attackPhase": "idle",
+    "attackT": 0,
+    "equippedId": "blade",
+    "arrows": 24,
+    "dodgeCd": 0,
+    "dodgeT": -0.003333333333333254,
+    "canDodge": true,
+    "invuln": 0,
+    "sealOpen": true,
+    "boss": {
+      "hp": 20,
+      "max": 20,
+      "x": 7.248406934557751,
+      "y": 10.766474182065167,
+      "z": 0.5031173575796344,
+      "alive": true,
+      "phase": "windup",
+      "yaw": -3.0410170004935457
+    },
+    "bossMeleeBlocked": false,
+    "blockerId": null
+  },
+  {
+    "mode": "playing",
+    "x": 7.5264108977238315,
+    "y": 10.387813658707099,
+    "z": 3.5165944387517905,
+    "yaw": -12.570777960769377,
+    "camYaw": -0.004407346410207,
+    "state": "grounded",
+    "stamina": 97.83333333333358,
+    "staminaMax": 108,
+    "climbing": false,
+    "grounded": true,
+    "vy": 0,
+    "coldAcc": 0,
+    "nearbyEnemies": [
+      {
+        "id": "b-2-0",
+        "kind": "bramble",
+        "x": -15.84477397037467,
+        "y": 5.067278183178019,
+        "z": 18.448713800669406,
+        "yaw": 0,
+        "hp": 3,
+        "alive": true,
+        "frozen": 0,
+        "timer": -58.63333333333129,
+        "hurt": 0,
+        "telegraph": 0,
+        "brain": {
+          "phase": "lost",
+          "t": 1.2
+        }
+      },
+      {
+        "id": "b-2-2",
+        "kind": "bramble",
+        "x": -17.184469217041073,
+        "y": 4.960362379268981,
+        "z": 11.88035179950968,
+        "yaw": 0,
+        "hp": 3,
+        "alive": true,
+        "frozen": 0,
+        "timer": -58.63333333333129,
+        "hurt": 0,
+        "telegraph": 0,
+        "brain": {
+          "phase": "lost",
+          "t": 1.2
+        }
+      },
+      {
+        "id": "boss",
+        "kind": "boss",
+        "x": 7.248406934557751,
+        "y": 10.766474182065167,
+        "z": 0.5031173575796344,
+        "yaw": -3.049599488358384,
+        "hp": 20,
+        "alive": true,
+        "frozen": 0,
+        "timer": -58.63333333333129,
+        "hurt": 0,
+        "telegraph": 0.7,
+        "brain": {
+          "phase": "windup",
+          "t": 0.7
+        }
+      }
+    ],
+    "nearbyProjectiles": [],
+    "towers": [
+      "dawn",
+      "mere",
+      "crown"
+    ],
+    "shrines": [
+      "pull",
+      "rime",
+      "burst",
+      "still"
+    ],
+    "orbs": 4,
+    "ruinSolved": true,
+    "prompt": "",
+    "shrine": null,
+    "shrineHint": "",
+    "interactLock": 0,
+    "hp": 1,
+    "art": 4,
+    "bossDead": false,
+    "toast": "",
+    "worldKind": "overworld",
+    "spicy": 0,
+    "cold": false,
+    "meals": [],
+    "pointerLock": false,
+    "cracked": false,
+    "moveBlock": {
+      "x": 0,
+      "z": 0,
+      "frozen": 0,
+      "t": 0
+    },
+    "ices": 0,
+    "metals": [
+      {
+        "id": "metal-field-0",
+        "x": 34,
+        "z": 10,
+        "held": false
+      },
+      {
+        "id": "metal-field-1",
+        "x": 90,
+        "z": 20,
+        "held": false
+      }
+    ],
+    "bomb": null,
+    "attackPhase": "idle",
+    "attackT": 0,
+    "equippedId": "blade",
+    "arrows": 24,
+    "dodgeCd": 0,
+    "dodgeT": -0.003333333333333254,
+    "canDodge": true,
+    "invuln": 0,
+    "sealOpen": true,
+    "boss": {
+      "hp": 20,
+      "max": 20,
+      "x": 7.248406934557751,
+      "y": 10.766474182065167,
+      "z": 0.5031173575796344,
+      "alive": true,
+      "phase": "windup",
+      "yaw": -3.049599488358384
+    },
+    "bossMeleeBlocked": false,
+    "blockerId": null
+  },
+  {
+    "mode": "playing",
+    "x": 7.524814599512485,
+    "y": 10.306996072201951,
+    "z": 3.878782414664232,
+    "yaw": -12.570777960769377,
+    "camYaw": -0.004407346410207,
+    "state": "grounded",
+    "stamina": 90.56666666666696,
+    "staminaMax": 108,
+    "climbing": false,
+    "grounded": true,
+    "vy": 0,
+    "coldAcc": 0,
+    "nearbyEnemies": [
+      {
+        "id": "b-2-0",
+        "kind": "bramble",
+        "x": -15.296346244392376,
+        "y": 5.060001490897216,
+        "z": 18.23530235829395,
+        "yaw": 0,
+        "hp": 3,
+        "alive": true,
+        "frozen": 0,
+        "timer": -60.48333333333118,
+        "hurt": 0,
+        "telegraph": 0,
+        "brain": {
+          "phase": "lost",
+          "t": 1.2
+        }
+      },
+      {
+        "id": "b-2-2",
+        "kind": "bramble",
+        "x": -16.963147199241114,
+        "y": 5.008646747549287,
+        "z": 11.424581868774466,
+        "yaw": 0,
+        "hp": 3,
+        "alive": true,
+        "frozen": 0,
+        "timer": -60.48333333333118,
+        "hurt": 0,
+        "telegraph": 0,
+        "brain": {
+          "phase": "lost",
+          "t": 1.2
+        }
+      },
+      {
+        "id": "boss",
+        "kind": "boss",
+        "x": 7.252673326146003,
+        "y": 10.76482987410014,
+        "z": 0.5562797723786268,
+        "yaw": -3.0598665748868332,
+        "hp": 20,
+        "alive": true,
+        "frozen": 0,
+        "timer": -60.48333333333118,
+        "hurt": 0,
+        "telegraph": 0.7,
+        "brain": {
+          "phase": "windup",
+          "t": 0.7
+        }
+      }
+    ],
+    "nearbyProjectiles": [],
+    "towers": [
+      "dawn",
+      "mere",
+      "crown"
+    ],
+    "shrines": [
+      "pull",
+      "rime",
+      "burst",
+      "still"
+    ],
+    "orbs": 4,
+    "ruinSolved": true,
+    "prompt": "",
+    "shrine": null,
+    "shrineHint": "",
+    "interactLock": 0,
+    "hp": 1,
+    "art": 4,
+    "bossDead": false,
+    "toast": "",
+    "worldKind": "overworld",
+    "spicy": 0,
+    "cold": false,
+    "meals": [],
+    "pointerLock": false,
+    "cracked": false,
+    "moveBlock": {
+      "x": 0,
+      "z": 0,
+      "frozen": 0,
+      "t": 0
+    },
+    "ices": 0,
+    "metals": [
+      {
+        "id": "metal-field-0",
+        "x": 34,
+        "z": 10,
+        "held": false
+      },
+      {
+        "id": "metal-field-1",
+        "x": 90,
+        "z": 20,
+        "held": false
+      }
+    ],
+    "bomb": null,
+    "attackPhase": "idle",
+    "attackT": 0,
+    "equippedId": "blade",
+    "arrows": 24,
+    "dodgeCd": 0,
+    "dodgeT": -0.003333333333333254,
+    "canDodge": true,
+    "invuln": 0,
+    "sealOpen": true,
+    "boss": {
+      "hp": 20,
+      "max": 20,
+      "x": 7.252673326146003,
+      "y": 10.76482987410014,
+      "z": 0.5562797723786268,
+      "alive": true,
+      "phase": "windup",
+      "yaw": -3.0598665748868332
+    },
+    "bossMeleeBlocked": false,
+    "blockerId": null
+  },
+  {
+    "mode": "playing",
+    "x": 7.524892477585424,
+    "y": 10.311350549241075,
+    "z": 3.861112469658859,
+    "yaw": -12.570777960769377,
+    "camYaw": -0.004407346410207,
+    "state": "grounded",
+    "stamina": 75.83333333333364,
+    "staminaMax": 108,
+    "climbing": false,
+    "grounded": true,
+    "vy": 0,
+    "coldAcc": 0,
+    "nearbyEnemies": [
+      {
+        "id": "b-2-0",
+        "kind": "bramble",
+        "x": -15.404011484165283,
+        "y": 5.0960801015982105,
+        "z": 18.80204070640162,
+        "yaw": 0,
+        "hp": 3,
+        "alive": true,
+        "frozen": 0,
+        "timer": -62.31666666666441,
+        "hurt": 0,
+        "telegraph": 0,
+        "brain": {
+          "phase": "lost",
+          "t": 1.2
+        }
+      },
+      {
+        "id": "b-2-2",
+        "kind": "bramble",
+        "x": -16.42932865852432,
+        "y": 5.07184450400619,
+        "z": 11.708727848257787,
+        "yaw": 0,
+        "hp": 3,
+        "alive": true,
+        "frozen": 0,
+        "timer": -62.31666666666441,
+        "hurt": 0,
+        "telegraph": 0,
+        "brain": {
+          "phase": "lost",
+          "t": 1.2
+        }
+      },
+      {
+        "id": "boss",
+        "kind": "boss",
+        "x": 7.252673326146003,
+        "y": 10.76482987410014,
+        "z": 0.5562797723786268,
+        "yaw": -3.0594081626475607,
+        "hp": 20,
+        "alive": true,
+        "frozen": 0,
+        "timer": -62.31666666666441,
+        "hurt": 0,
+        "telegraph": 0.7,
+        "brain": {
+          "phase": "windup",
+          "t": 0.7
+        }
+      }
+    ],
+    "nearbyProjectiles": [],
+    "towers": [
+      "dawn",
+      "mere",
+      "crown"
+    ],
+    "shrines": [
+      "pull",
+      "rime",
+      "burst",
+      "still"
+    ],
+    "orbs": 4,
+    "ruinSolved": true,
+    "prompt": "",
+    "shrine": null,
+    "shrineHint": "",
+    "interactLock": 0,
+    "hp": 1,
+    "art": 4,
+    "bossDead": false,
+    "toast": "",
+    "worldKind": "overworld",
+    "spicy": 0,
+    "cold": false,
+    "meals": [],
+    "pointerLock": false,
+    "cracked": false,
+    "moveBlock": {
+      "x": 0,
+      "z": 0,
+      "frozen": 0,
+      "t": 0
+    },
+    "ices": 0,
+    "metals": [
+      {
+        "id": "metal-field-0",
+        "x": 34,
+        "z": 10,
+        "held": false
+      },
+      {
+        "id": "metal-field-1",
+        "x": 90,
+        "z": 20,
+        "held": false
+      }
+    ],
+    "bomb": null,
+    "attackPhase": "idle",
+    "attackT": 0,
+    "equippedId": "blade",
+    "arrows": 24,
+    "dodgeCd": 0,
+    "dodgeT": -0.003333333333333254,
+    "canDodge": true,
+    "invuln": 0,
+    "sealOpen": true,
+    "boss": {
+      "hp": 20,
+      "max": 20,
+      "x": 7.252673326146003,
+      "y": 10.76482987410014,
+      "z": 0.5562797723786268,
+      "alive": true,
+      "phase": "windup",
+      "yaw": -3.0594081626475607
+    },
+    "bossMeleeBlocked": false,
+    "blockerId": null
+  },
+  {
+    "mode": "playing",
+    "x": 7.524779310945961,
+    "y": 10.305022946174985,
+    "z": 3.8867891231786826,
+    "yaw": -12.570777960769377,
+    "camYaw": -0.004407346410207,
+    "state": "grounded",
+    "stamina": 61.10000000000032,
+    "staminaMax": 108,
+    "climbing": false,
+    "grounded": true,
+    "vy": 0,
+    "coldAcc": 0,
+    "nearbyEnemies": [
+      {
+        "id": "b-2-0",
+        "kind": "bramble",
+        "x": -15.858189595609872,
+        "y": 5.082858008122434,
+        "z": 18.667963506015038,
+        "yaw": 0,
+        "hp": 3,
+        "alive": true,
+        "frozen": 0,
+        "timer": -64.16666666666431,
+        "hurt": 0,
+        "telegraph": 0,
+        "brain": {
+          "phase": "lost",
+          "t": 1.2
+        }
+      },
+      {
+        "id": "b-2-2",
+        "kind": "bramble",
+        "x": -16.91607870637183,
+        "y": 4.989418225454475,
+        "z": 12.11172619901517,
+        "yaw": 0,
+        "hp": 3,
+        "alive": true,
+        "frozen": 0,
+        "timer": -64.16666666666431,
+        "hurt": 0,
+        "telegraph": 0,
+        "brain": {
+          "phase": "lost",
+          "t": 1.2
+        }
+      },
+      {
+        "id": "boss",
+        "kind": "boss",
+        "x": 7.256915841256398,
+        "y": 10.763184909832402,
+        "z": 0.6094440979173047,
+        "yaw": -3.060042070500876,
+        "hp": 20,
+        "alive": true,
+        "frozen": 0,
+        "timer": -64.16666666666431,
+        "hurt": 0,
+        "telegraph": 0.7,
+        "brain": {
+          "phase": "windup",
+          "t": 0.7
+        }
+      }
+    ],
+    "nearbyProjectiles": [],
+    "towers": [
+      "dawn",
+      "mere",
+      "crown"
+    ],
+    "shrines": [
+      "pull",
+      "rime",
+      "burst",
+      "still"
+    ],
+    "orbs": 4,
+    "ruinSolved": true,
+    "prompt": "",
+    "shrine": null,
+    "shrineHint": "",
+    "interactLock": 0,
+    "hp": 1,
+    "art": 4,
+    "bossDead": false,
+    "toast": "",
+    "worldKind": "overworld",
+    "spicy": 0,
+    "cold": false,
+    "meals": [],
+    "pointerLock": false,
+    "cracked": false,
+    "moveBlock": {
+      "x": 0,
+      "z": 0,
+      "frozen": 0,
+      "t": 0
+    },
+    "ices": 0,
+    "metals": [
+      {
+        "id": "metal-field-0",
+        "x": 34,
+        "z": 10,
+        "held": false
+      },
+      {
+        "id": "metal-field-1",
+        "x": 90,
+        "z": 20,
+        "held": false
+      }
+    ],
+    "bomb": null,
+    "attackPhase": "idle",
+    "attackT": 0,
+    "equippedId": "blade",
+    "arrows": 24,
+    "dodgeCd": 0,
+    "dodgeT": -0.003333333333333254,
+    "canDodge": true,
+    "invuln": 0,
+    "sealOpen": true,
+    "boss": {
+      "hp": 20,
+      "max": 20,
+      "x": 7.256915841256398,
+      "y": 10.763184909832402,
+      "z": 0.6094440979173047,
+      "alive": true,
+      "phase": "windup",
+      "yaw": -3.060042070500876
+    },
+    "bossMeleeBlocked": false,
+    "blockerId": null
+  },
+  {
+    "mode": "playing",
+    "x": 7.524666144306498,
+    "y": 10.298695343108896,
+    "z": 3.9124657766985056,
+    "yaw": -12.570777960769377,
+    "camYaw": -0.004407346410207,
+    "state": "grounded",
+    "stamina": 46.366666666667,
+    "staminaMax": 108,
+    "climbing": false,
+    "grounded": true,
+    "vy": 0,
+    "coldAcc": 0,
+    "nearbyEnemies": [
+      {
+        "id": "b-2-0",
+        "kind": "bramble",
+        "x": -15.518877544676807,
+        "y": 5.053564617881902,
+        "z": 18.20720849084117,
+        "yaw": 0,
+        "hp": 3,
+        "alive": true,
+        "frozen": 0,
+        "timer": -66.01666666666421,
+        "hurt": 0,
+        "telegraph": 0,
+        "brain": {
+          "phase": "lost",
+          "t": 1.2
+        }
+      },
+      {
+        "id": "b-2-2",
+        "kind": "bramble",
+        "x": -17.131286691641822,
+        "y": 4.979580374236857,
+        "z": 11.555869892013853,
+        "yaw": 0,
+        "hp": 3,
+        "alive": true,
+        "frozen": 0,
+        "timer": -66.01666666666421,
+        "hurt": 0,
+        "telegraph": 0,
+        "brain": {
+          "phase": "lost",
+          "t": 1.2
+        }
+      },
+      {
+        "id": "boss",
+        "kind": "boss",
+        "x": 7.256915841256398,
+        "y": 10.763184909832402,
+        "z": 0.6094440979173047,
+        "yaw": -3.0625973783200875,
+        "hp": 20,
+        "alive": true,
+        "frozen": 0,
+        "timer": -66.01666666666421,
+        "hurt": 0,
+        "telegraph": 0.6833333333333332,
+        "brain": {
+          "phase": "windup",
+          "t": 0.6833333333333332
+        }
+      }
+    ],
+    "nearbyProjectiles": [],
+    "towers": [
+      "dawn",
+      "mere",
+      "crown"
+    ],
+    "shrines": [
+      "pull",
+      "rime",
+      "burst",
+      "still"
+    ],
+    "orbs": 4,
+    "ruinSolved": true,
+    "prompt": "",
+    "shrine": null,
+    "shrineHint": "",
+    "interactLock": 0,
+    "hp": 1,
+    "art": 4,
+    "bossDead": false,
+    "toast": "",
+    "worldKind": "overworld",
+    "spicy": 0,
+    "cold": false,
+    "meals": [],
+    "pointerLock": false,
+    "cracked": false,
+    "moveBlock": {
+      "x": 0,
+      "z": 0,
+      "frozen": 0,
+      "t": 0
+    },
+    "ices": 0,
+    "metals": [
+      {
+        "id": "metal-field-0",
+        "x": 34,
+        "z": 10,
+        "held": false
+      },
+      {
+        "id": "metal-field-1",
+        "x": 90,
+        "z": 20,
+        "held": false
+      }
+    ],
+    "bomb": null,
+    "attackPhase": "idle",
+    "attackT": 0,
+    "equippedId": "blade",
+    "arrows": 24,
+    "dodgeCd": 0,
+    "dodgeT": -0.003333333333333254,
+    "canDodge": true,
+    "invuln": 0,
+    "sealOpen": true,
+    "boss": {
+      "hp": 20,
+      "max": 20,
+      "x": 7.256915841256398,
+      "y": 10.763184909832402,
+      "z": 0.6094440979173047,
+      "alive": true,
+      "phase": "windup",
+      "yaw": -3.0625973783200875
+    },
+    "bossMeleeBlocked": false,
+    "blockerId": null
+  }
+]

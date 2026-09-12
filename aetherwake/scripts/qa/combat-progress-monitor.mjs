@@ -38,11 +38,12 @@ export function classifyFightSnapshot(s) {
 
 /**
  * Create monitor. onEvent({type,...}) is append-only evidence.
- * @param {{now:()=>number, onEvent?:(e:object)=>void}} deps
+ * @param {{now:()=>number, onEvent?:(e:object)=>void, stopFirstHpDrop?:boolean}} deps
  */
-export function createCombatProgressMonitor({ now, onEvent }) {
+export function createCombatProgressMonitor({ now, onEvent, stopFirstHpDrop = false }) {
   if (typeof now !== "function") throw new Error("monitor requires now()");
   const ring = [];
+  let lastPlayer = null;
   let lastValid = null;
   let combatMs = 0;
   let navMs = 0;
@@ -97,6 +98,14 @@ export function createCombatProgressMonitor({ now, onEvent }) {
         x: s?.x ?? null,
         y: s?.y ?? null,
         z: s?.z ?? null,
+        vy: s?.vy ?? null,
+        grounded: s?.grounded ?? null,
+        cold: s?.cold ?? null,
+        spicy: s?.spicy ?? null,
+        coldAcc: s?.coldAcc ?? null,
+        invuln: s?.invuln ?? null,
+        nearbyEnemies: structuredClone(s?.nearbyEnemies ?? []),
+        nearbyProjectiles: structuredClone(s?.nearbyProjectiles ?? []),
         stamina: s?.stamina ?? null,
         dodgeCd: s?.dodgeCd ?? null,
         dodgeT: s?.dodgeT ?? null,
@@ -108,8 +117,29 @@ export function createCombatProgressMonitor({ now, onEvent }) {
         bossMeleeBlocked: s?.bossMeleeBlocked ?? null,
         blockerId: s?.blockerId ?? null,
         lastInput: meta.input ?? null,
+        activeNavigation: structuredClone(meta.navigation ?? null),
+        lastNavigationDecisionAt: meta.navigation?.lastDecisionAt ?? null,
+        navigationDistance: meta.navigation && s
+          ? Math.hypot(meta.navigation.tx - s.x, meta.navigation.tz - s.z) : null,
       };
       pushRing(entry);
+
+      // Opt-in diagnostic wins even when the first observed drop is lethal.
+      // Invalid readings neither establish nor replace the finite baseline.
+      if (stopFirstHpDrop && Number.isFinite(s?.hp)) {
+        if (lastPlayer && s.hp < lastPlayer.snap.hp) {
+          latched = {
+            reason: "player-hp-drop", source: "unknown", t,
+            from: lastPlayer.snap.hp, to: s.hp,
+            pre: lastPlayer, post: { t, snap: structuredClone(s) },
+            snap: structuredClone(s), ring: structuredClone(ring),
+          };
+          stopped = true;
+          emit({ type: "player-hp-drop", ...latched });
+          return { stopped: true, latched, phase };
+        }
+        lastPlayer = { t, snap: structuredClone(s) };
+      }
 
       if (phase === "dead") {
         latched = { reason: "death", t, snap: s };
@@ -181,7 +211,7 @@ export async function runCombatSampleLoop(deps) {
       break;
     }
     if (shouldStop() || monitor.stopped) break;
-    monitor.observe(s, { input: inputRef?.current ?? null });
+    monitor.observe(s, { input: inputRef?.current ?? null, navigation: deps.navigationSnapshot?.() ?? null });
     samples += 1;
     if (monitor.stopped) break;
     const elapsed = now() - t0;
@@ -360,9 +390,14 @@ export function createFightOrchestrator(deps) {
   const abort = createAbortLatch();
   const monitor = createCombatProgressMonitor({
     now,
+    stopFirstHpDrop: deps.stopFirstHpDrop === true,
     onEvent: (ev) => {
       // E1.1: death / no-damage / read-error all drive shared stop (first reason).
-      if (ev.type === "latch-death") abort.abort("death");
+      if (ev.type === "player-hp-drop") {
+        abort.abort("player-hp-drop");
+        deps.onFirstHpDrop?.(ev);
+      }
+      else if (ev.type === "latch-death") abort.abort("death");
       else if (ev.type === "latch-combat-no-damage") abort.abort("combat-no-damage");
       else if (ev.type === "monitor-stop" && String(ev.reason || "").startsWith("read-error:")) {
         abort.abort(ev.reason);
@@ -375,7 +410,13 @@ export function createFightOrchestrator(deps) {
     },
   });
   const lastInput = { current: null };
-  const scope = { abort, markInput(action) { lastInput.current = { action, t: now() }; } };
+  const scope = { abort, now, navigationEvidence: { active: null, completed: [] },
+    markInput(action) { lastInput.current = { action, t: now() }; } };
+  if (deps.stopFirstHpDrop === true) {
+    scope.observeSnapshot = (s) => monitor.observe(s, {
+      input: lastInput.current, navigation: scope.navigationEvidence.active,
+    });
+  }
   const scopedHold = (keys, ms) => hold(keys, ms, scope);
   const scopedGoTo = async (x, z, ms, opts) => {
     checkFightScope(scope);
@@ -401,6 +442,7 @@ export function createFightOrchestrator(deps) {
       wait,
       shouldStop: () => abort.aborted || monitor.stopped,
       inputRef: lastInput,
+      navigationSnapshot: () => scope.navigationEvidence.active,
     });
     return samplePromise;
   }
@@ -419,6 +461,7 @@ export function createFightOrchestrator(deps) {
   return {
     abort,
     scope,
+    getNavigationEvidence: () => structuredClone(scope.navigationEvidence),
     monitor,
     lastInput,
     hold: scopedHold,

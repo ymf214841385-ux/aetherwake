@@ -5,9 +5,15 @@
  * Pure function: no game writes. Returns the next harness action.
  */
 
-/** Melee band: sword reach ~2.15–2.75 with boss bonus; stay out of body (d<1.8). */
+/** Production meleeHit gives the sword 3.45m against Boss (2.85 + 0.6).
+ * Keep 0.25m movement margin and stay out of the body. The old 2.55m gate
+ * spent the entire recover window approaching, then dodged without swinging.
+ */
 export const BOSS_MELEE_MIN = 1.85;
-export const BOSS_MELEE_MAX = 2.55;
+export const BOSS_MELEE_MAX = 3.2;
+// Production Boss strike reaches 3.8m. Keep 0.5m for residual motion and the
+// next observation; stopping at 3.55m left the controller inside that strike.
+export const BOSS_RETREAT_DISTANCE = 4.3;
 export const BOSS_TELEGRAPH = new Set(["windup", "strike"]);
 /** Low player HP threshold that used to force back-off even in melee. */
 export const LOW_HP = 0.85;
@@ -54,7 +60,7 @@ export function bossFightDecision(s) {
   }
   // Telegraph but cannot dodge (cd / airborne / stamina): normal movement only.
   if (telegraph) {
-    if (s.state === "grounded" && s.dist < BOSS_MELEE_MAX + 1.0) {
+    if (s.state === "grounded" && s.dist < BOSS_RETREAT_DISTANCE) {
       return { action: "back-off", reason: `telegraph-cd=${s.dodgeCd} retreat` };
     }
     if (s.dist < BOSS_MELEE_MIN) {

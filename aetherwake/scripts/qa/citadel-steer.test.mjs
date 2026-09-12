@@ -8,7 +8,41 @@ import {
   citadelReturnWaypoints,
   insideKeepVolume,
   CROWN_TO_CITADEL,
+  citadelDodgeAim,
 } from "../../scripts/qa/citadel-steer.mjs";
+import { keysToward } from "./route-navigation.mjs";
+
+it("E31 fourth counterattack retreats through the real gate instead of strafing into its wing", () => {
+  // Actual continuous Sim trajectory from the E29 fourth recorded start.
+  const p = { x: 7.543178974659702, z: -0.28795523886968216, camYaw: -0.004407346410207 };
+  const boss = { x: 7.262951130625215, z: -2.796850591713321 };
+  const aim = citadelDodgeAim(p, boss);
+  assert.equal(aim.reason, "gate-corridor-away");
+  assert.ok(aim.z > 2.7);
+  assert.ok(Math.hypot(aim.x - boss.x, aim.z - boss.z) > 5.5);
+  assert.deepEqual(keysToward(p, aim.x, aim.z, false), ["KeyS"]);
+});
+
+it("gate escape cannot cross either solid wing or widen unrelated navigation", () => {
+  // Real gate opening spans x=3.7..8.3; the player's radius is 0.32m.
+  for (const x of [3.7, 4, 8, 8.3]) {
+    const aim = citadelDodgeAim({ x, z: -1 }, { x, z: -3 });
+    assert.notEqual(aim.reason, "gate-corridor-away", `wing edge x=${x}`);
+  }
+  // Start fits, but the outward endpoint crosses the east wing.
+  assert.notEqual(citadelDodgeAim({ x: 7.8, z: -1 }, { x: 6.8, z: -3 }).reason,
+    "gate-corridor-away");
+});
+
+it("rejects a clear ideal gate target when the actual digital key direction clips a wing", () => {
+  // Real Sim one-time boundary fixtures hit each wing on frame three.
+  for (const [x, camYaw] of [[7.89, Math.PI / 16], [4.11, 3 * Math.PI / 16]]) {
+    const p = { x, z: -1, camYaw }, boss = { x, z: -3.5 };
+    assert.notEqual(citadelDodgeAim(p, boss).reason, "gate-corridor-away");
+    // A straight digital direction at the same position passes the real gap.
+    assert.equal(citadelDodgeAim({ ...p, camYaw: 0 }, boss).reason, "gate-corridor-away");
+  }
+});
 
 describe("citadel keep-volume classification", () => {
   it("CROWN_TO_CITADEL matches 95073 play-routes fightBoss legs", () => {

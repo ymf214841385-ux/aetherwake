@@ -3,7 +3,11 @@
  */
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { bossFightDecision } from "./boss-fight-policy.mjs";
+import { bossFightDecision, canAcceptDodge, citadelFightStep } from "./boss-fight-policy.mjs";
+
+// Eligibility fixtures explicitly assume stamina 108 where old captures omitted it.
+// These controlled values are not historical measurements. Attack band 1.85–3.2 m
+// follows the independently exercised production Boss melee boundary (E30).
 
 describe("bossFightDecision (41902 failing sample)", () => {
   it("legacy low-hp gate would back-off the 41902 sample (baseline)", () => {
@@ -15,6 +19,7 @@ describe("bossFightDecision (41902 failing sample)", () => {
     const r = bossFightDecision({
       ...s,
       state: "grounded",
+      stamina: 108,
       dodgeCd: 0,
       attackPhase: "idle",
       faceDot: 0.95,
@@ -29,6 +34,7 @@ describe("bossFightDecision (41902 failing sample)", () => {
       bossPhase: "windup",
       bossHp: 20,
       state: "grounded",
+      stamina: 108,
       dodgeCd: 0.35,
       attackPhase: "idle",
       faceDot: 0.95,
@@ -44,11 +50,24 @@ describe("bossFightDecision (41902 failing sample)", () => {
       bossPhase: "windup",
       bossHp: 20,
       state: "grounded",
+      stamina: 108,
       dodgeCd: 0.05,
       attackPhase: "idle",
       faceDot: 0.95,
     });
     assert.equal(r.action, "back-off", JSON.stringify(r));
+  });
+
+  it("keeps retreating outside the 3.8m strike edge until residual motion has margin", () => {
+    // E31 actual Sim/controller trajectory: at 3.93m the old 3.55m gate
+    // released movement; collision/inertia brought it to 3.78m at strike.
+    const s = { hp: 1, bossHp: 14.6, bossPhase: "windup", state: "grounded",
+      stamina: 95.6, dodgeCd: 0.2167, attackPhase: "idle", faceDot: 0.57 };
+    for (const dist of [3.55, 3.79, 3.931848321757693, 4.1]) {
+      assert.equal(bossFightDecision({ ...s, dist }).action, "back-off", `d=${dist}`);
+    }
+    assert.equal(bossFightDecision({ ...s, dist: 4.3 }).action, "hold-attack");
+    assert.equal(bossFightDecision({ ...s, dist: 3.93, bossPhase: "recover" }).action, "approach");
   });
 
   it("hp=0.25 dist=2.2 bossHp=20 recover must swing, not back-off", () => {
@@ -58,6 +77,7 @@ describe("bossFightDecision (41902 failing sample)", () => {
       bossPhase: "recover",
       bossHp: 20,
       state: "grounded",
+      stamina: 108,
       dodgeCd: 0,
       attackPhase: "idle",
       faceDot: 0.95,
@@ -72,6 +92,7 @@ describe("bossFightDecision (41902 failing sample)", () => {
       bossPhase: "windup",
       bossHp: 20,
       state: "grounded",
+      stamina: 108,
       dodgeCd: 0,
       attackPhase: "idle",
       faceDot: 0.95,
@@ -86,6 +107,7 @@ describe("bossFightDecision (41902 failing sample)", () => {
       bossPhase: "approach",
       bossHp: 20,
       state: "grounded",
+      stamina: 108,
       dodgeCd: 0,
       attackPhase: "idle",
       faceDot: 0.9,
@@ -101,6 +123,7 @@ describe("bossFightDecision (41902 failing sample)", () => {
       bossPhase: "approach",
       bossHp: 16.4,
       state: "grounded",
+      stamina: 108,
       dodgeCd: 0,
       attackPhase: "idle",
       faceDot: 0.9,
@@ -115,6 +138,7 @@ describe("bossFightDecision (41902 failing sample)", () => {
       bossPhase: "hurt",
       bossHp: 3.2,
       state: "grounded",
+      stamina: 108,
       dodgeCd: 0,
       attackPhase: "idle",
       faceDot: 0.95,
@@ -129,6 +153,7 @@ describe("bossFightDecision (41902 failing sample)", () => {
       bossPhase: "approach",
       bossHp: 12,
       state: "grounded",
+      stamina: 108,
       dodgeCd: 0,
       attackPhase: "active",
       faceDot: 0.95,
@@ -143,6 +168,7 @@ describe("bossFightDecision (41902 failing sample)", () => {
       bossPhase: "approach",
       bossHp: 12,
       state: "grounded",
+      stamina: 108,
       dodgeCd: 0,
       attackPhase: "idle",
       faceDot: 0.95,
@@ -164,6 +190,7 @@ describe("bossFightDecision continuous trajectory (Review18)", () => {
       bossPhase: "approach",
       bossHp: 20,
       state: "grounded",
+      stamina: 108,
       dodgeCd: 0,
       attackPhase: "idle",
       faceDot: 0.9,
@@ -171,7 +198,7 @@ describe("bossFightDecision continuous trajectory (Review18)", () => {
     };
   }
 
-  it("low-hp-approach dodge does NOT fire during boss hurt (post-hit finish)", () => {
+  it("low HP at 2.56 m during Boss hurt swings within the verified melee band", () => {
     // Run 49935: hp=0.75 d=2.56 phase=hurt → dodge pushed away, then died.
     const r = bossFightDecision({
       hp: 0.75,
@@ -179,27 +206,29 @@ describe("bossFightDecision continuous trajectory (Review18)", () => {
       bossPhase: "hurt",
       bossHp: 18.2,
       state: "grounded",
+      stamina: 108,
       dodgeCd: 0,
       attackPhase: "idle",
       faceDot: 0.9,
     });
-    assert.equal(r.action, "approach", JSON.stringify(r));
+    assert.equal(r.action, "swing", JSON.stringify(r));
   });
 
-  it("low-hp almost-melee does NOT dodge away — approaches to finish", () => {
+  it("low HP at 2.8 m swings within the verified melee band instead of retreating", () => {
     // Real 054532: d=3.31 recover hp=1.5 then died swings=0.
-    // d=2.8 is one step from melee (2.55); dodging here blocks the kill.
+    // E30 verifies d=2.8 is already in melee; another approach wastes the window.
     const r = bossFightDecision({
       hp: 0.75,
       dist: 2.8,
       bossPhase: "approach",
       bossHp: 20,
       state: "grounded",
+      stamina: 108,
       dodgeCd: 0,
       attackPhase: "idle",
       faceDot: 0.9,
     });
-    assert.equal(r.action, "approach", JSON.stringify(r));
+    assert.equal(r.action, "swing", JSON.stringify(r));
   });
 
   it("small-step trajectory 3.9→melee must swing (Review18 continuous)", () => {
@@ -233,7 +262,7 @@ describe("bossFightDecision continuous trajectory (Review18)", () => {
     const swings = actions.filter((a) => a.action === "swing");
     assert.ok(swings.length >= 1, `must swing in small-step trajectory: ${JSON.stringify(actions)}`);
     assert.ok(
-      swings[0].dist <= 2.55 && swings[0].dist >= 1.85,
+      swings[0].dist <= 3.2 && swings[0].dist >= 1.85,
       `first swing in melee band: ${JSON.stringify(swings[0])}`,
     );
     const tele = actions.find((a) => a.phase === "windup");
@@ -291,6 +320,7 @@ describe("bossFightDecision continuous trajectory (Review18)", () => {
       bossPhase: "windup",
       bossHp: 18.2,
       state: "airborne",
+      stamina: 108,
       dodgeCd: 0.8,
       attackPhase: "idle",
       faceDot: 0.9,
@@ -298,19 +328,29 @@ describe("bossFightDecision continuous trajectory (Review18)", () => {
     assert.equal(r.action, "hold-attack", JSON.stringify(r));
   });
 
-  it("kill4 dec#10: windup cd=0 must dodge even if not grounded", () => {
-    // Real: after our own dash, airborne + windup + cd=0 → old hold-attack → dead.
-    const r = bossFightDecision({
+  it("kill4 dec#10: airborne C is illegal; grounded eligibility remains available", () => {
+    // Preserve the recorded scalars; stamina108 is an explicit controlled assumption.
+    // The old expectation demanded an input production rejects while airborne.
+    // This gate test does not prove holding, movement, or survival at the late pose.
+    const s = {
       hp: 2.25,
       dist: 2.6,
       bossPhase: "windup",
       bossHp: 18.2,
       state: "airborne",
+      stamina: 108,
       dodgeCd: 0,
       attackPhase: "idle",
       faceDot: 0.95,
-    });
-    assert.equal(r.action, "dodge", JSON.stringify(r));
+    };
+    assert.equal(canAcceptDodge(s), false);
+    const r = bossFightDecision(s);
+    assert.notEqual(r.action, "dodge", JSON.stringify(r));
+    assert.notEqual(citadelFightStep(s).act, "dodge");
+    const grounded = { ...s, state: "grounded" };
+    assert.equal(canAcceptDodge(grounded), true);
+    assert.equal(bossFightDecision(grounded).action, "dodge");
+    assert.equal(citadelFightStep(grounded).act, "dodge");
   });
 
   it("kill4 dec#20: telegraph inside body must leave, not hold into the hit", () => {
@@ -320,6 +360,7 @@ describe("bossFightDecision continuous trajectory (Review18)", () => {
       bossPhase: "windup",
       bossHp: 18.2,
       state: "airborne",
+      stamina: 108,
       dodgeCd: 0.43,
       attackPhase: "idle",
       faceDot: 0.5,
@@ -334,6 +375,7 @@ describe("bossFightDecision continuous trajectory (Review18)", () => {
       bossPhase: "windup",
       bossHp: 20,
       state: "grounded",
+      stamina: 108,
       dodgeCd: 0.3,
       attackPhase: "idle",
       faceDot: 0.95,
@@ -360,7 +402,7 @@ describe("bossFightDecision continuous trajectory (Review18)", () => {
     );
     const last = actions[actions.length - 1];
     assert.ok(
-      last.dist <= 2.55,
+      last.dist <= 3.2 && last.dist >= 1.85,
       `must have closed into melee band: ${JSON.stringify(actions)}`,
     );
     const swing = bossFightDecision(snap({ dist: last.dist, bossPhase: "recover" }));
@@ -369,18 +411,22 @@ describe("bossFightDecision continuous trajectory (Review18)", () => {
 
   it("mid-trajectory telegraph still dodges (does not swing into windup)", () => {
     const actions = [];
-    // start 3.9 approach → 3.0 approach → telegraph at 2.4 → dodge
+    // Scheduled windup still interrupts after entering the wider verified band:
+    // 3.9 approach → 3.15 swing → windup at 3.15 → dodge.
     let dist = 3.9;
     for (let step = 0; step < 6; step++) {
       const phase = step === 2 ? "windup" : "approach";
       const r = bossFightDecision(snap({ dist, bossPhase: phase }));
       actions.push({ step, dist: +dist.toFixed(2), phase, action: r.action });
       if (r.action === "approach") dist = Math.max(2.2, dist - 0.75);
-      else break;
+      else if (phase === "windup") break;
+      else assert.equal(r.action, "swing", JSON.stringify(actions));
     }
     const tele = actions.find((a) => a.phase === "windup");
     assert.ok(tele, `telegraph step missing: ${JSON.stringify(actions)}`);
     assert.equal(tele.action, "dodge", JSON.stringify(actions));
+    assert.ok(actions.some((a) => a.step < tele.step && a.action === "swing"),
+      `must keep observing after the first swing: ${JSON.stringify(actions)}`);
     assert.ok(
       actions.filter((a) => a.action === "approach").length >= 1,
       `must approach before telegraph: ${JSON.stringify(actions)}`,

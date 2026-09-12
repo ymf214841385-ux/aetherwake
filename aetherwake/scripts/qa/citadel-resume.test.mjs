@@ -10,7 +10,7 @@ import { citadelResumePlan, v2MatchesSource } from "./citadel-resume.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const CKPT =
-  "docs/rebuild-evidence/runs/d31-play-routes-20260912-064544/storage-ckpt-tower-crown.json";
+  "aetherwake/scripts/qa/fixtures/crown-save.json";
 
 describe("D4.1 citadel-resume focus plan", () => {
   it("citadel focus with ckpt → resume-and-fightboss", () => {

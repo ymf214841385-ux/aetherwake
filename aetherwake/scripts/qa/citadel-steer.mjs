@@ -1,4 +1,6 @@
-/** @typedef {{x: number, y: number, z: number}} Position3 */
+import { keysToward } from "./digital-direction.mjs";
+
+/** @typedef {{x: number, y: number, z: number, camYaw?: number}} Position3 */
 /**
  * Citadel courtyard steer. Copied from world.ts solids — do not import the game graph.
  *
@@ -102,18 +104,69 @@ function aimPoint(player, ux, uz) {
   return { x: player.x + ux * CITADEL_DODGE_M, z: player.z + uz * CITADEL_DODGE_M };
 }
 
+// Check the direction the keyboard will actually send, not just the ideal
+// target: eight-way quantization can push a near-edge player into a gate wing.
+/** @param {Position3} player @param {{x: number, z: number}} target */
+function digitalGatePathClear(player, target) {
+  if (typeof player.camYaw !== "number") return false;
+  const keys = keysToward(player, target.x, target.z, false);
+  if (!keys.length) return false;
+  const right = Number(keys.includes("KeyD")) - Number(keys.includes("KeyA"));
+  const forward = Number(keys.includes("KeyW")) - Number(keys.includes("KeyS"));
+  const norm = Math.hypot(right, forward);
+  const dx = (Math.cos(player.camYaw) * right - Math.sin(player.camYaw) * forward) / norm;
+  const dz = (-Math.sin(player.camYaw) * right - Math.cos(player.camYaw) * forward) / norm;
+  if (!(dz > 0)) return false;
+  // Gate depth z=-1 +/-0.7, expanded by player radius 0.32.
+  const enter = Math.max(0, (-2.02 - player.z) / dz);
+  const leave = Math.min(CITADEL_DODGE_M, (0.02 - player.z) / dz);
+  if (leave < enter) return true;
+  return [enter, leave].every(t => {
+    const x = player.x + dx * t;
+    return x > 4.1 && x < 7.9;
+  });
+}
+
 /**
  * Dodge destination that stays on the courtyard. Away-from-boss first; if that
  * 3.1 m dash would leave, strafe; if both leave, dash toward the courtyard center.
  */
 /** @param {Position3} player @param {Position3} boss */
 export function citadelDodgeAim(player, boss) {
+  // E27: the open gate approach is a separate defensive region. Do not widen
+  // insideCourtyard: other navigation still relies on its existing bounds.
+  if (player.z > 0.6 && player.z <= 8 &&
+      player.x > CITADEL_WEST_INNER && player.x < CITADEL_EAST_INNER) {
+    const dx = player.x - boss?.x, dz = player.z - boss?.z;
+    const len = Math.hypot(dx, dz);
+    if (Number.isFinite(len) && len > 1e-8) {
+      const ux = dx / len, uz = dz / len;
+      for (const { vx, vz, reason } of [
+        { vx: ux, vz: uz, reason: "gate-apron-away" },
+        { vx: -uz, vz: ux, reason: "gate-apron-strafe" },
+        { vx: uz, vz: -ux, reason: "gate-apron-strafe" },
+      ]) {
+        const p = aimPoint(player, vx, vz);
+        if (p.z > 0.6 && p.z <= 10 &&
+            p.x > CITADEL_WEST_INNER && p.x < CITADEL_EAST_INNER) return { ...p, reason };
+      }
+    }
+    return { safe: false, reason: "no-safe-direction", region: "gate-apron" };
+  }
   const dx = player.x - (boss?.x ?? CITADEL_X);
   const dz = player.z - (boss?.z ?? CITADEL_Z + 7.2);
   const len = Math.hypot(dx, dz) || 1;
   const ux = dx / len;
   const uz = dz / len;
   const away = aimPoint(player, ux, uz);
+  // The open gate connects courtyard and apron. Rejecting this crossing
+  // selected a sideways dodge into a gate wing in the fourth E31 attack.
+  // Opening x=3.7..8.3 minus radius 0.32 and a small collision margin.
+  if (insideCourtyard(player.x, player.z) &&
+      player.x > 4.1 && player.x < 7.9 && away.x > 4.1 && away.x < 7.9 &&
+      away.z > 0.6 && away.z <= 8 && digitalGatePathClear(player, away)) {
+    return { x: away.x, z: away.z, reason: "gate-corridor-away" };
+  }
   if (insideCourtyard(away.x, away.z)) return { x: away.x, z: away.z, reason: "away" };
   const s1 = aimPoint(player, -uz, ux);
   const s2 = aimPoint(player, uz, -ux);
