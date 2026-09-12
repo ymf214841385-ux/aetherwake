@@ -1,0 +1,16 @@
+=== first-segment D4 ===
+[play] dawn done towers=dawn y=47.8 prompt=晨光塔已点亮 state=grounded
+[play] cook pepper at camp-a (meal kept for crown frost)
+[play] still intended claimed=true orbs=4 prompt= dAltar=361.2 frozen=0.9333333333333456
+[play] mere done towers=dawn,mere y=44.5 prompt=镜湖塔已点亮 state=grounded
+[play] eat 辣炒椒 before crown frost
+[play] crown approach dist=6.0 y=26.8 state=airborne prompt=
+[play] crown authored baseY=16.8 (player y=26.8)
+[play] crown regrab missed state=airborne y=22.7 stam=11
+[play] crown not lit after climb window; retrying from the ring
+[play] crown done towers=dawn,mere y=27.3 prompt= state=climbing
+[play] storage checkpoint tower-crown -> /Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/storage-ckpt-tower-crown.json v2=true
+[play] crown leave radially to 39.8,-120.7 from y=27.3 climbing
+      "detail": "missing crown"
+      "detail": "citadel was not attempted; skipping the boss is not success"
+      "detail": "towers after reload missing crown"

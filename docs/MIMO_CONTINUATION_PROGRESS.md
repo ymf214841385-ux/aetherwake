@@ -432,3 +432,23 @@ npm run test:game    # 170 pass / 0 fail
 - **swing#1–2 hit 20→16.4**（reposition 后继续命中）
 - **文档更正（D4）**：该轮并非仅 fight 窗口不足；日志为 **airborne dodge 未发动 → dead → 自动复活赶路耗尽**；`deaths=0` 为漏计假统计
 - 证据：`runs/d32-play-routes-20260912-074802/first-segment.txt`
+
+---
+
+## 批次 18 — D4 dodge 门控 + 死亡即停
+
+### 修复（dcdfb24）
+- `Sim.canAcceptDodge` 与 handleLocomotion 一致：grounded && cd<=0 && stamina>18
+- 政策仅在门控通过时发 dodge；否则 back-off/hold（无伪无敌帧）
+- citadel：**read 先于 resumePlay**；首次死亡写 `citadel-first-death-*.json` 并停
+- dodge 后采样 dodgeT/cd/stamina `started=`
+- 10s@100ms 环形诊断；15s 无 Boss 掉血停
+
+### 验证
+- typecheck PASS；test:game **188**；citadel-dispatch **10/10**
+
+### 实跑（PID 24500，headed，已结束）
+- dawn+四祠 orbs=4 + mere
+- **crown 爬塔失败**（regrab airborne y=22.7；`crown not lit`；citadel **未尝试**）
+- 未进入 Boss 段，故未触发 D4 死亡/闪避门控实测
+- 证据：`runs/d4-play-routes-20260912-085144/first-segment.txt`
