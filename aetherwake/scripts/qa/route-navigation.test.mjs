@@ -221,3 +221,52 @@ test("production hold checks during waits at 100ms and releases without another 
     ],
   );
 });
+
+for (const kind of ['goTo', 'follow']) test(`fight caller guard stops after actual factory ${kind} failure`, async () => {
+  const f = fixture();
+  let attacks = 0, laterTargets = 0;
+  const orch = createFightOrchestrator({ ...f.nav, read: f.read, now: () => 0, wait: async () => {}, tryMeleeClick: async () => { attacks++; } });
+  await assert.rejects(async () => {
+    if (kind === 'follow') await orch.follow([{ x: 20, z: 0 }, { x: 40, z: 0 }], 200, 1);
+    else await orch.goTo(20, 0, 200, { arrive: 1, label: 'first' });
+    laterTargets++;
+    await orch.goTo(60, 0, 200);
+    await orch.tryMeleeClick();
+  }, e => e.name === 'FightStopError' && e.reason === 'navigation-failed');
+  assert.equal(orch.abort.reason, 'navigation-failed');
+  assert.equal(orch.scope.navigationFailure.snap.x, 0);
+  assert.equal(orch.scope.navigationFailure.nav.tx, 20);
+  assert.equal(orch.scope.navigationFailure.nav.arrived, false);
+  assert.equal(orch.scope.navigationFailure.nav.status, 'timeout');
+  assert.equal(laterTargets, 0);
+  assert.equal(attacks, 0);
+  assert.equal(f.pressed.size, 0);
+  await assert.rejects(orch.goTo(60, 0, 200), { name: 'FightStopError' });
+  await assert.rejects(orch.tryMeleeClick(), { name: 'FightStopError' });
+  assert.equal(attacks, 0);
+});
+
+ test("fightBoss binds every navigation call to tested orchestrator guards", () => {
+  const source = readFileSync(new URL("../play-routes.mjs", import.meta.url), "utf8");
+  const fight = source.slice(source.indexOf("async function fightBoss()"), source.indexOf("async function readSaveEnvelope()"));
+  assert.match(fight, /const fightGoTo = orch.goTo;/);
+  assert.match(fight, /const fightFollow = orch.follow;/);
+  assert.doesNotMatch(fight, /await (?:goTo|follow)\(/);
+  assert.match(fight, /navigationFailure: orch.scope.navigationFailure/);
+  assert.match(fight, /if \(!\(err instanceof FightStopError\)\) throw err/);
+});
+
+test('orchestrator guard checks returned failure from real unscoped factory navigation', async () => {
+  for (const kind of ['goTo', 'follow']) {
+    const f = fixture();
+    // Exercise the caller boundary independently of the internal scoped guard.
+    const orch = createFightOrchestrator({ ...f.nav,
+      goTo: (x, z, ms, opts) => f.nav.goTo(x, z, ms, opts),
+      follow: (points, ms, arrive) => f.nav.follow(points, ms, arrive),
+      read: f.read, now: () => 0, wait: async () => {}, tryMeleeClick: async () => {} });
+    await assert.rejects(kind === 'goTo' ? orch.goTo(20, 0, 200) : orch.follow([{ x: 20, z: 0 }, { x: 40, z: 0 }], 200, 1),
+      e => e.name === 'FightStopError' && e.reason === 'navigation-failed');
+    assert.equal(orch.scope.navigationFailure.nav.tx, 20);
+    assert.equal(orch.scope.navigationFailure.snap.x, 0);
+  }
+});

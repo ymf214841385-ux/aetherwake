@@ -1,0 +1,31 @@
+ M docs/rebuild-evidence/boss-sealed.json
+ M docs/rebuild-evidence/play-routes.json
+ M docs/rebuild-evidence/route-citadel.png
+ M docs/rebuild-evidence/route-dawn-approach.png
+ M docs/rebuild-evidence/route-dawn-result.png
+ M docs/rebuild-evidence/route-shrine-burst.png
+ M docs/rebuild-evidence/route-shrine-pull.png
+ M docs/rebuild-evidence/route-shrine-rime.png
+ M docs/rebuild-evidence/route-shrine-still.png
+ M docs/rebuild-evidence/route-start.png
+ M docs/rebuild-evidence/route-tower-crown.png
+ M docs/rebuild-evidence/route-tower-mere.png
+ M docs/rebuild-evidence/route-wind-gust.png
+?? ASTRA_E12_FINAL.md
+?? docs/e21/
+?? docs/rebuild-evidence/boss-resume.json
+?? docs/rebuild-evidence/citadel-no-hp-drop-d41-citadel-resume-20260912-110220.json
+?? docs/rebuild-evidence/route-burst-face0-before-E.png
+?? docs/rebuild-evidence/route-pull-face0-before-E.png
+?? docs/rebuild-evidence/route-pull-face1-before-E.png
+?? docs/rebuild-evidence/route-rime-face0-before-E.png
+?? docs/rebuild-evidence/route-rime-face1-before-E.png
+?? docs/rebuild-evidence/route-rime-face2-before-E.png
+?? docs/rebuild-evidence/route-still-face0-before-E.png
+?? docs/rebuild-evidence/route-still-face1-before-E.png
+?? docs/rebuild-evidence/route-still-face2-before-E.png
+?? docs/rebuild-evidence/runs/d1-A-headless-20260912-005540/
+?? docs/rebuild-evidence/runs/d1-B-headed-20260912-010124/
+?? docs/rebuild-evidence/runs/d13-A-headless-20260912-024332/
+?? docs/rebuild-evidence/runs/d13-B-headed-20260912-025219/
+?? docs/rebuild-evidence/runs/d3-play-routes-20260912-044659/

@@ -1,3 +1,5 @@
+import { checkFightScope, requireFightNavigation } from "./route-navigation.mjs";
+
 /**
  * E1/E1.1: production combat-progress monitor + shared abort orchestrator.
  * Pure/serial — no key/mouse, no resumePlay, no sim writes.
@@ -375,10 +377,19 @@ export function createFightOrchestrator(deps) {
   const lastInput = { current: null };
   const scope = { abort, markInput(action) { lastInput.current = { action, t: now() }; } };
   const scopedHold = (keys, ms) => hold(keys, ms, scope);
-  const scopedGoTo = (x, z, ms, opts) => goTo(x, z, ms, opts, scope);
-  const scopedFollow = (points, ms, arrive) => follow(points, ms, arrive, scope);
+  const scopedGoTo = async (x, z, ms, opts) => {
+    checkFightScope(scope);
+    return requireFightNavigation(scope, await goTo(x, z, ms, opts, scope));
+  };
+  const scopedFollow = async (points, ms, arrive) => {
+    checkFightScope(scope);
+    return requireFightNavigation(scope, await follow(points, ms, arrive, scope));
+  };
   const scopedResume = () => resumePlay(scope);
-  const scopedClick = () => tryMeleeClick(scope);
+  const scopedClick = async () => {
+    checkFightScope(scope);
+    return tryMeleeClick(scope);
+  };
 
   let samplePromise = null;
   function startSampling() {

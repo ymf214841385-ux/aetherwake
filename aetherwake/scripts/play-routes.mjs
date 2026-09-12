@@ -1433,7 +1433,8 @@ async function fightBoss() {
     writeFileSync(
       resolve(outDir, `citadel-stop-${process.env.QA_RUN_ID || Date.now()}.json`),
       JSON.stringify({ reason: err.reason, deaths: err.reason === "death" ? 1 : 0,
-        snap, combatMs: fightMonitor.combatMs, navMs: fightMonitor.navMs,
+        snap, navigationFailure: orch.scope.navigationFailure ?? null,
+        combatMs: fightMonitor.combatMs, navMs: fightMonitor.navMs,
         noDamageMs: fightMonitor.noDamageMs, ring: fightMonitor.ring }, null, 2),
     );
     return snap;

@@ -15,6 +15,44 @@ export function checkFightScope(scope, snapshot) {
 
 import { navigationOutcome } from "./shrine-steer.mjs";
 
+// Fixed order breaks exact ties: W, WD, D, SD, S, SA, A, WA.
+const DIRECTIONS = [
+  [0, 1, ["KeyW"]], [1, 1, ["KeyW", "KeyD"]],
+  [1, 0, ["KeyD"]], [1, -1, ["KeyS", "KeyD"]],
+  [0, -1, ["KeyS"]], [-1, -1, ["KeyS", "KeyA"]],
+  [-1, 0, ["KeyA"]], [-1, 1, ["KeyW", "KeyA"]],
+];
+export function keysToward(s, tx, tz, sprint) {
+  if (![s?.x, s?.z, s?.camYaw, tx, tz].every(Number.isFinite)) return [];
+  const dx = tx - s.x, dz = tz - s.z;
+  const length = Math.hypot(dx, dz);
+  if (!Number.isFinite(length) || length <= 1e-8) return [];
+  const fx = -Math.sin(s.camYaw), fz = -Math.cos(s.camYaw);
+  const rx = Math.cos(s.camYaw), rz = -Math.sin(s.camYaw);
+  let best = -Infinity, chosen = [];
+  for (const [r, f, keys] of DIRECTIONS) {
+    const norm = Math.hypot(r, f);
+    const wx = (rx * r + fx * f) / norm;
+    const wz = (rz * r + fz * f) / norm;
+    const dot = wx * (dx / length) + wz * (dz / length);
+    if (dot > best) { best = dot; chosen = keys; }
+  }
+  const keys = [...chosen];
+  if (keys.length && sprint && s.stamina > 8 && s.state !== "climbing") keys.push("ShiftLeft");
+  return keys;
+}
+
+export function requireFightNavigation(scope, snapshot) {
+  checkFightScope(scope, snapshot);
+  if (scope && !snapshot?.nav?.arrived) {
+    scope.lastSnapshot = snapshot;
+    scope.navigationFailure = { snap: snapshot, nav: snapshot?.nav ?? null };
+    scope.abort.abort("navigation-failed");
+    checkFightScope(scope);
+  }
+  return snapshot;
+}
+
 // Actual route helpers; injected browser/time/state keep the production loops testable.
 export function createRouteNavigation({
   page,
@@ -150,24 +188,6 @@ export function createRouteNavigation({
     return s;
   }
 
-  function keysToward(s, tx, tz, sprint) {
-    const dx = tx - s.x;
-    const dz = tz - s.z;
-    const fx = -Math.sin(s.camYaw);
-    const fz = -Math.cos(s.camYaw);
-    const rx = Math.cos(s.camYaw);
-    const rz = -Math.sin(s.camYaw);
-    const f = dx * fx + dz * fz;
-    const r = dx * rx + dz * rz;
-    const keys = [];
-    if (f > 0.35) keys.push("KeyW");
-    if (f < -0.35) keys.push("KeyS");
-    if (r > 0.35) keys.push("KeyD");
-    if (r < -0.35) keys.push("KeyA");
-    if (sprint && s.stamina > 8 && s.state !== "climbing") keys.push("ShiftLeft");
-    if (keys.length === 0) keys.push("KeyW");
-    return keys;
-  }
 
   async function lookToward(tx, tz, scope) {
     // Arrow look only. A canvas left-click here starts a melee with stale facing.
@@ -221,7 +241,7 @@ export function createRouteNavigation({
       });
       if (here.arrived) {
         await releaseAll();
-        return attachNav(s, { ...here, label, tx, tz });
+        return requireFightNavigation(scope, attachNav(s, { ...here, label, tx, tz }));
       }
       if (lastPos && Math.hypot(s.x - lastPos.x, s.z - lastPos.z) > 1.2) {
         stuckSince = now();
@@ -279,7 +299,7 @@ export function createRouteNavigation({
         `nav ${outcome.status} ${label || `${tx},${tz}`} dist=${Number.isFinite(endDist) ? endDist.toFixed(1) : "?"} at ${endS?.x?.toFixed?.(1)},${endS?.z?.toFixed?.(1)}`,
       );
     }
-    return attachNav(endS, { ...outcome, label, tx, tz });
+    return requireFightNavigation(scope, attachNav(endS, { ...outcome, label, tx, tz }));
   }
 
   async function follow(points, msEach = 50000, arrive = 2.4, scope) {
