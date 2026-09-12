@@ -1,0 +1,4 @@
+HEAD=6c5ba16cc379dc6be55133182c9b4800adc796f9
+ckpt=/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/runs/d31-play-routes-20260912-064544/storage-ckpt-tower-crown.json
+ckpt_sha256=6591658e25bef67b972ceea66451e3422461732dac7439c31b3ac5bc712278e3
+scope=citadel-resume

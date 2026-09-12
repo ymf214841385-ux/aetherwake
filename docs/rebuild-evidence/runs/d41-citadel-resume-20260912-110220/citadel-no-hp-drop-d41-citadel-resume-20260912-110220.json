@@ -1,0 +1,133 @@
+{
+  "t": 1789182332203,
+  "snap": {
+    "mode": "playing",
+    "x": 7.7963602861481505,
+    "y": 10.857483866585858,
+    "z": -2.985410569411264,
+    "yaw": -7.255199192674741,
+    "camYaw": -1.117607346410207,
+    "state": "grounded",
+    "stamina": 22.599999999999554,
+    "staminaMax": 108,
+    "climbing": false,
+    "grounded": true,
+    "towers": [
+      "dawn",
+      "mere",
+      "crown"
+    ],
+    "shrines": [
+      "pull",
+      "rime",
+      "burst",
+      "still"
+    ],
+    "orbs": 4,
+    "ruinSolved": true,
+    "prompt": "挑战空王",
+    "shrine": null,
+    "shrineHint": "",
+    "interactLock": 0,
+    "hp": 3.5,
+    "art": 4,
+    "bossDead": false,
+    "toast": "",
+    "worldKind": "overworld",
+    "spicy": 0,
+    "cold": false,
+    "meals": [],
+    "pointerLock": false,
+    "cracked": false,
+    "moveBlock": {
+      "x": 0,
+      "z": 0,
+      "frozen": 0,
+      "t": 0
+    },
+    "ices": 0,
+    "metals": [
+      {
+        "id": "metal-field-0",
+        "x": 34,
+        "z": 10,
+        "held": false
+      },
+      {
+        "id": "metal-field-1",
+        "x": 90,
+        "z": 20,
+        "held": false
+      }
+    ],
+    "bomb": null,
+    "attackPhase": "idle",
+    "attackT": 0,
+    "equippedId": "blade",
+    "arrows": 24,
+    "dodgeCd": 0,
+    "dodgeT": 0,
+    "canDodge": true,
+    "invuln": 0,
+    "sealOpen": true,
+    "boss": {
+      "hp": 20,
+      "max": 20,
+      "x": 10.915944299211807,
+      "y": 10.942614043850442,
+      "z": -4.1955316563332685,
+      "alive": true,
+      "phase": "windup",
+      "yaw": 1.9472051243132462
+    },
+    "bossMeleeBlocked": false,
+    "blockerId": null
+  },
+  "diag": [
+    {
+      "t": 1789182317196,
+      "hp": 3.5,
+      "state": "airborne",
+      "stamina": 108,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossPhase": "approach",
+      "phaseT": null,
+      "dist": 43.88,
+      "bossHp": 20,
+      "canDodge": false,
+      "bossMeleeBlocked": false,
+      "blockerId": null
+    },
+    {
+      "t": 1789182331930,
+      "hp": 3.5,
+      "state": "grounded",
+      "stamina": 14.666666666666245,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossPhase": "approach",
+      "phaseT": null,
+      "dist": 4.82,
+      "bossHp": 20,
+      "canDodge": false,
+      "bossMeleeBlocked": false,
+      "blockerId": null
+    },
+    {
+      "t": 1789182332202,
+      "hp": 3.5,
+      "state": "grounded",
+      "stamina": 22.599999999999554,
+      "dodgeCd": 0,
+      "dodgeT": 0,
+      "bossPhase": "windup",
+      "phaseT": null,
+      "dist": 3.35,
+      "bossHp": 20,
+      "canDodge": true,
+      "bossMeleeBlocked": false,
+      "blockerId": null
+    }
+  ]
+}

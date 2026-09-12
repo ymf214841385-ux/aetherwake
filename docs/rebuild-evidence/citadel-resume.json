@@ -1,0 +1,281 @@
+{
+  "ok": false,
+  "scope": "citadel-resume",
+  "focus": "citadel",
+  "resumeInject": {
+    "scope": "citadel-resume",
+    "ckptPath": "/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/runs/d31-play-routes-20260912-064544/storage-ckpt-tower-crown.json",
+    "sourceSha256": "6591658e25bef67b972ceea66451e3422461732dac7439c31b3ac5bc712278e3",
+    "v2Len": 824,
+    "v2MatchesSource": true,
+    "restore": {
+      "mode": "playing",
+      "towers": [
+        "dawn",
+        "mere",
+        "crown"
+      ],
+      "shrines": [
+        "pull",
+        "rime",
+        "burst",
+        "still"
+      ],
+      "orbs": 4,
+      "sealOpen": true,
+      "hp": 2.5,
+      "pos": {
+        "x": 44.617,
+        "y": 53.472,
+        "z": -124.514
+      },
+      "bossDead": false
+    }
+  },
+  "focusVerify": true,
+  "towers": [
+    "dawn",
+    "mere",
+    "crown"
+  ],
+  "shrines": [
+    "pull",
+    "rime",
+    "burst",
+    "still"
+  ],
+  "orbs": 4,
+  "bossDead": false,
+  "mode": "playing",
+  "bossHp": 20,
+  "final": {
+    "mode": "playing",
+    "x": 7.7963602861481505,
+    "y": 10.857483866585858,
+    "z": -2.985410569411264,
+    "yaw": -7.255199192674741,
+    "camYaw": -1.117607346410207,
+    "state": "grounded",
+    "stamina": 22.599999999999554,
+    "staminaMax": 108,
+    "climbing": false,
+    "grounded": true,
+    "towers": [
+      "dawn",
+      "mere",
+      "crown"
+    ],
+    "shrines": [
+      "pull",
+      "rime",
+      "burst",
+      "still"
+    ],
+    "orbs": 4,
+    "ruinSolved": true,
+    "prompt": "挑战空王",
+    "shrine": null,
+    "shrineHint": "",
+    "interactLock": 0,
+    "hp": 3.5,
+    "art": 4,
+    "bossDead": false,
+    "toast": "",
+    "worldKind": "overworld",
+    "spicy": 0,
+    "cold": false,
+    "meals": [],
+    "pointerLock": false,
+    "cracked": false,
+    "moveBlock": {
+      "x": 0,
+      "z": 0,
+      "frozen": 0,
+      "t": 0
+    },
+    "ices": 0,
+    "metals": [
+      {
+        "id": "metal-field-0",
+        "x": 34,
+        "z": 10,
+        "held": false
+      },
+      {
+        "id": "metal-field-1",
+        "x": 90,
+        "z": 20,
+        "held": false
+      }
+    ],
+    "bomb": null,
+    "attackPhase": "idle",
+    "attackT": 0,
+    "equippedId": "blade",
+    "arrows": 24,
+    "dodgeCd": 0,
+    "dodgeT": 0,
+    "canDodge": true,
+    "invuln": 0,
+    "sealOpen": true,
+    "boss": {
+      "hp": 20,
+      "max": 20,
+      "x": 10.915944299211807,
+      "y": 10.942614043850442,
+      "z": -4.1955316563332685,
+      "alive": true,
+      "phase": "windup",
+      "yaw": 1.9472051243132462
+    },
+    "bossMeleeBlocked": false,
+    "blockerId": null
+  },
+  "closeReason": null,
+  "log": [
+    {
+      "t": 1789182142313,
+      "m": "harness pid=30445 ppid=1 chromium=30501 headed=true url=http://127.0.0.1:8102/?t=1789182141387 serverPid=30499 serverPort=8102 pidFile=/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/.grok/play-routes-30499.pid log=/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/.grok/play-routes-30499.log hb=/Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/aetherwake/.grok/heartbeat-30445.json"
+    },
+    {
+      "t": 1789182142747,
+      "m": "citadel-resume restore /Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/runs/d31-play-routes-20260912-064544/storage-ckpt-tower-crown.json"
+    },
+    {
+      "t": 1789182144527,
+      "m": "citadel-resume restore ok towers=dawn,mere,crown orbs=4 hp=2.5 pos={\"x\":44.617,\"y\":53.472,\"z\":-124.514} v2Match=true sha=6591658e25bef67b972ceea66451e3422461732dac7439c31b3ac5bc712278e3"
+    },
+    {
+      "t": 1789182144969,
+      "m": "start mode=playing at 44.6,-124.5"
+    },
+    {
+      "t": 1789182145026,
+      "m": "QA_FOCUS=citadel: resume sealed save + original fightBoss (no coord jump)"
+    },
+    {
+      "t": 1789182145026,
+      "m": "citadel"
+    },
+    {
+      "t": 1789182145028,
+      "m": "citadel dismount high y=53.5 at 44.6,-124.5"
+    },
+    {
+      "t": 1789182216758,
+      "m": "nav timeout 6,8 dist=20.9 at 21.4,-6.1"
+    },
+    {
+      "t": 1789182216759,
+      "m": "follow waypoint failed 6,8 status=timeout dist=20.9"
+    },
+    {
+      "t": 1789182220103,
+      "m": "stuck dist=13.1 at 18.1,-6.1 airborne"
+    },
+    {
+      "t": 1789182225141,
+      "m": "stuck dist=13.6 at 18.1,-7.2 airborne"
+    },
+    {
+      "t": 1789182230476,
+      "m": "stuck dist=14.1 at 18.1,-8.3 grounded"
+    },
+    {
+      "t": 1789182234367,
+      "m": "stuck dist=14.8 at 18.0,-9.7 grounded"
+    },
+    {
+      "t": 1789182238265,
+      "m": "stuck dist=15.7 at 18.0,-11.0 airborne"
+    },
+    {
+      "t": 1789182244500,
+      "m": "stuck dist=15.9 at 18.1,-11.4 grounded"
+    },
+    {
+      "t": 1789182248162,
+      "m": "stuck dist=15.8 at 18.1,-11.2 grounded"
+    },
+    {
+      "t": 1789182251824,
+      "m": "stuck dist=15.7 at 18.1,-11.1 airborne"
+    },
+    {
+      "t": 1789182255211,
+      "m": "stuck dist=16.1 at 18.1,-11.6 grounded"
+    },
+    {
+      "t": 1789182256972,
+      "m": "nav timeout 6,-1 dist=15.8 at 18.0,-11.2"
+    },
+    {
+      "t": 1789182256972,
+      "m": "follow waypoint failed 6,-1 status=timeout dist=15.8"
+    },
+    {
+      "t": 1789182259969,
+      "m": "stuck dist=13.8 at 18.1,-11.7 grounded"
+    },
+    {
+      "t": 1789182263802,
+      "m": "stuck dist=14.5 at 18.1,-13.0 airborne"
+    },
+    {
+      "t": 1789182267035,
+      "m": "stuck dist=14.7 at 18.0,-13.5 grounded"
+    },
+    {
+      "t": 1789182270897,
+      "m": "stuck dist=15.6 at 18.1,-14.8 grounded"
+    },
+    {
+      "t": 1789182274711,
+      "m": "stuck dist=16.0 at 18.1,-15.5 grounded"
+    },
+    {
+      "t": 1789182278354,
+      "m": "stuck dist=15.8 at 18.1,-15.2 airborne"
+    },
+    {
+      "t": 1789182281720,
+      "m": "stuck dist=16.1 at 18.1,-15.6 airborne"
+    },
+    {
+      "t": 1789182285145,
+      "m": "stuck dist=16.1 at 18.1,-15.6 grounded"
+    },
+    {
+      "t": 1789182297102,
+      "m": "nav timeout 6,-5 dist=91.5 at 42.9,-88.7"
+    },
+    {
+      "t": 1789182297102,
+      "m": "follow waypoint failed 6,-5 status=timeout dist=91.5"
+    },
+    {
+      "t": 1789182317193,
+      "m": "nav timeout citadel-gate dist=50.8 at 40.2,-34.5"
+    },
+    {
+      "t": 1789182317196,
+      "m": "citadel reapproach live boss d=43.9 from 40.2,-34.5 y=8.9 state=airborne grounded=false off=below-courtyard stall=0 bossY=11.1 phase=approach prompt="
+    },
+    {
+      "t": 1789182317196,
+      "m": "citadel recover via 18,6→6,8→6,1→8,-3 from 40.2,-34.5 reason=below-courtyard"
+    },
+    {
+      "t": 1789182332203,
+      "m": "citadel no-boss-hp-drop 15s — short trajectory stop bossHp=20"
+    },
+    {
+      "t": 1789182332204,
+      "m": "citadel towers=dawn,mere,crown orbs=4 bossDead=false mode=playing prompt=挑战空王 swings=0 hits=0 attackStarts=0 deaths=0 bossHp=20 seal=true"
+    },
+    {
+      "t": 1789182332349,
+      "m": "storage checkpoint after-citadel -> /Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/storage-ckpt-after-citadel.json v2=true"
+    }
+  ]
+}

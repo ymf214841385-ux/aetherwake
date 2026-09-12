@@ -1,0 +1,9 @@
+=== first-segment D4.1 citadel-resume ===
+[play] citadel-resume restore /Users/ymf/Projects/aetherwake-rebuild-20260909/opencode-go/docs/rebuild-evidence/runs/d31-play-routes-20260912-064544/storage-ckpt-tower-crown.json
+[play] citadel-resume restore ok towers=dawn,mere,crown orbs=4 hp=2.5 pos={"x":44.617,"y":53.472,"z":-124.514} v2Match=true sha=6591658e25bef67b972ceea66451e3422461732dac7439c31b3ac5bc712278e3
+[play] start mode=playing at 44.6,-124.5
+[play] citadel dismount high y=53.5 at 44.6,-124.5
+[play] citadel reapproach live boss d=43.9 from 40.2,-34.5 y=8.9 state=airborne grounded=false off=below-courtyard stall=0 bossY=11.1 phase=approach prompt=
+[play] citadel recover via 18,6→6,8→6,1→8,-3 from 40.2,-34.5 reason=below-courtyard
+[play] citadel no-boss-hp-drop 15s — short trajectory stop bossHp=20
+[play] citadel towers=dawn,mere,crown orbs=4 bossDead=false mode=playing prompt=挑战空王 swings=0 hits=0 attackStarts=0 deaths=0 bossHp=20 seal=true

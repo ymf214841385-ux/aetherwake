@@ -452,3 +452,24 @@ npm run test:game    # 170 pass / 0 fail
 - **crown 爬塔失败**（regrab airborne y=22.7；`crown not lit`；citadel **未尝试**）
 - 未进入 Boss 段，故未触发 D4 死亡/闪避门控实测
 - 证据：`runs/d4-play-routes-20260912-085144/first-segment.txt`
+
+---
+
+## 批次 19 — D4.1 citadel-resume 专项（scope=citadel-resume）
+
+### 入口（6c5ba16）
+- `QA_FOCUS=citadel` + `QA_STORAGE_CHECKPOINT`：指定塔顶档原样注入正式 save key，仅一次
+- 点「继续旅途」；`v2MatchesSource` 校验；其它 focus 不变
+- 回归 5/5；复用原 fightBoss / D4 死亡与 15s 无掉血停止
+
+### 指定存档
+- `d31-.../storage-ckpt-tower-crown.json`
+- sha256 `6591658e…78e3`
+- 三塔四祠 orbs=4 bossDead=false 塔顶 (44.617,53.46,-124.514) hp=2.5
+
+### 实跑（PID 30445，headed，已结束）
+- **restore ok**：towers=dawn,mere,crown orbs=4 hp=2.5 pos 塔顶 **v2Match=true**
+- 塔顶正常下山；落点 below-courtyard (40.2,-34.5)
+- recover 后 **15s 无 Boss 掉血** 短轨迹停；swings=0 bossHp=20
+- **scope=citadel-resume**（继承进度，非本轮新档全通）
+- 证据：`runs/d41-citadel-resume-20260912-110220/`
