@@ -1,0 +1,166 @@
+{
+  "ok": false,
+  "pid": 97702,
+  "milestones": [
+    {
+      "name": "00-restore",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "x": 33.41,
+        "y": 11.41,
+        "z": 9.63,
+        "camYaw": 1.351,
+        "state": "grounded",
+        "art": 3,
+        "orbs": 3,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull"
+        ],
+        "towers": [],
+        "moveBlock": {
+          "x": 0,
+          "z": 0,
+          "frozen": 0
+        },
+        "prompt": "",
+        "nav": "unavailable",
+        "navNext": "沿指引前往晨光塔塔脚攀爬点"
+      }
+    },
+    {
+      "name": "wp1",
+      "pass": true,
+      "target": {
+        "x": 24,
+        "z": -35
+      }
+    },
+    {
+      "name": "wp2",
+      "pass": true,
+      "target": {
+        "x": 18,
+        "z": -60
+      }
+    },
+    {
+      "name": "wp3",
+      "pass": true,
+      "target": {
+        "x": 14,
+        "z": -75
+      }
+    },
+    {
+      "name": "01-arrive-still",
+      "pass": true,
+      "near": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 2,
+        "x": 16.76,
+        "y": 16.76,
+        "z": -70.44,
+        "camYaw": 0.238,
+        "state": "grounded",
+        "art": 3,
+        "orbs": 3,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull"
+        ],
+        "towers": [],
+        "moveBlock": {
+          "x": 0,
+          "z": 0,
+          "frozen": 0
+        },
+        "prompt": "请靠近：距离 5.6m",
+        "nav": "walk",
+        "navNext": "前往凝时祠"
+      }
+    },
+    {
+      "name": "02-enter-still",
+      "pass": true,
+      "inStill": {
+        "mode": "playing",
+        "world": "shrine",
+        "shrine": 3,
+        "hp": 2,
+        "x": 364,
+        "y": 520,
+        "z": 4.71,
+        "camYaw": 3.142,
+        "state": "grounded",
+        "art": 3,
+        "orbs": 3,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull"
+        ],
+        "towers": [],
+        "moveBlock": {
+          "x": 365.9,
+          "z": 13,
+          "frozen": 0
+        },
+        "prompt": "",
+        "nav": "action-required",
+        "navNext": "选择凝时，冻结移动石块后快速通过"
+      }
+    },
+    {
+      "name": "03-freeze-block",
+      "pass": true,
+      "frozen": {
+        "x": 367.37,
+        "z": 13,
+        "frozen": 4.3
+      }
+    },
+    {
+      "name": "04-claim-still",
+      "pass": false,
+      "afterClaim": {
+        "orbs": 3,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull"
+        ]
+      }
+    },
+    {
+      "name": "05-reload-still",
+      "pass": false,
+      "before": {
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull"
+        ],
+        "orbs": 3
+      },
+      "after": {
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull"
+        ],
+        "orbs": 3
+      }
+    }
+  ],
+  "failure": null,
+  "errors": []
+}

@@ -1,0 +1,13 @@
+# Review 30 — close feasible acceptance gaps, do not relabel partial as done
+
+Supervisor independently reran current and git-archived base 54a33655 scripts suites: BOTH 637 pass /16 fail /653, identical failing names. R29's 36 regressions resolved. ZIP hash matches meta and all 201 src/public files match 83be8a9; 8102 no longer listens. No need rerun these unchanged checks repeatedly.
+
+User requested full new plan; local pack is a checkpoint. Continue missing feasible desktop acceptance, strictly normal headed input and natural saves, no browser sim state writes. Remain MiMo desktop only. Existing brief and bounds apply.
+
+1. A08/A05: load an existing natural save in fresh browser context, record formal model first forward step and reload counterpart (camera/facing/motion + screenshots). Reuse existing orientation measurements, no synthetic reward save.
+2. A06 glide: use natural tower checkpoint and ordinary walk/jump/glider input, verify character facing follows real movement during glide and landing without stale climb pose. Capture short trace/screen. No coordinate teleport.
+3. D11/D08: coarse touch browser, actual touch map open/close + bag open/use-or-inspect/close, verify world does not attack or keep walking under modal and resumes normal control afterward. Distinguish emulated touch from physical phone. Add screenshot/trace and concrete assertions.
+4. C06: current rime-solve2 claim+reload does NOT by itself prove ice expiry path invalidation. Inspect existing evidence for actual expiry. If absent run bounded local normal-input ice creation→route snapshot→natural timeout→route invalidation/replan. For C09 same verify frozen slab expiry evidence before claiming window expiry. Do not repeat full mainline.
+5. C08: exact plan requires pulling plate route. Read original corresponding criterion and current bridge code/geometry. Separate side-corridor claim from plate support/navigation. Give short actual grab/throw/placement/support evidence; if genuine bug reproduce regression then narrow fix. Maximum one diagnostic attempt before recording concrete cause, no blind hours of full-route retries.
+
+For each, target existing closest natural checkpoint; when blocked capture first failing state, source cause and smallest fix before retry. No broadened enemy/physics budgets, no skipped tests. Preserve R29 package as checkpoint until meaningful source/evidence update. Update ACCEPTANCE precisely, including unavailable real-phone acceptance and existing two game/16 script residuals. Do not say complete while these requested desktop checks remain merely unattempted. After these bounded checks, final typecheck/test/build only if source changed, rebuild package once and report exact gaps. No push, deploy or tunnel.

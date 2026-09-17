@@ -1,0 +1,208 @@
+{
+  "ok": false,
+  "pid": 97405,
+  "milestones": [
+    {
+      "name": "00-restore",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 1,
+        "x": 33.42,
+        "y": 11.41,
+        "z": 9.49,
+        "camYaw": -2.279,
+        "bodyYaw": -2.279,
+        "state": "grounded",
+        "art": 2,
+        "heldMetal": -1,
+        "metals": [],
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "prompt": "",
+        "nav": "unavailable",
+        "navNext": "沿指引前往晨光塔塔脚攀爬点",
+        "lastDamageWhy": ""
+      }
+    },
+    {
+      "name": "01-reenter-pull",
+      "pass": true,
+      "last": {
+        "mode": "playing",
+        "world": "shrine",
+        "shrine": 2,
+        "hp": 1,
+        "x": 316,
+        "y": 520,
+        "z": 4.4,
+        "camYaw": 3.142,
+        "bodyYaw": 3.142,
+        "state": "grounded",
+        "art": 2,
+        "heldMetal": -1,
+        "metals": [
+          {
+            "id": "metal-shrine-2",
+            "x": 322.2,
+            "y": 520.73,
+            "z": 8,
+            "vx": 0,
+            "vy": 0,
+            "vz": 0,
+            "held": false,
+            "d": 7.17
+          }
+        ],
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "prompt": "",
+        "nav": "action-required",
+        "navNext": "选择牵引，把金属板移到坑上形成通路",
+        "lastDamageWhy": ""
+      }
+    },
+    {
+      "name": "02-select-pull-art",
+      "pass": true,
+      "art": 3
+    },
+    {
+      "name": "03-metal-present",
+      "pass": true,
+      "metal0": {
+        "id": "metal-shrine-2",
+        "x": 322.2,
+        "y": 520.73,
+        "z": 8,
+        "vx": 0,
+        "vy": 0,
+        "vz": 0,
+        "held": false,
+        "d": 7.17
+      }
+    },
+    {
+      "name": "04-grab-metal",
+      "pass": true,
+      "heldMetal": 2,
+      "metals": [
+        {
+          "id": "metal-shrine-2",
+          "x": 317.91,
+          "y": 521.3,
+          "z": 6.35,
+          "vx": 0,
+          "vy": 0,
+          "vz": 0,
+          "held": true,
+          "d": 2.23
+        }
+      ]
+    },
+    {
+      "name": "05-throw-metal",
+      "pass": true,
+      "before": [
+        {
+          "id": "metal-shrine-2",
+          "x": 316.8,
+          "y": 521.3,
+          "z": 6.97,
+          "vx": 0,
+          "vy": 0,
+          "vz": 0,
+          "held": true,
+          "d": 2.23
+        }
+      ],
+      "after": [
+        {
+          "id": "metal-shrine-2",
+          "x": 317.03,
+          "y": 521.56,
+          "z": 8.13,
+          "vx": 2.58,
+          "vy": 2.5,
+          "vz": 13.18,
+          "held": false,
+          "d": 3.41
+        }
+      ],
+      "camYaw": 3.335
+    },
+    {
+      "name": "06-metal-settled",
+      "pass": true,
+      "metals": [
+        {
+          "id": "metal-shrine-2",
+          "x": 317.86,
+          "y": 521.06,
+          "z": 12.35,
+          "vx": 1.59,
+          "vy": -4.7,
+          "vz": 8.12,
+          "held": false,
+          "d": 7.71
+        }
+      ]
+    },
+    {
+      "name": "07-nav-after-throw",
+      "pass": true,
+      "nav": "action-required",
+      "next": "用牵引调整金属板位置",
+      "guidance": true
+    },
+    {
+      "name": "08-claim-pull",
+      "pass": false,
+      "claimPath": null,
+      "afterClaim": {
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ]
+      }
+    },
+    {
+      "name": "09-reload-pull",
+      "pass": false,
+      "before": {
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "orbs": 2
+      },
+      "after": {
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "orbs": 2
+      }
+    },
+    {
+      "name": "10-export-claimed",
+      "pass": false,
+      "reason": "skip: reload pull not confirmed"
+    }
+  ],
+  "failure": null,
+  "errors": [],
+  "claimPath": null,
+  "metalBridge": false
+}

@@ -1,0 +1,295 @@
+{
+  "ok": true,
+  "pid": 6643,
+  "milestones": [
+    {
+      "name": "00-restore",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 2.5,
+        "x": -106.28,
+        "y": 44.6,
+        "z": 9.84,
+        "camYaw": 0.964,
+        "bodyYaw": 0.754,
+        "state": "grounded",
+        "stamina": 100,
+        "towers": [
+          "dawn",
+          "mere"
+        ],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "spicy": 0,
+        "mats": {
+          "pepper": 1,
+          "apple": 3
+        },
+        "prompt": "",
+        "interactVisible": false,
+        "nearestClimb": {
+          "id": "mere-shaft",
+          "d": 2.52,
+          "touchingClimbable": true
+        },
+        "lastDamageWhy": "",
+        "enemies": [],
+        "attackPhase": "idle",
+        "dodgeCd": 0,
+        "towerBaseY": 16.799999237060547
+      },
+      "t": 1789593071808
+    },
+    {
+      "name": "01-map-crown",
+      "pass": true,
+      "sel": "crown",
+      "t": 1789593073100
+    },
+    {
+      "name": "wp1",
+      "pass": true,
+      "target": {
+        "x": -40,
+        "z": -40
+      },
+      "t": 1789593084240
+    },
+    {
+      "name": "wp2",
+      "pass": true,
+      "target": {
+        "x": 0,
+        "z": -70
+      },
+      "t": 1789593103029
+    },
+    {
+      "name": "wp3",
+      "pass": true,
+      "target": {
+        "x": 20,
+        "z": -100
+      },
+      "t": 1789593120653
+    },
+    {
+      "name": "wp4",
+      "pass": true,
+      "target": {
+        "x": 40,
+        "z": -112
+      },
+      "t": 1789593133671
+    },
+    {
+      "name": "wp5",
+      "pass": true,
+      "target": {
+        "x": 57.2,
+        "z": -116.5
+      },
+      "t": 1789593141520
+    },
+    {
+      "name": "01c-spicy",
+      "pass": false,
+      "spicy": 0,
+      "mats": {
+        "pepper": 1,
+        "apple": 3
+      },
+      "mode": "playing",
+      "t": 1789593181652
+    },
+    {
+      "name": "01-arrive-crown",
+      "pass": true,
+      "post": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 0.5,
+        "x": 50.85,
+        "y": 38.68,
+        "z": -118.59,
+        "camYaw": 0.092,
+        "bodyYaw": 0.085,
+        "state": "grounded",
+        "stamina": 100,
+        "towers": [
+          "dawn",
+          "mere"
+        ],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "spicy": 0,
+        "mats": {
+          "pepper": 1,
+          "apple": 3
+        },
+        "prompt": "请靠近：距离 6.7m",
+        "interactVisible": true,
+        "nearestClimb": null,
+        "lastDamageWhy": "严寒",
+        "enemies": [],
+        "attackPhase": "idle",
+        "dodgeCd": 0,
+        "towerBaseY": 16.799999237060547
+      },
+      "t": 1789593183154
+    },
+    {
+      "name": "01a-approach-contact",
+      "pass": true,
+      "steps": 11,
+      "t0": 1789593183155,
+      "start": {
+        "x": 50.85,
+        "z": -118.59,
+        "d": null
+      },
+      "end": {
+        "x": 50.44,
+        "z": -122.89,
+        "d": 5.66,
+        "contact": true,
+        "id": "crown-shaft",
+        "elapsedMs": 1999
+      },
+      "decision": {
+        "kind": "handoff",
+        "reason": "contact id=crown-shaft",
+        "id": "crown-shaft"
+      },
+      "t": 1789593185154
+    },
+    {
+      "name": "01b-climb-handoff",
+      "pass": true,
+      "handoff": {
+        "ok": true
+      },
+      "approach": {
+        "steps": 11,
+        "t0": 1789593183155,
+        "start": {
+          "x": 50.85,
+          "z": -118.59,
+          "d": null
+        },
+        "end": {
+          "x": 50.44,
+          "z": -122.89,
+          "d": 5.66,
+          "contact": true,
+          "id": "crown-shaft",
+          "elapsedMs": 1999
+        },
+        "decision": {
+          "kind": "handoff",
+          "reason": "contact id=crown-shaft",
+          "id": "crown-shaft"
+        }
+      },
+      "nearestClimb": {
+        "id": "crown-shaft",
+        "d": 5.66,
+        "touchingClimbable": true
+      },
+      "t": 1789593185154
+    },
+    {
+      "name": "02-climb",
+      "pass": true,
+      "maxY": 54.85,
+      "final": {
+        "y": 54.85,
+        "state": "grounded",
+        "hp": 0.5
+      },
+      "t": 1789593193382
+    },
+    {
+      "name": "03-activate-crown",
+      "pass": true,
+      "maxY": 54.85,
+      "towers": [
+        "dawn",
+        "mere",
+        "crown"
+      ],
+      "t": 1789593193382
+    },
+    {
+      "name": "04-reload-crown",
+      "pass": true,
+      "after": {
+        "towers": [
+          "dawn",
+          "mere",
+          "crown"
+        ],
+        "shrines": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "orbs": 4
+      },
+      "t": 1789593194307
+    },
+    {
+      "name": "05-export",
+      "pass": true,
+      "path": "/Users/ymf/Projects/aetherwake-rebuild-20260909/mimo-playability-20260916/docs/astra-playability-20260916/evidence/checkpoint/post-crown-from-mere.storage.json",
+      "t": 1789593194309
+    }
+  ],
+  "failure": null,
+  "ring": [
+    {
+      "tag": "ASCEND-break",
+      "y": 54.85,
+      "stam": 14.5,
+      "state": "grounded",
+      "hp": 0.5,
+      "i": 4,
+      "next": "SUMMIT_INTERACT"
+    },
+    {
+      "tag": "SUMMIT_INTERACT",
+      "y": 54.85,
+      "stam": 16.8,
+      "state": "grounded",
+      "hp": 0.5,
+      "i": 5,
+      "reason": "at-activate-height"
+    },
+    {
+      "tag": "SUMMIT_INTERACT",
+      "y": 54.85,
+      "stam": 18.7,
+      "state": "grounded",
+      "hp": 0.5,
+      "i": 6,
+      "reason": "at-activate-height"
+    }
+  ],
+  "errors": [],
+  "startedAt": "2026-09-16T21:11:09.801Z"
+}

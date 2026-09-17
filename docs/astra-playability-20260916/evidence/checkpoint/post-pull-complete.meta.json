@@ -1,0 +1,21 @@
+{
+  "file": "post-pull-complete.storage.json",
+  "sha256": "58b5e9489242514c7daa4af3530334af16bd9d763621ca678e551ab32927d253",
+  "sourceRun": "pull-enter-014358",
+  "sourceCommit": "7780856",
+  "claimed": false,
+  "progress": {
+    "shrines": [
+      "burst",
+      "rime"
+    ],
+    "orbs": 2,
+    "towers": [],
+    "player": {
+      "x": 33.419219817005406,
+      "y": 10.490000381469724,
+      "z": 9.486623513593619
+    }
+  },
+  "note": "Natural enter-pull storageState. Name is historical; NOT a pull claim. Do not merge progress."
+}

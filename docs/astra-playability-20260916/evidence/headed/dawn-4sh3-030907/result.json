@@ -1,0 +1,102 @@
+{
+  "ok": false,
+  "pid": 99951,
+  "milestones": [
+    {
+      "name": "00-restore",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 4,
+        "x": 16.03,
+        "y": 16.11,
+        "z": -72.75,
+        "camYaw": 2.9,
+        "state": "grounded",
+        "stamina": 100,
+        "towers": [],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "prompt": "",
+        "climbBtn": false,
+        "lastDamageWhy": "",
+        "enemies": [],
+        "attackPhase": "idle",
+        "dodgeCd": 0
+      }
+    },
+    {
+      "name": "wp1",
+      "pass": true,
+      "target": {
+        "x": 16,
+        "z": -10
+      }
+    },
+    {
+      "name": "wp2",
+      "pass": true,
+      "target": {
+        "x": 18,
+        "z": 20
+      }
+    },
+    {
+      "name": "wp3",
+      "pass": true,
+      "target": {
+        "x": 16,
+        "z": 50
+      }
+    },
+    {
+      "name": "02-climb",
+      "pass": true,
+      "maxY": 36.25,
+      "final": {
+        "y": 36.25,
+        "state": "climbing"
+      }
+    },
+    {
+      "name": "03-activate-dawn",
+      "pass": false,
+      "maxY": 36.25,
+      "towers": []
+    },
+    {
+      "name": "04-reload-dawn",
+      "pass": false,
+      "before": {
+        "towers": [],
+        "shrines": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ]
+      },
+      "after": {
+        "towers": [],
+        "shrines": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "orbs": 4
+      }
+    }
+  ],
+  "failure": null,
+  "ring": [],
+  "errors": [],
+  "stopped": null
+}

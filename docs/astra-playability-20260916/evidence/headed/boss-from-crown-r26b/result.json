@@ -1,0 +1,1685 @@
+{
+  "ok": false,
+  "pid": 8857,
+  "milestones": [
+    {
+      "name": "00-restore",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "hp": 0.5,
+        "x": 49.73,
+        "y": 53.6,
+        "z": -125.88,
+        "camYaw": 0.189,
+        "bodyYaw": 0.681,
+        "state": "grounded",
+        "stamina": 100,
+        "towers": [
+          "dawn",
+          "mere",
+          "crown"
+        ],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "bossDead": false,
+        "sealOpen": true,
+        "prompt": "",
+        "attackPhase": "idle",
+        "dodgeCd": 0,
+        "invuln": 0,
+        "lastDamageWhy": "",
+        "enemies": [
+          {
+            "id": "s-1",
+            "kind": "sentinel",
+            "d": 53.93,
+            "phase": "patrol",
+            "brainT": 1.2,
+            "hp": 8,
+            "x": 52,
+            "z": -72
+          },
+          {
+            "id": "s-0",
+            "kind": "sentinel",
+            "d": 94.06,
+            "phase": "patrol",
+            "brainT": 1.2,
+            "hp": 8,
+            "x": 22,
+            "z": -36
+          },
+          {
+            "id": "b-1-2",
+            "kind": "bramble",
+            "d": 119.62,
+            "phase": "patrol",
+            "brainT": 1.2,
+            "hp": 3,
+            "x": 87.46,
+            "z": -12.37
+          },
+          {
+            "id": "b-1-1",
+            "kind": "bramble",
+            "d": 125.3,
+            "phase": "patrol",
+            "brainT": 1.2,
+            "hp": 3,
+            "x": 84.81,
+            "z": -5.59
+          },
+          {
+            "id": "b-1-0",
+            "kind": "bramble",
+            "d": 126.32,
+            "phase": "patrol",
+            "brainT": 1.2,
+            "hp": 3,
+            "x": 91.32,
+            "z": -6.6
+          },
+          {
+            "id": "boss",
+            "kind": "boss",
+            "d": 128.73,
+            "phase": "patrol",
+            "brainT": 1.2,
+            "hp": 20,
+            "x": 6,
+            "z": -4.8
+          }
+        ]
+      },
+      "t": 1789595697896
+    },
+    {
+      "name": "00b-seal-open",
+      "pass": true,
+      "sealOpen": true,
+      "t": 1789595697896
+    },
+    {
+      "name": "00c-respawn-fire",
+      "pass": true,
+      "t": 1789595700816
+    },
+    {
+      "name": "wp1",
+      "pass": true,
+      "target": {
+        "x": 18.52,
+        "z": -40
+      },
+      "t": 1789595735832
+    },
+    {
+      "name": "01-reseed-outer",
+      "pass": true,
+      "x": 11.76,
+      "z": -39.93,
+      "wps": [
+        {
+          "x": 11.76,
+          "z": -39.93
+        },
+        {
+          "x": 18.52,
+          "z": -39.93
+        },
+        {
+          "x": 18.52,
+          "z": -18
+        },
+        {
+          "x": 18.52,
+          "z": -8
+        },
+        {
+          "x": 18.52,
+          "z": 2
+        },
+        {
+          "x": 12,
+          "z": 2
+        },
+        {
+          "x": 6,
+          "z": 2
+        },
+        {
+          "x": 6,
+          "z": -1
+        },
+        {
+          "x": 6,
+          "z": -4
+        }
+      ],
+      "t": 1789595738864
+    },
+    {
+      "name": "wp1",
+      "pass": true,
+      "target": {
+        "x": 18.52,
+        "z": -39.93
+      },
+      "t": 1789595738864
+    },
+    {
+      "name": "wp2",
+      "pass": true,
+      "target": {
+        "x": 18.52,
+        "z": -18
+      },
+      "t": 1789595740015
+    },
+    {
+      "name": "wp3",
+      "pass": true,
+      "target": {
+        "x": 18.52,
+        "z": -8
+      },
+      "t": 1789595747034
+    },
+    {
+      "name": "wp4",
+      "pass": true,
+      "target": {
+        "x": 18.52,
+        "z": 2
+      },
+      "t": 1789595750635
+    },
+    {
+      "name": "wp5",
+      "pass": true,
+      "target": {
+        "x": 12,
+        "z": 2
+      },
+      "t": 1789595754131
+    },
+    {
+      "name": "wp6",
+      "pass": true,
+      "target": {
+        "x": 6,
+        "z": 2
+      },
+      "t": 1789595756233
+    },
+    {
+      "name": "wp7",
+      "pass": true,
+      "target": {
+        "x": 6,
+        "z": -1
+      },
+      "t": 1789595758664
+    },
+    {
+      "name": "wp8",
+      "pass": true,
+      "target": {
+        "x": 6,
+        "z": -4
+      },
+      "t": 1789595759630
+    },
+    {
+      "name": "first-damage",
+      "pass": true,
+      "i": 246,
+      "hp": 1.75,
+      "x": 4.35,
+      "z": -0.87,
+      "y": 10.67,
+      "why": "空王",
+      "enemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "d": 2.44,
+          "phase": "recover",
+          "brainT": 1.0000000000000004,
+          "hp": 20,
+          "x": 6.78,
+          "z": -1.05
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "d": 24.59,
+          "phase": "lost",
+          "brainT": 1.2,
+          "hp": 3,
+          "x": -16.95,
+          "z": 11.41
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "d": 27.41,
+          "phase": "lost",
+          "brainT": 1.2,
+          "hp": 3,
+          "x": -15.29,
+          "z": 18.25
+        }
+      ],
+      "t": 1789595760223
+    },
+    {
+      "name": "01-enter-courtyard",
+      "pass": true,
+      "post": {
+        "mode": "playing",
+        "world": "overworld",
+        "hp": 1.75,
+        "x": 4.22,
+        "y": 10.68,
+        "z": -1.23,
+        "camYaw": -0.343,
+        "bodyYaw": -0.191,
+        "state": "grounded",
+        "stamina": 100,
+        "towers": [
+          "dawn",
+          "mere",
+          "crown"
+        ],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "bossDead": false,
+        "sealOpen": true,
+        "prompt": "请靠近：距离 26.1m",
+        "attackPhase": "idle",
+        "dodgeCd": 0,
+        "invuln": 0.05,
+        "lastDamageWhy": "空王",
+        "enemies": [
+          {
+            "id": "boss",
+            "kind": "boss",
+            "d": 2.56,
+            "phase": "recover",
+            "brainT": 0.249999999999999,
+            "hp": 20,
+            "x": 6.78,
+            "z": -1.05
+          },
+          {
+            "id": "b-2-2",
+            "kind": "bramble",
+            "d": 24.42,
+            "phase": "lost",
+            "brainT": 1.2,
+            "hp": 3,
+            "x": -16.67,
+            "z": 11.41
+          },
+          {
+            "id": "b-2-0",
+            "kind": "bramble",
+            "d": 27.58,
+            "phase": "lost",
+            "brainT": 1.2,
+            "hp": 3,
+            "x": -15.2,
+            "z": 18.35
+          },
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "d": 31.48,
+            "phase": "lost",
+            "brainT": 1.2,
+            "hp": 3,
+            "x": -21.69,
+            "z": 16.65
+          },
+          {
+            "id": "s-0",
+            "kind": "sentinel",
+            "d": 33.11,
+            "phase": "lost",
+            "brainT": -5.065392549852277e-16,
+            "hp": 8,
+            "x": 20.55,
+            "z": -30.04
+          },
+          {
+            "id": "b-0-2",
+            "kind": "bramble",
+            "d": 60.59,
+            "phase": "lost",
+            "brainT": 1.2,
+            "hp": 3,
+            "x": 39.8,
+            "z": 47.81
+          }
+        ]
+      },
+      "t": 1789595760965
+    },
+    {
+      "name": "02a-first-damage-in-fight",
+      "pass": true,
+      "sample": {
+        "i": 0,
+        "act": "look",
+        "why": "face-recover",
+        "hp": 1.75,
+        "stam": 100,
+        "yaw": -0.343,
+        "invuln": 0.05,
+        "dodgeCd": 0,
+        "atk": "idle",
+        "d": 2.56,
+        "phase": "recover",
+        "brainT": 0.249999999999999,
+        "bossHp": 20,
+        "x": 4.22,
+        "z": -1.23
+      },
+      "why": "空王",
+      "ring": [
+        {
+          "i": 0,
+          "act": "look",
+          "why": "face-recover",
+          "hp": 1.75,
+          "stam": 100,
+          "yaw": -0.343,
+          "invuln": 0.05,
+          "dodgeCd": 0,
+          "atk": "idle",
+          "d": 2.56,
+          "phase": "recover",
+          "brainT": 0.249999999999999,
+          "bossHp": 20,
+          "x": 4.22,
+          "z": -1.23
+        }
+      ],
+      "t": 1789595760966
+    },
+    {
+      "name": "02-boss-dead",
+      "pass": false,
+      "final": {
+        "mode": "dead",
+        "world": "overworld",
+        "hp": 0,
+        "x": 9.01,
+        "y": 10.9,
+        "z": -3.84,
+        "camYaw": -4.554,
+        "bodyYaw": -1.14,
+        "state": "dead",
+        "stamina": 91.3,
+        "towers": [
+          "dawn",
+          "mere",
+          "crown"
+        ],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "bossDead": false,
+        "sealOpen": true,
+        "prompt": "请靠近：距离 30.7m",
+        "attackPhase": "idle",
+        "dodgeCd": 0.08,
+        "invuln": 0.9,
+        "lastDamageWhy": "空王",
+        "enemies": [
+          {
+            "id": "boss",
+            "kind": "boss",
+            "d": 0.58,
+            "phase": "recover",
+            "brainT": 1.1,
+            "hp": 20,
+            "x": 8.53,
+            "z": -3.53
+          },
+          {
+            "id": "b-2-2",
+            "kind": "bramble",
+            "d": 30.04,
+            "phase": "lost",
+            "brainT": 1.2,
+            "hp": 3,
+            "x": -16.87,
+            "z": 11.4
+          },
+          {
+            "id": "b-2-0",
+            "kind": "bramble",
+            "d": 32.84,
+            "phase": "lost",
+            "brainT": 1.2,
+            "hp": 3,
+            "x": -15.26,
+            "z": 18.28
+          },
+          {
+            "id": "s-0",
+            "kind": "sentinel",
+            "d": 34.49,
+            "phase": "lost",
+            "brainT": -5.065392549852277e-16,
+            "hp": 8,
+            "x": 22.23,
+            "z": -35.7
+          },
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "d": 36.9,
+            "phase": "lost",
+            "brainT": 1.2,
+            "hp": 3,
+            "x": -21.67,
+            "z": 16.66
+          },
+          {
+            "id": "b-0-2",
+            "kind": "bramble",
+            "d": 60.06,
+            "phase": "lost",
+            "brainT": 1.2,
+            "hp": 3,
+            "x": 39.57,
+            "z": 47.87
+          }
+        ]
+      },
+      "stopped": null,
+      "fightDeath": {
+        "i": 46,
+        "t": {
+          "mode": "dead",
+          "world": "overworld",
+          "hp": 0,
+          "x": 9.01,
+          "y": 10.9,
+          "z": -3.84,
+          "camYaw": -4.554,
+          "bodyYaw": -1.14,
+          "state": "dead",
+          "stamina": 91.3,
+          "towers": [
+            "dawn",
+            "mere",
+            "crown"
+          ],
+          "orbs": 4,
+          "shrinesOn": [
+            "burst",
+            "rime",
+            "pull",
+            "still"
+          ],
+          "bossDead": false,
+          "sealOpen": true,
+          "prompt": "请靠近：距离 30.7m",
+          "attackPhase": "idle",
+          "dodgeCd": 0.08,
+          "invuln": 0.9,
+          "lastDamageWhy": "空王",
+          "enemies": [
+            {
+              "id": "boss",
+              "kind": "boss",
+              "d": 0.58,
+              "phase": "recover",
+              "brainT": 1.1,
+              "hp": 20,
+              "x": 8.53,
+              "z": -3.53
+            },
+            {
+              "id": "b-2-2",
+              "kind": "bramble",
+              "d": 30.04,
+              "phase": "lost",
+              "brainT": 1.2,
+              "hp": 3,
+              "x": -16.87,
+              "z": 11.4
+            },
+            {
+              "id": "b-2-0",
+              "kind": "bramble",
+              "d": 32.84,
+              "phase": "lost",
+              "brainT": 1.2,
+              "hp": 3,
+              "x": -15.26,
+              "z": 18.28
+            },
+            {
+              "id": "s-0",
+              "kind": "sentinel",
+              "d": 34.49,
+              "phase": "lost",
+              "brainT": -5.065392549852277e-16,
+              "hp": 8,
+              "x": 22.23,
+              "z": -35.7
+            },
+            {
+              "id": "b-2-1",
+              "kind": "bramble",
+              "d": 36.9,
+              "phase": "lost",
+              "brainT": 1.2,
+              "hp": 3,
+              "x": -21.67,
+              "z": 16.66
+            },
+            {
+              "id": "b-0-2",
+              "kind": "bramble",
+              "d": 60.06,
+              "phase": "lost",
+              "brainT": 1.2,
+              "hp": 3,
+              "x": 39.57,
+              "z": 47.87
+            }
+          ]
+        },
+        "ring": [
+          {
+            "i": 34,
+            "act": "look",
+            "why": "face-recover",
+            "hp": 0.5,
+            "stam": 100,
+            "yaw": -4.36,
+            "invuln": 0.43,
+            "dodgeCd": 0,
+            "atk": "idle",
+            "d": 2.57,
+            "phase": "recover",
+            "brainT": 0.6333333333333326,
+            "bossHp": 20,
+            "x": 10.03,
+            "z": -3.25
+          },
+          {
+            "i": 35,
+            "act": "move",
+            "why": "close-recover d=2.57",
+            "hp": 0.5,
+            "stam": 100,
+            "yaw": -4.554,
+            "invuln": 0.37,
+            "dodgeCd": 0,
+            "atk": "idle",
+            "d": 2.57,
+            "phase": "recover",
+            "brainT": 0.5666666666666658,
+            "bossHp": 20,
+            "x": 10.04,
+            "z": -3.25
+          },
+          {
+            "i": 36,
+            "act": "move",
+            "why": "close-recover d=2.75",
+            "hp": 0.5,
+            "stam": 100,
+            "yaw": -4.554,
+            "invuln": 0.17,
+            "dodgeCd": 0,
+            "atk": "idle",
+            "d": 2.75,
+            "phase": "recover",
+            "brainT": 0.36666666666666564,
+            "bossHp": 20,
+            "x": 10.22,
+            "z": -3.33
+          },
+          {
+            "i": 37,
+            "act": "move",
+            "why": "close-recover d=3.11",
+            "hp": 0.5,
+            "stam": 100,
+            "yaw": -4.554,
+            "invuln": 0,
+            "dodgeCd": 0,
+            "atk": "idle",
+            "d": 3.11,
+            "phase": "recover",
+            "brainT": 0.18333333333333235,
+            "bossHp": 20,
+            "x": 10.57,
+            "z": -3.5
+          },
+          {
+            "i": 38,
+            "act": "move",
+            "why": "reenter-move",
+            "hp": 0.5,
+            "stam": 100,
+            "yaw": -4.554,
+            "invuln": 0,
+            "dodgeCd": 0,
+            "atk": "idle",
+            "d": 3.54,
+            "phase": "approach",
+            "brainT": -9.506284648352903e-16,
+            "bossHp": 20,
+            "x": 11,
+            "z": -3.69
+          },
+          {
+            "i": 39,
+            "act": "move",
+            "why": "reenter-move",
+            "hp": 0.5,
+            "stam": 100,
+            "yaw": -4.554,
+            "invuln": 0,
+            "dodgeCd": 0,
+            "atk": "idle",
+            "d": 3.44,
+            "phase": "approach",
+            "brainT": -9.506284648352903e-16,
+            "bossHp": 20,
+            "x": 11.46,
+            "z": -3.91
+          },
+          {
+            "i": 40,
+            "act": "dodge",
+            "why": "boss-windup d=3.44",
+            "hp": 0.5,
+            "stam": 100,
+            "yaw": -4.554,
+            "invuln": 0,
+            "dodgeCd": 0,
+            "atk": "idle",
+            "d": 3.44,
+            "phase": "windup",
+            "brainT": 0.6833333333333332,
+            "bossHp": 20,
+            "x": 11.92,
+            "z": -4.13
+          },
+          {
+            "i": 41,
+            "act": "dodge",
+            "why": "boss-windup d=3.59",
+            "hp": 0.5,
+            "stam": 100,
+            "yaw": -4.554,
+            "invuln": 0,
+            "dodgeCd": 0,
+            "atk": "idle",
+            "d": 3.59,
+            "phase": "windup",
+            "brainT": 0.6166666666666664,
+            "bossHp": 20,
+            "x": 12.05,
+            "z": -4.2
+          },
+          {
+            "i": 42,
+            "act": "move",
+            "why": "strike-no-dodge d=3.04",
+            "hp": 0.5,
+            "stam": 82,
+            "yaw": -4.554,
+            "invuln": 0.13,
+            "dodgeCd": 0.65,
+            "atk": "idle",
+            "d": 3.04,
+            "phase": "windup",
+            "brainT": 0.5499999999999995,
+            "bossHp": 20,
+            "x": 11.51,
+            "z": -4.11
+          },
+          {
+            "i": 43,
+            "act": "move",
+            "why": "strike-no-dodge d=1.02",
+            "hp": 0.5,
+            "stam": 82,
+            "yaw": -4.554,
+            "invuln": 0,
+            "dodgeCd": 0.47,
+            "atk": "idle",
+            "d": 1.02,
+            "phase": "windup",
+            "brainT": 0.3666666666666661,
+            "bossHp": 20,
+            "x": 9.52,
+            "z": -3.79
+          },
+          {
+            "i": 44,
+            "act": "move",
+            "why": "strike-no-dodge d=0.34",
+            "hp": 0.5,
+            "stam": 85.7,
+            "yaw": -4.554,
+            "invuln": 0,
+            "dodgeCd": 0.28,
+            "atk": "idle",
+            "d": 0.34,
+            "phase": "windup",
+            "brainT": 0.1833333333333328,
+            "bossHp": 20,
+            "x": 8.81,
+            "z": -3.71
+          },
+          {
+            "i": 45,
+            "act": "move",
+            "why": "strike-no-dodge d=0.55",
+            "hp": 0.5,
+            "stam": 90.9,
+            "yaw": -4.554,
+            "invuln": 0,
+            "dodgeCd": 0.1,
+            "atk": "idle",
+            "d": 0.55,
+            "phase": "strike",
+            "brainT": 0.18,
+            "bossHp": 20,
+            "x": 8.99,
+            "z": -3.82
+          }
+        ]
+      },
+      "ringTail": [
+        {
+          "i": 38,
+          "act": "move",
+          "why": "reenter-move",
+          "hp": 0.5,
+          "stam": 100,
+          "yaw": -4.554,
+          "invuln": 0,
+          "dodgeCd": 0,
+          "atk": "idle",
+          "d": 3.54,
+          "phase": "approach",
+          "brainT": -9.506284648352903e-16,
+          "bossHp": 20,
+          "x": 11,
+          "z": -3.69
+        },
+        {
+          "i": 39,
+          "act": "move",
+          "why": "reenter-move",
+          "hp": 0.5,
+          "stam": 100,
+          "yaw": -4.554,
+          "invuln": 0,
+          "dodgeCd": 0,
+          "atk": "idle",
+          "d": 3.44,
+          "phase": "approach",
+          "brainT": -9.506284648352903e-16,
+          "bossHp": 20,
+          "x": 11.46,
+          "z": -3.91
+        },
+        {
+          "i": 40,
+          "act": "dodge",
+          "why": "boss-windup d=3.44",
+          "hp": 0.5,
+          "stam": 100,
+          "yaw": -4.554,
+          "invuln": 0,
+          "dodgeCd": 0,
+          "atk": "idle",
+          "d": 3.44,
+          "phase": "windup",
+          "brainT": 0.6833333333333332,
+          "bossHp": 20,
+          "x": 11.92,
+          "z": -4.13
+        },
+        {
+          "i": 41,
+          "act": "dodge",
+          "why": "boss-windup d=3.59",
+          "hp": 0.5,
+          "stam": 100,
+          "yaw": -4.554,
+          "invuln": 0,
+          "dodgeCd": 0,
+          "atk": "idle",
+          "d": 3.59,
+          "phase": "windup",
+          "brainT": 0.6166666666666664,
+          "bossHp": 20,
+          "x": 12.05,
+          "z": -4.2
+        },
+        {
+          "i": 42,
+          "act": "move",
+          "why": "strike-no-dodge d=3.04",
+          "hp": 0.5,
+          "stam": 82,
+          "yaw": -4.554,
+          "invuln": 0.13,
+          "dodgeCd": 0.65,
+          "atk": "idle",
+          "d": 3.04,
+          "phase": "windup",
+          "brainT": 0.5499999999999995,
+          "bossHp": 20,
+          "x": 11.51,
+          "z": -4.11
+        },
+        {
+          "i": 43,
+          "act": "move",
+          "why": "strike-no-dodge d=1.02",
+          "hp": 0.5,
+          "stam": 82,
+          "yaw": -4.554,
+          "invuln": 0,
+          "dodgeCd": 0.47,
+          "atk": "idle",
+          "d": 1.02,
+          "phase": "windup",
+          "brainT": 0.3666666666666661,
+          "bossHp": 20,
+          "x": 9.52,
+          "z": -3.79
+        },
+        {
+          "i": 44,
+          "act": "move",
+          "why": "strike-no-dodge d=0.34",
+          "hp": 0.5,
+          "stam": 85.7,
+          "yaw": -4.554,
+          "invuln": 0,
+          "dodgeCd": 0.28,
+          "atk": "idle",
+          "d": 0.34,
+          "phase": "windup",
+          "brainT": 0.1833333333333328,
+          "bossHp": 20,
+          "x": 8.81,
+          "z": -3.71
+        },
+        {
+          "i": 45,
+          "act": "move",
+          "why": "strike-no-dodge d=0.55",
+          "hp": 0.5,
+          "stam": 90.9,
+          "yaw": -4.554,
+          "invuln": 0,
+          "dodgeCd": 0.1,
+          "atk": "idle",
+          "d": 0.55,
+          "phase": "strike",
+          "brainT": 0.18,
+          "bossHp": 20,
+          "x": 8.99,
+          "z": -3.82
+        }
+      ],
+      "t": 1789595766954
+    },
+    {
+      "name": "03-reload-boss",
+      "pass": false,
+      "after": {
+        "bossDead": false,
+        "towers": [
+          "dawn",
+          "mere",
+          "crown"
+        ],
+        "shrines": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "orbs": 4
+      },
+      "t": 1789595767883
+    }
+  ],
+  "failure": {
+    "stopped": null,
+    "final": {
+      "mode": "dead",
+      "world": "overworld",
+      "hp": 0,
+      "x": 9.01,
+      "y": 10.9,
+      "z": -3.84,
+      "camYaw": -4.554,
+      "bodyYaw": -1.14,
+      "state": "dead",
+      "stamina": 91.3,
+      "towers": [
+        "dawn",
+        "mere",
+        "crown"
+      ],
+      "orbs": 4,
+      "shrinesOn": [
+        "burst",
+        "rime",
+        "pull",
+        "still"
+      ],
+      "bossDead": false,
+      "sealOpen": true,
+      "prompt": "请靠近：距离 30.7m",
+      "attackPhase": "idle",
+      "dodgeCd": 0.08,
+      "invuln": 0.9,
+      "lastDamageWhy": "空王",
+      "enemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "d": 0.58,
+          "phase": "recover",
+          "brainT": 1.1,
+          "hp": 20,
+          "x": 8.53,
+          "z": -3.53
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "d": 30.04,
+          "phase": "lost",
+          "brainT": 1.2,
+          "hp": 3,
+          "x": -16.87,
+          "z": 11.4
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "d": 32.84,
+          "phase": "lost",
+          "brainT": 1.2,
+          "hp": 3,
+          "x": -15.26,
+          "z": 18.28
+        },
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "d": 34.49,
+          "phase": "lost",
+          "brainT": -5.065392549852277e-16,
+          "hp": 8,
+          "x": 22.23,
+          "z": -35.7
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "d": 36.9,
+          "phase": "lost",
+          "brainT": 1.2,
+          "hp": 3,
+          "x": -21.67,
+          "z": 16.66
+        },
+        {
+          "id": "b-0-2",
+          "kind": "bramble",
+          "d": 60.06,
+          "phase": "lost",
+          "brainT": 1.2,
+          "hp": 3,
+          "x": 39.57,
+          "z": 47.87
+        }
+      ]
+    },
+    "fightDeath": {
+      "i": 46,
+      "t": {
+        "mode": "dead",
+        "world": "overworld",
+        "hp": 0,
+        "x": 9.01,
+        "y": 10.9,
+        "z": -3.84,
+        "camYaw": -4.554,
+        "bodyYaw": -1.14,
+        "state": "dead",
+        "stamina": 91.3,
+        "towers": [
+          "dawn",
+          "mere",
+          "crown"
+        ],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "bossDead": false,
+        "sealOpen": true,
+        "prompt": "请靠近：距离 30.7m",
+        "attackPhase": "idle",
+        "dodgeCd": 0.08,
+        "invuln": 0.9,
+        "lastDamageWhy": "空王",
+        "enemies": [
+          {
+            "id": "boss",
+            "kind": "boss",
+            "d": 0.58,
+            "phase": "recover",
+            "brainT": 1.1,
+            "hp": 20,
+            "x": 8.53,
+            "z": -3.53
+          },
+          {
+            "id": "b-2-2",
+            "kind": "bramble",
+            "d": 30.04,
+            "phase": "lost",
+            "brainT": 1.2,
+            "hp": 3,
+            "x": -16.87,
+            "z": 11.4
+          },
+          {
+            "id": "b-2-0",
+            "kind": "bramble",
+            "d": 32.84,
+            "phase": "lost",
+            "brainT": 1.2,
+            "hp": 3,
+            "x": -15.26,
+            "z": 18.28
+          },
+          {
+            "id": "s-0",
+            "kind": "sentinel",
+            "d": 34.49,
+            "phase": "lost",
+            "brainT": -5.065392549852277e-16,
+            "hp": 8,
+            "x": 22.23,
+            "z": -35.7
+          },
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "d": 36.9,
+            "phase": "lost",
+            "brainT": 1.2,
+            "hp": 3,
+            "x": -21.67,
+            "z": 16.66
+          },
+          {
+            "id": "b-0-2",
+            "kind": "bramble",
+            "d": 60.06,
+            "phase": "lost",
+            "brainT": 1.2,
+            "hp": 3,
+            "x": 39.57,
+            "z": 47.87
+          }
+        ]
+      },
+      "ring": [
+        {
+          "i": 34,
+          "act": "look",
+          "why": "face-recover",
+          "hp": 0.5,
+          "stam": 100,
+          "yaw": -4.36,
+          "invuln": 0.43,
+          "dodgeCd": 0,
+          "atk": "idle",
+          "d": 2.57,
+          "phase": "recover",
+          "brainT": 0.6333333333333326,
+          "bossHp": 20,
+          "x": 10.03,
+          "z": -3.25
+        },
+        {
+          "i": 35,
+          "act": "move",
+          "why": "close-recover d=2.57",
+          "hp": 0.5,
+          "stam": 100,
+          "yaw": -4.554,
+          "invuln": 0.37,
+          "dodgeCd": 0,
+          "atk": "idle",
+          "d": 2.57,
+          "phase": "recover",
+          "brainT": 0.5666666666666658,
+          "bossHp": 20,
+          "x": 10.04,
+          "z": -3.25
+        },
+        {
+          "i": 36,
+          "act": "move",
+          "why": "close-recover d=2.75",
+          "hp": 0.5,
+          "stam": 100,
+          "yaw": -4.554,
+          "invuln": 0.17,
+          "dodgeCd": 0,
+          "atk": "idle",
+          "d": 2.75,
+          "phase": "recover",
+          "brainT": 0.36666666666666564,
+          "bossHp": 20,
+          "x": 10.22,
+          "z": -3.33
+        },
+        {
+          "i": 37,
+          "act": "move",
+          "why": "close-recover d=3.11",
+          "hp": 0.5,
+          "stam": 100,
+          "yaw": -4.554,
+          "invuln": 0,
+          "dodgeCd": 0,
+          "atk": "idle",
+          "d": 3.11,
+          "phase": "recover",
+          "brainT": 0.18333333333333235,
+          "bossHp": 20,
+          "x": 10.57,
+          "z": -3.5
+        },
+        {
+          "i": 38,
+          "act": "move",
+          "why": "reenter-move",
+          "hp": 0.5,
+          "stam": 100,
+          "yaw": -4.554,
+          "invuln": 0,
+          "dodgeCd": 0,
+          "atk": "idle",
+          "d": 3.54,
+          "phase": "approach",
+          "brainT": -9.506284648352903e-16,
+          "bossHp": 20,
+          "x": 11,
+          "z": -3.69
+        },
+        {
+          "i": 39,
+          "act": "move",
+          "why": "reenter-move",
+          "hp": 0.5,
+          "stam": 100,
+          "yaw": -4.554,
+          "invuln": 0,
+          "dodgeCd": 0,
+          "atk": "idle",
+          "d": 3.44,
+          "phase": "approach",
+          "brainT": -9.506284648352903e-16,
+          "bossHp": 20,
+          "x": 11.46,
+          "z": -3.91
+        },
+        {
+          "i": 40,
+          "act": "dodge",
+          "why": "boss-windup d=3.44",
+          "hp": 0.5,
+          "stam": 100,
+          "yaw": -4.554,
+          "invuln": 0,
+          "dodgeCd": 0,
+          "atk": "idle",
+          "d": 3.44,
+          "phase": "windup",
+          "brainT": 0.6833333333333332,
+          "bossHp": 20,
+          "x": 11.92,
+          "z": -4.13
+        },
+        {
+          "i": 41,
+          "act": "dodge",
+          "why": "boss-windup d=3.59",
+          "hp": 0.5,
+          "stam": 100,
+          "yaw": -4.554,
+          "invuln": 0,
+          "dodgeCd": 0,
+          "atk": "idle",
+          "d": 3.59,
+          "phase": "windup",
+          "brainT": 0.6166666666666664,
+          "bossHp": 20,
+          "x": 12.05,
+          "z": -4.2
+        },
+        {
+          "i": 42,
+          "act": "move",
+          "why": "strike-no-dodge d=3.04",
+          "hp": 0.5,
+          "stam": 82,
+          "yaw": -4.554,
+          "invuln": 0.13,
+          "dodgeCd": 0.65,
+          "atk": "idle",
+          "d": 3.04,
+          "phase": "windup",
+          "brainT": 0.5499999999999995,
+          "bossHp": 20,
+          "x": 11.51,
+          "z": -4.11
+        },
+        {
+          "i": 43,
+          "act": "move",
+          "why": "strike-no-dodge d=1.02",
+          "hp": 0.5,
+          "stam": 82,
+          "yaw": -4.554,
+          "invuln": 0,
+          "dodgeCd": 0.47,
+          "atk": "idle",
+          "d": 1.02,
+          "phase": "windup",
+          "brainT": 0.3666666666666661,
+          "bossHp": 20,
+          "x": 9.52,
+          "z": -3.79
+        },
+        {
+          "i": 44,
+          "act": "move",
+          "why": "strike-no-dodge d=0.34",
+          "hp": 0.5,
+          "stam": 85.7,
+          "yaw": -4.554,
+          "invuln": 0,
+          "dodgeCd": 0.28,
+          "atk": "idle",
+          "d": 0.34,
+          "phase": "windup",
+          "brainT": 0.1833333333333328,
+          "bossHp": 20,
+          "x": 8.81,
+          "z": -3.71
+        },
+        {
+          "i": 45,
+          "act": "move",
+          "why": "strike-no-dodge d=0.55",
+          "hp": 0.5,
+          "stam": 90.9,
+          "yaw": -4.554,
+          "invuln": 0,
+          "dodgeCd": 0.1,
+          "atk": "idle",
+          "d": 0.55,
+          "phase": "strike",
+          "brainT": 0.18,
+          "bossHp": 20,
+          "x": 8.99,
+          "z": -3.82
+        }
+      ]
+    }
+  },
+  "errors": [],
+  "startedAt": "2026-09-16T21:54:55.645Z",
+  "fightDeath": {
+    "i": 46,
+    "t": {
+      "mode": "dead",
+      "world": "overworld",
+      "hp": 0,
+      "x": 9.01,
+      "y": 10.9,
+      "z": -3.84,
+      "camYaw": -4.554,
+      "bodyYaw": -1.14,
+      "state": "dead",
+      "stamina": 91.3,
+      "towers": [
+        "dawn",
+        "mere",
+        "crown"
+      ],
+      "orbs": 4,
+      "shrinesOn": [
+        "burst",
+        "rime",
+        "pull",
+        "still"
+      ],
+      "bossDead": false,
+      "sealOpen": true,
+      "prompt": "请靠近：距离 30.7m",
+      "attackPhase": "idle",
+      "dodgeCd": 0.08,
+      "invuln": 0.9,
+      "lastDamageWhy": "空王",
+      "enemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "d": 0.58,
+          "phase": "recover",
+          "brainT": 1.1,
+          "hp": 20,
+          "x": 8.53,
+          "z": -3.53
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "d": 30.04,
+          "phase": "lost",
+          "brainT": 1.2,
+          "hp": 3,
+          "x": -16.87,
+          "z": 11.4
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "d": 32.84,
+          "phase": "lost",
+          "brainT": 1.2,
+          "hp": 3,
+          "x": -15.26,
+          "z": 18.28
+        },
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "d": 34.49,
+          "phase": "lost",
+          "brainT": -5.065392549852277e-16,
+          "hp": 8,
+          "x": 22.23,
+          "z": -35.7
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "d": 36.9,
+          "phase": "lost",
+          "brainT": 1.2,
+          "hp": 3,
+          "x": -21.67,
+          "z": 16.66
+        },
+        {
+          "id": "b-0-2",
+          "kind": "bramble",
+          "d": 60.06,
+          "phase": "lost",
+          "brainT": 1.2,
+          "hp": 3,
+          "x": 39.57,
+          "z": 47.87
+        }
+      ]
+    },
+    "ring": [
+      {
+        "i": 34,
+        "act": "look",
+        "why": "face-recover",
+        "hp": 0.5,
+        "stam": 100,
+        "yaw": -4.36,
+        "invuln": 0.43,
+        "dodgeCd": 0,
+        "atk": "idle",
+        "d": 2.57,
+        "phase": "recover",
+        "brainT": 0.6333333333333326,
+        "bossHp": 20,
+        "x": 10.03,
+        "z": -3.25
+      },
+      {
+        "i": 35,
+        "act": "move",
+        "why": "close-recover d=2.57",
+        "hp": 0.5,
+        "stam": 100,
+        "yaw": -4.554,
+        "invuln": 0.37,
+        "dodgeCd": 0,
+        "atk": "idle",
+        "d": 2.57,
+        "phase": "recover",
+        "brainT": 0.5666666666666658,
+        "bossHp": 20,
+        "x": 10.04,
+        "z": -3.25
+      },
+      {
+        "i": 36,
+        "act": "move",
+        "why": "close-recover d=2.75",
+        "hp": 0.5,
+        "stam": 100,
+        "yaw": -4.554,
+        "invuln": 0.17,
+        "dodgeCd": 0,
+        "atk": "idle",
+        "d": 2.75,
+        "phase": "recover",
+        "brainT": 0.36666666666666564,
+        "bossHp": 20,
+        "x": 10.22,
+        "z": -3.33
+      },
+      {
+        "i": 37,
+        "act": "move",
+        "why": "close-recover d=3.11",
+        "hp": 0.5,
+        "stam": 100,
+        "yaw": -4.554,
+        "invuln": 0,
+        "dodgeCd": 0,
+        "atk": "idle",
+        "d": 3.11,
+        "phase": "recover",
+        "brainT": 0.18333333333333235,
+        "bossHp": 20,
+        "x": 10.57,
+        "z": -3.5
+      },
+      {
+        "i": 38,
+        "act": "move",
+        "why": "reenter-move",
+        "hp": 0.5,
+        "stam": 100,
+        "yaw": -4.554,
+        "invuln": 0,
+        "dodgeCd": 0,
+        "atk": "idle",
+        "d": 3.54,
+        "phase": "approach",
+        "brainT": -9.506284648352903e-16,
+        "bossHp": 20,
+        "x": 11,
+        "z": -3.69
+      },
+      {
+        "i": 39,
+        "act": "move",
+        "why": "reenter-move",
+        "hp": 0.5,
+        "stam": 100,
+        "yaw": -4.554,
+        "invuln": 0,
+        "dodgeCd": 0,
+        "atk": "idle",
+        "d": 3.44,
+        "phase": "approach",
+        "brainT": -9.506284648352903e-16,
+        "bossHp": 20,
+        "x": 11.46,
+        "z": -3.91
+      },
+      {
+        "i": 40,
+        "act": "dodge",
+        "why": "boss-windup d=3.44",
+        "hp": 0.5,
+        "stam": 100,
+        "yaw": -4.554,
+        "invuln": 0,
+        "dodgeCd": 0,
+        "atk": "idle",
+        "d": 3.44,
+        "phase": "windup",
+        "brainT": 0.6833333333333332,
+        "bossHp": 20,
+        "x": 11.92,
+        "z": -4.13
+      },
+      {
+        "i": 41,
+        "act": "dodge",
+        "why": "boss-windup d=3.59",
+        "hp": 0.5,
+        "stam": 100,
+        "yaw": -4.554,
+        "invuln": 0,
+        "dodgeCd": 0,
+        "atk": "idle",
+        "d": 3.59,
+        "phase": "windup",
+        "brainT": 0.6166666666666664,
+        "bossHp": 20,
+        "x": 12.05,
+        "z": -4.2
+      },
+      {
+        "i": 42,
+        "act": "move",
+        "why": "strike-no-dodge d=3.04",
+        "hp": 0.5,
+        "stam": 82,
+        "yaw": -4.554,
+        "invuln": 0.13,
+        "dodgeCd": 0.65,
+        "atk": "idle",
+        "d": 3.04,
+        "phase": "windup",
+        "brainT": 0.5499999999999995,
+        "bossHp": 20,
+        "x": 11.51,
+        "z": -4.11
+      },
+      {
+        "i": 43,
+        "act": "move",
+        "why": "strike-no-dodge d=1.02",
+        "hp": 0.5,
+        "stam": 82,
+        "yaw": -4.554,
+        "invuln": 0,
+        "dodgeCd": 0.47,
+        "atk": "idle",
+        "d": 1.02,
+        "phase": "windup",
+        "brainT": 0.3666666666666661,
+        "bossHp": 20,
+        "x": 9.52,
+        "z": -3.79
+      },
+      {
+        "i": 44,
+        "act": "move",
+        "why": "strike-no-dodge d=0.34",
+        "hp": 0.5,
+        "stam": 85.7,
+        "yaw": -4.554,
+        "invuln": 0,
+        "dodgeCd": 0.28,
+        "atk": "idle",
+        "d": 0.34,
+        "phase": "windup",
+        "brainT": 0.1833333333333328,
+        "bossHp": 20,
+        "x": 8.81,
+        "z": -3.71
+      },
+      {
+        "i": 45,
+        "act": "move",
+        "why": "strike-no-dodge d=0.55",
+        "hp": 0.5,
+        "stam": 90.9,
+        "yaw": -4.554,
+        "invuln": 0,
+        "dodgeCd": 0.1,
+        "atk": "idle",
+        "d": 0.55,
+        "phase": "strike",
+        "brainT": 0.18,
+        "bossHp": 20,
+        "x": 8.99,
+        "z": -3.82
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "cookies": [
+    {
+      "name": "__cf_bm",
+      "value": "..9_bqS.2CZ4Zc2n0PrifIGHv6LJTLfMSVxtnpr4O_o-1789584368.970375-1.0.1.1-Jm0mVz0b5d5RXK7IFHzke39RtDV7iDnieTuGAX39yjOAEQMArhpSbDGqGwx6IiPSu05ypjPDZj_FEuxVN6DAfza4gxD91Ib56ToK6QyW08tQLqsf3bBTq6yfUEr7FpEr",
+      "domain": ".grok.com",
+      "path": "/",
+      "expires": 1789586169.12077,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "http://127.0.0.1:8103",
+      "localStorage": [
+        {
+          "name": "aetherwake-save-v2",
+          "value": "{\"schemaVersion\":2,\"worldVersion\":2,\"savedAt\":1789584416479,\"player\":{\"x\":16.026544190267227,\"y\":16.50713467017763,\"z\":-72.75372876808413,\"yaw\":0.3343860974481008,\"camYaw\":2.899592653589793,\"hp\":4,\"heartsMax\":4,\"staminaMax\":100,\"arrows\":24,\"amber\":0,\"art\":4,\"spicy\":0},\"inventory\":{\"weapons\":[{\"id\":\"blade\",\"name\":\"旅人短剑\",\"dmg\":18,\"dur\":24,\"max\":24,\"kind\":\"sword\"},{\"id\":\"bow\",\"name\":\"林间长弓\",\"dmg\":12,\"dur\":20,\"max\":20,\"kind\":\"bow\"}],\"meals\":[],\"mats\":{\"apple\":2,\"pepper\":1},\"equippedId\":\"blade\",\"bowId\":\"bow\"},\"progress\":{\"towers\":[],\"shrines\":[\"burst\",\"rime\",\"pull\",\"still\"],\"wisps\":[],\"chests\":[],\"orbs\":4,\"bossDead\":false,\"ruinSolved\":false,\"sealRule\":\"towers-and-shrines\",\"graybox\":false},\"checkpoint\":{\"id\":\"spawn\",\"x\":16,\"y\":11.414756173028813,\"z\":102}}"
+        }
+      ]
+    }
+  ]
+}

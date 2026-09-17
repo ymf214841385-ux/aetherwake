@@ -1,7 +1,9 @@
 # Source package
 
-Run `node aetherwake/scripts/pack-release.mjs` from a committed source tree. The ZIP uses sorted committed paths, fixed ZIP timestamps and excludes local recordings, caches, credentials and databases. The metadata records the source commit and archive SHA-256. A later packaging commit contains that archive.
+Run `node aetherwake/scripts/pack-release.mjs` from a committed source tree. The generated ZIP and manifest are local ignored outputs; they are published as GitHub Release assets, not committed repeatedly.
 
-Extract, then `cd aetherwake`, `npm ci`, `npm run dev`. Safe build: `npm run build:app`; do not use the migration-running `build` for verification.
+Download: https://github.com/ymf214841385-ux/aetherwake/releases/tag/playtest-20260917
 
-This is a development checkpoint. See docs/CHECKPOINT_2026-09-11.md and docs/RELEASE_VALIDATION.md for known unfinished work and test failures.
+The manifest records the exact source commit, file count, size and SHA-256. Extract, then `cd aetherwake`, install dependencies, and run `npm run dev`. Safe build: `npm run build:app`. This package contains source/assets/evidence; it is not a hosted game.
+
+Known issues: docs/CHECKPOINT_2026-09-17.md.

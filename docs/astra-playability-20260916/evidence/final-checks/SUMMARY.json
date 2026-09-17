@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-09-17T11:05:00+08:00",
+  "cwd": "/Users/ymf/Projects/aetherwake-rebuild-20260909/mimo-playability-20260916/aetherwake",
+  "checks": [
+    { "name": "typecheck", "command": "npm run typecheck", "exitCode": 0, "reused": "unchanged source since last run" },
+    { "name": "test:game", "command": "npm run test:game", "exitCode": 1, "tests": 606, "pass": 604, "fail": 2,
+      "failures": ["climb-detach summit [historical]", "sim ledge regrab [historical]"], "reused": true },
+    { "name": "scripts/**/*.test.mjs", "command": "node --test 'scripts/**/*.test.mjs'", "exitCode": 1,
+      "tests": 653, "pass": 637, "fail": 16, "note": "baseline 54a33655 identical; not rerun this round" },
+    { "name": "build:app", "command": "npm run build:app", "exitCode": 0, "reused": "unchanged game source since last build" }
+  ],
+  "currentHeadedAuthority": {
+    "r32": "r32-accept-headed8 — CDP touch, close bbox, mid-glide facing, grounded land",
+    "r33": "r33-dynamic-headed3 — C06 ice expiry, C09 freeze expiry",
+    "r34": "r34-c08-diag2 — stable plate id, same observer, no fabricated bridge",
+    "r37": "r37-live-poly — live remaining polyline, no mid-rim backtrack, far z=16.612, altar approach d=2.51"
+  },
+  "unsupported": {
+    "r37-altar-interact-reachable": "preexisting pull claim (orbs3, shrinesOn includes pull) counted as new interact; prompt 请靠近距离4.3m. Route-to-altar is supported; reward authority = original claim+reload. See HEADED_EVIDENCE_INDEX.md"
+  },
+  "superseded": {
+    "r30-headed": "Escape/KeyW close, mouse-as-touch — SUPERSEDED by r32",
+    "r31-headed": "page.mouse stick, post-land facing — SUPERSEDED by r32",
+    "r30-code": "vacuous expiry status — SUPERSEDED by r31 + r33",
+    "r34-gap-formula": "reversed gaps — fixed r35-pit-gap-math",
+    "r36-far-shore-z15.9": "not past pit 16.5 — SUPERSEDED by r37 z>16.5 (actual 16.612)"
+  },
+  "remainingGaps": {
+    "physicalPhone": 0,
+    "metalPlateBridge": "unproven; sidewalk route accepted; single plate cannot span pit",
+    "historicalGameFails": 2,
+    "historicalScriptFails": 16,
+    "note": "not all 50 acceptance IDs fully passed; see ACCEPTANCE.md categories"
+  },
+  "note": "source package = git tree (not dist/.vercel). raw .log gitignored."
+}

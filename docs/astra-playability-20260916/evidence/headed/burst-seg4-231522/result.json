@@ -1,0 +1,297 @@
+{
+  "ok": true,
+  "pid": 88822,
+  "startedAt": "2026-09-16T15:15:22.326Z",
+  "checkpoint": {
+    "path": null,
+    "source": "fresh-context-no-checkpoint-on-disk"
+  },
+  "milestones": [
+    {
+      "name": "00-new-game",
+      "pass": true,
+      "hasSave": false,
+      "note": "no prior checkpoint on disk; fresh start",
+      "t": 1789571725548
+    },
+    {
+      "name": "01-map-burst",
+      "pass": true,
+      "sel": "burst",
+      "t": 1789571735786
+    },
+    {
+      "name": "02-route-hint",
+      "pass": true,
+      "nav": "unavailable",
+      "next": "前往爆鸣祠",
+      "guidance": "尚未找到可通行路线，可绕开障碍再试",
+      "t": 1789571735908
+    },
+    {
+      "name": "03-arrive-door",
+      "pass": true,
+      "last": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "x": 114.45504375375872,
+        "y": 10.359999809265137,
+        "z": 29.64040630840017,
+        "camYaw": -1.5488000000000002,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "请靠近：距离 3.8m",
+        "orbs": 0,
+        "shrinesOn": [],
+        "towers": [],
+        "cracked": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "art": 0,
+        "nav": "unavailable",
+        "navNext": "",
+        "navGuidance": "",
+        "quest": "进入爆鸣祠",
+        "selected": "burst"
+      },
+      "tail": [
+        {
+          "i": 108,
+          "x": 110.2,
+          "z": 30.1,
+          "d": 7.8,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 109,
+          "x": 111.3,
+          "z": 30,
+          "d": 6.8,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 110,
+          "x": 112.3,
+          "z": 29.8,
+          "d": 5.7,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 111,
+          "x": 113.4,
+          "z": 29.7,
+          "d": 4.7,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 112,
+          "x": 114.5,
+          "z": 29.6,
+          "d": 3.7,
+          "world": "overworld",
+          "mode": "playing"
+        }
+      ],
+      "t": 1789571785603
+    },
+    {
+      "name": "04-enter-shrine",
+      "pass": true,
+      "inShrine": {
+        "mode": "playing",
+        "world": "shrine",
+        "shrine": 1,
+        "x": 268,
+        "y": 520,
+        "z": 4.4,
+        "camYaw": 3.141592653589793,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "",
+        "orbs": 0,
+        "shrinesOn": [],
+        "towers": [],
+        "cracked": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "art": 0,
+        "nav": "action-required",
+        "navNext": "选择爆鸣，击碎裂纹岩壁",
+        "navGuidance": "在裂纹岩壁前施放爆鸣",
+        "quest": "解开爆鸣祠",
+        "selected": "burst"
+      },
+      "t": 1789571786334
+    },
+    {
+      "name": "05-before-wall-nav",
+      "pass": true,
+      "nav": "action-required",
+      "next": "选择爆鸣，击碎裂纹岩壁",
+      "guidance": "在裂纹岩壁前施放爆鸣",
+      "t": 1789571786335
+    },
+    {
+      "name": "06-at-wall-action",
+      "pass": true,
+      "last": {
+        "mode": "playing",
+        "world": "shrine",
+        "shrine": 1,
+        "x": 268,
+        "y": 520,
+        "z": 9.29137184271088,
+        "camYaw": 3.141592653589793,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "请靠近：距离 8.2m",
+        "orbs": 0,
+        "shrinesOn": [],
+        "towers": [],
+        "cracked": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "art": 0,
+        "nav": "action-required",
+        "navNext": "选择爆鸣，击碎裂纹岩壁",
+        "navGuidance": "在裂纹岩壁前施放爆鸣",
+        "quest": "解开爆鸣祠",
+        "selected": "burst"
+      },
+      "t": 1789571788413
+    },
+    {
+      "name": "07-wall-broken",
+      "pass": true,
+      "afterBoom": {
+        "cracked": [
+          false,
+          true,
+          false,
+          false
+        ],
+        "nav": "walk",
+        "prompt": "请靠近：距离 8.7m"
+      },
+      "t": 1789571788885
+    },
+    {
+      "name": "08-route-after-wall",
+      "pass": true,
+      "nav": "walk",
+      "next": "靠近祭坛并互动领取灵核",
+      "guidance": "沿已验证通路前往祭坛，互动领取灵核",
+      "t": 1789571788886
+    },
+    {
+      "name": "09-claim-orb",
+      "pass": true,
+      "afterClaim": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "x": 115.27455999023879,
+        "y": 10.359999809265137,
+        "z": 29.521758828625977,
+        "camYaw": 3.141592653589793,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "",
+        "orbs": 1,
+        "shrinesOn": [
+          "burst"
+        ],
+        "towers": [],
+        "cracked": [
+          false,
+          true,
+          false,
+          false
+        ],
+        "art": 1,
+        "nav": "unavailable",
+        "navNext": "沿指引前往晨光塔塔脚攀爬点",
+        "navGuidance": "尚未找到可通行路线，可绕开障碍再试",
+        "quest": "点亮晨光塔",
+        "selected": null
+      },
+      "altarWalkOk": true,
+      "t": 1789571795655
+    },
+    {
+      "name": "10-leave-shrine",
+      "pass": true,
+      "afterLeave": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "x": 115.27455999023879,
+        "y": 10.359999809265137,
+        "z": 29.521758828625977,
+        "camYaw": 3.141592653589793,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "",
+        "orbs": 1,
+        "shrinesOn": [
+          "burst"
+        ],
+        "towers": [],
+        "cracked": [
+          false,
+          true,
+          false,
+          false
+        ],
+        "art": 1,
+        "nav": "unavailable",
+        "navNext": "沿指引前往晨光塔塔脚攀爬点",
+        "navGuidance": "尚未找到可通行路线，可绕开障碍再试",
+        "quest": "点亮晨光塔",
+        "selected": null
+      },
+      "autoExit": true,
+      "t": 1789571795732
+    },
+    {
+      "name": "11-save-checkpoint",
+      "pass": true,
+      "path": "/Users/ymf/Projects/aetherwake-rebuild-20260909/mimo-playability-20260916/docs/astra-playability-20260916/evidence/checkpoint/post-dawn.storage.json",
+      "t": 1789571795735
+    },
+    {
+      "name": "12-reload-burst-orb",
+      "pass": true,
+      "before": {
+        "shrinesOn": [
+          "burst"
+        ],
+        "orbs": 1
+      },
+      "after": {
+        "shrinesOn": [
+          "burst"
+        ],
+        "orbs": 1,
+        "mode": "playing"
+      },
+      "t": 1789571796770
+    }
+  ],
+  "failure": null,
+  "errors": []
+}

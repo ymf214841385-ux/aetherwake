@@ -1,0 +1,175 @@
+{
+  "ok": false,
+  "pid": 3607,
+  "milestones": [
+    {
+      "name": "00-restore",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 4,
+        "x": 16.03,
+        "y": 16.11,
+        "z": -72.75,
+        "camYaw": 2.9,
+        "state": "grounded",
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "towers": [],
+        "quest": "点亮晨光塔",
+        "selected": null,
+        "navStatus": "unavailable",
+        "navTarget": "tower-base:dawn",
+        "navNext": "沿指引前往晨光塔塔脚攀爬点",
+        "navGuidance": "尚未找到可通行路线，可绕开障碍再试",
+        "navWalks": 0
+      },
+      "t": 1789589897911
+    },
+    {
+      "name": "01-map-burst",
+      "pass": false,
+      "tSel": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 4,
+        "x": 16.03,
+        "y": 16.11,
+        "z": -72.75,
+        "camYaw": 2.9,
+        "state": "grounded",
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "towers": [],
+        "quest": "点亮晨光塔",
+        "selected": null,
+        "navStatus": "unavailable",
+        "navTarget": "tower-base:dawn",
+        "navNext": "沿指引前往晨光塔塔脚攀爬点",
+        "navGuidance": "尚未找到可通行路线，可绕开障碍再试",
+        "navWalks": 0
+      },
+      "t": 1789589899140
+    },
+    {
+      "name": "02-nav-walk",
+      "pass": false,
+      "navStatus": "unavailable",
+      "navTarget": "tower-base:dawn",
+      "navWalks": 0,
+      "navGuidance": "尚未找到可通行路线，可绕开障碍再试",
+      "t": 1789589899263
+    },
+    {
+      "name": "02b-segments",
+      "pass": false,
+      "n": 0,
+      "ids": [],
+      "t": 1789589899319
+    },
+    {
+      "name": "04-final-nav",
+      "pass": false,
+      "final": {
+        "mode": "dead",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 0,
+        "x": 79.46,
+        "y": 8.79,
+        "z": 8.49,
+        "camYaw": 3.964,
+        "state": "dead",
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "towers": [],
+        "quest": "点亮晨光塔",
+        "selected": null,
+        "navStatus": "unavailable",
+        "navTarget": "tower-base:dawn",
+        "navNext": "沿指引前往晨光塔塔脚攀爬点",
+        "navGuidance": "尚未找到可通行路线，可绕开障碍再试",
+        "navWalks": 0
+      },
+      "t": 1789589983721
+    }
+  ],
+  "failure": {
+    "stopped": {
+      "reason": "terminal",
+      "i": 143,
+      "mid": {
+        "mode": "dead",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 0,
+        "x": 79.46,
+        "y": 8.79,
+        "z": 8.49,
+        "camYaw": 3.964,
+        "state": "dead",
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "towers": [],
+        "quest": "点亮晨光塔",
+        "selected": null,
+        "navStatus": "unavailable",
+        "navTarget": "tower-base:dawn",
+        "navNext": "沿指引前往晨光塔塔脚攀爬点",
+        "navGuidance": "尚未找到可通行路线，可绕开障碍再试",
+        "navWalks": 0
+      }
+    },
+    "final": {
+      "mode": "dead",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 0,
+      "x": 79.46,
+      "y": 8.79,
+      "z": 8.49,
+      "camYaw": 3.964,
+      "state": "dead",
+      "orbs": 4,
+      "shrinesOn": [
+        "burst",
+        "rime",
+        "pull",
+        "still"
+      ],
+      "towers": [],
+      "quest": "点亮晨光塔",
+      "selected": null,
+      "navStatus": "unavailable",
+      "navTarget": "tower-base:dawn",
+      "navNext": "沿指引前往晨光塔塔脚攀爬点",
+      "navGuidance": "尚未找到可通行路线，可绕开障碍再试",
+      "navWalks": 0
+    }
+  },
+  "errors": [],
+  "startedAt": "2026-09-16T20:18:15.955Z"
+}

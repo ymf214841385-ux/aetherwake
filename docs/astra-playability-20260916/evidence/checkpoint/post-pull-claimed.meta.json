@@ -1,0 +1,22 @@
+{
+  "file": "post-pull-claimed.storage.json",
+  "sha256": "d69b5b3fb8d6b3fee9c71c2b47577d6ac686fdfa605c81173d643d39715a296b",
+  "sourceRun": "pull-solve3-022133",
+  "sourceCommit": "e38264a",
+  "claimPath": "sidewalk-alternate",
+  "metalBridge": false,
+  "metalMechanism": {
+    "grab": true,
+    "throw": true
+  },
+  "progress": {
+    "shrines": [
+      "burst",
+      "rime",
+      "pull"
+    ],
+    "orbs": 3,
+    "towers": []
+  },
+  "note": "Natural claim+reload via sidewalk rim. Metal grab/throw observed; bridge not used for claim."
+}

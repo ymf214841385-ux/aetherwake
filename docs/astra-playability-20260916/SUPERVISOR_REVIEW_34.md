@@ -1,0 +1,11 @@
+# R34 — accept C06/C09; isolate last C08 verifier defect
+
+R33 raw evidence supports C06 actual ice spawn→natural expiry→requires rime again, and C09 frozen walk segments→expiry→slab movement→action-required. Accept these, do not rerun them.
+
+C08 exact QA bug in scripts/qa/r33-dynamic-headed.mjs: near-metal/regrab loops use `metals[0]`. Raw telemetry proves index0 is metal-field-0 at x34 hundreds of metres away; actual target is metal-shrine-2. This can steer player away while comparing two different navigation origins. Fix by capturing the actual shrine plate stable id at entry and always find by that id, with world/shrine match. No unrelated field metal selection.
+
+Current away route walk begins x322.04,z8.10, back route action-required origin not logged. Consequently 'route-follows-plate' is not established by comparing route statuses: player moved too. It only asserts extraSupports includes plate everywhere, which is true wherever any unheld plate exists. Existing C08 row Headed通过 contradicts summary Headed部分. Correct claim now: grab/throw and support registration observed, plate-dependent route validation still partial.
+
+One focused C08 run only: ordinary inputs move plate away, return by normal input to a safe reproducible observer point with tolerance e.g.0.3m (record x/y/z), sample full nav polylines/support coordinates; move same plate to feasible pit location, normally return to same point, resample. No teleport/state writes. Validate bridge segment against actual support geometry, not only endpoint-nearness and support-id membership. If same side corridor remains valid, report this accurately; do NOT manufacture expected status toggle. If plate cannot form contiguous bridge, give actual dimensions/gaps and preserve partial; this is diagnostic completion, not license to alter physics.
+
+Save raw first failure before a retry. Only one retry after source diagnosis. Stop generating packages until this final narrow diagnosis and documentation consistency are done. Then refresh SUMMARY references (R30/R31 superseded), exact checks/sourceCommit/hash, one local package. Physical phone0 and historical 2game/16scripts explicit. No push/deploy/tunnel. Do not repeat accepted A/D/C06/C09/mainline work.

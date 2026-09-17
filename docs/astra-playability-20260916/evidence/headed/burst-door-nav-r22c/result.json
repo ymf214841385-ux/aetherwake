@@ -1,0 +1,119 @@
+{
+  "ok": false,
+  "pid": 3942,
+  "milestones": [
+    {
+      "name": "00-new-game",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "x": 16,
+        "y": 11.41,
+        "z": 102,
+        "camYaw": 0,
+        "state": "grounded",
+        "orbs": 0,
+        "shrinesOn": [],
+        "towers": [],
+        "quest": "点亮晨光塔",
+        "selected": null,
+        "navStatus": "unavailable",
+        "navTarget": "tower-base:dawn",
+        "navNext": "沿指引前往晨光塔塔脚攀爬点",
+        "navGuidance": "尚未找到可通行路线，可绕开障碍再试",
+        "navWalks": 0,
+        "bodyYaw": 0,
+        "dodgeCd": 0,
+        "attackPhase": "idle",
+        "enemies": []
+      },
+      "t": 1789590189042
+    },
+    {
+      "name": "01-map-burst",
+      "pass": true,
+      "sel": "burst",
+      "t": 1789590189459
+    },
+    {
+      "name": "02-nav-walk",
+      "pass": false,
+      "navStatus": "unavailable",
+      "navTarget": "shrine-door:burst",
+      "navWalks": 0,
+      "navGuidance": "尚未找到可通行路线，可绕开障碍再试",
+      "t": 1789590189740
+    },
+    {
+      "name": "02b-segments",
+      "pass": false,
+      "n": 0,
+      "ids": [],
+      "t": 1789590189855
+    },
+    {
+      "name": "04-final-nav",
+      "pass": false,
+      "final": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "x": 34.41,
+        "y": 15.12,
+        "z": 83.18,
+        "camYaw": -0.774,
+        "state": "grounded",
+        "orbs": 0,
+        "shrinesOn": [],
+        "towers": [],
+        "quest": "进入爆鸣祠",
+        "selected": "burst",
+        "navStatus": "unavailable",
+        "navTarget": "shrine-door:burst",
+        "navNext": "前往爆鸣祠",
+        "navGuidance": "尚未找到可通行路线，可绕开障碍再试",
+        "navWalks": 0,
+        "bodyYaw": -0.774,
+        "dodgeCd": 0,
+        "attackPhase": "idle",
+        "enemies": []
+      },
+      "t": 1789590225830
+    }
+  ],
+  "failure": {
+    "stopped": null,
+    "final": {
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": 34.41,
+      "y": 15.12,
+      "z": 83.18,
+      "camYaw": -0.774,
+      "state": "grounded",
+      "orbs": 0,
+      "shrinesOn": [],
+      "towers": [],
+      "quest": "进入爆鸣祠",
+      "selected": "burst",
+      "navStatus": "unavailable",
+      "navTarget": "shrine-door:burst",
+      "navNext": "前往爆鸣祠",
+      "navGuidance": "尚未找到可通行路线，可绕开障碍再试",
+      "navWalks": 0,
+      "bodyYaw": -0.774,
+      "dodgeCd": 0,
+      "attackPhase": "idle",
+      "enemies": []
+    }
+  },
+  "errors": [],
+  "startedAt": "2026-09-16T20:22:56.011Z",
+  "boundary": "fresh-game map-select nav; not a four-shrine re-select"
+}

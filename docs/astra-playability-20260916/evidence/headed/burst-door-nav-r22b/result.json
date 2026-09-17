@@ -1,0 +1,211 @@
+{
+  "ok": false,
+  "pid": 3781,
+  "milestones": [
+    {
+      "name": "00-restore",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 4,
+        "x": 16.03,
+        "y": 16.11,
+        "z": -72.75,
+        "camYaw": 2.9,
+        "state": "grounded",
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "towers": [],
+        "quest": "点亮晨光塔",
+        "selected": null,
+        "navStatus": "unavailable",
+        "navTarget": "tower-base:dawn",
+        "navNext": "沿指引前往晨光塔塔脚攀爬点",
+        "navGuidance": "尚未找到可通行路线，可绕开障碍再试",
+        "navWalks": 0,
+        "bodyYaw": 0.334,
+        "dodgeCd": 0,
+        "attackPhase": "idle",
+        "enemies": []
+      },
+      "t": 1789590010184
+    },
+    {
+      "name": "01-map-burst",
+      "pass": false,
+      "sel": "dawn",
+      "t": 1789590021661
+    },
+    {
+      "name": "02-nav-walk",
+      "pass": false,
+      "navStatus": "unavailable",
+      "navTarget": "tower-base:dawn",
+      "navWalks": 0,
+      "navGuidance": "尚未找到可通行路线，可绕开障碍再试",
+      "t": 1789590021901
+    },
+    {
+      "name": "02b-segments",
+      "pass": false,
+      "n": 0,
+      "ids": [],
+      "t": 1789590022026
+    },
+    {
+      "name": "04-final-nav",
+      "pass": false,
+      "final": {
+        "mode": "dead",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 0,
+        "x": 71.35,
+        "y": 7.86,
+        "z": 2.3,
+        "camYaw": 3.916,
+        "state": "dead",
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "towers": [],
+        "quest": "点亮晨光塔",
+        "selected": null,
+        "navStatus": "unavailable",
+        "navTarget": "tower-base:dawn",
+        "navNext": "沿指引前往晨光塔塔脚攀爬点",
+        "navGuidance": "尚未找到可通行路线，可绕开障碍再试",
+        "navWalks": 0,
+        "bodyYaw": -2.367,
+        "dodgeCd": 0,
+        "attackPhase": "idle",
+        "enemies": [
+          {
+            "id": "s-0",
+            "d": 1.98,
+            "phase": "recover",
+            "x": 69.98,
+            "z": 0.87
+          },
+          {
+            "id": "b-1-1",
+            "d": 15.35,
+            "phase": "patrol",
+            "x": 84.43,
+            "z": -5.73
+          }
+        ]
+      },
+      "t": 1789590095641
+    }
+  ],
+  "failure": {
+    "stopped": {
+      "reason": "terminal",
+      "i": 133,
+      "mid": {
+        "mode": "dead",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 0,
+        "x": 71.35,
+        "y": 7.86,
+        "z": 2.3,
+        "camYaw": 3.916,
+        "state": "dead",
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "towers": [],
+        "quest": "点亮晨光塔",
+        "selected": null,
+        "navStatus": "unavailable",
+        "navTarget": "tower-base:dawn",
+        "navNext": "沿指引前往晨光塔塔脚攀爬点",
+        "navGuidance": "尚未找到可通行路线，可绕开障碍再试",
+        "navWalks": 0,
+        "bodyYaw": -2.367,
+        "dodgeCd": 0,
+        "attackPhase": "idle",
+        "enemies": [
+          {
+            "id": "s-0",
+            "d": 1.98,
+            "phase": "recover",
+            "x": 69.98,
+            "z": 0.87
+          },
+          {
+            "id": "b-1-1",
+            "d": 15.35,
+            "phase": "patrol",
+            "x": 84.43,
+            "z": -5.73
+          }
+        ]
+      }
+    },
+    "final": {
+      "mode": "dead",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 0,
+      "x": 71.35,
+      "y": 7.86,
+      "z": 2.3,
+      "camYaw": 3.916,
+      "state": "dead",
+      "orbs": 4,
+      "shrinesOn": [
+        "burst",
+        "rime",
+        "pull",
+        "still"
+      ],
+      "towers": [],
+      "quest": "点亮晨光塔",
+      "selected": null,
+      "navStatus": "unavailable",
+      "navTarget": "tower-base:dawn",
+      "navNext": "沿指引前往晨光塔塔脚攀爬点",
+      "navGuidance": "尚未找到可通行路线，可绕开障碍再试",
+      "navWalks": 0,
+      "bodyYaw": -2.367,
+      "dodgeCd": 0,
+      "attackPhase": "idle",
+      "enemies": [
+        {
+          "id": "s-0",
+          "d": 1.98,
+          "phase": "recover",
+          "x": 69.98,
+          "z": 0.87
+        },
+        {
+          "id": "b-1-1",
+          "d": 15.35,
+          "phase": "patrol",
+          "x": 84.43,
+          "z": -5.73
+        }
+      ]
+    }
+  },
+  "errors": [],
+  "startedAt": "2026-09-16T20:20:07.990Z"
+}

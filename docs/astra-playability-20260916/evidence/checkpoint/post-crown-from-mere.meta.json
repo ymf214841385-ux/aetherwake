@@ -1,0 +1,20 @@
+{
+  "source": "crown-from-mere.mjs",
+  "sourceCheckpoint": "post-mere-from-dawn.storage.json",
+  "progressAtExport": {
+    "shrines": [
+      "burst",
+      "rime",
+      "pull",
+      "still"
+    ],
+    "towers": [
+      "dawn",
+      "mere",
+      "crown"
+    ],
+    "note": "natural chain; seal should open"
+  },
+  "pid": 6643,
+  "exportedAt": "2026-09-16T21:13:14.309Z"
+}

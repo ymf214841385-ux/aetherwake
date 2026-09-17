@@ -57,7 +57,18 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 4;
+  z-index: 10;
+}
+
+/* Lift overlay above hud-tr (z-index 30) while a modal is open so 关闭 is tappable. */
+.overlay:has(.modal-back) {
+  z-index: 40;
+}
+
+.hud-tl,
+.hud-tr {
+  z-index: 30;
+  pointer-events: auto;
 }
 
 .overlay button,
@@ -213,8 +224,29 @@ h1,
 
 .objective {
   color: var(--color-fg);
-  max-width: 22ch;
+  max-width: 28ch;
   margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: right;
+}
+
+.objective strong {
+  font-size: 0.82rem;
+}
+
+.objective-next {
+  display: block;
+  color: var(--color-muted);
+  font-size: 0.72rem;
+}
+
+.objective-dist {
+  display: block;
+  color: var(--color-muted);
+  font-size: 0.68rem;
+  opacity: 0.85;
 }
 
 .hud-tools {
@@ -257,6 +289,22 @@ h1,
   transform: translateX(-50%);
   text-align: center;
   pointer-events: none;
+}
+
+.hint:has(.hint-skip) {
+  pointer-events: auto;
+}
+
+.hint-skip {
+  margin-left: 8px;
+  font-size: 0.7rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: color-mix(in oklab, var(--color-bg) 70%, transparent);
+  color: var(--color-fg);
+  padding: 2px 6px;
+  cursor: pointer;
+  pointer-events: auto;
 }
 
 .toast {
@@ -367,6 +415,15 @@ h1,
   border-radius: 50%;
   transform: translate(-50%, -50%);
   background: var(--color-muted);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.pin.selected {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  z-index: 2;
 }
 
 .pin-tower {
@@ -407,24 +464,51 @@ h1,
   display: grid;
   place-items: center;
   pointer-events: auto;
-  padding: 24px;
+  padding: 8px;
+  /* Above .hud-tr (30) so 关闭 is not pointer-intercepted. */
+  z-index: 35;
 }
 
 .modal {
   width: min(420px, 100%);
+  max-height: calc(100% - 4px);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 28px;
-  padding: 24px;
+  padding: 16px 20px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  overflow: hidden;
 }
 
-.modal h2 {
-  font-family: var(--font-display);
-  font-size: 1.8rem;
+.modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex: 0 0 auto;
+}
+
+.modal-head h2 {
   margin: 0;
+  min-width: 0;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+}
+
+.modal-close {
+  flex: 0 0 auto;
+  min-height: 44px;
+  min-width: 72px;
+}
+
+.modal-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .modal h3 {
@@ -483,53 +567,167 @@ h1,
   display: none;
 }
 
+.touch-pad {
+  display: none;
+}
+
 .touch-btns {
   display: none;
 }
 
-@media (pointer: coarse), (max-width: 800px) {
-  .touch-zone {
+/* Landscape phones are often wider than 800px — do not key only on width.
+   coarse/any-pointer plus short landscape height cover 844×390-class devices. */
+@media (pointer: coarse), (any-pointer: coarse), (max-width: 800px), (max-height: 480px) and (orientation: landscape) {
+  .touch-pad {
     display: block;
     position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 46%;
-    z-index: 3;
+    inset: 0;
+    z-index: 20;
+    /* Container never eats title/menu clicks; live children opt in below. */
+    pointer-events: none;
   }
-  .touch-left {
+  .touch-pad:not(.is-live) {
+    visibility: hidden;
+  }
+  .touch-pad.is-live .touch-stick,
+  .touch-pad.is-live .touch-look,
+  .touch-pad.is-live .touch-btns {
+    pointer-events: auto;
+  }
+  .touch-stick {
+    position: absolute;
+    left: max(12px, env(safe-area-inset-left));
+    bottom: max(16px, env(safe-area-inset-bottom));
+    width: 128px;
+    height: 128px;
+    pointer-events: auto;
+    z-index: 22;
+    touch-action: none;
+  }
+  .stick-base {
+    position: absolute;
+    inset: 8px;
+    border-radius: 50%;
+    border: 2px solid color-mix(in oklab, var(--color-fg) 35%, transparent);
+    background: color-mix(in oklab, var(--color-bg) 35%, transparent);
+    box-sizing: border-box;
+  }
+  .stick-base[data-active="1"] {
+    border-color: color-mix(in oklab, var(--color-fg) 70%, transparent);
+    background: color-mix(in oklab, var(--color-bg) 50%, transparent);
+  }
+  .stick-knob {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 48px;
+    height: 48px;
+    margin: -24px 0 0 -24px;
+    border-radius: 50%;
+    background: color-mix(in oklab, var(--color-fg) 28%, transparent);
+    border: 1px solid color-mix(in oklab, var(--color-fg) 45%, transparent);
+    will-change: transform;
+  }
+  .stick-knob[data-active="1"] {
+    background: color-mix(in oklab, var(--color-fg) 42%, transparent);
+  }
+  .stick-hint {
+    position: absolute;
     left: 0;
-  }
-  .touch-right {
     right: 0;
+    bottom: -2px;
+    text-align: center;
+    font-size: 10px;
+    color: color-mix(in oklab, var(--color-fg) 70%, transparent);
+    pointer-events: none;
+  }
+  .touch-look {
+    position: absolute;
+    left: 42%;
+    right: 0;
+    /* Leave top band free for quest card + tool buttons (z-index 12). */
+    top: 30%;
+    bottom: 38%;
+    pointer-events: auto;
+    z-index: 20;
+    touch-action: none;
+  }
+  .look-hint {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    font-size: 10px;
+    color: color-mix(in oklab, var(--color-fg) 45%, transparent);
+    pointer-events: none;
   }
   .touch-btns {
     display: flex;
-    position: absolute;
-    right: 12px;
-    bottom: 150px;
     flex-direction: column;
     gap: 8px;
-    z-index: 6;
+    position: absolute;
+    right: max(10px, env(safe-area-inset-right));
+    bottom: max(14px, env(safe-area-inset-bottom));
     pointer-events: auto;
+    z-index: 22;
+    max-width: min(46vw, 220px);
+  }
+  .touch-btn-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 8px;
   }
   .tbtn {
-    min-width: 72px;
+    min-width: 56px;
     min-height: 48px;
-    border-radius: 16px;
+    border-radius: 14px;
     border: 1px solid var(--color-border);
-    background: color-mix(in oklab, var(--color-bg) 60%, transparent);
+    background: color-mix(in oklab, var(--color-bg) 62%, transparent);
     color: var(--color-fg);
-    font-size: 0.75rem;
+    font-size: 0.72rem;
+    padding: 0 8px;
   }
   .tbtn-main,
-  .tbtn-atk {
-    min-height: 56px;
+  .tbtn-atk,
+  .tbtn-interact {
+    min-width: 64px;
+    min-height: 52px;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+  .tbtn-sm {
+    min-width: 44px;
+    min-height: 40px;
+    font-size: 0.68rem;
   }
   .hud-bl {
-    bottom: 88px;
+    bottom: 150px;
   }
+  /* Keep minimap clear of the right-hand action column. */
   .minimap {
-    bottom: 88px;
+    left: 12px;
+    right: auto;
+    top: 88px;
+    bottom: auto;
+  }
+  .minimap-disk {
+    width: 96px;
+    height: 96px;
+  }
+  .hud-tr {
+    max-width: min(46vw, 240px);
+    left: auto;
+  }
+  .objective {
+    max-width: 100%;
+    background: color-mix(in oklab, var(--color-bg) 62%, transparent);
+    padding: 4px 8px;
+    border-radius: 8px;
+    text-shadow: 0 1px 2px color-mix(in oklab, var(--color-bg) 80%, transparent);
+  }
+  .toast {
+    bottom: 200px;
+    max-width: min(70vw, 360px);
   }
   .title-screen {
     padding: 24px 20px 32px;

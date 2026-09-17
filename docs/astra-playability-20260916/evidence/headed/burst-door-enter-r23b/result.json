@@ -1,0 +1,237 @@
+{
+  "ok": true,
+  "pid": 4549,
+  "milestones": [
+    {
+      "name": "00-new-game",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "x": 16,
+        "y": 11.41,
+        "z": 102,
+        "camYaw": 0,
+        "state": "grounded",
+        "orbs": 0,
+        "shrinesOn": [],
+        "towers": [],
+        "quest": "点亮晨光塔",
+        "selected": null,
+        "navStatus": "unavailable",
+        "navTarget": "tower-base:dawn",
+        "navNext": "沿指引前往晨光塔塔脚攀爬点",
+        "navGuidance": "尚未找到可通行路线，可绕开障碍再试",
+        "navWalks": 0,
+        "bodyYaw": 0,
+        "dodgeCd": 0,
+        "attackPhase": "idle",
+        "enemies": []
+      },
+      "t": 1789590676961
+    },
+    {
+      "name": "01-map-burst",
+      "pass": true,
+      "sel": "burst",
+      "t": 1789590677377
+    },
+    {
+      "name": "02-nav-walk",
+      "pass": true,
+      "navStatus": "walk",
+      "navTarget": "shrine-door:burst",
+      "navWalks": 1,
+      "navGuidance": "沿地面前往祠门前",
+      "t": 1789590677620
+    },
+    {
+      "name": "02b-segments",
+      "pass": true,
+      "n": 1,
+      "ids": [
+        "ow-direct"
+      ],
+      "t": 1789590677752
+    },
+    {
+      "name": "wp5",
+      "pass": true,
+      "target": {
+        "x": 27.525423728813557,
+        "z": 93.954802259887
+      },
+      "pos": {
+        "x": 21.73,
+        "z": 96.9
+      },
+      "t": 1789590680936
+    },
+    {
+      "name": "wp10",
+      "pass": true,
+      "target": {
+        "x": 39.050847457627114,
+        "z": 85.909604519774
+      },
+      "pos": {
+        "x": 33.69,
+        "z": 89.16
+      },
+      "t": 1789590685784
+    },
+    {
+      "name": "wp15",
+      "pass": true,
+      "target": {
+        "x": 50.57627118644068,
+        "z": 77.86440677966101
+      },
+      "pos": {
+        "x": 45.24,
+        "z": 82.01
+      },
+      "t": 1789590690317
+    },
+    {
+      "name": "wp20",
+      "pass": true,
+      "target": {
+        "x": 62.101694915254235,
+        "z": 69.81920903954801
+      },
+      "pos": {
+        "x": 57.41,
+        "z": 74.41
+      },
+      "t": 1789590695117
+    },
+    {
+      "name": "wp25",
+      "pass": true,
+      "target": {
+        "x": 73.62711864406779,
+        "z": 61.774011299435024
+      },
+      "pos": {
+        "x": 68.37,
+        "z": 65.2
+      },
+      "t": 1789590699867
+    },
+    {
+      "name": "wp30",
+      "pass": true,
+      "target": {
+        "x": 85.15254237288136,
+        "z": 53.728813559322035
+      },
+      "pos": {
+        "x": 79.87,
+        "z": 56.72
+      },
+      "t": 1789590704667
+    },
+    {
+      "name": "wp35",
+      "pass": true,
+      "target": {
+        "x": 96.67796610169492,
+        "z": 45.68361581920904
+      },
+      "pos": {
+        "x": 91.42,
+        "z": 49.56
+      },
+      "t": 1789590709184
+    },
+    {
+      "name": "wp40",
+      "pass": true,
+      "target": {
+        "x": 108.20338983050847,
+        "z": 37.63841807909604
+      },
+      "pos": {
+        "x": 103.56,
+        "z": 42.05
+      },
+      "t": 1789590714068
+    },
+    {
+      "name": "03-arrive-door",
+      "pass": true,
+      "post": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "x": 116.44,
+        "y": 10.36,
+        "z": 31.72,
+        "camYaw": -0.871,
+        "state": "grounded",
+        "orbs": 0,
+        "shrinesOn": [],
+        "towers": [],
+        "quest": "进入爆鸣祠",
+        "selected": "burst",
+        "navStatus": "unavailable",
+        "navTarget": null,
+        "navNext": "",
+        "navGuidance": "",
+        "navWalks": 0,
+        "bodyYaw": -0.871,
+        "dodgeCd": 0,
+        "attackPhase": "idle",
+        "enemies": []
+      },
+      "dDoor": 1.8110770276274843,
+      "t": 1789590719649
+    },
+    {
+      "name": "interact-attempt-0",
+      "pass": true,
+      "x": 117.02,
+      "z": 31.24,
+      "y": 10.36,
+      "t": 1789590720000
+    },
+    {
+      "name": "05-enter-burst",
+      "pass": true,
+      "after": {
+        "mode": "playing",
+        "world": "shrine",
+        "shrine": 1,
+        "hp": 3,
+        "x": 268,
+        "y": 520,
+        "z": 4.4,
+        "camYaw": 3.142,
+        "state": "grounded",
+        "orbs": 0,
+        "shrinesOn": [],
+        "towers": [],
+        "quest": "解开爆鸣祠",
+        "selected": "burst",
+        "navStatus": "action-required",
+        "navTarget": "burst-wall",
+        "navNext": "选择爆鸣，击碎裂纹岩壁",
+        "navGuidance": "在裂纹岩壁前施放爆鸣",
+        "navWalks": 1,
+        "bodyYaw": 3.142,
+        "dodgeCd": 0,
+        "attackPhase": "idle",
+        "enemies": []
+      },
+      "t": 1789590720318
+    }
+  ],
+  "failure": null,
+  "errors": [],
+  "startedAt": "2026-09-16T20:31:03.819Z",
+  "boundary": "fresh-game map-select nav; not a four-shrine re-select"
+}

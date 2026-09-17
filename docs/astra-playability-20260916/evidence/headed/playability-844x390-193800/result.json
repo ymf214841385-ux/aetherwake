@@ -1,0 +1,230 @@
+{
+  "ok": false,
+  "scope": "playability-headed-844x390-and-orientation",
+  "pid": 71660,
+  "startedAt": "2026-09-16T11:38:00.804Z",
+  "checks": [
+    {
+      "name": "844x390 stick visible",
+      "pass": true,
+      "media": {
+        "coarse": true,
+        "fine": false,
+        "anyCoarse": true,
+        "max800": false,
+        "w": 844,
+        "h": 390,
+        "touchPadDisplay": "block"
+      }
+    },
+    {
+      "name": "844x390 stick in viewport",
+      "pass": true
+    },
+    {
+      "name": "844x390 interact visible+in viewport",
+      "pass": true
+    },
+    {
+      "name": "844x390 attack visible+in viewport",
+      "pass": true
+    },
+    {
+      "name": "844x390 jump visible+in viewport",
+      "pass": true
+    },
+    {
+      "name": "844x390 map visible+in viewport",
+      "pass": true
+    },
+    {
+      "name": "844x390 bag visible+in viewport",
+      "pass": true
+    },
+    {
+      "name": "empty look tap does not start attack",
+      "pass": true,
+      "before": {
+        "phase": "idle",
+        "attackT": 0,
+        "mode": "playing"
+      },
+      "after": {
+        "phase": "idle",
+        "attackT": 0,
+        "mode": "playing"
+      },
+      "lookRect": {
+        "x": 354.46875,
+        "y": 46.796875,
+        "w": 489.53125,
+        "h": 195.015625
+      }
+    },
+    {
+      "name": "character load ready",
+      "pass": false,
+      "status": "loading",
+      "source": "/assets/character/wanderer.glb"
+    },
+    {
+      "name": "stick drive moves player",
+      "pass": true,
+      "moved": {
+        "x": 16,
+        "y": 11.414756173028811,
+        "z": 100.29603589908078,
+        "yaw": 0,
+        "vx": 0,
+        "vz": -2.8873668022149848
+      }
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "Chromium emulation, not physical iPhone/Android",
+    "Orientation still provisional until face/chest/feet screenshots accepted"
+  ],
+  "server": {
+    "url": "http://127.0.0.1:8102/",
+    "owned": true
+  },
+  "media": {
+    "coarse": true,
+    "fine": false,
+    "anyCoarse": true,
+    "max800": false,
+    "w": 844,
+    "h": 390,
+    "touchPadDisplay": "block"
+  },
+  "layout": {
+    "viewport": {
+      "w": 844,
+      "h": 390
+    },
+    "padHtml": "<div class=\"touch-pad is-live\" data-ui=\"true\"><div class=\"touch-stick\" data-touch-kind=\"stick\" aria-hidden=\"true\"><div class=\"stick-base\" data-active=\"0\"><div class=\"stick-knob\" data-active=\"0\" style=\"transform: translate(0px, 0px);\"></div></div><div class=\"stick-hint\">移动</div></div><div class=\"touch-look\" data-touch-kind=\"look\" aria-hidden=\"true\"><div class=\"look-hint\">拖动视角 · 短点互动</div></div><div class=\"touch-btns\" data-ui=\"true\"><div class=\"touch-btn-row\"><button type=\"button\" data-touch-btn=\"",
+    "padCount": 1,
+    "stickCount": 1,
+    "stick": {
+      "sel": "[data-touch-kind=\"stick\"]",
+      "tag": "DIV",
+      "className": "touch-stick",
+      "display": "block",
+      "visibility": "visible",
+      "visible": true,
+      "inViewport": true,
+      "rect": {
+        "x": 12,
+        "y": 246,
+        "w": 128,
+        "h": 128
+      },
+      "zIndex": "7"
+    },
+    "look": {
+      "sel": "[data-touch-kind=\"look\"]",
+      "tag": "DIV",
+      "className": "touch-look",
+      "display": "block",
+      "visibility": "visible",
+      "visible": true,
+      "inViewport": true,
+      "rect": {
+        "x": 354.46875,
+        "y": 46.796875,
+        "w": 489.53125,
+        "h": 195.015625
+      },
+      "zIndex": "5"
+    },
+    "interact": {
+      "sel": "[data-touch-action=\"interact\"]",
+      "tag": "BUTTON",
+      "className": "tbtn tbtn-interact",
+      "display": "block",
+      "visibility": "visible",
+      "visible": true,
+      "inViewport": true,
+      "rect": {
+        "x": 706,
+        "y": 156,
+        "w": 64,
+        "h": 52
+      },
+      "zIndex": "auto"
+    },
+    "attack": {
+      "sel": "[data-touch-action=\"attack\"]",
+      "tag": "BUTTON",
+      "className": "tbtn tbtn-atk",
+      "display": "block",
+      "visibility": "visible",
+      "visible": true,
+      "inViewport": true,
+      "rect": {
+        "x": 770,
+        "y": 276,
+        "w": 64,
+        "h": 52
+      },
+      "zIndex": "auto"
+    },
+    "jump": {
+      "sel": "[data-touch-action=\"jump\"]",
+      "tag": "BUTTON",
+      "className": "tbtn tbtn-main",
+      "display": "block",
+      "visibility": "visible",
+      "visible": true,
+      "inViewport": true,
+      "rect": {
+        "x": 770,
+        "y": 216,
+        "w": 64,
+        "h": 52
+      },
+      "zIndex": "auto"
+    },
+    "map": {
+      "sel": "[data-touch-action=\"map\"]",
+      "tag": "BUTTON",
+      "className": "tbtn tbtn-sm",
+      "display": "block",
+      "visibility": "visible",
+      "visible": true,
+      "inViewport": true,
+      "rect": {
+        "x": 738,
+        "y": 336,
+        "w": 44,
+        "h": 40
+      },
+      "zIndex": "auto"
+    },
+    "bag": {
+      "sel": "[data-touch-action=\"bag\"]",
+      "tag": "BUTTON",
+      "className": "tbtn tbtn-sm",
+      "display": "block",
+      "visibility": "visible",
+      "visible": true,
+      "inViewport": true,
+      "rect": {
+        "x": 790,
+        "y": 336,
+        "w": 44,
+        "h": 40
+      },
+      "zIndex": "auto"
+    }
+  },
+  "characterLoad": {
+    "load": {
+      "status": "loading",
+      "source": "/assets/character/wanderer.glb"
+    },
+    "mode": "playing"
+  },
+  "errorsPartition": {}
+}

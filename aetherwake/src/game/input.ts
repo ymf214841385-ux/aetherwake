@@ -20,6 +20,10 @@ export type Actions = {
   lookX: number;
   lookY: number;
   climb: boolean;
+  /** Stable identity of the interact activation (if any). */
+  interactTargetId?: string | null;
+  interactWorldId?: string | null;
+  activationId?: string | null;
 };
 
 export type CommandKind =
@@ -34,7 +38,13 @@ export type CommandKind =
   | "climb"
   | "artSlot";
 
-type Command = { id: number; kind: CommandKind; t: number; slot?: number };
+export type CommandMeta = {
+  targetId?: string | null;
+  worldId?: string | null;
+  activationId?: string | null;
+};
+
+type Command = { id: number; kind: CommandKind; t: number; slot?: number; meta?: CommandMeta };
 
 const hardware = new Set<string>();
 let override: Set<string> | null = null;
@@ -102,12 +112,13 @@ function activeSet() {
   return override ?? hardware;
 }
 
-function enqueue(kind: CommandKind, slot?: number) {
-  commandQueue.push({ id: cmdSeq++, kind, t: now(), slot });
+function enqueue(kind: CommandKind, slot?: number, meta?: CommandMeta) {
+  commandQueue.push({ id: cmdSeq++, kind, t: now(), slot, meta });
 }
 
-export function enqueueCommand(kind: CommandKind, slot?: number) {
-  enqueue(kind, slot);
+export function enqueueCommand(kind: CommandKind, slotOrMeta?: number | CommandMeta, maybeMeta?: CommandMeta) {
+  if (typeof slotOrMeta === "object" && slotOrMeta !== null) enqueue(kind, undefined, slotOrMeta);
+  else enqueue(kind, slotOrMeta as number | undefined, maybeMeta);
 }
 
 function now() {
@@ -162,8 +173,43 @@ function onMouseMove(e: MouseEvent) {
 function onMouseDown(e: MouseEvent) {
   const t = e.target as HTMLElement | null;
   if (t?.closest?.("button, a, input, textarea, [data-ui]")) return;
-  if (e.button === 0) enqueue("attack");
+  if (e.button === 0) {
+    // World clicks are routed by the host (GameClient): interact vs focus-lock vs attack.
+    // Blind attack-on-left-click was the root cause of "clicking NPCs only swings".
+    if (worldClickHandler) {
+      worldClickHandler({
+        clientX: e.clientX,
+        clientY: e.clientY,
+        pointerLocked: typeof document !== "undefined" && !!document.pointerLockElement,
+        source: "mouse",
+      });
+    } else {
+      enqueue("attack");
+    }
+  }
   if (e.button === 2) hardware.add("MouseRight");
+}
+
+export type WorldClickInfo = {
+  clientX: number;
+  clientY: number;
+  pointerLocked: boolean;
+  source: "mouse" | "touch-tap";
+};
+
+let worldClickHandler: ((info: WorldClickInfo) => void) | null = null;
+
+export function setWorldClickHandler(fn: ((info: WorldClickInfo) => void) | null) {
+  worldClickHandler = fn;
+}
+
+export function hasWorldClickHandler() {
+  return worldClickHandler !== null;
+}
+
+export function dispatchWorldClick(info: WorldClickInfo) {
+  if (worldClickHandler) worldClickHandler(info);
+  else if (info.source === "mouse") enqueue("attack");
 }
 
 function onMouseUp(e: MouseEvent) {
@@ -262,8 +308,12 @@ function drainCommands(into: Actions) {
     used.add(c.kind);
     if (c.kind === "jump") into.jump = true;
     else if (c.kind === "attack") into.attack = true;
-    else if (c.kind === "interact") into.interact = true;
-    else if (c.kind === "art") into.art = true;
+    else if (c.kind === "interact") {
+      into.interact = true;
+      into.interactTargetId = c.meta?.targetId ?? null;
+      into.interactWorldId = c.meta?.worldId ?? null;
+      into.activationId = c.meta?.activationId ?? null;
+    } else if (c.kind === "art") into.art = true;
     else if (c.kind === "pause") into.pause = true;
     else if (c.kind === "map") into.map = true;
     else if (c.kind === "bag") into.bag = true;
@@ -345,6 +395,9 @@ function heldBase(): Actions {
     artSlot: -1,
     lookX: 0,
     lookY: 0,
+    interactTargetId: null,
+    interactWorldId: null,
+    activationId: null,
   };
 }
 

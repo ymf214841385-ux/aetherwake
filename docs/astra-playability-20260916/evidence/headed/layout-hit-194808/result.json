@@ -1,0 +1,11 @@
+{
+  "ok": false,
+  "pid": 72673,
+  "startedAt": "2026-09-16T11:48:08.766Z",
+  "viewports": [],
+  "errors": [],
+  "failure": {
+    "message": "browser is not defined",
+    "stack": "ReferenceError: browser is not defined\n    at file:///Users/ymf/Projects/aetherwake-rebuild-20260909/mimo-playability-20260916/aetherwake/scripts/qa/layout-hit.mjs:122:11"
+  }
+}

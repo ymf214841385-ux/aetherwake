@@ -4,7 +4,7 @@
 
 灵感来自开放世界探索手感，角色、地名和故事都是原创，没有任天堂版权内容。
 
-当前分支 `codex/aetherwake-rebuild-v2` 正在按 `docs/AETHERWAKE_REBUILD_PLAN.md` 做 M0—M9 改造。美术方向见仓库外的 `USER_VISUAL_DIRECTION.md`：写实奇幻，不要卡通积木人。
+当前 main 为 2026-09-17 可玩性修复试玩检查点。人物朝向、交互分流、触控布局和任务路线已整合；仍有已知失败及真机验收缺口。详见 [本轮说明](docs/CHECKPOINT_2026-09-17.md)。
 
 ## 操作
 
@@ -59,7 +59,7 @@ E2E_URL=http://127.0.0.1:8080/ node scripts/play-routes.mjs
 node aetherwake/scripts/pack-release.mjs
 ```
 
-`packed/aetherwake.zip` 必须与当前源码对应；元数据见 `packed/aetherwake.zip.meta.json`。
+打包后本地生成 `packed/aetherwake.zip` 与来源/哈希元数据。完整 ZIP 和元数据在 [GitHub Release](https://github.com/ymf214841385-ux/aetherwake/releases/tag/playtest-20260917) 下载；生成包不再写入 Git 历史。
 
 ## 源码结构
 

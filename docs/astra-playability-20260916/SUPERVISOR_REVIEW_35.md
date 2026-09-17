@@ -1,0 +1,13 @@
+# R35 — final concrete production defect: invalid plate candidate suppresses legal fallback
+
+R34 stable ID/observer evidence now useful, but 'back' x303.68,z1.815 is not placed back on pit: retain C08 partial, do not call placement complete. No more throw-placement fishing runs.
+
+Root read `src/game/shrine-route-dynamic.ts:145-224`: legal sidewalk fallback exists ONLY inside bridged.length<1 branch, and only when already onSidewalk/onFarShore. A plate merely in candidate band that fails assembleContiguousPath goes straight to '用牵引调整金属板位置', suppressing available sidewalk. At entry, absent plate still tells user form a bridge even when single support disc diameter2.3 cannot continuously span pit6.5. This is a concrete actionable routing defect, not merely missing evidence.
+
+Precisely fix: regression first using real production geometry and entry observer (316,520,4.4), compare no/away plate and unusable in-band plate. If plate route does not reach altar, try the SAME fully validated alternate path via approach to +X sidewalk, sidewalkFar(+7.15,17.5), altar; include safe corner(s) so no pit diagonal. Don't require player already onSidewalk to offer a validated approach. Return walk ONLY on complete contiguous validated route; else keep action-required and truthful reason. Reuse existing validator, no widened rise/collision/support tolerances. Preserve successful true bridge route if any fixture provides one. Add assertions every returned walk segment validated, polyline outside unsupported pit, identical usable fallback for away vs unusable plate. No inventing empty 'walk'. This addresses user actually getting stuck on impossible instruction.
+
+After fix one normal-input headed entry→sidewalk→altar using existing natural pull save, with unusable plate condition already present if possible; no progress/position writes. Readonly navigation records and actual movement. Do not redo C06/C09/mainline/A/D accepted checks. Keep metal bridge placement limitation explicit.
+
+Diagnostic math fix (QA only): r34 gap formulas are reversed. Entry gap=max(0,(plate.z-r)-pit.z0); far gap=max(0,pit.z1-(plate.z+r)); entry coverage requires plate.z-r<=z0 AND plate.z+r>=z0; far analogous atz1. Sample at exact same plate snapshot; current gap.plateZ differs from away.plate.z. Add small numeric assertion for centered radius1.15,pit[10,16.5]: both gaps2.1. This is documentation accuracy, not physics change.
+
+After production change run focused route regressions/typecheck/test:game/build:app, report existing baseline failures, update SOURCE_COMMIT/SUMMARY/ACCEPTANCE consistently and create one final local package. Only MiMo execution, no dependencies/DB/push/deploy/tunnel. Do actual fix, not another diagnosis-only package.

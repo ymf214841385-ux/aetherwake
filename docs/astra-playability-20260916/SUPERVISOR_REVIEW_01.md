@@ -1,0 +1,17 @@
+# Codex supervision 01 — 2026-09-16 19:17 CST
+
+Reviewed actual commit d434d29 and source, not just MiMo completion text. Current implementation is partial. Resume work; do not label M0/M1/M2/M3 complete.
+
+## R1 blocking: clicked target is ignored
+GameClient.tsx worldClickHandler ignores clientX/clientY and calls proximity-only peekInteractTarget, then enqueues bare interact. peekInteractTarget only returns label/kind; handleInteract remains independent old ordered logic. Any nearby NPC can hijack a click elsewhere; two targets cannot be disambiguated, world/target identity is lost, walls are not checked. Touch empty tap currently falls through to attack, contradicting section3.3. Fix with one managed picking service using actual canvas rect/camera ray (center for pointer-lock; passed coordinates otherwise), stable entity and world IDs and occluders. Carry selected target/world/activation identity through input queue to Sim; revalidate actual world, range, height, LOS and idempotence at execution. One shared resolver supplies HUD, E, tap and climb fallback; remove duplicated proximity rules. Explicit attack button remains attack. Empty touch short-tap must not attack. First unlocked empty mouse click focuses pointer lock only, with handled promise rejection. Preserve ownership/cancel/accessibility activation.
+
+Before edits add real production entry regressions: clicked chest beside NPC chooses chest, click away from NPC is not redirected, out-of-range explicit target does not attack, blocked wall/old world/duplicate activation rejected, empty touch tap creates no attack, drag/cancel no tap, multi-fixed-step activation once. Do not test only a stub handler.
+
+## R2 orientation evidence insufficient
+hair_tie offset is suggestive, not independent visual face/chest/feet evidence. orientationForAsset unconditionally returns same pi calibration even v4/unknown assets; no basis for that. Use headed browser to view the actual default model at fixed angles, record asset hash and visible face/chest/feet, Idle/Walk/Run and fallback transitions. Separate calibration metadata per verified asset; unknown/unmeasured assets must not silently inherit asserted calibration. Fix STATUS claims and do not compare a constant against itself as acceptance.
+
+## R3 no actual environment blocker established
+No headed attempt/log was made this round. Lack of physical phone does not block local headed Chromium Playwright. Existing scripts/qa/touch-input-smoke.mjs and lifecycle.mjs show launch and owned server usage; run a short current-tree test with QA_HEADED=1 and fresh build:app, record PID/log and actual error if any. Do not use old harness failure as proof the environment cannot run. No state writes or long full-route loops initially. Verify 844x390 and a small landscape viewport with real pointer input, element hit tests, menus and cancel; snapshot is not enough.
+
+## Continuation order
+First R1 production tests and genuine picking/resolver implementation, then short headed R2/R3 evidence. Afterwards continue M3 actual authored navigation graph/world-aware tracking, not just straight-line distance; M4 old saves/tutorial/device evidence, M5 local verification. No push/tunnel/DB/dependency changes. Update STATUS with exact timestamp, running jobs, results, pending requirements after each step; a stage summary is not task completion. Preserve original tests and record full command output under evidence. Two old climbing failures must be listed explicitly and investigated if they block the requested playable routes.

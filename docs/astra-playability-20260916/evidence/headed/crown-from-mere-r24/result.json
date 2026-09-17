@@ -1,0 +1,734 @@
+{
+  "ok": false,
+  "pid": 6432,
+  "milestones": [
+    {
+      "name": "00-restore",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 2.5,
+        "x": -106.28,
+        "y": 44.6,
+        "z": 9.84,
+        "camYaw": 0.964,
+        "bodyYaw": 0.754,
+        "state": "grounded",
+        "stamina": 100,
+        "towers": [
+          "dawn",
+          "mere"
+        ],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "spicy": 0,
+        "mats": {
+          "pepper": 1,
+          "apple": 3
+        },
+        "prompt": "",
+        "interactVisible": false,
+        "nearestClimb": {
+          "id": "mere-shaft",
+          "d": 2.52,
+          "touchingClimbable": true
+        },
+        "lastDamageWhy": "",
+        "enemies": [],
+        "attackPhase": "idle",
+        "dodgeCd": 0,
+        "towerBaseY": 16.799999237060547
+      },
+      "t": 1789592851114
+    },
+    {
+      "name": "01-map-crown",
+      "pass": true,
+      "sel": "crown",
+      "t": 1789592852367
+    },
+    {
+      "name": "wp1",
+      "pass": true,
+      "target": {
+        "x": -40,
+        "z": -40
+      },
+      "t": 1789592863473
+    },
+    {
+      "name": "wp2",
+      "pass": true,
+      "target": {
+        "x": 0,
+        "z": -70
+      },
+      "t": 1789592882373
+    },
+    {
+      "name": "wp3",
+      "pass": true,
+      "target": {
+        "x": 20,
+        "z": -100
+      },
+      "t": 1789592900370
+    },
+    {
+      "name": "wp4",
+      "pass": true,
+      "target": {
+        "x": 40,
+        "z": -120
+      },
+      "t": 1789592913772
+    },
+    {
+      "name": "wp5",
+      "pass": true,
+      "target": {
+        "x": 48,
+        "z": -122
+      },
+      "t": 1789592923672
+    },
+    {
+      "name": "01-arrive-crown",
+      "pass": true,
+      "post": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 0.75,
+        "x": 41.6,
+        "y": 18.5,
+        "z": -120.58,
+        "camYaw": -1.069,
+        "bodyYaw": -1.069,
+        "state": "grounded",
+        "stamina": 100,
+        "towers": [
+          "dawn",
+          "mere"
+        ],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "spicy": 0,
+        "mats": {
+          "pepper": 1,
+          "apple": 3
+        },
+        "prompt": "需在塔顶",
+        "interactVisible": true,
+        "nearestClimb": null,
+        "lastDamageWhy": "严寒",
+        "enemies": [],
+        "attackPhase": "idle",
+        "dodgeCd": 0,
+        "towerBaseY": 16.799999237060547
+      },
+      "t": 1789592927738
+    },
+    {
+      "name": "01a-approach-contact",
+      "pass": true,
+      "steps": 12,
+      "t0": 1789592927739,
+      "start": {
+        "x": 41.6,
+        "z": -120.58,
+        "d": null
+      },
+      "end": {
+        "x": 45.21,
+        "z": -123.39,
+        "d": 5.39,
+        "contact": true,
+        "id": "crown-shaft",
+        "elapsedMs": 2049
+      },
+      "decision": {
+        "kind": "handoff",
+        "reason": "contact id=crown-shaft",
+        "id": "crown-shaft"
+      },
+      "t": 1789592929788
+    },
+    {
+      "name": "01b-climb-handoff",
+      "pass": true,
+      "handoff": {
+        "ok": true
+      },
+      "approach": {
+        "steps": 12,
+        "t0": 1789592927739,
+        "start": {
+          "x": 41.6,
+          "z": -120.58,
+          "d": null
+        },
+        "end": {
+          "x": 45.21,
+          "z": -123.39,
+          "d": 5.39,
+          "contact": true,
+          "id": "crown-shaft",
+          "elapsedMs": 2049
+        },
+        "decision": {
+          "kind": "handoff",
+          "reason": "contact id=crown-shaft",
+          "id": "crown-shaft"
+        }
+      },
+      "nearestClimb": {
+        "id": "crown-shaft",
+        "d": 5.39,
+        "touchingClimbable": true
+      },
+      "t": 1789592929788
+    },
+    {
+      "name": "02-climb",
+      "pass": true,
+      "maxY": 17.8,
+      "final": {
+        "y": 17.61,
+        "state": "grounded",
+        "hp": 0.75
+      },
+      "t": 1789593026254
+    },
+    {
+      "name": "03-activate-crown",
+      "pass": false,
+      "maxY": 17.8,
+      "towers": [
+        "dawn",
+        "mere"
+      ],
+      "t": 1789593026254
+    },
+    {
+      "name": "04-reload-crown",
+      "pass": false,
+      "after": {
+        "towers": [
+          "dawn",
+          "mere"
+        ],
+        "shrines": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "orbs": 4
+      },
+      "t": 1789593027192
+    }
+  ],
+  "failure": null,
+  "ring": [
+    {
+      "tag": "ASCEND-break",
+      "y": 17.45,
+      "stam": 6,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "i": 79,
+      "next": "DESCEND"
+    },
+    {
+      "tag": "DESCEND",
+      "y": 17.45,
+      "stam": 3.9,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "low-stam-while-climbing",
+      "i": 80
+    },
+    {
+      "tag": "DESCEND",
+      "y": 17.45,
+      "stam": 1.8,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "low-stam-while-climbing",
+      "i": 81
+    },
+    {
+      "tag": "DESCEND",
+      "y": 17.44,
+      "stam": 0,
+      "state": "airborne",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "low-stam-while-climbing",
+      "i": 82
+    },
+    {
+      "tag": "DESCEND",
+      "y": 17.57,
+      "stam": 7.9,
+      "state": "grounded",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "airborne-fall",
+      "i": 83
+    },
+    {
+      "tag": "enter-REST",
+      "y": 17.57,
+      "stam": 7.9,
+      "state": "grounded",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "grounded-low-stam-near-shaft",
+      "i": 84
+    },
+    {
+      "tag": "leave-REST",
+      "y": 17.7,
+      "stam": 88.2,
+      "state": "grounded",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "i": 99
+    },
+    {
+      "tag": "APPROACH",
+      "y": 17.46,
+      "stam": 97.5,
+      "state": "grounded",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "i": 99
+    },
+    {
+      "tag": "APPROACH",
+      "y": 17.46,
+      "stam": 93.5,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "i": 100
+    },
+    {
+      "tag": "ASCEND-break",
+      "y": 17.46,
+      "stam": 6.3,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "i": 103,
+      "next": "DESCEND"
+    },
+    {
+      "tag": "DESCEND",
+      "y": 17.46,
+      "stam": 4.2,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "low-stam-while-climbing",
+      "i": 104
+    },
+    {
+      "tag": "DESCEND",
+      "y": 17.46,
+      "stam": 2.1,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "low-stam-while-climbing",
+      "i": 105
+    },
+    {
+      "tag": "DESCEND",
+      "y": 17.46,
+      "stam": 0,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "low-stam-while-climbing",
+      "i": 106
+    },
+    {
+      "tag": "DESCEND",
+      "y": 17.53,
+      "stam": 6.5,
+      "state": "grounded",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "low-stam-while-climbing",
+      "i": 107
+    },
+    {
+      "tag": "enter-REST",
+      "y": 17.53,
+      "stam": 6.5,
+      "state": "grounded",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "grounded-low-stam-near-shaft",
+      "i": 108
+    },
+    {
+      "tag": "leave-REST",
+      "y": 17.65,
+      "stam": 86.8,
+      "state": "grounded",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "i": 123
+    },
+    {
+      "tag": "APPROACH",
+      "y": 17.45,
+      "stam": 96.6,
+      "state": "grounded",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "i": 123
+    },
+    {
+      "tag": "APPROACH",
+      "y": 17.45,
+      "stam": 92.6,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "i": 124
+    },
+    {
+      "tag": "ASCEND-break",
+      "y": 17.45,
+      "stam": 6.3,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "i": 127,
+      "next": "DESCEND"
+    },
+    {
+      "tag": "DESCEND",
+      "y": 17.45,
+      "stam": 4.2,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "low-stam-while-climbing",
+      "i": 128
+    },
+    {
+      "tag": "DESCEND",
+      "y": 17.45,
+      "stam": 2.1,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "low-stam-while-climbing",
+      "i": 129
+    },
+    {
+      "tag": "DESCEND",
+      "y": 17.45,
+      "stam": 0,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "low-stam-while-climbing",
+      "i": 130
+    },
+    {
+      "tag": "DESCEND",
+      "y": 17.55,
+      "stam": 6.5,
+      "state": "grounded",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "low-stam-while-climbing",
+      "i": 131
+    },
+    {
+      "tag": "enter-REST",
+      "y": 17.55,
+      "stam": 6.5,
+      "state": "grounded",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "grounded-low-stam-near-shaft",
+      "i": 132
+    },
+    {
+      "tag": "leave-REST",
+      "y": 17.67,
+      "stam": 86.3,
+      "state": "grounded",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "i": 147
+    },
+    {
+      "tag": "APPROACH",
+      "y": 17.43,
+      "stam": 96.1,
+      "state": "grounded",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "i": 147
+    },
+    {
+      "tag": "APPROACH",
+      "y": 17.43,
+      "stam": 92.1,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "i": 148
+    },
+    {
+      "tag": "ASCEND-break",
+      "y": 17.43,
+      "stam": 7.9,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "i": 151,
+      "next": "DESCEND"
+    },
+    {
+      "tag": "DESCEND",
+      "y": 17.43,
+      "stam": 5.8,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "low-stam-while-climbing",
+      "i": 152
+    },
+    {
+      "tag": "DESCEND",
+      "y": 17.43,
+      "stam": 3.7,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "low-stam-while-climbing",
+      "i": 153
+    },
+    {
+      "tag": "DESCEND",
+      "y": 17.43,
+      "stam": 1.6,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "low-stam-while-climbing",
+      "i": 154
+    },
+    {
+      "tag": "DESCEND",
+      "y": 17.44,
+      "stam": 0.4,
+      "state": "grounded",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "low-stam-while-climbing",
+      "i": 155
+    },
+    {
+      "tag": "enter-REST",
+      "y": 17.44,
+      "stam": 0.4,
+      "state": "grounded",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "grounded-low-stam-near-shaft",
+      "i": 156
+    },
+    {
+      "tag": "leave-REST",
+      "y": 17.43,
+      "stam": 85.8,
+      "state": "grounded",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "i": 172
+    },
+    {
+      "tag": "APPROACH",
+      "y": 17.43,
+      "stam": 95.6,
+      "state": "grounded",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "i": 172
+    },
+    {
+      "tag": "APPROACH",
+      "y": 17.43,
+      "stam": 91.6,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "i": 173
+    },
+    {
+      "tag": "ASCEND-break",
+      "y": 17.43,
+      "stam": 7.5,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "i": 176,
+      "next": "DESCEND"
+    },
+    {
+      "tag": "DESCEND",
+      "y": 17.43,
+      "stam": 5.4,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "low-stam-while-climbing",
+      "i": 177
+    },
+    {
+      "tag": "DESCEND",
+      "y": 17.43,
+      "stam": 3.3,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "low-stam-while-climbing",
+      "i": 178
+    },
+    {
+      "tag": "DESCEND",
+      "y": 17.43,
+      "stam": 1.2,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "low-stam-while-climbing",
+      "i": 179
+    },
+    {
+      "tag": "DESCEND",
+      "y": 17.43,
+      "stam": 1.4,
+      "state": "grounded",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "low-stam-while-climbing",
+      "i": 180
+    },
+    {
+      "tag": "enter-REST",
+      "y": 17.43,
+      "stam": 1.4,
+      "state": "grounded",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "grounded-low-stam-near-shaft",
+      "i": 181
+    },
+    {
+      "tag": "leave-REST",
+      "y": 17.44,
+      "stam": 86.8,
+      "state": "grounded",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "i": 197
+    },
+    {
+      "tag": "APPROACH",
+      "y": 17.43,
+      "stam": 96.6,
+      "state": "grounded",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "i": 197
+    },
+    {
+      "tag": "APPROACH",
+      "y": 17.43,
+      "stam": 92.6,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "i": 198
+    },
+    {
+      "tag": "ASCEND-break",
+      "y": 17.43,
+      "stam": 5.3,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "i": 201,
+      "next": "DESCEND"
+    },
+    {
+      "tag": "DESCEND",
+      "y": 17.43,
+      "stam": 3.2,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "low-stam-while-climbing",
+      "i": 202
+    },
+    {
+      "tag": "DESCEND",
+      "y": 17.43,
+      "stam": 1.1,
+      "state": "climbing",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "low-stam-while-climbing",
+      "i": 203
+    },
+    {
+      "tag": "DESCEND",
+      "y": 17.53,
+      "stam": 2.7,
+      "state": "grounded",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "low-stam-while-climbing",
+      "i": 204
+    },
+    {
+      "tag": "enter-REST",
+      "y": 17.53,
+      "stam": 2.7,
+      "state": "grounded",
+      "support": "crown-shaft",
+      "hp": 0.75,
+      "reason": "grounded-low-stam-near-shaft",
+      "i": 205
+    }
+  ],
+  "errors": [],
+  "startedAt": "2026-09-16T21:07:28.826Z"
+}

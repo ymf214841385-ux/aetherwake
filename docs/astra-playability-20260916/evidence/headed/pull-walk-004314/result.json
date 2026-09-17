@@ -1,0 +1,146 @@
+{
+  "ok": false,
+  "pid": 93227,
+  "milestones": [
+    {
+      "name": "00-restore",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "x": -69.29,
+        "y": 11.41,
+        "z": 38.03,
+        "camYaw": 1.166,
+        "state": "grounded",
+        "art": 1,
+        "orbs": 1,
+        "shrinesOn": [
+          "burst"
+        ],
+        "towers": [],
+        "metals": 2,
+        "prompt": "",
+        "nav": "unavailable",
+        "navNext": "沿指引前往晨光塔塔脚攀爬点",
+        "lastDamageWhy": "",
+        "enemies": []
+      }
+    },
+    {
+      "name": "wp1",
+      "pass": true,
+      "target": {
+        "x": -10,
+        "z": 22
+      }
+    },
+    {
+      "name": "wp2",
+      "pass": true,
+      "target": {
+        "x": 15,
+        "z": 14
+      }
+    },
+    {
+      "name": "wp3",
+      "pass": true,
+      "target": {
+        "x": 32,
+        "z": 11
+      }
+    },
+    {
+      "name": "03-checkpoint",
+      "pass": true
+    }
+  ],
+  "failure": null,
+  "ring": [],
+  "errors": [],
+  "stopped": {
+    "reason": "terminal",
+    "i": 85,
+    "pre": {
+      "mode": "dead",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 0,
+      "x": 10.65,
+      "y": 6.26,
+      "z": 15.68,
+      "camYaw": -1.206,
+      "state": "dead",
+      "art": 1,
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "towers": [],
+      "metals": 2,
+      "prompt": "请靠近：距离 25.8m",
+      "nav": "unavailable",
+      "navNext": "前往牵引祠",
+      "lastDamageWhy": "敌人",
+      "enemies": [
+        {
+          "id": "b-2-1",
+          "d": 1.73,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-2",
+          "d": 1.74,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-0",
+          "d": 1.82,
+          "phase": "recover"
+        }
+      ]
+    }
+  },
+  "final": {
+    "mode": "dead",
+    "world": "overworld",
+    "shrine": null,
+    "hp": 0,
+    "x": 10.65,
+    "y": 6.26,
+    "z": 15.68,
+    "camYaw": -1.206,
+    "state": "dead",
+    "art": 1,
+    "orbs": 1,
+    "shrinesOn": [
+      "burst"
+    ],
+    "towers": [],
+    "metals": 2,
+    "prompt": "请靠近：距离 25.8m",
+    "nav": "unavailable",
+    "navNext": "前往牵引祠",
+    "lastDamageWhy": "敌人",
+    "enemies": [
+      {
+        "id": "b-2-1",
+        "d": 1.73,
+        "phase": "windup"
+      },
+      {
+        "id": "b-2-2",
+        "d": 1.74,
+        "phase": "windup"
+      },
+      {
+        "id": "b-2-0",
+        "d": 1.82,
+        "phase": "recover"
+      }
+    ]
+  }
+}

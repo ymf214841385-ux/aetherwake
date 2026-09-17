@@ -1,0 +1,1494 @@
+{
+  "ok": false,
+  "pid": 85477,
+  "startedAt": "2026-09-16T14:29:21.139Z",
+  "milestones": [
+    {
+      "name": "01-start",
+      "pass": true,
+      "mode": "playing",
+      "x": 16,
+      "y": 11.414756173028813,
+      "z": 102,
+      "vx": 0,
+      "vz": 0,
+      "yaw": 0,
+      "camYaw": 0,
+      "state": "grounded",
+      "climbing": false,
+      "hp": 3,
+      "stamina": 100,
+      "prompt": "请靠近：距离 7.2m",
+      "towers": [],
+      "chests": [],
+      "quest": "点亮晨光塔",
+      "load": "ready",
+      "climbBtnExists": true,
+      "climbBtnVisible": true,
+      "nearestClimb": {
+        "id": "dawn-shaft",
+        "d": 34.52535300326414,
+        "climbable": true,
+        "standable": false
+      },
+      "mantle": null,
+      "t": 1789568975510
+    },
+    {
+      "name": "02-move",
+      "pass": true,
+      "d0": 1.3874345613033654,
+      "t": 1789568976265
+    },
+    {
+      "name": "03-near-sage",
+      "pass": true,
+      "sageWalk": {
+        "ok": true,
+        "last": {
+          "mode": "playing",
+          "x": 4.447619832533304,
+          "y": 16.672360029062098,
+          "z": 112.17645380288025,
+          "vx": -0.8297769653718043,
+          "vz": 1.572474084086908,
+          "yaw": 2.6605404719675385,
+          "camYaw": 2.6620000000000004,
+          "state": "grounded",
+          "climbing": false,
+          "hp": 3,
+          "stamina": 100,
+          "prompt": "与守塔人交谈",
+          "towers": [],
+          "chests": [],
+          "quest": "点亮晨光塔",
+          "load": "ready",
+          "climbBtnExists": true,
+          "climbBtnVisible": true,
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 44.52401594782405,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null
+        }
+      },
+      "t": 1789568984238
+    },
+    {
+      "name": "04-sage-talk",
+      "pass": true,
+      "talked": {
+        "mode": "dialogue",
+        "x": 4.3756972249794215,
+        "y": 16.671532375898174,
+        "z": 112.31275119502075,
+        "vx": -0.28421425616173196,
+        "vz": 0.538602022944933,
+        "yaw": 2.6605404719675385,
+        "camYaw": 2.6620000000000004,
+        "state": "grounded",
+        "climbing": false,
+        "hp": 3,
+        "stamina": 100,
+        "prompt": "与守塔人交谈",
+        "towers": [],
+        "chests": [],
+        "quest": "点亮晨光塔",
+        "load": "ready",
+        "climbBtnExists": true,
+        "climbBtnVisible": true,
+        "nearestClimb": {
+          "id": "dawn-shaft",
+          "d": 44.66825159077661,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null
+      },
+      "t": 1789568984597
+    },
+    {
+      "name": "03b-near-chest",
+      "pass": true,
+      "chestWalk": {
+        "ok": true,
+        "last": {
+          "mode": "playing",
+          "x": 19.413203953872873,
+          "y": 16.34475548369981,
+          "z": 108.78732629511929,
+          "vx": 1.0554047497997834,
+          "vz": -0.6573899044725924,
+          "yaw": 5.274125802528732,
+          "camYaw": 5.420800000000001,
+          "state": "grounded",
+          "climbing": false,
+          "hp": 3,
+          "stamina": 100,
+          "prompt": "打开容器",
+          "towers": [],
+          "chests": [],
+          "quest": "点亮晨光塔",
+          "load": "ready",
+          "climbBtnExists": true,
+          "climbBtnVisible": true,
+          "nearestClimb": {
+            "id": "ruin-side",
+            "d": 40.83676058136925,
+            "climbable": true,
+            "standable": true
+          },
+          "mantle": null
+        }
+      },
+      "t": 1789568992178
+    },
+    {
+      "name": "05-chest-reward",
+      "pass": true,
+      "afterChest": {
+        "mode": "playing",
+        "x": 19.52901008621634,
+        "y": 16.340727634329554,
+        "z": 108.71519303790869,
+        "vx": 0.17696736476600636,
+        "vz": -0.11022933053917093,
+        "yaw": 5.274125802528732,
+        "camYaw": 5.420800000000001,
+        "state": "grounded",
+        "climbing": false,
+        "hp": 3,
+        "stamina": 100,
+        "prompt": "已搜集",
+        "towers": [],
+        "chests": [
+          "chest-start"
+        ],
+        "quest": "点亮晨光塔",
+        "load": "ready",
+        "climbBtnExists": true,
+        "climbBtnVisible": true,
+        "nearestClimb": {
+          "id": "ruin-side",
+          "d": 40.72724154810555,
+          "climbable": true,
+          "standable": true
+        },
+        "mantle": null
+      },
+      "t": 1789568992519
+    },
+    {
+      "name": "06-map-dawn",
+      "pass": true,
+      "mapped": "dawn",
+      "t": 1789568992893
+    },
+    {
+      "name": "07-tower-base",
+      "pass": true,
+      "towerWalk": {
+        "ok": true,
+        "last": {
+          "mode": "playing",
+          "x": 13.46035537345592,
+          "y": 13.811149780516557,
+          "z": 73.1113612610566,
+          "vx": -0.6936778854934845,
+          "vz": -1.6591793876635317,
+          "yaw": 6.679199852530312,
+          "camYaw": 6.679200000000001,
+          "state": "grounded",
+          "climbing": false,
+          "hp": 3,
+          "stamina": 100,
+          "prompt": "需在塔顶",
+          "towers": [],
+          "chests": [
+            "chest-start"
+          ],
+          "quest": "点亮晨光塔",
+          "load": "ready",
+          "climbBtnExists": true,
+          "climbBtnVisible": true,
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 6.172525678491373,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null
+        }
+      },
+      "lastSamples": [
+        {
+          "i": 25,
+          "x": 15.17,
+          "z": 77.83,
+          "dist": 11.1,
+          "state": "grounded",
+          "stamina": 100
+        },
+        {
+          "i": 26,
+          "x": 14.87,
+          "z": 76.65,
+          "dist": 9.93,
+          "state": "grounded",
+          "stamina": 100
+        },
+        {
+          "i": 27,
+          "x": 14.46,
+          "z": 75.52,
+          "dist": 8.75,
+          "state": "grounded",
+          "stamina": 100
+        },
+        {
+          "i": 28,
+          "x": 14,
+          "z": 74.41,
+          "dist": 7.55,
+          "state": "grounded",
+          "stamina": 100
+        },
+        {
+          "i": 29,
+          "x": 13.53,
+          "z": 73.29,
+          "dist": 6.36,
+          "state": "grounded",
+          "stamina": 100
+        }
+      ],
+      "t": 1789569008541
+    },
+    {
+      "name": "08-climb",
+      "pass": true,
+      "climbingSeen": true,
+      "maxY": 44.8083337148027,
+      "startY": 13.811149780516557,
+      "phase": "ASCEND",
+      "climbEnd": {
+        "y": 8.722270640691548,
+        "state": "grounded",
+        "stamina": 100
+      },
+      "traceTail": [
+        {
+          "tag": "SUMMIT",
+          "x": -40.16,
+          "y": 8.04,
+          "z": -63.81,
+          "vx": -0.1,
+          "vz": -0.24,
+          "state": "grounded",
+          "stamina": 100,
+          "prompt": "请靠近：距离 24.4m",
+          "nearestClimb": {
+            "id": "citadel-wall-0--11",
+            "d": 61.61380595394985,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 212
+        },
+        {
+          "tag": "SUMMIT",
+          "x": -40.62,
+          "y": 8.17,
+          "z": -64.92,
+          "vx": -0.1,
+          "vz": -0.25,
+          "state": "grounded",
+          "stamina": 100,
+          "prompt": "请靠近：距离 25.4m",
+          "nearestClimb": {
+            "id": "citadel-wall-0--11",
+            "d": 62.693735513787395,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 213
+        },
+        {
+          "tag": "SUMMIT",
+          "x": -41.08,
+          "y": 8.28,
+          "z": -66.02,
+          "vx": -0.1,
+          "vz": -0.25,
+          "state": "grounded",
+          "stamina": 100,
+          "prompt": "请靠近：距离 26.5m",
+          "nearestClimb": {
+            "id": "citadel-wall-0--11",
+            "d": 63.779602850879094,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 214
+        },
+        {
+          "tag": "SUMMIT",
+          "x": -41.5,
+          "y": 8.38,
+          "z": -67.03,
+          "vx": -0.1,
+          "vz": -0.24,
+          "state": "grounded",
+          "stamina": 100,
+          "prompt": "请靠近：距离 27.4m",
+          "nearestClimb": {
+            "id": "citadel-wall-0--11",
+            "d": 64.77374064520241,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 215
+        },
+        {
+          "tag": "SUMMIT",
+          "x": -41.97,
+          "y": 8.46,
+          "z": -68.14,
+          "vx": -0.1,
+          "vz": -0.25,
+          "state": "grounded",
+          "stamina": 100,
+          "prompt": "请靠近：距离 28.5m",
+          "nearestClimb": {
+            "id": "citadel-wall-0--11",
+            "d": 65.8653193030168,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 216
+        },
+        {
+          "tag": "SUMMIT",
+          "x": -42.43,
+          "y": 8.54,
+          "z": -69.24,
+          "vx": -0.1,
+          "vz": -0.25,
+          "state": "grounded",
+          "stamina": 100,
+          "prompt": "请靠近：距离 29.5m",
+          "nearestClimb": {
+            "id": "citadel-wall-0--11",
+            "d": 66.96227596490924,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 217
+        },
+        {
+          "tag": "SUMMIT",
+          "x": -42.89,
+          "y": 8.64,
+          "z": -70.35,
+          "vx": -0.1,
+          "vz": -0.25,
+          "state": "grounded",
+          "stamina": 100,
+          "prompt": "请靠近：距离 30.6m",
+          "nearestClimb": {
+            "id": "citadel-wall-0--11",
+            "d": 68.06270963311411,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 218
+        },
+        {
+          "tag": "SUMMIT",
+          "x": -43.35,
+          "y": 8.72,
+          "z": -71.46,
+          "vx": -0.1,
+          "vz": -0.25,
+          "state": "grounded",
+          "stamina": 100,
+          "prompt": "请靠近：距离 31.7m",
+          "nearestClimb": {
+            "id": "citadel-wall-0--11",
+            "d": 69.16643137098052,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 219
+        }
+      ],
+      "t": 1789569155269
+    },
+    {
+      "name": "09-activate-dawn",
+      "pass": false,
+      "maxY": 44.8083337148027,
+      "climbFinal": {
+        "y": 8.725138271306934,
+        "prompt": "请靠近：距离 31.7m",
+        "towers": []
+      },
+      "t": 1789569155269
+    },
+    {
+      "name": "09-activate-dawn",
+      "pass": false,
+      "maxY": 44.8083337148027,
+      "climbFinal": {
+        "mode": "dead",
+        "x": -43.36738296476373,
+        "y": 8.725138271306934,
+        "z": -71.48802600673334,
+        "vx": -0.006716349406759705,
+        "vz": -0.016063847901960866,
+        "yaw": 0.3960146928204143,
+        "camYaw": 7.405200000000001,
+        "state": "dead",
+        "climbing": false,
+        "hp": 0,
+        "stamina": 100,
+        "prompt": "请靠近：距离 31.7m",
+        "towers": [],
+        "chests": [
+          "chest-start"
+        ],
+        "quest": "点亮晨光塔",
+        "load": "ready",
+        "climbBtnExists": true,
+        "climbBtnVisible": true,
+        "nearestClimb": {
+          "id": "citadel-wall-0--11",
+          "d": 69.19701703700305,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null
+      },
+      "traceTail": [
+        {
+          "tag": "SUMMIT",
+          "x": -38.35,
+          "y": 7.5,
+          "z": -59.48,
+          "vx": -0.1,
+          "vz": -0.25,
+          "state": "grounded",
+          "stamina": 100,
+          "prompt": "请靠近：距离 20.7m",
+          "nearestClimb": {
+            "id": "citadel-wall-0--11",
+            "d": 57.42682392473356,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 208
+        },
+        {
+          "tag": "SUMMIT",
+          "x": -38.81,
+          "y": 7.64,
+          "z": -60.59,
+          "vx": -0.1,
+          "vz": -0.25,
+          "state": "grounded",
+          "stamina": 100,
+          "prompt": "请靠近：距离 21.6m",
+          "nearestClimb": {
+            "id": "citadel-wall-0--11",
+            "d": 58.48974283141887,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 209
+        },
+        {
+          "tag": "SUMMIT",
+          "x": -39.27,
+          "y": 7.77,
+          "z": -61.7,
+          "vx": -0.1,
+          "vz": -0.25,
+          "state": "grounded",
+          "stamina": 100,
+          "prompt": "请靠近：距离 22.5m",
+          "nearestClimb": {
+            "id": "citadel-wall-0--11",
+            "d": 59.55784269774531,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 210
+        },
+        {
+          "tag": "SUMMIT",
+          "x": -39.74,
+          "y": 7.92,
+          "z": -62.8,
+          "vx": -0.1,
+          "vz": -0.25,
+          "state": "grounded",
+          "stamina": 100,
+          "prompt": "请靠近：距离 23.5m",
+          "nearestClimb": {
+            "id": "citadel-wall-0--11",
+            "d": 60.63084971410122,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 211
+        },
+        {
+          "tag": "SUMMIT",
+          "x": -40.16,
+          "y": 8.04,
+          "z": -63.81,
+          "vx": -0.1,
+          "vz": -0.24,
+          "state": "grounded",
+          "stamina": 100,
+          "prompt": "请靠近：距离 24.4m",
+          "nearestClimb": {
+            "id": "citadel-wall-0--11",
+            "d": 61.61380595394985,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 212
+        },
+        {
+          "tag": "SUMMIT",
+          "x": -40.62,
+          "y": 8.17,
+          "z": -64.92,
+          "vx": -0.1,
+          "vz": -0.25,
+          "state": "grounded",
+          "stamina": 100,
+          "prompt": "请靠近：距离 25.4m",
+          "nearestClimb": {
+            "id": "citadel-wall-0--11",
+            "d": 62.693735513787395,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 213
+        },
+        {
+          "tag": "SUMMIT",
+          "x": -41.08,
+          "y": 8.28,
+          "z": -66.02,
+          "vx": -0.1,
+          "vz": -0.25,
+          "state": "grounded",
+          "stamina": 100,
+          "prompt": "请靠近：距离 26.5m",
+          "nearestClimb": {
+            "id": "citadel-wall-0--11",
+            "d": 63.779602850879094,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 214
+        },
+        {
+          "tag": "SUMMIT",
+          "x": -41.5,
+          "y": 8.38,
+          "z": -67.03,
+          "vx": -0.1,
+          "vz": -0.24,
+          "state": "grounded",
+          "stamina": 100,
+          "prompt": "请靠近：距离 27.4m",
+          "nearestClimb": {
+            "id": "citadel-wall-0--11",
+            "d": 64.77374064520241,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 215
+        },
+        {
+          "tag": "SUMMIT",
+          "x": -41.97,
+          "y": 8.46,
+          "z": -68.14,
+          "vx": -0.1,
+          "vz": -0.25,
+          "state": "grounded",
+          "stamina": 100,
+          "prompt": "请靠近：距离 28.5m",
+          "nearestClimb": {
+            "id": "citadel-wall-0--11",
+            "d": 65.8653193030168,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 216
+        },
+        {
+          "tag": "SUMMIT",
+          "x": -42.43,
+          "y": 8.54,
+          "z": -69.24,
+          "vx": -0.1,
+          "vz": -0.25,
+          "state": "grounded",
+          "stamina": 100,
+          "prompt": "请靠近：距离 29.5m",
+          "nearestClimb": {
+            "id": "citadel-wall-0--11",
+            "d": 66.96227596490924,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 217
+        },
+        {
+          "tag": "SUMMIT",
+          "x": -42.89,
+          "y": 8.64,
+          "z": -70.35,
+          "vx": -0.1,
+          "vz": -0.25,
+          "state": "grounded",
+          "stamina": 100,
+          "prompt": "请靠近：距离 30.6m",
+          "nearestClimb": {
+            "id": "citadel-wall-0--11",
+            "d": 68.06270963311411,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 218
+        },
+        {
+          "tag": "SUMMIT",
+          "x": -43.35,
+          "y": 8.72,
+          "z": -71.46,
+          "vx": -0.1,
+          "vz": -0.25,
+          "state": "grounded",
+          "stamina": 100,
+          "prompt": "请靠近：距离 31.7m",
+          "nearestClimb": {
+            "id": "citadel-wall-0--11",
+            "d": 69.16643137098052,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 219
+        }
+      ],
+      "t": 1789569155269
+    }
+  ],
+  "failure": {
+    "milestone": "09-activate-dawn",
+    "maxY": 44.8083337148027,
+    "climbFinal": {
+      "mode": "dead",
+      "x": -43.36738296476373,
+      "y": 8.725138271306934,
+      "z": -71.48802600673334,
+      "vx": -0.006716349406759705,
+      "vz": -0.016063847901960866,
+      "yaw": 0.3960146928204143,
+      "camYaw": 7.405200000000001,
+      "state": "dead",
+      "climbing": false,
+      "hp": 0,
+      "stamina": 100,
+      "prompt": "请靠近：距离 31.7m",
+      "towers": [],
+      "chests": [
+        "chest-start"
+      ],
+      "quest": "点亮晨光塔",
+      "load": "ready",
+      "climbBtnExists": true,
+      "climbBtnVisible": true,
+      "nearestClimb": {
+        "id": "citadel-wall-0--11",
+        "d": 69.19701703700305,
+        "climbable": true,
+        "standable": false
+      },
+      "mantle": null
+    },
+    "traceTail": [
+      {
+        "tag": "SUMMIT",
+        "x": -38.35,
+        "y": 7.5,
+        "z": -59.48,
+        "vx": -0.1,
+        "vz": -0.25,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "请靠近：距离 20.7m",
+        "nearestClimb": {
+          "id": "citadel-wall-0--11",
+          "d": 57.42682392473356,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 208
+      },
+      {
+        "tag": "SUMMIT",
+        "x": -38.81,
+        "y": 7.64,
+        "z": -60.59,
+        "vx": -0.1,
+        "vz": -0.25,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "请靠近：距离 21.6m",
+        "nearestClimb": {
+          "id": "citadel-wall-0--11",
+          "d": 58.48974283141887,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 209
+      },
+      {
+        "tag": "SUMMIT",
+        "x": -39.27,
+        "y": 7.77,
+        "z": -61.7,
+        "vx": -0.1,
+        "vz": -0.25,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "请靠近：距离 22.5m",
+        "nearestClimb": {
+          "id": "citadel-wall-0--11",
+          "d": 59.55784269774531,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 210
+      },
+      {
+        "tag": "SUMMIT",
+        "x": -39.74,
+        "y": 7.92,
+        "z": -62.8,
+        "vx": -0.1,
+        "vz": -0.25,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "请靠近：距离 23.5m",
+        "nearestClimb": {
+          "id": "citadel-wall-0--11",
+          "d": 60.63084971410122,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 211
+      },
+      {
+        "tag": "SUMMIT",
+        "x": -40.16,
+        "y": 8.04,
+        "z": -63.81,
+        "vx": -0.1,
+        "vz": -0.24,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "请靠近：距离 24.4m",
+        "nearestClimb": {
+          "id": "citadel-wall-0--11",
+          "d": 61.61380595394985,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 212
+      },
+      {
+        "tag": "SUMMIT",
+        "x": -40.62,
+        "y": 8.17,
+        "z": -64.92,
+        "vx": -0.1,
+        "vz": -0.25,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "请靠近：距离 25.4m",
+        "nearestClimb": {
+          "id": "citadel-wall-0--11",
+          "d": 62.693735513787395,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 213
+      },
+      {
+        "tag": "SUMMIT",
+        "x": -41.08,
+        "y": 8.28,
+        "z": -66.02,
+        "vx": -0.1,
+        "vz": -0.25,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "请靠近：距离 26.5m",
+        "nearestClimb": {
+          "id": "citadel-wall-0--11",
+          "d": 63.779602850879094,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 214
+      },
+      {
+        "tag": "SUMMIT",
+        "x": -41.5,
+        "y": 8.38,
+        "z": -67.03,
+        "vx": -0.1,
+        "vz": -0.24,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "请靠近：距离 27.4m",
+        "nearestClimb": {
+          "id": "citadel-wall-0--11",
+          "d": 64.77374064520241,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 215
+      },
+      {
+        "tag": "SUMMIT",
+        "x": -41.97,
+        "y": 8.46,
+        "z": -68.14,
+        "vx": -0.1,
+        "vz": -0.25,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "请靠近：距离 28.5m",
+        "nearestClimb": {
+          "id": "citadel-wall-0--11",
+          "d": 65.8653193030168,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 216
+      },
+      {
+        "tag": "SUMMIT",
+        "x": -42.43,
+        "y": 8.54,
+        "z": -69.24,
+        "vx": -0.1,
+        "vz": -0.25,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "请靠近：距离 29.5m",
+        "nearestClimb": {
+          "id": "citadel-wall-0--11",
+          "d": 66.96227596490924,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 217
+      },
+      {
+        "tag": "SUMMIT",
+        "x": -42.89,
+        "y": 8.64,
+        "z": -70.35,
+        "vx": -0.1,
+        "vz": -0.25,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "请靠近：距离 30.6m",
+        "nearestClimb": {
+          "id": "citadel-wall-0--11",
+          "d": 68.06270963311411,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 218
+      },
+      {
+        "tag": "SUMMIT",
+        "x": -43.35,
+        "y": 8.72,
+        "z": -71.46,
+        "vx": -0.1,
+        "vz": -0.25,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "请靠近：距离 31.7m",
+        "nearestClimb": {
+          "id": "citadel-wall-0--11",
+          "d": 69.16643137098052,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 219
+      }
+    ]
+  },
+  "errors": [],
+  "directionChecks": [
+    {
+      "name": "sage",
+      "i": 0,
+      "dist": 18.32,
+      "dot": 17.95,
+      "camYaw": 2.226,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 1,
+      "dist": 17.37,
+      "dot": 16.98,
+      "camYaw": 2.226,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 2,
+      "dist": 16.14,
+      "dot": 15.72,
+      "camYaw": 2.226,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 3,
+      "dist": 14.96,
+      "dot": 14.51,
+      "camYaw": 2.226,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 4,
+      "dist": 13.72,
+      "dot": 13.62,
+      "camYaw": 2.372,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 5,
+      "dist": 12.61,
+      "dot": 12.49,
+      "camYaw": 2.372,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 6,
+      "dist": 11.41,
+      "dot": 11.28,
+      "camYaw": 2.372,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 7,
+      "dist": 10.22,
+      "dot": 10.07,
+      "camYaw": 2.372,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 8,
+      "dist": 9.03,
+      "dot": 8.86,
+      "camYaw": 2.372,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 9,
+      "dist": 7.78,
+      "dot": 7.58,
+      "camYaw": 2.372,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 10,
+      "dist": 6.53,
+      "dot": 6.48,
+      "camYaw": 2.517,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 11,
+      "dist": 5.42,
+      "dot": 5.35,
+      "camYaw": 2.517,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 12,
+      "dist": 4.2,
+      "dot": 4.12,
+      "camYaw": 2.517,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 13,
+      "dist": 2.98,
+      "dot": 2.95,
+      "camYaw": 2.662,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 14,
+      "dist": 1.88,
+      "dot": 1.82,
+      "camYaw": 2.662,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 0,
+      "dist": 16.26,
+      "dot": 16.09,
+      "camYaw": 4.84,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 1,
+      "dist": 15.28,
+      "dot": 15.1,
+      "camYaw": 4.84,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 2,
+      "dist": 14.1,
+      "dot": 13.9,
+      "camYaw": 4.84,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 3,
+      "dist": 12.91,
+      "dot": 12.69,
+      "camYaw": 4.84,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 4,
+      "dist": 11.72,
+      "dot": 11.48,
+      "camYaw": 4.84,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 5,
+      "dist": 10.53,
+      "dot": 10.27,
+      "camYaw": 4.84,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 6,
+      "dist": 9.29,
+      "dot": 9.23,
+      "camYaw": 4.985,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 7,
+      "dist": 8.17,
+      "dot": 8.1,
+      "camYaw": 4.985,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 8,
+      "dist": 6.98,
+      "dot": 6.89,
+      "camYaw": 4.985,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 9,
+      "dist": 5.78,
+      "dot": 5.68,
+      "camYaw": 4.985,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 10,
+      "dist": 4.54,
+      "dot": 4.42,
+      "camYaw": 4.985,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 11,
+      "dist": 3.3,
+      "dot": 3.25,
+      "camYaw": 5.13,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 12,
+      "dist": 2.14,
+      "dot": 2.11,
+      "camYaw": 5.276,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 13,
+      "dist": 0.98,
+      "dot": 0.96,
+      "camYaw": 5.421,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 0,
+      "dist": 41.81,
+      "dot": 40.78,
+      "camYaw": 6.292,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 1,
+      "dist": 40.79,
+      "dot": 39.74,
+      "camYaw": 6.292,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 2,
+      "dist": 39.61,
+      "dot": 38.53,
+      "camYaw": 6.292,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 3,
+      "dist": 38.43,
+      "dot": 37.32,
+      "camYaw": 6.292,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 4,
+      "dist": 37.26,
+      "dot": 36.1,
+      "camYaw": 6.292,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 5,
+      "dist": 36.02,
+      "dot": 35.55,
+      "camYaw": 6.389,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 6,
+      "dist": 34.91,
+      "dot": 34.42,
+      "camYaw": 6.389,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 7,
+      "dist": 33.71,
+      "dot": 33.21,
+      "camYaw": 6.389,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 8,
+      "dist": 32.46,
+      "dot": 31.94,
+      "camYaw": 6.389,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 9,
+      "dist": 31.26,
+      "dot": 30.72,
+      "camYaw": 6.389,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 10,
+      "dist": 30.07,
+      "dot": 29.51,
+      "camYaw": 6.389,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 11,
+      "dist": 28.89,
+      "dot": 28.3,
+      "camYaw": 6.389,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 12,
+      "dist": 27.7,
+      "dot": 27.09,
+      "camYaw": 6.389,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 13,
+      "dist": 26.51,
+      "dot": 25.87,
+      "camYaw": 6.389,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 14,
+      "dist": 25.33,
+      "dot": 24.65,
+      "camYaw": 6.389,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 15,
+      "dist": 24.15,
+      "dot": 23.44,
+      "camYaw": 6.389,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 16,
+      "dist": 22.91,
+      "dot": 22.76,
+      "camYaw": 6.534,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 17,
+      "dist": 21.79,
+      "dot": 21.64,
+      "camYaw": 6.534,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 18,
+      "dist": 20.59,
+      "dot": 20.43,
+      "camYaw": 6.534,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 19,
+      "dist": 19.38,
+      "dot": 19.21,
+      "camYaw": 6.534,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 20,
+      "dist": 18.13,
+      "dot": 17.94,
+      "camYaw": 6.534,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 21,
+      "dist": 16.92,
+      "dot": 16.73,
+      "camYaw": 6.534,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 22,
+      "dist": 15.73,
+      "dot": 15.52,
+      "camYaw": 6.534,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 23,
+      "dist": 14.54,
+      "dot": 14.31,
+      "camYaw": 6.534,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 24,
+      "dist": 13.28,
+      "dot": 13.03,
+      "camYaw": 6.534,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 25,
+      "dist": 12.09,
+      "dot": 11.82,
+      "camYaw": 6.534,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 26,
+      "dist": 10.91,
+      "dot": 10.61,
+      "camYaw": 6.534,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 27,
+      "dist": 9.67,
+      "dot": 9.6,
+      "camYaw": 6.679,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 28,
+      "dist": 8.56,
+      "dot": 8.47,
+      "camYaw": 6.679,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 29,
+      "dist": 7.36,
+      "dot": 7.26,
+      "camYaw": 6.679,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 30,
+      "dist": 6.17,
+      "dot": 6.05,
+      "camYaw": 6.679,
+      "steerOk": true
+    }
+  ]
+}

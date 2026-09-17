@@ -1,0 +1,60 @@
+{
+  "ok": true,
+  "pid": 73022,
+  "startedAt": "2026-09-16T11:51:46.053Z",
+  "shots": [
+    {
+      "name": "yaw0-camera-behind",
+      "yaw": 0
+    },
+    {
+      "name": "side",
+      "yaw": 1.5707963267948966
+    },
+    {
+      "name": "face",
+      "yaw": 3.141592653589793
+    },
+    {
+      "name": "walk-rear"
+    }
+  ],
+  "errors": [],
+  "characterLoad": {
+    "status": "ready",
+    "source": "/assets/character/wanderer.glb",
+    "clips": [
+      {
+        "name": "Idle",
+        "duration": 2.0333333015441895
+      },
+      {
+        "name": "Walk",
+        "duration": 1.100000023841858
+      },
+      {
+        "name": "Run",
+        "duration": 0.8333333134651184
+      },
+      {
+        "name": "Attack",
+        "duration": 1.0333333015441895
+      },
+      {
+        "name": "Climb",
+        "duration": 1.2333333492279053
+      },
+      {
+        "name": "Glide",
+        "duration": 1.6333333253860474
+      }
+    ],
+    "bones": 20,
+    "normalMapScale": 1,
+    "tunedNormalMaterials": 0,
+    "orientation": {
+      "yawCalibration": 3.141592653589793,
+      "authoredForward": "+z"
+    }
+  }
+}

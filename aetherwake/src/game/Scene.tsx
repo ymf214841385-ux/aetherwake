@@ -25,6 +25,7 @@ import { grayboxSolids } from "./graybox";
 import { WATER_LEVEL, WORLD_SIZE, heightAt } from "./height";
 import { resetInput } from "./input";
 import { sim } from "./sim";
+import { setPickables, setOccluders } from "./pick-registry";
 import {
   LIGHTING,
   QUALITY_TIERS,
@@ -502,7 +503,12 @@ export function GameWorld() {
         <Instances key={`rock-${i}`} geo={slice.geo} material={propMats.boulder} items={slice.items} dummy={treeDummy} count={slice.items.length} />
       ))}
       {landmarks.towers.map(({ t, obj }) => (
-        <primitive key={t.id} object={obj} position={[t.x, t.y, t.z]} />
+        <primitive
+          key={t.id}
+          object={obj}
+          position={[t.x, t.y, t.z]}
+          userData={{ interactId: `tower:${t.id}`, worldId: "overworld" }}
+        />
       ))}
       <mesh position={[28 + 6.4, heightAt(28, 74) + 4.35, 74 - 3.2]} receiveShadow castShadow>
         <boxGeometry args={[3.4, 0.35, 3.4]} />
@@ -517,14 +523,25 @@ export function GameWorld() {
         <meshLambertMaterial color="#b8a888" />
       </mesh>
       {landmarks.shrines.map(({ s, obj }) => (
-        <primitive key={s.id} object={obj} position={[s.x, s.y, s.z]} />
+        <primitive
+          key={s.id}
+          object={obj}
+          position={[s.x, s.y, s.z]}
+          userData={{ interactId: `shrine:${s.id}`, worldId: "overworld" }}
+        />
       ))}
       {landmarks.camps.map(({ c, obj }) => (
         <primitive key={c.id} object={obj} position={[c.x, c.y, c.z]} />
       ))}
-      <primitive object={landmarks.citadel} position={[CITADEL_POI.x, CITADEL_POI.y, CITADEL_POI.z]} />
+      <primitive
+        object={landmarks.citadel}
+        position={[CITADEL_POI.x, CITADEL_POI.y, CITADEL_POI.z]}
+        name="citadel-occluder"
+        userData={{ pickOccluder: true }}
+      />
       <primitive object={landmarks.wake} position={[16, heightAt(16, 102), 102]} />
-      <primitive object={landmarks.sage} position={[SAGE.x, SAGE.y, SAGE.z]} />
+      <primitive object={landmarks.sage} position={[SAGE.x, SAGE.y, SAGE.z]} userData={{ interactId: "sage", worldId: "overworld" }} />
+      <PickablesRegistrar />
       <EnemyPool refs={enemyMeshes} />
       <IcePool refs={iceMeshes} />
       <MetalPool refs={metalMeshes} />
@@ -540,10 +557,21 @@ export function GameWorld() {
         <pointsMaterial size={0.22} vertexColors depthWrite={false} transparent opacity={0.9} />
       </points>
       {FIRES.map((f) => (
-        <pointLight key={f.id} position={[f.x, f.y + 0.8, f.z]} color="#ff8844" intensity={2.4} distance={8} />
+        <group key={f.id} position={[f.x, f.y, f.z]} userData={{ interactId: `fire:${f.id}`, worldId: "overworld" }}>
+          <pointLight position={[0, 0.8, 0]} color="#ff8844" intensity={2.4} distance={8} />
+          <mesh position={[0, 0.2, 0]}>
+            <sphereGeometry args={[0.35, 8, 8]} />
+            <meshBasicMaterial color="#ffaa55" transparent opacity={0.35} />
+          </mesh>
+        </group>
       ))}
       {CHESTS.map((c) => (
-        <mesh key={c.id} position={[c.x, c.y + 0.35, c.z]} castShadow>
+        <mesh
+          key={c.id}
+          position={[c.x, c.y + 0.35, c.z]}
+          castShadow
+          userData={{ interactId: `chest:${c.id}`, worldId: "overworld" }}
+        >
           <boxGeometry args={[0.7, 0.5, 0.5]} />
           <meshLambertMaterial color="#6b4a28" />
         </mesh>
@@ -551,8 +579,97 @@ export function GameWorld() {
       <ShrineRooms rooms={shrineRooms} cracked={cracked} moveBlock={moveBlock} />
       <PlankPool refs={plankMeshes} />
       <GrayboxView groupRef={grayGroup} />
+      <ValidatedRouteLines />
     </>
   );
+}
+
+/** Draw only validated walk segments as support-following polylines. */
+function ValidatedRouteLines() {
+  const [segs, setSegs] = useState<{ key: string; positions: Float32Array }[]>([]);
+  useFrame(() => {
+    const snap = sim.navigationSnapshot();
+    const next = snap.segments
+      .filter((s) => s.validated && s.kind === "walk" && (s.polyline?.length ?? 0) >= 2)
+      .map((s) => {
+        const pts = s.polyline!;
+        // (n-1) segments × 2 endpoints × 3 components — no zero-filled tail.
+        const arr = new Float32Array((pts.length - 1) * 6);
+        for (let i = 0; i < pts.length - 1; i++) {
+          const a = pts[i]!;
+          const b = pts[i + 1]!;
+          const o = i * 6;
+          arr[o] = a.x;
+          arr[o + 1] = a.y + 0.35;
+          arr[o + 2] = a.z;
+          arr[o + 3] = b.x;
+          arr[o + 4] = b.y + 0.35;
+          arr[o + 5] = b.z;
+        }
+        // Key includes every sample so interior support changes invalidate.
+        const key = `${s.id}|${pts.map((p) => `${p.x.toFixed(2)},${p.y.toFixed(2)},${p.z.toFixed(2)}`).join(";")}`;
+        return { key, positions: arr };
+      });
+    setSegs((prev) => {
+      if (prev.length === next.length && prev.every((p, i) => p.key === next[i]?.key)) return prev;
+      return next;
+    });
+  });
+  return (
+    <>
+      {segs.map((s) => (
+        <lineSegments key={s.key}>
+          <bufferGeometry>
+            <bufferAttribute attach="attributes-position" args={[s.positions, 3]} />
+          </bufferGeometry>
+          <lineBasicMaterial color="#7dffb3" transparent opacity={0.85} />
+        </lineSegments>
+      ))}
+    </>
+  );
+}
+
+/** Collect tagged interactables from the live scene into the pick registry. */
+function PickablesRegistrar() {
+  const scene = useThree((s) => s.scene);
+  const [activeWorld, setActiveWorld] = useState(() => sim.currentWorldId());
+  useFrame(() => {
+    const cur = sim.currentWorldId();
+    setActiveWorld((prev) => (prev === cur ? prev : cur));
+  });
+
+  useEffect(() => {
+    const list: { targetId: string; worldId: string; object: THREE.Object3D; range: number; maxDy: number }[] = [];
+    const occluders: THREE.Object3D[] = [];
+    const meta = new Map(sim.collectInteractionCandidates({ includeWisps: true }).map((c) => [c.targetId, c]));
+    scene.traverse((obj) => {
+      const id = obj.userData?.interactId as string | undefined;
+      if (id) {
+        const worldId = (obj.userData.worldId as string) || meta.get(id)?.worldId || "overworld";
+        // Active world only — stale shrine objects must not resolve in overworld.
+        if (worldId !== activeWorld) return;
+        const m = meta.get(id);
+        list.push({
+          targetId: id,
+          worldId,
+          object: obj,
+          range: m?.range ?? 2.4,
+          maxDy: m?.maxDy ?? 4,
+        });
+        return;
+      }
+      if (obj.userData?.pickOccluder) occluders.push(obj);
+    });
+    const citadel = scene.getObjectByName("citadel-occluder");
+    if (citadel && activeWorld === "overworld") occluders.push(citadel);
+    setPickables(list);
+    setOccluders(occluders);
+    return () => {
+      setPickables([]);
+      setOccluders([]);
+    };
+  }, [scene, activeWorld]);
+  return null;
 }
 
 function GrassField({
@@ -758,7 +875,11 @@ function WispPool({ refs }: { refs: MutableRefObject<THREE.Mesh[]> }) {
   return (
     <>
       {meshes.map((g, i) => (
-        <primitive key={WISPS[i]!.id} object={g} />
+        <primitive
+          key={WISPS[i]!.id}
+          object={g}
+          userData={{ interactId: `wisp:${WISPS[i]!.id}`, worldId: "overworld" }}
+        />
       ))}
     </>
   );
@@ -835,9 +956,18 @@ function ShrineRooms({
       wallF.position.set(0, SHRINE_ROOM.wallH / 2, SHRINE_ROOM.frontZ);
       const altar = new THREE.Mesh(new THREE.CylinderGeometry(0.8, 1, SHRINE_ROOM.altarH, 6), mats.teal);
       altar.position.set(0, SHRINE_ROOM.altarH / 2, SHRINE_ROOM.altarZ);
+      const shrineId = SHRINES[i]?.id ?? String(i);
+      const shrineWorld = `shrine:${shrineId}`;
+      altar.userData.interactId = `altar:${shrineId}`;
+      altar.userData.worldId = shrineWorld;
       const glow = new THREE.Mesh(new THREE.SphereGeometry(0.28, 8, 8), mats.glow);
       glow.position.set(0, 1.4, SHRINE_ROOM.altarZ);
-      g.add(floorIn, floorAltar, wallL, wallR, wallB, wallF, altar, glow);
+      // Exterior exit pick surface (front of room).
+      const exit = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.4, 0.4), mats.teal);
+      exit.position.set(0, 0.2, 1.2);
+      exit.userData.interactId = `exit:${shrineId}`;
+      exit.userData.worldId = shrineWorld;
+      g.add(floorIn, floorAltar, wallL, wallR, wallB, wallF, altar, glow, exit);
       const puzzle = SHRINES[i]?.puzzle;
       // Sidewalks only where sim still has shrine-sidewalk solids (not still).
       if (shrineHasSidewalk(puzzle)) {

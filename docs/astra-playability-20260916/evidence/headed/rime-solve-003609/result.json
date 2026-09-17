@@ -1,0 +1,35 @@
+{
+  "ok": false,
+  "pid": 92702,
+  "milestones": [
+    {
+      "name": "00-in-rime",
+      "pass": false,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "x": 115.27,
+        "y": 11.41,
+        "z": 29.52,
+        "camYaw": 3.142,
+        "state": "grounded",
+        "art": 1,
+        "orbs": 1,
+        "shrinesOn": [
+          "burst"
+        ],
+        "ices": 0,
+        "nav": "unavailable",
+        "navNext": "沿指引前往晨光塔塔脚攀爬点",
+        "prompt": ""
+      }
+    }
+  ],
+  "failure": {
+    "milestone": "exception",
+    "message": "not in rime: {\"mode\":\"playing\",\"world\":\"overworld\",\"shrine\":null,\"hp\":3,\"x\":115.27,\"y\":11.41,\"z\":29.52,\"camYaw\":3.142,\"state\":\"grounded\",\"art\":1,\"orbs\":1,\"shrinesOn\":[\"burst\"],\"ices\":0,\"nav\":\"unavailable\",\"navNext\":\"沿指引前往晨光塔塔脚攀爬点\",\"prompt\":\"\"}"
+  },
+  "errors": []
+}

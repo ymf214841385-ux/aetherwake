@@ -1,0 +1,344 @@
+{
+  "ok": true,
+  "pid": 6294,
+  "milestones": [
+    {
+      "name": "00-restore",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 4,
+        "x": 10.59,
+        "y": 47.9,
+        "z": 65.19,
+        "camYaw": 2.9,
+        "bodyYaw": 2.935,
+        "state": "grounded",
+        "stamina": 100,
+        "towers": [
+          "dawn"
+        ],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "prompt": "",
+        "interactVisible": false,
+        "nearestClimb": {
+          "id": "dawn-shaft",
+          "d": 2.88,
+          "touchingClimbable": true
+        },
+        "lastDamageWhy": "",
+        "enemies": [],
+        "attackPhase": "idle",
+        "dodgeCd": 0,
+        "towerBaseY": 7.800000190734864
+      },
+      "t": 1789592700892
+    },
+    {
+      "name": "01-map-mere",
+      "pass": true,
+      "sel": "mere",
+      "t": 1789592702200
+    },
+    {
+      "name": "wp1",
+      "pass": true,
+      "target": {
+        "x": -30,
+        "z": 40
+      },
+      "t": 1789592712781
+    },
+    {
+      "name": "wp2",
+      "pass": true,
+      "target": {
+        "x": -55,
+        "z": 28
+      },
+      "t": 1789592750287
+    },
+    {
+      "name": "wp3",
+      "pass": true,
+      "target": {
+        "x": -80,
+        "z": 18
+      },
+      "t": 1789592770995
+    },
+    {
+      "name": "wp4",
+      "pass": true,
+      "target": {
+        "x": -100,
+        "z": 14
+      },
+      "t": 1789592781505
+    },
+    {
+      "name": "wp5",
+      "pass": true,
+      "target": {
+        "x": -108,
+        "z": 14
+      },
+      "t": 1789592789486
+    },
+    {
+      "name": "01-arrive-mere",
+      "pass": true,
+      "post": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 2.5,
+        "x": -102.01,
+        "y": 4.9,
+        "z": 12.77,
+        "camYaw": 1.496,
+        "bodyYaw": -4.787,
+        "state": "grounded",
+        "stamina": 100,
+        "towers": [
+          "dawn"
+        ],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "prompt": "需在塔顶",
+        "interactVisible": true,
+        "nearestClimb": {
+          "id": "mere-shaft",
+          "d": 7.66,
+          "touchingClimbable": false
+        },
+        "lastDamageWhy": "坠落",
+        "enemies": [],
+        "attackPhase": "idle",
+        "dodgeCd": 0,
+        "towerBaseY": 7.800000190734864
+      },
+      "t": 1789592793268
+    },
+    {
+      "name": "01a-approach-contact",
+      "pass": true,
+      "steps": 9,
+      "t0": 1789592793269,
+      "start": {
+        "x": -102.01,
+        "z": 12.77,
+        "d": 7.66,
+        "contact": false
+      },
+      "end": {
+        "x": -104.45,
+        "z": 11.74,
+        "d": 5.15,
+        "contact": true,
+        "id": "mere-shaft",
+        "elapsedMs": 1236
+      },
+      "decision": {
+        "kind": "handoff",
+        "reason": "contact id=mere-shaft",
+        "id": "mere-shaft"
+      },
+      "t": 1789592794505
+    },
+    {
+      "name": "01b-climb-handoff",
+      "pass": true,
+      "handoff": {
+        "ok": true
+      },
+      "arrived": true,
+      "approachDecision": {
+        "kind": "handoff",
+        "reason": "contact id=mere-shaft",
+        "id": "mere-shaft"
+      },
+      "nearestClimb": {
+        "id": "mere-shaft",
+        "d": 5.15,
+        "touchingClimbable": true
+      },
+      "pos": {
+        "x": -104.45,
+        "y": 6.2,
+        "z": 11.74
+      },
+      "t": 1789592794505
+    },
+    {
+      "name": "02-climb",
+      "pass": true,
+      "maxY": 45.85,
+      "final": {
+        "y": 45.85,
+        "state": "grounded"
+      },
+      "t": 1789592814518
+    },
+    {
+      "name": "03-activate-mere",
+      "pass": true,
+      "maxY": 45.85,
+      "towers": [
+        "dawn",
+        "mere"
+      ],
+      "executorActivated": true,
+      "t": 1789592814518
+    },
+    {
+      "name": "04-reload-mere",
+      "pass": true,
+      "before": {
+        "towers": [
+          "dawn",
+          "mere"
+        ],
+        "shrines": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ]
+      },
+      "after": {
+        "towers": [
+          "dawn",
+          "mere"
+        ],
+        "shrines": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "orbs": 4
+      },
+      "t": 1789592815458
+    },
+    {
+      "name": "05-export",
+      "pass": true,
+      "path": "/Users/ymf/Projects/aetherwake-rebuild-20260909/mimo-playability-20260916/docs/astra-playability-20260916/evidence/checkpoint/post-mere-from-dawn.storage.json",
+      "t": 1789592815460
+    }
+  ],
+  "failure": null,
+  "ring": [
+    {
+      "tag": "APPROACH",
+      "y": 6.69,
+      "stam": 100,
+      "state": "grounded",
+      "support": "mere-shaft",
+      "i": 0
+    },
+    {
+      "tag": "APPROACH",
+      "y": 7.54,
+      "stam": 96,
+      "state": "climbing",
+      "support": "mere-shaft",
+      "i": 1
+    },
+    {
+      "tag": "ASCEND-break",
+      "y": 30.18,
+      "stam": 6.6,
+      "state": "climbing",
+      "support": "mere-shaft",
+      "i": 6,
+      "next": "DESCEND"
+    },
+    {
+      "tag": "DESCEND",
+      "y": 29.41,
+      "stam": 4.5,
+      "state": "climbing",
+      "support": "mere-shaft",
+      "reason": "low-stam-while-climbing",
+      "i": 7
+    },
+    {
+      "tag": "DESCEND",
+      "y": 27.29,
+      "stam": 5.7,
+      "state": "grounded",
+      "support": "mere-shaft",
+      "reason": "low-stam-while-climbing",
+      "i": 8
+    },
+    {
+      "tag": "enter-REST",
+      "y": 27.29,
+      "stam": 5.7,
+      "state": "grounded",
+      "support": "mere-shaft",
+      "reason": "grounded-low-stam-near-shaft",
+      "i": 9
+    },
+    {
+      "tag": "leave-REST",
+      "y": 27.29,
+      "stam": 86,
+      "state": "grounded",
+      "support": "mere-shaft",
+      "i": 24
+    },
+    {
+      "tag": "APPROACH",
+      "y": 28.08,
+      "stam": 83.2,
+      "state": "climbing",
+      "support": "mere-shaft",
+      "i": 24
+    },
+    {
+      "tag": "ASCEND-break",
+      "y": 45.85,
+      "stam": 15.1,
+      "state": "grounded",
+      "support": "mere-shaft",
+      "i": 28,
+      "next": "SUMMIT_INTERACT"
+    },
+    {
+      "tag": "SUMMIT_INTERACT",
+      "y": 45.85,
+      "stam": 17.4,
+      "state": "grounded",
+      "support": "mere-shaft",
+      "i": 29,
+      "reason": "at-activate-height"
+    },
+    {
+      "tag": "SUMMIT_INTERACT",
+      "y": 45.85,
+      "stam": 19.3,
+      "state": "grounded",
+      "support": "mere-shaft",
+      "i": 30,
+      "reason": "at-activate-height"
+    }
+  ],
+  "errors": [],
+  "startedAt": "2026-09-16T21:04:58.903Z"
+}

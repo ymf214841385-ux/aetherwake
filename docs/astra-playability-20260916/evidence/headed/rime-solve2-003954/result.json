@@ -1,0 +1,117 @@
+{
+  "ok": false,
+  "pid": 92891,
+  "milestones": [
+    {
+      "name": "00-in-rime",
+      "pass": false,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "x": -69.29,
+        "y": 11.41,
+        "z": 38.03,
+        "camYaw": 1.166,
+        "state": "grounded",
+        "art": 1,
+        "orbs": 1,
+        "shrinesOn": [
+          "burst"
+        ],
+        "ices": 0,
+        "nav": "unavailable",
+        "navNext": "沿指引前往晨光塔塔脚攀爬点",
+        "prompt": ""
+      }
+    },
+    {
+      "name": "00-in-rime",
+      "pass": true,
+      "t": {
+        "mode": "playing",
+        "world": "shrine",
+        "shrine": 0,
+        "hp": 3,
+        "x": 220,
+        "y": 520,
+        "z": 4.4,
+        "camYaw": 3.142,
+        "state": "grounded",
+        "art": 1,
+        "orbs": 1,
+        "shrinesOn": [
+          "burst"
+        ],
+        "ices": 0,
+        "nav": "action-required",
+        "navNext": "选择霜息，在水面唤出可踏霜柱",
+        "prompt": ""
+      }
+    },
+    {
+      "name": "01-nav-before-ice",
+      "pass": true,
+      "nav": "action-required",
+      "next": "选择霜息，在水面唤出可踏霜柱"
+    },
+    {
+      "name": "02-ice-spawned",
+      "pass": true,
+      "ices": 6,
+      "nav": "action-required"
+    },
+    {
+      "name": "03-nav-after-ice",
+      "pass": false,
+      "nav": "action-required",
+      "next": "继续在水面施放霜息，铺出通路"
+    },
+    {
+      "name": "04-claim-rime",
+      "pass": true,
+      "afterClaim": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "x": -69.44,
+        "y": 9.71,
+        "z": 37.93,
+        "camYaw": 0.867,
+        "state": "airborne",
+        "art": 2,
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "ices": 0,
+        "nav": "unavailable",
+        "navNext": "沿指引前往晨光塔塔脚攀爬点",
+        "prompt": ""
+      }
+    },
+    {
+      "name": "05-reload-rime",
+      "pass": true,
+      "before": {
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "orbs": 2
+      },
+      "after": {
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "orbs": 2
+      }
+    }
+  ],
+  "failure": null,
+  "errors": []
+}

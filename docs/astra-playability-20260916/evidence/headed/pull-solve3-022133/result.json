@@ -1,0 +1,263 @@
+{
+  "ok": true,
+  "pid": 97528,
+  "milestones": [
+    {
+      "name": "00-restore",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 1,
+        "x": 33.42,
+        "y": 11.41,
+        "z": 9.49,
+        "camYaw": -2.279,
+        "bodyYaw": -2.279,
+        "state": "grounded",
+        "art": 2,
+        "heldMetal": -1,
+        "metals": [],
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "prompt": "",
+        "nav": "unavailable",
+        "navNext": "沿指引前往晨光塔塔脚攀爬点",
+        "lastDamageWhy": ""
+      }
+    },
+    {
+      "name": "01-reenter-pull",
+      "pass": true,
+      "last": {
+        "mode": "playing",
+        "world": "shrine",
+        "shrine": 2,
+        "hp": 1,
+        "x": 316,
+        "y": 520,
+        "z": 4.4,
+        "camYaw": 3.142,
+        "bodyYaw": 3.142,
+        "state": "grounded",
+        "art": 2,
+        "heldMetal": -1,
+        "metals": [
+          {
+            "id": "metal-shrine-2",
+            "x": 322.2,
+            "y": 520.73,
+            "z": 8,
+            "vx": 0,
+            "vy": 0,
+            "vz": 0,
+            "held": false,
+            "d": 7.17
+          }
+        ],
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "prompt": "",
+        "nav": "action-required",
+        "navNext": "选择牵引，把金属板移到坑上形成通路",
+        "lastDamageWhy": ""
+      }
+    },
+    {
+      "name": "02-select-pull-art",
+      "pass": true,
+      "art": 3
+    },
+    {
+      "name": "03-metal-present",
+      "pass": true,
+      "metal0": {
+        "id": "metal-shrine-2",
+        "x": 322.2,
+        "y": 520.73,
+        "z": 8,
+        "vx": 0,
+        "vy": 0,
+        "vz": 0,
+        "held": false,
+        "d": 7.17
+      }
+    },
+    {
+      "name": "04-grab-metal",
+      "pass": true,
+      "heldMetal": 2,
+      "metals": [
+        {
+          "id": "metal-shrine-2",
+          "x": 318.08,
+          "y": 521.3,
+          "z": 6.15,
+          "vx": 0,
+          "vy": 0,
+          "vz": 0,
+          "held": true,
+          "d": 2.23
+        }
+      ]
+    },
+    {
+      "name": "05-throw-metal",
+      "pass": true,
+      "before": [
+        {
+          "id": "metal-shrine-2",
+          "x": 316.73,
+          "y": 521.3,
+          "z": 6.95,
+          "vx": 0,
+          "vy": 0,
+          "vz": 0,
+          "held": true,
+          "d": 2.23
+        }
+      ],
+      "after": [
+        {
+          "id": "metal-shrine-2",
+          "x": 316.9,
+          "y": 521.56,
+          "z": 8.13,
+          "vx": 1.94,
+          "vy": 2.5,
+          "vz": 13.29,
+          "held": false,
+          "d": 3.42
+        }
+      ],
+      "camYaw": 3.287
+    },
+    {
+      "name": "06-metal-settled",
+      "pass": true,
+      "metals": [
+        {
+          "id": "metal-shrine-2",
+          "x": 317.52,
+          "y": 521.06,
+          "z": 12.38,
+          "vx": 1.2,
+          "vy": -4.7,
+          "vz": 8.18,
+          "held": false,
+          "d": 7.71
+        }
+      ]
+    },
+    {
+      "name": "07-nav-after-throw",
+      "pass": true,
+      "nav": "action-required",
+      "next": "用牵引调整金属板位置",
+      "guidance": true
+    },
+    {
+      "name": "rim-wp1",
+      "pass": true,
+      "target": {
+        "x": 323.15,
+        "z": 6
+      }
+    },
+    {
+      "name": "rim-wp2",
+      "pass": true,
+      "target": {
+        "x": 323.15,
+        "z": 12
+      }
+    },
+    {
+      "name": "rim-wp3",
+      "pass": true,
+      "target": {
+        "x": 323.15,
+        "z": 18
+      }
+    },
+    {
+      "name": "rim-wp4",
+      "pass": true,
+      "target": {
+        "x": 323.15,
+        "z": 22
+      }
+    },
+    {
+      "name": "rim-wp5",
+      "pass": true,
+      "target": {
+        "x": 318,
+        "z": 22
+      }
+    },
+    {
+      "name": "08-claim-pull",
+      "pass": true,
+      "claimPath": "sidewalk-alternate",
+      "afterClaim": {
+        "orbs": 3,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull"
+        ],
+        "x": 33.41,
+        "y": 10.62,
+        "z": 9.63,
+        "prompt": ""
+      }
+    },
+    {
+      "name": "09-reload-pull",
+      "pass": true,
+      "before": {
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull"
+        ],
+        "orbs": 3
+      },
+      "after": {
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull"
+        ],
+        "orbs": 3
+      }
+    },
+    {
+      "name": "10-export-claimed",
+      "pass": true,
+      "path": "/Users/ymf/Projects/aetherwake-rebuild-20260909/mimo-playability-20260916/docs/astra-playability-20260916/evidence/checkpoint/post-pull-claimed.storage.json",
+      "claimPath": "sidewalk-alternate"
+    }
+  ],
+  "failure": null,
+  "errors": [],
+  "claimPath": "sidewalk-alternate",
+  "metalBridge": false,
+  "finalPos": {
+    "x": 33.41,
+    "y": 10.62,
+    "z": 9.63,
+    "prompt": "",
+    "world": "overworld"
+  }
+}

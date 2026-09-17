@@ -1,0 +1,91 @@
+{
+  "ok": true,
+  "pid": 23672,
+  "milestones": [
+    {
+      "name": "start",
+      "pass": true,
+      "t0": {
+        "x": 10.943,
+        "y": 47.76,
+        "z": 63.498,
+        "hp": 4
+      },
+      "t": 1789602666778
+    },
+    {
+      "name": "D11-pure-touch-map",
+      "pass": true,
+      "mapVis": true,
+      "mapMode": "map",
+      "closeMap": {
+        "ok": true,
+        "via": "modal-back",
+        "mode": "playing"
+      },
+      "mapWorldTap": {
+        "ok": true,
+        "point": {
+          "x": 422,
+          "y": 156
+        }
+      },
+      "movedUnderMap": 0,
+      "underMapMode": "map",
+      "afterMode": "playing",
+      "resumedMoved": 1.68,
+      "t": 1789602668082
+    },
+    {
+      "name": "D08-bag-isolation",
+      "pass": true,
+      "bagVis": true,
+      "bagMode": "inventory",
+      "closeBag": {
+        "ok": true,
+        "via": "stick-hit-backdrop",
+        "mode": "playing"
+      },
+      "movedUnderBag": 0,
+      "attackPhaseUnderStick": "idle",
+      "modeAfterStick": "playing",
+      "afterMode": "playing",
+      "bagResume": 0.719,
+      "t": 1789602669334
+    },
+    {
+      "name": "A06-safe-land",
+      "pass": true,
+      "sawGlide": true,
+      "land": {
+        "x": 17.036,
+        "y": 47.76,
+        "z": 68.101,
+        "state": "grounded",
+        "gliding": false,
+        "hp": 4
+      },
+      "distFromStart": 7,
+      "t": 1789602672902
+    },
+    {
+      "name": "A06-steady-facing",
+      "pass": true,
+      "speed": 2.453,
+      "align": 1,
+      "yaw": 4.4476,
+      "vx": 2.368,
+      "vz": 0.64,
+      "note": "align = (v · forward(yaw))/|v| after settle",
+      "t": 1789602672902
+    },
+    {
+      "name": "A06-not-climb-pose",
+      "pass": true,
+      "state": "grounded",
+      "t": 1789602672902
+    }
+  ],
+  "errors": [],
+  "startedAt": "2026-09-16T23:50:53.628Z"
+}

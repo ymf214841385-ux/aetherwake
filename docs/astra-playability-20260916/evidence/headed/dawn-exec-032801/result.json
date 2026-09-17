@@ -1,0 +1,323 @@
+{
+  "ok": false,
+  "pid": 1364,
+  "milestones": [
+    {
+      "name": "00-restore",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 4,
+        "x": 16.03,
+        "y": 16.11,
+        "z": -72.75,
+        "camYaw": 2.9,
+        "state": "grounded",
+        "stamina": 100,
+        "towers": [],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "prompt": "",
+        "climbBtn": false,
+        "interactVisible": false,
+        "nearestClimb": {
+          "id": "citadel-wall-0--11",
+          "d": 50.75
+        },
+        "lastDamageWhy": "",
+        "enemies": [],
+        "attackPhase": "idle",
+        "dodgeCd": 0
+      }
+    },
+    {
+      "name": "wp1",
+      "pass": true,
+      "target": {
+        "x": 16,
+        "z": -10
+      }
+    },
+    {
+      "name": "wp2",
+      "pass": true,
+      "target": {
+        "x": 18,
+        "z": 20
+      }
+    },
+    {
+      "name": "wp3",
+      "pass": true,
+      "target": {
+        "x": 16,
+        "z": 50
+      }
+    },
+    {
+      "name": "wp4",
+      "pass": true,
+      "target": {
+        "x": 12,
+        "z": 64
+      }
+    },
+    {
+      "name": "02-climb",
+      "pass": false,
+      "maxY": 14.43,
+      "final": {
+        "y": 14.43,
+        "state": "dead"
+      }
+    },
+    {
+      "name": "03-activate-dawn",
+      "pass": false,
+      "maxY": 14.43,
+      "towers": []
+    },
+    {
+      "name": "04-reload-dawn",
+      "pass": false,
+      "before": {
+        "towers": [],
+        "shrines": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ]
+      },
+      "after": {
+        "towers": [],
+        "shrines": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "orbs": 4
+      }
+    }
+  ],
+  "failure": null,
+  "ring": [
+    {
+      "tag": "APPROACH",
+      "y": 11.99,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 0
+    },
+    {
+      "tag": "APPROACH",
+      "y": 12.37,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 1
+    },
+    {
+      "tag": "APPROACH",
+      "y": 12.7,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 2
+    },
+    {
+      "tag": "APPROACH",
+      "y": 13.01,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 3
+    },
+    {
+      "tag": "APPROACH",
+      "y": 13.51,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 4
+    },
+    {
+      "tag": "APPROACH",
+      "y": 13.8,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 5
+    },
+    {
+      "tag": "APPROACH",
+      "y": 14.07,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 6
+    },
+    {
+      "tag": "APPROACH",
+      "y": 14.4,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 7
+    },
+    {
+      "tag": "APPROACH",
+      "y": 14.43,
+      "stam": 100,
+      "state": "dead",
+      "support": "dawn-shaft",
+      "i": 8
+    },
+    {
+      "tag": "DEAD",
+      "y": 14.43,
+      "stam": 100,
+      "state": "dead",
+      "support": "dawn-shaft",
+      "reason": "dead",
+      "i": 9
+    }
+  ],
+  "errors": [],
+  "climbFailure": {
+    "phase": "DEAD",
+    "reason": "dead",
+    "maxY": 14.43,
+    "last": {
+      "mode": "dead",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 0,
+      "x": 15.06,
+      "y": 14.43,
+      "z": 55.24,
+      "camYaw": 2.948,
+      "state": "dead",
+      "stamina": 100,
+      "towers": [],
+      "orbs": 4,
+      "shrinesOn": [
+        "burst",
+        "rime",
+        "pull",
+        "still"
+      ],
+      "prompt": "需在塔顶",
+      "climbBtn": true,
+      "interactVisible": true,
+      "nearestClimb": {
+        "id": "dawn-shaft",
+        "d": 13.73
+      },
+      "lastDamageWhy": "敌人",
+      "enemies": [
+        {
+          "id": "s-0",
+          "d": 1.87,
+          "phase": "recover",
+          "x": 15.39,
+          "z": 53.39
+        }
+      ],
+      "attackPhase": "idle",
+      "dodgeCd": 0
+    },
+    "trace": [
+      {
+        "i": 0,
+        "phase": "APPROACH",
+        "y": 11.59,
+        "stam": 100,
+        "state": "grounded",
+        "support": "dawn-shaft"
+      },
+      {
+        "i": 1,
+        "phase": "APPROACH",
+        "y": 11.99,
+        "stam": 100,
+        "state": "grounded",
+        "support": "dawn-shaft"
+      },
+      {
+        "i": 2,
+        "phase": "APPROACH",
+        "y": 12.37,
+        "stam": 100,
+        "state": "grounded",
+        "support": "dawn-shaft"
+      },
+      {
+        "i": 3,
+        "phase": "APPROACH",
+        "y": 12.7,
+        "stam": 100,
+        "state": "grounded",
+        "support": "dawn-shaft"
+      },
+      {
+        "i": 4,
+        "phase": "APPROACH",
+        "y": 13.01,
+        "stam": 100,
+        "state": "grounded",
+        "support": "dawn-shaft"
+      },
+      {
+        "i": 5,
+        "phase": "APPROACH",
+        "y": 13.51,
+        "stam": 100,
+        "state": "grounded",
+        "support": "dawn-shaft"
+      },
+      {
+        "i": 6,
+        "phase": "APPROACH",
+        "y": 13.8,
+        "stam": 100,
+        "state": "grounded",
+        "support": "dawn-shaft"
+      },
+      {
+        "i": 7,
+        "phase": "APPROACH",
+        "y": 14.07,
+        "stam": 100,
+        "state": "grounded",
+        "support": "dawn-shaft"
+      },
+      {
+        "i": 8,
+        "phase": "APPROACH",
+        "y": 14.4,
+        "stam": 100,
+        "state": "grounded",
+        "support": "dawn-shaft"
+      },
+      {
+        "i": 9,
+        "phase": "DEAD",
+        "y": 14.43,
+        "stam": 100,
+        "state": "dead",
+        "support": "dawn-shaft"
+      }
+    ]
+  },
+  "stopped": null
+}

@@ -1,0 +1,545 @@
+{
+  "ok": false,
+  "pid": 5443,
+  "milestones": [
+    {
+      "name": "00-restore",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 4,
+        "x": 16.03,
+        "y": 16.11,
+        "z": -72.75,
+        "camYaw": 2.9,
+        "bodyYaw": 0.334,
+        "state": "grounded",
+        "stamina": 100,
+        "towers": [],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "prompt": "",
+        "climbBtn": false,
+        "interactVisible": false,
+        "nearestClimb": {
+          "id": "citadel-wall-0--11",
+          "d": 50.75,
+          "touchingClimbable": false
+        },
+        "lastDamageWhy": "",
+        "enemies": [],
+        "attackPhase": "idle",
+        "dodgeCd": 0
+      }
+    },
+    {
+      "name": "wp1",
+      "pass": true,
+      "target": {
+        "x": 40,
+        "z": -35
+      },
+      "dS0": 37.7
+    },
+    {
+      "name": "wp2",
+      "pass": true,
+      "target": {
+        "x": 35,
+        "z": -5
+      },
+      "dS0": 24.9
+    },
+    {
+      "name": "wp3",
+      "pass": true,
+      "target": {
+        "x": 25,
+        "z": 20
+      },
+      "dS0": 27.1
+    },
+    {
+      "name": "wp4",
+      "pass": true,
+      "target": {
+        "x": 16,
+        "z": 50
+      },
+      "dS0": 42.4
+    },
+    {
+      "name": "wp5",
+      "pass": true,
+      "target": {
+        "x": 10,
+        "z": 64
+      },
+      "dS0": 67.4
+    },
+    {
+      "name": "01-arrive-dawn",
+      "pass": true,
+      "post": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 4,
+        "x": 11.11,
+        "y": 15.07,
+        "z": 61.4,
+        "camYaw": 2.851,
+        "bodyYaw": 2.851,
+        "state": "grounded",
+        "stamina": 99.3,
+        "towers": [],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "prompt": "需在塔顶",
+        "climbBtn": true,
+        "interactVisible": true,
+        "nearestClimb": {
+          "id": "dawn-shaft",
+          "d": 6.69,
+          "touchingClimbable": false
+        },
+        "lastDamageWhy": "",
+        "enemies": [
+          {
+            "id": "s-0",
+            "d": 6.29,
+            "phase": "recover",
+            "x": 12.93,
+            "z": 55.38
+          }
+        ],
+        "attackPhase": "idle",
+        "dodgeCd": 0
+      },
+      "dS0Final": 85.4
+    },
+    {
+      "name": "01a-approach-contact",
+      "pass": true,
+      "steps": 4,
+      "t0": 1789591906650,
+      "start": {
+        "x": 11.09,
+        "z": 61.46,
+        "d": 6.63,
+        "contact": false
+      },
+      "end": {
+        "x": 10.69,
+        "z": 62.81,
+        "d": 5.24,
+        "contact": true,
+        "id": "dawn-shaft",
+        "elapsedMs": 2638
+      },
+      "decision": {
+        "kind": "handoff",
+        "reason": "contact id=dawn-shaft",
+        "id": "dawn-shaft"
+      }
+    },
+    {
+      "name": "01b-climb-handoff",
+      "pass": true,
+      "handoff": {
+        "ok": true
+      },
+      "arrived": true,
+      "approachDecision": {
+        "kind": "handoff",
+        "reason": "contact id=dawn-shaft",
+        "id": "dawn-shaft"
+      },
+      "nearestClimb": {
+        "id": "dawn-shaft",
+        "d": 5.24,
+        "touchingClimbable": true
+      },
+      "pos": {
+        "x": 10.69,
+        "y": 13.55,
+        "z": 62.81
+      }
+    },
+    {
+      "name": "02-climb",
+      "pass": true,
+      "maxY": 49.15,
+      "final": {
+        "y": 49.15,
+        "state": "grounded"
+      }
+    },
+    {
+      "name": "03-activate-dawn",
+      "pass": false,
+      "maxY": 49.15,
+      "towers": []
+    },
+    {
+      "name": "04-reload-dawn",
+      "pass": false,
+      "before": {
+        "towers": [],
+        "shrines": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ]
+      },
+      "after": {
+        "towers": [],
+        "shrines": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "orbs": 4
+      }
+    }
+  ],
+  "failure": null,
+  "ring": [
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 140
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 141
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 142
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 143
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 144
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 145
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 146
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 147
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 148
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 149
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 150
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 151
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 152
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 153
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 154
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 155
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 156
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 157
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 158
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 159
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 160
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 161
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 162
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 163
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 164
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 165
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 166
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 167
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 168
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 169
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 170
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 171
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 172
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 173
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 174
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 175
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 176
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 177
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 178
+    },
+    {
+      "tag": "APPROACH",
+      "y": 49.15,
+      "stam": 100,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 179
+    }
+  ],
+  "errors": [],
+  "stopped": null
+}

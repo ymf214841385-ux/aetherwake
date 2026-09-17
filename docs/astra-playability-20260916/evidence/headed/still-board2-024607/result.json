@@ -1,0 +1,200 @@
+{
+  "ok": true,
+  "pid": 98768,
+  "milestones": [
+    {
+      "name": "00-restore",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "x": 33.41,
+        "y": 11.41,
+        "z": 9.63,
+        "camYaw": 1.351,
+        "state": "grounded",
+        "art": 3,
+        "orbs": 3,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull"
+        ],
+        "towers": [],
+        "moveBlock": {
+          "x": 0,
+          "z": 0,
+          "frozen": 0
+        },
+        "prompt": "",
+        "nav": "unavailable",
+        "navNext": "沿指引前往晨光塔塔脚攀爬点"
+      }
+    },
+    {
+      "name": "wp1",
+      "pass": true,
+      "target": {
+        "x": 24,
+        "z": -35
+      }
+    },
+    {
+      "name": "wp2",
+      "pass": true,
+      "target": {
+        "x": 18,
+        "z": -60
+      }
+    },
+    {
+      "name": "wp3",
+      "pass": true,
+      "target": {
+        "x": 14,
+        "z": -75
+      }
+    },
+    {
+      "name": "01-arrive-still",
+      "pass": true,
+      "near": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 2,
+        "x": 16.85,
+        "y": 16.57,
+        "z": -70.11,
+        "camYaw": 0.238,
+        "state": "grounded",
+        "art": 3,
+        "orbs": 3,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull"
+        ],
+        "towers": [],
+        "moveBlock": {
+          "x": 0,
+          "z": 0,
+          "frozen": 0
+        },
+        "prompt": "请靠近：距离 5.9m",
+        "nav": "walk",
+        "navNext": "前往凝时祠"
+      }
+    },
+    {
+      "name": "02-enter-still",
+      "pass": true,
+      "inStill": {
+        "mode": "playing",
+        "world": "shrine",
+        "shrine": 3,
+        "hp": 2,
+        "x": 364,
+        "y": 520,
+        "z": 4.69,
+        "camYaw": 3.142,
+        "state": "grounded",
+        "art": 3,
+        "orbs": 3,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull"
+        ],
+        "towers": [],
+        "moveBlock": {
+          "x": 365.9,
+          "z": 13,
+          "frozen": 0
+        },
+        "prompt": "",
+        "nav": "action-required",
+        "navNext": "选择凝时，冻结移动石块后快速通过"
+      }
+    },
+    {
+      "name": "03-freeze-aligned",
+      "pass": true,
+      "aligned": {
+        "x": 365.16,
+        "z": 13,
+        "frozen": 0
+      },
+      "frozen": {
+        "x": 365.16,
+        "z": 13,
+        "frozen": 4.35
+      },
+      "player": {
+        "x": 364,
+        "z": 7.48
+      }
+    },
+    {
+      "name": "04-cross-board",
+      "pass": true,
+      "afterBoard": {
+        "x": 365.07,
+        "y": 520,
+        "z": 17.5,
+        "frozen": {
+          "x": 365.16,
+          "z": 13,
+          "frozen": 3.33
+        }
+      }
+    },
+    {
+      "name": "05-claim-still",
+      "pass": true,
+      "afterClaim": {
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "x": 16.03,
+        "y": 16.11,
+        "z": -72.75
+      }
+    },
+    {
+      "name": "06-reload-still",
+      "pass": true,
+      "before": {
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "orbs": 4
+      },
+      "after": {
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "orbs": 4
+      }
+    },
+    {
+      "name": "07-export-still",
+      "pass": true,
+      "path": "/Users/ymf/Projects/aetherwake-rebuild-20260909/mimo-playability-20260916/docs/astra-playability-20260916/evidence/checkpoint/post-still-claimed.storage.json"
+    }
+  ],
+  "failure": null,
+  "errors": []
+}

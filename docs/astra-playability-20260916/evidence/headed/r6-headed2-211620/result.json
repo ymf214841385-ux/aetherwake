@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "pid": 78593,
+  "checks": [
+    {
+      "name": "map click selects mere",
+      "pass": true
+    },
+    {
+      "name": "nav follows selection",
+      "pass": true
+    },
+    {
+      "name": "stick produces walk speed",
+      "pass": true,
+      "walking": {
+        "spd": 2.075450070829114,
+        "yaw": 0,
+        "state": "grounded"
+      }
+    },
+    {
+      "name": "outer stick can reach run speed",
+      "pass": true,
+      "running": {
+        "spd": 3.622587689007362,
+        "sprint": true
+      }
+    }
+  ],
+  "errors": [],
+  "afterClick": {
+    "selected": true,
+    "targetId": "mere",
+    "title": "点亮镜湖塔",
+    "navTarget": "tower-base:mere",
+    "mode": "map"
+  }
+}

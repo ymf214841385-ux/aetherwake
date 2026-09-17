@@ -1,0 +1,178 @@
+{
+  "ok": true,
+  "pid": 21299,
+  "milestones": [
+    {
+      "name": "A08-load",
+      "pass": true,
+      "before": {
+        "x": 8.832,
+        "y": 10.887,
+        "z": -2.903,
+        "yaw": -1.0692,
+        "camYaw": -1.0692,
+        "load": "ready",
+        "bossDead": true
+      },
+      "t": 1789601509773
+    },
+    {
+      "name": "A08-first-forward",
+      "pass": true,
+      "moved": 1.115,
+      "yawDelta": 0,
+      "after": {
+        "x": 9.81,
+        "z": -3.439,
+        "yaw": -1.0692,
+        "camYaw": -1.0692,
+        "state": "grounded"
+      },
+      "t": 1789601510292
+    },
+    {
+      "name": "A08-reload-first-step",
+      "pass": true,
+      "re": {
+        "x": 9.932,
+        "y": 10.917,
+        "z": -3.506,
+        "yaw": -1.0692,
+        "load": "ready"
+      },
+      "moved": 0.893,
+      "t": 1789601523031
+    },
+    {
+      "name": "A06-start-on-dawn-cap",
+      "pass": true,
+      "y": 47.76,
+      "state": "grounded",
+      "hp": 4,
+      "x": 10.943,
+      "z": 63.498,
+      "t": 1789601535455
+    },
+    {
+      "name": "D11-touch-map",
+      "pass": true,
+      "mapVis": true,
+      "mapMode": "map",
+      "afterMode": "playing",
+      "worldMovedUnderMap": 0,
+      "t": 1789601536254
+    },
+    {
+      "name": "D08-D11-bag-isolation",
+      "pass": true,
+      "bagVis": true,
+      "bagMode": "inventory",
+      "movedUnderBag": 0,
+      "attackPhaseUnderBag": "idle",
+      "afterMode": "playing",
+      "resumedMoved": 0.719,
+      "t": 1789601537875
+    },
+    {
+      "name": "A06-glide",
+      "pass": true,
+      "sawGlide": true,
+      "leftCap": true,
+      "distFromStart": 76.5,
+      "mid": {
+        "i": 1,
+        "state": "gliding",
+        "gliding": true,
+        "y": 50.56,
+        "vy": -0.099,
+        "vx": 2.147,
+        "vz": 0.581,
+        "yaw": 2.8938,
+        "stam": 99.7,
+        "hp": 4
+      },
+      "land": {
+        "x": 84.236,
+        "y": 28.945,
+        "z": 85.571,
+        "state": "gliding",
+        "yaw": 4.4321,
+        "hp": 4
+      },
+      "traceTail": [
+        {
+          "i": 119,
+          "state": "gliding",
+          "gliding": true,
+          "y": 47.44,
+          "vy": -2.197,
+          "x": 18.001,
+          "z": 67.199,
+          "hp": 4
+        },
+        {
+          "i": 120,
+          "state": "gliding",
+          "gliding": true,
+          "y": 47.26,
+          "vy": -2.198,
+          "x": 18.517,
+          "z": 67.34,
+          "hp": 4
+        },
+        {
+          "i": 121,
+          "state": "gliding",
+          "gliding": true,
+          "y": 47.08,
+          "vy": -2.199,
+          "x": 19.049,
+          "z": 67.485,
+          "hp": 4
+        },
+        {
+          "i": 122,
+          "state": "gliding",
+          "gliding": true,
+          "y": 46.85,
+          "vy": -2.199,
+          "x": 19.709,
+          "z": 67.665,
+          "hp": 4
+        },
+        {
+          "i": 123,
+          "state": "gliding",
+          "gliding": true,
+          "y": 46.67,
+          "vy": -2.199,
+          "x": 20.278,
+          "z": 67.82,
+          "hp": 4
+        },
+        {
+          "i": 124,
+          "state": "gliding",
+          "gliding": true,
+          "y": 46.49,
+          "vy": -2.199,
+          "x": 20.863,
+          "z": 67.979,
+          "hp": 4
+        }
+      ],
+      "t": 1789601549422
+    },
+    {
+      "name": "A06-land-not-climb-pose",
+      "pass": true,
+      "state": "gliding",
+      "note": "glide seen; exit is not a stale climb pose (gliding/grounded/dead are valid production states)",
+      "yawDuringGlide": 2.8938,
+      "landYaw": 4.4321,
+      "t": 1789601549422
+    }
+  ],
+  "errors": [],
+  "startedAt": "2026-09-16T23:31:36.267Z"
+}

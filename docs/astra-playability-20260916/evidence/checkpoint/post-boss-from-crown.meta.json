@@ -1,0 +1,21 @@
+{
+  "source": "boss-from-crown.mjs",
+  "sourceCheckpoint": "post-crown-from-mere.storage.json",
+  "progressAtExport": {
+    "shrines": [
+      "burst",
+      "rime",
+      "pull",
+      "still"
+    ],
+    "towers": [
+      "dawn",
+      "mere",
+      "crown"
+    ],
+    "bossDead": true,
+    "note": "natural chain four-shrine + three-tower + seal + boss; no splice"
+  },
+  "pid": 10470,
+  "exportedAt": "2026-09-16T22:21:57.726Z"
+}

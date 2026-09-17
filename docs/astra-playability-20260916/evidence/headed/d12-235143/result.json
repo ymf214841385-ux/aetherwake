@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "name": "tutorial visible on start",
+      "pass": true,
+      "tutBefore": "先走出去。看到塔之后，再决定路线。"
+    },
+    {
+      "name": "skip clears tutorial",
+      "pass": true,
+      "tutAfter": ""
+    },
+    {
+      "name": "replay restores tutorial",
+      "pass": true,
+      "tutReplay": "拖动左下摇杆移动；右侧拖动视角；靠近可交互对象后点「互动」。"
+    }
+  ]
+}

@@ -1,0 +1,540 @@
+{
+  "ok": true,
+  "pid": 28676,
+  "milestones": [
+    {
+      "name": "C06-start",
+      "pass": true,
+      "world": "overworld",
+      "shrine": null,
+      "x": -69.44,
+      "z": 37.93,
+      "t": 1789605267960
+    },
+    {
+      "name": "C06-enter-rime",
+      "pass": true,
+      "t": 1789605268668
+    },
+    {
+      "name": "C06-before-spell",
+      "pass": true,
+      "nav": "action-required",
+      "requiredArt": "rime",
+      "next": "选择霜息，在水面唤出可踏霜柱",
+      "ices": [],
+      "t": 1789605268671
+    },
+    {
+      "name": "C06-ice-live",
+      "pass": true,
+      "ices": [
+        {
+          "x": 222.3,
+          "y": 515.4,
+          "z": 14.1,
+          "life": 38.9
+        },
+        {
+          "x": 222.3,
+          "y": 515.4,
+          "z": 14.2,
+          "life": 39.08
+        },
+        {
+          "x": 222.3,
+          "y": 515.4,
+          "z": 14.2,
+          "life": 39.27
+        },
+        {
+          "x": 222.3,
+          "y": 515.4,
+          "z": 14.2,
+          "life": 39.45
+        },
+        {
+          "x": 222.3,
+          "y": 515.4,
+          "z": 14.2,
+          "life": 39.63
+        },
+        {
+          "x": 222.3,
+          "y": 515.4,
+          "z": 14.2,
+          "life": 39.82
+        }
+      ],
+      "extraSupportIds": [
+        "ice-222.3",
+        "ice-222.3",
+        "ice-222.3",
+        "ice-222.3",
+        "ice-222.3",
+        "ice-222.3",
+        "metal-field-0",
+        "metal-field-1",
+        "metal-shrine-0",
+        "plank-a",
+        "plank-b"
+      ],
+      "nav": "action-required",
+      "next": "继续在水面施放霜息，铺出通路",
+      "t": 1789605271932
+    },
+    {
+      "name": "C06-expiry-removes-support",
+      "pass": true,
+      "before": [
+        {
+          "x": 222.3,
+          "y": 515.4,
+          "z": 14.1,
+          "life": 38.9
+        },
+        {
+          "x": 222.3,
+          "y": 515.4,
+          "z": 14.2,
+          "life": 39.08
+        },
+        {
+          "x": 222.3,
+          "y": 515.4,
+          "z": 14.2,
+          "life": 39.27
+        },
+        {
+          "x": 222.3,
+          "y": 515.4,
+          "z": 14.2,
+          "life": 39.45
+        },
+        {
+          "x": 222.3,
+          "y": 515.4,
+          "z": 14.2,
+          "life": 39.63
+        },
+        {
+          "x": 222.3,
+          "y": 515.4,
+          "z": 14.2,
+          "life": 39.82
+        }
+      ],
+      "after": [],
+      "extraSupportIds": [
+        "metal-field-0",
+        "metal-field-1",
+        "metal-shrine-0",
+        "plank-a",
+        "plank-b"
+      ],
+      "t": 1789605312287
+    },
+    {
+      "name": "C06-expiry-nav-reeval",
+      "pass": true,
+      "nav": "action-required",
+      "next": "选择霜息，在水面唤出可踏霜柱",
+      "requiredArt": "rime",
+      "guidance": "前往机关附近：面向水面施放霜息",
+      "segs": [
+        {
+          "id": "rime-0",
+          "ok": false,
+          "kind": "walk",
+          "from": [
+            219.91073129246905,
+            7.103422585161452
+          ],
+          "to": [
+            224,
+            10
+          ],
+          "why": "落差过大",
+          "poly": 0
+        }
+      ],
+      "safePose": {
+        "x": 220.18,
+        "y": 520,
+        "z": 7.48
+      },
+      "t": 1789605312287
+    },
+    {
+      "name": "C06-stood-safe-floor",
+      "pass": true,
+      "y": 520,
+      "state": "grounded",
+      "x": 220.18,
+      "z": 7.48,
+      "t": 1789605312287
+    },
+    {
+      "name": "C09-start",
+      "pass": true,
+      "world": "overworld",
+      "x": 16.03,
+      "z": -72.75,
+      "t": 1789605324528
+    },
+    {
+      "name": "C09-enter-still",
+      "pass": true,
+      "t": 1789605325377
+    },
+    {
+      "name": "C09-at-lip",
+      "pass": true,
+      "x": 364,
+      "y": 520,
+      "z": 7.32,
+      "moveBlock": {
+        "x": 368.38,
+        "z": 13,
+        "frozen": 0
+      },
+      "t": 1789605326268
+    },
+    {
+      "name": "C09-freeze-walk",
+      "pass": true,
+      "aligned": {
+        "x": 364.92,
+        "z": 13,
+        "frozen": 0
+      },
+      "frozen": {
+        "x": 364.92,
+        "z": 13,
+        "frozen": 4.33
+      },
+      "nav": "walk",
+      "next": "冻结窗口内快速前往祭坛领取",
+      "segs": [
+        {
+          "id": "still-0",
+          "ok": true,
+          "kind": "walk",
+          "from": [
+            364,
+            7.808493803642924
+          ],
+          "to": [
+            364.9220598763362,
+            10.1
+          ],
+          "poly": 9
+        },
+        {
+          "id": "still-1",
+          "ok": true,
+          "kind": "walk",
+          "from": [
+            364.9220598763362,
+            10.1
+          ],
+          "to": [
+            364.9220598763362,
+            15.9
+          ],
+          "poly": 18
+        },
+        {
+          "id": "still-2",
+          "ok": true,
+          "kind": "walk",
+          "from": [
+            364.9220598763362,
+            15.9
+          ],
+          "to": [
+            364,
+            20.5
+          ],
+          "poly": 15
+        }
+      ],
+      "t": 1789605328635
+    },
+    {
+      "name": "C09-expiry-slab-moves",
+      "pass": true,
+      "frozen": -0.02,
+      "mb0": {
+        "x": 363.71,
+        "z": 13,
+        "frozen": -0.02
+      },
+      "mb1": {
+        "x": 360.23,
+        "z": 13,
+        "frozen": -0.02
+      },
+      "slabMoved": true,
+      "t": 1789605334104
+    },
+    {
+      "name": "C09-expiry-nav-not-permanent-bridge",
+      "pass": true,
+      "nav": "action-required",
+      "next": "选择凝时，冻结移动石块后快速通过",
+      "requiredArt": "still",
+      "guidance": "前往机关附近：对石块使用凝时",
+      "segs": [],
+      "lip": {
+        "x": 364,
+        "y": 520,
+        "z": 7.81
+      },
+      "t": 1789605334105
+    },
+    {
+      "name": "C08-start",
+      "pass": true,
+      "world": "overworld",
+      "x": 33.41,
+      "z": 9.63,
+      "t": 1789605346222
+    },
+    {
+      "name": "C08-enter-pull",
+      "pass": true,
+      "t": 1789605347078
+    },
+    {
+      "name": "C08-plate-present",
+      "pass": true,
+      "metals": [
+        {
+          "id": "metal-field-0",
+          "x": 34,
+          "y": 520.45,
+          "z": 10,
+          "held": false,
+          "d": 288.06
+        },
+        {
+          "id": "metal-field-1",
+          "x": 90,
+          "y": 520.45,
+          "z": 20,
+          "held": false,
+          "d": 232.36
+        },
+        {
+          "id": "metal-shrine-2",
+          "x": 322.2,
+          "y": 520.73,
+          "z": 8,
+          "held": false,
+          "d": 0.18
+        }
+      ],
+      "extras": [
+        "metal-field-0",
+        "metal-field-1",
+        "metal-shrine-2",
+        "plank-a",
+        "plank-b"
+      ],
+      "t": 1789605352225
+    },
+    {
+      "name": "C08-grab",
+      "pass": true,
+      "heldMetal": 2,
+      "metals": [
+        {
+          "id": "metal-field-0",
+          "x": 34,
+          "y": 520.45,
+          "z": 10,
+          "held": false,
+          "d": 288.05
+        },
+        {
+          "id": "metal-field-1",
+          "x": 90,
+          "y": 520.45,
+          "z": 20,
+          "held": false,
+          "d": 232.35
+        },
+        {
+          "id": "metal-shrine-2",
+          "x": 323.83,
+          "y": 521.97,
+          "z": 9.43,
+          "held": true,
+          "d": 2.23
+        }
+      ],
+      "t": 1789605352432
+    },
+    {
+      "name": "C08-thrown-away",
+      "pass": true,
+      "metals": [
+        {
+          "id": "metal-field-0",
+          "x": 34,
+          "y": 520.45,
+          "z": 10,
+          "held": false,
+          "d": 288.05
+        },
+        {
+          "id": "metal-field-1",
+          "x": 90,
+          "y": 520.45,
+          "z": 20,
+          "held": false,
+          "d": 232.35
+        },
+        {
+          "id": "metal-shrine-2",
+          "x": 324.23,
+          "y": 521.17,
+          "z": 0.42,
+          "held": false,
+          "d": 7.99
+        }
+      ],
+      "extras": [
+        "metal-field-0",
+        "metal-field-1",
+        "metal-shrine-2",
+        "plank-a",
+        "plank-b"
+      ],
+      "nav": "walk",
+      "next": "靠近祭坛并互动领取灵核",
+      "segs": [
+        {
+          "id": "pull-0",
+          "ok": true,
+          "kind": "walk",
+          "from": [
+            322.0431096626757,
+            8.103164623373988
+          ],
+          "to": [
+            323.15,
+            17.5
+          ],
+          "poly": 28
+        },
+        {
+          "id": "pull-1",
+          "ok": true,
+          "kind": "walk",
+          "from": [
+            323.15,
+            17.5
+          ],
+          "to": [
+            316,
+            20.5
+          ],
+          "poly": 24
+        }
+      ],
+      "t": 1789605353737
+    },
+    {
+      "name": "C08-placed-back-support",
+      "pass": true,
+      "plate": {
+        "id": "metal-shrine-2",
+        "x": 314.78,
+        "y": 520.37,
+        "z": 15.64,
+        "held": false,
+        "d": 8.63
+      },
+      "plateOnLane": true,
+      "extras": [
+        "metal-field-0",
+        "metal-field-1",
+        "metal-shrine-2",
+        "plank-a",
+        "plank-b"
+      ],
+      "nav": "action-required",
+      "segs": [],
+      "t": 1789605357587
+    },
+    {
+      "name": "C08-route-follows-plate",
+      "pass": true,
+      "plateBack": {
+        "id": "metal-shrine-2",
+        "x": 314.78,
+        "y": 520.37,
+        "z": 15.64,
+        "held": false,
+        "d": 8.63
+      },
+      "plateAway": {
+        "id": "metal-shrine-2",
+        "x": 324.23,
+        "y": 521.17,
+        "z": 0.42,
+        "held": false,
+        "d": 7.99
+      },
+      "plateOnLane": true,
+      "backHasMetalSupport": true,
+      "awayHasMetalSupport": true,
+      "awayFromPit": true,
+      "awayCenterWalk": null,
+      "awayNav": {
+        "nav": "walk",
+        "segs": [
+          {
+            "id": "pull-0",
+            "ok": true,
+            "kind": "walk",
+            "from": [
+              322.0431096626757,
+              8.103164623373988
+            ],
+            "to": [
+              323.15,
+              17.5
+            ],
+            "poly": 28
+          },
+          {
+            "id": "pull-1",
+            "ok": true,
+            "kind": "walk",
+            "from": [
+              323.15,
+              17.5
+            ],
+            "to": [
+              316,
+              20.5
+            ],
+            "poly": 24
+          }
+        ]
+      },
+      "backNav": {
+        "nav": "action-required",
+        "segs": []
+      },
+      "note": "side corridor may remain; center-lane walk must not appear when plate is away",
+      "t": 1789605357587
+    }
+  ],
+  "failure": null,
+  "errors": [],
+  "startedAt": "2026-09-17T00:34:14.851Z"
+}

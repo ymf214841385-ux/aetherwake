@@ -1,0 +1,174 @@
+{
+  "ok": false,
+  "pid": 97602,
+  "milestones": [
+    {
+      "name": "00-restore",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "x": 33.41,
+        "y": 11.41,
+        "z": 9.63,
+        "camYaw": 1.351,
+        "state": "grounded",
+        "art": 3,
+        "orbs": 3,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull"
+        ],
+        "towers": [],
+        "moveBlock": {
+          "x": 0,
+          "z": 0,
+          "frozen": 0
+        },
+        "prompt": "",
+        "nav": "unavailable",
+        "navNext": "沿指引前往晨光塔塔脚攀爬点"
+      }
+    },
+    {
+      "name": "wp1",
+      "pass": true,
+      "target": {
+        "x": 24,
+        "z": -35
+      }
+    },
+    {
+      "name": "wp2",
+      "pass": true,
+      "target": {
+        "x": 18,
+        "z": -60
+      }
+    },
+    {
+      "name": "wp3",
+      "pass": true,
+      "target": {
+        "x": 14,
+        "z": -75
+      }
+    },
+    {
+      "name": "01-arrive-still",
+      "pass": false,
+      "near": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 2,
+        "x": 20.55,
+        "y": 10.87,
+        "z": -56.83,
+        "camYaw": 0.431,
+        "state": "grounded",
+        "art": 3,
+        "orbs": 3,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull"
+        ],
+        "towers": [],
+        "moveBlock": {
+          "x": 0,
+          "z": 0,
+          "frozen": 0
+        },
+        "prompt": "请靠近：距离 19.6m",
+        "nav": "walk",
+        "navNext": "前往凝时祠"
+      }
+    },
+    {
+      "name": "02-enter-still",
+      "pass": false,
+      "inStill": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 2,
+        "x": 18.48,
+        "y": 11.73,
+        "z": -61.34,
+        "camYaw": 0.431,
+        "state": "grounded",
+        "art": 3,
+        "orbs": 3,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull"
+        ],
+        "towers": [],
+        "moveBlock": {
+          "x": 0,
+          "z": 0,
+          "frozen": 0
+        },
+        "prompt": "请靠近：距离 14.6m",
+        "nav": "walk",
+        "navNext": "前往凝时祠"
+      }
+    },
+    {
+      "name": "05-reload-still",
+      "pass": false,
+      "before": {
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull"
+        ],
+        "orbs": 3
+      },
+      "after": {
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull"
+        ],
+        "orbs": 3
+      }
+    }
+  ],
+  "failure": {
+    "milestone": "02-enter-still",
+    "inStill": {
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 2,
+      "x": 18.48,
+      "y": 11.73,
+      "z": -61.34,
+      "camYaw": 0.431,
+      "state": "grounded",
+      "art": 3,
+      "orbs": 3,
+      "shrinesOn": [
+        "burst",
+        "rime",
+        "pull"
+      ],
+      "towers": [],
+      "moveBlock": {
+        "x": 0,
+        "z": 0,
+        "frozen": 0
+      },
+      "prompt": "请靠近：距离 14.6m",
+      "nav": "walk",
+      "navNext": "前往凝时祠"
+    }
+  },
+  "errors": []
+}

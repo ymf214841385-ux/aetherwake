@@ -82,6 +82,22 @@ export type HudState = {
   tutorial: string;
   glLost: boolean;
   glRestoredAt: number;
+  questTitle: string;
+  questNext: string;
+  questPhase: string;
+  questDistance: number | null;
+  questRouteCost: number | null;
+  questRouteStatus: string | null;
+  questRouteHint: string | null;
+  routeWorldId: string | null;
+  routeGuidance: string;
+  routeNextAction: string;
+  routeRequiredArt: string | null;
+  routeTargetId: string | null;
+  /** Validated walk polylines for map/world render (x,y,z per point). */
+  routePolylines: { id: string; kind: string; points: { x: number; y: number; z: number }[] }[];
+  /** Stable map selection until completed/invalid/world change. */
+  selectedMarkerId: string | null;
 };
 
 const ART_NAMES = ["引风", "爆鸣", "霜息", "牵引", "凝时"];
@@ -132,6 +148,20 @@ export const useHud = create<HudState>(() => ({
   tutorial: "",
   glLost: false,
   glRestoredAt: 0,
+  questTitle: "点亮晨光塔",
+  questNext: "沿指引前往晨光塔塔脚攀爬点",
+  questPhase: "approach",
+  questDistance: null,
+  questRouteCost: null,
+  questRouteStatus: null,
+  questRouteHint: null,
+  routeWorldId: null,
+  routeGuidance: "",
+  routeNextAction: "",
+  routeRequiredArt: null,
+  routeTargetId: null,
+  routePolylines: [],
+  selectedMarkerId: null,
 }));
 
 export function hasSaveFile() {

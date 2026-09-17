@@ -1,0 +1,3758 @@
+{
+  "ok": false,
+  "pid": 95667,
+  "milestones": [
+    {
+      "name": "00-restore-complete",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -69.44,
+        "y": 11.41,
+        "z": 37.93,
+        "vx": 0,
+        "vz": 0,
+        "camYaw": 0.964,
+        "bodyYaw": 1.166,
+        "state": "grounded",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "",
+        "enemies": []
+      }
+    },
+    {
+      "name": "wp1",
+      "pass": true,
+      "target": {
+        "x": -20,
+        "z": 20
+      }
+    },
+    {
+      "name": "wp2",
+      "pass": true,
+      "target": {
+        "x": 5,
+        "z": 14
+      }
+    },
+    {
+      "name": "wp3",
+      "pass": true,
+      "target": {
+        "x": 28,
+        "z": 11
+      }
+    },
+    {
+      "name": "03-export-complete",
+      "pass": false,
+      "reason": "skip: not successful enter; preserve prior archives"
+    }
+  ],
+  "firstDamage": {
+    "when": "i71",
+    "pre": {
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 2.5,
+      "stamina": 88.5,
+      "dodgeCd": 0.18,
+      "invuln": 0.88,
+      "x": -27.08,
+      "y": 5.3,
+      "z": 18.84,
+      "vx": 3.04,
+      "vz": -0.35,
+      "camYaw": -1.36,
+      "bodyYaw": -1.484,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 6.8m",
+      "enemies": [
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": -29.06,
+          "z": 19.04,
+          "d": 1.98,
+          "phase": "recover"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -15.29,
+          "z": 18.46,
+          "d": 11.8,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -16.54,
+          "z": 11.49,
+          "d": 12.85,
+          "phase": "detect"
+        }
+      ]
+    },
+    "ring": [
+      {
+        "tag": "i35",
+        "t": 1789580468640,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -50.23,
+        "y": 2.9,
+        "z": 26.19,
+        "vx": 2.31,
+        "vz": -1.12,
+        "camYaw": -1.118,
+        "bodyYaw": -1.118,
+        "state": "swimming",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 25.1m",
+        "enemies": []
+      },
+      {
+        "tag": "i36",
+        "t": 1789580468891,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -49.67,
+        "y": 2.9,
+        "z": 25.92,
+        "vx": 2.31,
+        "vz": -1.12,
+        "camYaw": -1.118,
+        "bodyYaw": -1.118,
+        "state": "swimming",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 25.7m",
+        "enemies": []
+      },
+      {
+        "tag": "i37",
+        "t": 1789580469136,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -49.12,
+        "y": 2.9,
+        "z": 25.65,
+        "vx": 2.31,
+        "vz": -1.12,
+        "camYaw": -1.118,
+        "bodyYaw": -1.118,
+        "state": "swimming",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 26.4m",
+        "enemies": []
+      },
+      {
+        "tag": "i38",
+        "t": 1789580469386,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -48.56,
+        "y": 2.9,
+        "z": 25.37,
+        "vx": 2.31,
+        "vz": -1.12,
+        "camYaw": -1.118,
+        "bodyYaw": -1.118,
+        "state": "swimming",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 27.0m",
+        "enemies": []
+      },
+      {
+        "tag": "i39",
+        "t": 1789580469637,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -48,
+        "y": 2.9,
+        "z": 25.1,
+        "vx": 2.31,
+        "vz": -1.12,
+        "camYaw": -1.118,
+        "bodyYaw": -1.118,
+        "state": "swimming",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 27.6m",
+        "enemies": []
+      },
+      {
+        "tag": "i40",
+        "t": 1789580469893,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -47.44,
+        "y": 2.9,
+        "z": 24.83,
+        "vx": 2.31,
+        "vz": -1.12,
+        "camYaw": -1.118,
+        "bodyYaw": -1.118,
+        "state": "swimming",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 28.0m",
+        "enemies": []
+      },
+      {
+        "tag": "i41",
+        "t": 1789580470141,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -46.88,
+        "y": 2.9,
+        "z": 24.56,
+        "vx": 2.31,
+        "vz": -1.12,
+        "camYaw": -1.118,
+        "bodyYaw": -1.118,
+        "state": "swimming",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 27.4m",
+        "enemies": []
+      },
+      {
+        "tag": "i42",
+        "t": 1789580470436,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -46.2,
+        "y": 2.9,
+        "z": 24.27,
+        "vx": 2.41,
+        "vz": -0.87,
+        "camYaw": -1.263,
+        "bodyYaw": -1.254,
+        "state": "swimming",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 26.6m",
+        "enemies": []
+      },
+      {
+        "tag": "i43",
+        "t": 1789580470691,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -45.61,
+        "y": 2.9,
+        "z": 24.06,
+        "vx": 2.44,
+        "vz": -0.8,
+        "camYaw": -1.263,
+        "bodyYaw": -1.262,
+        "state": "swimming",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 26.0m",
+        "enemies": []
+      },
+      {
+        "tag": "i44",
+        "t": 1789580470942,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -45.02,
+        "y": 2.9,
+        "z": 23.87,
+        "vx": 2.44,
+        "vz": -0.78,
+        "camYaw": -1.263,
+        "bodyYaw": -1.263,
+        "state": "swimming",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 25.4m",
+        "enemies": []
+      },
+      {
+        "tag": "i45",
+        "t": 1789580471187,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -44.43,
+        "y": 2.9,
+        "z": 23.68,
+        "vx": 2.44,
+        "vz": -0.78,
+        "camYaw": -1.263,
+        "bodyYaw": -1.263,
+        "state": "swimming",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 24.8m",
+        "enemies": []
+      },
+      {
+        "tag": "i46",
+        "t": 1789580471438,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -43.84,
+        "y": 2.91,
+        "z": 23.49,
+        "vx": 2.45,
+        "vz": -0.78,
+        "camYaw": -1.263,
+        "bodyYaw": -1.263,
+        "state": "swimming",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 24.2m",
+        "enemies": []
+      },
+      {
+        "tag": "i47",
+        "t": 1789580471693,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -43.25,
+        "y": 3.11,
+        "z": 23.31,
+        "vx": 2.45,
+        "vz": -0.78,
+        "camYaw": -1.263,
+        "bodyYaw": -1.263,
+        "state": "swimming",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 23.5m",
+        "enemies": []
+      },
+      {
+        "tag": "i48",
+        "t": 1789580471941,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -42.66,
+        "y": 3.32,
+        "z": 23.12,
+        "vx": 2.45,
+        "vz": -0.78,
+        "camYaw": -1.263,
+        "bodyYaw": -1.263,
+        "state": "swimming",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 22.9m",
+        "enemies": [
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "x": -22.07,
+            "z": 16.63,
+            "d": 21.58,
+            "phase": "lost"
+          }
+        ]
+      },
+      {
+        "tag": "i49",
+        "t": 1789580472190,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -42.07,
+        "y": 3.51,
+        "z": 22.93,
+        "vx": 2.45,
+        "vz": -0.78,
+        "camYaw": -1.263,
+        "bodyYaw": -1.263,
+        "state": "swimming",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 22.3m",
+        "enemies": [
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "x": -22.16,
+            "z": 16.72,
+            "d": 20.85,
+            "phase": "lost"
+          }
+        ]
+      },
+      {
+        "tag": "i50",
+        "t": 1789580472439,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -41.43,
+        "y": 3.72,
+        "z": 22.73,
+        "vx": 2.81,
+        "vz": -0.89,
+        "camYaw": -1.263,
+        "bodyYaw": -1.263,
+        "state": "grounded",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 21.7m",
+        "enemies": [
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "x": -22.25,
+            "z": 16.83,
+            "d": 20.07,
+            "phase": "lost"
+          }
+        ]
+      },
+      {
+        "tag": "i51",
+        "t": 1789580472695,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -40.78,
+        "y": 3.92,
+        "z": 22.52,
+        "vx": 2.85,
+        "vz": -0.91,
+        "camYaw": -1.263,
+        "bodyYaw": -1.263,
+        "state": "grounded",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 21.0m",
+        "enemies": [
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "x": -22.27,
+            "z": 16.94,
+            "d": 19.33,
+            "phase": "lost"
+          }
+        ]
+      },
+      {
+        "tag": "i52",
+        "t": 1789580472960,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -40.12,
+        "y": 4.14,
+        "z": 22.31,
+        "vx": 2.79,
+        "vz": -0.89,
+        "camYaw": -1.263,
+        "bodyYaw": -1.263,
+        "state": "grounded",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 20.3m",
+        "enemies": [
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "x": -22.27,
+            "z": 17.04,
+            "d": 18.62,
+            "phase": "lost"
+          }
+        ]
+      },
+      {
+        "tag": "i53",
+        "t": 1789580473229,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -39.47,
+        "y": 4.32,
+        "z": 22.1,
+        "vx": 2.77,
+        "vz": -0.88,
+        "camYaw": -1.263,
+        "bodyYaw": -1.263,
+        "state": "grounded",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 19.6m",
+        "enemies": [
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "x": -22.25,
+            "z": 17.1,
+            "d": 17.93,
+            "phase": "patrol"
+          }
+        ]
+      },
+      {
+        "tag": "i54",
+        "t": 1789580473496,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -38.82,
+        "y": 4.49,
+        "z": 21.9,
+        "vx": 2.77,
+        "vz": -0.88,
+        "camYaw": -1.263,
+        "bodyYaw": -1.263,
+        "state": "grounded",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 18.9m",
+        "enemies": [
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "x": -22.23,
+            "z": 17.14,
+            "d": 17.26,
+            "phase": "patrol"
+          }
+        ]
+      },
+      {
+        "tag": "i55",
+        "t": 1789580473762,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -38.17,
+        "y": 4.66,
+        "z": 21.69,
+        "vx": 2.77,
+        "vz": -0.88,
+        "camYaw": -1.263,
+        "bodyYaw": -1.263,
+        "state": "grounded",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 18.2m",
+        "enemies": [
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "x": -22.22,
+            "z": 17.16,
+            "d": 16.58,
+            "phase": "patrol"
+          }
+        ]
+      },
+      {
+        "tag": "i56",
+        "t": 1789580474027,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -37.52,
+        "y": 4.83,
+        "z": 21.48,
+        "vx": 2.77,
+        "vz": -0.88,
+        "camYaw": -1.263,
+        "bodyYaw": -1.263,
+        "state": "grounded",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 17.6m",
+        "enemies": [
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "x": -22.22,
+            "z": 17.16,
+            "d": 15.9,
+            "phase": "patrol"
+          },
+          {
+            "id": "b-2-0",
+            "kind": "bramble",
+            "x": -15.85,
+            "z": 18.42,
+            "d": 21.88,
+            "phase": "lost"
+          }
+        ]
+      },
+      {
+        "tag": "i57",
+        "t": 1789580474296,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -36.87,
+        "y": 4.96,
+        "z": 21.28,
+        "vx": 2.77,
+        "vz": -0.88,
+        "camYaw": -1.263,
+        "bodyYaw": -1.263,
+        "state": "grounded",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 16.9m",
+        "enemies": [
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "x": -22.23,
+            "z": 17.15,
+            "d": 15.21,
+            "phase": "patrol"
+          },
+          {
+            "id": "b-2-0",
+            "kind": "bramble",
+            "x": -15.8,
+            "z": 18.33,
+            "d": 21.27,
+            "phase": "lost"
+          },
+          {
+            "id": "b-2-2",
+            "kind": "bramble",
+            "x": -17.17,
+            "z": 11.76,
+            "d": 21.87,
+            "phase": "lost"
+          }
+        ]
+      },
+      {
+        "tag": "i58",
+        "t": 1789580474560,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -36.22,
+        "y": 5.08,
+        "z": 21.07,
+        "vx": 2.77,
+        "vz": -0.88,
+        "camYaw": -1.263,
+        "bodyYaw": -1.263,
+        "state": "grounded",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 16.2m",
+        "enemies": [
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "x": -22.2,
+            "z": 17.12,
+            "d": 14.57,
+            "phase": "patrol"
+          },
+          {
+            "id": "b-2-0",
+            "kind": "bramble",
+            "x": -15.72,
+            "z": 18.25,
+            "d": 20.69,
+            "phase": "lost"
+          },
+          {
+            "id": "b-2-2",
+            "kind": "bramble",
+            "x": -17.19,
+            "z": 11.68,
+            "d": 21.22,
+            "phase": "lost"
+          }
+        ]
+      },
+      {
+        "tag": "i59",
+        "t": 1789580474829,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -35.57,
+        "y": 5.2,
+        "z": 20.86,
+        "vx": 2.77,
+        "vz": -0.88,
+        "camYaw": -1.263,
+        "bodyYaw": -1.263,
+        "state": "grounded",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 15.5m",
+        "enemies": [
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "x": -22.15,
+            "z": 17.06,
+            "d": 13.95,
+            "phase": "detect"
+          },
+          {
+            "id": "b-2-0",
+            "kind": "bramble",
+            "x": -15.61,
+            "z": 18.22,
+            "d": 20.13,
+            "phase": "lost"
+          },
+          {
+            "id": "b-2-2",
+            "kind": "bramble",
+            "x": -17.16,
+            "z": 11.61,
+            "d": 20.61,
+            "phase": "lost"
+          }
+        ]
+      },
+      {
+        "tag": "i60",
+        "t": 1789580475094,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -34.92,
+        "y": 5.31,
+        "z": 20.66,
+        "vx": 2.77,
+        "vz": -0.88,
+        "camYaw": -1.263,
+        "bodyYaw": -1.263,
+        "state": "grounded",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 14.8m",
+        "enemies": [
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "x": -22.15,
+            "z": 17.06,
+            "d": 13.27,
+            "phase": "detect"
+          },
+          {
+            "id": "b-2-0",
+            "kind": "bramble",
+            "x": -15.5,
+            "z": 18.19,
+            "d": 19.57,
+            "phase": "lost"
+          },
+          {
+            "id": "b-2-2",
+            "kind": "bramble",
+            "x": -17.14,
+            "z": 11.54,
+            "d": 19.99,
+            "phase": "lost"
+          }
+        ]
+      },
+      {
+        "tag": "i61",
+        "t": 1789580475363,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -34.27,
+        "y": 5.37,
+        "z": 20.45,
+        "vx": 2.77,
+        "vz": -0.88,
+        "camYaw": -1.263,
+        "bodyYaw": -1.263,
+        "state": "grounded",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 14.2m",
+        "enemies": [
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "x": -22.99,
+            "z": 17.3,
+            "d": 11.71,
+            "phase": "approach"
+          },
+          {
+            "id": "b-2-0",
+            "kind": "bramble",
+            "x": -15.42,
+            "z": 18.21,
+            "d": 18.99,
+            "phase": "lost"
+          },
+          {
+            "id": "b-2-2",
+            "kind": "bramble",
+            "x": -17.07,
+            "z": 11.51,
+            "d": 19.39,
+            "phase": "lost"
+          }
+        ]
+      },
+      {
+        "tag": "i62",
+        "t": 1789580475629,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -33.62,
+        "y": 5.44,
+        "z": 20.24,
+        "vx": 2.77,
+        "vz": -0.88,
+        "camYaw": -1.263,
+        "bodyYaw": -1.263,
+        "state": "grounded",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 13.5m",
+        "enemies": [
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "x": -24.13,
+            "z": 17.62,
+            "d": 9.85,
+            "phase": "approach"
+          },
+          {
+            "id": "b-2-0",
+            "kind": "bramble",
+            "x": -15.34,
+            "z": 18.22,
+            "d": 18.4,
+            "phase": "lost"
+          },
+          {
+            "id": "b-2-2",
+            "kind": "bramble",
+            "x": -17.02,
+            "z": 11.44,
+            "d": 18.79,
+            "phase": "lost"
+          }
+        ]
+      },
+      {
+        "tag": "i63",
+        "t": 1789580475922,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -32.96,
+        "y": 5.5,
+        "z": 20.07,
+        "vx": 2.7,
+        "vz": -0.63,
+        "camYaw": -1.36,
+        "bodyYaw": -1.354,
+        "state": "grounded",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 12.8m",
+        "enemies": [
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "x": -25.4,
+            "z": 17.97,
+            "d": 7.85,
+            "phase": "approach"
+          },
+          {
+            "id": "b-2-0",
+            "kind": "bramble",
+            "x": -15.29,
+            "z": 18.26,
+            "d": 17.76,
+            "phase": "patrol"
+          },
+          {
+            "id": "b-2-2",
+            "kind": "bramble",
+            "x": -16.93,
+            "z": 11.41,
+            "d": 18.22,
+            "phase": "lost"
+          }
+        ]
+      },
+      {
+        "tag": "i64",
+        "t": 1789580476171,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -32.31,
+        "y": 5.53,
+        "z": 19.92,
+        "vx": 2.88,
+        "vz": -0.63,
+        "camYaw": -1.36,
+        "bodyYaw": -1.359,
+        "state": "grounded",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 12.2m",
+        "enemies": [
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "x": -26.46,
+            "z": 18.26,
+            "d": 6.09,
+            "phase": "approach"
+          },
+          {
+            "id": "b-2-0",
+            "kind": "bramble",
+            "x": -15.24,
+            "z": 18.27,
+            "d": 17.16,
+            "phase": "patrol"
+          },
+          {
+            "id": "b-2-2",
+            "kind": "bramble",
+            "x": -16.84,
+            "z": 11.39,
+            "d": 17.67,
+            "phase": "patrol"
+          }
+        ]
+      },
+      {
+        "tag": "i65",
+        "t": 1789580476429,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -31.65,
+        "y": 5.52,
+        "z": 19.78,
+        "vx": 2.93,
+        "vz": -0.63,
+        "camYaw": -1.36,
+        "bodyYaw": -1.36,
+        "state": "grounded",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 11.5m",
+        "enemies": [
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "x": -27.51,
+            "z": 18.57,
+            "d": 4.3,
+            "phase": "approach"
+          },
+          {
+            "id": "b-2-0",
+            "kind": "bramble",
+            "x": -15.21,
+            "z": 18.32,
+            "d": 16.5,
+            "phase": "patrol"
+          },
+          {
+            "id": "b-2-2",
+            "kind": "bramble",
+            "x": -16.74,
+            "z": 11.4,
+            "d": 17.1,
+            "phase": "patrol"
+          }
+        ]
+      },
+      {
+        "tag": "i66",
+        "t": 1789580476695,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -30.97,
+        "y": 5.52,
+        "z": 19.63,
+        "vx": 2.86,
+        "vz": -0.61,
+        "camYaw": -1.36,
+        "bodyYaw": -1.36,
+        "state": "grounded",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 10.8m",
+        "enemies": [
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "x": -28.64,
+            "z": 18.91,
+            "d": 2.44,
+            "phase": "approach"
+          },
+          {
+            "id": "b-2-0",
+            "kind": "bramble",
+            "x": -15.2,
+            "z": 18.38,
+            "d": 15.82,
+            "phase": "patrol"
+          },
+          {
+            "id": "b-2-2",
+            "kind": "bramble",
+            "x": -16.64,
+            "z": 11.42,
+            "d": 16.51,
+            "phase": "patrol"
+          }
+        ]
+      },
+      {
+        "tag": "dodge-b-2-1",
+        "t": 1789580476768,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 100,
+        "dodgeCd": 0,
+        "invuln": 0,
+        "x": -30.8,
+        "y": 5.52,
+        "z": 19.59,
+        "vx": 1.58,
+        "vz": -0.34,
+        "camYaw": -1.36,
+        "bodyYaw": -1.36,
+        "state": "grounded",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 10.6m",
+        "enemies": [
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "x": -28.99,
+            "z": 19.02,
+            "d": 1.9,
+            "phase": "approach"
+          },
+          {
+            "id": "b-2-0",
+            "kind": "bramble",
+            "x": -15.2,
+            "z": 18.4,
+            "d": 15.64,
+            "phase": "patrol"
+          },
+          {
+            "id": "b-2-2",
+            "kind": "bramble",
+            "x": -16.6,
+            "z": 11.43,
+            "d": 16.38,
+            "phase": "patrol"
+          }
+        ]
+      },
+      {
+        "tag": "dodge-b-2-1",
+        "t": 1789580476835,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 82,
+        "dodgeCd": 0.65,
+        "invuln": 0.13,
+        "x": -30.26,
+        "y": 5.52,
+        "z": 19.48,
+        "vx": 10.76,
+        "vz": -2.31,
+        "camYaw": -1.36,
+        "bodyYaw": -1.36,
+        "state": "grounded",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 10.2m",
+        "enemies": [
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "x": -29.06,
+            "z": 19.04,
+            "d": 1.28,
+            "phase": "windup"
+          },
+          {
+            "id": "b-2-0",
+            "kind": "bramble",
+            "x": -15.21,
+            "z": 18.43,
+            "d": 15.09,
+            "phase": "patrol"
+          },
+          {
+            "id": "b-2-2",
+            "kind": "bramble",
+            "x": -16.59,
+            "z": 11.45,
+            "d": 15.85,
+            "phase": "patrol"
+          }
+        ]
+      },
+      {
+        "tag": "flee",
+        "t": 1789580477070,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "stamina": 82,
+        "dodgeCd": 0.42,
+        "invuln": 0,
+        "x": -27.75,
+        "y": 5.34,
+        "z": 18.94,
+        "vx": 3.23,
+        "vz": -0.69,
+        "camYaw": -1.36,
+        "bodyYaw": -1.36,
+        "state": "grounded",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 7.6m",
+        "enemies": [
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "x": -29.06,
+            "z": 19.04,
+            "d": 1.31,
+            "phase": "windup"
+          },
+          {
+            "id": "b-2-0",
+            "kind": "bramble",
+            "x": -15.22,
+            "z": 18.46,
+            "d": 12.54,
+            "phase": "detect"
+          },
+          {
+            "id": "b-2-2",
+            "kind": "bramble",
+            "x": -16.54,
+            "z": 11.49,
+            "d": 13.46,
+            "phase": "detect"
+          }
+        ]
+      },
+      {
+        "tag": "flee",
+        "t": 1789580477301,
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 2.5,
+        "stamina": 88.5,
+        "dodgeCd": 0.18,
+        "invuln": 0.88,
+        "x": -27.08,
+        "y": 5.3,
+        "z": 18.84,
+        "vx": 3.04,
+        "vz": -0.35,
+        "camYaw": -1.36,
+        "bodyYaw": -1.484,
+        "state": "grounded",
+        "attackPhase": "idle",
+        "orbs": 2,
+        "shrinesOn": [
+          "burst",
+          "rime"
+        ],
+        "towers": [],
+        "lastDamageWhy": "敌人",
+        "prompt": "请靠近：距离 6.8m",
+        "enemies": [
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "x": -29.06,
+            "z": 19.04,
+            "d": 1.98,
+            "phase": "recover"
+          },
+          {
+            "id": "b-2-0",
+            "kind": "bramble",
+            "x": -15.29,
+            "z": 18.46,
+            "d": 11.8,
+            "phase": "approach"
+          },
+          {
+            "id": "b-2-2",
+            "kind": "bramble",
+            "x": -16.54,
+            "z": 11.49,
+            "d": 12.85,
+            "phase": "detect"
+          }
+        ]
+      }
+    ]
+  },
+  "failure": null,
+  "ring": [
+    {
+      "tag": "dodge-b-2-2",
+      "t": 1789580486857,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 82,
+      "dodgeCd": 0.42,
+      "invuln": 0.55,
+      "x": 0.31,
+      "y": 6.26,
+      "z": 16.77,
+      "vx": 3.28,
+      "vz": -0.38,
+      "camYaw": -1.456,
+      "bodyYaw": -1.459,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 16.6m",
+      "enemies": [
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -4.45,
+          "z": 17.24,
+          "d": 4.79,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": -4.48,
+          "z": 17.26,
+          "d": 4.82,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -4.71,
+          "z": 17.28,
+          "d": 5.04,
+          "phase": "recover"
+        }
+      ]
+    },
+    {
+      "tag": "i94",
+      "t": 1789580488094,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 100,
+      "dodgeCd": 0,
+      "invuln": 0,
+      "x": 1.27,
+      "y": 6.32,
+      "z": 16.66,
+      "vx": 1.51,
+      "vz": -0.17,
+      "camYaw": -1.456,
+      "bodyYaw": -1.456,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 17.7m",
+      "enemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -2.08,
+          "z": 17.01,
+          "d": 3.37,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": -3.61,
+          "z": 17.17,
+          "d": 4.91,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -4.02,
+          "z": 17.19,
+          "d": 5.32,
+          "phase": "approach"
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "z": -4.8,
+          "d": 21.98,
+          "phase": "patrol"
+        }
+      ]
+    },
+    {
+      "tag": "i95",
+      "t": 1789580489192,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 100,
+      "dodgeCd": 0,
+      "invuln": 0,
+      "x": 2.18,
+      "y": 6.37,
+      "z": 16.56,
+      "vx": 1.65,
+      "vz": -0.19,
+      "camYaw": -1.456,
+      "bodyYaw": -1.456,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 18.6m",
+      "enemies": [
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 0.19,
+          "z": 16.77,
+          "d": 2,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -0.19,
+          "z": 16.81,
+          "d": 2.38,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": -0.22,
+          "z": 16.81,
+          "d": 2.41,
+          "phase": "approach"
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "z": -4.8,
+          "d": 21.7,
+          "phase": "patrol"
+        }
+      ]
+    },
+    {
+      "tag": "dodge-b-2-1",
+      "t": 1789580489799,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 100,
+      "dodgeCd": 0,
+      "invuln": 0,
+      "x": 2.39,
+      "y": 6.38,
+      "z": 16.53,
+      "vx": 0.06,
+      "vz": -0.01,
+      "camYaw": -1.456,
+      "bodyYaw": -1.456,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 18.9m",
+      "enemies": [
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 0.72,
+          "z": 16.71,
+          "d": 1.67,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 0.62,
+          "z": 16.72,
+          "d": 1.77,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -0.19,
+          "z": 16.81,
+          "d": 2.59,
+          "phase": "recover"
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "z": -4.8,
+          "d": 21.64,
+          "phase": "patrol"
+        }
+      ]
+    },
+    {
+      "tag": "dodge-b-2-2",
+      "t": 1789580489868,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 100,
+      "dodgeCd": 0,
+      "invuln": 0,
+      "x": 2.39,
+      "y": 6.38,
+      "z": 16.53,
+      "vx": 0.03,
+      "vz": 0,
+      "camYaw": -1.456,
+      "bodyYaw": -1.456,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 18.9m",
+      "enemies": [
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 0.72,
+          "z": 16.71,
+          "d": 1.68,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 0.62,
+          "z": 16.72,
+          "d": 1.78,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": -0.19,
+          "z": 16.81,
+          "d": 2.59,
+          "phase": "recover"
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "z": -4.8,
+          "d": 21.64,
+          "phase": "patrol"
+        }
+      ]
+    },
+    {
+      "tag": "dodge-b-2-2",
+      "t": 1789580490347,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 82.5,
+      "dodgeCd": 0.4,
+      "invuln": 0,
+      "x": 5.54,
+      "y": 6.47,
+      "z": 16.17,
+      "vx": 2.91,
+      "vz": -0.33,
+      "camYaw": -1.456,
+      "bodyYaw": -1.456,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 21.9m",
+      "enemies": [
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 0.72,
+          "z": 16.71,
+          "d": 4.84,
+          "phase": "recover"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 0.62,
+          "z": 16.72,
+          "d": 4.94,
+          "phase": "recover"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 0.32,
+          "z": 16.76,
+          "d": 5.24,
+          "phase": "approach"
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "z": -4.8,
+          "d": 20.98,
+          "phase": "patrol"
+        }
+      ]
+    },
+    {
+      "tag": "i99",
+      "t": 1789580491611,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 100,
+      "dodgeCd": 0,
+      "invuln": 0,
+      "x": 6.53,
+      "y": 6.46,
+      "z": 16.06,
+      "vx": 1.57,
+      "vz": -0.18,
+      "camYaw": -1.456,
+      "bodyYaw": -1.456,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 22.9m",
+      "enemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 4.55,
+          "z": 16.28,
+          "d": 1.99,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 3.03,
+          "z": 16.45,
+          "d": 3.52,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 2.62,
+          "z": 16.5,
+          "d": 3.94,
+          "phase": "approach"
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "z": -4.8,
+          "d": 20.86,
+          "phase": "patrol"
+        }
+      ]
+    },
+    {
+      "tag": "dodge-b-2-0",
+      "t": 1789580492200,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 100,
+      "dodgeCd": 0,
+      "invuln": 0,
+      "x": 6.73,
+      "y": 6.46,
+      "z": 16.03,
+      "vx": 0.04,
+      "vz": 0,
+      "camYaw": -1.456,
+      "bodyYaw": -1.456,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 23.2m",
+      "enemies": [
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 5.07,
+          "z": 16.22,
+          "d": 1.67,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 4.99,
+          "z": 16.23,
+          "d": 1.76,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 4.88,
+          "z": 16.24,
+          "d": 1.87,
+          "phase": "approach"
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "z": -4.8,
+          "d": 20.85,
+          "phase": "patrol"
+        }
+      ]
+    },
+    {
+      "tag": "dodge-b-2-1",
+      "t": 1789580492667,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 82,
+      "dodgeCd": 0.42,
+      "invuln": 0,
+      "x": 9.83,
+      "y": 6.33,
+      "z": 15.68,
+      "vx": 3.28,
+      "vz": -0.38,
+      "camYaw": -1.456,
+      "bodyYaw": -1.456,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 26.1m",
+      "enemies": [
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 6.19,
+          "z": 16.09,
+          "d": 3.66,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 5.07,
+          "z": 16.22,
+          "d": 4.79,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 4.99,
+          "z": 16.23,
+          "d": 4.87,
+          "phase": "recover"
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "z": -4.8,
+          "d": 20.83,
+          "phase": "patrol"
+        }
+      ]
+    },
+    {
+      "tag": "i102",
+      "t": 1789580493941,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 100,
+      "dodgeCd": 0,
+      "invuln": 0,
+      "x": 10.97,
+      "y": 6.27,
+      "z": 15.55,
+      "vx": 1.65,
+      "vz": -0.19,
+      "camYaw": -1.456,
+      "bodyYaw": -1.456,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 25.5m",
+      "enemies": [
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 8.59,
+          "z": 15.82,
+          "d": 2.39,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 7.25,
+          "z": 15.97,
+          "d": 3.74,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 5.72,
+          "z": 16.15,
+          "d": 5.28,
+          "phase": "approach"
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "z": -4.8,
+          "d": 20.95,
+          "phase": "patrol"
+        }
+      ]
+    },
+    {
+      "tag": "i103",
+      "t": 1789580495035,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 100,
+      "dodgeCd": 0,
+      "invuln": 0,
+      "x": 11.61,
+      "y": 6.24,
+      "z": 15.47,
+      "vx": 1.41,
+      "vz": -0.16,
+      "camYaw": -1.456,
+      "bodyYaw": -1.456,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 24.9m",
+      "enemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 9.51,
+          "z": 15.72,
+          "d": 2.12,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 9.44,
+          "z": 15.72,
+          "d": 2.18,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 9.03,
+          "z": 15.77,
+          "d": 2.59,
+          "phase": "approach"
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "z": -4.8,
+          "d": 21.04,
+          "phase": "patrol"
+        }
+      ]
+    },
+    {
+      "tag": "dodge-b-2-0",
+      "t": 1789580495625,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 100,
+      "dodgeCd": 0,
+      "invuln": 0,
+      "x": 11.79,
+      "y": 6.23,
+      "z": 15.45,
+      "vx": 0.04,
+      "vz": 0,
+      "camYaw": -1.456,
+      "bodyYaw": -1.456,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 24.7m",
+      "enemies": [
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 10.12,
+          "z": 15.64,
+          "d": 1.68,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 10.1,
+          "z": 15.65,
+          "d": 1.7,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 9.51,
+          "z": 15.72,
+          "d": 2.3,
+          "phase": "recover"
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "z": -4.8,
+          "d": 21.06,
+          "phase": "patrol"
+        }
+      ]
+    },
+    {
+      "tag": "dodge-b-2-2",
+      "t": 1789580496101,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 82,
+      "dodgeCd": 0.42,
+      "invuln": 0,
+      "x": 14.89,
+      "y": 6.04,
+      "z": 15.1,
+      "vx": 3.28,
+      "vz": -0.38,
+      "camYaw": -1.456,
+      "bodyYaw": -1.456,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 21.7m",
+      "enemies": [
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 10.12,
+          "z": 15.64,
+          "d": 4.79,
+          "phase": "recover"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 10.1,
+          "z": 15.65,
+          "d": 4.82,
+          "phase": "recover"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 9.51,
+          "z": 15.72,
+          "d": 5.42,
+          "phase": "recover"
+        },
+        {
+          "id": "boss",
+          "kind": "boss",
+          "x": 6,
+          "z": -4.8,
+          "d": 21.79,
+          "phase": "patrol"
+        }
+      ]
+    },
+    {
+      "tag": "i106",
+      "t": 1789580497166,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 100,
+      "dodgeCd": 0,
+      "invuln": 0,
+      "x": 15.58,
+      "y": 6,
+      "z": 15.02,
+      "vx": 1.15,
+      "vz": -0.13,
+      "camYaw": -1.456,
+      "bodyYaw": -1.456,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 20.9m",
+      "enemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 12.78,
+          "z": 15.34,
+          "d": 2.82,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 11.26,
+          "z": 15.51,
+          "d": 4.35,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 10.85,
+          "z": 15.56,
+          "d": 4.76,
+          "phase": "approach"
+        }
+      ]
+    },
+    {
+      "tag": "dodge-b-2-0",
+      "t": 1789580497651,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 100,
+      "dodgeCd": 0,
+      "invuln": 0,
+      "x": 15.73,
+      "y": 5.99,
+      "z": 15,
+      "vx": 0.06,
+      "vz": -0.01,
+      "camYaw": -1.456,
+      "bodyYaw": -1.456,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 20.7m",
+      "enemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 14.1,
+          "z": 15.19,
+          "d": 1.64,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 13.08,
+          "z": 15.3,
+          "d": 2.66,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 12.67,
+          "z": 15.35,
+          "d": 3.07,
+          "phase": "approach"
+        }
+      ]
+    },
+    {
+      "tag": "dodge-b-2-0",
+      "t": 1789580497877,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 82,
+      "dodgeCd": 0.53,
+      "invuln": 0.01,
+      "x": 17.55,
+      "y": 5.82,
+      "z": 14.79,
+      "vx": 10.93,
+      "vz": -1.26,
+      "camYaw": -1.456,
+      "bodyYaw": -1.456,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 19.1m",
+      "enemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 14.1,
+          "z": 15.19,
+          "d": 3.47,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 13.88,
+          "z": 15.21,
+          "d": 3.69,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 13.48,
+          "z": 15.26,
+          "d": 4.1,
+          "phase": "approach"
+        }
+      ]
+    },
+    {
+      "tag": "flee",
+      "t": 1789580499256,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 100,
+      "dodgeCd": 0,
+      "invuln": 0,
+      "x": 20.37,
+      "y": 5.54,
+      "z": 14.47,
+      "vx": 1.08,
+      "vz": -0.12,
+      "camYaw": -1.456,
+      "bodyYaw": -1.456,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 16.1m",
+      "enemies": [
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 17.96,
+          "z": 14.74,
+          "d": 2.42,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 17.56,
+          "z": 14.79,
+          "d": 2.83,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 14.24,
+          "z": 15.17,
+          "d": 6.17,
+          "phase": "approach"
+        }
+      ]
+    },
+    {
+      "tag": "dodge-b-2-1",
+      "t": 1789580499734,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 100,
+      "dodgeCd": 0,
+      "invuln": 0,
+      "x": 20.5,
+      "y": 5.53,
+      "z": 14.45,
+      "vx": 0.04,
+      "vz": 0,
+      "camYaw": -1.456,
+      "bodyYaw": -1.456,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 15.9m",
+      "enemies": [
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 18.87,
+          "z": 14.64,
+          "d": 1.65,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 18.84,
+          "z": 14.64,
+          "d": 1.68,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 16.21,
+          "z": 14.95,
+          "d": 4.32,
+          "phase": "approach"
+        }
+      ]
+    },
+    {
+      "tag": "dodge-b-2-2",
+      "t": 1789580500073,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 82,
+      "dodgeCd": 0.52,
+      "invuln": 0,
+      "x": 22.51,
+      "y": 5.31,
+      "z": 14.22,
+      "vx": 10.93,
+      "vz": -1.26,
+      "camYaw": -1.456,
+      "bodyYaw": -1.456,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 14.1m",
+      "enemies": [
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 18.87,
+          "z": 14.64,
+          "d": 3.66,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 18.84,
+          "z": 14.64,
+          "d": 3.69,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 17.08,
+          "z": 14.85,
+          "d": 5.46,
+          "phase": "approach"
+        }
+      ]
+    },
+    {
+      "tag": "i112",
+      "t": 1789580501747,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 100,
+      "dodgeCd": 0,
+      "invuln": 0,
+      "x": 24.98,
+      "y": 5.11,
+      "z": 13.64,
+      "vx": 1.64,
+      "vz": -0.7,
+      "camYaw": -1.166,
+      "bodyYaw": -1.166,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 11.4m",
+      "enemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 22.68,
+          "z": 14.11,
+          "d": 2.34,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 21.16,
+          "z": 14.32,
+          "d": 3.87,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 20.75,
+          "z": 14.37,
+          "d": 4.28,
+          "phase": "approach"
+        }
+      ]
+    },
+    {
+      "tag": "dodge-b-2-0",
+      "t": 1789580502365,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 100,
+      "dodgeCd": 0,
+      "invuln": 0,
+      "x": 25.19,
+      "y": 5.11,
+      "z": 13.55,
+      "vx": 0.05,
+      "vz": -0.02,
+      "camYaw": -1.166,
+      "bodyYaw": -1.166,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 11.2m",
+      "enemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 23.54,
+          "z": 13.93,
+          "d": 1.69,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 23.25,
+          "z": 13.92,
+          "d": 1.97,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 22.85,
+          "z": 13.99,
+          "d": 2.38,
+          "phase": "approach"
+        }
+      ]
+    },
+    {
+      "tag": "dodge-b-2-0",
+      "t": 1789580502917,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 84.3,
+      "dodgeCd": 0.33,
+      "invuln": 0,
+      "x": 28.23,
+      "y": 5.48,
+      "z": 12.25,
+      "vx": 1.67,
+      "vz": -0.72,
+      "camYaw": -1.166,
+      "bodyYaw": -1.166,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 7.9m",
+      "enemies": [
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 25.08,
+          "z": 13.38,
+          "d": 3.35,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 24.68,
+          "z": 13.47,
+          "d": 3.76,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 23.54,
+          "z": 13.93,
+          "d": 4.98,
+          "phase": "recover"
+        }
+      ]
+    },
+    {
+      "tag": "turn-dodge",
+      "t": 1789580503434,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 97.4,
+      "dodgeCd": 0,
+      "invuln": 0,
+      "x": 28.45,
+      "y": 5.65,
+      "z": 12.16,
+      "vx": 0.06,
+      "vz": -0.03,
+      "camYaw": -1.118,
+      "bodyYaw": -1.166,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 7.7m",
+      "enemies": [
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 26.87,
+          "z": 12.73,
+          "d": 1.68,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 26.62,
+          "z": 12.8,
+          "d": 1.94,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 23.54,
+          "z": 13.93,
+          "d": 5.22,
+          "phase": "recover"
+        }
+      ]
+    },
+    {
+      "tag": "dodge-b-2-1",
+      "t": 1789580504014,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 82.7,
+      "dodgeCd": 0.3,
+      "invuln": 0,
+      "x": 31.47,
+      "y": 8.31,
+      "z": 10.68,
+      "vx": 1.29,
+      "vz": -0.63,
+      "camYaw": -1.118,
+      "bodyYaw": -1.166,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 4.6m",
+      "enemies": [
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 28.31,
+          "z": 12.09,
+          "d": 3.46,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 26.87,
+          "z": 12.73,
+          "d": 5.03,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 25.18,
+          "z": 13.28,
+          "d": 6.81,
+          "phase": "approach"
+        }
+      ]
+    },
+    {
+      "tag": "turn-dodge",
+      "t": 1789580504618,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 98.1,
+      "dodgeCd": 0,
+      "invuln": 0,
+      "x": 31.64,
+      "y": 8.47,
+      "z": 10.6,
+      "vx": 0.03,
+      "vz": -0.01,
+      "camYaw": -1.069,
+      "bodyYaw": -1.166,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 4.4m",
+      "enemies": [
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 30.12,
+          "z": 11.28,
+          "d": 1.66,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 27.41,
+          "z": 12.35,
+          "d": 4.57,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 26.87,
+          "z": 12.73,
+          "d": 5.22,
+          "phase": "recover"
+        }
+      ]
+    },
+    {
+      "tag": "dodge-b-2-2",
+      "t": 1789580504718,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 80.1,
+      "dodgeCd": 0.62,
+      "invuln": 0.1,
+      "x": 32.44,
+      "y": 9.76,
+      "z": 10.16,
+      "vx": 9.65,
+      "vz": -5.29,
+      "camYaw": -1.069,
+      "bodyYaw": -1.166,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 3.8m",
+      "enemies": [
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 30.12,
+          "z": 11.28,
+          "d": 2.58,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 27.44,
+          "z": 12.31,
+          "d": 5.44,
+          "phase": "patrol"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 26.87,
+          "z": 12.73,
+          "d": 6.13,
+          "phase": "recover"
+        }
+      ]
+    },
+    {
+      "tag": "flee",
+      "t": 1789580504952,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 81,
+      "dodgeCd": 0.38,
+      "invuln": 0,
+      "x": 33.41,
+      "y": 10.49,
+      "z": 9.05,
+      "vx": 2.57,
+      "vz": -1.4,
+      "camYaw": -1.069,
+      "bodyYaw": -1.158,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "叩响 牵引祠",
+      "enemies": [
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 30.12,
+          "z": 11.28,
+          "d": 3.98,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 27.07,
+          "z": 12.37,
+          "d": 7.15,
+          "phase": "patrol"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 26.66,
+          "z": 12.75,
+          "d": 7.7,
+          "phase": "patrol"
+        }
+      ]
+    },
+    {
+      "tag": "dodge-b-2-2",
+      "t": 1789580506138,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 100,
+      "dodgeCd": 0,
+      "invuln": 0,
+      "x": 33.46,
+      "y": 9.76,
+      "z": 8.6,
+      "vx": 0,
+      "vz": 0,
+      "camYaw": 1.69,
+      "bodyYaw": -1.158,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 3.4m",
+      "enemies": [
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 31.55,
+          "z": 10.13,
+          "d": 2.45,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 25.2,
+          "z": 12.64,
+          "d": 9.19,
+          "phase": "patrol"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 24.82,
+          "z": 12.91,
+          "d": 9.65,
+          "phase": "detect"
+        }
+      ]
+    },
+    {
+      "tag": "dodge-b-2-2",
+      "t": 1789580506202,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 82,
+      "dodgeCd": 0.67,
+      "invuln": 0.15,
+      "x": 33.09,
+      "y": 9.76,
+      "z": 8.64,
+      "vx": -10.92,
+      "vz": 1.3,
+      "camYaw": 1.69,
+      "bodyYaw": -1.158,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 3.5m",
+      "enemies": [
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 31.71,
+          "z": 9.99,
+          "d": 1.93,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 25.2,
+          "z": 12.64,
+          "d": 8.85,
+          "phase": "detect"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 24.82,
+          "z": 12.91,
+          "d": 9.31,
+          "phase": "detect"
+        }
+      ]
+    },
+    {
+      "tag": "turn-flee",
+      "t": 1789580506473,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 82,
+      "dodgeCd": 0.38,
+      "invuln": 0,
+      "x": 30.27,
+      "y": 9.74,
+      "z": 8.97,
+      "vx": -2.56,
+      "vz": 0.07,
+      "camYaw": 1.786,
+      "bodyYaw": -0.965,
+      "state": "airborne",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 6.0m",
+      "enemies": [
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 31.76,
+          "z": 9.93,
+          "d": 1.77,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 25.2,
+          "z": 12.64,
+          "d": 6.26,
+          "phase": "detect"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 24.82,
+          "z": 12.91,
+          "d": 6.72,
+          "phase": "approach"
+        }
+      ]
+    },
+    {
+      "tag": "flee",
+      "t": 1789580506707,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 82,
+      "dodgeCd": 0.15,
+      "invuln": 0,
+      "x": 29.79,
+      "y": 8.93,
+      "z": 8.9,
+      "vx": -1.78,
+      "vz": -0.63,
+      "camYaw": 1.786,
+      "bodyYaw": 0.853,
+      "state": "airborne",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 6.5m",
+      "enemies": [
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 31.76,
+          "z": 9.93,
+          "d": 2.22,
+          "phase": "recover"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 25.89,
+          "z": 12.1,
+          "d": 5.05,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 25.64,
+          "z": 12.28,
+          "d": 5.36,
+          "phase": "approach"
+        }
+      ]
+    },
+    {
+      "tag": "turn-dodge",
+      "t": 1789580507667,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 97.4,
+      "dodgeCd": 0,
+      "invuln": 0,
+      "x": 29.21,
+      "y": 7.22,
+      "z": 8.69,
+      "vx": -0.03,
+      "vz": -0.01,
+      "camYaw": 1.98,
+      "bodyYaw": 0.853,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 7.1m",
+      "enemies": [
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 28.07,
+          "z": 9.93,
+          "d": 1.68,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 27.99,
+          "z": 9.97,
+          "d": 1.77,
+          "phase": "approach"
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 31.56,
+          "z": 9.84,
+          "d": 2.62,
+          "phase": "approach"
+        }
+      ]
+    },
+    {
+      "tag": "dodge-b-2-0",
+      "t": 1789580507858,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 1,
+      "stamina": 79.4,
+      "dodgeCd": 0.57,
+      "invuln": 0.05,
+      "x": 27.86,
+      "y": 5.92,
+      "z": 9.27,
+      "vx": -10.09,
+      "vz": 4.38,
+      "camYaw": 1.98,
+      "bodyYaw": 0.853,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 8.1m",
+      "enemies": [
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 28.04,
+          "z": 9.92,
+          "d": 0.67,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 28.07,
+          "z": 9.93,
+          "d": 0.68,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 30.93,
+          "z": 9.66,
+          "d": 3.09,
+          "phase": "approach"
+        }
+      ]
+    },
+    {
+      "tag": "flee",
+      "t": 1789580509211,
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 0.5,
+      "stamina": 100,
+      "dodgeCd": 0,
+      "invuln": 0.27,
+      "x": 25.57,
+      "y": 5.97,
+      "z": 9.13,
+      "vx": -0.33,
+      "vz": -1,
+      "camYaw": 1.98,
+      "bodyYaw": 0.29,
+      "state": "grounded",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 10.6m",
+      "enemies": [
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 27.21,
+          "z": 9.65,
+          "d": 1.72,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 28.04,
+          "z": 9.92,
+          "d": 2.6,
+          "phase": "recover"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 28.07,
+          "z": 9.93,
+          "d": 2.63,
+          "phase": "recover"
+        }
+      ]
+    },
+    {
+      "tag": "dodge-b-2-2",
+      "t": 1789580509800,
+      "mode": "dead",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 0,
+      "stamina": 100,
+      "dodgeCd": 0,
+      "invuln": 0.9,
+      "x": 25.53,
+      "y": 6,
+      "z": 9,
+      "vx": -0.02,
+      "vz": -0.05,
+      "camYaw": 1.98,
+      "bodyYaw": 0.29,
+      "state": "dead",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 10.6m",
+      "enemies": [
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 27.08,
+          "z": 9.57,
+          "d": 1.65,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 27.1,
+          "z": 9.58,
+          "d": 1.68,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 27.21,
+          "z": 9.65,
+          "d": 1.8,
+          "phase": "recover"
+        }
+      ]
+    },
+    {
+      "tag": "terminal",
+      "t": 1789580509801,
+      "mode": "dead",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 0,
+      "stamina": 100,
+      "dodgeCd": 0,
+      "invuln": 0.9,
+      "x": 25.53,
+      "y": 6,
+      "z": 9,
+      "vx": -0.02,
+      "vz": -0.05,
+      "camYaw": 1.98,
+      "bodyYaw": 0.29,
+      "state": "dead",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 10.6m",
+      "enemies": [
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 27.08,
+          "z": 9.57,
+          "d": 1.65,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 27.1,
+          "z": 9.58,
+          "d": 1.68,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 27.21,
+          "z": 9.65,
+          "d": 1.8,
+          "phase": "recover"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stopped": {
+    "reason": "terminal",
+    "i": 129,
+    "pre": {
+      "mode": "dead",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 0,
+      "stamina": 100,
+      "dodgeCd": 0,
+      "invuln": 0.9,
+      "x": 25.53,
+      "y": 6,
+      "z": 9,
+      "vx": -0.02,
+      "vz": -0.05,
+      "camYaw": 1.98,
+      "bodyYaw": 0.29,
+      "state": "dead",
+      "attackPhase": "idle",
+      "orbs": 2,
+      "shrinesOn": [
+        "burst",
+        "rime"
+      ],
+      "towers": [],
+      "lastDamageWhy": "敌人",
+      "prompt": "请靠近：距离 10.6m",
+      "enemies": [
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "x": 27.08,
+          "z": 9.57,
+          "d": 1.65,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "x": 27.1,
+          "z": 9.58,
+          "d": 1.68,
+          "phase": "windup"
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "x": 27.21,
+          "z": 9.65,
+          "d": 1.8,
+          "phase": "recover"
+        }
+      ]
+    }
+  },
+  "final": {
+    "mode": "dead",
+    "world": "overworld",
+    "shrine": null,
+    "hp": 0,
+    "stamina": 100,
+    "dodgeCd": 0,
+    "invuln": 0.9,
+    "x": 25.53,
+    "y": 6,
+    "z": 9,
+    "vx": -0.02,
+    "vz": -0.05,
+    "camYaw": 1.98,
+    "bodyYaw": 0.29,
+    "state": "dead",
+    "attackPhase": "idle",
+    "orbs": 2,
+    "shrinesOn": [
+      "burst",
+      "rime"
+    ],
+    "towers": [],
+    "lastDamageWhy": "敌人",
+    "prompt": "请靠近：距离 10.6m",
+    "enemies": [
+      {
+        "id": "b-2-1",
+        "kind": "bramble",
+        "x": 27.08,
+        "z": 9.57,
+        "d": 1.65,
+        "phase": "windup"
+      },
+      {
+        "id": "b-2-0",
+        "kind": "bramble",
+        "x": 27.1,
+        "z": 9.58,
+        "d": 1.68,
+        "phase": "windup"
+      },
+      {
+        "id": "b-2-2",
+        "kind": "bramble",
+        "x": 27.21,
+        "z": 9.65,
+        "d": 1.8,
+        "phase": "recover"
+      }
+    ]
+  }
+}

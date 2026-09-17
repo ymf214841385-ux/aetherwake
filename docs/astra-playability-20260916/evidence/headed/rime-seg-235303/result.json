@@ -1,0 +1,205 @@
+{
+  "ok": false,
+  "pid": 90699,
+  "milestones": [
+    {
+      "name": "00-continue-checkpoint",
+      "pass": true,
+      "restored": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "x": 115.27455999023879,
+        "y": 11.414756173028813,
+        "z": 29.521758828625977,
+        "camYaw": 3.141592653589793,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "",
+        "orbs": 1,
+        "shrinesOn": [
+          "burst"
+        ],
+        "towers": [],
+        "nav": "unavailable",
+        "navNext": "沿指引前往晨光塔塔脚攀爬点",
+        "ices": 0
+      }
+    },
+    {
+      "name": "01-map-rime",
+      "pass": true,
+      "sel": "rime"
+    },
+    {
+      "name": "02-arrive-rime",
+      "pass": false,
+      "last": {
+        "mode": "dead",
+        "world": "overworld",
+        "shrine": null,
+        "x": 45.431304055835824,
+        "y": 8.629188613043564,
+        "z": 47.52209345818932,
+        "camYaw": 1.7863926535897932,
+        "state": "dead",
+        "stamina": 100,
+        "prompt": "请靠近：距离 3.8m",
+        "orbs": 1,
+        "shrinesOn": [
+          "burst"
+        ],
+        "towers": [],
+        "nav": "unavailable",
+        "navNext": "前往霜息祠",
+        "ices": 0
+      },
+      "tail": [
+        {
+          "i": 95,
+          "x": 45.4,
+          "z": 47.5,
+          "d": 117.8
+        },
+        {
+          "i": 96,
+          "x": 45.4,
+          "z": 47.5,
+          "d": 117.8
+        },
+        {
+          "i": 97,
+          "x": 45.4,
+          "z": 47.5,
+          "d": 117.8
+        },
+        {
+          "i": 98,
+          "x": 45.4,
+          "z": 47.5,
+          "d": 117.8
+        },
+        {
+          "i": 99,
+          "x": 45.4,
+          "z": 47.5,
+          "d": 117.8
+        }
+      ]
+    },
+    {
+      "name": "02-arrive-rime",
+      "pass": false,
+      "last": {
+        "mode": "dead",
+        "world": "overworld",
+        "shrine": null,
+        "x": 45.431304055835824,
+        "y": 8.629188613043564,
+        "z": 47.52209345818932,
+        "camYaw": 1.7863926535897932,
+        "state": "dead",
+        "stamina": 100,
+        "prompt": "请靠近：距离 3.8m",
+        "orbs": 1,
+        "shrinesOn": [
+          "burst"
+        ],
+        "towers": [],
+        "nav": "unavailable",
+        "navNext": "前往霜息祠",
+        "ices": 0
+      },
+      "reason": "bounded",
+      "samples": [
+        {
+          "i": 95,
+          "x": 45.4,
+          "z": 47.5,
+          "d": 117.8
+        },
+        {
+          "i": 96,
+          "x": 45.4,
+          "z": 47.5,
+          "d": 117.8
+        },
+        {
+          "i": 97,
+          "x": 45.4,
+          "z": 47.5,
+          "d": 117.8
+        },
+        {
+          "i": 98,
+          "x": 45.4,
+          "z": 47.5,
+          "d": 117.8
+        },
+        {
+          "i": 99,
+          "x": 45.4,
+          "z": 47.5,
+          "d": 117.8
+        }
+      ]
+    }
+  ],
+  "failure": {
+    "milestone": "02-arrive-rime",
+    "last": {
+      "mode": "dead",
+      "world": "overworld",
+      "shrine": null,
+      "x": 45.431304055835824,
+      "y": 8.629188613043564,
+      "z": 47.52209345818932,
+      "camYaw": 1.7863926535897932,
+      "state": "dead",
+      "stamina": 100,
+      "prompt": "请靠近：距离 3.8m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "towers": [],
+      "nav": "unavailable",
+      "navNext": "前往霜息祠",
+      "ices": 0
+    },
+    "reason": "bounded",
+    "samples": [
+      {
+        "i": 95,
+        "x": 45.4,
+        "z": 47.5,
+        "d": 117.8
+      },
+      {
+        "i": 96,
+        "x": 45.4,
+        "z": 47.5,
+        "d": 117.8
+      },
+      {
+        "i": 97,
+        "x": 45.4,
+        "z": 47.5,
+        "d": 117.8
+      },
+      {
+        "i": 98,
+        "x": 45.4,
+        "z": 47.5,
+        "d": 117.8
+      },
+      {
+        "i": 99,
+        "x": 45.4,
+        "z": 47.5,
+        "d": 117.8
+      }
+    ]
+  },
+  "errors": []
+}

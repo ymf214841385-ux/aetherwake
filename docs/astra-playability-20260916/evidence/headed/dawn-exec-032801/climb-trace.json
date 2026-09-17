@@ -1,0 +1,82 @@
+[
+  {
+    "i": 0,
+    "phase": "APPROACH",
+    "y": 11.59,
+    "stam": 100,
+    "state": "grounded",
+    "support": "dawn-shaft"
+  },
+  {
+    "i": 1,
+    "phase": "APPROACH",
+    "y": 11.99,
+    "stam": 100,
+    "state": "grounded",
+    "support": "dawn-shaft"
+  },
+  {
+    "i": 2,
+    "phase": "APPROACH",
+    "y": 12.37,
+    "stam": 100,
+    "state": "grounded",
+    "support": "dawn-shaft"
+  },
+  {
+    "i": 3,
+    "phase": "APPROACH",
+    "y": 12.7,
+    "stam": 100,
+    "state": "grounded",
+    "support": "dawn-shaft"
+  },
+  {
+    "i": 4,
+    "phase": "APPROACH",
+    "y": 13.01,
+    "stam": 100,
+    "state": "grounded",
+    "support": "dawn-shaft"
+  },
+  {
+    "i": 5,
+    "phase": "APPROACH",
+    "y": 13.51,
+    "stam": 100,
+    "state": "grounded",
+    "support": "dawn-shaft"
+  },
+  {
+    "i": 6,
+    "phase": "APPROACH",
+    "y": 13.8,
+    "stam": 100,
+    "state": "grounded",
+    "support": "dawn-shaft"
+  },
+  {
+    "i": 7,
+    "phase": "APPROACH",
+    "y": 14.07,
+    "stam": 100,
+    "state": "grounded",
+    "support": "dawn-shaft"
+  },
+  {
+    "i": 8,
+    "phase": "APPROACH",
+    "y": 14.4,
+    "stam": 100,
+    "state": "grounded",
+    "support": "dawn-shaft"
+  },
+  {
+    "i": 9,
+    "phase": "DEAD",
+    "y": 14.43,
+    "stam": 100,
+    "state": "dead",
+    "support": "dawn-shaft"
+  }
+]

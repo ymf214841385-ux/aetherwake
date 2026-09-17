@@ -1,0 +1,758 @@
+{
+  "ok": false,
+  "pid": 85077,
+  "startedAt": "2026-09-16T14:23:11.022Z",
+  "milestones": [
+    {
+      "name": "01-start",
+      "pass": true,
+      "mode": "playing",
+      "x": 16,
+      "y": 11.414756173028813,
+      "z": 102,
+      "vx": 0,
+      "vz": 0,
+      "yaw": 0,
+      "camYaw": 0,
+      "state": "grounded",
+      "climbing": false,
+      "hp": 3,
+      "stamina": 100,
+      "prompt": "请靠近：距离 7.2m",
+      "towers": [],
+      "chests": [],
+      "quest": "点亮晨光塔",
+      "load": "ready",
+      "climbBtnExists": true,
+      "climbBtnVisible": true,
+      "nearestClimb": {
+        "id": "dawn-shaft",
+        "d": 34.52535300326414,
+        "climbable": true,
+        "standable": false
+      },
+      "mantle": null,
+      "t": 1789568604590
+    },
+    {
+      "name": "02-move",
+      "pass": true,
+      "d0": 1.3874345613033654,
+      "t": 1789568605347
+    },
+    {
+      "name": "03-near-sage",
+      "pass": true,
+      "sageWalk": {
+        "ok": true,
+        "last": {
+          "mode": "playing",
+          "x": 4.341323210388613,
+          "y": 16.671585144109415,
+          "z": 112.31583384672538,
+          "vx": -0.5805718972250804,
+          "vz": 1.1002168389539384,
+          "yaw": 2.660540472236241,
+          "camYaw": 2.8072000000000004,
+          "state": "grounded",
+          "climbing": false,
+          "hp": 3,
+          "stamina": 100,
+          "prompt": "与守塔人交谈",
+          "towers": [],
+          "chests": [],
+          "quest": "点亮晨光塔",
+          "load": "ready",
+          "climbBtnExists": true,
+          "climbBtnVisible": true,
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 44.67565055530649,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null
+        }
+      },
+      "t": 1789568613459
+    },
+    {
+      "name": "04-sage-talk",
+      "pass": true,
+      "talked": {
+        "mode": "dialogue",
+        "x": 4.291000959394068,
+        "y": 16.669218791239743,
+        "z": 112.41119738082492,
+        "vx": -0.19885682153673176,
+        "vz": 0.3768450120325926,
+        "yaw": 2.660540472236241,
+        "camYaw": 2.8072000000000004,
+        "state": "grounded",
+        "climbing": false,
+        "hp": 3,
+        "stamina": 100,
+        "prompt": "与守塔人交谈",
+        "towers": [],
+        "chests": [],
+        "quest": "点亮晨光塔",
+        "load": "ready",
+        "climbBtnExists": true,
+        "climbBtnVisible": true,
+        "nearestClimb": {
+          "id": "dawn-shaft",
+          "d": 44.77663590360747,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null
+      },
+      "t": 1789568613793
+    },
+    {
+      "name": "03b-near-chest",
+      "pass": true,
+      "chestWalk": {
+        "ok": true,
+        "last": {
+          "mode": "playing",
+          "x": 19.43716083002189,
+          "y": 16.34560099511696,
+          "z": 108.88757812352729,
+          "vx": 0.7601193395583953,
+          "vz": -0.4240336463797461,
+          "yaw": 5.22574047196754,
+          "camYaw": 5.517600000000001,
+          "state": "grounded",
+          "climbing": false,
+          "hp": 3,
+          "stamina": 100,
+          "prompt": "打开容器",
+          "towers": [],
+          "chests": [],
+          "quest": "点亮晨光塔",
+          "load": "ready",
+          "climbBtnExists": true,
+          "climbBtnVisible": true,
+          "nearestClimb": {
+            "id": "ruin-side",
+            "d": 40.921267860886545,
+            "climbable": true,
+            "standable": true
+          },
+          "mantle": null
+        }
+      },
+      "t": 1789568621371
+    },
+    {
+      "name": "05-chest-reward",
+      "pass": true,
+      "afterChest": {
+        "mode": "playing",
+        "x": 19.52056625419724,
+        "y": 16.342779128368214,
+        "z": 108.84105028993544,
+        "vx": 0.12745471958018467,
+        "vz": -0.07110079520314819,
+        "yaw": 5.22574047196754,
+        "camYaw": 5.517600000000001,
+        "state": "grounded",
+        "climbing": false,
+        "hp": 3,
+        "stamina": 100,
+        "prompt": "已搜集",
+        "towers": [],
+        "chests": [
+          "chest-start"
+        ],
+        "quest": "点亮晨光塔",
+        "load": "ready",
+        "climbBtnExists": true,
+        "climbBtnVisible": true,
+        "nearestClimb": {
+          "id": "ruin-side",
+          "d": 40.847509786486754,
+          "climbable": true,
+          "standable": true
+        },
+        "mantle": null
+      },
+      "t": 1789568621723
+    },
+    {
+      "name": "06-map-dawn",
+      "pass": true,
+      "mapped": "dawn",
+      "t": 1789568622077
+    },
+    {
+      "name": "07-tower-base",
+      "pass": true,
+      "towerWalk": {
+        "ok": true,
+        "last": {
+          "mode": "playing",
+          "x": 13.351573775202475,
+          "y": 13.696051854446546,
+          "z": 73.07235907037251,
+          "vx": -0.7548362648824731,
+          "vz": -1.6098311243875787,
+          "yaw": 6.72614047344988,
+          "camYaw": 6.727600000000001,
+          "state": "grounded",
+          "climbing": false,
+          "hp": 3,
+          "stamina": 100,
+          "prompt": "需在塔顶",
+          "towers": [],
+          "chests": [
+            "chest-start"
+          ],
+          "quest": "点亮晨光塔",
+          "load": "ready",
+          "climbBtnExists": true,
+          "climbBtnVisible": true,
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 6.079627727864206,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null
+        }
+      },
+      "lastSamples": [
+        {
+          "i": 25,
+          "x": 14.98,
+          "z": 77.89,
+          "dist": 11.07,
+          "state": "grounded",
+          "stamina": 100
+        },
+        {
+          "i": 26,
+          "x": 14.62,
+          "z": 76.73,
+          "dist": 9.88,
+          "state": "grounded",
+          "stamina": 100
+        },
+        {
+          "i": 27,
+          "x": 14.25,
+          "z": 75.52,
+          "dist": 8.64,
+          "state": "grounded",
+          "stamina": 100
+        },
+        {
+          "i": 28,
+          "x": 13.89,
+          "z": 74.36,
+          "dist": 7.45,
+          "state": "grounded",
+          "stamina": 100
+        },
+        {
+          "i": 29,
+          "x": 13.43,
+          "z": 73.24,
+          "dist": 6.27,
+          "state": "grounded",
+          "stamina": 100
+        }
+      ],
+      "t": 1789568637673
+    }
+  ],
+  "failure": {
+    "milestone": "exception",
+    "message": "locator.tap: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator('[data-touch-action=\"interact\"]')\n    - locator resolved to <button type=\"button\" data-touch-btn=\"true\" class=\"tbtn tbtn-interact\" data-touch-action=\"interact\">需在塔顶</button>\n  - attempting tap action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying tap action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying tap action\n      - waiting 100ms\n    28 × waiting for element to be visible, enabled and stable\n       - element is not visible\n     - retrying tap action\n       - waiting 500ms\n",
+    "stack": "locator.tap: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator('[data-touch-action=\"interact\"]')\n    - locator resolved to <button type=\"button\" data-touch-btn=\"true\" class=\"tbtn tbtn-interact\" data-touch-action=\"interact\">需在塔顶</button>\n  - attempting tap action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying tap action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying tap action\n      - waiting 100ms\n    28 × waiting for element to be visible, enabled and stable\n       - element is not visible\n     - retrying tap action\n       - waiting 500ms\n\n    at tapInteract (/Users/ymf/Projects/aetherwake-rebuild-20260909/mimo-playability-20260916/aetherwake/scripts/qa/short-loop.mjs:174:13)\n    at async file:///Users/ymf/Projects/aetherwake-rebuild-20260909/mimo-playability-20260916/aetherwake/scripts/qa/short-loop.mjs:375:7"
+  },
+  "errors": [],
+  "directionChecks": [
+    {
+      "name": "sage",
+      "i": 0,
+      "dist": 18.32,
+      "dot": 17.95,
+      "camYaw": 2.226,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 1,
+      "dist": 17.35,
+      "dot": 16.96,
+      "camYaw": 2.226,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 2,
+      "dist": 16.18,
+      "dot": 15.76,
+      "camYaw": 2.226,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 3,
+      "dist": 14.99,
+      "dot": 14.54,
+      "camYaw": 2.226,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 4,
+      "dist": 13.7,
+      "dot": 13.59,
+      "camYaw": 2.372,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 5,
+      "dist": 12.58,
+      "dot": 12.46,
+      "camYaw": 2.372,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 6,
+      "dist": 11.31,
+      "dot": 11.17,
+      "camYaw": 2.372,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 7,
+      "dist": 10.14,
+      "dot": 9.99,
+      "camYaw": 2.372,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 8,
+      "dist": 8.89,
+      "dot": 8.71,
+      "camYaw": 2.372,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 9,
+      "dist": 7.7,
+      "dot": 7.5,
+      "camYaw": 2.372,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 10,
+      "dist": 6.45,
+      "dot": 6.4,
+      "camYaw": 2.517,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 11,
+      "dist": 5.32,
+      "dot": 5.25,
+      "camYaw": 2.517,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 12,
+      "dist": 4.13,
+      "dot": 4.04,
+      "camYaw": 2.517,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 13,
+      "dist": 2.89,
+      "dot": 2.85,
+      "camYaw": 2.662,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 14,
+      "dist": 1.72,
+      "dot": 1.7,
+      "camYaw": 2.807,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 0,
+      "dist": 16.36,
+      "dot": 16.04,
+      "camYaw": 4.792,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 1,
+      "dist": 15.38,
+      "dot": 15.05,
+      "camYaw": 4.792,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 2,
+      "dist": 14.15,
+      "dot": 13.79,
+      "camYaw": 4.792,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 3,
+      "dist": 12.97,
+      "dot": 12.57,
+      "camYaw": 4.792,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 4,
+      "dist": 11.73,
+      "dot": 11.63,
+      "camYaw": 4.937,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 5,
+      "dist": 10.62,
+      "dot": 10.51,
+      "camYaw": 4.937,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 6,
+      "dist": 9.38,
+      "dot": 9.24,
+      "camYaw": 4.937,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 7,
+      "dist": 8.18,
+      "dot": 8.03,
+      "camYaw": 4.937,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 8,
+      "dist": 7,
+      "dot": 6.82,
+      "camYaw": 4.937,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 9,
+      "dist": 5.75,
+      "dot": 5.71,
+      "camYaw": 5.082,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 10,
+      "dist": 4.64,
+      "dot": 4.58,
+      "camYaw": 5.082,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 11,
+      "dist": 3.46,
+      "dot": 3.37,
+      "camYaw": 5.082,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 12,
+      "dist": 2.23,
+      "dot": 2.18,
+      "camYaw": 5.227,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 13,
+      "dist": 1.05,
+      "dot": 1.03,
+      "camYaw": 5.518,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 0,
+      "dist": 41.93,
+      "dot": 40.91,
+      "camYaw": 6.292,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 1,
+      "dist": 40.94,
+      "dot": 39.9,
+      "camYaw": 6.292,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 2,
+      "dist": 39.8,
+      "dot": 38.72,
+      "camYaw": 6.292,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 3,
+      "dist": 38.62,
+      "dot": 37.51,
+      "camYaw": 6.292,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 4,
+      "dist": 37.44,
+      "dot": 36.3,
+      "camYaw": 6.292,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 5,
+      "dist": 36.2,
+      "dot": 35.98,
+      "camYaw": 6.437,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 6,
+      "dist": 35.09,
+      "dot": 34.85,
+      "camYaw": 6.437,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 7,
+      "dist": 33.83,
+      "dot": 33.59,
+      "camYaw": 6.437,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 8,
+      "dist": 32.63,
+      "dot": 32.38,
+      "camYaw": 6.437,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 9,
+      "dist": 31.36,
+      "dot": 31.1,
+      "camYaw": 6.437,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 10,
+      "dist": 30.16,
+      "dot": 29.89,
+      "camYaw": 6.437,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 11,
+      "dist": 28.96,
+      "dot": 28.68,
+      "camYaw": 6.437,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 12,
+      "dist": 27.76,
+      "dot": 27.46,
+      "camYaw": 6.437,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 13,
+      "dist": 26.55,
+      "dot": 26.24,
+      "camYaw": 6.437,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 14,
+      "dist": 25.35,
+      "dot": 25.03,
+      "camYaw": 6.437,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 15,
+      "dist": 24.16,
+      "dot": 23.81,
+      "camYaw": 6.437,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 16,
+      "dist": 22.9,
+      "dot": 22.55,
+      "camYaw": 6.437,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 17,
+      "dist": 21.71,
+      "dot": 21.33,
+      "camYaw": 6.437,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 18,
+      "dist": 20.46,
+      "dot": 20.06,
+      "camYaw": 6.437,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 19,
+      "dist": 19.27,
+      "dot": 18.84,
+      "camYaw": 6.437,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 20,
+      "dist": 18.08,
+      "dot": 17.62,
+      "camYaw": 6.437,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 21,
+      "dist": 16.9,
+      "dot": 16.41,
+      "camYaw": 6.437,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 22,
+      "dist": 15.65,
+      "dot": 15.55,
+      "camYaw": 6.582,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 23,
+      "dist": 14.53,
+      "dot": 14.42,
+      "camYaw": 6.582,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 24,
+      "dist": 13.28,
+      "dot": 13.15,
+      "camYaw": 6.582,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 25,
+      "dist": 12.08,
+      "dot": 11.94,
+      "camYaw": 6.582,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 26,
+      "dist": 10.88,
+      "dot": 10.73,
+      "camYaw": 6.582,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 27,
+      "dist": 9.69,
+      "dot": 9.51,
+      "camYaw": 6.582,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 28,
+      "dist": 8.45,
+      "dot": 8.24,
+      "camYaw": 6.582,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 29,
+      "dist": 7.2,
+      "dot": 7.15,
+      "camYaw": 6.728,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 30,
+      "dist": 6.08,
+      "dot": 6.02,
+      "camYaw": 6.728,
+      "steerOk": true
+    }
+  ]
+}

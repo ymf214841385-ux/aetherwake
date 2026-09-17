@@ -1,0 +1,164 @@
+{
+  "ok": false,
+  "pid": 4146,
+  "milestones": [
+    {
+      "name": "00-restore",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 4,
+        "x": 16.03,
+        "y": 16.11,
+        "z": -72.75,
+        "camYaw": 2.9,
+        "bodyYaw": 0.334,
+        "state": "grounded",
+        "stamina": 100,
+        "towers": [],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "prompt": "",
+        "climbBtn": false,
+        "interactVisible": false,
+        "nearestClimb": {
+          "id": "citadel-wall-0--11",
+          "d": 50.75,
+          "touchingClimbable": false
+        },
+        "lastDamageWhy": "",
+        "enemies": [],
+        "attackPhase": "idle",
+        "dodgeCd": 0
+      }
+    },
+    {
+      "name": "wp1",
+      "pass": true,
+      "target": {
+        "x": 40,
+        "z": -35
+      },
+      "dS0": 37.8
+    },
+    {
+      "name": "wp2",
+      "pass": true,
+      "target": {
+        "x": 35,
+        "z": -5
+      },
+      "dS0": 25.1
+    },
+    {
+      "name": "wp3",
+      "pass": true,
+      "target": {
+        "x": 25,
+        "z": 20
+      },
+      "dS0": 27.4
+    },
+    {
+      "name": "wp4",
+      "pass": true,
+      "target": {
+        "x": 16,
+        "z": 50
+      },
+      "dS0": 42.3
+    },
+    {
+      "name": "wp5",
+      "pass": true,
+      "target": {
+        "x": 10,
+        "z": 64
+      },
+      "dS0": 67.6
+    },
+    {
+      "name": "01-arrive-dawn",
+      "pass": true,
+      "post": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 4,
+        "x": 11.39,
+        "y": 15.1,
+        "z": 61.28,
+        "camYaw": 2.9,
+        "bodyYaw": 2.9,
+        "state": "grounded",
+        "stamina": 100,
+        "towers": [],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "prompt": "需在塔顶",
+        "climbBtn": true,
+        "interactVisible": true,
+        "nearestClimb": {
+          "id": "dawn-shaft",
+          "d": 6.86,
+          "touchingClimbable": false
+        },
+        "lastDamageWhy": "",
+        "enemies": [],
+        "attackPhase": "idle",
+        "dodgeCd": 0
+      },
+      "dS0Final": 85.3
+    },
+    {
+      "name": "01b-climb-handoff",
+      "pass": false,
+      "handoff": {
+        "ok": false,
+        "reason": "not-touching-climbable"
+      },
+      "arrived": true,
+      "nearestClimb": {
+        "id": "dawn-shaft",
+        "d": 6.82,
+        "touchingClimbable": false
+      },
+      "pos": {
+        "x": 11.38,
+        "y": 15.1,
+        "z": 61.32
+      }
+    }
+  ],
+  "failure": null,
+  "ring": [],
+  "errors": [],
+  "walkFailure": {
+    "reason": "not-touching-climbable",
+    "pos": {
+      "x": 11.38,
+      "y": 15.1,
+      "z": 61.32
+    },
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 6.82,
+      "touchingClimbable": false
+    },
+    "stopped": null,
+    "hp": 4,
+    "why": ""
+  }
+}

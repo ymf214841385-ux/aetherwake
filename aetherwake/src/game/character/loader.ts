@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { bladeGeometry, sailGeometry } from "./geometry.ts";
+import { orientationForAsset } from "./orientation.ts";
 import type { LimbSet } from "./types.ts";
 
 const NAME_ALIASES: Record<string, string[]> = {
@@ -206,16 +207,31 @@ export async function loadRiggedGLB(url = DEFAULT_GLB_URL): Promise<LimbSet | nu
     setLoadStatus({ status: "loading", source: url });
     const loader = new GLTFLoader();
     const gltf = await loader.loadAsync(url);
-    const root = gltf.scene;
-    root.name = root.name || "WandererGLB";
-    markHierarchyRest(root);
-    const tunedNormalMaterials = tuneV4PreviewMaterials(root);
+    const authored = gltf.scene;
+    authored.name = authored.name || "WandererGLB";
+    markHierarchyRest(authored);
+    const tunedNormalMaterials = tuneV4PreviewMaterials(authored);
 
-    const nodes = resolveCharacterRigNodes(root);
+    const nodes = resolveCharacterRigNodes(authored);
+
+    // actorRoot ← Sim position/yaw only.
+    // modelBasisRoot ← one-time asset orientation calibration (never per-frame).
+    // authoredRoot  ← original GLB scene + AnimationMixer.
+    const orientation = orientationForAsset(url);
+    const actorRoot = new THREE.Group();
+    actorRoot.name = "WandererActorRoot";
+    const modelBasisRoot = new THREE.Group();
+    modelBasisRoot.name = "WandererModelBasis";
+    modelBasisRoot.rotation.y = orientation.yawCalibration;
+    modelBasisRoot.userData.orientationCalibration = orientation;
+    modelBasisRoot.add(authored);
+    actorRoot.add(modelBasisRoot);
 
     const gear = createRuntimeGear();
     const set: LimbSet = {
-      root,
+      root: actorRoot,
+      modelBasisRoot,
+      authoredRoot: authored,
       torso: nodes.chest,
       head: nodes.head,
       larm: nodes.larm,
@@ -225,13 +241,18 @@ export async function loadRiggedGLB(url = DEFAULT_GLB_URL): Promise<LimbSet | nu
       sword: gear.sword,
       glider: gear.glider,
       slate: gear.slate,
-      skeleton: collectSkeleton(root),
+      skeleton: collectSkeleton(authored),
     };
     ensureGear(set);
-    root.userData.source = url;
-    root.userData.kind = "wanderer-glb";
-    root.userData.mixer = new THREE.AnimationMixer(root);
-    root.userData.clips = gltf.animations;
+    actorRoot.userData.source = url;
+    actorRoot.userData.kind = "wanderer-glb";
+    actorRoot.userData.orientationCalibration = orientation;
+    const mixer = new THREE.AnimationMixer(authored);
+    // animate.ts reads mixer/clips from LimbSet.root.userData.
+    actorRoot.userData.mixer = mixer;
+    actorRoot.userData.clips = gltf.animations;
+    authored.userData.mixer = mixer;
+    authored.userData.clips = gltf.animations;
     setLoadStatus({
       status: "ready",
       source: url,
@@ -239,6 +260,10 @@ export async function loadRiggedGLB(url = DEFAULT_GLB_URL): Promise<LimbSet | nu
       bones: set.skeleton?.bones.length ?? 0,
       normalMapScale: useV4Preview ? V4_RUNTIME_NORMAL_SCALE : 1,
       tunedNormalMaterials,
+      orientation: {
+        yawCalibration: orientation.yawCalibration,
+        authoredForward: orientation.authoredForward,
+      },
     });
     return set;
   } catch (error) {

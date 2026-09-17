@@ -1,0 +1,125 @@
+{
+  "ok": true,
+  "scope": "headed-native-touch-and-mixed-pointer-smoke",
+  "checks": [
+    {
+      "name": "native bow tap enables aiming",
+      "snapshot": {
+        "mode": "playing",
+        "x": 16,
+        "y": 11.414756173028813,
+        "z": 102,
+        "vx": 0,
+        "vz": 0,
+        "aiming": true,
+        "attack": "idle",
+        "state": "grounded",
+        "hp": 3
+      }
+    },
+    {
+      "name": "second native bow tap disables aiming",
+      "snapshot": {
+        "mode": "playing",
+        "x": 16,
+        "y": 11.414756173028813,
+        "z": 102,
+        "vx": 0,
+        "vz": 0,
+        "aiming": false,
+        "attack": "idle",
+        "state": "grounded",
+        "hp": 3
+      }
+    },
+    {
+      "name": "reset rejects unfinished pointer bow click",
+      "snapshot": {
+        "mode": "playing",
+        "x": 16,
+        "y": 11.414756173028813,
+        "z": 102,
+        "vx": 0,
+        "vz": 0,
+        "aiming": false,
+        "attack": "idle",
+        "state": "grounded",
+        "hp": 3
+      }
+    },
+    {
+      "name": "reset cancels native held-Space default activation",
+      "snapshot": {
+        "mode": "playing",
+        "x": 16,
+        "y": 11.414756173028813,
+        "z": 102,
+        "vx": 0,
+        "vz": 0,
+        "aiming": false,
+        "attack": "idle",
+        "state": "grounded",
+        "hp": 3
+      }
+    },
+    {
+      "name": "mixed-pointer stick held",
+      "snapshot": {
+        "mode": "playing",
+        "x": 16,
+        "y": 11.414756173028813,
+        "z": 101.52012054899106,
+        "vx": 0,
+        "vz": -2.582011676065404,
+        "aiming": false,
+        "attack": "idle",
+        "state": "grounded",
+        "hp": 3
+      }
+    },
+    {
+      "name": "look pointer release preserves held stick",
+      "snapshot": {
+        "mode": "playing",
+        "x": 16,
+        "y": 11.414756173028813,
+        "z": 100.68890446736457,
+        "vx": 0,
+        "vz": -3.1189340238641345,
+        "aiming": false,
+        "attack": "idle",
+        "state": "grounded",
+        "hp": 3
+      }
+    },
+    {
+      "name": "released stick settles",
+      "snapshot": {
+        "mode": "playing",
+        "x": 16,
+        "y": 11.414756173028813,
+        "z": 100.27805427592898,
+        "vx": 0,
+        "vz": -0.0024654871643142104,
+        "aiming": false,
+        "attack": "idle",
+        "state": "grounded",
+        "hp": 3
+      }
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "Chromium emulation, not iOS/Android physical multitouch",
+    "No full gameplay acceptance in this smoke"
+  ],
+  "serverCleanup": {
+    "ok": true,
+    "pid": 71085,
+    "stopped": [
+      71086,
+      71085
+    ],
+    "stubborn": []
+  }
+}

@@ -94,17 +94,47 @@ export function Overlay({
               {hud.climbing && <span>攀爬</span>}
             </div>
           </div>
-          <div className="hud-tr">
-            <p className="objective">{hud.objective}</p>
+          <div className="hud-tr" data-ui>
+            <p className="objective">
+              <strong>{hud.questTitle}</strong>
+              <span className="objective-next">{hud.questNext}</span>
+              {hud.questDistance != null && Number.isFinite(hud.questDistance) && (
+                <span className="objective-dist">直线约 {Math.round(hud.questDistance)}m</span>
+              )}
+              {hud.questRouteCost != null && Number.isFinite(hud.questRouteCost) && hud.questRouteStatus === "approximate" && (
+                <span className="objective-dist">方向估计 {Math.round(hud.questRouteCost)}m</span>
+              )}
+              {hud.questRouteStatus === "unavailable" && hud.questRouteHint && (
+                <span className="objective-dist">{hud.questRouteHint}</span>
+              )}
+              {hud.routeGuidance && (
+                <span className="objective-dist">{hud.routeGuidance}</span>
+              )}
+            </p>
             <div className="hud-tools">
               <button type="button" className="icon-btn" onClick={() => (sim.mode = "map")} aria-label="地图">
                 <Map size={18} />
+              </button>
+              <button type="button" className="icon-btn" onClick={() => (sim.mode = "inventory")} aria-label="行囊">
+                <span aria-hidden>袋</span>
               </button>
               <button type="button" className="icon-btn" onClick={() => (sim.mode = "paused")} aria-label="暂停">
                 <Pause size={18} />
               </button>
               <button type="button" className="icon-btn" onClick={onMute} aria-label="静音">
                 {muted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+              </button>
+              <button
+                type="button"
+                className="icon-btn"
+                aria-label="重播提示"
+                data-ui
+                onClick={() => {
+                  sim.tutorial = "拖动左下摇杆移动；右侧拖动视角；靠近可交互对象后点「互动」。";
+                  sim.syncHud();
+                }}
+              >
+                ?
               </button>
             </div>
           </div>
@@ -134,7 +164,22 @@ export function Overlay({
           )}
           {hud.prompt && <p className="prompt">{hud.prompt}</p>}
           {hud.shrineHint && <p className="hint">{hud.shrineHint}</p>}
-          {hud.tutorial && <p className="hint">{hud.tutorial}</p>}
+          {hud.tutorial && (
+            <p className="hint" data-ui>
+              {hud.tutorial}
+              <button
+                type="button"
+                className="hint-skip"
+                data-ui
+                onClick={() => {
+                  sim.tutorial = "";
+                  sim.syncHud();
+                }}
+              >
+                跳过提示
+              </button>
+            </p>
+          )}
           {hud.saveError && <p className="toast warn">{hud.saveError}</p>}
           {hud.portrait && (
             <div className="portrait-hint" data-ui>
@@ -357,21 +402,33 @@ function BigMap() {
   const hud = useHud();
   const scale = 280 / 384;
   return (
-    <div className="bigmap">
+    <div className="bigmap" data-ui>
       {hud.markers.map((m) => (
-        <span
+        <button
+          type="button"
           key={m.id}
-          className={`pin pin-${m.kind} ${m.done ? "done" : ""}`}
+          className={`pin pin-${m.kind} ${m.done ? "done" : ""} ${hud.selectedMarkerId === m.id ? "selected" : ""}`}
           style={{ left: 140 + m.x * scale, top: 140 + m.z * scale }}
           title={m.name}
+          data-ui
+          onClick={() => {
+            useHud.setState({ selectedMarkerId: m.done ? null : m.id });
+          }}
         />
       ))}
       <span className="you" style={{ left: 140 + hud.px * scale, top: 140 + hud.pz * scale }} />
       <ul className="map-legend">
         {hud.markers.map((m) => (
-          <li key={m.id}>
-            {m.name}
-            {m.done ? " · 已完成" : ""}
+          <li key={m.id} className={hud.selectedMarkerId === m.id ? "selected" : ""}>
+            <button
+              type="button"
+              data-ui
+              onClick={() => useHud.setState({ selectedMarkerId: m.done ? null : m.id })}
+            >
+              {m.name}
+              {m.done ? " · 已完成" : ""}
+              {hud.selectedMarkerId === m.id ? " · 追踪中" : ""}
+            </button>
           </li>
         ))}
       </ul>
@@ -391,13 +448,15 @@ function Modal({
   return (
     <div className="modal-back" onClick={onClose}>
       <div className="modal" onClick={(e) => e.stopPropagation()} role="dialog" aria-label={title}>
-        <h2>{title}</h2>
-        {children}
-        {onClose && (
-          <button type="button" className="btn-ghost" onClick={onClose}>
-            关闭
-          </button>
-        )}
+        <div className="modal-head">
+          <h2>{title}</h2>
+          {onClose && (
+            <button type="button" className="btn-ghost modal-close" onClick={onClose}>
+              关闭
+            </button>
+          )}
+        </div>
+        <div className="modal-body">{children}</div>
       </div>
     </div>
   );

@@ -1,0 +1,238 @@
+{
+  "ok": false,
+  "pid": 5919,
+  "milestones": [
+    {
+      "name": "00-restore",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 4,
+        "x": 10.59,
+        "y": 47.9,
+        "z": 65.19,
+        "camYaw": 2.9,
+        "bodyYaw": 2.935,
+        "state": "grounded",
+        "stamina": 100,
+        "towers": [
+          "dawn"
+        ],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "prompt": "",
+        "interactVisible": false,
+        "nearestClimb": {
+          "id": "dawn-shaft",
+          "d": 2.88,
+          "touchingClimbable": true
+        },
+        "lastDamageWhy": "",
+        "enemies": [],
+        "attackPhase": "idle",
+        "dodgeCd": 0,
+        "towerBaseY": 7.800000190734864
+      },
+      "t": 1789592289806
+    },
+    {
+      "name": "01-map-mere",
+      "pass": true,
+      "sel": "mere",
+      "t": 1789592291098
+    },
+    {
+      "name": "wp1",
+      "pass": true,
+      "target": {
+        "x": -30,
+        "z": 40
+      },
+      "t": 1789592302128
+    },
+    {
+      "name": "wp2",
+      "pass": true,
+      "target": {
+        "x": -55,
+        "z": 28
+      },
+      "t": 1789592344290
+    },
+    {
+      "name": "wp3",
+      "pass": true,
+      "target": {
+        "x": -80,
+        "z": 18
+      },
+      "t": 1789592369787
+    },
+    {
+      "name": "wp4",
+      "pass": true,
+      "target": {
+        "x": -100,
+        "z": 14
+      },
+      "t": 1789592380353
+    },
+    {
+      "name": "wp5",
+      "pass": true,
+      "target": {
+        "x": -108,
+        "z": 14
+      },
+      "t": 1789592388137
+    },
+    {
+      "name": "01-arrive-mere",
+      "pass": true,
+      "post": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 2.5,
+        "x": -102.33,
+        "y": 5.24,
+        "z": 12.93,
+        "camYaw": 1.544,
+        "bodyYaw": -4.739,
+        "state": "grounded",
+        "stamina": 100,
+        "towers": [
+          "dawn"
+        ],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "prompt": "需在塔顶",
+        "interactVisible": true,
+        "nearestClimb": {
+          "id": "mere-shaft",
+          "d": 7.52,
+          "touchingClimbable": false
+        },
+        "lastDamageWhy": "坠落",
+        "enemies": [],
+        "attackPhase": "idle",
+        "dodgeCd": 0,
+        "towerBaseY": 7.800000190734864
+      },
+      "t": 1789592391968
+    },
+    {
+      "name": "01a-approach-contact",
+      "pass": true,
+      "steps": 9,
+      "t0": 1789592391968,
+      "start": {
+        "x": -102.33,
+        "z": 12.93,
+        "d": 7.52,
+        "contact": false
+      },
+      "end": {
+        "x": -104.24,
+        "z": 12.09,
+        "d": 5.55,
+        "contact": true,
+        "id": "mere-shaft",
+        "elapsedMs": 1066
+      },
+      "decision": {
+        "kind": "handoff",
+        "reason": "contact id=mere-shaft",
+        "id": "mere-shaft"
+      },
+      "t": 1789592393034
+    },
+    {
+      "name": "01b-climb-handoff",
+      "pass": true,
+      "handoff": {
+        "ok": true
+      },
+      "arrived": true,
+      "approachDecision": {
+        "kind": "handoff",
+        "reason": "contact id=mere-shaft",
+        "id": "mere-shaft"
+      },
+      "nearestClimb": {
+        "id": "mere-shaft",
+        "d": 5.55,
+        "touchingClimbable": true
+      },
+      "pos": {
+        "x": -104.24,
+        "y": 5.82,
+        "z": 12.09
+      },
+      "t": 1789592393034
+    },
+    {
+      "name": "02-climb",
+      "pass": false,
+      "maxY": 5.82,
+      "final": {
+        "y": 5.82,
+        "state": "grounded"
+      },
+      "t": 1789592393135
+    },
+    {
+      "name": "03-activate-mere",
+      "pass": true,
+      "maxY": 5.82,
+      "towers": [
+        "dawn"
+      ],
+      "t": 1789592393135
+    },
+    {
+      "name": "04-reload-mere",
+      "pass": false,
+      "before": {
+        "towers": [
+          "dawn"
+        ],
+        "shrines": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ]
+      },
+      "after": {
+        "towers": [
+          "dawn"
+        ],
+        "shrines": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "orbs": 4
+      },
+      "t": 1789592394071
+    }
+  ],
+  "failure": null,
+  "ring": [],
+  "errors": [],
+  "startedAt": "2026-09-16T20:58:07.789Z"
+}

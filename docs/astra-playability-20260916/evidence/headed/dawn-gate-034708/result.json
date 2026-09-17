@@ -1,0 +1,127 @@
+{
+  "ok": false,
+  "pid": 2320,
+  "milestones": [
+    {
+      "name": "00-restore",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 4,
+        "x": 16.03,
+        "y": 16.11,
+        "z": -72.75,
+        "camYaw": 2.9,
+        "state": "grounded",
+        "stamina": 100,
+        "towers": [],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "prompt": "",
+        "climbBtn": false,
+        "interactVisible": false,
+        "nearestClimb": {
+          "id": "citadel-wall-0--11",
+          "d": 50.75
+        },
+        "lastDamageWhy": "",
+        "enemies": [],
+        "attackPhase": "idle",
+        "dodgeCd": 0
+      }
+    },
+    {
+      "name": "wp1",
+      "pass": true,
+      "target": {
+        "x": 16,
+        "z": -10
+      }
+    },
+    {
+      "name": "01b-climb-handoff",
+      "pass": false,
+      "handoff": {
+        "ok": false,
+        "reason": "mode=dead"
+      },
+      "arrived": false,
+      "nearestClimb": {
+        "id": "citadel-wall-0--11",
+        "d": 7.09
+      },
+      "pos": {
+        "x": 13.01,
+        "y": 11.15,
+        "z": -24.1
+      }
+    }
+  ],
+  "failure": null,
+  "ring": [],
+  "errors": [],
+  "walkFailure": {
+    "reason": "not-arrived",
+    "pos": {
+      "x": 13.01,
+      "y": 11.15,
+      "z": -24.1
+    },
+    "nearestClimb": {
+      "id": "citadel-wall-0--11",
+      "d": 7.09
+    },
+    "stopped": {
+      "reason": "terminal",
+      "i": 130,
+      "mid": {
+        "mode": "dead",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 0,
+        "x": 13.01,
+        "y": 11.15,
+        "z": -24.1,
+        "camYaw": 3.238,
+        "state": "dead",
+        "stamina": 76.2,
+        "towers": [],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "prompt": "请靠近：距离 41.8m",
+        "climbBtn": true,
+        "interactVisible": true,
+        "nearestClimb": {
+          "id": "citadel-wall-0--11",
+          "d": 7.09
+        },
+        "lastDamageWhy": "敌人",
+        "enemies": [
+          {
+            "id": "s-0",
+            "d": 1.38,
+            "phase": "recover",
+            "x": 12.82,
+            "z": -25.47
+          }
+        ],
+        "attackPhase": "idle",
+        "dodgeCd": 0.5
+      }
+    },
+    "hp": 0,
+    "why": "敌人"
+  }
+}

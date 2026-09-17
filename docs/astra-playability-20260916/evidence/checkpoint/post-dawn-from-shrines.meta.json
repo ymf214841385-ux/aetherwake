@@ -1,0 +1,18 @@
+{
+  "source": "dawn-from-shrines.mjs",
+  "sourceCheckpoint": "post-still-claimed.storage.json",
+  "progressAtExport": {
+    "shrines": [
+      "burst",
+      "rime",
+      "pull",
+      "still"
+    ],
+    "towers": [
+      "dawn"
+    ],
+    "note": "four shrines claimed + dawn lit from natural four-shrine save; no splice"
+  },
+  "pid": 5741,
+  "exportedAt": "2026-09-16T20:56:51.473Z"
+}

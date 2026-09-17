@@ -1,0 +1,835 @@
+{
+  "ok": false,
+  "pid": 7992,
+  "milestones": [
+    {
+      "name": "00-restore",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "hp": 0.5,
+        "x": 49.73,
+        "y": 53.6,
+        "z": -125.88,
+        "camYaw": 0.189,
+        "bodyYaw": 0.681,
+        "state": "grounded",
+        "stamina": 100,
+        "towers": [
+          "dawn",
+          "mere",
+          "crown"
+        ],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "bossDead": false,
+        "sealOpen": true,
+        "prompt": "",
+        "attackPhase": "idle",
+        "dodgeCd": 0,
+        "lastDamageWhy": "",
+        "enemies": [
+          {
+            "id": "s-1",
+            "kind": "sentinel",
+            "d": 53.93,
+            "phase": "patrol",
+            "hp": 8,
+            "x": 52,
+            "z": -72
+          },
+          {
+            "id": "s-0",
+            "kind": "sentinel",
+            "d": 94.06,
+            "phase": "patrol",
+            "hp": 8,
+            "x": 22,
+            "z": -36
+          },
+          {
+            "id": "b-1-2",
+            "kind": "bramble",
+            "d": 119.62,
+            "phase": "patrol",
+            "hp": 3,
+            "x": 87.46,
+            "z": -12.37
+          },
+          {
+            "id": "b-1-1",
+            "kind": "bramble",
+            "d": 125.3,
+            "phase": "patrol",
+            "hp": 3,
+            "x": 84.81,
+            "z": -5.59
+          },
+          {
+            "id": "b-1-0",
+            "kind": "bramble",
+            "d": 126.32,
+            "phase": "patrol",
+            "hp": 3,
+            "x": 91.32,
+            "z": -6.6
+          },
+          {
+            "id": "boss",
+            "kind": "boss",
+            "d": 128.73,
+            "phase": "patrol",
+            "hp": 20,
+            "x": 6,
+            "z": -4.8
+          }
+        ]
+      },
+      "t": 1789594599910
+    },
+    {
+      "name": "00b-seal-open",
+      "pass": true,
+      "sealOpen": true,
+      "t": 1789594599910
+    },
+    {
+      "name": "00c-respawn-fire",
+      "pass": true,
+      "t": 1789594602630
+    },
+    {
+      "name": "wp1",
+      "pass": true,
+      "target": {
+        "x": 18.52,
+        "z": -40
+      },
+      "t": 1789594637412
+    },
+    {
+      "name": "01-reseed-outer",
+      "pass": true,
+      "x": 11.66,
+      "z": -39.96,
+      "wps": [
+        {
+          "x": 11.66,
+          "z": -39.96
+        },
+        {
+          "x": 18.52,
+          "z": -39.96
+        },
+        {
+          "x": 18.52,
+          "z": -18
+        },
+        {
+          "x": 18.52,
+          "z": -8
+        },
+        {
+          "x": 18.52,
+          "z": 2
+        },
+        {
+          "x": 12,
+          "z": 2
+        },
+        {
+          "x": 6,
+          "z": 2
+        },
+        {
+          "x": 6,
+          "z": -1
+        },
+        {
+          "x": 6,
+          "z": -4
+        }
+      ],
+      "t": 1789594640498
+    },
+    {
+      "name": "wp1",
+      "pass": true,
+      "target": {
+        "x": 18.52,
+        "z": -39.96
+      },
+      "t": 1789594640498
+    },
+    {
+      "name": "wp2",
+      "pass": true,
+      "target": {
+        "x": 18.52,
+        "z": -18
+      },
+      "t": 1789594641546
+    },
+    {
+      "name": "wp3",
+      "pass": true,
+      "target": {
+        "x": 18.52,
+        "z": -8
+      },
+      "t": 1789594648712
+    },
+    {
+      "name": "wp4",
+      "pass": true,
+      "target": {
+        "x": 18.52,
+        "z": 2
+      },
+      "t": 1789594652261
+    },
+    {
+      "name": "wp5",
+      "pass": true,
+      "target": {
+        "x": 12,
+        "z": 2
+      },
+      "t": 1789594655762
+    },
+    {
+      "name": "wp6",
+      "pass": true,
+      "target": {
+        "x": 6,
+        "z": 2
+      },
+      "t": 1789594657830
+    },
+    {
+      "name": "wp7",
+      "pass": true,
+      "target": {
+        "x": 6,
+        "z": -1
+      },
+      "t": 1789594660079
+    },
+    {
+      "name": "wp8",
+      "pass": true,
+      "target": {
+        "x": 6,
+        "z": -4
+      },
+      "t": 1789594661259
+    },
+    {
+      "name": "first-damage",
+      "pass": true,
+      "i": 246,
+      "hp": 1.75,
+      "x": 4.86,
+      "z": -1.34,
+      "y": 10.71,
+      "why": "空王",
+      "enemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "d": 2,
+          "phase": "recover",
+          "hp": 20,
+          "x": 6.86,
+          "z": -1.39
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "d": 25.44,
+          "phase": "lost",
+          "hp": 3,
+          "x": -17.09,
+          "z": 11.52
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "d": 28.16,
+          "phase": "lost",
+          "hp": 3,
+          "x": -15.43,
+          "z": 18.18
+        }
+      ],
+      "t": 1789594661654
+    },
+    {
+      "name": "01-enter-courtyard",
+      "pass": true,
+      "post": {
+        "mode": "playing",
+        "world": "overworld",
+        "hp": 1.75,
+        "x": 4.86,
+        "y": 10.71,
+        "z": -1.34,
+        "camYaw": 0.576,
+        "bodyYaw": 1.8,
+        "state": "grounded",
+        "stamina": 86.2,
+        "towers": [
+          "dawn",
+          "mere",
+          "crown"
+        ],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "bossDead": false,
+        "sealOpen": true,
+        "prompt": "请靠近：距离 26.7m",
+        "attackPhase": "idle",
+        "dodgeCd": 0.27,
+        "lastDamageWhy": "空王",
+        "enemies": [
+          {
+            "id": "boss",
+            "kind": "boss",
+            "d": 2,
+            "phase": "recover",
+            "hp": 20,
+            "x": 6.86,
+            "z": -1.39
+          },
+          {
+            "id": "b-2-2",
+            "kind": "bramble",
+            "d": 25.44,
+            "phase": "lost",
+            "hp": 3,
+            "x": -17.09,
+            "z": 11.52
+          },
+          {
+            "id": "b-2-0",
+            "kind": "bramble",
+            "d": 28.16,
+            "phase": "lost",
+            "hp": 3,
+            "x": -15.43,
+            "z": 18.18
+          },
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "d": 32.42,
+            "phase": "lost",
+            "hp": 3,
+            "x": -21.95,
+            "z": 16.9
+          },
+          {
+            "id": "s-0",
+            "kind": "sentinel",
+            "d": 33.3,
+            "phase": "lost",
+            "hp": 8,
+            "x": 20.57,
+            "z": -30.71
+          },
+          {
+            "id": "b-0-2",
+            "kind": "bramble",
+            "d": 60.38,
+            "phase": "lost",
+            "hp": 3,
+            "x": 39.42,
+            "z": 48.16
+          }
+        ]
+      },
+      "t": 1789594661738
+    },
+    {
+      "name": "02-boss-dead",
+      "pass": false,
+      "final": {
+        "mode": "dead",
+        "world": "overworld",
+        "hp": 0,
+        "x": 6.38,
+        "y": 10.74,
+        "z": 0.41,
+        "camYaw": -5.764,
+        "bodyYaw": -3.731,
+        "state": "dead",
+        "stamina": 100,
+        "towers": [
+          "dawn",
+          "mere",
+          "crown"
+        ],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "bossDead": false,
+        "sealOpen": true,
+        "prompt": "请靠近：距离 26.9m",
+        "attackPhase": "idle",
+        "dodgeCd": 0,
+        "lastDamageWhy": "空王",
+        "enemies": [
+          {
+            "id": "boss",
+            "kind": "boss",
+            "d": 0.9,
+            "phase": "recover",
+            "hp": 18.2,
+            "x": 6.24,
+            "z": -0.48
+          },
+          {
+            "id": "b-2-2",
+            "kind": "bramble",
+            "d": 26.11,
+            "phase": "lost",
+            "hp": 3,
+            "x": -16.96,
+            "z": 12.09
+          },
+          {
+            "id": "b-2-0",
+            "kind": "bramble",
+            "d": 28.76,
+            "phase": "lost",
+            "hp": 3,
+            "x": -15.86,
+            "z": 18.64
+          },
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "d": 33.15,
+            "phase": "lost",
+            "hp": 3,
+            "x": -22.25,
+            "z": 17.12
+          },
+          {
+            "id": "s-0",
+            "kind": "sentinel",
+            "d": 39.52,
+            "phase": "lost",
+            "hp": 8,
+            "x": 21.62,
+            "z": -36.05
+          },
+          {
+            "id": "b-0-2",
+            "kind": "bramble",
+            "d": 58.34,
+            "phase": "lost",
+            "hp": 3,
+            "x": 39.55,
+            "z": 48.41
+          }
+        ]
+      },
+      "stopped": null,
+      "fightDeath": {
+        "i": 22,
+        "t": {
+          "mode": "dead",
+          "world": "overworld",
+          "hp": 0,
+          "x": 6.38,
+          "y": 10.74,
+          "z": 0.41,
+          "camYaw": -5.764,
+          "bodyYaw": -3.731,
+          "state": "dead",
+          "stamina": 100,
+          "towers": [
+            "dawn",
+            "mere",
+            "crown"
+          ],
+          "orbs": 4,
+          "shrinesOn": [
+            "burst",
+            "rime",
+            "pull",
+            "still"
+          ],
+          "bossDead": false,
+          "sealOpen": true,
+          "prompt": "请靠近：距离 26.9m",
+          "attackPhase": "idle",
+          "dodgeCd": 0,
+          "lastDamageWhy": "空王",
+          "enemies": [
+            {
+              "id": "boss",
+              "kind": "boss",
+              "d": 0.9,
+              "phase": "recover",
+              "hp": 18.2,
+              "x": 6.24,
+              "z": -0.48
+            },
+            {
+              "id": "b-2-2",
+              "kind": "bramble",
+              "d": 26.11,
+              "phase": "lost",
+              "hp": 3,
+              "x": -16.96,
+              "z": 12.09
+            },
+            {
+              "id": "b-2-0",
+              "kind": "bramble",
+              "d": 28.76,
+              "phase": "lost",
+              "hp": 3,
+              "x": -15.86,
+              "z": 18.64
+            },
+            {
+              "id": "b-2-1",
+              "kind": "bramble",
+              "d": 33.15,
+              "phase": "lost",
+              "hp": 3,
+              "x": -22.25,
+              "z": 17.12
+            },
+            {
+              "id": "s-0",
+              "kind": "sentinel",
+              "d": 39.52,
+              "phase": "lost",
+              "hp": 8,
+              "x": 21.62,
+              "z": -36.05
+            },
+            {
+              "id": "b-0-2",
+              "kind": "bramble",
+              "d": 58.34,
+              "phase": "lost",
+              "hp": 3,
+              "x": 39.55,
+              "z": 48.41
+            }
+          ]
+        }
+      },
+      "t": 1789594666061
+    },
+    {
+      "name": "03-reload-boss",
+      "pass": false,
+      "after": {
+        "bossDead": false,
+        "towers": [
+          "dawn",
+          "mere",
+          "crown"
+        ],
+        "shrines": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "orbs": 4
+      },
+      "t": 1789594666981
+    }
+  ],
+  "failure": {
+    "stopped": null,
+    "final": {
+      "mode": "dead",
+      "world": "overworld",
+      "hp": 0,
+      "x": 6.38,
+      "y": 10.74,
+      "z": 0.41,
+      "camYaw": -5.764,
+      "bodyYaw": -3.731,
+      "state": "dead",
+      "stamina": 100,
+      "towers": [
+        "dawn",
+        "mere",
+        "crown"
+      ],
+      "orbs": 4,
+      "shrinesOn": [
+        "burst",
+        "rime",
+        "pull",
+        "still"
+      ],
+      "bossDead": false,
+      "sealOpen": true,
+      "prompt": "请靠近：距离 26.9m",
+      "attackPhase": "idle",
+      "dodgeCd": 0,
+      "lastDamageWhy": "空王",
+      "enemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "d": 0.9,
+          "phase": "recover",
+          "hp": 18.2,
+          "x": 6.24,
+          "z": -0.48
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "d": 26.11,
+          "phase": "lost",
+          "hp": 3,
+          "x": -16.96,
+          "z": 12.09
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "d": 28.76,
+          "phase": "lost",
+          "hp": 3,
+          "x": -15.86,
+          "z": 18.64
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "d": 33.15,
+          "phase": "lost",
+          "hp": 3,
+          "x": -22.25,
+          "z": 17.12
+        },
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "d": 39.52,
+          "phase": "lost",
+          "hp": 8,
+          "x": 21.62,
+          "z": -36.05
+        },
+        {
+          "id": "b-0-2",
+          "kind": "bramble",
+          "d": 58.34,
+          "phase": "lost",
+          "hp": 3,
+          "x": 39.55,
+          "z": 48.41
+        }
+      ]
+    },
+    "fightDeath": {
+      "i": 22,
+      "t": {
+        "mode": "dead",
+        "world": "overworld",
+        "hp": 0,
+        "x": 6.38,
+        "y": 10.74,
+        "z": 0.41,
+        "camYaw": -5.764,
+        "bodyYaw": -3.731,
+        "state": "dead",
+        "stamina": 100,
+        "towers": [
+          "dawn",
+          "mere",
+          "crown"
+        ],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "bossDead": false,
+        "sealOpen": true,
+        "prompt": "请靠近：距离 26.9m",
+        "attackPhase": "idle",
+        "dodgeCd": 0,
+        "lastDamageWhy": "空王",
+        "enemies": [
+          {
+            "id": "boss",
+            "kind": "boss",
+            "d": 0.9,
+            "phase": "recover",
+            "hp": 18.2,
+            "x": 6.24,
+            "z": -0.48
+          },
+          {
+            "id": "b-2-2",
+            "kind": "bramble",
+            "d": 26.11,
+            "phase": "lost",
+            "hp": 3,
+            "x": -16.96,
+            "z": 12.09
+          },
+          {
+            "id": "b-2-0",
+            "kind": "bramble",
+            "d": 28.76,
+            "phase": "lost",
+            "hp": 3,
+            "x": -15.86,
+            "z": 18.64
+          },
+          {
+            "id": "b-2-1",
+            "kind": "bramble",
+            "d": 33.15,
+            "phase": "lost",
+            "hp": 3,
+            "x": -22.25,
+            "z": 17.12
+          },
+          {
+            "id": "s-0",
+            "kind": "sentinel",
+            "d": 39.52,
+            "phase": "lost",
+            "hp": 8,
+            "x": 21.62,
+            "z": -36.05
+          },
+          {
+            "id": "b-0-2",
+            "kind": "bramble",
+            "d": 58.34,
+            "phase": "lost",
+            "hp": 3,
+            "x": 39.55,
+            "z": 48.41
+          }
+        ]
+      }
+    }
+  },
+  "errors": [],
+  "startedAt": "2026-09-16T21:36:37.920Z",
+  "fightDeath": {
+    "i": 22,
+    "t": {
+      "mode": "dead",
+      "world": "overworld",
+      "hp": 0,
+      "x": 6.38,
+      "y": 10.74,
+      "z": 0.41,
+      "camYaw": -5.764,
+      "bodyYaw": -3.731,
+      "state": "dead",
+      "stamina": 100,
+      "towers": [
+        "dawn",
+        "mere",
+        "crown"
+      ],
+      "orbs": 4,
+      "shrinesOn": [
+        "burst",
+        "rime",
+        "pull",
+        "still"
+      ],
+      "bossDead": false,
+      "sealOpen": true,
+      "prompt": "请靠近：距离 26.9m",
+      "attackPhase": "idle",
+      "dodgeCd": 0,
+      "lastDamageWhy": "空王",
+      "enemies": [
+        {
+          "id": "boss",
+          "kind": "boss",
+          "d": 0.9,
+          "phase": "recover",
+          "hp": 18.2,
+          "x": 6.24,
+          "z": -0.48
+        },
+        {
+          "id": "b-2-2",
+          "kind": "bramble",
+          "d": 26.11,
+          "phase": "lost",
+          "hp": 3,
+          "x": -16.96,
+          "z": 12.09
+        },
+        {
+          "id": "b-2-0",
+          "kind": "bramble",
+          "d": 28.76,
+          "phase": "lost",
+          "hp": 3,
+          "x": -15.86,
+          "z": 18.64
+        },
+        {
+          "id": "b-2-1",
+          "kind": "bramble",
+          "d": 33.15,
+          "phase": "lost",
+          "hp": 3,
+          "x": -22.25,
+          "z": 17.12
+        },
+        {
+          "id": "s-0",
+          "kind": "sentinel",
+          "d": 39.52,
+          "phase": "lost",
+          "hp": 8,
+          "x": 21.62,
+          "z": -36.05
+        },
+        {
+          "id": "b-0-2",
+          "kind": "bramble",
+          "d": 58.34,
+          "phase": "lost",
+          "hp": 3,
+          "x": 39.55,
+          "z": 48.41
+        }
+      ]
+    }
+  }
+}

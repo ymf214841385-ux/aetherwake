@@ -1,0 +1,248 @@
+{
+  "ok": true,
+  "pid": 74246,
+  "startedAt": "2026-09-16T12:15:12.812Z",
+  "viewports": [
+    {
+      "name": "844x390",
+      "w": 844,
+      "h": 390,
+      "pass": true,
+      "result": {
+        "viewport": {
+          "w": 844,
+          "h": 390
+        },
+        "stick": {
+          "sel": "[data-touch-kind=\"stick\"]",
+          "x": 12,
+          "y": 246,
+          "w": 128,
+          "h": 128,
+          "cx": 76,
+          "cy": 310
+        },
+        "interact": {
+          "sel": "[data-touch-action=\"interact\"]",
+          "x": 706,
+          "y": 156,
+          "w": 64,
+          "h": 52,
+          "cx": 738,
+          "cy": 182
+        },
+        "attack": {
+          "sel": "[data-touch-action=\"attack\"]",
+          "x": 770,
+          "y": 276,
+          "w": 64,
+          "h": 52,
+          "cx": 802,
+          "cy": 302
+        },
+        "jump": {
+          "sel": "[data-touch-action=\"jump\"]",
+          "x": 770,
+          "y": 216,
+          "w": 64,
+          "h": 52,
+          "cx": 802,
+          "cy": 242
+        },
+        "map": {
+          "sel": "[data-touch-action=\"map\"]",
+          "x": 738,
+          "y": 336,
+          "w": 44,
+          "h": 40,
+          "cx": 760,
+          "cy": 356
+        },
+        "minimap": {
+          "sel": ".minimap",
+          "x": 12,
+          "y": 88,
+          "w": 96,
+          "h": 96,
+          "cx": 60,
+          "cy": 136
+        },
+        "objective": {
+          "sel": ".objective",
+          "x": 648,
+          "y": 26,
+          "w": 178,
+          "h": 83.578125,
+          "cx": 737,
+          "cy": 67.7890625
+        },
+        "tools": {
+          "sel": ".hud-tools",
+          "x": 648,
+          "y": 117.578125,
+          "w": 178,
+          "h": 40,
+          "cx": 737,
+          "cy": 137.578125
+        },
+        "hitStick": {
+          "tag": "DIV",
+          "className": "stick-knob",
+          "touchAction": null,
+          "isUi": true
+        },
+        "hitInteract": {
+          "tag": "BUTTON",
+          "className": "tbtn tbtn-interact",
+          "touchAction": "interact",
+          "isUi": true
+        },
+        "hitAttack": {
+          "tag": "BUTTON",
+          "className": "tbtn tbtn-atk",
+          "touchAction": "attack",
+          "isUi": true
+        },
+        "hitJump": {
+          "tag": "BUTTON",
+          "className": "tbtn tbtn-main",
+          "touchAction": "jump",
+          "isUi": true
+        },
+        "overlapMinimapButtons": false,
+        "overlapObjectiveTools": false,
+        "allInViewport": true,
+        "interactTap": {
+          "phaseBefore": "idle",
+          "phaseAfter": "idle",
+          "mode": "playing"
+        },
+        "attackTapped": {
+          "phase": "windup",
+          "attackT": 0.033333333333333354
+        }
+      }
+    },
+    {
+      "name": "667x375",
+      "w": 667,
+      "h": 375,
+      "pass": true,
+      "result": {
+        "viewport": {
+          "w": 667,
+          "h": 375
+        },
+        "stick": {
+          "sel": "[data-touch-kind=\"stick\"]",
+          "x": 12,
+          "y": 231,
+          "w": 128,
+          "h": 128,
+          "cx": 76,
+          "cy": 295
+        },
+        "interact": {
+          "sel": "[data-touch-action=\"interact\"]",
+          "x": 529,
+          "y": 141,
+          "w": 64,
+          "h": 52,
+          "cx": 561,
+          "cy": 167
+        },
+        "attack": {
+          "sel": "[data-touch-action=\"attack\"]",
+          "x": 593,
+          "y": 261,
+          "w": 64,
+          "h": 52,
+          "cx": 625,
+          "cy": 287
+        },
+        "jump": {
+          "sel": "[data-touch-action=\"jump\"]",
+          "x": 593,
+          "y": 201,
+          "w": 64,
+          "h": 52,
+          "cx": 625,
+          "cy": 227
+        },
+        "map": {
+          "sel": "[data-touch-action=\"map\"]",
+          "x": 561,
+          "y": 321,
+          "w": 44,
+          "h": 40,
+          "cx": 583,
+          "cy": 341
+        },
+        "minimap": {
+          "sel": ".minimap",
+          "x": 12,
+          "y": 88,
+          "w": 96,
+          "h": 96,
+          "cx": 60,
+          "cy": 136
+        },
+        "objective": {
+          "sel": ".objective",
+          "x": 471,
+          "y": 26,
+          "w": 178,
+          "h": 83.578125,
+          "cx": 560,
+          "cy": 67.7890625
+        },
+        "tools": {
+          "sel": ".hud-tools",
+          "x": 471,
+          "y": 117.578125,
+          "w": 178,
+          "h": 40,
+          "cx": 560,
+          "cy": 137.578125
+        },
+        "hitStick": {
+          "tag": "DIV",
+          "className": "stick-knob",
+          "touchAction": null,
+          "isUi": true
+        },
+        "hitInteract": {
+          "tag": "BUTTON",
+          "className": "tbtn tbtn-interact",
+          "touchAction": "interact",
+          "isUi": true
+        },
+        "hitAttack": {
+          "tag": "BUTTON",
+          "className": "tbtn tbtn-atk",
+          "touchAction": "attack",
+          "isUi": true
+        },
+        "hitJump": {
+          "tag": "BUTTON",
+          "className": "tbtn tbtn-main",
+          "touchAction": "jump",
+          "isUi": true
+        },
+        "overlapMinimapButtons": false,
+        "overlapObjectiveTools": false,
+        "allInViewport": true,
+        "interactTap": {
+          "phaseBefore": "idle",
+          "phaseAfter": "idle",
+          "mode": "playing"
+        },
+        "attackTapped": {
+          "phase": "windup",
+          "attackT": 0.033333333333333354
+        }
+      }
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,1494 @@
+{
+  "ok": false,
+  "pid": 85853,
+  "startedAt": "2026-09-16T14:37:06.564Z",
+  "milestones": [
+    {
+      "name": "01-start",
+      "pass": true,
+      "mode": "playing",
+      "x": 16,
+      "y": 11.414756173028813,
+      "z": 102,
+      "vx": 0,
+      "vz": 0,
+      "yaw": 0,
+      "camYaw": 0,
+      "state": "grounded",
+      "climbing": false,
+      "hp": 3,
+      "stamina": 100,
+      "prompt": "请靠近：距离 7.2m",
+      "towers": [],
+      "chests": [],
+      "quest": "点亮晨光塔",
+      "load": "ready",
+      "climbBtnExists": true,
+      "climbBtnVisible": true,
+      "nearestClimb": {
+        "id": "dawn-shaft",
+        "d": 34.52535300326414,
+        "climbable": true,
+        "standable": false
+      },
+      "mantle": null,
+      "t": 1789569439726
+    },
+    {
+      "name": "02-move",
+      "pass": true,
+      "d0": 1.3874345613033654,
+      "t": 1789569440483
+    },
+    {
+      "name": "03-near-sage",
+      "pass": true,
+      "sageWalk": {
+        "ok": true,
+        "last": {
+          "mode": "playing",
+          "x": 4.381675708213771,
+          "y": 16.67197117919807,
+          "z": 112.27583135411754,
+          "vx": -0.5805949616151602,
+          "vz": 1.1002485212410247,
+          "yaw": 2.660540472236241,
+          "camYaw": 2.8072000000000004,
+          "state": "grounded",
+          "climbing": false,
+          "hp": 3,
+          "stamina": 100,
+          "prompt": "与守塔人交谈",
+          "towers": [],
+          "chests": [],
+          "quest": "点亮晨光塔",
+          "load": "ready",
+          "climbBtnExists": true,
+          "climbBtnVisible": true,
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 44.630872834238104,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null
+        }
+      },
+      "t": 1789569448506
+    },
+    {
+      "name": "04-sage-talk",
+      "pass": true,
+      "talked": {
+        "mode": "dialogue",
+        "x": 4.3313514580662655,
+        "y": 16.670135388986086,
+        "z": 112.37119763434384,
+        "vx": -0.19886472152521528,
+        "vz": 0.3768558638132921,
+        "yaw": 2.660540472236241,
+        "camYaw": 2.8072000000000004,
+        "state": "grounded",
+        "climbing": false,
+        "hp": 3,
+        "stamina": 100,
+        "prompt": "与守塔人交谈",
+        "towers": [],
+        "chests": [],
+        "quest": "点亮晨光塔",
+        "load": "ready",
+        "climbBtnExists": true,
+        "climbBtnVisible": true,
+        "nearestClimb": {
+          "id": "dawn-shaft",
+          "d": 44.73183157213628,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null
+      },
+      "t": 1789569448851
+    },
+    {
+      "name": "03b-near-chest",
+      "pass": true,
+      "chestWalk": {
+        "ok": true,
+        "last": {
+          "mode": "playing",
+          "x": 19.427816673505685,
+          "y": 16.34459978260253,
+          "z": 108.80241122682037,
+          "vx": 1.0541869544369766,
+          "vz": -0.656385308485317,
+          "yaw": 5.273608401201939,
+          "camYaw": 5.420800000000001,
+          "state": "grounded",
+          "climbing": false,
+          "hp": 3,
+          "stamina": 100,
+          "prompt": "打开容器",
+          "towers": [],
+          "chests": [],
+          "quest": "点亮晨光塔",
+          "load": "ready",
+          "climbBtnExists": true,
+          "climbBtnVisible": true,
+          "nearestClimb": {
+            "id": "ruin-side",
+            "d": 40.84543466061436,
+            "climbable": true,
+            "standable": true
+          },
+          "mantle": null
+        }
+      },
+      "t": 1789569456420
+    },
+    {
+      "name": "05-chest-reward",
+      "pass": true,
+      "afterChest": {
+        "mode": "playing",
+        "x": 19.543489181122737,
+        "y": 16.340576974361138,
+        "z": 108.73038820066175,
+        "vx": 0.1767631681900282,
+        "vz": -0.1100608826479175,
+        "yaw": 5.273608401201939,
+        "camYaw": 5.420800000000001,
+        "state": "grounded",
+        "climbing": false,
+        "hp": 3,
+        "stamina": 100,
+        "prompt": "已搜集",
+        "towers": [],
+        "chests": [
+          "chest-start"
+        ],
+        "quest": "点亮晨光塔",
+        "load": "ready",
+        "climbBtnExists": true,
+        "climbBtnVisible": true,
+        "nearestClimb": {
+          "id": "ruin-side",
+          "d": 40.73610514966198,
+          "climbable": true,
+          "standable": true
+        },
+        "mantle": null
+      },
+      "t": 1789569456754
+    },
+    {
+      "name": "06-map-dawn",
+      "pass": true,
+      "mapped": "dawn",
+      "t": 1789569457113
+    },
+    {
+      "name": "07-tower-base",
+      "pass": true,
+      "towerWalk": {
+        "ok": true,
+        "last": {
+          "mode": "playing",
+          "x": 13.3605533896506,
+          "y": 13.623978312086335,
+          "z": 72.94797497424767,
+          "vx": -0.6169633308445394,
+          "vz": -1.7027774039727126,
+          "yaw": 6.630799999987802,
+          "camYaw": 6.630800000000001,
+          "state": "grounded",
+          "climbing": false,
+          "hp": 3,
+          "stamina": 100,
+          "prompt": "需在塔顶",
+          "towers": [],
+          "chests": [
+            "chest-start"
+          ],
+          "quest": "点亮晨光塔",
+          "load": "ready",
+          "climbBtnExists": true,
+          "climbBtnVisible": true,
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 5.981285432954472,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null
+        }
+      },
+      "lastSamples": [
+        {
+          "i": 25,
+          "x": 15.1,
+          "z": 77.75,
+          "dist": 11,
+          "state": "grounded",
+          "stamina": 100
+        },
+        {
+          "i": 26,
+          "x": 14.69,
+          "z": 76.61,
+          "dist": 9.8,
+          "state": "grounded",
+          "stamina": 100
+        },
+        {
+          "i": 27,
+          "x": 14.27,
+          "z": 75.47,
+          "dist": 8.61,
+          "state": "grounded",
+          "stamina": 100
+        },
+        {
+          "i": 28,
+          "x": 13.84,
+          "z": 74.28,
+          "dist": 7.36,
+          "state": "grounded",
+          "stamina": 100
+        },
+        {
+          "i": 29,
+          "x": 13.43,
+          "z": 73.13,
+          "dist": 6.17,
+          "state": "grounded",
+          "stamina": 100
+        }
+      ],
+      "t": 1789569472695
+    },
+    {
+      "name": "08-climb",
+      "pass": true,
+      "climbingSeen": true,
+      "maxY": 36.93166704813628,
+      "startY": 13.623978312086335,
+      "phase": "ASCEND",
+      "climbEnd": {
+        "y": 16.046667048136392,
+        "state": "airborne",
+        "stamina": -0.03833333333278688
+      },
+      "traceTail": [
+        {
+          "tag": "ASCEND",
+          "x": 8.07,
+          "y": 12.53,
+          "z": 72.17,
+          "vx": 1.21,
+          "vz": -1.29,
+          "state": "climbing",
+          "stamina": 8.2,
+          "prompt": "需在塔顶",
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 4.593797954164212,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 212
+        },
+        {
+          "tag": "SUMMIT",
+          "x": 8.12,
+          "y": 12.51,
+          "z": 72.13,
+          "vx": 1.28,
+          "vz": -1.36,
+          "state": "airborne",
+          "stamina": -0.1,
+          "prompt": "需在塔顶",
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 4.535540191340457,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 213
+        },
+        {
+          "tag": "ASCEND",
+          "x": 8.5,
+          "y": 13.41,
+          "z": 72.35,
+          "vx": 0.15,
+          "vz": -0.16,
+          "state": "grounded",
+          "stamina": 12,
+          "prompt": "需在塔顶",
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 4.59958462178263,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 214
+        },
+        {
+          "tag": "ASCEND",
+          "x": 8.5,
+          "y": 14.2,
+          "z": 72.35,
+          "vx": 0.14,
+          "vz": -0.15,
+          "state": "climbing",
+          "stamina": 7.7,
+          "prompt": "需在塔顶",
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 4.596560659341311,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 215
+        },
+        {
+          "tag": "SUMMIT",
+          "x": 8.76,
+          "y": 13.41,
+          "z": 72.39,
+          "vx": 2.47,
+          "vz": -2.66,
+          "state": "grounded",
+          "stamina": 1,
+          "prompt": "需在塔顶",
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 4.561872547063245,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 216
+        },
+        {
+          "tag": "ASCEND",
+          "x": 9.7,
+          "y": 13.41,
+          "z": 72.51,
+          "vx": 0.2,
+          "vz": -0.22,
+          "state": "grounded",
+          "stamina": 12.6,
+          "prompt": "需在塔顶",
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 4.52417292237281,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 217
+        },
+        {
+          "tag": "ASCEND",
+          "x": 9.71,
+          "y": 14.2,
+          "z": 72.51,
+          "vx": 0.18,
+          "vz": -0.2,
+          "state": "climbing",
+          "stamina": 8.3,
+          "prompt": "需在塔顶",
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 4.520714086249267,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 218
+        },
+        {
+          "tag": "SUMMIT",
+          "x": 9.72,
+          "y": 16.05,
+          "z": 72.57,
+          "vx": 0.52,
+          "vz": -0.56,
+          "state": "airborne",
+          "stamina": 0,
+          "prompt": "需在塔顶",
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 4.577048890791269,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 219
+        }
+      ],
+      "t": 1789569643448
+    },
+    {
+      "name": "09-activate-dawn",
+      "pass": false,
+      "maxY": 36.93166704813628,
+      "climbFinal": {
+        "y": 13.993241667715061,
+        "prompt": "需在塔顶",
+        "towers": []
+      },
+      "t": 1789569643448
+    },
+    {
+      "name": "09-activate-dawn",
+      "pass": false,
+      "maxY": 36.93166704813628,
+      "climbFinal": {
+        "mode": "playing",
+        "x": 10.621338721953148,
+        "y": 13.993241667715061,
+        "z": 72.48924802437496,
+        "vx": 0.08257593569758533,
+        "vz": -1.370787201721017,
+        "yaw": 0.000008375377351413707,
+        "camYaw": 18.8276000000002,
+        "state": "airborne",
+        "climbing": false,
+        "hp": 1.5,
+        "stamina": -0.019999999999448903,
+        "prompt": "需在塔顶",
+        "towers": [],
+        "chests": [
+          "chest-start"
+        ],
+        "quest": "点亮晨光塔",
+        "load": "ready",
+        "climbBtnExists": true,
+        "climbBtnVisible": true,
+        "nearestClimb": {
+          "id": "dawn-shaft",
+          "d": 4.5320425452275765,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null
+      },
+      "traceTail": [
+        {
+          "tag": "ASCEND",
+          "x": 7.32,
+          "y": 13.41,
+          "z": 71.67,
+          "vx": 0.09,
+          "vz": -0.08,
+          "state": "grounded",
+          "stamina": 10.7,
+          "prompt": "需在塔顶",
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 4.541480775874773,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 208
+        },
+        {
+          "tag": "ASCEND",
+          "x": 7.32,
+          "y": 14.2,
+          "z": 71.67,
+          "vx": 0.08,
+          "vz": -0.07,
+          "state": "climbing",
+          "stamina": 6.3,
+          "prompt": "需在塔顶",
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 4.53975185803058,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 209
+        },
+        {
+          "tag": "SUMMIT",
+          "x": 7.21,
+          "y": 13.41,
+          "z": 71.72,
+          "vx": 1.76,
+          "vz": -1.56,
+          "state": "grounded",
+          "stamina": 1.3,
+          "prompt": "需在塔顶",
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 4.648868119658869,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 210
+        },
+        {
+          "tag": "ASCEND",
+          "x": 7.72,
+          "y": 12.5,
+          "z": 71.97,
+          "vx": 1.67,
+          "vz": -1.49,
+          "state": "grounded",
+          "stamina": 4.3,
+          "prompt": "需在塔顶",
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 4.576285061763277,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 211
+        },
+        {
+          "tag": "ASCEND",
+          "x": 8.07,
+          "y": 12.53,
+          "z": 72.17,
+          "vx": 1.21,
+          "vz": -1.29,
+          "state": "climbing",
+          "stamina": 8.2,
+          "prompt": "需在塔顶",
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 4.593797954164212,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 212
+        },
+        {
+          "tag": "SUMMIT",
+          "x": 8.12,
+          "y": 12.51,
+          "z": 72.13,
+          "vx": 1.28,
+          "vz": -1.36,
+          "state": "airborne",
+          "stamina": -0.1,
+          "prompt": "需在塔顶",
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 4.535540191340457,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 213
+        },
+        {
+          "tag": "ASCEND",
+          "x": 8.5,
+          "y": 13.41,
+          "z": 72.35,
+          "vx": 0.15,
+          "vz": -0.16,
+          "state": "grounded",
+          "stamina": 12,
+          "prompt": "需在塔顶",
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 4.59958462178263,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 214
+        },
+        {
+          "tag": "ASCEND",
+          "x": 8.5,
+          "y": 14.2,
+          "z": 72.35,
+          "vx": 0.14,
+          "vz": -0.15,
+          "state": "climbing",
+          "stamina": 7.7,
+          "prompt": "需在塔顶",
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 4.596560659341311,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 215
+        },
+        {
+          "tag": "SUMMIT",
+          "x": 8.76,
+          "y": 13.41,
+          "z": 72.39,
+          "vx": 2.47,
+          "vz": -2.66,
+          "state": "grounded",
+          "stamina": 1,
+          "prompt": "需在塔顶",
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 4.561872547063245,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 216
+        },
+        {
+          "tag": "ASCEND",
+          "x": 9.7,
+          "y": 13.41,
+          "z": 72.51,
+          "vx": 0.2,
+          "vz": -0.22,
+          "state": "grounded",
+          "stamina": 12.6,
+          "prompt": "需在塔顶",
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 4.52417292237281,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 217
+        },
+        {
+          "tag": "ASCEND",
+          "x": 9.71,
+          "y": 14.2,
+          "z": 72.51,
+          "vx": 0.18,
+          "vz": -0.2,
+          "state": "climbing",
+          "stamina": 8.3,
+          "prompt": "需在塔顶",
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 4.520714086249267,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 218
+        },
+        {
+          "tag": "SUMMIT",
+          "x": 9.72,
+          "y": 16.05,
+          "z": 72.57,
+          "vx": 0.52,
+          "vz": -0.56,
+          "state": "airborne",
+          "stamina": 0,
+          "prompt": "需在塔顶",
+          "nearestClimb": {
+            "id": "dawn-shaft",
+            "d": 4.577048890791269,
+            "climbable": true,
+            "standable": false
+          },
+          "mantle": null,
+          "climbVisible": true,
+          "i": 219
+        }
+      ],
+      "t": 1789569643448
+    }
+  ],
+  "failure": {
+    "milestone": "09-activate-dawn",
+    "maxY": 36.93166704813628,
+    "climbFinal": {
+      "mode": "playing",
+      "x": 10.621338721953148,
+      "y": 13.993241667715061,
+      "z": 72.48924802437496,
+      "vx": 0.08257593569758533,
+      "vz": -1.370787201721017,
+      "yaw": 0.000008375377351413707,
+      "camYaw": 18.8276000000002,
+      "state": "airborne",
+      "climbing": false,
+      "hp": 1.5,
+      "stamina": -0.019999999999448903,
+      "prompt": "需在塔顶",
+      "towers": [],
+      "chests": [
+        "chest-start"
+      ],
+      "quest": "点亮晨光塔",
+      "load": "ready",
+      "climbBtnExists": true,
+      "climbBtnVisible": true,
+      "nearestClimb": {
+        "id": "dawn-shaft",
+        "d": 4.5320425452275765,
+        "climbable": true,
+        "standable": false
+      },
+      "mantle": null
+    },
+    "traceTail": [
+      {
+        "tag": "ASCEND",
+        "x": 7.32,
+        "y": 13.41,
+        "z": 71.67,
+        "vx": 0.09,
+        "vz": -0.08,
+        "state": "grounded",
+        "stamina": 10.7,
+        "prompt": "需在塔顶",
+        "nearestClimb": {
+          "id": "dawn-shaft",
+          "d": 4.541480775874773,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 208
+      },
+      {
+        "tag": "ASCEND",
+        "x": 7.32,
+        "y": 14.2,
+        "z": 71.67,
+        "vx": 0.08,
+        "vz": -0.07,
+        "state": "climbing",
+        "stamina": 6.3,
+        "prompt": "需在塔顶",
+        "nearestClimb": {
+          "id": "dawn-shaft",
+          "d": 4.53975185803058,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 209
+      },
+      {
+        "tag": "SUMMIT",
+        "x": 7.21,
+        "y": 13.41,
+        "z": 71.72,
+        "vx": 1.76,
+        "vz": -1.56,
+        "state": "grounded",
+        "stamina": 1.3,
+        "prompt": "需在塔顶",
+        "nearestClimb": {
+          "id": "dawn-shaft",
+          "d": 4.648868119658869,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 210
+      },
+      {
+        "tag": "ASCEND",
+        "x": 7.72,
+        "y": 12.5,
+        "z": 71.97,
+        "vx": 1.67,
+        "vz": -1.49,
+        "state": "grounded",
+        "stamina": 4.3,
+        "prompt": "需在塔顶",
+        "nearestClimb": {
+          "id": "dawn-shaft",
+          "d": 4.576285061763277,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 211
+      },
+      {
+        "tag": "ASCEND",
+        "x": 8.07,
+        "y": 12.53,
+        "z": 72.17,
+        "vx": 1.21,
+        "vz": -1.29,
+        "state": "climbing",
+        "stamina": 8.2,
+        "prompt": "需在塔顶",
+        "nearestClimb": {
+          "id": "dawn-shaft",
+          "d": 4.593797954164212,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 212
+      },
+      {
+        "tag": "SUMMIT",
+        "x": 8.12,
+        "y": 12.51,
+        "z": 72.13,
+        "vx": 1.28,
+        "vz": -1.36,
+        "state": "airborne",
+        "stamina": -0.1,
+        "prompt": "需在塔顶",
+        "nearestClimb": {
+          "id": "dawn-shaft",
+          "d": 4.535540191340457,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 213
+      },
+      {
+        "tag": "ASCEND",
+        "x": 8.5,
+        "y": 13.41,
+        "z": 72.35,
+        "vx": 0.15,
+        "vz": -0.16,
+        "state": "grounded",
+        "stamina": 12,
+        "prompt": "需在塔顶",
+        "nearestClimb": {
+          "id": "dawn-shaft",
+          "d": 4.59958462178263,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 214
+      },
+      {
+        "tag": "ASCEND",
+        "x": 8.5,
+        "y": 14.2,
+        "z": 72.35,
+        "vx": 0.14,
+        "vz": -0.15,
+        "state": "climbing",
+        "stamina": 7.7,
+        "prompt": "需在塔顶",
+        "nearestClimb": {
+          "id": "dawn-shaft",
+          "d": 4.596560659341311,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 215
+      },
+      {
+        "tag": "SUMMIT",
+        "x": 8.76,
+        "y": 13.41,
+        "z": 72.39,
+        "vx": 2.47,
+        "vz": -2.66,
+        "state": "grounded",
+        "stamina": 1,
+        "prompt": "需在塔顶",
+        "nearestClimb": {
+          "id": "dawn-shaft",
+          "d": 4.561872547063245,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 216
+      },
+      {
+        "tag": "ASCEND",
+        "x": 9.7,
+        "y": 13.41,
+        "z": 72.51,
+        "vx": 0.2,
+        "vz": -0.22,
+        "state": "grounded",
+        "stamina": 12.6,
+        "prompt": "需在塔顶",
+        "nearestClimb": {
+          "id": "dawn-shaft",
+          "d": 4.52417292237281,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 217
+      },
+      {
+        "tag": "ASCEND",
+        "x": 9.71,
+        "y": 14.2,
+        "z": 72.51,
+        "vx": 0.18,
+        "vz": -0.2,
+        "state": "climbing",
+        "stamina": 8.3,
+        "prompt": "需在塔顶",
+        "nearestClimb": {
+          "id": "dawn-shaft",
+          "d": 4.520714086249267,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 218
+      },
+      {
+        "tag": "SUMMIT",
+        "x": 9.72,
+        "y": 16.05,
+        "z": 72.57,
+        "vx": 0.52,
+        "vz": -0.56,
+        "state": "airborne",
+        "stamina": 0,
+        "prompt": "需在塔顶",
+        "nearestClimb": {
+          "id": "dawn-shaft",
+          "d": 4.577048890791269,
+          "climbable": true,
+          "standable": false
+        },
+        "mantle": null,
+        "climbVisible": true,
+        "i": 219
+      }
+    ]
+  },
+  "errors": [],
+  "directionChecks": [
+    {
+      "name": "sage",
+      "i": 0,
+      "dist": 18.32,
+      "dot": 17.95,
+      "camYaw": 2.226,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 1,
+      "dist": 17.38,
+      "dot": 16.99,
+      "camYaw": 2.226,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 2,
+      "dist": 16.16,
+      "dot": 15.73,
+      "camYaw": 2.226,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 3,
+      "dist": 14.98,
+      "dot": 14.52,
+      "camYaw": 2.226,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 4,
+      "dist": 13.68,
+      "dot": 13.57,
+      "camYaw": 2.372,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 5,
+      "dist": 12.56,
+      "dot": 12.44,
+      "camYaw": 2.372,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 6,
+      "dist": 11.36,
+      "dot": 11.23,
+      "camYaw": 2.372,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 7,
+      "dist": 10.17,
+      "dot": 10.02,
+      "camYaw": 2.372,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 8,
+      "dist": 8.98,
+      "dot": 8.81,
+      "camYaw": 2.372,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 9,
+      "dist": 7.79,
+      "dot": 7.59,
+      "camYaw": 2.372,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 10,
+      "dist": 6.55,
+      "dot": 6.5,
+      "camYaw": 2.517,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 11,
+      "dist": 5.43,
+      "dot": 5.37,
+      "camYaw": 2.517,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 12,
+      "dist": 4.19,
+      "dot": 4.1,
+      "camYaw": 2.517,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 13,
+      "dist": 2.94,
+      "dot": 2.91,
+      "camYaw": 2.662,
+      "steerOk": true
+    },
+    {
+      "name": "sage",
+      "i": 14,
+      "dist": 1.77,
+      "dot": 1.75,
+      "camYaw": 2.807,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 0,
+      "dist": 16.31,
+      "dot": 15.82,
+      "camYaw": 4.743,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 1,
+      "dist": 15.28,
+      "dot": 15.18,
+      "camYaw": 4.888,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 2,
+      "dist": 14.17,
+      "dot": 14.06,
+      "camYaw": 4.888,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 3,
+      "dist": 12.97,
+      "dot": 12.85,
+      "camYaw": 4.888,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 4,
+      "dist": 11.77,
+      "dot": 11.64,
+      "camYaw": 4.888,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 5,
+      "dist": 10.58,
+      "dot": 10.43,
+      "camYaw": 4.888,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 6,
+      "dist": 9.38,
+      "dot": 9.21,
+      "camYaw": 4.888,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 7,
+      "dist": 8.14,
+      "dot": 7.94,
+      "camYaw": 4.888,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 8,
+      "dist": 6.89,
+      "dot": 6.85,
+      "camYaw": 5.034,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 9,
+      "dist": 5.78,
+      "dot": 5.72,
+      "camYaw": 5.034,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 10,
+      "dist": 4.58,
+      "dot": 4.51,
+      "camYaw": 5.034,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 11,
+      "dist": 3.4,
+      "dot": 3.3,
+      "camYaw": 5.034,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 12,
+      "dist": 2.13,
+      "dot": 2.11,
+      "camYaw": 5.276,
+      "steerOk": true
+    },
+    {
+      "name": "chest",
+      "i": 13,
+      "dist": 0.99,
+      "dot": 0.96,
+      "camYaw": 5.421,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 0,
+      "dist": 41.82,
+      "dot": 41.2,
+      "camYaw": 6.34,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 1,
+      "dist": 40.85,
+      "dot": 40.21,
+      "camYaw": 6.34,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 2,
+      "dist": 39.61,
+      "dot": 38.94,
+      "camYaw": 6.34,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 3,
+      "dist": 38.41,
+      "dot": 37.73,
+      "camYaw": 6.34,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 4,
+      "dist": 37.23,
+      "dot": 36.52,
+      "camYaw": 6.34,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 5,
+      "dist": 36.03,
+      "dot": 35.3,
+      "camYaw": 6.34,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 6,
+      "dist": 34.79,
+      "dot": 34.03,
+      "camYaw": 6.34,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 7,
+      "dist": 33.6,
+      "dot": 32.82,
+      "camYaw": 6.34,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 8,
+      "dist": 32.42,
+      "dot": 31.61,
+      "camYaw": 6.34,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 9,
+      "dist": 31.24,
+      "dot": 30.39,
+      "camYaw": 6.34,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 10,
+      "dist": 30.06,
+      "dot": 29.17,
+      "camYaw": 6.34,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 11,
+      "dist": 28.81,
+      "dot": 28.64,
+      "camYaw": 6.486,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 12,
+      "dist": 27.69,
+      "dot": 27.51,
+      "camYaw": 6.486,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 13,
+      "dist": 26.49,
+      "dot": 26.3,
+      "camYaw": 6.486,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 14,
+      "dist": 25.26,
+      "dot": 25.06,
+      "camYaw": 6.486,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 15,
+      "dist": 24.08,
+      "dot": 23.88,
+      "camYaw": 6.486,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 16,
+      "dist": 22.83,
+      "dot": 22.61,
+      "camYaw": 6.486,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 17,
+      "dist": 21.62,
+      "dot": 21.39,
+      "camYaw": 6.486,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 18,
+      "dist": 20.36,
+      "dot": 20.12,
+      "camYaw": 6.486,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 19,
+      "dist": 19.17,
+      "dot": 18.91,
+      "camYaw": 6.486,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 20,
+      "dist": 17.91,
+      "dot": 17.63,
+      "camYaw": 6.486,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 21,
+      "dist": 16.72,
+      "dot": 16.42,
+      "camYaw": 6.486,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 22,
+      "dist": 15.53,
+      "dot": 15.21,
+      "camYaw": 6.486,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 23,
+      "dist": 14.35,
+      "dot": 14,
+      "camYaw": 6.486,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 24,
+      "dist": 13.17,
+      "dot": 12.79,
+      "camYaw": 6.486,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 25,
+      "dist": 11.93,
+      "dot": 11.84,
+      "camYaw": 6.631,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 26,
+      "dist": 10.81,
+      "dot": 10.71,
+      "camYaw": 6.631,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 27,
+      "dist": 9.61,
+      "dot": 9.5,
+      "camYaw": 6.631,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 28,
+      "dist": 8.41,
+      "dot": 8.28,
+      "camYaw": 6.631,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 29,
+      "dist": 7.17,
+      "dot": 7.02,
+      "camYaw": 6.631,
+      "steerOk": true
+    },
+    {
+      "name": "tower",
+      "i": 30,
+      "dist": 5.98,
+      "dot": 5.8,
+      "camYaw": 6.631,
+      "steerOk": true
+    }
+  ]
+}

@@ -1,0 +1,855 @@
+{
+  "ok": true,
+  "pid": 92494,
+  "startedAt": "2026-09-16T16:32:16.582Z",
+  "milestones": [
+    {
+      "name": "00-restore",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "x": 115.275,
+        "y": 11.415,
+        "z": 29.522,
+        "vx": 0,
+        "vz": 0,
+        "camYaw": 3.142,
+        "state": "grounded",
+        "stamina": 100,
+        "lastDamageWhy": "",
+        "prompt": "",
+        "orbs": 1,
+        "shrinesOn": [
+          "burst"
+        ],
+        "enemies": [],
+        "nav": "unavailable"
+      }
+    },
+    {
+      "name": "wp1",
+      "pass": true,
+      "target": {
+        "x": 75,
+        "z": 31
+      }
+    },
+    {
+      "name": "wp2",
+      "pass": true,
+      "target": {
+        "x": 50,
+        "z": 33
+      }
+    },
+    {
+      "name": "wp3",
+      "pass": true,
+      "target": {
+        "x": 20,
+        "z": 35
+      }
+    },
+    {
+      "name": "wp4",
+      "pass": true,
+      "target": {
+        "x": -10,
+        "z": 36
+      }
+    },
+    {
+      "name": "wp5",
+      "pass": true,
+      "target": {
+        "x": -40,
+        "z": 37
+      }
+    },
+    {
+      "name": "wp6",
+      "pass": true,
+      "target": {
+        "x": -68,
+        "z": 38.5
+      }
+    },
+    {
+      "name": "01-arrive-rime-door",
+      "pass": true,
+      "post": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 3,
+        "x": -66.535,
+        "y": 7.941,
+        "z": 39.011,
+        "vx": -3.34,
+        "vz": 0.073,
+        "camYaw": 1.593,
+        "state": "grounded",
+        "stamina": 100,
+        "lastDamageWhy": "",
+        "prompt": "请靠近：距离 5.5m",
+        "orbs": 1,
+        "shrinesOn": [
+          "burst"
+        ],
+        "enemies": [],
+        "nav": "walk"
+      }
+    },
+    {
+      "name": "02-enter-rime",
+      "pass": true,
+      "t2": {
+        "mode": "playing",
+        "world": "shrine",
+        "shrine": 0,
+        "hp": 3,
+        "x": 220,
+        "y": 520,
+        "z": 4.906,
+        "vx": 0,
+        "vz": 1.584,
+        "camYaw": 3.142,
+        "state": "grounded",
+        "stamina": 100,
+        "lastDamageWhy": "",
+        "prompt": "",
+        "orbs": 1,
+        "shrinesOn": [
+          "burst"
+        ],
+        "enemies": [],
+        "nav": "action-required"
+      }
+    },
+    {
+      "name": "03-save-checkpoint",
+      "pass": true
+    }
+  ],
+  "firstDamage": null,
+  "failure": null,
+  "ring": [
+    {
+      "tag": "i166",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -44.318,
+      "y": 4.564,
+      "z": 38.522,
+      "vx": -3.126,
+      "vz": 0.069,
+      "camYaw": 1.593,
+      "state": "grounded",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 27.7m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i167",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -45.112,
+      "y": 4.319,
+      "z": 38.54,
+      "vx": -3.293,
+      "vz": 0.072,
+      "camYaw": 1.593,
+      "state": "grounded",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 26.9m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i168",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -45.927,
+      "y": 4.062,
+      "z": 38.558,
+      "vx": -3.33,
+      "vz": 0.073,
+      "camYaw": 1.593,
+      "state": "grounded",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 26.1m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i169",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -46.748,
+      "y": 3.783,
+      "z": 38.576,
+      "vx": -3.255,
+      "vz": 0.072,
+      "camYaw": 1.593,
+      "state": "grounded",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 25.3m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i170",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -47.585,
+      "y": 3.5,
+      "z": 38.594,
+      "vx": -3.284,
+      "vz": 0.072,
+      "camYaw": 1.593,
+      "state": "grounded",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 24.5m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i171",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -48.391,
+      "y": 3.294,
+      "z": 38.612,
+      "vx": -3.045,
+      "vz": 0.067,
+      "camYaw": 1.593,
+      "state": "swimming",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 23.7m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i172",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -49.228,
+      "y": 3.252,
+      "z": 38.631,
+      "vx": -2.937,
+      "vz": 0.065,
+      "camYaw": 1.593,
+      "state": "swimming",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 22.8m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i173",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -49.976,
+      "y": 3.199,
+      "z": 38.647,
+      "vx": -2.853,
+      "vz": 0.063,
+      "camYaw": 1.593,
+      "state": "swimming",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 22.1m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i174",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -50.757,
+      "y": 3.147,
+      "z": 38.664,
+      "vx": -2.84,
+      "vz": 0.062,
+      "camYaw": 1.593,
+      "state": "swimming",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 21.3m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i175",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -51.466,
+      "y": 3.105,
+      "z": 38.68,
+      "vx": -2.782,
+      "vz": 0.061,
+      "camYaw": 1.593,
+      "state": "swimming",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 20.6m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i176",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -52.283,
+      "y": 3.066,
+      "z": 38.698,
+      "vx": -2.822,
+      "vz": 0.062,
+      "camYaw": 1.593,
+      "state": "swimming",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 19.8m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i177",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -53.013,
+      "y": 3.037,
+      "z": 38.714,
+      "vx": -2.832,
+      "vz": 0.062,
+      "camYaw": 1.593,
+      "state": "swimming",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 19.0m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i178",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -53.744,
+      "y": 3.013,
+      "z": 38.73,
+      "vx": -2.834,
+      "vz": 0.062,
+      "camYaw": 1.593,
+      "state": "swimming",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 18.3m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i179",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -54.475,
+      "y": 2.994,
+      "z": 38.746,
+      "vx": -2.835,
+      "vz": 0.062,
+      "camYaw": 1.593,
+      "state": "swimming",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 17.6m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i180",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -55.206,
+      "y": 2.977,
+      "z": 38.762,
+      "vx": -2.835,
+      "vz": 0.062,
+      "camYaw": 1.593,
+      "state": "swimming",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 16.8m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i181",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -55.926,
+      "y": 2.964,
+      "z": 38.778,
+      "vx": -2.82,
+      "vz": 0.062,
+      "camYaw": 1.593,
+      "state": "swimming",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 16.1m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i182",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -56.632,
+      "y": 2.953,
+      "z": 38.793,
+      "vx": -2.791,
+      "vz": 0.061,
+      "camYaw": 1.593,
+      "state": "swimming",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 15.4m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i183",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -57.357,
+      "y": 2.944,
+      "z": 38.809,
+      "vx": -2.824,
+      "vz": 0.062,
+      "camYaw": 1.593,
+      "state": "swimming",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 14.7m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i184",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -58.039,
+      "y": 2.936,
+      "z": 38.824,
+      "vx": -2.823,
+      "vz": 0.062,
+      "camYaw": 1.593,
+      "state": "swimming",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 14.0m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i185",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -58.792,
+      "y": 2.93,
+      "z": 38.841,
+      "vx": -2.791,
+      "vz": 0.061,
+      "camYaw": 1.593,
+      "state": "swimming",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 13.3m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i186",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -59.517,
+      "y": 2.925,
+      "z": 38.857,
+      "vx": -2.824,
+      "vz": 0.062,
+      "camYaw": 1.593,
+      "state": "swimming",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 12.5m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i187",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -60.2,
+      "y": 2.921,
+      "z": 38.872,
+      "vx": -2.823,
+      "vz": 0.062,
+      "camYaw": 1.593,
+      "state": "swimming",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 11.8m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i188",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -60.977,
+      "y": 2.917,
+      "z": 38.889,
+      "vx": -2.822,
+      "vz": 0.062,
+      "camYaw": 1.593,
+      "state": "swimming",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 11.1m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i189",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -61.754,
+      "y": 2.914,
+      "z": 38.906,
+      "vx": -2.832,
+      "vz": 0.062,
+      "camYaw": 1.593,
+      "state": "swimming",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 10.3m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i190",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -62.496,
+      "y": 2.911,
+      "z": 38.922,
+      "vx": -2.86,
+      "vz": 0.063,
+      "camYaw": 1.593,
+      "state": "swimming",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 9.6m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i191",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -63.292,
+      "y": 4.197,
+      "z": 38.94,
+      "vx": -3.083,
+      "vz": 0.068,
+      "camYaw": 1.593,
+      "state": "grounded",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 8.8m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "unavailable"
+    },
+    {
+      "tag": "i192",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -64.08,
+      "y": 5.684,
+      "z": 38.957,
+      "vx": -3.283,
+      "vz": 0.072,
+      "camYaw": 1.593,
+      "state": "grounded",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 8.0m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "walk"
+    },
+    {
+      "tag": "i193",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -64.894,
+      "y": 6.211,
+      "z": 38.975,
+      "vx": -3.328,
+      "vz": 0.073,
+      "camYaw": 1.593,
+      "state": "grounded",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 7.2m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "walk"
+    },
+    {
+      "tag": "i194",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -65.714,
+      "y": 6.875,
+      "z": 38.993,
+      "vx": -3.338,
+      "vz": 0.073,
+      "camYaw": 1.593,
+      "state": "grounded",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 6.3m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "walk"
+    },
+    {
+      "tag": "i195",
+      "mode": "playing",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 3,
+      "x": -66.535,
+      "y": 7.941,
+      "z": 39.011,
+      "vx": -3.34,
+      "vz": 0.073,
+      "camYaw": 1.593,
+      "state": "grounded",
+      "stamina": 100,
+      "lastDamageWhy": "",
+      "prompt": "请靠近：距离 5.5m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "enemies": [],
+      "nav": "walk"
+    }
+  ],
+  "errors": [],
+  "final": {
+    "mode": "playing",
+    "world": "shrine",
+    "shrine": 0,
+    "hp": 3,
+    "x": 220,
+    "y": 520,
+    "z": 4.906,
+    "vx": 0,
+    "vz": 1.584,
+    "camYaw": 3.142,
+    "state": "grounded",
+    "stamina": 100,
+    "lastDamageWhy": "",
+    "prompt": "",
+    "orbs": 1,
+    "shrinesOn": [
+      "burst"
+    ],
+    "enemies": [],
+    "nav": "action-required"
+  },
+  "stopped": null
+}

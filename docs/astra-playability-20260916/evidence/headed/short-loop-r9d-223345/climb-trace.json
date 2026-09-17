@@ -1,0 +1,4408 @@
+[
+  {
+    "tag": "ASCEND",
+    "x": 13.2,
+    "y": 14.2,
+    "z": 72.54,
+    "vx": -0.37,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 95.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 5.554821896822343,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 0
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.2,
+    "y": 15.17,
+    "z": 72.54,
+    "vx": -0.37,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 90.4,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 5.554821896822343,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 1
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.2,
+    "y": 16.07,
+    "z": 72.54,
+    "vx": -0.37,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 85.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 5.554821896822343,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 2
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.2,
+    "y": 16.98,
+    "z": 72.54,
+    "vx": -0.37,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 81.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 5.554821896822343,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 3
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.2,
+    "y": 17.89,
+    "z": 72.54,
+    "vx": -0.37,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 76.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 5.554821896822343,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 4
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.2,
+    "y": 18.79,
+    "z": 72.54,
+    "vx": -0.37,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 72.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 5.554821896822343,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 5
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.2,
+    "y": 19.7,
+    "z": 72.54,
+    "vx": -0.37,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 67.6,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 5.554821896822343,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 6
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.2,
+    "y": 20.61,
+    "z": 72.54,
+    "vx": -0.37,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 63.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 5.554821896822343,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 7
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.2,
+    "y": 21.51,
+    "z": 72.54,
+    "vx": -0.37,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 58.5,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 5.554821896822343,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 8
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.2,
+    "y": 22.42,
+    "z": 72.54,
+    "vx": -0.37,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 54,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 5.554821896822343,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 9
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.2,
+    "y": 23.33,
+    "z": 72.54,
+    "vx": -0.37,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 49.4,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 5.554821896822343,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 10
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.2,
+    "y": 24.23,
+    "z": 72.54,
+    "vx": -0.37,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 44.9,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 5.554821896822343,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 11
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.2,
+    "y": 25.14,
+    "z": 72.54,
+    "vx": -0.37,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 40.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 5.554821896822343,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 12
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.2,
+    "y": 26.05,
+    "z": 72.54,
+    "vx": -0.37,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 35.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 5.554821896822343,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 13
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.2,
+    "y": 26.95,
+    "z": 72.54,
+    "vx": -0.37,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 31.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 5.554821896822343,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 14
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.2,
+    "y": 27.86,
+    "z": 72.54,
+    "vx": -0.37,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 26.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 5.554821896822343,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 15
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.54,
+    "y": 28.37,
+    "z": 73.02,
+    "vx": 0,
+    "vz": 0,
+    "state": "climbing",
+    "stamina": 23.5,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 6.1414885634889735,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": {
+      "phase": 0
+    },
+    "climbVisible": true,
+    "i": 16
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.09,
+    "y": 28.37,
+    "z": 73.8,
+    "vx": 0,
+    "vz": 0,
+    "state": "climbing",
+    "stamina": 22.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 7.094821896822235,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": {
+      "phase": 0
+    },
+    "climbVisible": true,
+    "i": 17
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.07,
+    "y": 30.59,
+    "z": 73.71,
+    "vx": 0,
+    "vz": 0,
+    "state": "climbing",
+    "stamina": 20.9,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 7.01280432868564,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": {
+      "phase": 3
+    },
+    "climbVisible": true,
+    "i": 18
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.04,
+    "y": 30.59,
+    "z": 71.99,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 24.6,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 5.017760239373877,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 19
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.04,
+    "y": 31.44,
+    "z": 71.99,
+    "vx": 0,
+    "vz": 0,
+    "state": "climbing",
+    "stamina": 19.5,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 5.017760239373877,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 20
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.04,
+    "y": 32.34,
+    "z": 71.99,
+    "vx": 0,
+    "vz": 0,
+    "state": "climbing",
+    "stamina": 15,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 5.017760239373877,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 21
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.04,
+    "y": 33.25,
+    "z": 71.99,
+    "vx": 0,
+    "vz": 0,
+    "state": "climbing",
+    "stamina": 10.4,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 5.017760239373877,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 22
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.04,
+    "y": 34.16,
+    "z": 71.99,
+    "vx": 0,
+    "vz": 0,
+    "state": "climbing",
+    "stamina": 5.9,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 5.017760239373877,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 23
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.04,
+    "y": 35.06,
+    "z": 71.99,
+    "vx": 0,
+    "vz": 0,
+    "state": "climbing",
+    "stamina": 1.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 5.017760239373877,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 24
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 12.89,
+    "y": 34.42,
+    "z": 71.69,
+    "vx": -0.59,
+    "vz": -1.24,
+    "state": "airborne",
+    "stamina": -0.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.692116619589775,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 25
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.03,
+    "y": 25.14,
+    "z": 71.37,
+    "vx": -0.86,
+    "vz": -1.81,
+    "state": "airborne",
+    "stamina": -0.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.533087144325444,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 26
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.32,
+    "y": 13.41,
+    "z": 71.13,
+    "vx": -0.2,
+    "vz": -0.41,
+    "state": "grounded",
+    "stamina": 5.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.564393271867348,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 27
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.31,
+    "y": 14.15,
+    "z": 71.11,
+    "vx": -0.16,
+    "vz": -0.31,
+    "state": "climbing",
+    "stamina": 3.6,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.537464470697953,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 28
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.54,
+    "y": 13.41,
+    "z": 71.27,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 5.5,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.8177078620662535,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 29
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.55,
+    "y": 13.41,
+    "z": 70.89,
+    "vx": -0.92,
+    "vz": -1.37,
+    "state": "climbing",
+    "stamina": 8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.574017577077583,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 30
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.55,
+    "y": 14.32,
+    "z": 70.89,
+    "vx": -0.92,
+    "vz": -1.37,
+    "state": "climbing",
+    "stamina": 3.5,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.574017577077583,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 31
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.72,
+    "y": 13.41,
+    "z": 71,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 6.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.783596672355372,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 32
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.77,
+    "y": 13.41,
+    "z": 70.57,
+    "vx": -0.92,
+    "vz": -1.37,
+    "state": "climbing",
+    "stamina": 8.6,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.56412165244979,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 33
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.77,
+    "y": 14.32,
+    "z": 70.57,
+    "vx": -0.92,
+    "vz": -1.37,
+    "state": "climbing",
+    "stamina": 4.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.56412165244979,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 34
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 3.6,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 35
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.78,
+    "y": 13.41,
+    "z": 70.5,
+    "vx": -1.05,
+    "vz": -1.28,
+    "state": "climbing",
+    "stamina": 7.5,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.531581438067165,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 36
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.78,
+    "y": 14.37,
+    "z": 70.5,
+    "vx": -1.05,
+    "vz": -1.28,
+    "state": "climbing",
+    "stamina": 2.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.531581438067165,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 37
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.77,
+    "y": 13.41,
+    "z": 70.83,
+    "vx": -0.14,
+    "vz": -0.17,
+    "state": "grounded",
+    "stamina": 5.9,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.711139254631279,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 38
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.85,
+    "y": 13.41,
+    "z": 70.51,
+    "vx": -1.06,
+    "vz": -1.29,
+    "state": "climbing",
+    "stamina": 8.4,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.5978465097135555,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 39
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.85,
+    "y": 14.32,
+    "z": 70.51,
+    "vx": -1.06,
+    "vz": -1.29,
+    "state": "climbing",
+    "stamina": 3.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.5978465097135555,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 40
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 3.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 41
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.79,
+    "y": 13.41,
+    "z": 70.48,
+    "vx": -0.65,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 8.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.532766695312081,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 42
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.79,
+    "y": 14.32,
+    "z": 70.48,
+    "vx": -0.65,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 3.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.532766695312081,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 43
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 4.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 44
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.79,
+    "y": 13.41,
+    "z": 70.48,
+    "vx": -0.65,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 8.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.532766695312081,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 45
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.79,
+    "y": 14.32,
+    "z": 70.48,
+    "vx": -0.65,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 4.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.532766695312081,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 46
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 3.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 47
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.79,
+    "y": 13.41,
+    "z": 70.48,
+    "vx": -0.65,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 7.9,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.532766695312081,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 48
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.79,
+    "y": 14.32,
+    "z": 70.48,
+    "vx": -0.65,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 3.4,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.532766695312081,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 49
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 5.6,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 50
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.85,
+    "y": 13.41,
+    "z": 70.51,
+    "vx": -1.09,
+    "vz": -1.33,
+    "state": "climbing",
+    "stamina": 7.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.596427015851652,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 51
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.85,
+    "y": 14.32,
+    "z": 70.51,
+    "vx": -1.09,
+    "vz": -1.33,
+    "state": "climbing",
+    "stamina": 3.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.596427015851652,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 52
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 5.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 53
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.79,
+    "y": 14.03,
+    "z": 70.86,
+    "vx": -0.48,
+    "vz": -0.59,
+    "state": "climbing",
+    "stamina": 4,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.748193392828716,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 54
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.77,
+    "y": 13.41,
+    "z": 70.83,
+    "vx": -0.14,
+    "vz": -0.17,
+    "state": "grounded",
+    "stamina": 5.9,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.711139254631279,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 55
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.85,
+    "y": 13.41,
+    "z": 70.51,
+    "vx": -1.06,
+    "vz": -1.29,
+    "state": "climbing",
+    "stamina": 8.4,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.5978465097135555,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 56
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.85,
+    "y": 14.32,
+    "z": 70.51,
+    "vx": -1.06,
+    "vz": -1.29,
+    "state": "climbing",
+    "stamina": 3.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.5978465097135555,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 57
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 4.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 58
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.79,
+    "y": 13.41,
+    "z": 70.48,
+    "vx": -0.65,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 8.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.532766695312081,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 59
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.79,
+    "y": 14.37,
+    "z": 70.48,
+    "vx": -0.65,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 3.9,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.532766695312081,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 60
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 3.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 61
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.79,
+    "y": 13.41,
+    "z": 70.48,
+    "vx": -0.65,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 8.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.532766695312081,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 62
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.79,
+    "y": 14.32,
+    "z": 70.48,
+    "vx": -0.65,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 3.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.532766695312081,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 63
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 4.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 64
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.79,
+    "y": 13.41,
+    "z": 70.48,
+    "vx": -0.65,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 8.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.532766695312081,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 65
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.79,
+    "y": 14.32,
+    "z": 70.48,
+    "vx": -0.65,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 4.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.532766695312081,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 66
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 3.4,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 67
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.79,
+    "y": 13.41,
+    "z": 70.48,
+    "vx": -0.65,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.532766695312081,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 68
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.79,
+    "y": 14.32,
+    "z": 70.48,
+    "vx": -0.65,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 3.4,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.532766695312081,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 69
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 5.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 70
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.78,
+    "y": 13.41,
+    "z": 70.5,
+    "vx": -1.05,
+    "vz": -1.28,
+    "state": "climbing",
+    "stamina": 7.6,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.531581438067165,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 71
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.78,
+    "y": 14.32,
+    "z": 70.5,
+    "vx": -1.05,
+    "vz": -1.28,
+    "state": "climbing",
+    "stamina": 3.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.531581438067165,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 72
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 5.5,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 73
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.78,
+    "y": 13.41,
+    "z": 70.5,
+    "vx": -1.05,
+    "vz": -1.28,
+    "state": "climbing",
+    "stamina": 8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.531581438067165,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 74
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.78,
+    "y": 14.32,
+    "z": 70.5,
+    "vx": -1.05,
+    "vz": -1.28,
+    "state": "climbing",
+    "stamina": 3.5,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.531581438067165,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 75
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 5.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 76
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.78,
+    "y": 13.41,
+    "z": 70.5,
+    "vx": -1.05,
+    "vz": -1.28,
+    "state": "climbing",
+    "stamina": 7.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.531581438067165,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 77
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.78,
+    "y": 14.32,
+    "z": 70.5,
+    "vx": -1.05,
+    "vz": -1.28,
+    "state": "climbing",
+    "stamina": 3.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.531581438067165,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 78
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 5.5,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 79
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.78,
+    "y": 13.41,
+    "z": 70.5,
+    "vx": -1.05,
+    "vz": -1.28,
+    "state": "climbing",
+    "stamina": 8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.531581438067165,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 80
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.78,
+    "y": 14.32,
+    "z": 70.5,
+    "vx": -1.05,
+    "vz": -1.28,
+    "state": "climbing",
+    "stamina": 3.5,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.531581438067165,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 81
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 5.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 82
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.78,
+    "y": 13.41,
+    "z": 70.5,
+    "vx": -1.05,
+    "vz": -1.28,
+    "state": "climbing",
+    "stamina": 7.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.531581438067165,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 83
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.78,
+    "y": 14.32,
+    "z": 70.5,
+    "vx": -1.05,
+    "vz": -1.28,
+    "state": "climbing",
+    "stamina": 3.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.531581438067165,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 84
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 5.6,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 85
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.78,
+    "y": 13.41,
+    "z": 70.5,
+    "vx": -1.05,
+    "vz": -1.28,
+    "state": "climbing",
+    "stamina": 8.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.531581438067165,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 86
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.78,
+    "y": 14.32,
+    "z": 70.5,
+    "vx": -1.05,
+    "vz": -1.28,
+    "state": "climbing",
+    "stamina": 3.5,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.531581438067165,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 87
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 5.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 88
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.78,
+    "y": 13.41,
+    "z": 70.5,
+    "vx": -1.05,
+    "vz": -1.28,
+    "state": "climbing",
+    "stamina": 7.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.531581438067165,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 89
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.78,
+    "y": 14.32,
+    "z": 70.5,
+    "vx": -1.05,
+    "vz": -1.28,
+    "state": "climbing",
+    "stamina": 3.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.531581438067165,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 90
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 5.6,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 91
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.78,
+    "y": 13.41,
+    "z": 70.5,
+    "vx": -1.05,
+    "vz": -1.28,
+    "state": "climbing",
+    "stamina": 8.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.531581438067165,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 92
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.78,
+    "y": 14.32,
+    "z": 70.5,
+    "vx": -1.05,
+    "vz": -1.28,
+    "state": "climbing",
+    "stamina": 3.6,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.531581438067165,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 93
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 5.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 94
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.78,
+    "y": 13.41,
+    "z": 70.5,
+    "vx": -1.05,
+    "vz": -1.28,
+    "state": "climbing",
+    "stamina": 7.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.531581438067165,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 95
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.78,
+    "y": 14.32,
+    "z": 70.5,
+    "vx": -1.05,
+    "vz": -1.28,
+    "state": "climbing",
+    "stamina": 3.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.531581438067165,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 96
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 6.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 97
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.85,
+    "y": 13.41,
+    "z": 70.51,
+    "vx": -1.09,
+    "vz": -1.33,
+    "state": "climbing",
+    "stamina": 8.4,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.596427015851652,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 98
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.85,
+    "y": 14.32,
+    "z": 70.51,
+    "vx": -1.09,
+    "vz": -1.33,
+    "state": "climbing",
+    "stamina": 3.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.596427015851652,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 99
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 4.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 100
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.79,
+    "y": 13.41,
+    "z": 70.48,
+    "vx": -0.65,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 8.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.532766695312081,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 101
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.79,
+    "y": 14.32,
+    "z": 70.48,
+    "vx": -0.65,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 4.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.532766695312081,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 102
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 3.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 103
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.79,
+    "y": 13.41,
+    "z": 70.48,
+    "vx": -0.65,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 8.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.532766695312081,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 104
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.79,
+    "y": 14.32,
+    "z": 70.48,
+    "vx": -0.65,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 3.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.532766695312081,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 105
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 4.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 106
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.79,
+    "y": 13.41,
+    "z": 70.48,
+    "vx": -0.65,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 8.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.532766695312081,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 107
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.79,
+    "y": 14.32,
+    "z": 70.48,
+    "vx": -0.65,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 4.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.532766695312081,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 108
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 13.81,
+    "y": 13.41,
+    "z": 70.88,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 3.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.775083484167257,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 109
+  },
+  {
+    "tag": "ASCEND",
+    "x": 13.92,
+    "y": 12.78,
+    "z": 70.39,
+    "vx": -1.09,
+    "vz": -1.33,
+    "state": "grounded",
+    "stamina": 6.9,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.589133069947627,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 110
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.12,
+    "y": 12.8,
+    "z": 69.93,
+    "vx": -1.13,
+    "vz": -1.38,
+    "state": "climbing",
+    "stamina": 9.4,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.5528491221970215,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 111
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.12,
+    "y": 12.8,
+    "z": 69.93,
+    "vx": -1.13,
+    "vz": -1.38,
+    "state": "climbing",
+    "stamina": 4.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.5528491221970215,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 112
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.12,
+    "y": 12.8,
+    "z": 69.93,
+    "vx": -1.13,
+    "vz": -1.38,
+    "state": "climbing",
+    "stamina": 0.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.5528491221970215,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 113
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.34,
+    "y": 13.41,
+    "z": 69.39,
+    "vx": -1.03,
+    "vz": -1.25,
+    "state": "grounded",
+    "stamina": 5.6,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.560925755072177,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 114
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.52,
+    "y": 13.41,
+    "z": 68.6,
+    "vx": -1.13,
+    "vz": -1.37,
+    "state": "climbing",
+    "stamina": 8.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.557835218889377,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 115
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.52,
+    "y": 14.32,
+    "z": 68.6,
+    "vx": -1.13,
+    "vz": -1.37,
+    "state": "climbing",
+    "stamina": 3.5,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.557835218889377,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 116
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.56,
+    "y": 13.41,
+    "z": 68.51,
+    "vx": -0.26,
+    "vz": -0.32,
+    "state": "grounded",
+    "stamina": 5.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.5854048556987985,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 117
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.55,
+    "y": 12.93,
+    "z": 67.63,
+    "vx": -1.07,
+    "vz": -1.3,
+    "state": "climbing",
+    "stamina": 8.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.565949494121406,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 118
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.55,
+    "y": 13.9,
+    "z": 67.63,
+    "vx": -1.07,
+    "vz": -1.3,
+    "state": "climbing",
+    "stamina": 3.4,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.565949494121406,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 119
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.64,
+    "y": 13.41,
+    "z": 68.35,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 4.6,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.653093215181423,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 120
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.54,
+    "y": 12.94,
+    "z": 67.43,
+    "vx": -0.65,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 9.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.576423239175579,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 121
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.54,
+    "y": 13.85,
+    "z": 67.43,
+    "vx": -0.65,
+    "vz": -0.79,
+    "state": "climbing",
+    "stamina": 4.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.576423239175579,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 122
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.66,
+    "y": 13.41,
+    "z": 68.35,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 1.9,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.668188158172649,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 123
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.66,
+    "y": 14.2,
+    "z": 68.35,
+    "vx": 0,
+    "vz": 0,
+    "state": "climbing",
+    "stamina": 5,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.668188158172649,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 124
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.52,
+    "y": 13.41,
+    "z": 68.37,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 3.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.533309233490919,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 125
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.58,
+    "y": 13.41,
+    "z": 68.21,
+    "vx": -1,
+    "vz": -0.21,
+    "state": "climbing",
+    "stamina": 7.9,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.580561428587039,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 126
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.58,
+    "y": 14.37,
+    "z": 68.21,
+    "vx": -1,
+    "vz": -0.21,
+    "state": "climbing",
+    "stamina": 3.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.580561428587039,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 127
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.56,
+    "y": 13.41,
+    "z": 68.36,
+    "vx": -0.21,
+    "vz": -0.04,
+    "state": "grounded",
+    "stamina": 5.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.577562107406571,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 128
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.59,
+    "y": 13.41,
+    "z": 68.2,
+    "vx": -1.63,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 8.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.59500081324497,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 129
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.59,
+    "y": 14.32,
+    "z": 68.2,
+    "vx": -1.63,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 3.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.59500081324497,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 130
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.55,
+    "y": 13.41,
+    "z": 68.37,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 5.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.565737053256678,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 131
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.53,
+    "y": 13.41,
+    "z": 68.21,
+    "vx": -1.62,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 7.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.5348368600750835,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 132
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.53,
+    "y": 14.32,
+    "z": 68.21,
+    "vx": -1.62,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 3.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.5348368600750835,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 133
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.56,
+    "y": 13.41,
+    "z": 68.36,
+    "vx": -0.21,
+    "vz": -0.04,
+    "state": "grounded",
+    "stamina": 5.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.577216953186314,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 134
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.59,
+    "y": 13.41,
+    "z": 68.2,
+    "vx": -1.63,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 8.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.594652177423415,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 135
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.59,
+    "y": 14.32,
+    "z": 68.2,
+    "vx": -1.63,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 3.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.594652177423415,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 136
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.55,
+    "y": 13.41,
+    "z": 68.37,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 5.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.565714852383647,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 137
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.53,
+    "y": 13.41,
+    "z": 68.21,
+    "vx": -1.62,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 7.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.5348144474704295,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 138
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.53,
+    "y": 14.32,
+    "z": 68.21,
+    "vx": -1.62,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 3.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.5348144474704295,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 139
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.56,
+    "y": 13.41,
+    "z": 68.36,
+    "vx": -0.21,
+    "vz": -0.04,
+    "state": "grounded",
+    "stamina": 5.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.577215519446346,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 140
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.59,
+    "y": 13.41,
+    "z": 68.2,
+    "vx": -1.63,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 8.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.594650729220947,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 141
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.59,
+    "y": 14.32,
+    "z": 68.2,
+    "vx": -1.63,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 3.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.594650729220947,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 142
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.55,
+    "y": 13.41,
+    "z": 68.37,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 5.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.565714760149286,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 143
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.53,
+    "y": 13.41,
+    "z": 68.21,
+    "vx": -1.62,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 7.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.53481435435642,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 144
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.53,
+    "y": 14.32,
+    "z": 68.21,
+    "vx": -1.62,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 3.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.53481435435642,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 145
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.56,
+    "y": 13.41,
+    "z": 68.36,
+    "vx": -0.21,
+    "vz": -0.04,
+    "state": "grounded",
+    "stamina": 5.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.57721551348976,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 146
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.59,
+    "y": 13.41,
+    "z": 68.2,
+    "vx": -1.63,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 8.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.594650723204274,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 147
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.59,
+    "y": 14.32,
+    "z": 68.2,
+    "vx": -1.63,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 3.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.594650723204274,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 148
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.55,
+    "y": 13.41,
+    "z": 68.37,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 5.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.565714759766083,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 149
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.53,
+    "y": 13.41,
+    "z": 68.21,
+    "vx": -1.62,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 7.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.534814353969562,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 150
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.53,
+    "y": 14.32,
+    "z": 68.21,
+    "vx": -1.62,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 3.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.534814353969562,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 151
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.56,
+    "y": 13.41,
+    "z": 68.36,
+    "vx": -0.21,
+    "vz": -0.04,
+    "state": "grounded",
+    "stamina": 5.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.57721551346501,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 152
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.59,
+    "y": 13.41,
+    "z": 68.2,
+    "vx": -1.63,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 8.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.594650723179281,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 153
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.59,
+    "y": 14.32,
+    "z": 68.2,
+    "vx": -1.63,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 3.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.594650723179281,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 154
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.55,
+    "y": 13.41,
+    "z": 68.37,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 5.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.565714759764489,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 155
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.53,
+    "y": 13.41,
+    "z": 68.21,
+    "vx": -1.62,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 7.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.534814353967957,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 156
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.53,
+    "y": 14.32,
+    "z": 68.21,
+    "vx": -1.62,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 3.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.534814353967957,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 157
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.56,
+    "y": 13.41,
+    "z": 68.36,
+    "vx": -0.21,
+    "vz": -0.04,
+    "state": "grounded",
+    "stamina": 5.9,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.577215513464909,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 158
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.59,
+    "y": 13.41,
+    "z": 68.2,
+    "vx": -1.63,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 8.4,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.594650723179177,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 159
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.59,
+    "y": 14.32,
+    "z": 68.2,
+    "vx": -1.63,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 3.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.594650723179177,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 160
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.55,
+    "y": 13.41,
+    "z": 68.37,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 5.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.565714759764473,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 161
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.53,
+    "y": 13.41,
+    "z": 68.21,
+    "vx": -1.62,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 7.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.534814353967941,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 162
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.53,
+    "y": 14.32,
+    "z": 68.21,
+    "vx": -1.62,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 3.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.534814353967941,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 163
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.56,
+    "y": 13.41,
+    "z": 68.36,
+    "vx": -0.21,
+    "vz": -0.04,
+    "state": "grounded",
+    "stamina": 5.9,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.577215513464909,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 164
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.59,
+    "y": 13.41,
+    "z": 68.2,
+    "vx": -1.63,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 8.4,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.594650723179177,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 165
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.59,
+    "y": 14.32,
+    "z": 68.2,
+    "vx": -1.63,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 3.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.594650723179177,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 166
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.55,
+    "y": 13.41,
+    "z": 68.37,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 4.6,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.565714759764473,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 167
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.53,
+    "y": 13.41,
+    "z": 68.2,
+    "vx": -1,
+    "vz": -0.21,
+    "state": "climbing",
+    "stamina": 9.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.533338156145858,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 168
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.53,
+    "y": 14.32,
+    "z": 68.2,
+    "vx": -1,
+    "vz": -0.21,
+    "state": "climbing",
+    "stamina": 4.6,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.533338156145858,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 169
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.55,
+    "y": 13.41,
+    "z": 68.37,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 2.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.565337411589728,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 170
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.59,
+    "y": 13.41,
+    "z": 68.19,
+    "vx": -0.27,
+    "vz": -0.06,
+    "state": "grounded",
+    "stamina": 13,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.595485779487053,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 171
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.59,
+    "y": 14.2,
+    "z": 68.19,
+    "vx": -0.24,
+    "vz": -0.05,
+    "state": "climbing",
+    "stamina": 8.6,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.591441928055767,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 172
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.59,
+    "y": 15.11,
+    "z": 68.19,
+    "vx": -0.24,
+    "vz": -0.05,
+    "state": "climbing",
+    "stamina": 4,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.591441928055767,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 173
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.56,
+    "y": 15.82,
+    "z": 68.18,
+    "vx": -0.24,
+    "vz": -0.05,
+    "state": "airborne",
+    "stamina": 0,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.55909475472603,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 174
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.56,
+    "y": 13.41,
+    "z": 68.06,
+    "vx": -0.18,
+    "vz": -0.04,
+    "state": "grounded",
+    "stamina": 8.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.55926137297419,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 175
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.56,
+    "y": 14.2,
+    "z": 68.06,
+    "vx": -0.16,
+    "vz": -0.03,
+    "state": "climbing",
+    "stamina": 4.5,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.55665940277839,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 176
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.58,
+    "y": 13.41,
+    "z": 68.36,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 3.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.593060073818056,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 177
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.56,
+    "y": 13.41,
+    "z": 68.19,
+    "vx": -1,
+    "vz": -0.21,
+    "state": "climbing",
+    "stamina": 7.9,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.560984170026997,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 178
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.56,
+    "y": 14.32,
+    "z": 68.19,
+    "vx": -1,
+    "vz": -0.21,
+    "state": "climbing",
+    "stamina": 3.4,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.560984170026997,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 179
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.55,
+    "y": 13.41,
+    "z": 68.37,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 6,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.567284742225202,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 180
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.53,
+    "y": 13.41,
+    "z": 68.21,
+    "vx": -1.62,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 8.5,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.536400261311565,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 181
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.53,
+    "y": 14.32,
+    "z": 68.21,
+    "vx": -1.62,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 4,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.536400261311565,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 182
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.55,
+    "y": 13.41,
+    "z": 68.37,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 4.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.56262232523273,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 183
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.53,
+    "y": 13.41,
+    "z": 68.2,
+    "vx": -1,
+    "vz": -0.21,
+    "state": "climbing",
+    "stamina": 9.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.530213524059121,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 184
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.53,
+    "y": 14.32,
+    "z": 68.2,
+    "vx": -1,
+    "vz": -0.21,
+    "state": "climbing",
+    "stamina": 4.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.530213524059121,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 185
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.55,
+    "y": 13.41,
+    "z": 68.37,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 2.9,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.565138437006394,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 186
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.53,
+    "y": 13.41,
+    "z": 68.2,
+    "vx": -1,
+    "vz": -0.21,
+    "state": "climbing",
+    "stamina": 7.5,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.5327558335378155,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 187
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.53,
+    "y": 14.32,
+    "z": 68.2,
+    "vx": -1,
+    "vz": -0.21,
+    "state": "climbing",
+    "stamina": 2.9,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.5327558335378155,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 188
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.58,
+    "y": 13.41,
+    "z": 68.35,
+    "vx": -0.41,
+    "vz": -0.09,
+    "state": "grounded",
+    "stamina": 5.6,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.590015540807386,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 189
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.58,
+    "y": 13.41,
+    "z": 68.18,
+    "vx": -1.65,
+    "vz": -0.35,
+    "state": "climbing",
+    "stamina": 8.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.579156477995483,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 190
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.58,
+    "y": 14.32,
+    "z": 68.18,
+    "vx": -1.65,
+    "vz": -0.35,
+    "state": "climbing",
+    "stamina": 3.5,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.579156477995483,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 191
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.55,
+    "y": 13.41,
+    "z": 68.37,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 6.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.569289686666272,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 192
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.54,
+    "y": 14.03,
+    "z": 68.36,
+    "vx": -0.52,
+    "vz": -0.11,
+    "state": "climbing",
+    "stamina": 4,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.5544742782954755,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 193
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.51,
+    "y": 13.41,
+    "z": 68.38,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 6.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.527485320413213,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 194
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.56,
+    "y": 14.03,
+    "z": 68.38,
+    "vx": -0.75,
+    "vz": -0.16,
+    "state": "climbing",
+    "stamina": 4.4,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.58003286636254,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 195
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.51,
+    "y": 13.41,
+    "z": 68.38,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 5.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.525089325380395,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 196
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.52,
+    "y": 13.41,
+    "z": 68.22,
+    "vx": -1.64,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 8.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.527951097476075,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 197
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.52,
+    "y": 14.37,
+    "z": 68.22,
+    "vx": -1.64,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 3.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.527951097476075,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 198
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.56,
+    "y": 13.41,
+    "z": 68.36,
+    "vx": -0.21,
+    "vz": -0.04,
+    "state": "grounded",
+    "stamina": 5.9,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.575820057951171,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 199
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.59,
+    "y": 13.41,
+    "z": 68.2,
+    "vx": -1.63,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 8.4,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.593240666869478,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 200
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.59,
+    "y": 14.32,
+    "z": 68.2,
+    "vx": -1.63,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 3.9,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.593240666869478,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 201
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.55,
+    "y": 13.41,
+    "z": 68.37,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 4.6,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.565621385966343,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 202
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.53,
+    "y": 13.41,
+    "z": 68.2,
+    "vx": -1,
+    "vz": -0.21,
+    "state": "climbing",
+    "stamina": 9.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.533243810293594,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 203
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.53,
+    "y": 14.32,
+    "z": 68.2,
+    "vx": -1,
+    "vz": -0.21,
+    "state": "climbing",
+    "stamina": 4.6,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.533243810293594,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 204
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.55,
+    "y": 13.41,
+    "z": 68.37,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 2.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.5653314115108525,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 205
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.59,
+    "y": 13.41,
+    "z": 68.19,
+    "vx": -0.27,
+    "vz": -0.06,
+    "state": "grounded",
+    "stamina": 13,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.595479710490607,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 206
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.59,
+    "y": 14.2,
+    "z": 68.19,
+    "vx": -0.24,
+    "vz": -0.05,
+    "state": "climbing",
+    "stamina": 8.7,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.591435858787188,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 207
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.59,
+    "y": 15.11,
+    "z": 68.19,
+    "vx": -0.24,
+    "vz": -0.05,
+    "state": "climbing",
+    "stamina": 4.1,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.591435858787188,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 208
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.56,
+    "y": 15.91,
+    "z": 68.18,
+    "vx": -0.24,
+    "vz": -0.05,
+    "state": "airborne",
+    "stamina": 0,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.567174867038584,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 209
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.52,
+    "y": 13.41,
+    "z": 68.05,
+    "vx": -0.25,
+    "vz": -0.05,
+    "state": "grounded",
+    "stamina": 7.4,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.520978423252121,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 210
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.59,
+    "y": 14.15,
+    "z": 68.05,
+    "vx": -0.29,
+    "vz": -0.06,
+    "state": "climbing",
+    "stamina": 3.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.592340459847694,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 211
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.58,
+    "y": 13.41,
+    "z": 68.36,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 5.3,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.59466861554394,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 212
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.56,
+    "y": 13.41,
+    "z": 68.2,
+    "vx": -1.62,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 7.8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.5640575674789625,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 213
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.56,
+    "y": 14.32,
+    "z": 68.2,
+    "vx": -1.62,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 3.2,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.5640575674789625,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 214
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.56,
+    "y": 13.41,
+    "z": 68.36,
+    "vx": -0.21,
+    "vz": -0.04,
+    "state": "grounded",
+    "stamina": 5.9,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.5792593025485,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 215
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.59,
+    "y": 13.41,
+    "z": 68.2,
+    "vx": -1.63,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 8.4,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.5967151265218975,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 216
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.59,
+    "y": 14.37,
+    "z": 68.2,
+    "vx": -1.63,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 3.6,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.5967151265218975,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 217
+  },
+  {
+    "tag": "SUMMIT",
+    "x": 14.55,
+    "y": 13.41,
+    "z": 68.37,
+    "vx": 0,
+    "vz": 0,
+    "state": "grounded",
+    "stamina": 5.5,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.565846122550283,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 218
+  },
+  {
+    "tag": "ASCEND",
+    "x": 14.53,
+    "y": 13.41,
+    "z": 68.21,
+    "vx": -1.62,
+    "vz": -0.34,
+    "state": "climbing",
+    "stamina": 8,
+    "prompt": "需在塔顶",
+    "nearestClimb": {
+      "id": "dawn-shaft",
+      "d": 4.534946969566383,
+      "climbable": true,
+      "standable": false
+    },
+    "mantle": null,
+    "climbVisible": true,
+    "i": 219
+  }
+]

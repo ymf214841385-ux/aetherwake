@@ -1,0 +1,807 @@
+{
+  "ok": false,
+  "pid": 88478,
+  "startedAt": "2026-09-16T15:09:11.059Z",
+  "checkpoint": {
+    "path": null,
+    "source": "fresh-context-no-checkpoint-on-disk"
+  },
+  "milestones": [
+    {
+      "name": "00-new-game",
+      "pass": true,
+      "hasSave": false,
+      "note": "no prior checkpoint on disk; fresh start",
+      "t": 1789571354085
+    },
+    {
+      "name": "01-map-burst",
+      "pass": true,
+      "sel": "burst",
+      "t": 1789571364419
+    },
+    {
+      "name": "02-route-hint",
+      "pass": true,
+      "nav": "unavailable",
+      "next": "前往爆鸣祠",
+      "guidance": "尚未找到可通行路线，可绕开障碍再试",
+      "t": 1789571364539
+    },
+    {
+      "name": "03-arrive-door",
+      "pass": true,
+      "last": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "x": 114.96592105841196,
+        "y": 10.359999809265137,
+        "z": 29.67939234052218,
+        "camYaw": -1.5972000000000002,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "请靠近：距离 3.3m",
+        "orbs": 0,
+        "shrinesOn": [],
+        "towers": [],
+        "cracked": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "art": 0,
+        "nav": "unavailable",
+        "navNext": "",
+        "navGuidance": "",
+        "quest": "进入爆鸣祠",
+        "selected": "burst"
+      },
+      "tail": [
+        {
+          "i": 109,
+          "x": 110.6,
+          "z": 30.1,
+          "d": 7.4,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 110,
+          "x": 111.7,
+          "z": 29.9,
+          "d": 6.4,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 111,
+          "x": 112.8,
+          "z": 29.8,
+          "d": 5.3,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 112,
+          "x": 113.9,
+          "z": 29.7,
+          "d": 4.3,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 113,
+          "x": 115,
+          "z": 29.7,
+          "d": 3.2,
+          "world": "overworld",
+          "mode": "playing"
+        }
+      ],
+      "t": 1789571414699
+    },
+    {
+      "name": "04-enter-shrine",
+      "pass": true,
+      "inShrine": {
+        "mode": "playing",
+        "world": "shrine",
+        "shrine": 1,
+        "x": 268,
+        "y": 520,
+        "z": 4.4,
+        "camYaw": 3.141592653589793,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "",
+        "orbs": 0,
+        "shrinesOn": [],
+        "towers": [],
+        "cracked": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "art": 0,
+        "nav": "action-required",
+        "navNext": "选择爆鸣，击碎裂纹岩壁",
+        "navGuidance": "在裂纹岩壁前施放爆鸣",
+        "quest": "解开爆鸣祠",
+        "selected": "burst"
+      },
+      "t": 1789571415464
+    },
+    {
+      "name": "05-before-wall-nav",
+      "pass": true,
+      "nav": "action-required",
+      "next": "选择爆鸣，击碎裂纹岩壁",
+      "guidance": "在裂纹岩壁前施放爆鸣",
+      "t": 1789571415466
+    },
+    {
+      "name": "06-at-wall-action",
+      "pass": true,
+      "last": {
+        "mode": "playing",
+        "world": "shrine",
+        "shrine": 1,
+        "x": 268,
+        "y": 520,
+        "z": 9.29137184271088,
+        "camYaw": 3.141592653589793,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "请靠近：距离 8.2m",
+        "orbs": 0,
+        "shrinesOn": [],
+        "towers": [],
+        "cracked": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "art": 0,
+        "nav": "action-required",
+        "navNext": "选择爆鸣，击碎裂纹岩壁",
+        "navGuidance": "在裂纹岩壁前施放爆鸣",
+        "quest": "解开爆鸣祠",
+        "selected": "burst"
+      },
+      "t": 1789571417545
+    },
+    {
+      "name": "07-wall-broken",
+      "pass": true,
+      "afterBoom": {
+        "cracked": [
+          false,
+          true,
+          false,
+          false
+        ],
+        "nav": "walk",
+        "prompt": "请靠近：距离 8.7m"
+      },
+      "t": 1789571418016
+    },
+    {
+      "name": "08-route-after-wall",
+      "pass": true,
+      "nav": "walk",
+      "next": "靠近祭坛并互动领取灵核",
+      "guidance": "沿已验证通路前往祭坛，互动领取灵核",
+      "t": 1789571418016
+    },
+    {
+      "name": "09-claim-orb",
+      "pass": true,
+      "afterClaim": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "x": 115.45878303875092,
+        "y": 10.359999809265137,
+        "z": 29.562209353520355,
+        "camYaw": 3.141592653589793,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "",
+        "orbs": 1,
+        "shrinesOn": [
+          "burst"
+        ],
+        "towers": [],
+        "cracked": [
+          false,
+          true,
+          false,
+          false
+        ],
+        "art": 1,
+        "nav": "unavailable",
+        "navNext": "沿指引前往晨光塔塔脚攀爬点",
+        "navGuidance": "尚未找到可通行路线，可绕开障碍再试",
+        "quest": "点亮晨光塔",
+        "selected": null
+      },
+      "altarWalkOk": true,
+      "t": 1789571424782
+    },
+    {
+      "name": "10-leave-shrine",
+      "pass": false,
+      "afterLeave": {
+        "mode": "playing",
+        "world": "shrine",
+        "shrine": 1,
+        "x": 268,
+        "y": 520,
+        "z": 7.0941407617348755,
+        "camYaw": 3.141592653589793,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "请靠近：距离 6.1m",
+        "orbs": 1,
+        "shrinesOn": [
+          "burst"
+        ],
+        "towers": [],
+        "cracked": [
+          false,
+          true,
+          false,
+          false
+        ],
+        "art": 1,
+        "nav": "walk",
+        "navNext": "靠近祭坛并互动领取灵核",
+        "navGuidance": "沿已验证通路前往祭坛，互动领取灵核",
+        "quest": "解开爆鸣祠",
+        "selected": null
+      },
+      "t": 1789571440566
+    },
+    {
+      "name": "10-leave-shrine",
+      "pass": false,
+      "afterLeave": {
+        "mode": "playing",
+        "world": "shrine",
+        "shrine": 1,
+        "x": 268,
+        "y": 520,
+        "z": 7.0941407617348755,
+        "camYaw": 3.141592653589793,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "请靠近：距离 6.1m",
+        "orbs": 1,
+        "shrinesOn": [
+          "burst"
+        ],
+        "towers": [],
+        "cracked": [
+          false,
+          true,
+          false,
+          false
+        ],
+        "art": 1,
+        "nav": "walk",
+        "navNext": "靠近祭坛并互动领取灵核",
+        "navGuidance": "沿已验证通路前往祭坛，互动领取灵核",
+        "quest": "解开爆鸣祠",
+        "selected": null
+      },
+      "leaveWalk": {
+        "ok": false,
+        "reason": "bounded-drives",
+        "last": {
+          "mode": "playing",
+          "world": "overworld",
+          "shrine": null,
+          "x": 115.46570101602558,
+          "y": 10.359999809265137,
+          "z": 30.14667822914943,
+          "camYaw": 4.690392653589793,
+          "state": "grounded",
+          "stamina": 100,
+          "prompt": "进入 爆鸣祠",
+          "orbs": 1,
+          "shrinesOn": [
+            "burst"
+          ],
+          "towers": [],
+          "cracked": [
+            false,
+            true,
+            false,
+            false
+          ],
+          "art": 1,
+          "nav": "unavailable",
+          "navNext": "沿指引前往晨光塔塔脚攀爬点",
+          "navGuidance": "尚未找到可通行路线，可绕开障碍再试",
+          "quest": "点亮晨光塔",
+          "selected": null
+        },
+        "samples": [
+          {
+            "i": 0,
+            "x": 115.4,
+            "z": 29.6,
+            "d": 155.1,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 1,
+            "x": 115.4,
+            "z": 29.6,
+            "d": 155.1,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 2,
+            "x": 115.5,
+            "z": 29.6,
+            "d": 155.1,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 3,
+            "x": 115.4,
+            "z": 29.6,
+            "d": 155.1,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 4,
+            "x": 115.5,
+            "z": 29.7,
+            "d": 155.1,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 5,
+            "x": 115.4,
+            "z": 29.7,
+            "d": 155.2,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 6,
+            "x": 115.4,
+            "z": 29.7,
+            "d": 155.1,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 7,
+            "x": 115.4,
+            "z": 29.7,
+            "d": 155.2,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 8,
+            "x": 115.4,
+            "z": 29.8,
+            "d": 155.2,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 9,
+            "x": 115.5,
+            "z": 29.8,
+            "d": 155.1,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 10,
+            "x": 115.4,
+            "z": 29.8,
+            "d": 155.2,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 11,
+            "x": 115.5,
+            "z": 29.8,
+            "d": 155.1,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 12,
+            "x": 115.4,
+            "z": 29.9,
+            "d": 155.2,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 13,
+            "x": 115.5,
+            "z": 29.9,
+            "d": 155.2,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 14,
+            "x": 115.4,
+            "z": 29.9,
+            "d": 155.2,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 15,
+            "x": 115.5,
+            "z": 29.9,
+            "d": 155.2,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 16,
+            "x": 115.4,
+            "z": 30,
+            "d": 155.2,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 17,
+            "x": 115.4,
+            "z": 30,
+            "d": 155.2,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 18,
+            "x": 115.4,
+            "z": 30,
+            "d": 155.2,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 19,
+            "x": 115.4,
+            "z": 30,
+            "d": 155.2,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 20,
+            "x": 115.5,
+            "z": 30,
+            "d": 155.2,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 21,
+            "x": 115.4,
+            "z": 30.1,
+            "d": 155.2,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 22,
+            "x": 115.5,
+            "z": 30.1,
+            "d": 155.2,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 23,
+            "x": 115.4,
+            "z": 30.1,
+            "d": 155.2,
+            "world": "overworld",
+            "mode": "playing"
+          },
+          {
+            "i": 24,
+            "x": 115.5,
+            "z": 30.1,
+            "d": 155.2,
+            "world": "overworld",
+            "mode": "playing"
+          }
+        ]
+      },
+      "t": 1789571440566
+    }
+  ],
+  "failure": {
+    "milestone": "10-leave-shrine",
+    "afterLeave": {
+      "mode": "playing",
+      "world": "shrine",
+      "shrine": 1,
+      "x": 268,
+      "y": 520,
+      "z": 7.0941407617348755,
+      "camYaw": 3.141592653589793,
+      "state": "grounded",
+      "stamina": 100,
+      "prompt": "请靠近：距离 6.1m",
+      "orbs": 1,
+      "shrinesOn": [
+        "burst"
+      ],
+      "towers": [],
+      "cracked": [
+        false,
+        true,
+        false,
+        false
+      ],
+      "art": 1,
+      "nav": "walk",
+      "navNext": "靠近祭坛并互动领取灵核",
+      "navGuidance": "沿已验证通路前往祭坛，互动领取灵核",
+      "quest": "解开爆鸣祠",
+      "selected": null
+    },
+    "leaveWalk": {
+      "ok": false,
+      "reason": "bounded-drives",
+      "last": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "x": 115.46570101602558,
+        "y": 10.359999809265137,
+        "z": 30.14667822914943,
+        "camYaw": 4.690392653589793,
+        "state": "grounded",
+        "stamina": 100,
+        "prompt": "进入 爆鸣祠",
+        "orbs": 1,
+        "shrinesOn": [
+          "burst"
+        ],
+        "towers": [],
+        "cracked": [
+          false,
+          true,
+          false,
+          false
+        ],
+        "art": 1,
+        "nav": "unavailable",
+        "navNext": "沿指引前往晨光塔塔脚攀爬点",
+        "navGuidance": "尚未找到可通行路线，可绕开障碍再试",
+        "quest": "点亮晨光塔",
+        "selected": null
+      },
+      "samples": [
+        {
+          "i": 0,
+          "x": 115.4,
+          "z": 29.6,
+          "d": 155.1,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 1,
+          "x": 115.4,
+          "z": 29.6,
+          "d": 155.1,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 2,
+          "x": 115.5,
+          "z": 29.6,
+          "d": 155.1,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 3,
+          "x": 115.4,
+          "z": 29.6,
+          "d": 155.1,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 4,
+          "x": 115.5,
+          "z": 29.7,
+          "d": 155.1,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 5,
+          "x": 115.4,
+          "z": 29.7,
+          "d": 155.2,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 6,
+          "x": 115.4,
+          "z": 29.7,
+          "d": 155.1,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 7,
+          "x": 115.4,
+          "z": 29.7,
+          "d": 155.2,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 8,
+          "x": 115.4,
+          "z": 29.8,
+          "d": 155.2,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 9,
+          "x": 115.5,
+          "z": 29.8,
+          "d": 155.1,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 10,
+          "x": 115.4,
+          "z": 29.8,
+          "d": 155.2,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 11,
+          "x": 115.5,
+          "z": 29.8,
+          "d": 155.1,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 12,
+          "x": 115.4,
+          "z": 29.9,
+          "d": 155.2,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 13,
+          "x": 115.5,
+          "z": 29.9,
+          "d": 155.2,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 14,
+          "x": 115.4,
+          "z": 29.9,
+          "d": 155.2,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 15,
+          "x": 115.5,
+          "z": 29.9,
+          "d": 155.2,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 16,
+          "x": 115.4,
+          "z": 30,
+          "d": 155.2,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 17,
+          "x": 115.4,
+          "z": 30,
+          "d": 155.2,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 18,
+          "x": 115.4,
+          "z": 30,
+          "d": 155.2,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 19,
+          "x": 115.4,
+          "z": 30,
+          "d": 155.2,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 20,
+          "x": 115.5,
+          "z": 30,
+          "d": 155.2,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 21,
+          "x": 115.4,
+          "z": 30.1,
+          "d": 155.2,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 22,
+          "x": 115.5,
+          "z": 30.1,
+          "d": 155.2,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 23,
+          "x": 115.4,
+          "z": 30.1,
+          "d": 155.2,
+          "world": "overworld",
+          "mode": "playing"
+        },
+        {
+          "i": 24,
+          "x": 115.5,
+          "z": 30.1,
+          "d": 155.2,
+          "world": "overworld",
+          "mode": "playing"
+        }
+      ]
+    }
+  },
+  "errors": []
+}

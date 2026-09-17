@@ -26,6 +26,8 @@ function fixture({ x = recorded.x, z = recorded.z, bossX = recordedBoss.x,
   sim.freshRuntime(false);
   for (const t of TOWERS) sim.towersOn.add(t.id);
   for (const s of SHRINES) sim.shrinesOn.add(s.id);
+  // Production invariant: each shrine claim increments orbs. Keep fixture consistent.
+  sim.orbs = sim.shrinesOn.size;
   Object.assign(sim.player, { x, z, y: sim.surfaceY(x, z, recorded.y + 1),
     hp: recorded.hp, stamina, staminaMax: 108, dodgeCd: cd, dodgeT: 0,
     invuln: 0, vx: 0, vy: 0, vz: 0, state, grounded: state === 'grounded',

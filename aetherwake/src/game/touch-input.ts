@@ -1,5 +1,5 @@
-import { enqueueCommand, resetInput, subscribeInputReset, touch } from "./input.ts";
-import type { CommandKind } from "./input.ts";
+import { dispatchWorldClick, enqueueCommand, resetInput, subscribeInputReset, touch } from "./input.ts";
+import type { CommandKind, WorldClickInfo } from "./input.ts";
 
 const BUTTON_COMMANDS: Readonly<Record<string, CommandKind>> = {
   interact: "interact",
@@ -9,9 +9,22 @@ const BUTTON_COMMANDS: Readonly<Record<string, CommandKind>> = {
   attack: "attack",
   dodge: "dodge",
   pause: "pause",
+  map: "map",
+  bag: "bag",
 };
 
-type PointerOwner = { element: HTMLElement; kind: string; pointerId: number; pointerType: string; x: number; y: number };
+type PointerOwner = {
+  element: HTMLElement;
+  kind: string;
+  pointerId: number;
+  pointerType: string;
+  x: number;
+  y: number;
+  startX: number;
+  startY: number;
+  startT: number;
+  moved: number;
+};
 type ActivationKey = "Space" | "Enter";
 type BowActivation = {
   releasedPointer: { pointerId: number; pointerType: string } | null;
@@ -85,6 +98,7 @@ export function bindTouchInput({ stick, look, buttons }: { stick: HTMLElement; l
         ? { pointerId: owner.pointerId, pointerType: owner.pointerType }
         : null;
     }
+    if (e.type === "pointerup") releaseLookTap(owner);
     // The owner's normal pointerup creates its token before releasing capture.
     // A subsequent lostpointercapture has no owner and must retain that token.
     releaseOwner(owner);
@@ -105,11 +119,33 @@ export function bindTouchInput({ stick, look, buttons }: { stick: HTMLElement; l
       }
       touch.stickX = x;
       touch.stickY = y;
+      owner.moved = Math.max(owner.moved, Math.hypot(e.clientX - owner.startX, e.clientY - owner.startY));
     } else if (owner.kind === "look") {
       touch.lookX += dx * 0.9;
       touch.lookY += dy * 0.9;
       owner.x = e.clientX;
       owner.y = e.clientY;
+      owner.moved = Math.max(owner.moved, Math.hypot(e.clientX - owner.startX, e.clientY - owner.startY));
+    }
+  };
+
+  // Short-tap on the look pad becomes a world activation (interact or attack),
+  // never a camera flick. Drag only rotates the camera.
+  const LOOK_TAP_SLOP = 8;
+  const LOOK_TAP_MS = 250;
+
+  const releaseLookTap = (owner: PointerOwner) => {
+    if (owner.kind !== "look") return;
+    const dt = performance.now() - owner.startT;
+    if (owner.moved <= LOOK_TAP_SLOP && dt <= LOOK_TAP_MS) {
+      const info: WorldClickInfo = {
+        clientX: owner.startX,
+        clientY: owner.startY,
+        pointerLocked: false,
+        source: "touch-tap",
+      };
+      // Reuse the same routing path as mouse world clicks.
+      dispatchWorldClick(info);
     }
   };
 
@@ -126,7 +162,18 @@ export function bindTouchInput({ stick, look, buttons }: { stick: HTMLElement; l
         activation.releasedPointer = null;
         activation.keyReady = false;
       }
-      pointers.set(e.pointerId, { element, kind, pointerId: e.pointerId, pointerType: e.pointerType, x: e.clientX, y: e.clientY });
+      pointers.set(e.pointerId, {
+        element,
+        kind,
+        pointerId: e.pointerId,
+        pointerType: e.pointerType,
+        x: e.clientX,
+        y: e.clientY,
+        startX: e.clientX,
+        startY: e.clientY,
+        startT: performance.now(),
+        moved: 0,
+      });
       controls.set(element, e.pointerId);
       if (kind === "jump") touch.jump = true;
       if (command) enqueueCommand(command);

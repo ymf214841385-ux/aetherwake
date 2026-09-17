@@ -82,6 +82,25 @@ import {
   type Solid,
 } from "./physics.ts";
 import { loadSettings, type Settings } from "./settings.ts";
+import { deriveTrackedObjective } from "./quest.ts";
+import { buildOverworldGraph, findRoute, nearestNodeId } from "./navigation.ts";
+import {
+  buildBurstShrineRoute,
+  buildOverworldDetourRoute,
+  emptyOverworldSnapshot,
+  type NavigationSnapshot,
+} from "./shrine-route.ts";
+import {
+  buildPullShrineRoute,
+  buildRimeShrineRoute,
+  buildStillShrineRoute,
+} from "./shrine-route-dynamic.ts";
+import {
+  ActivationLedger,
+  revalidateInteraction,
+  selectInteractionTarget,
+  type InteractionTarget,
+} from "./interaction.ts";
 import { hasSaveFile, useHud } from "./store.ts";
 import type { InvMeal, InvWeapon, Marker, Mode } from "./store.ts";
 import { createWindWorld, sampleWind, tickGust, type WindWorld } from "./wind.ts";
@@ -237,6 +256,14 @@ export class Sim {
   glLost = false;
   glRestoredAt = 0;
   portrait = false;
+  activationLedger = new ActivationLedger();
+  lastInteractReject = "";
+  /** Diagnostic only: last hurt() reason (坠落/敌人/严寒/射线/…). No gameplay effect. */
+  lastDamageWhy = "";
+  lastDamageAt = 0;
+  /** Cached canonical navigation snapshot (invalidated by navCacheKey). */
+  private navCache: { key: string; snap: NavigationSnapshot } | null = null;
+  private navComputeMs = 0;
 
   constructor(storage?: SaveStorage) {
     this.storage = storage ?? (typeof localStorage !== "undefined" ? browserStorage() : { getItem: () => null, setItem: () => undefined });
@@ -366,6 +393,28 @@ export class Sim {
   surfaceY(x: number, z: number, feetY?: number, exclude?: string | null) {
     const fy = feetY ?? this.player.y + FOOT_SNAP;
     return supportY(x, z, fy, this.solids, this.heightFn, this.extraSupports(exclude), exclude).y;
+  }
+
+  /**
+   * Production climb-contact probe — same wall samples as integrate().
+   * Handoff / climb-start must consume this, never center-distance alone.
+   */
+  probeClimbWall(): { id: string; climbable: boolean; centerDistance: number } | null {
+    const p = this.player;
+    const fwd = this.bodyFwd();
+    let wall = queryWall(p.x + fwd.x * 1.05, p.z + fwd.z * 1.05, p.y, this.solids);
+    const nearTw = this.nearestTower();
+    if ((!wall || !wall.climbable) && nearTw && nearTw.d < TOWER_RADIUS + 3.4) {
+      const towardX = (nearTw.tw.x - p.x) / Math.max(0.2, nearTw.d);
+      const towardZ = (nearTw.tw.z - p.z) / Math.max(0.2, nearTw.d);
+      const probeY = p.y < WATER_LEVEL + 0.8 ? Math.max(p.y, WATER_LEVEL + 0.25) : p.y;
+      const hit = queryWall(p.x + towardX * 1.15, p.z + towardZ * 1.15, probeY, this.solids);
+      if (hit?.climbable) wall = hit;
+    }
+    if (!wall) return null;
+    const solid = this.solids.find((s) => s.id === wall!.id);
+    const centerDistance = solid ? Math.hypot(p.x - solid.x, p.z - solid.z) : Number.NaN;
+    return { id: wall.id, climbable: Boolean(wall.climbable), centerDistance };
   }
 
   syncWindZones() {
@@ -863,8 +912,18 @@ export class Sim {
       this.syncHud();
       return;
     }
-    if (a.bag) this.mode = "inventory";
-    if (a.map) this.mode = "map";
+    if (a.bag) {
+      this.mode = "inventory";
+      resetInput();
+      this.syncHud();
+      return;
+    }
+    if (a.map) {
+      this.mode = "map";
+      resetInput();
+      this.syncHud();
+      return;
+    }
     if (a.artSlot >= 0) this.art = a.artSlot;
 
     const lookSign = this.settings.invertY ? -1 : 1;
@@ -893,7 +952,16 @@ export class Sim {
     const wishZ = fz * a.moveY + rz * a.moveX;
     const wishLen = Math.hypot(wishX, wishZ);
 
+    const worldBefore = this.worldKind;
+    const shrineBefore = this.shrine;
     this.handleInteract(a);
+    // Mode or world may change inside interact (dialogue, cooking, shrine enter/exit).
+    // Stop this frame so the same input cannot also move/attack/act in the old world.
+    if (this.mode !== "playing" || this.worldKind !== worldBefore || this.shrine !== shrineBefore) {
+      resetInput();
+      this.syncHud();
+      return;
+    }
     this.handleLocomotion(d, a, wishX, wishZ, wishLen);
     this.handleCombat(a);
     this.handleArts(a);
@@ -1325,22 +1393,6 @@ export class Sim {
     }
   }
 
-  nearInteractable() {
-    const p = this.player;
-    if (this.shrine !== null) {
-      const o = shrineWorldOrigin(this.shrine);
-      if (Math.hypot(p.x - o.x, p.z - (o.z + 23)) < 2.2) return true;
-      if (p.z < o.z + 3.2) return true;
-      return false;
-    }
-    for (const tw of TOWERS) if (Math.hypot(p.x - tw.x, p.z - tw.z) < 5.2 && p.y > tw.y + TOWER_HEIGHT - 2.2) return true;
-    for (const s of SHRINES) if (Math.hypot(p.x - s.x, p.z - s.z) < 3.2) return true;
-    if (Math.hypot(p.x - SAGE.x, p.z - SAGE.z) < 2.4) return true;
-    for (const f of FIRES) if (Math.hypot(p.x - f.x, p.z - f.z) < 2.1) return true;
-    for (const c of CHESTS) if (!this.chestsGot.has(c.id) && Math.hypot(p.x - c.x, p.z - c.z) < 1.8) return true;
-    return false;
-  }
-
   handleCombat(a: Actions) {
     const p = this.player;
     const melee = this.weapons.find((w) => w.id === this.equippedId && w.kind !== "bow") ?? this.weapons.find((w) => w.kind !== "bow") ?? null;
@@ -1523,12 +1575,354 @@ export class Sim {
     }
   }
 
+  currentWorldId(): string {
+    if (this.worldKind === "graybox") return "graybox";
+    if (this.shrine !== null) return `shrine:${SHRINES[this.shrine]?.id ?? this.shrine}`;
+    return "overworld";
+  }
+
+  /** All interactable candidates in the current world, with stable ids. */
+  collectInteractionCandidates(opts?: { includeWisps?: boolean }): InteractionTarget[] {
+    const worldId = this.currentWorldId();
+    const out: InteractionTarget[] = [];
+    const p = this.player;
+
+    if (this.worldKind === "graybox") {
+      out.push({
+        targetId: "graybox-reset",
+        worldId: "graybox",
+        action: "reset",
+        label: "灰盒 · 互动重置",
+        enabled: true,
+        x: GRAYBOX_RESET.x,
+        y: GRAYBOX_RESET.y,
+        z: GRAYBOX_RESET.z,
+        range: 4,
+        maxDy: 6,
+      });
+      return out;
+    }
+
+    if (this.shrine !== null) {
+      const o = shrineWorldOrigin(this.shrine);
+      const shrine = SHRINES[this.shrine]!;
+      const done = this.shrinesOn.has(shrine.id);
+      out.push({
+        targetId: `altar:${shrine.id}`,
+        worldId,
+        action: done ? "leave" : "claim",
+        label: done ? "离开灵祠" : "领取灵核",
+        enabled: true,
+        x: o.x,
+        y: o.y,
+        z: o.z + 23,
+        range: 2.2,
+        maxDy: 4,
+      });
+      out.push({
+        targetId: `exit:${shrine.id}`,
+        worldId,
+        action: "leave",
+        label: "离开灵祠",
+        enabled: true,
+        x: o.x,
+        y: o.y,
+        z: o.z + 1,
+        range: 3.2,
+        maxDy: 6,
+      });
+      return out;
+    }
+
+    for (const tw of TOWERS) {
+      const onTop = p.y > tw.y + TOWER_HEIGHT - 2.2;
+      // Target-owned solids only — independent walls still block LOS.
+      const towerOwned = [
+        `${tw.id}-shaft`,
+        `${tw.id}-cap`,
+        ...Array.from({ length: 12 }, (_, i) => `${tw.id}-ledge-${i}`),
+        ...Array.from({ length: 16 }, (_, i) => `${tw.id}-spiral-${i}`),
+      ];
+      out.push({
+        targetId: `tower:${tw.id}`,
+        worldId,
+        action: "activate",
+        label: this.towersOn.has(tw.id) ? `${tw.name}已点亮` : `启动 ${tw.name}`,
+        enabled: onTop && !this.towersOn.has(tw.id),
+        reason: this.towersOn.has(tw.id) ? "已点亮" : onTop ? undefined : "需在塔顶",
+        x: tw.x,
+        y: tw.y + TOWER_HEIGHT - 1.5,
+        z: tw.z,
+        range: 5.2,
+        maxDy: 3.5,
+        excludeSolidIds: towerOwned,
+      });
+    }
+
+    for (const s of SHRINES) {
+      // Exterior door anchor: approach from +Z side of the hut body.
+      // Body/apron are target-owned; any other wall still blocks.
+      out.push({
+        targetId: `shrine:${s.id}`,
+        worldId,
+        action: "enter",
+        label: this.shrinesOn.has(s.id) ? `进入 ${s.name}` : `叩响 ${s.name}`,
+        enabled: true,
+        x: s.x,
+        y: s.y,
+        z: s.z + 2.8,
+        range: 3.2,
+        maxDy: 6,
+        excludeSolidIds: [`${s.id}-body`, `${s.id}-apron`],
+      });
+    }
+
+    out.push({
+      targetId: "sage",
+      worldId,
+      action: "talk",
+      label: "与守塔人交谈",
+      enabled: true,
+      x: SAGE.x,
+      y: SAGE.y,
+      z: SAGE.z,
+      range: 2.4,
+      maxDy: 3,
+    });
+
+    for (const f of FIRES) {
+      out.push({
+        targetId: `fire:${f.id}`,
+        worldId,
+        action: "cook",
+        label: "在篝火烹饪 / 休息",
+        enabled: true,
+        x: f.x,
+        y: f.y,
+        z: f.z,
+        range: 2.1,
+        maxDy: 3,
+      });
+    }
+
+    for (const c of CHESTS) {
+      const got = this.chestsGot.has(c.id);
+      out.push({
+        targetId: `chest:${c.id}`,
+        worldId,
+        action: "open",
+        label: got ? "已搜集" : "打开容器",
+        enabled: !got,
+        reason: got ? "已搜集" : undefined,
+        x: c.x,
+        y: c.y,
+        z: c.z,
+        range: 1.8,
+        maxDy: 2.5,
+      });
+    }
+
+    if (opts?.includeWisps) {
+      for (const w of WISPS) {
+        if (this.wispsGot.has(w.id)) continue;
+        out.push({
+          targetId: `wisp:${w.id}`,
+          worldId,
+          action: "collect",
+          label: "收集风之种",
+          enabled: true,
+          x: w.x,
+          y: w.y,
+          z: w.z,
+          range: 1.6,
+          maxDy: 2.5,
+        });
+      }
+    }
+
+    return out;
+  }
+
+  interactionHost() {
+    const p = this.player;
+    return {
+      worldId: this.currentWorldId(),
+      mode: this.mode,
+      interactLock: this.interactLock,
+      player: { x: p.x, y: p.y, z: p.z },
+      // Production LOS. Independent walls always block. Only solids listed in
+      // excludeIds (the target's own shaft/body) are ignored — no radius exemption.
+      losBlocked: (
+        from: { x: number; y: number; z: number },
+        to: { x: number; y: number; z: number },
+        opts?: { excludeIds?: string[] },
+      ) => {
+        const midY = (from.y + to.y) * 0.5 + 0.9;
+        const exclude = new Set(opts?.excludeIds ?? []);
+        return losBlocked(from.x, from.z, to.x, to.z, (x, z) => {
+          // Any non-excluded solid blocks. queryWall alone returns only the
+          // deepest hit, which can hide an independent wall behind a target shell.
+          for (const s of this.solids) {
+            const hit = queryWall(x, z, midY, [s]);
+            if (hit && !exclude.has(hit.id)) return true;
+          }
+          return false;
+        });
+      },
+    };
+  }
+
+  /** Unified preview used by HUD / click / E. Picked id wins over proximity order. */
+  previewInteraction(pickedTargetId?: string | null): InteractionTarget | null {
+    if (this.mode !== "playing" || this.interactLock > 0) return null;
+    return selectInteractionTarget(this.collectInteractionCandidates({ includeWisps: true }), {
+      pickedTargetId: pickedTargetId ?? null,
+      host: this.interactionHost(),
+    });
+  }
+
+  peekInteractTarget(opts?: { includeWisps?: boolean; pickedTargetId?: string | null }): { label: string; kind: string; targetId: string } | null {
+    const t = this.previewInteraction(opts?.pickedTargetId ?? null);
+    if (!t) return null;
+    return { label: t.label, kind: t.action, targetId: t.targetId };
+  }
+
+  nearInteractable() {
+    // Climb gate: historical set without wisps (auto-collect must not block grab).
+    const worldId = this.currentWorldId();
+    const host = this.interactionHost();
+    const list = this.collectInteractionCandidates({ includeWisps: false }).filter((c) => c.worldId === worldId && c.enabled);
+    const hit = selectInteractionTarget(list, { host });
+    return Boolean(hit && hit.enabled);
+  }
+
+  executeInteraction(target: InteractionTarget, activationId: string | null): boolean {
+    const host = this.interactionHost();
+    const check = revalidateInteraction(host, target);
+    if (!check.ok) {
+      this.lastInteractReject = check.reason;
+      this.pushToast(check.reason);
+      return false;
+    }
+    if (activationId && !this.activationLedger.mark(activationId)) {
+      this.lastInteractReject = "重复激活已忽略";
+      return false;
+    }
+    const p = this.player;
+    const id = target.targetId;
+
+    if (id === "graybox-reset") {
+      p.x = GRAYBOX_RESET.x;
+      p.z = GRAYBOX_RESET.z;
+      p.y = GRAYBOX_RESET.y;
+      return true;
+    }
+
+    if (id.startsWith("altar:")) {
+      const shrineId = id.slice(6);
+      if (!this.shrinesOn.has(shrineId)) {
+        this.shrinesOn.add(shrineId);
+        this.orbs += 1;
+        this.player.hp = this.player.heartsMax;
+        sfx("orb");
+        this.pushToast(`获得灵核（${this.orbs}/4）`);
+        if (this.orbs >= 4) {
+          this.player.heartsMax = Math.min(8, this.player.heartsMax + 1);
+          this.player.hp = this.player.heartsMax;
+          if (this.towersOn.size >= 3) this.pushToast("三塔与四祠已齐。残堡封印打开。");
+          else this.pushToast("四枚灵核已齐。还须点亮三座天瞭塔。");
+        }
+      }
+      this.exitShrine();
+      return true;
+    }
+
+    if (id.startsWith("exit:")) {
+      this.exitShrine();
+      return true;
+    }
+
+    if (id.startsWith("tower:")) {
+      const twId = id.slice(6);
+      if (this.towersOn.has(twId)) return false;
+      this.towersOn.add(twId);
+      this.surveyT = 2.4;
+      this.spawn = { id: `tower-${twId}`, x: p.x, y: p.y, z: p.z };
+      sfx("tower");
+      const tw = TOWERS.find((t) => t.id === twId);
+      this.pushToast(`${tw?.name ?? twId} 点亮了这片土地`);
+      this.save();
+      return true;
+    }
+
+    if (id.startsWith("shrine:")) {
+      const idx = SHRINES.findIndex((s) => `shrine:${s.id}` === id);
+      if (idx < 0) return false;
+      this.enterShrine(idx);
+      return true;
+    }
+
+    if (id === "sage") {
+      this.mode = "dialogue";
+      this.dialogue =
+        "风醒者。登上三座天瞭塔，集齐四枚灵核，残堡封印才会打开。对着峭壁按互动攀爬，空中再按跳跃滑翔。石板现有五术：引风、爆鸣、霜息、牵引、凝时。";
+      return true;
+    }
+
+    if (id.startsWith("fire:")) {
+      const fId = id.slice(5);
+      this.mode = "cooking";
+      this.player.hp = this.player.heartsMax;
+      this.spawn = { id: fId, x: p.x, y: p.y, z: p.z };
+      this.save();
+      return true;
+    }
+
+    if (id.startsWith("chest:")) {
+      const cId = id.slice(6);
+      if (this.chestsGot.has(cId)) return false;
+      this.chestsGot.add(cId);
+      if (cId === "chest-start") {
+        this.weapons.push(weapon("clay", "野木阔刀", 32, 14, "claymore"));
+        this.pushToast("获得 野木阔刀");
+      } else {
+        this.arrows += 10;
+        this.amber += 15;
+        this.mats.meat = (this.mats.meat || 0) + 1;
+        this.pushToast("获得箭矢、琥珀与兽肉");
+      }
+      sfx("pickup");
+      this.save();
+      return true;
+    }
+
+    if (id.startsWith("wisp:")) {
+      const wId = id.slice(5);
+      if (this.wispsGot.has(wId)) return false;
+      this.wispsGot.add(wId);
+      this.player.staminaMax += WISP_STAMINA;
+      this.player.stamina = this.player.staminaMax;
+      this.amber += 8;
+      sfx("pickup");
+      this.pushToast(`风之种 ${this.wispsGot.size}/8  · 耐力提升`);
+      this.save();
+      return true;
+    }
+
+    return false;
+  }
+
   handleInteract(a: Actions) {
     this.prompt = "";
     this.shrineHint = "";
-    if (this.interactLock > 0) return;
+    this.lastInteractReject = "";
+    if (this.interactLock > 0) {
+      this.autoPickup();
+      return;
+    }
     const p = this.player;
 
+    // Graybox: dedicated reset is always available in that world (legacy contract).
     if (this.worldKind === "graybox") {
       this.prompt = "灰盒 · 互动重置";
       if (a.interact) {
@@ -1540,164 +1934,81 @@ export class Sim {
     }
 
     if (this.shrine !== null) {
-      const o = shrineWorldOrigin(this.shrine);
       const shrine = SHRINES[this.shrine]!;
       this.shrineHint = shrine.hint || "";
-      const altarZ = o.z + 23;
-      if (Math.hypot(p.x - o.x, p.z - altarZ) < 2.2) {
-        this.prompt = this.shrinesOn.has(shrine.id) ? "离开灵祠" : "领取灵核";
-        if (a.interact) {
-          if (!this.shrinesOn.has(shrine.id)) {
-            this.shrinesOn.add(shrine.id);
-            this.orbs += 1;
-            this.player.hp = this.player.heartsMax;
-            sfx("orb");
-            this.pushToast(`获得灵核（${this.orbs}/4）`);
-            if (this.orbs >= 4) {
-              this.player.heartsMax = Math.min(8, this.player.heartsMax + 1);
-              this.player.hp = this.player.heartsMax;
-              if (this.towersOn.size >= 3) this.pushToast("三塔与四祠已齐。残堡封印打开。");
-              else this.pushToast("四枚灵核已齐。还须点亮三座天瞭塔。");
-            }
-          }
-          this.exitShrine();
-        }
-        return;
-      }
-      if (p.z < o.z + 3.2) {
-        this.prompt = "离开灵祠";
-        if (a.interact) this.exitShrine();
-      }
-      return;
     }
 
-    for (const tw of TOWERS) {
-      const d = Math.hypot(p.x - tw.x, p.z - tw.z);
-      const onTop = d < 5.2 && p.y > tw.y + TOWER_HEIGHT - 2.2;
-      if (onTop) {
-        this.prompt = this.towersOn.has(tw.id) ? `${tw.name}已点亮` : `启动 ${tw.name}`;
-        if (a.interact && !this.towersOn.has(tw.id)) {
-          this.towersOn.add(tw.id);
-          this.surveyT = 2.4;
-          this.spawn = { id: `tower-${tw.id}`, x: p.x, y: p.y, z: p.z };
-          sfx("tower");
-          this.pushToast(`${tw.name} 点亮了这片土地`);
-          this.save();
-        }
-        return;
-      }
-    }
-
-    for (let i = 0; i < SHRINES.length; i++) {
-      const s = SHRINES[i]!;
-      if (Math.hypot(p.x - s.x, p.z - s.z) < 4.2 && Math.abs(p.y - s.y) < 8) {
-        this.prompt = this.shrinesOn.has(s.id) ? `进入 ${s.name}` : `叩响 ${s.name}`;
-        if (a.interact) this.enterShrine(i);
-        return;
-      }
-    }
-
-    if (Math.hypot(p.x - SAGE.x, p.z - SAGE.z) < 2.4) {
-      this.prompt = "与守塔人交谈";
-      if (a.interact) {
-        this.mode = "dialogue";
-        this.dialogue =
-          "风醒者。登上三座天瞭塔，集齐四枚灵核，残堡封印才会打开。对着峭壁按互动攀爬，空中再按跳跃滑翔。石板现有五术：引风、爆鸣、霜息、牵引、凝时。";
-      }
-      return;
-    }
-
-    for (const f of FIRES) {
-      if (Math.hypot(p.x - f.x, p.z - f.z) < 2.1) {
-        this.prompt = "在篝火烹饪 / 休息";
-        if (a.interact) {
-          this.mode = "cooking";
-          this.player.hp = this.player.heartsMax;
-          this.spawn = { id: f.id, x: p.x, y: p.y, z: p.z };
-          this.save();
-        }
-        return;
-      }
-    }
-
-    for (const c of CHESTS) {
-      if (this.chestsGot.has(c.id)) continue;
-      if (Math.hypot(p.x - c.x, p.z - c.z) < 1.8) {
-        this.prompt = "打开容器";
-        if (a.interact) {
-          this.chestsGot.add(c.id);
-          if (c.id === "chest-start") {
-            this.weapons.push(weapon("clay", "野木阔刀", 32, 14, "claymore"));
-            this.pushToast("获得 野木阔刀");
-          } else {
-            this.arrows += 10;
-            this.amber += 15;
-            this.mats.meat = (this.mats.meat || 0) + 1;
-            this.pushToast("获得箭矢、琥珀与兽肉");
-          }
-          sfx("pickup");
-          this.save();
-        }
-        return;
-      }
-    }
-
-    for (const w of WISPS) {
-      if (this.wispsGot.has(w.id)) continue;
-      if (Math.hypot(p.x - w.x, p.z - w.z) < 1.6) {
-        this.prompt = "收集风之种";
-        if (a.interact || Math.hypot(p.x - w.x, p.z - w.z) < 1.05) {
-          this.wispsGot.add(w.id);
-          this.player.staminaMax += WISP_STAMINA;
-          this.player.stamina = this.player.staminaMax;
-          this.amber += 8;
-          sfx("pickup");
-          this.pushToast(`风之种 ${this.wispsGot.size}/8  · 耐力提升`);
-          this.save();
-        }
-        return;
-      }
-    }
-
-    const ruinX = WIND_RUIN.x;
-    const ruinZ = WIND_RUIN.z;
-    const sideX = ruinX + 6.4;
-    const sideZ = ruinZ - 3.2;
-    if (!this.ruinSolved && Math.hypot(p.x - sideX, p.z - sideZ) < 2.4 && p.y > this.heightFn(ruinX, ruinZ) + 3.4) {
-      this.ruinSolved = true;
-      this.pushToast("从侧翼高台进入。回程捷径已开。");
-      this.save();
-    }
-    if (Math.hypot(p.x - ruinX, p.z - ruinZ) < 6) {
-      const lost = this.planks.some((pl) => Math.hypot(pl.x - pl.homeX, pl.z - pl.homeZ) > 18 || pl.y < this.heightFn(pl.x, pl.z) - 6);
-      if (lost) {
-        this.prompt = "复位风桥构件";
-        if (a.interact) {
-          this.planks = makeWindPlanks();
-          this.pushToast("构件回到了原位。进度保留。");
-        }
-        return;
-      }
-      if (!this.ruinSolved && this.planksBridge()) {
+    // Seeded ruin / seal / citadel side effects that are not click targets.
+    if (this.worldKind === "overworld" && this.shrine === null) {
+      const ruinX = WIND_RUIN.x;
+      const ruinZ = WIND_RUIN.z;
+      const sideX = ruinX + 6.4;
+      const sideZ = ruinZ - 3.2;
+      if (!this.ruinSolved && Math.hypot(p.x - sideX, p.z - sideZ) < 2.4 && p.y > this.heightFn(ruinX, ruinZ) + 3.4) {
         this.ruinSolved = true;
-        this.pushToast("风桥合拢。回程捷径已开。");
+        this.pushToast("从侧翼高台进入。回程捷径已开。");
         this.save();
       }
-    }
+      if (Math.hypot(p.x - ruinX, p.z - ruinZ) < 6) {
+        const lost = this.planks.some((pl) => Math.hypot(pl.x - pl.homeX, pl.z - pl.homeZ) > 18 || pl.y < this.heightFn(pl.x, pl.z) - 6);
+        if (lost && !a.interact) {
+          this.prompt = "复位风桥构件";
+        } else if (lost && a.interact && !a.interactTargetId) {
+          this.planks = makeWindPlanks();
+          this.pushToast("构件回到了原位。进度保留。");
+          this.autoPickup();
+          return;
+        }
+        if (!this.ruinSolved && this.planksBridge()) {
+          this.ruinSolved = true;
+          this.pushToast("风桥合拢。回程捷径已开。");
+          this.save();
+        }
+      }
 
-    if (this.sealIsOpen() && Math.hypot(p.x - CITADEL_POI.x, p.z - CITADEL_POI.z) < 14) {
-      this.prompt = this.bossDead ? "残堡已沉寂" : "挑战空王";
-    } else if (!this.sealIsOpen() && Math.hypot(p.x - CITADEL_POI.x, p.z - CITADEL_POI.z) < 18) {
-      this.prompt = `封印未开（塔 ${this.towersOn.size}/3 · 祠 ${this.shrinesOn.size}/4）`;
-      const dx = p.x - CITADEL_POI.x;
-      const dz = p.z - CITADEL_POI.z;
-      const dist = Math.hypot(dx, dz) || 1;
-      if (dist < 13) {
-        p.x = CITADEL_POI.x + (dx / dist) * 13.2;
-        p.z = CITADEL_POI.z + (dz / dist) * 13.2;
+      if (this.sealIsOpen() && Math.hypot(p.x - CITADEL_POI.x, p.z - CITADEL_POI.z) < 14) {
+        this.prompt = this.bossDead ? "残堡已沉寂" : "挑战空王";
+      } else if (!this.sealIsOpen() && Math.hypot(p.x - CITADEL_POI.x, p.z - CITADEL_POI.z) < 18) {
+        this.prompt = `封印未开（塔 ${this.towersOn.size}/3 · 祠 ${this.shrinesOn.size}/4）`;
+        const dx = p.x - CITADEL_POI.x;
+        const dz = p.z - CITADEL_POI.z;
+        const dist = Math.hypot(dx, dz) || 1;
+        if (dist < 13) {
+          p.x = CITADEL_POI.x + (dx / dist) * 13.2;
+          p.z = CITADEL_POI.z + (dz / dist) * 13.2;
+        }
       }
     }
 
+    const pickedId = a.interactTargetId ?? null;
+    const preview = this.previewInteraction(pickedId);
+    if (preview) this.prompt = preview.enabled ? preview.label : preview.reason || preview.label;
+
+    if (a.interact) {
+      // Explicit pick that failed range/world must NOT fall through to another object.
+      if (pickedId) {
+        if (!preview || preview.targetId !== pickedId) {
+          this.lastInteractReject = preview?.reason || "目标不可用";
+          this.pushToast(this.lastInteractReject);
+          this.autoPickup();
+          return;
+        }
+        this.executeInteraction(preview, a.activationId ?? null);
+        this.autoPickup();
+        return;
+      }
+      // Proximity / E key: only execute when a valid in-range target exists.
+      if (preview && preview.enabled) {
+        this.executeInteraction(preview, a.activationId ?? null);
+      }
+    }
+
+    this.autoPickup();
+  }
+
+  /** Auto-pickup is independent of manual interaction and never hijacks it. */
+  autoPickup() {
+    const p = this.player;
     for (const pk of this.pickups) {
       if (!pk.live) continue;
       if (Math.hypot(p.x - pk.x, p.z - pk.z) < 1.3) {
@@ -1708,6 +2019,21 @@ export class Sim {
         if (pk.kind === "amber") this.amber += 5;
         if (pk.kind === "heart") p.hp = Math.min(p.heartsMax, p.hp + 1);
         sfx("pickup");
+      }
+    }
+    // Wind wisps keep near-auto collect at 1.05 without requiring interact.
+    if (this.worldKind === "overworld" && this.shrine === null) {
+      for (const w of WISPS) {
+        if (this.wispsGot.has(w.id)) continue;
+        if (Math.hypot(p.x - w.x, p.z - w.z) < 1.05) {
+          this.wispsGot.add(w.id);
+          this.player.staminaMax += WISP_STAMINA;
+          this.player.stamina = this.player.staminaMax;
+          this.amber += 8;
+          sfx("pickup");
+          this.pushToast(`风之种 ${this.wispsGot.size}/8  · 耐力提升`);
+          this.save();
+        }
       }
     }
   }
@@ -2094,11 +2420,13 @@ export class Sim {
     }
   }
 
-  hurt(amount: number, _why: string) {
+  hurt(amount: number, why: string) {
     const p = this.player;
     if (p.invuln > 0 || this.mode !== "playing") return;
     p.hp -= amount;
     p.invuln = 0.9;
+    this.lastDamageWhy = why;
+    this.lastDamageAt = this.t;
     sfx("hurt");
     this.cam.trauma = Math.min(1, this.cam.trauma + 0.45 * this.settings.shake);
     if (p.hp <= 0) this.die("力竭");
@@ -2232,13 +2560,297 @@ export class Sim {
     }
   }
 
+  /**
+   * Active-world navigation snapshot with validated walk segments.
+   * Shared by task card, map, and world route renderers.
+   */
+  preferredMapTarget(): string | null {
+    try {
+      return useHud.getState().selectedMarkerId;
+    } catch {
+      return null;
+    }
+  }
+
+  /** Cheap invalidation key for the navigation cache (geometry-complete). */
+  private navCacheKey(): string {
+    const p = this.player;
+    const sel = this.preferredMapTarget();
+    const iceSig = this.ices
+      .map((i) => `${i.x.toFixed(2)},${i.y.toFixed(2)},${i.z.toFixed(2)},${i.life > 0.2 ? 1 : 0}`)
+      .join(";");
+    const metalSig = this.metals
+      .map((m) => `${m.id}:${m.x.toFixed(2)},${m.y.toFixed(2)},${m.z.toFixed(2)},${m.held ? 1 : 0}`)
+      .join(";");
+    const plankSig = this.planks
+      .map((pl) => `${pl.id}:${pl.x.toFixed(2)},${pl.y.toFixed(2)},${pl.z.toFixed(2)}`)
+      .join(";");
+    // Solid geometry, not just count — same length with moved support must invalidate.
+    const solidSig = this.solids
+      .map(
+        (s) =>
+          `${s.id}:${s.kind}:${s.x.toFixed(2)},${s.y.toFixed(2)},${s.z.toFixed(2)},${(s.w ?? s.r ?? 0).toFixed(2)},${s.h},${s.standable ? 1 : 0}`,
+      )
+      .join(";");
+    return [
+      this.currentWorldId(),
+      this.mode,
+      p.x.toFixed(2),
+      p.y.toFixed(2),
+      p.z.toFixed(2),
+      sel ?? "",
+      this.towersOn.size,
+      [...this.towersOn].sort().join(","),
+      this.shrinesOn.size,
+      [...this.shrinesOn].sort().join(","),
+      this.crackedBroken.map((c) => (c ? 1 : 0)).join(""),
+      this.moveBlock.frozen > 0.15 ? "F" : "0",
+      this.moveBlock.x.toFixed(2),
+      this.moveBlock.z.toFixed(2),
+      iceSig,
+      metalSig,
+      plankSig,
+      solidSig,
+      this.sealIsOpen() ? "S" : "0",
+    ].join("|");
+  }
+
+  /**
+   * Cached active-world navigation snapshot.
+   * HUD/map/Scene must all consume this — never recompute in render.
+   */
+  navigationSnapshot(): NavigationSnapshot {
+    const key = this.navCacheKey();
+    if (this.navCache && this.navCache.key === key) return this.navCache.snap;
+    const t0 = typeof performance !== "undefined" ? performance.now() : Date.now();
+    const snap = this.computeNavigationSnapshot();
+    this.navComputeMs = (typeof performance !== "undefined" ? performance.now() : Date.now()) - t0;
+    this.navCache = { key, snap };
+    return snap;
+  }
+
+  lastNavigationComputeMs() {
+    return this.navComputeMs;
+  }
+
+  private computeNavigationSnapshot(): NavigationSnapshot {
+    if (this.shrine !== null) {
+      const puzzle = SHRINES[this.shrine]?.puzzle;
+      if (puzzle === "burst") {
+        return buildBurstShrineRoute({
+          shrineIndex: this.shrine,
+          player: { x: this.player.x, y: this.player.y, z: this.player.z },
+          crackedBroken: Boolean(this.crackedBroken[this.shrine]),
+          solids: this.solids,
+          heightFn: this.heightFn,
+          extraSupports: this.extraSupports(),
+        });
+      }
+      if (puzzle === "rime") {
+        return buildRimeShrineRoute({
+          shrineIndex: this.shrine,
+          player: { x: this.player.x, y: this.player.y, z: this.player.z },
+          ices: this.ices.map((i) => ({ x: i.x, y: i.y, z: i.z, life: i.life })),
+          solids: this.solids,
+          heightFn: this.heightFn,
+          extraSupports: this.extraSupports(),
+        });
+      }
+      if (puzzle === "pull") {
+        return buildPullShrineRoute({
+          shrineIndex: this.shrine,
+          player: { x: this.player.x, y: this.player.y, z: this.player.z },
+          metals: this.metals.map((m) => ({ id: m.id, x: m.x, y: m.y, z: m.z, held: m.held })),
+          solids: this.solids,
+          heightFn: this.heightFn,
+          extraSupports: this.extraSupports(),
+        });
+      }
+      if (puzzle === "still") {
+        const slab = this.solids.find((s) => s.id === "move-block");
+        const slabTop = slab ? solidTop(slab) : this.heightFn(this.moveBlock.x, this.moveBlock.z) + 0.3;
+        return buildStillShrineRoute({
+          shrineIndex: this.shrine,
+          player: { x: this.player.x, y: this.player.y, z: this.player.z },
+          moveBlock: {
+            x: this.moveBlock.x,
+            y: slabTop,
+            z: this.moveBlock.z,
+            frozen: this.moveBlock.frozen,
+          },
+          solids: this.solids,
+          heightFn: this.heightFn,
+          extraSupports: this.extraSupports(),
+        });
+      }
+      return emptyOverworldSnapshot(this.currentWorldId());
+    }
+
+    // Overworld: validated waypoint detour to the tracked tower/shrine door.
+    const t = this.trackedObjective();
+    if (t.phase === "approach" || t.phase === "climb") {
+      const graph = buildOverworldGraph({
+        spawn: this.spawn,
+        towers: TOWERS,
+        shrines: SHRINES,
+        sage: SAGE,
+        citadel: CITADEL_POI,
+        towersOn: this.towersOn,
+        heightFn: this.heightFn,
+      });
+      const waypoints = graph.nodes
+        .filter((n) => n.kind !== "tower-top" && n.kind !== "citadel")
+        .map((n) => ({ id: n.id, x: n.x, y: n.y, z: n.z }));
+      if (t.targetId === "dawn" || t.targetId === "mere" || t.targetId === "crown") {
+        const tw = TOWERS.find((x) => x.id === t.targetId);
+        if (tw) {
+          return buildOverworldDetourRoute({
+            player: { x: this.player.x, y: this.player.y, z: this.player.z },
+            dest: { x: tw.x, y: tw.y, z: tw.z, targetId: `tower-base:${tw.id}`, label: tw.name },
+            waypoints,
+            solids: this.solids,
+            heightFn: this.heightFn,
+            extraSupports: this.extraSupports(),
+            nextAction: t.nextAction,
+            guidanceOk: "沿地面接近塔脚攀爬点",
+            guidanceBlocked: "尚未找到可通行路线，可绕开障碍再试",
+          });
+        }
+      }
+      if (["rime", "burst", "pull", "still"].includes(t.targetId)) {
+        const s = SHRINES.find((x) => x.id === t.targetId);
+        if (s) {
+          return buildOverworldDetourRoute({
+            player: { x: this.player.x, y: this.player.y, z: this.player.z },
+            dest: {
+              x: s.x,
+              // Real apron pad top (landmarkSolids: s.y-0.06 + h0.22), not terrain.
+              y: s.y + 0.16,
+              z: s.z + 2.8,
+              targetId: `shrine-door:${s.id}`,
+              label: s.name,
+            },
+            waypoints,
+            solids: this.solids,
+            heightFn: this.heightFn,
+            extraSupports: this.extraSupports(),
+            nextAction: t.nextAction,
+            guidanceOk: "沿地面前往祠门前",
+            guidanceBlocked: "尚未找到可通行路线，可绕开障碍再试",
+          });
+        }
+      }
+    }
+    return emptyOverworldSnapshot(this.currentWorldId());
+  }
+
+  trackedObjective() {
+    const shrineId = this.shrine != null ? (SHRINES[this.shrine]?.id ?? null) : null;
+    const base = deriveTrackedObjective({
+      towersOn: this.towersOn,
+      shrinesOn: this.shrinesOn,
+      orbs: this.orbs,
+      bossDead: this.bossDead,
+      worldKind: this.worldKind,
+      shrine: shrineId,
+      px: this.player.x,
+      py: this.player.y,
+      pz: this.player.z,
+      towers: TOWERS,
+      shrines: SHRINES,
+      citadel: CITADEL_POI,
+      sealOpen: this.sealIsOpen(),
+      prompt: this.prompt,
+      preferredTargetId: this.preferredMapTarget(),
+    });
+
+    if (this.shrine !== null) {
+      const snap = this.navigationSnapshot();
+      // Overlay live shrine route guidance onto the quest card.
+      if (snap.status === "action-required") {
+        return {
+          ...base,
+          phase: "solve" as const,
+          nextAction: snap.nextAction || base.nextAction,
+          routeCost: null,
+          routeStatus: "action-required" as const,
+          routeHint: snap.guidance || snap.reason,
+        };
+      }
+      if (snap.status === "walk") {
+        return {
+          ...base,
+          phase: "claim" as const,
+          nextAction: snap.nextAction || base.nextAction,
+          routeCost: null,
+          routeStatus: "approximate" as const,
+          routeHint: snap.guidance,
+        };
+      }
+      if (snap.status === "unavailable" && snap.reason) {
+        return {
+          ...base,
+          routeCost: null,
+          routeStatus: "unavailable" as const,
+          routeHint: snap.guidance || snap.reason,
+        };
+      }
+      return { ...base, routeCost: null, routeStatus: null, routeHint: snap.guidance || null };
+    }
+
+    if (this.worldKind !== "overworld") {
+      return { ...base, routeCost: null, routeStatus: null, routeHint: null };
+    }
+
+    const graph = buildOverworldGraph({
+      spawn: this.spawn,
+      towers: TOWERS,
+      shrines: SHRINES,
+      sage: SAGE,
+      citadel: CITADEL_POI,
+      towersOn: this.towersOn,
+    });
+    // Flip citadel edge when seal opens.
+    const citadelEdge = graph.edges.find((e) => e.to === "citadel");
+    if (citadelEdge) citadelEdge.enabled = this.sealIsOpen();
+
+    const from = nearestNodeId(graph.nodes, this.player.x, this.player.y, this.player.z);
+    let to = "spawn";
+    if (base.targetId === "dawn" || base.targetId === "mere" || base.targetId === "crown") {
+      to = base.phase === "activate" ? `tower-top:${base.targetId}` : `tower-base:${base.targetId}`;
+    } else if (["rime", "burst", "pull", "still"].includes(base.targetId)) {
+      to = `shrine-door:${base.targetId}`;
+    } else if (base.targetId === "citadel") {
+      to = "citadel";
+    }
+    const route = findRoute(graph.nodes, graph.edges, from, to);
+    if (route.status === "approximate") {
+      return {
+        ...base,
+        routeCost: route.cost,
+        routeStatus: "approximate",
+        routeHint: route.reason,
+      };
+    }
+    if (route.status === "action-required") {
+      return { ...base, routeCost: null, routeStatus: "action-required", routeHint: route.instruction };
+    }
+    return { ...base, routeCost: null, routeStatus: "unavailable", routeHint: route.reason };
+  }
+
   objective() {
-    if (this.bossDead) return "原野暂时平静了";
-    if (this.worldKind === "graybox") return "灰盒：走跑跳攀滑";
-    if (!this.towersOn.has("dawn")) return "登上晨光塔，眺望这片原野";
-    if (this.towersOn.size < 3) return `点亮天瞭塔  ${this.towersOn.size}/3`;
-    if (this.orbs < 4) return `集齐灵核  ${this.orbs}/4`;
-    return "前往残堡，挑战空王";
+    const t = this.trackedObjective();
+    if (t.phase === "done") return t.title;
+    const dist =
+      t.distance != null && Number.isFinite(t.distance) ? `直线约 ${Math.round(t.distance)}m` : "";
+    const route =
+      t.routeStatus === "approximate" && t.routeCost != null
+        ? `方向估计 ${Math.round(t.routeCost)}m（未验证走廊）`
+        : t.routeStatus === "unavailable" && t.routeHint
+          ? t.routeHint
+          : "";
+    const bits = [t.title, t.nextAction, dist, route].filter(Boolean);
+    return bits.join(" · ");
   }
 
   syncHud() {
@@ -2256,6 +2868,13 @@ export class Sim {
         name: id === "apple" ? "野苹果" : id === "pepper" ? "火棘椒" : id === "meat" ? "兽肉" : id,
         n,
       }));
+    const tracked = this.trackedObjective();
+    const nav = this.navigationSnapshot();
+    // Invalidate completed map selection.
+    const sel = useHud.getState().selectedMarkerId;
+    if (sel && markers.some((m) => m.id === sel && m.done)) {
+      useHud.setState({ selectedMarkerId: null });
+    }
     useHud.setState({
       mode: this.mode,
       hearts: this.player.heartsMax,
@@ -2302,6 +2921,28 @@ export class Sim {
       windCd: this.gustCd,
       quality: this.settings.quality,
       tutorial: this.tutorial,
+      questTitle: tracked.title,
+      questNext: tracked.nextAction,
+      questPhase: tracked.phase,
+      questDistance: tracked.distance ?? null,
+      questRouteCost: tracked.routeCost ?? null,
+      questRouteStatus: tracked.routeStatus ?? null,
+      questRouteHint: tracked.routeHint ?? null,
+      routeWorldId: nav.worldId,
+      routeGuidance: nav.guidance,
+      routeNextAction: nav.nextAction,
+      routeRequiredArt: nav.requiredArt,
+      routeTargetId: nav.targetId,
+      routePolylines: nav.segments
+        .filter((s) => s.validated && s.kind === "walk")
+        .map((s) => ({
+          id: s.id,
+          kind: s.kind,
+          points: [
+            { x: s.from.x, y: s.from.y, z: s.from.z },
+            { x: s.to.x, y: s.to.y, z: s.to.z },
+          ],
+        })),
     });
   }
 }

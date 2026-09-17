@@ -1,0 +1,343 @@
+{
+  "ok": true,
+  "pid": 5741,
+  "milestones": [
+    {
+      "name": "00-restore",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 4,
+        "x": 16.03,
+        "y": 16.11,
+        "z": -72.75,
+        "camYaw": 2.9,
+        "bodyYaw": 0.334,
+        "state": "grounded",
+        "stamina": 100,
+        "towers": [],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "prompt": "",
+        "climbBtn": false,
+        "interactVisible": false,
+        "nearestClimb": {
+          "id": "citadel-wall-0--11",
+          "d": 50.75,
+          "touchingClimbable": false
+        },
+        "lastDamageWhy": "",
+        "enemies": [],
+        "attackPhase": "idle",
+        "dodgeCd": 0
+      }
+    },
+    {
+      "name": "wp1",
+      "pass": true,
+      "target": {
+        "x": 40,
+        "z": -35
+      },
+      "dS0": 37.5
+    },
+    {
+      "name": "wp2",
+      "pass": true,
+      "target": {
+        "x": 35,
+        "z": -5
+      },
+      "dS0": 24.9
+    },
+    {
+      "name": "wp3",
+      "pass": true,
+      "target": {
+        "x": 25,
+        "z": 20
+      },
+      "dS0": 27.3
+    },
+    {
+      "name": "wp4",
+      "pass": true,
+      "target": {
+        "x": 16,
+        "z": 50
+      },
+      "dS0": 42.4
+    },
+    {
+      "name": "wp5",
+      "pass": true,
+      "target": {
+        "x": 10,
+        "z": 64
+      },
+      "dS0": 67.5
+    },
+    {
+      "name": "01-arrive-dawn",
+      "pass": true,
+      "post": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 4,
+        "x": 11.29,
+        "y": 14.8,
+        "z": 61.83,
+        "camYaw": 2.9,
+        "bodyYaw": 2.9,
+        "state": "grounded",
+        "stamina": 100,
+        "towers": [],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "prompt": "需在塔顶",
+        "climbBtn": true,
+        "interactVisible": true,
+        "nearestClimb": {
+          "id": "dawn-shaft",
+          "d": 6.3,
+          "touchingClimbable": false
+        },
+        "lastDamageWhy": "",
+        "enemies": [],
+        "attackPhase": "idle",
+        "dodgeCd": 0
+      },
+      "dS0Final": 85.8
+    },
+    {
+      "name": "01a-approach-contact",
+      "pass": true,
+      "steps": 3,
+      "t0": 1789592187972,
+      "start": {
+        "x": 11.28,
+        "z": 61.89,
+        "d": 6.24,
+        "contact": false
+      },
+      "end": {
+        "x": 11.1,
+        "z": 62.63,
+        "d": 5.48,
+        "contact": true,
+        "id": "dawn-shaft",
+        "elapsedMs": 1757
+      },
+      "decision": {
+        "kind": "handoff",
+        "reason": "contact id=dawn-shaft",
+        "id": "dawn-shaft"
+      }
+    },
+    {
+      "name": "01b-climb-handoff",
+      "pass": true,
+      "handoff": {
+        "ok": true
+      },
+      "arrived": true,
+      "approachDecision": {
+        "kind": "handoff",
+        "reason": "contact id=dawn-shaft",
+        "id": "dawn-shaft"
+      },
+      "nearestClimb": {
+        "id": "dawn-shaft",
+        "d": 5.48,
+        "touchingClimbable": true
+      },
+      "pos": {
+        "x": 11.1,
+        "y": 13.79,
+        "z": 62.63
+      }
+    },
+    {
+      "name": "02-climb",
+      "pass": true,
+      "maxY": 49.15,
+      "final": {
+        "y": 49.15,
+        "state": "grounded"
+      }
+    },
+    {
+      "name": "03-activate-dawn",
+      "pass": true,
+      "maxY": 49.15,
+      "towers": [
+        "dawn"
+      ]
+    },
+    {
+      "name": "04-reload-dawn",
+      "pass": true,
+      "before": {
+        "towers": [
+          "dawn"
+        ],
+        "shrines": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ]
+      },
+      "after": {
+        "towers": [
+          "dawn"
+        ],
+        "shrines": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "orbs": 4
+      }
+    },
+    {
+      "name": "05-export",
+      "pass": true,
+      "path": "/Users/ymf/Projects/aetherwake-rebuild-20260909/mimo-playability-20260916/docs/astra-playability-20260916/evidence/checkpoint/post-dawn-from-shrines.storage.json",
+      "meta": "/Users/ymf/Projects/aetherwake-rebuild-20260909/mimo-playability-20260916/docs/astra-playability-20260916/evidence/checkpoint/post-dawn-from-shrines.meta.json"
+    }
+  ],
+  "failure": null,
+  "ring": [
+    {
+      "tag": "APPROACH",
+      "y": 13.98,
+      "stam": 96.9,
+      "state": "climbing",
+      "support": "dawn-shaft",
+      "i": 0
+    },
+    {
+      "tag": "ASCEND-break",
+      "y": 35.4,
+      "stam": 6.6,
+      "state": "climbing",
+      "support": "dawn-shaft",
+      "i": 4,
+      "next": "DESCEND"
+    },
+    {
+      "tag": "DESCEND",
+      "y": 34.64,
+      "stam": 4.5,
+      "state": "climbing",
+      "support": "dawn-shaft",
+      "reason": "low-stam-while-climbing",
+      "i": 5
+    },
+    {
+      "tag": "DESCEND",
+      "y": 33.87,
+      "stam": 2.4,
+      "state": "climbing",
+      "support": "dawn-shaft",
+      "reason": "low-stam-while-climbing",
+      "i": 6
+    },
+    {
+      "tag": "DESCEND",
+      "y": 33.11,
+      "stam": 0.3,
+      "state": "climbing",
+      "support": "dawn-shaft",
+      "reason": "low-stam-while-climbing",
+      "i": 7
+    },
+    {
+      "tag": "DESCEND",
+      "y": 32.38,
+      "stam": -0.1,
+      "state": "airborne",
+      "support": "dawn-shaft",
+      "reason": "low-stam-while-climbing",
+      "i": 8
+    },
+    {
+      "tag": "DESCEND",
+      "y": 30.59,
+      "stam": 1.8,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "reason": "airborne-fall",
+      "i": 9
+    },
+    {
+      "tag": "enter-REST",
+      "y": 30.59,
+      "stam": 1.8,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "reason": "grounded-low-stam-near-shaft",
+      "i": 10
+    },
+    {
+      "tag": "leave-REST",
+      "y": 30.59,
+      "stam": 87.7,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 26
+    },
+    {
+      "tag": "APPROACH",
+      "y": 31.38,
+      "stam": 84.9,
+      "state": "climbing",
+      "support": "dawn-shaft",
+      "i": 26
+    },
+    {
+      "tag": "ASCEND-break",
+      "y": 49.15,
+      "stam": 17.3,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 30,
+      "next": "SUMMIT_INTERACT"
+    },
+    {
+      "tag": "SUMMIT_INTERACT",
+      "y": 49.15,
+      "stam": 19.2,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 31,
+      "reason": "at-activate-height"
+    },
+    {
+      "tag": "SUMMIT_INTERACT",
+      "y": 49.15,
+      "stam": 22,
+      "state": "grounded",
+      "support": "dawn-shaft",
+      "i": 32,
+      "reason": "at-activate-height"
+    }
+  ],
+  "errors": [],
+  "stopped": null
+}

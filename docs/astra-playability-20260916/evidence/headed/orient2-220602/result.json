@@ -1,0 +1,113 @@
+{
+  "ok": true,
+  "pid": 82326,
+  "checks": [
+    {
+      "name": "walk face-aligns with velocity",
+      "pass": true,
+      "walking": {
+        "x": 16,
+        "z": 102.94831587361746,
+        "yaw": 3.1338054239615083,
+        "camYaw": 3.141592653589793,
+        "vx": -3.3465711141851136e-16,
+        "vz": 2.7326826939123405,
+        "spd": 2.7326826939123405,
+        "align": 0.9999696796805796,
+        "state": "grounded",
+        "anim": null,
+        "load": {
+          "status": "ready",
+          "source": "/assets/character/wanderer.glb",
+          "clips": [
+            {
+              "name": "Idle",
+              "duration": 2.0333333015441895
+            },
+            {
+              "name": "Walk",
+              "duration": 1.100000023841858
+            },
+            {
+              "name": "Run",
+              "duration": 0.8333333134651184
+            },
+            {
+              "name": "Attack",
+              "duration": 1.0333333015441895
+            },
+            {
+              "name": "Climb",
+              "duration": 1.2333333492279053
+            },
+            {
+              "name": "Glide",
+              "duration": 1.6333333253860474
+            }
+          ],
+          "bones": 20,
+          "normalMapScale": 1,
+          "tunedNormalMaterials": 0,
+          "orientation": {
+            "yawCalibration": 3.141592653589793,
+            "authoredForward": "+z"
+          }
+        }
+      }
+    },
+    {
+      "name": "run face-aligns with velocity",
+      "pass": true,
+      "running": {
+        "x": 16,
+        "z": 105.10485311027654,
+        "yaw": 3.141563857475899,
+        "camYaw": 3.141592653589793,
+        "vx": -7.557724077210325e-16,
+        "vz": 6.171350043516472,
+        "spd": 6.171350043516472,
+        "align": 0.9999999995853919,
+        "state": "grounded",
+        "anim": null,
+        "load": {
+          "status": "ready",
+          "source": "/assets/character/wanderer.glb",
+          "clips": [
+            {
+              "name": "Idle",
+              "duration": 2.0333333015441895
+            },
+            {
+              "name": "Walk",
+              "duration": 1.100000023841858
+            },
+            {
+              "name": "Run",
+              "duration": 0.8333333134651184
+            },
+            {
+              "name": "Attack",
+              "duration": 1.0333333015441895
+            },
+            {
+              "name": "Climb",
+              "duration": 1.2333333492279053
+            },
+            {
+              "name": "Glide",
+              "duration": 1.6333333253860474
+            }
+          ],
+          "bones": 20,
+          "normalMapScale": 1,
+          "tunedNormalMaterials": 0,
+          "orientation": {
+            "yawCalibration": 3.141592653589793,
+            "authoredForward": "+z"
+          }
+        }
+      }
+    }
+  ],
+  "errors": []
+}

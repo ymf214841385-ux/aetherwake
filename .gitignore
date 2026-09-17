@@ -20,3 +20,8 @@ docs/rebuild-evidence/storage-ckpt-*.json
 docs/rebuild-evidence/browser-save-snapshot.json
 
 docs/rebuild-evidence/unlicensed-hold/
+
+# Generated release archives are uploaded as GitHub Release assets.
+packed/*.zip
+packed/*.zip.meta.json
+aetherwake/dist-playtest/

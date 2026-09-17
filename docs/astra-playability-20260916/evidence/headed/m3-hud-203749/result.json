@@ -1,0 +1,29 @@
+{
+  "ok": true,
+  "pid": 75738,
+  "checks": [
+    {
+      "name": "overworld nav empty or approximate",
+      "pass": true
+    },
+    {
+      "name": "no developer jargon in objective UI",
+      "pass": true
+    },
+    {
+      "name": "objective text present",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "snap": {
+    "phase": "approach",
+    "routeStatus": "approximate",
+    "next": "沿指引前往晨光塔塔脚攀爬点",
+    "navWorld": "overworld",
+    "navSegs": 0,
+    "hudText": "点亮晨光塔\n沿指引前往晨光塔塔脚攀爬点\n直线约 35m\n方向估计 35m",
+    "hasDevJargon": false,
+    "hasPlayerGuidance": true
+  }
+}

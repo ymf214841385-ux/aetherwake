@@ -1,0 +1,19 @@
+{
+  "file": "post-still-claimed.storage.json",
+  "sha256": "dce3ab0ab69bc004f2b505bdbb22af768e0cd4e8541cb0b8c8d03b9e257b174e",
+  "sourceRun": "still-board2-024607",
+  "sourceCommit": "d16ad49",
+  "progress": {
+    "shrines": [
+      "burst",
+      "rime",
+      "pull",
+      "still"
+    ],
+    "orbs": 4,
+    "towers": []
+  },
+  "claimMethod": "freeze-aligned + board-center walk",
+  "metalBridge": false,
+  "note": "Natural still claim+reload. Four shrines complete."
+}

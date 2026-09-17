@@ -1,0 +1,335 @@
+{
+  "ok": true,
+  "pid": 30644,
+  "milestones": [
+    {
+      "name": "start",
+      "pass": true,
+      "world": "overworld",
+      "x": 33.411,
+      "z": 9.633,
+      "t": 1789606398777
+    },
+    {
+      "name": "enter-pull",
+      "pass": true,
+      "world": "shrine",
+      "shrine": 2,
+      "x": 316,
+      "z": 4.4,
+      "t": 1789606399635
+    },
+    {
+      "name": "plate-id",
+      "pass": true,
+      "plateId": "metal-shrine-2",
+      "plate": {
+        "id": "metal-shrine-2",
+        "x": 322.2,
+        "y": 520.73,
+        "z": 8,
+        "held": false
+      },
+      "t": 1789606399724
+    },
+    {
+      "name": "grab-away",
+      "pass": true,
+      "plate": {
+        "id": "metal-shrine-2",
+        "x": 318.056,
+        "y": 521.3,
+        "z": 5.26,
+        "held": true
+      },
+      "heldMetal": 2,
+      "t": 1789606409204
+    },
+    {
+      "name": "observer-away",
+      "pass": true,
+      "x": 316,
+      "y": 520,
+      "z": 4.4,
+      "d": 0,
+      "t": 1789606410409
+    },
+    {
+      "name": "away-snapshot",
+      "pass": true,
+      "observer": {
+        "x": 316,
+        "y": 520,
+        "z": 4.4
+      },
+      "plate": {
+        "id": "metal-shrine-2",
+        "x": 311.904,
+        "y": 520.695,
+        "z": 11.566,
+        "held": false
+      },
+      "plateExtra": {
+        "id": "metal-shrine-2",
+        "x": 311.904,
+        "y": 520.975,
+        "z": 11.566,
+        "r": 1.15
+      },
+      "nav": "action-required",
+      "navSegs": [],
+      "pitWalkCount": 0,
+      "sidewalkLike": false,
+      "t": 1789606410409
+    },
+    {
+      "name": "grab-back",
+      "pass": true,
+      "plate": {
+        "id": "metal-shrine-2",
+        "x": 317.6,
+        "y": 521.3,
+        "z": 5.952,
+        "held": true
+      },
+      "t": 1789606419872
+    },
+    {
+      "name": "observer-back",
+      "pass": true,
+      "x": 315.755,
+      "y": 520,
+      "z": 4.651,
+      "d": 0.351,
+      "t": 1789606422445
+    },
+    {
+      "name": "back-snapshot",
+      "pass": true,
+      "observer": {
+        "x": 315.755,
+        "y": 520,
+        "z": 4.651
+      },
+      "plate": {
+        "id": "metal-shrine-2",
+        "x": 303.68,
+        "y": 520.45,
+        "z": 1.815,
+        "held": false
+      },
+      "plateExtra": {
+        "id": "metal-shrine-2",
+        "x": 303.68,
+        "y": 520.73,
+        "z": 1.815,
+        "r": 1.15
+      },
+      "nav": "action-required",
+      "navSegs": [
+        {
+          "id": "pull-0",
+          "ok": true,
+          "kind": "walk",
+          "from": {
+            "x": 315.755,
+            "y": 520,
+            "z": 4.651
+          },
+          "to": {
+            "x": 321,
+            "y": 520,
+            "z": 10
+          },
+          "why": null,
+          "poly": [
+            {
+              "x": 315.755,
+              "y": 520,
+              "z": 4.651
+            },
+            {
+              "x": 315.993,
+              "y": 520,
+              "z": 4.894
+            },
+            {
+              "x": 316.232,
+              "y": 520,
+              "z": 5.137
+            },
+            {
+              "x": 316.47,
+              "y": 520,
+              "z": 5.38
+            },
+            {
+              "x": 316.708,
+              "y": 520,
+              "z": 5.623
+            },
+            {
+              "x": 316.947,
+              "y": 520,
+              "z": 5.866
+            },
+            {
+              "x": 317.185,
+              "y": 520,
+              "z": 6.11
+            },
+            {
+              "x": 317.424,
+              "y": 520,
+              "z": 6.353
+            },
+            {
+              "x": 317.662,
+              "y": 520,
+              "z": 6.596
+            },
+            {
+              "x": 317.901,
+              "y": 520,
+              "z": 6.839
+            },
+            {
+              "x": 318.139,
+              "y": 520,
+              "z": 7.082
+            },
+            {
+              "x": 318.377,
+              "y": 520,
+              "z": 7.325
+            },
+            {
+              "x": 318.616,
+              "y": 520,
+              "z": 7.568
+            },
+            {
+              "x": 318.854,
+              "y": 520,
+              "z": 7.812
+            },
+            {
+              "x": 319.093,
+              "y": 520,
+              "z": 8.055
+            },
+            {
+              "x": 319.331,
+              "y": 520,
+              "z": 8.298
+            },
+            {
+              "x": 319.569,
+              "y": 520,
+              "z": 8.541
+            },
+            {
+              "x": 319.808,
+              "y": 520,
+              "z": 8.784
+            },
+            {
+              "x": 320.046,
+              "y": 520,
+              "z": 9.027
+            },
+            {
+              "x": 320.285,
+              "y": 520,
+              "z": 9.271
+            },
+            {
+              "x": 320.523,
+              "y": 520,
+              "z": 9.514
+            },
+            {
+              "x": 320.762,
+              "y": 520,
+              "z": 9.757
+            },
+            {
+              "x": 321,
+              "y": 520,
+              "z": 10
+            }
+          ]
+        }
+      ],
+      "pitWalkCount": 3,
+      "sidewalkLike": false,
+      "gap": null,
+      "t": 1789606422446
+    },
+    {
+      "name": "same-observer",
+      "pass": true,
+      "away": {
+        "x": 316,
+        "z": 4.4
+      },
+      "back": {
+        "x": 315.755,
+        "z": 4.651
+      },
+      "delta": 0.351,
+      "t": 1789606422446
+    },
+    {
+      "name": "C08-diagnosis",
+      "pass": true,
+      "plateId": "metal-shrine-2",
+      "away": {
+        "plate": {
+          "id": "metal-shrine-2",
+          "x": 311.904,
+          "y": 520.695,
+          "z": 11.566,
+          "held": false
+        },
+        "support": {
+          "id": "metal-shrine-2",
+          "x": 311.904,
+          "y": 520.975,
+          "z": 11.566,
+          "r": 1.15
+        },
+        "nav": "action-required",
+        "pitPolys": 0,
+        "bridgePolys": 0,
+        "sidewalkLike": false
+      },
+      "back": {
+        "plate": {
+          "id": "metal-shrine-2",
+          "x": 303.68,
+          "y": 520.45,
+          "z": 1.815,
+          "held": false
+        },
+        "support": {
+          "id": "metal-shrine-2",
+          "x": 303.68,
+          "y": 520.73,
+          "z": 1.815,
+          "r": 1.15
+        },
+        "nav": "action-required",
+        "pitPolys": 3,
+        "bridgePolys": 0,
+        "sidewalkLike": false,
+        "gap": null
+      },
+      "canSinglePlateBridge": false,
+      "conclusion": "single plate cannot span pit z-band; side corridor remains the valid walk; no fabricated bridge",
+      "t": 1789606422446
+    }
+  ],
+  "errors": [],
+  "startedAt": "2026-09-17T00:53:05.617Z"
+}

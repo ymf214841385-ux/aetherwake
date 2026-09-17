@@ -1,0 +1,32 @@
+{
+  "ok": true,
+  "pid": 90334,
+  "checks": [
+    {
+      "name": "portrait pause flag",
+      "pass": true,
+      "portrait": {
+        "portrait": true,
+        "mode": "playing",
+        "stickX": null,
+        "vx": 0,
+        "vz": -2.1998084069887422
+      }
+    },
+    {
+      "name": "landscape resume no stuck velocity",
+      "pass": true,
+      "settled": {
+        "vx": 0,
+        "vz": -0.009206733068315187,
+        "mode": "playing"
+      },
+      "landscape": {
+        "portrait": false,
+        "mode": "playing",
+        "vx": 0,
+        "vz": -0.20339973217420657
+      }
+    }
+  ]
+}

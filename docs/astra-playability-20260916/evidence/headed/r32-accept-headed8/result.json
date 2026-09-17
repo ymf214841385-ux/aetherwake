@@ -1,0 +1,422 @@
+{
+  "ok": true,
+  "pid": 26525,
+  "milestones": [
+    {
+      "name": "D11-map-btn-844x390",
+      "pass": true,
+      "box": {
+        "x": 738,
+        "y": 336,
+        "width": 44,
+        "height": 40
+      },
+      "t": 1789604156224
+    },
+    {
+      "name": "D11-close-bbox-844x390",
+      "pass": true,
+      "mapMode": "map",
+      "cCount": 1,
+      "cBox": {
+        "x": 531.71875,
+        "y": 27,
+        "width": 79.28125,
+        "height": 44
+      },
+      "vp": {
+        "width": 844,
+        "height": 390,
+        "name": "844x390"
+      },
+      "t": 1789604156608
+    },
+    {
+      "name": "D11-pure-touch-844x390",
+      "pass": true,
+      "mapMode": "map",
+      "closeVia": "close-button",
+      "afterClose": "playing",
+      "afterClose2": "playing",
+      "moved": 1.77,
+      "pointerTypes": [
+        "touch"
+      ],
+      "trusted": true,
+      "pointerIds": [
+        4
+      ],
+      "hasDownMoveUp": true,
+      "noStuck": {
+        "vx": 0.6380334044018372,
+        "vz": 0.2766998050038549
+      },
+      "events": 7,
+      "t": 1789604158201
+    },
+    {
+      "name": "D08-bag-844x390",
+      "pass": true,
+      "bagMode": "inventory",
+      "bagMove": 0,
+      "bagCloseVisible": true,
+      "bcBox": {
+        "x": 531.71875,
+        "y": 57.390625,
+        "width": 79.28125,
+        "height": 44
+      },
+      "afterMode": "playing",
+      "bagResume": 0.598,
+      "attackPhaseUnderStick": "idle",
+      "t": 1789604160581
+    },
+    {
+      "name": "D11-map-btn-667x375",
+      "pass": true,
+      "box": {
+        "x": 561,
+        "y": 321,
+        "width": 44,
+        "height": 40
+      },
+      "t": 1789604172935
+    },
+    {
+      "name": "D11-close-bbox-667x375",
+      "pass": true,
+      "mapMode": "map",
+      "cCount": 1,
+      "cBox": {
+        "x": 443.21875,
+        "y": 27,
+        "width": 79.28125,
+        "height": 44
+      },
+      "vp": {
+        "width": 667,
+        "height": 375,
+        "name": "667x375"
+      },
+      "t": 1789604173317
+    },
+    {
+      "name": "D11-pure-touch-667x375",
+      "pass": true,
+      "mapMode": "map",
+      "closeVia": "close-button",
+      "afterClose": "playing",
+      "afterClose2": "playing",
+      "moved": 1.792,
+      "pointerTypes": [
+        "touch"
+      ],
+      "trusted": true,
+      "pointerIds": [
+        4
+      ],
+      "hasDownMoveUp": true,
+      "noStuck": {
+        "vx": 0.7016389651579285,
+        "vz": 0.34552815840972934
+      },
+      "events": 7,
+      "t": 1789604174900
+    },
+    {
+      "name": "D08-bag-667x375",
+      "pass": true,
+      "bagMode": "inventory",
+      "bagMove": 0,
+      "bagCloseVisible": true,
+      "bcBox": {
+        "x": 443.21875,
+        "y": 49.890625,
+        "width": 79.28125,
+        "height": 44
+      },
+      "afterMode": "playing",
+      "bagResume": 0.606,
+      "attackPhaseUnderStick": "idle",
+      "t": 1789604177281
+    },
+    {
+      "name": "A06-midglide-facing",
+      "pass": true,
+      "sawGlide": true,
+      "samples": 90,
+      "midAlign": 0.995,
+      "yaw0": 3.1101,
+      "yaw1": 4.9808,
+      "yawChanged": true,
+      "sampleHead": [
+        {
+          "i": 0,
+          "state": "gliding",
+          "gliding": true,
+          "y": 49.18,
+          "vx": 1.673,
+          "vz": -1.416,
+          "yaw": 3.1101,
+          "speed": 2.192,
+          "align": -0.67,
+          "hp": 4,
+          "x": 11.394,
+          "z": 63.115
+        },
+        {
+          "i": 1,
+          "state": "gliding",
+          "gliding": true,
+          "y": 49.16,
+          "vx": 1.83,
+          "vz": -1.544,
+          "yaw": 3.0917,
+          "speed": 2.394,
+          "align": -0.682,
+          "hp": 4,
+          "x": 11.542,
+          "z": 62.991
+        },
+        {
+          "i": 2,
+          "state": "gliding",
+          "gliding": true,
+          "y": 49.12,
+          "vx": 1.956,
+          "vz": -1.646,
+          "yaw": 3.0766,
+          "speed": 2.556,
+          "align": -0.692,
+          "hp": 4,
+          "x": 11.669,
+          "z": 62.883
+        }
+      ],
+      "sampleTail": [
+        {
+          "i": 87,
+          "state": "gliding",
+          "gliding": true,
+          "y": 35.17,
+          "vx": 10.477,
+          "vz": -3.353,
+          "yaw": 4.9808,
+          "speed": 11,
+          "align": 0.999,
+          "hp": 4,
+          "x": 63.847,
+          "z": 42.054
+        },
+        {
+          "i": 88,
+          "state": "gliding",
+          "gliding": true,
+          "y": 35.02,
+          "vx": 10.48,
+          "vz": -3.344,
+          "yaw": 4.9808,
+          "speed": 11.001,
+          "align": 0.999,
+          "hp": 4,
+          "x": 64.545,
+          "z": 41.831
+        },
+        {
+          "i": 89,
+          "state": "gliding",
+          "gliding": true,
+          "y": 34.88,
+          "vx": 10.482,
+          "vz": -3.334,
+          "yaw": 4.9808,
+          "speed": 10.999,
+          "align": 0.999,
+          "hp": 4,
+          "x": 65.244,
+          "z": 41.608
+        }
+      ],
+      "turned": true,
+      "t": 1789604208512
+    },
+    {
+      "name": "A06-safe-land",
+      "pass": true,
+      "land": {
+        "x": 147.608,
+        "y": 6.997,
+        "z": -31.507,
+        "state": "grounded",
+        "gliding": false,
+        "hp": 3.25
+      },
+      "distFromStart": 166.4,
+      "t": 1789604208512
+    },
+    {
+      "name": "A06-not-climb-pose",
+      "pass": true,
+      "state": "grounded",
+      "t": 1789604208512
+    }
+  ],
+  "errors": [],
+  "pointerLog": [
+    {
+      "kind": "pointerdown",
+      "pointerType": "touch",
+      "isTrusted": true,
+      "pointerId": 2,
+      "target": "map"
+    },
+    {
+      "kind": "pointerup",
+      "pointerType": "touch",
+      "isTrusted": true,
+      "pointerId": 2,
+      "target": "map"
+    },
+    {
+      "kind": "pointerdown",
+      "pointerType": "touch",
+      "isTrusted": true,
+      "pointerId": 3,
+      "target": "btn-ghost modal-close"
+    },
+    {
+      "kind": "pointerup",
+      "pointerType": "touch",
+      "isTrusted": true,
+      "pointerId": 3,
+      "target": "btn-ghost modal-close"
+    },
+    {
+      "kind": "pointerdown",
+      "pointerType": "touch",
+      "isTrusted": true,
+      "pointerId": 4,
+      "target": "stick-knob"
+    },
+    {
+      "kind": "pointermove",
+      "pointerType": "touch",
+      "isTrusted": true,
+      "pointerId": 4,
+      "target": "stick"
+    },
+    {
+      "kind": "pointermove",
+      "pointerType": "touch",
+      "isTrusted": true,
+      "pointerId": 4,
+      "target": "stick"
+    },
+    {
+      "kind": "pointermove",
+      "pointerType": "touch",
+      "isTrusted": true,
+      "pointerId": 4,
+      "target": "stick"
+    },
+    {
+      "kind": "pointermove",
+      "pointerType": "touch",
+      "isTrusted": true,
+      "pointerId": 4,
+      "target": "stick"
+    },
+    {
+      "kind": "pointermove",
+      "pointerType": "touch",
+      "isTrusted": true,
+      "pointerId": 4,
+      "target": "stick"
+    },
+    {
+      "kind": "pointerup",
+      "pointerType": "touch",
+      "isTrusted": true,
+      "pointerId": 4,
+      "target": "stick"
+    },
+    {
+      "kind": "pointerdown",
+      "pointerType": "touch",
+      "isTrusted": true,
+      "pointerId": 2,
+      "target": "map"
+    },
+    {
+      "kind": "pointerup",
+      "pointerType": "touch",
+      "isTrusted": true,
+      "pointerId": 2,
+      "target": "map"
+    },
+    {
+      "kind": "pointerdown",
+      "pointerType": "touch",
+      "isTrusted": true,
+      "pointerId": 3,
+      "target": "btn-ghost modal-close"
+    },
+    {
+      "kind": "pointerup",
+      "pointerType": "touch",
+      "isTrusted": true,
+      "pointerId": 3,
+      "target": "btn-ghost modal-close"
+    },
+    {
+      "kind": "pointerdown",
+      "pointerType": "touch",
+      "isTrusted": true,
+      "pointerId": 4,
+      "target": "stick-knob"
+    },
+    {
+      "kind": "pointermove",
+      "pointerType": "touch",
+      "isTrusted": true,
+      "pointerId": 4,
+      "target": "stick"
+    },
+    {
+      "kind": "pointermove",
+      "pointerType": "touch",
+      "isTrusted": true,
+      "pointerId": 4,
+      "target": "stick"
+    },
+    {
+      "kind": "pointermove",
+      "pointerType": "touch",
+      "isTrusted": true,
+      "pointerId": 4,
+      "target": "stick"
+    },
+    {
+      "kind": "pointermove",
+      "pointerType": "touch",
+      "isTrusted": true,
+      "pointerId": 4,
+      "target": "stick"
+    },
+    {
+      "kind": "pointermove",
+      "pointerType": "touch",
+      "isTrusted": true,
+      "pointerId": 4,
+      "target": "stick"
+    },
+    {
+      "kind": "pointerup",
+      "pointerType": "touch",
+      "isTrusted": true,
+      "pointerId": 4,
+      "target": "stick"
+    }
+  ],
+  "startedAt": "2026-09-17T00:15:42.994Z"
+}

@@ -1,0 +1,19 @@
+{
+  "source": "mere-from-dawn.mjs",
+  "sourceCheckpoint": "post-dawn-from-shrines.storage.json",
+  "progressAtExport": {
+    "shrines": [
+      "burst",
+      "rime",
+      "pull",
+      "still"
+    ],
+    "towers": [
+      "dawn",
+      "mere"
+    ],
+    "note": "natural chain; no splice"
+  },
+  "pid": 6294,
+  "exportedAt": "2026-09-16T21:06:55.460Z"
+}

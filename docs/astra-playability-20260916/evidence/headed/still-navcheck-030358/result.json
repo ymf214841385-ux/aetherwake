@@ -1,0 +1,333 @@
+{
+  "ok": true,
+  "pid": 99653,
+  "samples": [
+    {
+      "stage": "lip",
+      "world": "shrine",
+      "shrine": 3,
+      "x": 363.97,
+      "y": 520,
+      "z": 4.62,
+      "orbs": 4,
+      "shrinesOn": [
+        "burst",
+        "rime",
+        "pull",
+        "still"
+      ],
+      "nav": "walk",
+      "next": "冻结窗口内快速前往祭坛领取",
+      "guidance": "沿冻结石块中线过坑，解冻后通路失效",
+      "segs": [
+        {
+          "id": "still-0",
+          "v": true,
+          "fromZ": 4.6,
+          "toZ": 8
+        },
+        {
+          "id": "still-1",
+          "v": true,
+          "fromZ": 8,
+          "toZ": 10.1
+        },
+        {
+          "id": "still-2",
+          "v": true,
+          "fromZ": 10.1,
+          "toZ": 15.9
+        },
+        {
+          "id": "still-3",
+          "v": true,
+          "fromZ": 15.9,
+          "toZ": 20.5
+        }
+      ]
+    },
+    {
+      "stage": "board",
+      "world": "shrine",
+      "shrine": 3,
+      "x": 363.9,
+      "y": 520,
+      "z": 5.08,
+      "orbs": 4,
+      "shrinesOn": [
+        "burst",
+        "rime",
+        "pull",
+        "still"
+      ],
+      "nav": "walk",
+      "next": "冻结窗口内快速前往祭坛领取",
+      "guidance": "沿冻结石块中线过坑，解冻后通路失效",
+      "segs": [
+        {
+          "id": "still-0",
+          "v": true,
+          "fromZ": 5.1,
+          "toZ": 8
+        },
+        {
+          "id": "still-1",
+          "v": true,
+          "fromZ": 8,
+          "toZ": 10.1
+        },
+        {
+          "id": "still-2",
+          "v": true,
+          "fromZ": 10.1,
+          "toZ": 15.9
+        },
+        {
+          "id": "still-3",
+          "v": true,
+          "fromZ": 15.9,
+          "toZ": 20.5
+        }
+      ]
+    },
+    {
+      "stage": "shore",
+      "world": "shrine",
+      "shrine": 3,
+      "x": 363.83,
+      "y": 520,
+      "z": 5.58,
+      "orbs": 4,
+      "shrinesOn": [
+        "burst",
+        "rime",
+        "pull",
+        "still"
+      ],
+      "nav": "walk",
+      "next": "冻结窗口内快速前往祭坛领取",
+      "guidance": "沿冻结石块中线过坑，解冻后通路失效",
+      "segs": [
+        {
+          "id": "still-0",
+          "v": true,
+          "fromZ": 5.6,
+          "toZ": 8
+        },
+        {
+          "id": "still-1",
+          "v": true,
+          "fromZ": 8,
+          "toZ": 10.1
+        },
+        {
+          "id": "still-2",
+          "v": true,
+          "fromZ": 10.1,
+          "toZ": 15.9
+        },
+        {
+          "id": "still-3",
+          "v": true,
+          "fromZ": 15.9,
+          "toZ": 20.5
+        }
+      ]
+    }
+  ],
+  "milestones": [
+    {
+      "name": "00-restore-four",
+      "pass": true,
+      "t0": {
+        "world": "overworld",
+        "shrine": null,
+        "x": 16.03,
+        "y": 16.11,
+        "z": -72.75,
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "nav": "unavailable",
+        "next": "沿指引前往晨光塔塔脚攀爬点",
+        "guidance": "尚未找到可通行路线，可绕开障碍再试",
+        "segs": []
+      }
+    },
+    {
+      "name": "01-in-still",
+      "pass": true,
+      "inside": {
+        "world": "shrine",
+        "shrine": 3,
+        "x": 364,
+        "y": 520,
+        "z": 4.4,
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "nav": "action-required",
+        "next": "选择凝时，冻结移动石块后快速通过",
+        "guidance": "前往机关附近：对石块使用凝时",
+        "segs": [
+          {
+            "id": "still-0",
+            "v": true,
+            "fromZ": 4.4,
+            "toZ": 8
+          }
+        ]
+      }
+    },
+    {
+      "name": "02-lip-not-back-entry",
+      "pass": true,
+      "lip": {
+        "world": "shrine",
+        "shrine": 3,
+        "x": 363.97,
+        "y": 520,
+        "z": 4.62,
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "nav": "walk",
+        "next": "冻结窗口内快速前往祭坛领取",
+        "guidance": "沿冻结石块中线过坑，解冻后通路失效",
+        "segs": [
+          {
+            "id": "still-0",
+            "v": true,
+            "fromZ": 4.6,
+            "toZ": 8
+          },
+          {
+            "id": "still-1",
+            "v": true,
+            "fromZ": 8,
+            "toZ": 10.1
+          },
+          {
+            "id": "still-2",
+            "v": true,
+            "fromZ": 10.1,
+            "toZ": 15.9
+          },
+          {
+            "id": "still-3",
+            "v": true,
+            "fromZ": 15.9,
+            "toZ": 20.5
+          }
+        ]
+      }
+    },
+    {
+      "name": "03-board-not-back-entry",
+      "pass": true,
+      "board": {
+        "world": "shrine",
+        "shrine": 3,
+        "x": 363.9,
+        "y": 520,
+        "z": 5.08,
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "nav": "walk",
+        "next": "冻结窗口内快速前往祭坛领取",
+        "guidance": "沿冻结石块中线过坑，解冻后通路失效",
+        "segs": [
+          {
+            "id": "still-0",
+            "v": true,
+            "fromZ": 5.1,
+            "toZ": 8
+          },
+          {
+            "id": "still-1",
+            "v": true,
+            "fromZ": 8,
+            "toZ": 10.1
+          },
+          {
+            "id": "still-2",
+            "v": true,
+            "fromZ": 10.1,
+            "toZ": 15.9
+          },
+          {
+            "id": "still-3",
+            "v": true,
+            "fromZ": 15.9,
+            "toZ": 20.5
+          }
+        ]
+      }
+    },
+    {
+      "name": "04-shore-to-altar",
+      "pass": true,
+      "shore": {
+        "world": "shrine",
+        "shrine": 3,
+        "x": 363.83,
+        "y": 520,
+        "z": 5.58,
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "nav": "walk",
+        "next": "冻结窗口内快速前往祭坛领取",
+        "guidance": "沿冻结石块中线过坑，解冻后通路失效",
+        "segs": [
+          {
+            "id": "still-0",
+            "v": true,
+            "fromZ": 5.6,
+            "toZ": 8
+          },
+          {
+            "id": "still-1",
+            "v": true,
+            "fromZ": 8,
+            "toZ": 10.1
+          },
+          {
+            "id": "still-2",
+            "v": true,
+            "fromZ": 10.1,
+            "toZ": 15.9
+          },
+          {
+            "id": "still-3",
+            "v": true,
+            "fromZ": 15.9,
+            "toZ": 20.5
+          }
+        ]
+      }
+    }
+  ],
+  "errors": []
+}

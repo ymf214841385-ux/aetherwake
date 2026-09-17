@@ -1,7 +1,12 @@
 import type * as THREE from "three";
 
 export type LimbSet = {
+  /** Actor root driven only by Sim position + logical yaw. */
   root: THREE.Group;
+  /** Optional fixed asset-basis parent under root (orientation calibration only). */
+  modelBasisRoot?: THREE.Object3D;
+  /** Authored GLB / procedural scene that AnimationMixer binds to. */
+  authoredRoot?: THREE.Object3D;
   torso: THREE.Object3D;
   head: THREE.Object3D;
   larm: THREE.Object3D;

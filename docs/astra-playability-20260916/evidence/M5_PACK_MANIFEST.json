@@ -1,0 +1,26 @@
+{
+  "sourceCommit": "aa335de1887b49b04a0056f82a72ae4edb4e815d",
+  "zipSha256": "aec40cca6455fc048a63d381a249ecd671b89257f0fa6145299e7cee2b146d80",
+  "files": {
+    "aetherwake/src/game/sim.ts": {
+      "zipSha256": "ad756df144e3415a8b46c2bd3e196347516e54318f992bccaa4803e3a2ca4b6a",
+      "diskSha256": "ad756df144e3415a8b46c2bd3e196347516e54318f992bccaa4803e3a2ca4b6a",
+      "match": true
+    },
+    "aetherwake/src/game/shrine-route.ts": {
+      "zipSha256": "b17734df1c9e13ad4d33c255c57ef0739dd28dca96f859c9fa09b2e197c10ab7",
+      "diskSha256": "b17734df1c9e13ad4d33c255c57ef0739dd28dca96f859c9fa09b2e197c10ab7",
+      "match": true
+    },
+    "aetherwake/src/game/interaction.ts": {
+      "zipSha256": "eb7621f3326477fa4223fdef180779851b227b2dfa53884f36f70c0339fc5989",
+      "diskSha256": "eb7621f3326477fa4223fdef180779851b227b2dfa53884f36f70c0339fc5989",
+      "match": true
+    },
+    "aetherwake/public/assets/character/wanderer.glb": {
+      "zipSha256": "70148c66b078f17bdd42c3d9f24e64e716c386f8b54e48edb8c752583705167d",
+      "diskSha256": "70148c66b078f17bdd42c3d9f24e64e716c386f8b54e48edb8c752583705167d",
+      "match": true
+    }
+  }
+}

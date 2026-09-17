@@ -1,0 +1,152 @@
+{
+  "ok": false,
+  "pid": 79851,
+  "startedAt": "2026-09-16T13:39:08.912Z",
+  "milestones": [
+    {
+      "name": "01-start",
+      "pass": true,
+      "mode": "playing",
+      "x": 16,
+      "y": 11.414756173028813,
+      "z": 102,
+      "vx": 0,
+      "vz": 0,
+      "yaw": 0,
+      "state": "grounded",
+      "hp": 3,
+      "stamina": 100,
+      "prompt": "请靠近：距离 7.2m",
+      "dialogue": "",
+      "towers": [],
+      "chests": [],
+      "quest": "点亮晨光塔",
+      "load": "ready",
+      "t": 1789565962114
+    },
+    {
+      "name": "02-move",
+      "pass": true,
+      "d0": 1.7407855560870047,
+      "moved": {
+        "mode": "playing",
+        "x": 16,
+        "y": 11.414756173028811,
+        "z": 100.259214443913,
+        "vx": 0,
+        "vz": -3.562334958817135,
+        "yaw": 0,
+        "state": "grounded",
+        "hp": 3,
+        "stamina": 100,
+        "prompt": "请靠近：距离 8.7m",
+        "dialogue": "",
+        "towers": [],
+        "chests": [],
+        "quest": "点亮晨光塔",
+        "load": "ready"
+      },
+      "t": 1789565963006
+    },
+    {
+      "name": "03-near-sage",
+      "pass": true,
+      "nearSageT": {
+        "mode": "playing",
+        "x": 5.50575471876435,
+        "y": 16.667948473792926,
+        "z": 112.21240773146992,
+        "vx": -0.7800757828723853,
+        "vz": 0.9260853849254748,
+        "yaw": 2.4415643402387803,
+        "state": "grounded",
+        "hp": 3,
+        "stamina": 100,
+        "prompt": "与守塔人交谈",
+        "dialogue": "",
+        "towers": [],
+        "chests": [],
+        "quest": "点亮晨光塔",
+        "load": "ready"
+      },
+      "t": 1789565970449
+    },
+    {
+      "name": "04-sage-talk",
+      "pass": true,
+      "talked": {
+        "mode": "dialogue",
+        "x": 5.438140062374512,
+        "y": 16.66769102857701,
+        "z": 112.29267806733245,
+        "vx": -0.26719066403526054,
+        "vz": 0.3172017057630759,
+        "yaw": 2.4415643402387803,
+        "state": "grounded",
+        "hp": 3,
+        "stamina": 100,
+        "prompt": "与守塔人交谈",
+        "dialogue": "风醒者。登上三座天瞭塔，集齐四枚灵核，残堡封印才会打开。对着峭壁按互动攀爬，空中",
+        "towers": [],
+        "chests": [],
+        "quest": "点亮晨光塔",
+        "load": "ready"
+      },
+      "t": 1789565970804
+    },
+    {
+      "name": "03b-near-chest",
+      "pass": true,
+      "chestBefore": {
+        "mode": "playing",
+        "x": 19.2009930175363,
+        "y": 16.261233873891957,
+        "z": 108.23779523728366,
+        "vx": 1.0715420648706557,
+        "vz": -0.3189053477225788,
+        "yaw": 5.001654858396795,
+        "state": "grounded",
+        "hp": 3,
+        "stamina": 100,
+        "prompt": "打开容器",
+        "dialogue": "风醒者。登上三座天瞭塔，集齐四枚灵核，残堡封印才会打开。对着峭壁按互动攀爬，空中",
+        "towers": [],
+        "chests": [],
+        "quest": "点亮晨光塔",
+        "load": "ready"
+      },
+      "t": 1789565978206
+    },
+    {
+      "name": "05-chest-reward",
+      "pass": true,
+      "afterChest": {
+        "mode": "playing",
+        "x": 19.323588397140007,
+        "y": 16.26997416283494,
+        "z": 108.20130920146349,
+        "vx": 0.14160543287179825,
+        "vz": -0.04214368365915542,
+        "yaw": 5.001654858396795,
+        "state": "grounded",
+        "hp": 3,
+        "stamina": 100,
+        "prompt": "已搜集",
+        "dialogue": "风醒者。登上三座天瞭塔，集齐四枚灵核，残堡封印才会打开。对着峭壁按互动攀爬，空中",
+        "towers": [],
+        "chests": [
+          "chest-start"
+        ],
+        "quest": "点亮晨光塔",
+        "load": "ready"
+      },
+      "t": 1789565978580
+    }
+  ],
+  "failure": {
+    "milestone": "exception",
+    "message": "page.waitForFunction: Timeout 15000ms exceeded.",
+    "stack": "page.waitForFunction: Timeout 15000ms exceeded.\n    at /Users/ymf/Projects/aetherwake-rebuild-20260909/mimo-playability-20260916/aetherwake/scripts/qa/short-loop.mjs:205:14"
+  },
+  "errors": []
+}

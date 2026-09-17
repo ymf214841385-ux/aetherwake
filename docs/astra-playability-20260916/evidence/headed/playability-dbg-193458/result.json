@@ -1,0 +1,108 @@
+{
+  "ok": false,
+  "scope": "playability-headed-844x390-and-orientation",
+  "pid": 71352,
+  "startedAt": "2026-09-16T11:34:58.679Z",
+  "checks": [
+    {
+      "name": "844x390 stick visible",
+      "pass": false,
+      "media": {
+        "coarse": true,
+        "fine": false,
+        "anyCoarse": true,
+        "max800": false,
+        "w": 844,
+        "h": 390,
+        "touchPadDisplay": "block"
+      }
+    },
+    {
+      "name": "844x390 stick in viewport",
+      "pass": false
+    },
+    {
+      "name": "844x390 interact visible+in viewport",
+      "pass": false
+    },
+    {
+      "name": "844x390 attack visible+in viewport",
+      "pass": false
+    },
+    {
+      "name": "844x390 jump visible+in viewport",
+      "pass": false
+    },
+    {
+      "name": "844x390 map visible+in viewport",
+      "pass": false
+    },
+    {
+      "name": "844x390 bag visible+in viewport",
+      "pass": false
+    },
+    {
+      "name": "empty look tap does not start attack",
+      "pass": true,
+      "before": {
+        "phase": "idle",
+        "attackT": 0,
+        "mode": "playing"
+      },
+      "after": {
+        "phase": "idle",
+        "attackT": 0,
+        "mode": "playing"
+      },
+      "lookRect": null
+    },
+    {
+      "name": "character load ready",
+      "pass": false
+    },
+    {
+      "name": "stick drive moves player",
+      "pass": false,
+      "reason": "no stick rect"
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "Chromium emulation, not physical iPhone/Android",
+    "Orientation still provisional until face/chest/feet screenshots accepted"
+  ],
+  "server": {
+    "url": "http://127.0.0.1:8102/",
+    "owned": true
+  },
+  "media": {
+    "coarse": true,
+    "fine": false,
+    "anyCoarse": true,
+    "max800": false,
+    "w": 844,
+    "h": 390,
+    "touchPadDisplay": "block"
+  },
+  "layout": {
+    "viewport": {
+      "w": 844,
+      "h": 390
+    },
+    "padHtml": null,
+    "padCount": 0,
+    "stickCount": 0,
+    "stick": null,
+    "look": null,
+    "interact": null,
+    "attack": null,
+    "jump": null,
+    "map": null,
+    "bag": null
+  },
+  "characterLoad": {
+    "load": null,
+    "mode": "playing"
+  },
+  "errorsPartition": {}
+}

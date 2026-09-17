@@ -27,6 +27,7 @@ function actualFixture(useDecisionPose) {
   sim.freshRuntime(false);
   for (const t of TOWERS) sim.towersOn.add(t.id);
   for (const s of SHRINES) sim.shrinesOn.add(s.id);
+  sim.orbs = sim.shrinesOn.size;
   const dt = (recorded.t - prior.t) / 1000;
   const vx = (recorded.x - prior.x) / dt, vz = (recorded.z - prior.z) / dt;
   const pose = useDecisionPose ? decision : recorded;

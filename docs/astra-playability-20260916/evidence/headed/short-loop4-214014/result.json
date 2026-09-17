@@ -1,0 +1,158 @@
+{
+  "ok": false,
+  "pid": 79937,
+  "startedAt": "2026-09-16T13:40:14.972Z",
+  "milestones": [
+    {
+      "name": "01-start",
+      "pass": true,
+      "mode": "playing",
+      "x": 16,
+      "y": 11.414756173028813,
+      "z": 102,
+      "vx": 0,
+      "vz": 0,
+      "yaw": 0,
+      "state": "grounded",
+      "hp": 3,
+      "stamina": 100,
+      "prompt": "请靠近：距离 7.2m",
+      "dialogue": "",
+      "towers": [],
+      "chests": [],
+      "quest": "点亮晨光塔",
+      "load": "ready",
+      "t": 1789566028065
+    },
+    {
+      "name": "02-move",
+      "pass": true,
+      "d0": 1.7407855560870047,
+      "moved": {
+        "mode": "playing",
+        "x": 16,
+        "y": 11.414756173028811,
+        "z": 100.259214443913,
+        "vx": 0,
+        "vz": -3.562334958817135,
+        "yaw": 0,
+        "state": "grounded",
+        "hp": 3,
+        "stamina": 100,
+        "prompt": "请靠近：距离 8.7m",
+        "dialogue": "",
+        "towers": [],
+        "chests": [],
+        "quest": "点亮晨光塔",
+        "load": "ready"
+      },
+      "t": 1789566028954
+    },
+    {
+      "name": "03-near-sage",
+      "pass": true,
+      "nearSageT": {
+        "mode": "playing",
+        "x": 5.55991989509462,
+        "y": 16.66815760191514,
+        "z": 112.14766148526519,
+        "vx": -0.8820715522611732,
+        "vz": 1.0474224440263118,
+        "yaw": 2.4416821327410716,
+        "state": "grounded",
+        "hp": 3,
+        "stamina": 100,
+        "prompt": "请靠近：距离 2.4m",
+        "dialogue": "",
+        "towers": [],
+        "chests": [],
+        "quest": "点亮晨光塔",
+        "load": "ready"
+      },
+      "t": 1789566036377
+    },
+    {
+      "name": "04-sage-talk",
+      "pass": true,
+      "talked": {
+        "mode": "dialogue",
+        "x": 5.478994261609613,
+        "y": 16.667849324633178,
+        "z": 112.2437572323641,
+        "vx": -0.26821716974945076,
+        "vz": 0.3184964788271588,
+        "yaw": 2.4416821327410716,
+        "state": "grounded",
+        "hp": 3,
+        "stamina": 100,
+        "prompt": "与守塔人交谈",
+        "dialogue": "风醒者。登上三座天瞭塔，集齐四枚灵核，残堡封印才会打开。对着峭壁按互动攀爬，空中",
+        "towers": [],
+        "chests": [],
+        "quest": "点亮晨光塔",
+        "load": "ready"
+      },
+      "t": 1789566036738
+    },
+    {
+      "name": "03b-near-chest",
+      "pass": true,
+      "chestBefore": {
+        "mode": "playing",
+        "x": 19.174400983774223,
+        "y": 16.259008244711467,
+        "z": 108.24363327001008,
+        "vx": 1.2078373932865425,
+        "vz": -0.3564313522466573,
+        "yaw": 4.9993432077615045,
+        "state": "grounded",
+        "hp": 3,
+        "stamina": 100,
+        "prompt": "打开容器",
+        "dialogue": "风醒者。登上三座天瞭塔，集齐四枚灵核，残堡封印才会打开。对着峭壁按互动攀爬，空中",
+        "towers": [],
+        "chests": [],
+        "quest": "点亮晨光塔",
+        "load": "ready"
+      },
+      "t": 1789566044157
+    },
+    {
+      "name": "05-chest-reward",
+      "pass": true,
+      "afterChest": {
+        "mode": "playing",
+        "x": 19.30992966050591,
+        "y": 16.26872473380434,
+        "z": 108.20363892161173,
+        "vx": 0.17979635628713528,
+        "vz": -0.05305768703357418,
+        "yaw": 4.9993432077615045,
+        "state": "grounded",
+        "hp": 3,
+        "stamina": 100,
+        "prompt": "已搜集",
+        "dialogue": "风醒者。登上三座天瞭塔，集齐四枚灵核，残堡封印才会打开。对着峭壁按互动攀爬，空中",
+        "towers": [],
+        "chests": [
+          "chest-start"
+        ],
+        "quest": "点亮晨光塔",
+        "load": "ready"
+      },
+      "t": 1789566044514
+    },
+    {
+      "name": "06-map-dawn",
+      "pass": true,
+      "mapped": "dawn",
+      "t": 1789566044938
+    }
+  ],
+  "failure": {
+    "milestone": "exception",
+    "message": "locator.tap: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator('[data-touch-action=\"map\"]')\n    - locator resolved to <button type=\"button\" class=\"tbtn tbtn-sm\" data-touch-btn=\"true\" data-touch-action=\"map\">地图</button>\n  - attempting tap action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying tap action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying tap action\n      - waiting 100ms\n    28 × waiting for element to be visible, enabled and stable\n       - element is not visible\n     - retrying tap action\n       - waiting 500ms\n",
+    "stack": "locator.tap: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator('[data-touch-action=\"map\"]')\n    - locator resolved to <button type=\"button\" class=\"tbtn tbtn-sm\" data-touch-btn=\"true\" data-touch-action=\"map\">地图</button>\n  - attempting tap action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying tap action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying tap action\n      - waiting 100ms\n    28 × waiting for element to be visible, enabled and stable\n       - element is not visible\n     - retrying tap action\n       - waiting 500ms\n\n    at /Users/ymf/Projects/aetherwake-rebuild-20260909/mimo-playability-20260916/aetherwake/scripts/qa/short-loop.mjs:212:51"
+  },
+  "errors": []
+}

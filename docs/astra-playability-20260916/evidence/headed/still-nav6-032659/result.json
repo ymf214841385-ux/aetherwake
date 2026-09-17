@@ -1,0 +1,216 @@
+{
+  "ok": false,
+  "pid": 1193,
+  "samples": [
+    {
+      "stage": "board-front",
+      "world": "overworld",
+      "shrine": null,
+      "x": 16.03,
+      "y": 16.11,
+      "z": -72.75,
+      "mode": "playing",
+      "state": "grounded",
+      "orbs": 4,
+      "shrinesOn": [
+        "burst",
+        "rime",
+        "pull",
+        "still"
+      ],
+      "moveBlock": {
+        "x": 0,
+        "z": 0,
+        "frozen": 0
+      },
+      "nav": "unavailable",
+      "guidance": "尚未找到可通行路线，可绕开障碍再试",
+      "segs": []
+    },
+    {
+      "stage": "board-back",
+      "world": "overworld",
+      "shrine": null,
+      "x": 16.03,
+      "y": 16.11,
+      "z": -72.75,
+      "mode": "playing",
+      "state": "grounded",
+      "orbs": 4,
+      "shrinesOn": [
+        "burst",
+        "rime",
+        "pull",
+        "still"
+      ],
+      "moveBlock": {
+        "x": 0,
+        "z": 0,
+        "frozen": 0
+      },
+      "nav": "unavailable",
+      "guidance": "尚未找到可通行路线，可绕开障碍再试",
+      "segs": []
+    },
+    {
+      "stage": "far-shore",
+      "world": "overworld",
+      "shrine": null,
+      "x": 16.03,
+      "y": 16.11,
+      "z": -72.75,
+      "mode": "playing",
+      "state": "grounded",
+      "orbs": 4,
+      "shrinesOn": [
+        "burst",
+        "rime",
+        "pull",
+        "still"
+      ],
+      "moveBlock": {
+        "x": 0,
+        "z": 0,
+        "frozen": 0
+      },
+      "nav": "unavailable",
+      "guidance": "尚未找到可通行路线，可绕开障碍再试",
+      "segs": []
+    }
+  ],
+  "milestones": [
+    {
+      "name": "00-restore",
+      "pass": true,
+      "t0": {
+        "world": "overworld",
+        "shrine": null,
+        "x": 16.03,
+        "y": 16.11,
+        "z": -72.75,
+        "mode": "playing",
+        "state": "grounded",
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "moveBlock": {
+          "x": 0,
+          "z": 0,
+          "frozen": 0
+        },
+        "nav": "unavailable",
+        "guidance": "尚未找到可通行路线，可绕开障碍再试",
+        "segs": []
+      }
+    },
+    {
+      "name": "01-in-still",
+      "pass": false,
+      "inside": {
+        "world": "overworld",
+        "shrine": null,
+        "x": 16.03,
+        "y": 16.11,
+        "z": -72.75,
+        "mode": "playing",
+        "state": "grounded",
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "moveBlock": {
+          "x": 0,
+          "z": 0,
+          "frozen": 0
+        },
+        "nav": "unavailable",
+        "guidance": "尚未找到可通行路线，可绕开障碍再试",
+        "segs": []
+      }
+    },
+    {
+      "name": "02-freeze-aligned",
+      "pass": false,
+      "frozen": {
+        "x": 0,
+        "z": 0,
+        "frozen": 0
+      }
+    },
+    {
+      "name": "03-on-board-nav",
+      "pass": false,
+      "onFront": {
+        "world": "overworld",
+        "shrine": null,
+        "x": 16.03,
+        "y": 16.11,
+        "z": -72.75,
+        "mode": "playing",
+        "state": "grounded",
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "moveBlock": {
+          "x": 0,
+          "z": 0,
+          "frozen": 0
+        },
+        "nav": "unavailable",
+        "guidance": "尚未找到可通行路线，可绕开障碍再试",
+        "segs": []
+      }
+    },
+    {
+      "name": "04-cross-back",
+      "pass": false,
+      "onBack": {
+        "world": "overworld",
+        "shrine": null,
+        "x": 16.03,
+        "y": 16.11,
+        "z": -72.75,
+        "mode": "playing",
+        "state": "grounded",
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "moveBlock": {
+          "x": 0,
+          "z": 0,
+          "frozen": 0
+        },
+        "nav": "unavailable",
+        "guidance": "尚未找到可通行路线，可绕开障碍再试",
+        "segs": []
+      }
+    },
+    {
+      "name": "05-shore-nav",
+      "pass": false,
+      "shore": {
+        "z": -72.75,
+        "y": 16.11,
+        "nav": "unavailable",
+        "guidance": "尚未找到可通行路线，可绕开障碍再试",
+        "segs": []
+      }
+    }
+  ],
+  "errors": []
+}

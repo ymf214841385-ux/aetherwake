@@ -1,0 +1,109 @@
+{
+  "ok": false,
+  "pid": 99739,
+  "milestones": [
+    {
+      "name": "00-restore",
+      "pass": true,
+      "t0": {
+        "mode": "playing",
+        "world": "overworld",
+        "shrine": null,
+        "hp": 4,
+        "x": 16.03,
+        "y": 16.11,
+        "z": -72.75,
+        "camYaw": 2.9,
+        "state": "grounded",
+        "stamina": 100,
+        "towers": [],
+        "orbs": 4,
+        "shrinesOn": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "prompt": "",
+        "climbBtn": false,
+        "lastDamageWhy": ""
+      }
+    },
+    {
+      "name": "wp1",
+      "pass": true,
+      "target": {
+        "x": 16,
+        "z": -10
+      }
+    },
+    {
+      "name": "02-climb",
+      "pass": false,
+      "maxY": 11.56,
+      "final": {
+        "y": 11.56,
+        "state": "dead"
+      }
+    },
+    {
+      "name": "03-activate-dawn",
+      "pass": false,
+      "maxY": 11.56,
+      "towers": []
+    },
+    {
+      "name": "04-reload-dawn",
+      "pass": false,
+      "before": {
+        "towers": [],
+        "shrines": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ]
+      },
+      "after": {
+        "towers": [],
+        "shrines": [
+          "burst",
+          "rime",
+          "pull",
+          "still"
+        ],
+        "orbs": 4
+      }
+    }
+  ],
+  "failure": null,
+  "ring": [],
+  "errors": [],
+  "stopped": {
+    "reason": "terminal",
+    "i": 112,
+    "mid": {
+      "mode": "dead",
+      "world": "overworld",
+      "shrine": null,
+      "hp": 0,
+      "x": 14.24,
+      "y": 11.56,
+      "z": -24.07,
+      "camYaw": 3.19,
+      "state": "dead",
+      "stamina": 100,
+      "towers": [],
+      "orbs": 4,
+      "shrinesOn": [
+        "burst",
+        "rime",
+        "pull",
+        "still"
+      ],
+      "prompt": "请靠近：距离 41.1m",
+      "climbBtn": true,
+      "lastDamageWhy": "敌人"
+    }
+  }
+}

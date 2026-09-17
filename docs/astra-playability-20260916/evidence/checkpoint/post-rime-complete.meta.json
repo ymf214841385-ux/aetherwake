@@ -1,0 +1,14 @@
+{
+  "file": "post-rime-complete.storage.json",
+  "sha256": "cdc0738a1021f0e80687d1d37a940237e9569100c89bdbf935d93154dc8c30fb",
+  "sourceRun": "rime-complete-011633",
+  "sourceCommit": "b3a8a5456b1e839962d34714fd5a2d6632afd722",
+  "progress": {
+    "shrinesOn": [
+      "burst",
+      "rime"
+    ],
+    "orbs": 2
+  },
+  "note": "Natural claim+reload storageState; no progress merge."
+}
